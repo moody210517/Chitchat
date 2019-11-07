@@ -1,0 +1,34 @@
+table {border-collapse:collapse;}
+table.tborder {background:none repeat scroll 0 0 #EAEAEA;border:1px solid #D1E6F4;color:#000000;}
+.thead {background:url("../img/forum/techron_headbg.gif") repeat-x scroll left top #D1E6F4;color:#FFFFFF;font:bold 11px tahoma,verdana,geneva,lucida,arial,helvetica,sans-serif;margin:0.5em;padding:0.5em;}
+.tborder {background:none repeat scroll 0 0 #EAEAEA;border:1px solid #D1E6F4;color:#000000;}
+#profileTable td, tr {vertical-align:top;}
+.alt2, .alt2Active {background:url("../img/forum/kleo_alt1.gif") repeat-x scroll 0 0 #FFFFFE;border:1px solid #D1E6F4;color:#000000;font-family:tahoma,verdana,geneva,lucida,'lucida grande',arial,helvetica,sans-serif;padding:6px;}
+screen.css table td {font-size:11px;}
+.alt1, .alt1Active {background:url("../img/forum/kleo_alt1.gif") repeat-x scroll 0 0 #FFFFFE;border:1px solid #D1E6F4;color:#000000;margin:0.5em;padding:0.5em;}
+div.userinfo div.forum_video  a.lightbox img {border:1px solid #000000;}
+div.userinfo div.forum tr td ul {position:relative;left:-50px;top:2px;}
+div.userinfo div.forum tr td ul li {float:left;padding:0 10px;}
+div.userinfo div.forum tr td ul li a {float:left;}
+div.userinfo div.forum table.tborder td.alt1 div.forum_video {margin:0 auto;position:relative;left:17px;}
+.thead a:hover, .thead a:active{color:#FFFFFF;}
+.thead a { color:#FFFFFF;text-decoration:none;}
+.tcat a:link, .tcat a:visited {color:#FFFFFF;}
+.tcat a:hover, .tcat a:active{color:#FFFFFF;}
+.alt1Active a:link {color:#006699;}
+.alt1Active a:visited {color:#006699;}
+.alt1Active a:hover{color:#72A508;}
+.alt1 a:link {color:#006699;}
+.alt1 a:visited {color:#006699;}
+.navbar a:link {color:#3a5b65;}
+.navbar a:visited {color:#3a5b65;}
+.navbar_bulit_color {color:#3a5b65;}
+.panel {border:0 outset;color:#000000;padding:10px;}
+.forum_button {font-family:tahoma,verdana,geneva,lucida,'lucida grande',arial,helvetica,sans-serif;font-size:11px;font-size-adjust:none;font-stretch:normal;font-style:normal;font-variant:normal;font-weight:normal;line-height:normal;cursor:pointer;}
+.forum_error {font-family:tahoma,verdana,geneva,lucida,'lucida grande',arial,helvetica,sans-serif;font-size:11px;font-size-adjust:none;font-stretch:normal;font-style:normal;font-variant:normal;font-weight:normal;line-height:normal;color:red;}
+.smallfont {font-family:tahoma,verdana,geneva,lucida,'lucida grande',arial,helvetica,sans-serif;font-size:11px;font-size-adjust:none;font-stretch:normal;font-style:normal;font-variant:normal;font-weight:normal;line-height:normal;margin-bottom:10px;}
+.navbar {-x-system-font:none;font-family:tahoma,verdana,geneva,lucida,'lucida grande',arial,helvetica,sans-serif;font-size:11px;font-size-adjust:none;font-stretch:normal;font-style:normal;font-variant:normal;font-weight:normal;line-height:normal;color:#3a5b65;}
+.tcat {background:#FFFFFF url(../img/forum/techron_catbg.gif) repeat-x scroll left top;border-left:1px solid #FFFFFF;border-right:1px solid #FFFFFF;color:#FFFFFF;font-family:verdana,geneva,lucida,'lucida grande',arial,helvetica,sans-serif;font-size:10pt;font-size-adjust:none;font-stretch:normal;font-style:normal;font-variant:normal;font-weight:bold;line-height:normal;margin:0.5em;}
+.bigusername {color:#000000 !important; font-weight:bold !important; font-size:11px !important;}
+.smallfont a {color:#000000 !important;}
+.content a:hover {text-decoration:none;}

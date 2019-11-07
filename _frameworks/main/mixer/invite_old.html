@@ -1,0 +1,197 @@
+{header}
+
+{ims}
+<div class="wrapper-wide">
+<div class="userinfo-c-wide">
+	<div class="userinfo">
+	<div class="content">
+
+<div class=header_big style="margin-top:30px; margin-bottom:10px; margin-border:"><img src="{url_tmpl_main}images/inv.png"class="png"align="absmiddle" alt="" width=48 height=48 /> {l_title}<!-- begin_invites_sent--> | {l_invites_sent}<!-- end_invites_sent--></div>
+<div class="who_to_invite"><p>{l_who_to_invite}</p></div>
+<div align="center">
+
+<!-- begin_invite_form -->
+
+<div class="g-box-in" style="float:left;">
+            
+<!-- begin_invite_emails -->			
+              <form action="{url_page}?cmd=invite" method="POST" >
+                <table cellspacing="0" cellpadding="0">
+                  <tr>
+                    <th width="100">
+                      {l_first_names}:                    </th>
+                    <td class="s"></td>
+                    <th width="100">
+                      {l_last_names}:                    </th>
+                    <td class="s"></td>
+                    <th width="100">
+                      {l_emails}:                    </th>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input  type="text"  style="width:100px;" class="inp" value="" name="fn1"/>
+                    </td>
+                    <td></td>
+                    <td>
+                      <input type="text"  style="width:100px;" class="inp" value="" name="ln1"/>
+                    </td>
+                    <td></td>
+                    <td>
+                      <input type="text" style="width:100px;" class="inp" value="" name="em1"/>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="text" style="width:100px;" class="inp" value="" name="fn2"/>
+                    </td>
+                    <td></td>
+                    <td>
+                      <input type="text" style="width:100px;" class="inp" value="" name="ln2"/>
+                    </td>
+                    <td></td>
+                    <td>
+                      <input type="text" style="width:100px;" class="inp" value="" name="em2"/>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="text" style="width:100px;" class="inp" value="" name="fn3"/>
+                    </td>
+                    <td></td>
+                    <td>
+                      <input type="text" style="width:100px;" class="inp" value="" name="ln3"/>
+                    </td>
+                    <td></td>
+                    <td>
+                      <input type="text" style="width:100px;" class="inp" value="" name="em3"/>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="text" style="width:100px;" class="inp" value="" name="fn4"/>
+                    </td>
+                    <td></td>
+                    <td>
+                      <input type="text" style="width:100px;" class="inp" value="" name="ln4"/>
+                    </td>
+                    <td></td>
+                    <td>
+                      <input type="text" style="width:100px;" class="inp"  value="" name="em4"/>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th style="padding-top:16px" colspan="5">
+                      {l_message_optional}:</th>
+                  </tr>
+                  <tr>
+                    <td colspan="5">
+                      <textarea name="msg" id="msg" class="inp_1" rows="4" cols="40"></textarea>
+                    </td>
+                  </tr>
+                <tr>
+                    <td colspan="5" class="button_inv" align="right">
+          <input type="submit" class="button" title="{l_invite}" value="{l_invite}" />                 
+                    </td>
+                  </tr>
+                </table>
+
+              </form>
+<!-- end_invite_emails -->
+
+<!-- begin_invite_module -->
+
+<form method="post" action="{url_page}?cmd=import&action={module}">
+                <table>
+                  <tbody><tr>
+                    <th><label for="a_email">{l_email}:</label></th>
+                    <td><input type="text" value="" name="login" id="a_email"/></td>
+                  </tr>
+                  <tr>
+                    <th><label for="a_pass">{l_password}:</label></th>
+                    <td><input type="password" value="" name="password" id="a_pass"/></td>
+                  </tr>
+                  <tr>
+                    <td/>
+                    <td>
+<input  type="submit" class="button" title="{l_login}" value="{l_login}" />				  </td>
+                  </tr>
+                </tbody></table>
+                <p class="note">{l_invite_note}</p>
+              </form>
+
+<!-- end_invite_module -->	
+
+	
+            </div>
+
+			
+<div class="srv-box-cont" style="float:left;">
+                <h2>{l_or_invite_from}:</h2>
+                <table class="srv-box">
+                   <tr class="srv-in">
+                    <td class="srv-out">
+                      <table class="mail_logo">
+						<tr>
+                          <td><a class="selected{gmail}" href="{url_page}?cmd=show&action=gmail"><img class="png" alt="" src="{url_tmpl_main}images/invite-gmail.png" /></a></td>
+                          <td class="o"><a  class="selected{yahoo}" href="{url_page}?cmd=show&action=yahoo"><img  class="png" alt="" src="{url_tmpl_main}images/invite-yahoo.png" /></a></td>
+                        </tr>
+
+						<tr>
+                          <td class="last"><a class="selected{msn}" href="{url_page}?cmd=show&action=msn"><img  class="png" alt="" src="{url_tmpl_main}images/invite-msn.png" /></a></td>
+                          <td class="o last"><a class="selected{myspace}" href="{url_page}?cmd=show&action=myspace"><img class="png" alt="" src="{url_tmpl_main}images/invite-myspace.png" /></a></td>
+                        </tr>
+
+						<tr>
+                          <td class="last"><a class="selected{orkut}" href="{url_page}?cmd=show&action=orkut"><img  class="png" alt="" src="{url_tmpl_main}images/invite-orkut.png" /></a></td>
+                          <td class="o last"><a class="selected{facebook}" href="{url_page}?cmd=show&action=facebook"><img class="png" alt="" src="{url_tmpl_main}images/invite-facebook.png" /></a></td>
+                        </tr>						
+						
+                       </table>
+                    </td>
+                  </tr>
+                 </table>
+              </div>				
+
+
+
+<br clear="all">
+
+<!-- end_invite_form -->
+
+<!-- begin_no_contacts -->
+{l_no_contacts}
+<!-- end_no_contacts -->
+
+<!-- begin_contacts -->
+<form action="{url_page}?cmd=invite_friends" method="post" >
+<table>
+<tr>
+<td>{l_name}</td>
+<td>{l_email}</td>
+<td>{l_select}</td>
+</tr>
+
+<!-- begin_contact -->
+<tr>
+<td>{name}</td>
+<td>{email}</td>
+<td><input type="checkbox" checked="checked" name="contact[{index}]" value="{index}">
+<input type="hidden" name="name[{index}]" value="{name}">
+<input type="hidden" name="email[{index}]" value="{email}">
+</td>
+</tr>
+<!-- end_contact -->
+
+</table>
+
+<input  type="submit" class="button" title="{l_send}" value="{l_send}" />
+</form>
+<!-- end_contacts -->
+
+</div>
+</div></div>
+	<br />
+	<div class="userinfo-links-wide"></div>
+</div>
+</div>
+{footer}

@@ -1,0 +1,202 @@
+{header}
+<script>
+    var isSuperPowers = {is_super_powers};
+    var isFreeSite = {is_free_site};
+    var photos = new CProfilePhoto();
+    photos.setInfoPhotoUpload('{guid}', {i_am_in_spotlight});
+    photos.langParts = {'acceptFileTypes' : '{j_accept_file_types}',
+                        'maxFileSize_photo' : '{max_photo_file_size_limit}',
+                        'maxFileSize_video' : '{max_video_file_size_limit}',
+                        'set_photo_profile' : '{j_the_photo_has_been_set_as_the_profile_pic}',
+                        'description_photo_saved' : '{j_description_photo_saved_successfully}',
+                        'description_video_saved' : '{j_description_video_saved_successfully}',
+                        'moved_to_private' : '{j_the_photo_has_been_moved_to_private}',
+                        'moved_to_private_photo' : '{j_the_photo_has_been_moved_to_private}',
+                        'moved_to_private_video' : '{j_the_photo_has_been_moved_to_private}',
+                        'moved_to_public' : '{j_the_photo_has_been_moved_to_public}',
+                        'moved_to_public_photo' : '{j_the_photo_has_been_moved_to_public}',
+                        'moved_to_public_video' : '{j_the_video_has_been_moved_to_public}',
+                        'really_delete_photo' : '{j_really_delete_photo}',
+                        'really_delete_video' : '{j_really_delete_photo}',
+                        'cancel' : '{j_cancel}',
+                        'delete' : '{j_delete}',
+                        'upgrade': '{j_upgrade}',
+                        'you_can_not_delete_spotlight_photo' : '{j_you_can_not_delete_a_spotlight_photo}',
+                        'upload_more_than_limit' : '{upload_more_than_limit}',
+                        }
+    photos.maxFileSize = '{photo_file_size_limit}'*1;
+    photos.maxVideoSize = '{video_file_size_limit}'*1;
+    photos.uploadLimitPhotoCount = '{upload_limit_photo_count}'*1;
+    photos.photosCount = '{num_photos}'*1;
+
+    photos.approvePhotoCode = '<img src="{url_tmpl_mobile}images/not_checked_main.png" class="not_checked_photo" title="{j_being_checked_by_moderators}">';
+    <!-- begin_video_approval_active -->
+    photos.approveVideoCode = '<img src="{url_tmpl_mobile}images/not_checked_main.png" class="not_checked_photo" title="{j_being_checked_by_moderators}">';
+    <!-- end_video_approval_active -->
+
+    $(function(){
+        <!-- begin_error_accessing_user -->
+        $(window).load(function(){
+            setTimeout(function(){
+                showAlert('{error_accessing_user}','.st-content','red',0,true);
+            },500)
+        })
+        <!-- end_error_accessing_user -->
+    });
+
+</script>
+<div id="profile_photo_upload_content" class="wrapper"><!--ID is important not to remove-->
+        <div class="bl_cont">
+        <div class="head nm">
+            <div id="head_photo_public" class="fl_left head_title">{l_public_photos}</div>
+            <div class="fl_right" style="position:relative;" onclick="return photos.checkUploadLimit();">
+                <a class="link_add" href="#">{l_add}</a>
+                <form data-id_upload="" class="add_photo" method="post" enctype="multipart/form-data" action="{url_page}?type=public">
+                    <input data-type="public" class="file" type="file" accept="image/*" name="file_add_public" onChange="photos.changeUpload($(this), 'public');"/>
+                    <input type='reset' value=''/>
+                    <input type='submit' value=''/>
+                </form>
+            </div>
+        <div class="cl"></div>
+        </div>
+
+        <div class="bl_list_profile_photo fix_for_public_photo_loader">
+            <ul data-list-private="0" id="line_photo_public" class="cbp-rfgrid">
+                <!-- begin_photo_public -->
+                <li>
+                    <div>
+                    <a id="photo_{photo_id}" onclick="photos.editPhotoInfo($(this),'{photo_id}'); return false;" title="{description_attr}" href="">                          <!-- begin_photo_public_not_checked --><img src="{url_tmpl_mobile}images/not_checked_main.png" class="not_checked_photo" title="{a_being_checked_by_moderators}"><!-- end_photo_public_not_checked --><img class="photo_item"  style="opacity:0;" onload="$(this).fadeTo(400,1);" src="{url_files}{photo_url_mm}" alt="" /></a>
+                    <script>photos.setCachePhoto('{photo_id}',0,'{photo_default}',0,'{photo_approve}')</script>
+                    </div>
+                </li>
+                <!-- end_photo_public -->
+                <li id="photo_add_public">
+                    <div onclick="return photos.checkUploadLimit();">
+                    <a class="icon_photo_add" href="#null"><img src="{url_tmpl_mobile}images/photo/photo_empty.png" alt="" /></a>
+                    <form class="add_photo_bind" data-id_upload="" method="post" enctype="multipart/form-data" action="{url_page}?type=public">
+                        <input class="file" type="file" accept="image/*" name="file_add_public_bind" onChange="photos.changeUpload($(this), 'public');" />
+                        <input type='reset' value=''/>
+                        <input type='submit' value=''/>
+                    </form>
+                    </div>
+                </li>
+            </ul>
+        <div class="cl"></div>
+        </div>
+
+        <div class="head nm">
+            <div id="head_photo_private" class="fl_left head_title">{l_private_photos}</div>
+            <div class="fl_right" style="position: relative;" onclick="return photos.checkUploadLimit();">
+                <a class="link_add" href="#">{l_add}</a>
+                <form class="add_photo" data-id_upload="" method="post" enctype="multipart/form-data" action="{url_page}?type=private">
+                    <input class="file" type="file" accept="image/*" name="file_add_private" onChange="photos.changeUpload($(this), 'private');" />
+                    <input type='reset' value=''/>
+                    <input type='submit' value=''/>
+                </form>
+            </div>
+        <div class="cl"></div>
+        </div>
+
+        <div class="bl_list_profile_photo private">
+            <ul data-list-private="1" id="line_photo_private" class="cbp-rfgrid">
+                <!-- begin_photo_private -->
+                <li>
+                    <div>
+                    <a id="photo_{photo_id}" onclick="photos.editPhotoInfo($(this),'{photo_id}'); return false;" title="{description_attr}" href=""><!-- begin_photo_private_not_checked --><img src="{url_tmpl_mobile}images/not_checked_main.png" class="not_checked_photo" title="{a_being_checked_by_moderators}"><!-- end_photo_private_not_checked --><img class="photo_item" style="opacity:0;" onload="$(this).fadeTo(400,1);" src="{url_files}{photo_url_mm}" alt="" /></a>
+                    <script>photos.setCachePhoto('{photo_id}',1,'{photo_default}',0,'{photo_approve}')</script>
+                    </div>
+                </li>
+                <!-- end_photo_private -->
+                <li id="photo_add_private" style="position:relative;">
+                    <div  onclick="return photos.checkUploadLimit();">
+                    <a class="icon_photo_add" href="#null"><img src="{url_tmpl_mobile}images/photo/photo_empty.png" alt="" /></a>
+                    <form class="add_photo_bind" data-id_upload="" method="post" enctype="multipart/form-data" action="{url_page}?type=private">
+                        <input class="file" type="file" accept="image/*" name="file_add_private_bind" onChange="photos.changeUpload($(this), 'private');" />
+                        <input type='reset' value=''/>
+                        <input type='submit' value=''/>
+                    </form>
+
+                    </div>
+                </li>
+            </ul>
+        <div class="cl"></div>
+        </div>
+
+        <!-- begin_videos -->
+        <div class="head nm">
+            <div id="head_video_public" class="fl_left head_title">{l_videos}</div>
+            <div class="fl_right" style="position:relative;" onclick="return photos.checkUploadVideo();">
+                <a class="link_add" href="#">{l_add}</a>
+                <form data-id_upload="" class="add_photo" data-is_video="1" method="post" enctype="multipart/form-data" action="{url_page}?type=public">
+                    <input data-type="public" class="file" type="file" accept="video/*" name="file_add_public" onChange="photos.changeUpload($(this), 'public',1);"/>
+                    <input type='reset' value=''/>
+                    <input type='submit' value=''/>
+                </form>
+            </div>
+        <div class="cl"></div>
+        </div>
+
+        <div class="bl_list_profile_photo">
+            <ul data-list-private="0" id="line_video_public" class="cbp-rfgrid">
+                <!-- begin_video_public -->
+                <li>
+                    <div>
+                    <a id="video_{video_id}" onclick="photos.editPhotoInfo($(this),'{video_id}'); return false;" title="{description_attr}" href=""><!-- begin_video_not_checked --><img src="{url_tmpl_mobile}images/not_checked_main.png" class="not_checked_photo" title="{a_being_checked_by_moderators}"><!-- end_video_not_checked --><img class="photo_item"  style="opacity:0;" onload="$(this).fadeTo(400,1);" src="{url_files}{video_url}" alt="" /></a>
+                    <script>photos.setCachePhoto('{video_id}',0,'')</script>
+                    </div>
+                </li>
+                <!-- end_video_public -->
+                <li id="video_add_public">
+                    <div onclick="return photos.checkUploadVideo();">
+                    <a class="icon_photo_add" href="#null"><img src="{url_tmpl_mobile}images/video_empty.png" alt="" /></a>
+                    <form class="add_photo_bind" data-id_upload="" data-is_video="1" method="post" enctype="multipart/form-data" action="{url_page}?type=public">
+                        <input class="file" type="file"  name="file_add_public_bind"  onChange="photos.changeUpload($(this), 'public',1);" />
+                        <input type='reset' value=''/>
+                        <input type='submit' value=''/>
+                    </form>
+                    </div>
+                </li>
+            </ul>
+        <div class="cl"></div>
+        </div>
+        <!-- end_videos -->
+
+        </div>
+
+        <div class="head">
+            <div class="fl_left head_title">&nbsp;</div>
+        <div class="cl"></div>
+        </div>
+</div>
+<!-- tooltip -->
+<div id="tip_photo_info_edit" class="bl_tooltip_btn center tip_photo_info_edit">
+    <div class="tooltip description">
+        <div class="bl_photo_textarae">
+            <img width="45" height="50" src="" alt="" />
+            <textarea placeholder="{a_description}" class="placeholder"></textarea>
+        </div>
+        <div class="bl_photo_icons">
+            <ul id="tip_photo_info_edit_action" class="fl_left">
+                <li><a onclick="photos.setPhotoDefault(); return false;" class="icon_profile" href=""></a></li>
+                <li><a onclick="photos.setPhotoStatus(); return false;" class="icon_block photo_status" href=""></a></li>
+                <li><a onclick="photos.confirmPhotoDelete(); return false;" class="icon_delete" href=""></a></li>
+                <li id="tip_photo_info_edit_loader" style="position:relative;"><a onclick="photos.photoRotate(); return false;" class="icon_rotate" href=""></a></li>
+                <li><a onclick="photos.playVideo(); return false;" class="icon_play" href=""></a></li>
+            </ul>
+            <ul id="tip_photo_info_edit_save" class="fl_right">
+                <li><a onclick="photos.savePhotoInfo(); return false;" class="icon_check" href=""></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- /tooltip -->
+
+<!-- player -->
+<div id="tip_video_player" class="bl_tooltip_btn center tip_photo_info_edit1" style="margin:0px;display:none;z-index:102;">
+<video id="video_player" style="width:100%;height:100%" controls controlsList="nodownload" autoplay>
+  <source src="" type="video/mp4">
+</video>
+
+</div>
+<!-- /player -->
+{footer}

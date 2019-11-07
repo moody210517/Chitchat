@@ -1,0 +1,75 @@
+{header}
+
+{ims}
+
+<div class="userinfo-c-wide">
+	<div class="userinfo">				
+	<div class="content">
+
+<div class=header_big align="center" style="margin-top:30px; margin-bottom:20px; margin-border:">{l_invite_friends}</div>
+<div align="center">
+<br /><br />
+
+<!-- begin_invite_result -->
+
+{l_all_messages_sent}
+
+<!-- end_invite_result -->
+
+
+<!-- begin_invite_form -->
+<form id="invite_form" name="invite_form" method="post" action="{url_main}invite.php?cmd=send">
+<table align = "center" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td width="26%" height="21" ><div align="right"><b>{l_subject}</b>:&nbsp;</b></div></td>
+    <td>&nbsp;</td>
+    <td><div align="left">{subject}</div><td >    
+  </tr>
+  <tr>
+    <td height="47"><div align="right"><b>{l_from}:</b>&nbsp;</div></td>
+    <td>&nbsp;</td>
+    <td><div align="left">{from_email}</div></td>
+  </tr>
+  <tr>
+    <td height="72"><div align="right"><b>{l_to}:</b></div></td>
+    <td>&nbsp;</td>
+    <td><div align="left">({l_use_commas})&nbsp;<br /><textarea name="emails" cols="50" rows="3"></textarea></div></td>
+  </tr>
+  <tr>
+    <td height="104"><div align="right"><b>{l_personal_message}</b>:&nbsp;<br />({l_optional})</div></td>
+     <td>&nbsp;</td>
+     <td><div align="left"><textarea name="message" cols="50" rows="5"></textarea></div></td>
+  </tr>
+  <tr>
+    <td height="20">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="185"><div align="right"><b>{l_the_message_your}:</b>&nbsp;<br /><b>{l_friend_will_recieve}</b>&nbsp;</div></td>
+    <td>&nbsp;</td>
+    <td><div align="left">{message}</div></td>
+  </tr>
+  <tr>
+    <td height="20">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="26"><div align="right"><input type="submit" style="width: 55px; margin-right: 10px;" value=Invite  class=" button"></div></td>
+    <td>&nbsp;</td>
+    <td><div align="left" style="margin-left: 30px;"><input name="button" type="button" class=" button" style="width: 55px;" title="{l_back}" onclick="if(history.back()) { location=history.back(); } else { location='{url_main}'; }" value={l_back} /></div></td>
+  </tr>
+</table>
+</form>
+<!-- end_invite_form -->
+
+
+
+</div>
+</div></div>
+	<br />
+	<div class="userinfo-links-wide"></div>
+</div>
+
+{footer}

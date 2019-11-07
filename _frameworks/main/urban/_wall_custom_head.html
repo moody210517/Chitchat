@@ -1,0 +1,66 @@
+<link rel="stylesheet" type="text/css" href="{url_tmpl_main}css/wall.css{cache_version_param}" />
+<script type="text/javascript" src="_server/wall_urban.js{cache_version_param}"></script>
+<link rel="stylesheet" href="{url_tmpl}common/lightbox/jquery.lightbox-0.5.css{cache_version_param}" type="text/css" media="screen">
+<script type="text/javascript" src="{url_tmpl}common/lightbox/jquery.lightbox-0.5.min.js{cache_version_param}"></script>
+<script>
+$(function(){
+    function moduleSearchShow(dur){
+		var dur=dur||300;
+		$('#pp_show_item').stop().animate({height:'toggle'},dur);
+	}
+
+	$('#module_search_show').hover(
+		function(e){if($(e.target).not('.selected')){moduleSearchShow()}},
+		function(){if ($('#pp_show_item:visible')[0]){moduleSearchShow()}}
+	)
+
+	$('.module_search_show a').click(function(){
+		$('.module_search_show span#show').html($(this).children('span').html());
+		$('.module_search_show a.selected').removeClass('selected');
+		$(this).addClass('selected');
+		moduleSearchShow(1);
+		return false;
+	});
+
+	if (!$('.column_main')[0]) $('.wall').addClass('column_main');
+
+    var durGo='500ms', goTop=$('#wall_up').insertBefore('.column_main')[0], wCont=$('#wall_content')[0],
+        top=0, lastTop=0, scrolling, hidden=1, lastPos=0,
+		tab=$('#tabs-3')[0]||{},
+		transform=('webkitTransform' in document.body.style)?'webkitTransform':'transform',
+		transition=('transition' in document.body.style)?'transition':'webkitTransition';
+	wall_resizer.onresize=function(){ //console.log('resize')
+		if (!tab.className && typeof tab.className!='undefined') return;
+		top=window.scrollY;
+		if (!scrolling && wCont.offsetHeight<500+window.innerHeight) {
+			goTop.style[transition]=hidden++?'none':0;
+			goTop.style[transform]='translateY('+(lastPos=top>300?-window.innerHeight-105:0)+'px)';
+			return
+		}
+		var pos=183, dur=durGo;
+		if ((top)>500) {
+			if (!scrolling) lastTop=top;
+			var d=window.innerHeight-wCont.getBoundingClientRect().bottom+20;
+			if (goTop.className) {goTop.className=''; goTop.title='{j_to_the_top}'};
+			if (hidden) {pos=d>10?window.innerHeight+105:0};
+			if (d>70) {pos=d+100; dur=hidden?durGo:'none'};
+			hidden=0;
+		}else if (top<200 && !goTop.className && lastTop) {
+			goTop.className='down'; goTop.title='{j_to_the_post_last_read}';
+		} else if (!goTop.className&&!scrolling) {pos=lastTop=0; hidden=0}
+		if (pos==lastPos) return;
+		goTop.style[transition]=dur;
+		goTop.style[transform]='translateY(-'+(lastPos=pos)+'px)';
+	}
+    $win.on('scroll resize', wall_resizer.onresize);
+    $(goTop).click(function() {
+		scrolling=1
+        $('body, html').stop().animate({scrollTop:lastTop*$(goTop).is('.down')}, parseInt(durGo), function(){scrolling=0})
+    })
+    function _goTop(b,tr){
+        tr=tr||'.5s';
+        if (b!=lastPos) $goTop.css({transform:'translateY(-'+b+'px)',transition:tr}).delay(10).animate({transition:'.5s'}, 1);
+		lastPos=b
+    }
+});
+</script>

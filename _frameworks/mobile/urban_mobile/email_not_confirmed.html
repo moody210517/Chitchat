@@ -1,0 +1,37 @@
+{header}
+<script>
+    cprofile.langParts = {'incorrect_email' : '{j_this_email_address_is_not_correct}',
+                          'submit' : '{j_submit}',
+                          'email_sent' : '{j_email_sent}'
+    }
+    $(function(){
+        cprofile.notConfirmedEmailInit();
+    })
+</script>
+<style>
+.footer {position: absolute;}
+</style>
+<div class="wrapper">
+<div class="content" style="min-height: 400px;">
+<div class="pos_frm">
+    <div class="bl_email_not_confirm">
+    <div class="frm frm_center one email_not_confirm">
+        <div class="bl">
+            <!-- begin_email_sent_info -->
+            <div class="info" style="color: #FFF;">{l_email_sent}</div>
+            <!-- end_email_sent_info -->
+            <div class="info">
+                {l_account_blocked}
+            </div>
+            <form id="form_email_not_confirmed" method="post" action="{url_main}email_not_confirmed.php">
+                <input type="hidden" name="ajax" class="ajax" value="1" />
+                <label>{l_your_mail}:</label>
+                <input id="form_email_not_confirmed_mail" type="text" class="inp" name="email" value=""/>
+            </form>
+        </div>
+    </div>
+    </div>
+</div>
+</div>
+</div>
+{footer}

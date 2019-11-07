@@ -1,0 +1,20 @@
+<!-- begin_message_list -->
+    <!-- begin_message -->
+        <div data-uid="{message_to_user_id}" onclick="messages.toOneChat(event,'{url_main}{url_page_messages}?display=one_chat&user_id={message_to_user_id}')" class="info">
+            <div class="info_bl">
+                <div id="im_user_name_{message_to_user_id}" class="name">{user_from_name} <span class="count">{user_from_title_new_msg_count}</span></div>
+                <div id="msg_{message_id}" data-id="{message_id}"  class="msg im_msg_one">
+                    {message}
+                    <!-- begin_message_block -->
+                    {l_you_are_in_block_list}
+                    <!-- end_message_block -->
+                </div>
+            </div>
+        </div>
+        <div id="msg_date_{message_id}" data-uid="{message_to_user_id}" class="data">
+            <div class="info_date"><strong>{message_date_part_1}</strong>{message_date_part_2}</div>
+			<div class="delete" title="{a_delete_all_messages}"></div>
+        </div>
+        <script>messages.messagesCacheAdd('{message_to_user_id}', '{message_id}', '{message_user_sp}')</script>
+    <!-- end_message -->
+<!-- end_message_list -->

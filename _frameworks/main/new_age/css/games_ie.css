@@ -1,0 +1,18 @@
+.games_head td.td_l{_background: url(none); _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='./_frameworks/main/new_age/images/games/head_l.png', sizingmethod='crop'); }
+.games_head td.td_r{_background: url(none); _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='./_frameworks/main/new_age/images/games/head_r.png', sizingmethod='crop'); }
+.games_head td.td_c{height:29px;}
+.games_foot td.td_l{_background: url(none); _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='./_frameworks/main/new_age/images/games/foot_l.png', sizingmethod='crop'); }
+.games_foot td.td_r{_background: url(none); _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='./_frameworks/main/new_age/images/games/foot_r.png', sizingmethod='crop'); }
+.games_shadow{_background: url(none); _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='./_frameworks/main/new_age/images/games/shadow_foto.png', sizingmethod='crop'); }
+.green_balloon{_background: url(none); _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='./_frameworks/main/new_age/images/games/green_balloon.png', sizingmethod='crop'); }
+.games_decor_bot{_behavior: url("./_frameworks/main/new_age/css/iepngfix.htc");}
+
+
+.games_bg_green{ _margin: -37px 0 0; }
+.games_bg{ _position: relative; }
+
+.games_foto_pad{margin: 1px 0 22px; }
+*+html .games_foto_pad{margin: 0 0 22px; }
+*html .games_foto_pad{margin: 0 0 22px; }
+
+*html .games_blfoto{ background: url(../images/games/bg_black2.gif) 0 100% repeat-x;}

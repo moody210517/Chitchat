@@ -1,0 +1,148 @@
+{header}
+<div class="wrapper-wide">
+<div class="userinfo-c-wide">	<div class="userinfo">
+
+<script>
+function checkboxInvertValue(cid)
+{
+	var checkbox = document.getElementById(cid);
+	var checkboxStatus = checkbox.checked;	
+	var checkboxStatusValue = true;
+	
+	if(checkboxStatus == checkboxStatusValue) {
+		checkboxStatusValue = false;
+	}
+	
+	checkbox.checked = checkboxStatusValue;	
+}
+</script>
+
+<table width=100% border=0 cellpadding=0 cellspacing=0>
+<tr>
+<td>
+		{friends_menu}
+</td></tr>
+<tr>
+<td>
+
+<div class="header_big friends_header" style="padding-top:10px;">
+ 
+<div><img src="{url_tmpl_main}images/fr.png" class="png" align="absmiddle" alt="" width="48" height="48" /> {l_block_users} </div>
+</div>
+
+<div id="gallery">
+ <form method="POST">
+
+<input type="hidden" name="uid" value="{user_id}" />
+
+<input type="hidden" name="action" value="update" />       
+    <div class="gallery_top ltc">
+        <div class="rtc">
+            <div class="buck">
+                <table width=100% height="30" class="tbl">
+
+                    <tr>
+                    
+                        <td width="114"><div class="block_title" style="width:105px; overflow:hidden;">{l_block} {user_name}</div></td>
+                    
+                        <td class="central">&nbsp;</td>
+                    
+                        <td width="95">&nbsp;</td>
+                    
+                    </tr>
+                    
+                </table>                
+            </div>
+        </div>
+    </div>
+
+    <ul class="user_block">
+        
+        <li>
+                            
+            <table width=100% height="122">
+        
+                <tr>
+                
+                    <td width="138">
+                
+                        <a href="search_results.php?display=profile&name={user_name}"><img src="{url_files}{user_photo}" class="img" /></a>
+                    
+                        <span class="username"><a href="search_results.php?display=profile&name={user_name}">{user_name}</a></span>
+                
+						<!-- begin_wall -->
+						<p class="block_wall">
+						<input class="block_wall_checkbox" type="checkbox" id="av2_{option}" name="block_option_{option}" {option_checked} value="1" /> <label title="{option_title}" for="av2_{option}">{option_title}</label>
+						</p>
+						<!-- end_wall -->				
+				
+                    </td>
+                
+                    <td class="central">
+                            
+                        <table width="100%">
+							<tr>
+								<!-- begin_options -->
+								<!-- begin_option -->
+								<!-- begin_delimiter -->
+								<td>
+									<img class="png" src="{url_tmpl_main}images/separate.png" />
+								</td>
+								<!-- end_delimiter -->
+								<td>
+									<label title="{option_title}" for="av_{option}"><img class="png" width="75" height="75" src="{url_tmpl_main}images/block_edit_{option}.png" onclick="checkboxInvertValue('av2_{option}');" /></label>
+									<div class="block"><input type="checkbox" id="av2_{option}" name="block_option_{option}" {option_checked} value="1" /></div>
+								</td>
+								<!-- end_option -->					
+								<!-- end_options -->					
+                            </tr>                    
+                        </table>	
+                    
+                    </td>
+                
+                    <td width="120">
+                        <input style="width:100px;" type="submit" value="{l_save}" class="button" />
+                    </td>
+                
+                </tr>
+                
+            </table>
+        
+        </li>
+
+    </ul>
+        
+       
+    
+    <div class="gallery_bottom lbc">
+        <div class="rbc">
+            <div class="buck">
+
+            </div>
+        </div>
+    </div>
+	
+
+	
+</form>                 
+</div>
+
+
+</td>
+</tr>
+</table>
+
+
+</div><br>
+<div class="userinfo-links-wide"></div></div>
+</div>
+
+
+{footer}
+
+
+
+
+
+
+

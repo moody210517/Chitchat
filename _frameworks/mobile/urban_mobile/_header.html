@@ -1,0 +1,303 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <title>{title}</title>
+    <meta name="description" content="{description}">
+    <meta name="keywords" content="{keywords}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    {to_head_meta}
+    {header_favicon}
+
+    <!-- begin_header_mobile_style_index -->
+    <link rel="stylesheet" href="{url_tmpl_mobile}css/index_page.css{cache_version_param}" type="text/css" media="all"/>
+    <!-- end_header_mobile_style_index -->
+    <!-- begin_header_mobile_style_page -->
+    <link rel="stylesheet" href="{url_tmpl_mobile}css/style.css{cache_version_param}" type="text/css" media="all"/>
+    <link rel="stylesheet" href="{url_tmpl_mobile}css/component.css{cache_version_param}" type="text/css" media="all"/>
+    <link rel="stylesheet" href="{url_tmpl_mobile}css/ui/jquery-ui.css{cache_version_param}" type="text/css" media="all"/>
+    <!-- end_header_mobile_style_page -->
+
+    <script type="text/javascript" src="../_server/jquery/jquery-1.11.2.min.js{cache_version_param}"></script>
+    <script type="text/javascript" src="../_server/jquery/jquery-ui-1.11.4.min.js{cache_version_param}"></script>
+    <script type="text/javascript" src="../_server/jquery/jquery.form.js{cache_version_param}"></script>
+	<script type="text/javascript" src="../_server/jquery/jquery.cookie.js{cache_version_param}"></script>
+
+    <script type="text/javascript" src="../_server/lib.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_tmpl_mobile}js/script.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_tmpl_mobile}js/tools.js{cache_version_param}"></script>
+    <!-- begin_header_mobile_script_visitor -->
+    <script type="text/javascript" src="{url_tmpl_mobile}js/join.js{cache_version_param}"></script>
+    <!-- end_header_mobile_script_visitor -->
+
+
+    <!-- begin_header_mobile_script_user -->
+    <script type="text/javascript" src="../_server/server_mobile.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_tmpl_mobile}js/jquery.touchSwipe.min.js{cache_version_param}"></script>
+    <script type="text/javascript" src="../_server/jquery/jquery.winFocus.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_tmpl_mobile}js/profile.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_tmpl_mobile}js/search.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_tmpl_mobile}js/profile_photo.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_tmpl_mobile}js/messages.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_tmpl_mobile}js/chat.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_tmpl_mobile}js/city_street_chat.js{cache_version_param}"></script>
+    <script type="text/javascript" src="../_server/js/device.min.js{cache_version_param}"></script>
+    <!-- end_header_mobile_script_user -->
+
+    <link rel="stylesheet" type="text/css" href="{url_tmpl_mobile}css/cookiepopup.css{cache_version_param}" />
+    <script type="text/javascript" src="{url_tmpl_mobile}js/cookiepopup.js{cache_version_param}"></script>
+
+    <script language="javascript" type="text/javascript">
+        var url_main = '{url_main}';
+        var url_page = '{url_page}';
+        var url_ajax = '../ajax.php';
+        var url_files = '{url_files}';
+        var url_tmpl_mobile='{url_tmpl_mobile}';
+        var url_tmpl_mobile_images='{url_tmpl_mobile}images/';
+        var urlCity = '{url_city}';
+        var url_server = url_main + 'update_server_ajax.php';
+        var activePage='{current_page}';
+        var currentPage='{current_page}';
+        var urlPageLogin='{url_login_page}';
+        var ajax_login_status={xajax_login_status};
+		var mobileAppLoaded = false;
+		var imMessagesCount = '{number_messages}';
+		var appTitle = '{js_title}';
+        var appCurrentImUserId = false;
+        var appVibrationDuration = "{app_vibration_duration}" * 1000;
+        var appCityListUser = {};
+        var appCityLastMsgId = 0;
+        var isWebglDetect=true;
+        var notInitMediaChat = true;
+        var urbanMobileTemplate = true;
+
+        requestUserId='{request_user_id}';
+
+        preloadImagesPage(url_tmpl_mobile_images, activePage);
+        siteLangParts = {'server_error_try_again' : '{j_server_error_try_again}'}
+
+        <!-- begin_watch_geo_position -->
+        setWatchPositionTimeOut('{watch_geo_position_time}');
+        watchPosition();
+        <!-- end_watch_geo_position -->
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="css.php{cache_version_param}&set_template_mobile_runtime={tmpl_loaded}" />
+    <script type="text/javascript" src="{url_main}js.php{cache_version_param}&file=tmpl.js&set_template_mobile_runtime={tmpl_loaded}&set_language_mobile_runtime={lang_loaded}"></script>
+    <script type="text/javascript" src="{url_main}js.php{cache_version_param}&get_lang=1&file=set_language.js&set_template_mobile_runtime={tmpl_loaded}&set_language_mobile_runtime={lang_loaded}"></script>
+    <script type="text/javascript" src="{url_main}js.php{cache_version_param}&get_lang=1&file=set_language.js&set_template_mobile_runtime={tmpl_loaded}&set_language_mobile_runtime={lang_loaded}&page={current_page}"></script>
+
+    <style id="style_calc" type="text/css"></style>
+    <script>initStyle();</script>
+</head>
+
+<body>
+    <script>
+        var tools = new CTools('{user_id}');
+        tools.langParts = {'server_error' : '{j_server_error_try_again}'}
+    </script>
+    <!-- VISITOR -->
+    <!-- begin_header_mobile_visitor -->
+    <!-- main -->
+    <div class="st-content-inner">
+    <!-- wrapper -->
+    <div class="wrapper">
+
+    <!-- begin_header_mobile_visitor_index -->
+    <div class="header" style="opacity:0;">
+        <img src="{header_url_logo_mobile}" alt="{title}" title="{title}" onload="$(this).parent('div.header').css({opacity:'1', transition:'0.7s linear'})"/>
+    </div>
+    <!-- end_header_mobile_visitor_index -->
+    <!-- begin_header_mobile_visitor_page -->
+    <div class="header">
+    <div id="header_line" class="bl">
+        <!-- begin_header_mobile_visitor_page_back -->
+		<button class="icon_nav"></button>
+        <a class="btn_play_header" href="{url_main}index.php"></a>
+        <!-- end_header_mobile_visitor_page_back -->
+        <div class="part_left" >
+            <a class="logo" href="{url_main}index.php"><img src="{header_url_logo_mobile_inner}" alt="" /></a>
+			<span>{header_mobile_visitor_page_title}</span>
+        </div>
+    <div class="cl"></div>
+    </div>
+    </div>
+    <!-- end_header_mobile_visitor_page -->
+
+    <!-- content -->
+    <div class="content">
+    <!-- end_header_mobile_visitor -->
+
+    <!-- USER -->
+    <!-- begin_header_mobile_user -->
+    <script>
+        $(function(){
+            <!-- begin_click_logo_cancel -->
+            $('.part_left > a.logo').css('cursor','default').on('click', function(){return false});
+            <!-- end_click_logo_cancel -->
+            <!-- begin_detect_3dcity -->
+            isWebglDetect=webglDetect();
+            if(!isWebglDetect)$('#user_menu_3d_city').remove();
+            <!-- end_detect_3dcity -->
+            updateStatusCity(0,0);
+        })
+        var frameDemo=parent.window.frames['iframe_demo'],historyPage;
+        function historyBack(){
+            historyPage=frameDemo?frameDemo.contentWindow.history:window.history;
+            if (historyPage.length>1) return !!historyPage.back();
+            return false;
+        }
+
+        var cprofile = new CProfile('{user_id}','{is_free_site}', '{is_credits_enabled}');
+        cprofile.langParts = {'server_error' : '{j_server_error_try_again}',
+                              'log_out' : '{j_log_out}',
+                              'cancel' : '{j_cancel}',
+                              'really_log_out' : '{j_really_log_out}',
+                              'unblock_user' : '{j_unblock_this_user}',
+                              'unblock' : '{j_unblock}',
+                              'block_user' : '{j_block_this_user}',
+                              'block' : '{j_block}',
+                              'your_interest_will' : '{j_your_interest_will_be_seen_by_the_user}',
+                              'has_been_sent_gift' : '{j_the_gift_has_been_sent_to_the_user}',
+                              'gift_free' : '{j_grab_attention_with_a_gift_free}',
+                              'gift_price' : '{j_grab_attention_with_a_gift}',
+                              'tip_report_block' : '{j_tip_report_block}',
+                              'tip_report_unblock' : '{j_tip_report_unblock}',
+                              'submit_your_report' : '{j_submit_your_report}',
+                              'report_sent' : '{j_report_sent}',
+							  'add_to_friends' : '{j_add_to_friends}',
+							  'remove_from_friends' : '{j_remove_from_friends}',
+							  'approve_friend_requests' : '{j_approve_friend_requests}',
+							  'request_sent' : '{j_request_sent}',
+							  'are_you_sure' : '{j_are_you_sure}',
+							  'remove_request' : '{j_remove_request}',
+							  'alert_add_to_friends' : '{j_alert_add_to_friends}',
+							  'decline' : '{j_decline}',
+							  'add' : '{j_add}',
+                              }
+
+        var messages = new CMessages('{user_id}', '{im_history_messages}');
+            messages.langParts = {'really_delete_all_messages' : '{j_really_delete_all_messages}',
+                                  'cancel' : '{j_cancel}',
+                                  'delete' : '{j_delete}',
+                                  'you_granted_access' : '{j_private_photo_you_granted_access}',
+                                  'sorry_albums_today' : '{j_private_photo_request_declined}',
+                                  'btn_perform_action' : '{j_btn_perform_action}'}
+
+        var videoChat = new CChat('video','{is_allowed_video_chat}', '{is_in_app_purchase_enabled}'*1);
+            videoChat.price = '{video_chat_price}'*1;
+            videoChat.langParts = {'please_wait_for' : '{j_please_wait_for_confirmation}',
+                                   'invitation_sent' : '{j_invitation_sent}',
+                                   'in_block_list' : '{j_you_are_in_block_list}',
+                                   'chat_from_user' : '{video_chat_from_user}',
+                                   'chat_nowe' : '{j_do_you_accept_this_chat}',
+                                   'attention' : '{j_attention}',
+                                   'refused' : '{j_refused_videochat}',
+                                   'btn_buy_credits': '{j_btn_buy_credits}',
+                                   'buy_credits': '{j_buy_credits}',
+                                   'you_have_no_enough_credits': '{j_you_have_no_enough_credits}',
+                                   'chat_paid': '{j_chat_paid}',
+                                   'service_costs': '{j_this_service_costs_credits}',
+                                   'you_have_credits': '{j_you_have_credits}',
+                                   'no_webrtc_support' : '{j_the_browser_has_no_webrtc_support}',
+                                   'no_webrtc_ssl' : '{j_your_browser_needs_ssl_certificate_to_run_video_chat}',
+                                   'cancel' : '{j_cancel}',
+                                   'ok' : '{j_ok}',
+                                   'reject' : '{j_reject}'}
+
+        var audioChat = new CChat('audio','{is_allowed_audio_chat}', '{is_in_app_purchase_enabled}'*1);
+            audioChat.price = '{audio_chat_price}'*1;
+            audioChat.langParts = {'please_wait_for' : '{j_please_wait_for_confirmation}',
+                                   'invitation_sent' : '{j_invitation_sent}',
+                                   'in_block_list' : '{j_you_are_in_block_list}',
+                                   'chat_from_user' : '{audio_chat_from_user}',
+                                   'chat_nowe' : '{j_do_you_accept_this_chat}',
+                                   'attention' : '{j_attention}',
+                                   'refused' : '{j_refused_audiochat}',
+                                   'btn_buy_credits': '{j_btn_buy_credits}',
+                                   'buy_credits': '{j_buy_credits}',
+                                   'you_have_no_enough_credits': '{j_you_have_no_enough_credits}',
+                                   'chat_paid': '{j_chat_paid}',
+                                   'service_costs': '{j_this_service_costs_credits}',
+                                   'you_have_credits': '{j_you_have_credits}',
+                                   'no_webrtc_support' : '{j_the_browser_has_no_webrtc_support}',
+                                   'no_webrtc_ssl' : '{j_your_browser_needs_ssl_certificate_to_run_video_chat}',
+                                   'cancel' : '{j_cancel}',
+                                   'ok' : '{j_ok}',
+                                   'reject' : '{j_reject}'}
+
+        var cityStreetChat = new CCityStreetChat('{is_allowed_street_chat}');
+            cityStreetChat.isDemoUser = '{is_demo_user}'*1;
+            cityStreetChat.langParts = {'please_wait_for' : '{j_please_wait_for_confirmation}',
+                                        'invitation_sent' : '{j_invitation_sent}',
+                                        'chat_nowe' : '{j_do_you_accept_this_chat}',
+                                        'chat_from_user' : '{street_chat_from_user}',
+                                        'attention' : '{j_attention}',
+                                        'refused' : '{j_refused_street_chat}',
+                                        'cancel' : '{j_cancel}',
+                                        'ok' : '{j_ok}',
+                                        'reject' : '{j_reject}'}
+    </script>
+    <div id="st-container" class="st-container">
+        <!-- content push wrapper -->
+        <div class="st-pusher">
+            {user_menu}
+			<div class="st-content-shadow"></div>
+            <div class="st-content"><!-- this is the wrapper for the content -->
+    <!-- begin_header_mobile_user_my_profile -->
+    <div class="header abs">
+		<div id="st-trigger-effects" class="column">
+		<!-- begin_header_mobile_user_my_profile_back -->
+			<a class="btn_play_header" href="{back}" onclick="return historyBack()"></a>
+		<!-- end_header_mobile_user_my_profile_back -->
+			<button class="icon_nav" data-effect="st-effect-3"><div></div><div></div></button>
+			<div id="counter_events" class="icon_status_warning <!-- begin_counter_events_show -->no_opacity<!-- end_counter_events_show -->"></div>
+		</div>
+        <!-- begin_header_mobile_user_filter -->
+        <a id="icon_to_filter" data-class="loader_to_search" class="icon_search" href="{url_main}search.php{display_params}"></a>
+        <!-- end_header_mobile_user_filter -->
+        <!-- begin_header_mobile_user_filter_and_report -->
+        <a id="icon_to_filter" data-class="loader_to_search" class="icon_search" href="{url_main}search.php{display_params}"></a>
+        <a id="change_status_user" onclick="cprofile.showTipReport(); return false;" href="#" class="icon_settings icon_report transition hidden"></a>
+        <!-- end_header_mobile_user_filter_and_report -->
+        <!-- begin_number_messages -->
+        <a class="number_new_messages icon_msg <!-- begin_number_messages_hide-->hide<!-- end_number_messages_hide-->" href="{url_main}messages.php"><span>{number_messages}</span></a>
+        <!-- end_number_messages -->
+        <!-- begin_header_mobile_user_my_profile_settings_messages -->
+        <a id="message_settings" onclick="messages.showSettings(); return false;" href="#" class="icon_settings"></a>
+        <!-- end_header_mobile_user_my_profile_settings_messages -->
+        <div class="part_left" >
+            <!-- begin_header_mobile_user_my_profile_menu -->
+            <!-- end_header_mobile_user_my_profile_menu -->
+            <a class="logo" href="{url_main}{url_logo}"><img src="{header_url_logo_mobile_inner}" alt="" /></a>
+            <span>{page_title}</span>
+        </div>
+        <div class="cl"></div>
+    </div>
+    <!-- end_header_mobile_user_my_profile -->
+    <!-- begin_header_mobile_user_page -->
+    <div class="header">
+		<div id="st-trigger-effects" class="column">
+			<a class="btn_play_header" href="{back}" onclick="return historyBack()"></a>
+			<button class="icon_nav" data-effect="st-effect-3"><div></div><div></div></button>
+			<div id="counter_events" class="icon_status_warning <!-- begin_counter_events_show -->no_opacity<!-- end_counter_events_show -->"></div>
+		</div>
+        <!-- begin_number_messages_page -->
+        <a class="number_new_messages icon_msg <!-- begin_number_messages_page_hide-->hide<!-- end_number_messages_page_hide-->" href="{url_main}messages.php"><span>{number_messages}</span></a>
+        <!-- end_number_messages_page -->
+        <!-- begin_header_mobile_user_settings_user -->
+        <a id="change_status_user" onclick="cprofile.showTipReport(); return false;" href="#" class="icon_settings"></a>
+		<div id="change_settings_events" class="change_settings_events <!-- begin_change_settings_events_show -->no_opacity<!-- end_change_settings_events_show -->"></div>
+        <!-- end_header_mobile_user_settings_user -->
+        <div class="part_left" >
+            <a class="logo" href="{url_main}index.php"><img src="{header_url_logo_mobile_inner}" alt="" /></a>
+            <span>{page_title}</span>
+        </div>
+        <div class="cl"></div>
+    </div>
+    <!-- end_header_mobile_user_page -->
+                <div class="st-content-inner"><!-- extra div for emulating position:fixed of the menu -->
+                    <!-- Top Navigation -->
+                     <div class="main clearfix">
+
+    <!-- end_header_mobile_user -->

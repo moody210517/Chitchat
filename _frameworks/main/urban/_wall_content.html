@@ -1,0 +1,122 @@
+<div id="wall_up" title="{l_to_the_top}"><div></div><div></div><div></div></div>
+<div class="wall">
+<script>
+	if (!$('.column_main')[0]) $('.content .wall').addClass('column_main')
+</script>
+<iframe class="wall_resizer" name="wall_resizer"></iframe>
+    <!-- begin_wall_head -->
+    <div class="column_main_head">
+        <div class="decor">
+            <div id="prevent_layer" class="prevent_layer"></div>
+            <h1 style="z-index: 3;">{l_see_what_people_are_doing_right_now}</h1>
+            <!-- begin_wall_head_mode -->
+            <div id="module_search_show" class="module_search_show show" >
+                <strong>{l_search_show}</strong> <span class="arrow" id="show">{wall_head_mode}</span>
+                <div class="pp_small_decor_r_search" id="pp_show_item">
+                    <ul class="pp_small_decor_r_show" id="pp_show">
+                        <li><a <!-- begin_wall_head_all -->class="selected"<!-- end_wall_head_all -->  href="#null" onclick="Wall.changeMode('all');"><span>{l_menu_all}</span></a></li>
+    					<li><a <!-- begin_wall_head_friends -->class="selected"<!-- end_wall_head_friends --> href="#null" onclick="Wall.changeMode('friends');"><span>{l_menu_friends}</span></a></li>
+    				</ul>
+                </div>
+            </div>
+            <!-- end_wall_head_mode -->
+            <div class="cl"></div>
+        </div>
+    </div>
+    <!-- end_wall_head -->
+	<div id="wall_content" class="bl_wall">
+
+		<div class="bl_inp_wall_msg add_shadow">
+			<textarea id="wall_item_add" type="text" placeholder="{l_what_is_on_your_mind}" class="wall_msg placeholder"></textarea>
+			<div id="wall_msg_loader" class="css_loader hidden">
+				<div class="spinner center">
+				<div class="spinner-blade"></div>
+				<div class="spinner-blade"></div>
+				<div class="spinner-blade"></div>
+				<div class="spinner-blade"></div>
+				<div class="spinner-blade"></div>
+				<div class="spinner-blade"></div>
+				<div class="spinner-blade"></div>
+				<div class="spinner-blade"></div>
+				<div class="spinner-blade"></div>
+				<div class="spinner-blade"></div>
+				<div class="spinner-blade"></div>
+				<div class="spinner-blade"></div>
+				</div>
+			</div>
+			<!-- begin_wall_add_comment_image --><!-- end_wall_add_comment_image -->
+			<div id="add_image_wall" class="add_image_wall">
+				<form id="wall_frm_upload_image" method="post" enctype="multipart/form-data" action="">
+				<input class="wall_input_file" type="file" accept="image/jpeg,image/png,image/gif" name="file_add_wall" onChange="Wall.changeUploadImage($(this));"/>
+				<input class="inp_hide" type="reset" value=""/>
+				<input class="inp_hide" type="submit" value=""/>
+				</form>
+			</div>
+			<div id="add_image_upload_wall" class="add_image_upload_wall" title="{l_delete_image}" onclick="Wall.clearUploadImage();"></div>
+
+		</div>
+		<script>
+			var Wall = new CWallUrban('{guid}', '{photo_guid}', '{name_guid}', '{age_guid}', '{wall_user_id}', '{wall_last_post_id}', 500, 0);
+			Wall.OnlySeeFriends = '{is_only_friends_wall}';
+			Wall.isOnlyFriendsWallPosts = '{is_only_friends_wall_posts}'*1;
+			Wall.isFriend = '{is_friend}'*1;
+			Wall.isProfileWall = '{is_profile_wall}'*1;
+			Wall.modeWall='{mode_value}';
+			Wall.urlTmpl = '{url_tmpl}';
+			Wall.langParts = {wall_is_not_available : '{j_wall_is_not_available_for_you}',
+							  like_to_meet: '{j_wall_like_this_user}',
+							  unlike_to_meet: '{j_wall_unlike_this_user}',
+							  like: '{j_like}',
+							  unlike: '{j_unlike}',
+							  tab_wall: '{j_header_menu_wall}',
+							  max_file_size : '{max_photo_file_size_limit}',
+							  accept_file_types : '{j_accept_file_types}',
+							  load_more_comments : '{j_number_comments_to_wall}',
+							  leave_a_comment : '{j_leave_a_comment}'
+			};
+			Wall.maxFileSize = '{photo_file_size_limit}';
+			Wall.isFriends = '{is_friends_profile_wall}'*1;
+			$(function(){
+				<!-- begin_wall_updater -->
+				Wall.updaterInit();
+				<!-- end_wall_updater -->
+				<!-- begin_wall_scroll_to_item -->
+				$(window).load(function(){
+					//$('body, html').animate({scrollTop:$('#wall_item_{wall_scroll_to_item_id}').offset().top},10);
+					$('body, html').scrollTo('#wall_item_{wall_scroll_to_item_id}',1);
+				})
+			   <!-- end_wall_scroll_to_item -->
+			})
+		</script>
+		<div id="wall_items" class="wall_items">
+		{wall_items}
+		</div>
+		<!-- begin_wall_load_old_items -->
+		<script>Wall.oldItemsExists = true;</script>
+		<div class="wall_load_old_items">
+			<img id="load_animation" width="36" height="36" src="{url_tmpl_main}images/loading-spin.svg">
+		</div>
+		<!-- end_wall_load_old_items -->
+
+		<div id="wall_no_items" class="wall_no_items <!-- begin_wall_no_items -->show<!-- end_wall_no_items -->"></div>
+
+	</div>
+	<div class="cl"></div>
+
+	<!-- begin_no_one_here_yet -->
+	<div style="padding-top:40px;">
+	<div class="bl_no_one" style="margin-top:0px;">
+		<div class="people">{l_no_one_here_yet}</div>
+	</div>
+	</div>
+	<!-- end_no_one_here_yet -->
+
+	<!-- begin_wall_history -->
+	<script>
+	$(function(){
+		Wall.itemsHistoryLoader();
+	})
+	</script>
+	<!-- end_wall_history -->
+	<div id="wall_script_ajax" style="display:none;"></div>
+</div>

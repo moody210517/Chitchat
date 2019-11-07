@@ -1,0 +1,201 @@
+{header}
+
+<div class="sidebar">
+<div class="in">
+	<h3>{l_search}</h3>
+	<form method="GET" >
+	<input style="width: 120px;" type="text" value="" name="find_str"><br>
+	<input type="hidden" value="{cat_id}" name="cat_id">
+	<input type="hidden" value="{razd_id}" name="razd_id">
+		
+	<!-- begin_jobs -->
+		<input type="checkbox" name="telecommute" id="telecommute" class="che"> <label for=telecommute class="dash">{l_telecommute}</label><br />
+		<input type="checkbox" name="contract" id="contract" class="che">  <label for=contract class="dash">{l_contract}</label><br />
+		<input type="checkbox" name="internship" id="internship" class="che">  <label for=internship class="dash">{l_internship}</label><br />
+		<input type="checkbox" name="part_time" id="part_time" class="che">  <label for=part_time class="dash">{l_part_time}</label><br />
+		<input type="checkbox" name="non_profit" id="non_profit" class="che">  <label for=non_profit class="dash">{l_non_profit}</label><br /><br />
+	<!-- end_jobs -->	
+	
+	<!-- begin_housting -->	
+			<table>
+                <tr>
+                    <td colspan="3" height="20">{l_rent}&nbsp;</td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="rent_from" style="width: 39px;" /></td>
+                    <td>&nbsp;{l_and}&nbsp;</td>
+                    <td><input type="text" name="rent_to" style="width: 39px;" /></td>
+                </tr>
+            </table>
+            <br />
+            <table>
+                <tr>
+                    <td>{l_br}&nbsp;</td>
+                    <td height="22">
+                    <select name="br" style="width:115px;">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                    </td>
+                </tr>
+            </table>
+            <br />
+					
+		<!-- end_housting -->	
+		
+		<!-- begin_age -->	
+		<table>
+            <tr>
+                <td colspan="3" height="20">{l_age}&nbsp;</td>
+            </tr>
+            <tr>
+                <td><input type="text" name="age_from" style="width: 39px;"></td>
+                <td>&nbsp;{l_and}&nbsp;</td>
+                <td><input type="text" name="age_to" style="width: 39px;" /></td>
+            </tr>
+        </table>	
+        <br />
+		<!-- end_age -->
+		
+		<!-- begin_price -->	
+        <table>	
+            <tr>
+                <td colspan="3" height="20">{l_price}&nbsp;</td>
+            </tr>
+            <tr>
+                <td><input type="text" name="price_from" style="width: 39px;" /></td>
+                <td>&nbsp;{l_and}&nbsp;</td>
+                <td><input type="text" name="price_to" style="width: 39px;" /></td>
+            </tr>
+        </table>
+        <br />
+		<!-- end_price -->		
+		<br />			
+	<input type="submit" value="{l_find_now}" class="button" />
+	</form>
+</div>
+</div>
+													
+<div class="wrapper">
+<div class="userinfo-c">
+	<div class="userinfo smallphoto clearfix" style="min-height:258px;">
+
+
+<input style="width: 150px;" type="button" value="{l_add}" class="button" onclick="location='{url_main}adv_edit.php?cat_id={cat_id}&razd_id={razd_id}';" title="{l_add}">
+<input style="width: 150px;" type="button" value="{l_all}" class="button" onclick="location='{url_main}adv.php';" title="{l_all}">
+<input style="width: 150px;" type="button" value="{l_my_ads}" class="button" onclick="location='{url_main}adv_my.php';" title="{l_my_ads}">
+<br><br>
+
+<style>
+.adv1 td {border-top:none;}
+</style>
+
+<table class="ads_list" border=0 cellspacing="0" cellpadding="0" style="border-collapse:separate;" width="100%">
+				<!-- begin_adv_list -->
+						<!-- begin_adv_list_item -->
+
+<tr class="adv{first}"><td>
+
+<b><a href="adv_good.php?cat={var_eng}&id={id}">{subject}</a> </b>
+</td><td width=130px>
+{l_by} <a href="search_results.php?display=profile&name={login}">{login}</a>
+</td><td width=70px>
+{date_add}
+</td></tr>
+						<!-- end_adv_list_item -->
+				<!-- end_adv_list -->
+</table>
+<div style="background:#8EBECF; height:1px; font-size:0; line-height:0;">&nbsp;</div>
+
+<br />
+
+
+	    <!-- begin_adv_list_pages -->
+    <div class="pages">
+    <table class="friends_list" style="float: none;">
+       <tr>
+       <!-- begin_adv_list_prev_page -->
+          <td>
+              <a href="{url_main}{url_page}?offset={offset}{params}" class="pri_text_bold_1">{l_prev}</a>
+          </td>
+
+       <!-- end_adv_list_prev_page -->
+
+       <!-- begin_adv_list_prev_page_off -->
+
+          <td><b>{l_prev}</b></td>
+
+        <!-- end_adv_list_prev_page_off -->
+
+        <!-- begin_adv_list_first_page -->
+
+          <td><a href="{url_main}{url_page}?offset={offset}{params}" class="pri_text_bold">{l_page_1}</a></td>
+
+        <!-- end_adv_list_first_page -->
+
+		<!-- begin_adv_list_prev_pages -->
+
+          <td><a href="{url_main}{url_page}?offset={offset}{params}" class="pri_text_bold">&lt;&lt;</a></td>
+
+        <!-- end_adv_list_prev_pages -->
+
+        <!-- begin_adv_list_page -->
+
+
+            <!-- begin_adv_list_link_page -->
+
+             <td><a href="{url_main}{url_page}?offset={offset}{params}" class="pri_text_bold">{page}</a></td>
+
+            <!-- end_adv_list_link_page -->
+
+            <!-- begin_adv_list_this_page -->
+
+             <td><span>{page}</span></td>
+
+            <!-- end_adv_list_this_page -->
+
+            <!-- end_adv_list_page -->
+
+			<!-- begin_adv_list_next_pages -->
+
+          <td><a href="{url_main}{url_page}?offset={offset}{params}" class="pri_text_bold">&gt;&gt;</a></td>
+
+            <!-- end_adv_list_next_pages -->
+
+            <!-- begin_adv_list_last_page -->
+
+
+          <td><b>{l_of}</b> <a href="{url_main}{url_page}?offset={offset}{params}" class="pri_text_bold">{num_pages}</a></td>
+
+            <!-- end_adv_list_last_page -->
+
+            <!-- begin_adv_list_next_page -->
+
+          <td><a href="{url_main}{url_page}?offset={offset}{params}" class="pri_text_bold_1">{l_next}</a></td>
+
+            <!-- end_adv_list_next_page -->
+
+            <!-- begin_adv_list_next_page_off -->
+
+          <td><b>{l_next}</b></td>
+
+       <!-- end_adv_list_next_page_off -->
+
+    </tr>
+    </table>
+</div>
+<!-- end_adv_list_pages -->
+
+
+
+
+
+
+
+</div><div class="userinfo-links"></div></div>
+</div>
+{footer}

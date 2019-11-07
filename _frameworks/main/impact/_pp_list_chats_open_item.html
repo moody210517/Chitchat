@@ -1,0 +1,37 @@
+<div class="script" style="display:none;">
+<!-- begin_general_remove_users -->
+<script>imChats.removeUsersFromListChats({general_remove_users_list});</script>
+<!-- end_general_remove_users -->
+<!-- begin_general_order_users -->
+<script>
+    imChats.setOrderUsersListChats({general_order_users_list});
+    imChats.setStatusNewMessagesFromUsers({general_users_list_new_msg});
+</script>
+<!-- end_general_order_users -->
+<!-- begin_update_users_status -->
+<script>imChats.updateOnlineUsers({update_users_status}, '{update_users_status_check}'*1);</script>
+<!-- end_update_users_status -->
+<!-- begin_general_limit_info -->
+<script>imChats.setLimitStart('{limit_start}', '{stop_more}', '{limit_load}');</script>
+<!-- end_general_limit_info -->
+<!-- begin_update_exists_im -->
+<script>imChats.existsOpenIm({update_exists_im_value});</script>
+<!-- end_update_exists_im -->
+</div>
+
+<!-- begin_list_chats_open_users_item -->
+<div id="list_chats_open_user_{user_to_id}" data-check-order="" data-order="{user_to_order}" data-uid="{user_to_id}" data-url-profile="{user_to_profile_link}" onclick="imChats.openImWithUserFromList($(this), event);" class="item list_chats_open_item">
+    <div class="pic" data-cl-loader="loader_list_im" data-type-loader="fade_btn" >
+        <div class="frame">
+            <img class="to_hide" onload="$(this).removeClass('to_hide')" src="{url_files}{user_to_photo}" alt="" title="" />
+        </div>
+        <div id="list_chats_open_user_status_online_{user_to_id}" class="status_online <!-- begin_status_online -->to_show<!-- end_status_online -->"></div>
+    </div>
+    <div class="name">{user_to_name}</div>
+    <div id="list_chats_open_user_new_msg_{user_to_id}"  class="new_msg <!-- begin_new_messages_item -->to_show<!-- end_new_messages_item -->">
+        <i class="fa fa-comment" aria-hidden="true"></i>
+    </div>
+
+    <script class="in_content">imChats.usersCacheAdd('{user_to_id}', '{status_online}');</script>
+</div>
+<!-- end_list_chats_open_users_item -->

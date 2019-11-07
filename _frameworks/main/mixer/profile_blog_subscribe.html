@@ -1,0 +1,35 @@
+{header}
+
+{ims}
+
+
+
+<div id="profile" class="box"><div class="bbt"><div class="bbb"><div class="bbl"><div class="bbr"><div class="bbtl"><div class="bbtr"><div class="bbbl"><div class="bbbr">
+
+<input type="button" value="{l_menu_profile_edit}" class="button_small" onclick="location='{url_main}profile.php';" title="{l_menu_profile_edit}">
+<input type="button" value="{l_menu_profile_edit_photos}" class="button_small" onclick="location='{url_main}profile_photo.php';" title="{l_menu_profile_edit_photos}">
+<input type="button" value="{l_menu_profile_edit_music}" class="button_small" onclick="location='{url_main}music_my.php';" title="{l_menu_profile_edit_music}">
+
+<input type="button" value="{l_menu_profile_settings}" class="button_small" onclick="location='{url_main}profile_settings.php';" title="{l_menu_profile_settings}">
+<input type="button" value="{l_menu_profile_view}" class="button_small" onclick="location='{url_main}profile_view.php';" title="{l_menu_profile_view}">
+<input type="button" value="{l_menu_profile_my_audio}" class="button_small" onclick="location='{url_main}profile_audio_view.php';" title="{l_menu_profile_my_audio}">
+<!-- begin_my_blog -->
+<input style="width: 50px;" type="button" value="{l_menu_profile_my_blog}" class="button_small active_btn" onclick="location='{url_main}blogs_blog.php';" title="{l_menu_profile_my_blog}">
+<!-- end_my_blog -->
+
+			<br/><div class=header_big style="margin-top:30px; margin-bottom:15px;">{l_subscribe_blogs}</div><br />
+
+            <!-- begin_item -->
+			<div  align="left" style="width: 280px; padding: 5px 5px 5px 5px; margin: 0px 15px 0px 15px;">
+			<table align="left"><tr><td align="left" width="100">
+			<a href="{url_main}blogs_view.php?id={user_for}" class="pri_little_bold"><b>{name}</b></a>
+			</td><td align="right" width="20"></td><td align="right" width="100">
+			<a href="{url_page}?id={user_for}&cmd=delete" class="pri_little_bold">{l_delete}</a>
+			</td></tr></table>
+			</div>
+			<br />
+            <!-- end_item -->
+<br>
+		</div></div></div></div></div></div></div></div></div>
+{complite}
+{footer}

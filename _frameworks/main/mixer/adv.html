@@ -1,0 +1,67 @@
+{header}
+
+
+<div id="profile" class="box"><div class="bbt"><div class="bbb"><div class="bbl"><div class="bbr"><div class="bbtl"><div class="bbtr"><div class="bbbl"><div class="bbbr">
+
+<input type="button" value="{l_add}" class="button_small" onclick="location='{url_main}adv_edit.php';" title="{l_add}">
+<input type="button" value="{l_my_ads}" class="button_small" onclick="location='{url_main}adv_my.php';" title="{l_my_ads}">
+<br><br>
+
+	<table border="0" width="100%" id="adv_gl" cellspacing=6><tr><td valign="top">
+
+		<table id="adv_in">
+		<tr><td class="header">{cat_name1}</td></tr>
+		<tr><td>{goods1}</td></tr>
+		<tr><td class="header">{cat_name2}</td></tr>
+		<tr><td>{goods2}</td></tr>
+		<tr><td class="header">{cat_name3}</td></tr>
+		<tr><td>{goods3}</td></tr>
+		</table>
+
+	</td><td valign="top">
+
+		<table id="adv_in">
+		<tr><td class="header">{cat_name4}</td></tr>
+		<tr><td>{goods4}</td></tr>
+		<tr><td class="header">{cat_name5}</td></tr>
+		<tr><td>{goods5}</td></tr>
+		<tr><td class="header">{cat_name6}</td></tr>
+		<tr><td>{goods6}</td></tr>
+		<tr><td class="header">{cat_name7}</td></tr>
+		<tr><td>{goods7}</td></tr>
+		<tr><td class="header">{cat_name8}</td></tr>
+		<tr><td>{goods8}</td></tr>
+		</table>
+
+	</td><td valign="top">
+
+		<table id="adv_in">
+		<tr><td class="header">{cat_name9}</td></tr>
+		<tr><td>{goods9}</td></tr>
+		<tr><td class="header">{cat_name10}</td></tr>
+		<tr><td>{goods10}</td></tr>
+		<tr><td class="header">{cat_name11}</td></tr>
+		<tr><td>{goods11}</td></tr>
+		</table>
+
+	</td></tr></table>
+
+
+</div></div></div></div></div></div></div></div></div>
+
+	<div id="content">
+        <div class="decor-t"></div>
+        <div class="in">
+		<form method="GET" action="adv_cat.php" >
+			<input style="width: 275px;" type="text" value="" name="find_str"><br><br>
+			<select style="width: 280px;" name="cat_id">{select_cats}
+			</select><br><br>
+			<center><input type="image" alt="{l_find_now}" src="{url_main}tmpl_img_loader.php?tmpl={tmpl_loaded}&dirs=img&file=button-find.gif&lang={lang_loaded}" class="button" style="border:0px;" /></center>
+		</form>
+        </div>
+        <div class="decor-b"></div>
+        <div class="decor-l"></div>
+        <div class="decor-r"></div>
+      </div><!-- /content -->
+
+{footer}

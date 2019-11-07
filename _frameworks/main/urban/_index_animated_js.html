@@ -1,0 +1,147 @@
+    <link rel="stylesheet" type="text/css" href="{url_tmpl_main}css/index_animated.css{cache_version_param}" />
+    <!-- begin_main_page_animated_js -->
+    <script>
+        mainPageBgMap = false;
+        $(function(){
+            $('.profile_bg').hide();
+        })
+    </script>
+    <!-- begin_main_page_animated_three -->
+    <script type="text/javascript" src="{url_main}_server/js/three.min.js{cache_version_param}"></script>
+    <!-- end_main_page_animated_three -->
+
+    <!-- begin_main_page_animated_d3 -->
+    <script type="text/javascript" src="{url_main}_server/js/d3.min.js{cache_version_param}"></script>
+    <!-- end_main_page_animated_d3 -->
+
+    <!-- begin_main_page_animated_rays_of_light_three -->
+    <script type="text/javascript" src="{url_main}_server/js/animated/rays_of_light/three.min.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_main}_server/js/animated/rays_of_light/dat.gui.min.js{cache_version_param}"></script>
+    <!-- end_main_page_animated_rays_of_light_three -->
+    <!-- begin_main_page_animated_spinner_three -->
+    <script type="text/javascript" src="{url_main}_server/js/animated/ramda.min.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_main}_server/js/animated/trackballcontrols.js{cache_version_param}"></script>
+    <script type="x-shader/x-vertex" id="vertexShader">
+        uniform float tail; uniform float minThickness; uniform float maxThickness; uniform float tailLength;
+        uniform float angleRad; uniform float angleDec; varying vec2 vUv;
+        void main() {
+            mainOriginal();
+            vUv = uv;
+            float displace = 0.0;
+            if (tail > 1.0) {
+                float dist = abs(minThickness - maxThickness);
+                float x = uv.r + angleDec;
+                x = mod(x, 1.0);
+                x = min(x, tailLength) / tailLength;
+                float func;
+                func = (pow(x, 1.0/3.0) * exp(-x * 5.0)) * 3.53 - 0.025;
+                func = max(func, 0.0);
+                displace = func * dist + minThickness;
+            }
+            vec3 newPosition = position + normal * displace;
+            gl_Position = projectionMatrix * modelViewMatrix * vec4( newPosition, 1.0 );
+        }
+    </script>
+    <!-- end_main_page_animated_spinner_three -->
+    <!-- begin_main_page_animated_bubble_planet_three -->
+    <script type="text/javascript" src="{url_main}_server/js/animated/sketch.min.js{cache_version_param}"></script>
+    <!-- end_main_page_animated_bubble_planet_three -->
+
+
+    <script type="text/javascript" src="{url_tmpl_main}js/main_page_animated.js{cache_version_param}"></script>
+    <script>
+        var mainPageAnimated = new CMainPageAnimated('{main_page_animated_type}');
+    </script>
+    <!-- begin_main_page_animated_interests_chart_d3 -->
+    <script>
+        mainPageAnimated.setInterestsChart({interests_chart}, {interests_chart_number});
+    </script>
+    <!-- end_main_page_animated_interests_chart_d3 -->
+    <!-- begin_main_page_animated_zoomwall -->
+    <link rel="stylesheet" type="text/css" href="{url_main}_server/js/animated/zoomwall/zoomwall.css{cache_version_param}"/>
+    <script type="text/javascript" src="{url_main}_server/js/animated/zoomwall/zoomwall.js{cache_version_param}"></script>
+    <script>
+        window.onload = function() {
+            zoomwall.create(document.getElementById('zoomwall'),false, false, 4);//
+        };
+    </script>
+    <!-- end_main_page_animated_zoomwall -->
+    <!-- begin_main_page_animated_diamond -->
+    <link rel="stylesheet" type="text/css" href="{url_main}_server/js/animated/diamond/diamond.css{cache_version_param}"/>
+    <!-- begin_main_page_animated_diamond_custom -->
+    <script>
+        $(function(){
+            $('#diamondswrap').css({width:'754px', margin:'0 auto', paddingRight: '200px'});
+        })
+    </script>
+    <!-- end_main_page_animated_diamond_custom -->
+    <script type="text/javascript" src="{url_main}_server/js/animated/diamond/diamond.js{cache_version_param}"></script>
+    <!-- end_main_page_animated_diamond -->
+    <!-- begin_main_page_animated_world_map -->
+    <script>
+        window.onload = function() {
+            var mapLength = document.getElementsByTagName('circle').length - 1;
+            var currentCircle = "";
+            var previousCircle = "";
+
+            function rnd(a, z) {
+                return Math.floor(Math.random() * (z - a) + a);
+            }
+
+
+            var randomCircle = rnd(0, mapLength);
+                currentCircle = randomCircle;
+            var a = document.getElementsByTagName('circle')[currentCircle];
+                previousCircle = currentCircle;
+
+            var circleCloneFirst = a.cloneNode(true);
+            var circleCloneSecond = a.cloneNode(true);
+            var circleCloneThird = a.cloneNode(true);
+            a.classList.add("active");
+            circleCloneFirst.classList.add("active-first");
+            circleCloneSecond.classList.add("active-second");
+            circleCloneThird.classList.add("active-third");
+            circleCloneFirst.classList.remove("active");
+            circleCloneSecond.classList.remove("active");
+            circleCloneThird.classList.remove("active");
+            circleCloneFirst.setAttribute('r', 10);
+            circleCloneSecond.setAttribute('r', 14);
+            circleCloneThird.setAttribute('r', 18);
+            document.getElementsByClassName('b-header__map')[0].appendChild(circleCloneFirst);
+            document.getElementsByClassName('b-header__map')[0].appendChild(circleCloneSecond);
+            document.getElementsByClassName('b-header__map')[0].appendChild(circleCloneThird);
+            (function(){
+
+                if (previousCircle!="") {
+                    document.getElementsByTagName('circle')[previousCircle].classList.remove("active");
+                }
+                var randomCircle = rnd(0, mapLength);
+                currentCircle = randomCircle;
+                var a = document.getElementsByTagName('circle')[currentCircle];
+                a.classList.add("active");
+
+                circleCloneFirst.setAttribute('cx', a.getAttribute('cx'));
+                circleCloneSecond.setAttribute('cx', a.getAttribute('cx'));
+                circleCloneThird.setAttribute('cx', a.getAttribute('cx'));
+                circleCloneFirst.setAttribute('cy', a.getAttribute('cy'));
+                circleCloneSecond.setAttribute('cy', a.getAttribute('cy'));
+                circleCloneThird.setAttribute('cy', a.getAttribute('cy'));
+
+                previousCircle = currentCircle;
+                setTimeout(arguments.callee, 3000);
+            })();
+        }
+    </script>
+    <!-- end_main_page_animated_world_map -->
+
+    <!-- begin_main_page_animated_world_globe -->
+    <!--<script type="text/javascript" src="{url_main}_server/js/animated/aviation_world_map/ammap.min.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_main}_server/js/animated/aviation_world_map/worldLow.js{cache_version_param}"></script>-->
+    <script>
+
+    </script>
+    <!-- end_main_page_animated_world_globe -->
+
+
+
+    <!-- end_main_page_animated_js -->

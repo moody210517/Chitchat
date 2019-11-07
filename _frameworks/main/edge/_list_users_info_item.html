@@ -1,0 +1,41 @@
+<!-- begin_users_list_item_default -->
+<div class="col-md-{users_list_item_number_row} col-sm-6 col-lg-4 users_list_item">
+    <a href="{url_main}{users_list_item_url_profile}" onclick="goLinkProfile($(this), '{users_list_item_url_profile_params}'); return false;" class="cham-project-item square list_user_item_photo_{users_list_item_user_id} to_hide" style="background-image: url({users_list_item_photo});">
+        <script>onLoadImgFromList($('.list_user_item_photo_{users_list_item_user_id}.to_hide'), '{users_list_item_photo}');</script>
+        <div class="cham-overlay"></div>
+        <!-- begin_users_list_item_online -->
+        <div class="online_triangle" title="{a_online_now}"></div>
+        <!-- end_users_list_item_online -->
+        <div class="cham-text">
+            <h3>{users_list_item_name}</h3>
+            <p class="profile_info">{users_list_item_info_profile}</p>
+        </div>
+        <div data-cl-loader="loader_list_users_info" class="layer_blocked_item_list"></div>
+    </a>
+</div>
+<!-- end_users_list_item_default -->
+<!-- begin_users_list_item_info -->
+<div class="col-md-{users_list_item_number_row} col-sm-6">
+    <div class="cham-post users_list_item">
+        <a href="{url_main}{users_list_item_url_profile}" class="cham-post-link" onclick="goLinkProfile($(this), '{users_list_item_url_profile_params}'); return false;">
+            <div class="cham-post-image list_user_item_photo_{users_list_item_user_id} to_hide">
+                <div class="cham-overlay2"></div>
+                <div class="pic square" style="background-image: url({users_list_item_photo});"></div>
+                <script>onLoadImgFromList($('.list_user_item_photo_{users_list_item_user_id}.to_hide'), '{users_list_item_photo}');</script>
+                <div data-cl-loader="loader_list_users_info" class="layer_blocked_item_list"></div>
+            </div>
+            <div class="cham-post-text">
+                <h3 class="overflow profile_info">{users_list_item_info_profile}</h3>
+                <!-- begin_users_list_item_about -->
+                <div class="post-text">
+                    <p>{users_list_item_about_title}</p>
+                </div>
+                <!-- end_users_list_item_about -->
+            </div>
+        </a>
+        <div class="cham-post-meta overflow">
+            <span class="info_item time"><i class="fa fa-clock-o" aria-hidden="true"></i>{users_list_item_last_visit}</span>
+        </div>
+    </div>
+</div>
+<!-- end_users_list_item_info -->

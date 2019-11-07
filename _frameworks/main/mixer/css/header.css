@@ -1,0 +1,125 @@
+html, body {min-width:996px}
+body#single {margin:0; background:url(index.png) top center}
+
+#flash {
+	width:996px; height:366px;
+	margin:auto; position:relative; overflow:hidden; /*border:1px solid;*/
+	background: url(../images/header/headbg.jpg); -webkit-backface-visibility: hidden;
+}
+#flash * {
+	position:absolute; -webkit-backface-visibility: hidden;
+	transition:transform 1s ease-out, opacity .7s;
+	-webkit-transition:-webkit-transform 1s ease-out, opacity .7s
+}
+#flash .fppl {
+	transform-origin: 50% 100%; -webkit-transform-origin: 50% 100%;
+	-webkit-backface-visibility: visible;
+}
+#flash .fppl:not(.f-ready) {
+	transform: translateX(500px) scale(-1, .7); opacity:0;
+	transform: translateX(500px) scale(-1, .7) rotateY(900deg);
+	-webkit-transform: translateX(500px) scale(-1, .7) rotateY(900deg);
+}
+@-webkit-keyframes flame {
+	from {background-position:0 2400px}
+	to {background-position:0 0px}
+}
+@keyframes flame {
+	from {background-position:-1px 2400px}
+	to {background-position:-1px 0px}
+}
+
+@-webkit-keyframes turn {
+	from {-webkit-transform:rotate(-10deg)}
+	to   {-webkit-transform:rotate(10deg)}
+}
+@keyframes turn {
+	from {transform:rotate(-10deg)}
+	to   {transform:rotate(10deg)}
+}
+
+@-webkit-keyframes swing {
+	from {-webkit-transform-origin: 205% 0%}
+	to   {-webkit-transform-origin:-195% -90%}
+}
+@keyframes swing {
+	from {-webkit-transform-origin: 205% 0%}
+	to   {-webkit-transform-origin:-195% -90%}
+}
+#flash #f-fire {
+	width:100%; left:10px; bottom:0px; height:150px; opacity: 0;
+	transform-origin: 50% 100%; -webkit-transform-origin: 50% 100%;
+	transform: translateY(150px); -webkit-transform: translateY(150px);
+}
+#flash #f-fire.f-ready {
+	opacity: 1; transform: none; -webkit-transform: none;
+}
+#flash #f-fire.f-ready div {
+	position:static; width:79%; height: 150px; margin:auto;
+	-webkit-animation: flame .8s steps(16, start) infinite;
+	animation: flame .8s steps(16, start) infinite;
+}
+
+#flash:not(.f-ready) img[src*="ball"] {
+	top:360px !important; left:690px !important;
+}
+#flash img[src*="ball_r"] {
+	-webkit-animation: turn 5s ease-in-out infinite alternate,
+		swing 6s ease-in-out infinite alternate;
+	animation: turn 5s ease-in-out infinite alternate,
+		swing 6s ease-in-out infinite alternate;
+	transition: top 7s ease-out; -webkit-transition: top 7s ease-out
+}
+#flash img[src*="ball_y"] {
+	-webkit-animation: turn 7s ease-in-out infinite alternate-reverse,
+		swing 6.5s ease-in-out infinite alternate;
+	animation: turn 7s ease-in-out infinite alternate-reverse,
+		swing 6.5s ease-in-out infinite alternate;
+	transition:top 5s ease-out, left 4s ease-out;
+	-webkit-transition:top 5s ease-out, left 4s ease-out;
+}
+
+#flash .f-bg img:not(.f-ready) {
+	transform:scale(0); -webkit-transform:scale(0);
+}
+
+#flash img[src*="blur1"] {
+	transform-origin: 50% 0; -webkit-transform-origin: 50% 0;
+}
+#flash img[src*="mask"] {
+	transform-origin:0 70%; -webkit-transform-origin: 0 70%;
+}
+#flash img[src*="ribbon"]+div {
+	transition:all .7s ease-out; -webkit-transition:all .7s ease-out;
+	width:440px; height:446px; background-position: 100% 100%;
+	border-top-left-radius:40px; /border:1px solid
+}
+#flash img[src*="ribbon"].f-ready+div {
+}
+#flash img[src*="ribbon"]:not(.f-ready)+div {
+	margin:440px; width:1px; height:1px;
+	border-top-left-radius:200px 300px
+}
+
+#flash img[src*="logo.png"]:not(.f-ready2), #flash img[src*="apple."], #flash img[src*="star."], #flash img[src*="blur3."] {
+	transition-timing-function:cubic-bezier(.45, 0, .77, 1.3), ease-out;
+	-webkit-transition-timing-function:cubic-bezier(.45, 0, .77, 1.3), ease-out;
+}
+#flash img[src*="logo.png"]:not(.f-ready) { opacity:0;
+	transform: translateY(-100px) scale(.5) translateY(-300px) scale(.5) translateY(-300px) skew(220deg, 250deg) scale(.5) skew(-250deg, -220deg);
+	-webkit-transform: translateY(-100px) scale(.5) translateY(-300px) scale(.5) translateY(-300px) skew(220deg, 250deg) scale(.5) skew(-250deg, -220deg);
+}
+
+#flash img[src*="star."]:not(.f-ready){
+	transform: scale(.01) rotate(720deg);
+	-webkit-transform: scale(.01) rotate(720deg);
+}
+
+#flash img[src*="ked."] {
+	transition:all 1s linear; -webkit-transition:all 1s linear
+}
+#flash img[src*="ked."]:not(.f-ready) {
+	transform: translateX(150px) rotate(120deg) translate(100px, -1000px) rotate(-1600deg);
+	-webkit-transform: translateX(150px) rotate(120deg) translate(100px, -1000px) rotate(-1600deg)
+}
+

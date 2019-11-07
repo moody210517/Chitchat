@@ -1,0 +1,323 @@
+<style>
+div.list_status {position:absolute;width:90px;px;font-size:9px;left:0;top:80px;}
+</style>
+	<div align="center">
+
+		<div class="list_users_header">
+
+			<b>{num_total}</b> {l_within_criteria}
+
+            &nbsp;&nbsp;&nbsp;<b><a class="txt_upper_header_color <!-- begin_default_order_active -->txt_lower_header_color<!-- end_default_order_active -->" href='{url_main}{url_page}' style='padding-top: 2px; padding-bottom: 2px;'>{l_sort_by_default}</a></b>
+
+            <!-- begin_params_none_rating -->&nbsp;&nbsp;&nbsp;<b><a class="txt_upper_header_color <!-- begin_rating_none_order_active -->txt_lower_header_color<!-- end_rating_none_order_active -->" href='{url_main}{url_page}?{params_current}' style='padding-top: 2px; padding-bottom: 2px;'>{l_sort_by_rating}</a></b><!-- end_params_none_rating -->
+
+			<!-- begin_params_asc_rating -->&nbsp;&nbsp;&nbsp;<b><a class="txt_upper_header_color <!-- begin_rating_asc_order_active -->txt_lower_header_color<!-- end_rating_asc_order_active -->" href='{url_main}{url_page}?{params_current}' style='padding-top: 2px; padding-bottom: 2px;'>{l_sort_by_rating}</a></b><!-- end_params_asc_rating -->
+
+			<!-- begin_params_desc_rating -->&nbsp;&nbsp;&nbsp;<b><a class="txt_upper_header_color <!-- begin_rating_desc_order_active -->txt_lower_header_color<!-- end_rating_desc_order_active -->" href='{url_main}{url_page}?{params_current}' style='padding-top: 2px; padding-bottom: 2px;'>{l_sort_by_rating}</a></b><!-- end_params_desc_rating -->
+
+			<table border='0' cellspacing='0' cellpadding='0'  ><tr>
+
+				<td height='21' style='padding-right: 4px; padding-bottom: 4px;'>
+
+					<div style='padding-top: 2px; padding-bottom: 2px; padding-left: 6px; padding-right: 6px; whitespace: nowrap;'>
+
+						<b><a class="txt_lower_header_color" href='{url_main}{url_page}?{params}&display=info' style='padding-top: 2px; padding-bottom: 2px;'><img width="10px" height="12px" src="{url_tmpl_main}img/i_search_profile.gif" border="0" style="margin: 5px 4px 0 0;" align="left">{l_profile_view}</a></b>
+
+					</div>
+
+				</td><td height='21' style='padding-right: 4px; padding-bottom: 4px;'>
+
+					<div style='padding-top: 2px; padding-bottom: 2px; padding-left: 6px; padding-right: 6px; whitespace: nowrap;'>
+
+						<b><a class="txt_upper_header_color" href='{url_main}{url_page}?{params}&display=gallery' style='padding-top: 2px; padding-bottom: 2px;'><img width="12px" height="12px" src="{url_tmpl_main}img/i_search_gallery.gif" border="0" style="margin: 5px 4px 0 0;" align="left">{l_gallery_view}</a></b>
+
+					</div>
+
+				</td><td height='21' style='padding-right: 4px; padding-bottom: 4px;'>
+
+					<div style='padding-top: 2px; padding-bottom: 2px; padding-left: 6px; padding-right: 6px; whitespace: nowrap;'>
+
+						<b><a class="txt_upper_header_color" href='{url_main}{url_page}?{params}&display=list' style='padding-top: 2px; padding-bottom: 2px;'><img width="10px" height="12px" src="{url_tmpl_main}img/i_search_list.gif" border="0" style="margin: 5px 4px 0 0;" align="left">{l_list_view}</a></b>
+
+					</div>
+
+				</td>
+                <!-- begin_search_by_gender -->
+                <td  height='21' style='padding-right: 4px; padding-bottom: 4px;'>
+					<a href="{url_page}?{params}&gender=" class="{search_gender_active_all}"><div class="show_all"></div></a>
+					<a href="{url_page}?{params}&gender=M" class="{search_gender_active_m}"><div class="show_men"></div></a>
+					<a href="{url_page}?{params}&gender=F" class="{search_gender_active_f}"><div class="show_women"></div></a>
+                </td>
+				<!-- end_search_by_gender -->
+                <!-- begin_contact_blocking -->
+                    <td height='21' style='padding-right: 4px; padding-bottom: 4px;'>
+                        <div style='padding-top: 2px; padding-bottom: 2px; padding-left: 6px; padding-right: 6px; whitespace: nowrap;'>
+                            <b>| <a class="txt_upper_header_color" href='{url_main}user_block_list.php' style='padding-top: 2px; padding-bottom: 2px;'>{l_banned_users}</a></b>
+                        </div>
+                    </td>
+                <!-- end_contact_blocking -->
+
+                </tr>
+
+			</table>
+
+		</div>
+
+
+
+		<!-- begin_users_list_pages -->
+
+			<div>
+
+				<!-- begin_users_list_prev_page -->
+
+				<a href="{url_main}{url_page}?offset={offset}{params}">{l_prev}</a>&nbsp; | &nbsp;
+
+				<!-- end_users_list_prev_page -->
+
+				<!-- begin_users_list_prev_page_off -->
+
+				<b>{l_prev}</b>&nbsp; | &nbsp;
+
+				<!-- end_users_list_prev_page_off -->
+
+				<!-- begin_users_list_first_page -->
+
+				<a href="{url_main}{url_page}?offset={offset}{params}">{l_page_1}</a>&nbsp;
+
+				<!-- end_users_list_first_page -->
+
+				<!-- begin_users_list_prev_pages -->
+
+				<a href="{url_main}{url_page}?offset={offset}{params}">&lt;&lt;</a>&nbsp;
+
+				<!-- end_users_list_prev_pages -->
+
+    			<!-- begin_users_list_page -->
+
+					<!-- begin_users_list_link_page -->
+
+					<a href="{url_main}{url_page}?offset={offset}{params}">{page}</a>&nbsp;
+
+					<!-- end_users_list_link_page -->
+
+					<!-- begin_users_list_this_page -->
+
+					<b>{page}</b>
+
+					<!-- end_users_list_this_page -->
+
+				<!-- end_users_list_page -->
+
+				<!-- begin_users_list_next_pages -->
+
+				<a href="{url_main}{url_page}?offset={offset}{params}">&gt;&gt;</a>&nbsp;
+
+				<!-- end_users_list_next_pages -->
+
+				<!-- begin_users_list_last_page -->
+
+				<b>{l_of}</b> <a href="{url_main}{url_page}?offset={offset}{params}">{num_pages}</a>&nbsp;
+
+				<!-- end_users_list_last_page -->
+
+				<!-- begin_users_list_next_page -->
+
+				&nbsp; | &nbsp;<a href="{url_main}{url_page}?offset={offset}{params}">{l_next}</a>
+
+				<!-- end_users_list_next_page -->
+
+				<!-- begin_users_list_next_page_off -->
+
+				&nbsp; | &nbsp;<b>{l_next}</b>
+
+				<!-- end_users_list_next_page_off -->
+
+			</div>
+
+		<!-- end_users_list_pages -->
+
+	</div>
+
+<br><br>
+
+		<!-- begin_users_list_item -->
+
+		<table width="100%" id="profile"><tr><td style="padding-left:20px;">
+					<dl id="search_info">
+					<dt id="photo_info" style="position:relative; float: left;">
+                        <a href="{url_page}?display=profile&uid={user_id}{params_item}" style="text-decoration: none;">
+                            <!-- begin_user_status -->
+                            <div class="list_status status{status_style}" style="z-index:1;">{status}</div>
+                            <!-- end_user_status -->
+                            <img class="lazy_user" data-original="{url_files}{photo}" src="{url_tmpl_main}images/empty.png">
+                            <noscript><img src="{url_files}{photo}" alt="{name}"></noscript>
+                        </a>
+                    </dt>
+							<dd class="name"><a href="{url_page}?display=profile&uid={user_id}{params_item}" style="text-decoration:none;" class="dynamic_color">{name}</a> <!-- begin_couple --> + <a style='color: #b0c4cb' href="{url_main}search_results.php?display=profile&name={couple_name}">{couple_name}</a><!-- end_couple --></dd>
+							<dd>
+								{l_age}: <strong>{age}</strong>
+								<!--begin_woman-->
+								<img src="{url_tmpl_main}img/ico_f.gif" border="0">
+								<!--end_woman-->
+								<!--begin_man-->
+								<img src="{url_tmpl_main}img/ico_m.gif" border="0">
+								<!--end_man-->
+								</dd>
+                                <!-- begin_city_title -->
+								<dd>{l_city}: <strong>{city}</strong></dd>
+                                <!-- end_city_title -->
+                                <!-- begin_state_title -->
+								<dd>{l_state}: <strong>{state}</strong></dd>
+                                <!-- end_state_title -->
+                                <!-- begin_country_title -->
+								<dd>{l_country}: <strong>{country}</strong></dd>
+                                <!-- end_country_title -->
+                                <!-- begin_relationship -->
+								<dd>{l_relationship}: <strong>{relation}</strong></dd>
+                                <!-- end_relationship -->
+							</dl>
+
+							<div class="user_info">
+
+                                <ul>
+                                	<!-- begin_mail_on -->
+                                	<li>
+                                	    <a {cannot_self_2} class="ico_mail" href="{url_main}mail_compose.php?id={user_id}">{l_send_mail}</a>
+                                	</li>
+                                	<!-- end_mail_on -->
+                                	<!-- begin_wink_on -->
+                                	<li>
+		                                <a {cannot_self_2} class="ico_wink" href="{url_main}show_interest.php?offset={offset}&cmd=interest&id={user_id}{params}">{l_show_interest}</a>
+                                	</li>
+                                	<!-- end_wink_on -->
+                                	<!--begin_favorite_add -->
+                                	<li>
+                                		<a class="ico_favorites" href="{url_main}mail_favorite_add.php?id={user_id}">{l_add_to_favorites}</a>
+                                	</li>
+                                	<!--end_favorite_add -->
+									<!-- begin_im -->
+									<li>
+										<a class="ico_im" href="#" onclick="xajax_im_open({user_id}, event); return false;">{l_send_im}</a>
+									</li>
+									<!-- end_im -->
+									<!-- begin_im_off -->
+									<li>
+										<b class="im_inactive ico_im_off">{l_send_im}</b>
+									</li>
+									<!-- end_im_off -->
+									<li>
+		                            	<!-- begin_mobile_off -->
+								      	<!-- begin_games -->
+								      	<a class="ico_games" href="{url_main}games.php?id={user_id}">{l_play_games}</a>
+								      	<!-- end_games -->
+		                            	<!-- end_mobile_off -->
+									</li>
+									<li>
+										<i class="last_activity">{l_last_activity}: <strong>{last_visit}</strong></i>
+									</li>
+                                </ul>
+
+							</div>
+
+		</td></tr>
+
+
+
+		<tr><td class="user_line">&nbsp;</td></tr>
+
+		</table>
+
+		<!-- end_users_list_item -->
+
+
+
+        <!-- begin_users_list_noitems -->
+
+        <div style="height: 250px;"></div>
+
+        <!-- end_users_list_noitems -->
+
+
+
+	<div align="center">
+
+		<!-- begin_users_list_pages -->
+
+			<div class="bl_paging" style="margin: 0 0 5px;">
+
+				<!-- begin_users_list_prev_page -->
+
+				<a href="{url_main}{url_page}?offset={offset}{params}">{l_prev}</a>&nbsp; | &nbsp;
+
+				<!-- end_users_list_prev_page -->
+
+				<!-- begin_users_list_prev_page_off -->
+
+				<b>{l_prev}</b>&nbsp; | &nbsp;
+
+				<!-- end_users_list_prev_page_off -->
+
+				<!-- begin_users_list_first_page -->
+
+				<a href="{url_main}{url_page}?offset={offset}{params}">{l_page_1}</a>&nbsp;
+
+				<!-- end_users_list_first_page -->
+
+				<!-- begin_users_list_prev_pages -->
+
+				<a href="{url_main}{url_page}?offset={offset}{params}">&lt;&lt;</a>&nbsp;
+
+				<!-- end_users_list_prev_pages -->
+
+    			<!-- begin_users_list_page -->
+
+					<!-- begin_users_list_link_page -->
+
+					<a href="{url_main}{url_page}?offset={offset}{params}">{page}</a>&nbsp;
+
+					<!-- end_users_list_link_page -->
+
+					<!-- begin_users_list_this_page -->
+
+					<span style="font-weight: bold; padding: 0 3px 0 0; ">{page}</span>
+
+					<!-- end_users_list_this_page -->
+
+				<!-- end_users_list_page -->
+
+				<!-- begin_users_list_next_pages -->
+
+				<a href="{url_main}{url_page}?offset={offset}{params}">&gt;&gt;</a>&nbsp;
+
+				<!-- end_users_list_next_pages -->
+
+				<!-- begin_users_list_last_page -->
+
+				<b>{l_of}</b> <a href="{url_main}{url_page}?offset={offset}{params}">{num_pages}</a>&nbsp;
+
+				<!-- end_users_list_last_page -->
+
+				<!-- begin_users_list_next_page -->
+
+				&nbsp; | &nbsp;<a href="{url_main}{url_page}?offset={offset}{params}">{l_next}</a>
+
+				<!-- end_users_list_next_page -->
+
+				<!-- begin_users_list_next_page_off -->
+
+				&nbsp; | &nbsp;<b>{l_next}</b>
+
+				<!-- end_users_list_next_page_off -->
+
+			</div>
+
+		<!-- end_users_list_pages -->
+
+    	<div>
+
+			<b>{num_total}</b> {l_within_criteria}
+
+		</div>
+
+	</div>

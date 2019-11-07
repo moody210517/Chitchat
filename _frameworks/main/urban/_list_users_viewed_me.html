@@ -1,0 +1,94 @@
+{header}
+<script>
+alertHtmlArea='.column_main';
+
+var isLoad=false,offset,on_page_default='{on_page}',last_id;
+
+$(function(){
+    $win.scroll(function(){
+        if(($win.scrollTop()>$(document).height()-$win.height()-800)&&!isLoad&&offset!='no'){
+            loaderListUserItems();
+        }
+    })
+})
+
+function loaderListUserItems(on_page){
+    if(offset=='no')return;
+    var on_page=on_page||on_page_default,loader=$('#load_animation');
+    $.ajax({type:'POST', url:'{url_main}users_viewed_me.php', data:{ajax:1,on_page:on_page,id:last_id},
+            beforeSend:function(){isLoad=true;loader.slideDown(100);},
+            success:function(data){
+                isLoad=false;
+                var list=$($.trim(data)),users,t=200,i=0;
+                    list.filter('.pages').appendTo('#profile_visitors_users_list');
+                    users=list.filter('.items').find('.item').hide();
+                    (function fu(){
+                        var item=users.eq(i),id=item.attr('id');
+                        if(!$('#'+id)[0]){
+                            item.appendTo('#profile_visitors_users_list').slideDown(t*=.8, function(){
+                                i++; fu();
+                                //item.find('img').lazyload({effect:'fadeIn',skip_invisible:false,effect_speed:400});
+                            });
+                        }else if(item[0]){i++; fu();}
+                    })()
+                    loader.slideUp(100);
+            }
+    })
+}
+
+function confirmDeleteVisitor(uid){
+    confirmCustom(ALERT_HTML_ARE_YOU_SURE, function(){deleteProfileVisitorUser(uid)});
+}
+function deleteProfileVisitorUser(uid){
+    confirmHtmlClose();
+    $.post('{url_main}ajax.php',{cmd:'delete_visitor_user',user_id:uid},function(res){
+        if(checkDataAjax(res)!==false){
+            hideItemListUser(uid);
+        }
+    })
+}
+
+function hideItemListUser(uid){
+    $('#profile_visitors_item_'+uid).slideUp(300,function(){
+        $(this).remove();
+        var items=$('[id ^= profile_visitors_item_]:visible');
+            items.first().removeClass('item_border_top').addClass('item_border_none');
+        updateCounterTitle('#narrow_visitors_count',true);//viewed_me_count
+        //var counter=$(counterList),val=counter.text();
+        //counter.text(val*1-1);
+        if(!items[0]){alertCustomRedirect()
+        }else{loaderListUserItems(1)}
+    });
+}
+
+</script>
+{pages}
+<div class="column_main">
+    <div class="column_main_head">
+        <div class="decor">
+            <h1>{l_profile_visitors}</h1>
+            <div class="cl"></div>
+        </div>
+    </div>
+    <div class="column_main_cont">
+        <div id="profile_visitors_users_list" class="bl_visitors">
+            {items}
+        </div>
+        <div class="cl"></div>
+        <!-- begin_users_list_noitems -->
+        <div style="padding-top:40px;">
+        <div class="bl_no_one" style="margin-top:0px;">
+            <div class="people">{l_no_one_here_yet}</div>
+        </div>
+        </div>
+        <!-- end_users_list_noitems -->
+        <div class="loader_users_list">
+        <img class="load_animation" src="{url_tmpl_main}images/loading-spin-oryx.svg" id="load_animation">
+        </div>
+    </div>
+</div>
+
+<div class="column_narrow">
+    {profile_column_narrow}
+</div>
+{footer}

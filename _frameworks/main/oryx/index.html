@@ -1,0 +1,345 @@
+{header}
+<div class="frame_content">
+<!-- begin_main_social -->
+			<div id="main2">
+<!-- begin_order -->
+
+                <!-- begin_videos_on -->
+				<!-- begin_videos -->
+				<div class="video bt">
+					<h2>{l_cool_videos}</h2>
+					<ul>
+						<!-- begin_video -->
+						<li>
+							<a href="{url_main}vids_watch.php?id={video_id}" class="preview"><img class="round_corner video_type_{video_video_type}" src="{video_image}" alt="" height="106" /></a>
+							<p><a href="{url_main}vids_watch.php?id={video_id}" class="title" style="display:inline;">{video_subject}</a><br>{l_plays}: {video_count_views}</p>
+						</li>
+						<!-- end_video -->
+					</ul>
+					<p class="moret"><a href="{url_main}vids.php"><strong>{total_videos}</strong> {l_uploaded_videos}</a></p>
+				</div>
+				<!-- end_videos -->
+                <!-- end_videos_on -->
+
+
+                <!-- begin_menu_on -->
+				<div class="cat">
+						<ul>
+							<li><a href="{url_main}users_online.php">{l_menu_whos_online}</a></li>
+							<li><a href="{url_main}search.php">{l_menu_search}</a></li>
+							<!-- begin_link_rating -->
+							<li><a href="{url_main}users_hon.php">{l_menu_rating}</a></li>
+                                                        <!-- end_link_rating -->
+                                                        <!-- begin_link_top5 -->
+                                                        <li><a href="{url_main}top5.php">{l_menu_top5}</a></li>
+                                                        <!-- end_link_top5 -->
+                                                        <!-- begin_link_gallery -->
+                                                        <li><a href="{url_main}gallery_index.php">{l_menu_gallery}</a></li>
+                                                        <!-- end_link_gallery -->
+                                                        <!-- begin_link_videogallery -->
+                                                        <li><a href="{url_main}vids.php">{l_menu_videogallery}</a></li>
+                                                        <!-- end_link_videogallery -->
+                                                        <li><a href="{url_main}my_friends.php">{l_menu_my}</a></li>
+                                                        <!-- begin_mail_on -->
+                                                        <li><a href="{url_main}mail.php">{l_menu_messages}</a></li>
+                                                        <!-- end_mail_on -->
+
+                                                        <!-- begin_link_chat -->
+                                                        <li><a href="{url_main}chat.php">{l_menu_chat}</a></li>
+                                                        <!-- end_link_chat -->
+                                                        <!-- begin_link_flashchat -->
+                                                        <li><a href="{url_main}flashchat.php">{l_menu_flashchat}</a></li>
+                                                        <!-- end_link_flashchat -->
+                                                        <!-- begin_link_blogs -->
+                                                        <li><a href="{url_main}blogs.php">{l_menu_blogs}</a></li>
+                                                        <!-- end_link_blogs -->
+                                                        <!-- begin_link_forum -->
+                                                        <li><a href="{url_main}forum.php">{l_menu_forum}</a></li>
+                                                        <!-- end_link_forum -->
+                                                        <li><a href="{url_main}profile.php">{l_menu_my_account}</a></li>
+                                                        <!-- begin_news_on -->
+                                                        <li><a href="{url_main}news.php?view=4">{l_site_tour}</a></li>
+                                                        <li><a href="{url_main}news.php?cat=2">{l_success_stories}</a></li>
+                                                        <li><a href="{url_main}news.php">{l_date_info}</a></li>
+                                                        <!-- end_news_on -->
+                                                </ul>
+                                </div>
+                                <!-- end_menu_on -->
+                                <!-- begin_blog_posts_on -->
+                                <!-- begin_blogs_module -->
+                                <div class="specials wt" style="margin: 0 0 5px;">
+                                    <h2>{l_community_site_specials}</h2>
+                                    <!-- begin_blog_item -->
+                                    <table>
+                                        <tr>
+                                            <!-- begin_blog_image -->
+                                            <td class="img"><div class="imga"><a href="{url_main}blogs_post.php?id={post_id}"><img class="round_corner" src="{image}" alt="" /></a></div></td>
+                                            <!-- end_blog_image -->
+                                            <td>
+                                                <h3><a class="txt_upper_header_color" href="{url_main}blogs_post.php?id={post_id}">{post_subject}</a></h3>
+                                                <p>{post_text_short}</p>
+                                                <p class="more"><a href="{url_main}blogs_post.php?id={post_id}">{l_read_more}</a></p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <div style="clear:both;height:15px;"></div>
+
+                                    <!-- end_blog_item -->
+                                </div>
+                                <!-- end_blogs_module -->
+                                <!-- end_blog_posts_on -->
+
+                                <!-- begin_title_and_text_on -->
+                                <div class="specials wt">
+                                    <h2>{main_title}</h2>
+                                    <table style="margin: 0 0 15px;">
+                                        <tr>
+                                            <td>
+                                                <p style="margin-top: -3px;">{main_text}</p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <!-- end_title_and_text_on -->
+
+                                <!-- begin_big_banner_on -->
+                                <div class="big_main_banner">
+                                <a href="{url_big_banner}"><img height="121" width="450" src="{url_main}tmpl_img_loader.php?tmpl={tmpl_loaded}&dirs=img&file={big_banner_file}&lang={lang_loaded}" alt="" /></a>
+                                </div>
+                                <!-- end_big_banner_on -->
+                                <!-- begin_most_popular_bloggers_on -->
+                                <link rel="stylesheet" type="text/css" media="all" href="{url_tmpl_main}abkstyle/abkstyle.css{cache_version_param}" />
+                                <link rel="stylesheet" type="text/css" href="{url_tmpl_main}css/blogs.css{cache_version_param}" />
+                                <!--[if IE]>
+                                <link rel="stylesheet" href="{url_tmpl_main}css/blogs_ie.css{cache_version_param}" type="text/css" />
+                                <![endif]-->
+                                <script language="javascript" src="{url_tmpl_main}abkstyle/abkstyle.js{cache_version_param}"></script>
+                                <!-- main_pl -->
+                                <h2 style="margin: 0;">{l_most_popular_bloggers}</h2>
+                                <!-- <div class="bl_main_pl" style="width: 450px; overflow: hidden; ">
+                                    <table>
+                                        <col width="55%;" >
+                                        <col width="45%;" >
+                                        <tr>
+                                            <td><h2 style="margin: 0;">{l_most_popular_bloggers}</h2></td>
+                                            <td>
+                                                <div class="main_pl" >
+                                                    <div class="cont">
+                                                        <div class="pic">
+                                                            <img src="{url_tmpl_main}images/blogs/ico_browse.png" width="33" height="34" alt=""/>
+                                                        </div>
+                                                        <ul class="list">
+                                                            <li><a href="{url_main}blogs_popular.php">{l_blogs_browse_all}</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="bg grey"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div> -->
+                                <!-- /main_pl -->
+                                <div class="blogs_new_decor" style="width: 470px; overflow: hidden; margin: 0 0 10px -10px;">
+                                    <div class="1pl_top" >
+
+                                        <div class="cl"></div>
+                                        <!-- begin_pop -->
+                                        <div class="blogs_new_bloggers" style="width: 78px;">
+                                            <div  class="blogs_new_bloggers_pos">
+                                                <a href="{url_main}blogs_blog.php?id={pop_user_id}"><img src="{pop_photo}" width="62" height="70" alt=""/><br />
+                                                    <div class="foto_decor_{pop_num} blogs_new_number">{pop_num}</div>
+                                                </a>
+                                            </div>
+                                            <a href="{url_main}search_results.php?display=profile&uid={pop_user_id}">{pop_name_short}</a>
+                                            <div class="bg_rblog"><a class="lower_header_color" href="{url_main}blogs_blog.php?id={pop_user_id}">{l_read_blog}</a></div>
+                                            <span>{l_blog_visits}: {pop_blog_visits}</span>
+                                            <span>{l_blog_comments}: {pop_blog_comments}</span>
+                                        </div>
+                                        <!-- end_pop -->
+                                        <div class="cl"></div>
+                                    </div>
+                                    <div class="cl"></div>
+                                </div>
+                                <!-- end_most_popular_bloggers_on -->
+                                <!-- begin_top_places_this_week_on -->
+                                <link rel="stylesheet" type="text/css" href="{url_tmpl_main}css/places_index.css{cache_version_param}" />
+                                {places_place_list_top}
+                                <!-- end_top_places_this_week_on -->
+                                <!-- begin_most_popular_groups_on -->
+                                <link rel="stylesheet" href="{url_tmpl_main}css/groups.css{cache_version_param}" type="text/css" media="screen">
+                                <!--[if IE]><link rel="stylesheet" href="{url_tmpl_main}css/groups_ie.css{cache_version_param}" type="text/css"><![endif]-->
+                                <link rel="stylesheet" type="text/css" media="all" href="{url_tmpl_main}abkstyle/abkstyle.css{cache_version_param}" />
+                                <script language="javascript" src="{url_tmpl_main}abkstyle/abkstyle.js{cache_version_param}"></script>
+
+                                <style>
+                                  .groups{ font-family: Tahoma; width:0px; color: #000; font-size: 12px; line-height: 18px; position: relative; } /**/
+                                .groups .tb_groups td.td_main{ width: 464px; background: #f0f0f0;border-left: none;}
+                                </style>
+                                <div class="groups">
+
+                                    {groups_header}
+
+                                    <table class="tb_groups">
+                                        <tr>
+                                            <!-- td_main -->
+
+                                            <td class="td_main">
+
+                                                <div style="padding: 0 0 10px;" class="groups_decor_l">
+<h1 >{l_most_popular_groups}</h1>
+                                                    <div class="1pl_top ">
+
+                                                        <!-- bl_main_pl -->
+                                                        <div class="bl_main_pl">
+                                                            <table>
+                                                                <col width="10%;" >
+                                                                <col width="90%;" >
+                                                                <tr>
+
+                                                                    <td><!-- <h1 class="txt_upper_header_color">{l_groups_most_popular}</h1> --></td>
+                                                                    <td>
+                                                                        <div class="main_pl">
+
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </div>
+                                                        <!-- /bl_main_pl -->
+
+                                                        <div class="cl"></div>
+                                                        <!-- begin_group -->
+                                                        <div class="groups_top_pl <!-- begin_group_last -->last_top_pl<!-- end_group_last -->">
+                                                            <div class="groups_img_yellow">
+                                                                <a <!-- begin_group_link_img --> href="{url_main}groups_group_show.php?group_id={group_id}" <!-- end_group_link_img --><!-- begin_private_group_alert --> style = "cursor:pointer;" onClick="alert('{l_events_private_group_alert}')" <!-- end_private_group_alert -->> <img src="{image_thumbnail}" width="160" height="120" alt="{group_title_full}"/></a>
+                                                            </div>
+                                                            <div class="groups_img_txt">
+                                                                <strong><a <!-- begin_group_link --> href="{url_main}groups_group_show.php?group_id={group_id}"<!-- end_group_link --> <!-- begin_private_group_alert --> style = "cursor:pointer;" onClick="alert('{l_events_private_group_alert}')" <!-- end_private_group_alert -->>{group_title}</a></strong>
+                                                                <span class="slogan">{group_description}</span>
+                                                                <span>{l_groups_members}: {group_n_members} | {l_groups_posts}: {group_n_posts}</span>
+                                                            </div>
+                                                        </div>
+                                                        <!-- end_group -->
+                                                        <div class="cl"></div>
+                                                    </div>
+                                                </div></td></tr></table></div>
+
+                                <!-- end_most_popular_groups_on -->
+                          <!-- end_order -->
+                        </div>
+			<div id="side">
+                            <!-- begin_right_order -->
+                            <!-- begin_login_form_right -->
+                            <!-- begin_loginform_social -->
+				<h2>{l_member_login}</h2>
+
+				<!-- begin_facebook_register -->
+				<a id="fb-join" class="fb_button_round" href="{facebook_login_url}"><strong class="fb_button_text">{l_login_with_facebook}</strong></a>
+				<!-- end_facebook_register -->
+
+				<form class="login-form" action="{url_main}join.php?cmd=login" method="POST" class="login">
+						<div class="login-label"><label  for="email">{l_username}:</label></div>
+						<div class="login-input"><input type="text" class="no_abk" name="user" id="email" value="" /></div>
+					<div style="clear:both;height:10px;"></div>
+
+							<div class="login-label"><label for="password">{l_password}:</label></div>
+							<div class="login-input"><input class="no_abk" type="password" name="password" id="password" value="" /></div>
+							<div style="clear:both;height:10px;"></div>
+								<div style="float:left;"><input type="checkbox" id="remember" name="remember" value="1" checked="checked"/></div>
+								<div style="float:left; margin-top:3px; margin-left:5px; width: 225px;">
+									<label for="remember">{l_remember_me}</label>
+									<a style="float: right;" href="{url_main}forget_password.php?">{l_forgot_password}</a>
+							</div>
+								<div style="clear:both;height:20px;"></div>
+
+						<input type="submit" alt="{l_login_button}" title="{l_login_button}" onClick="submit();" class="btn upper_header_color fl_right big" value="{l_login_button}">
+
+						<input style="margin: 0 10px 0 0;" type="submit" alt="{l_sign_up}" title="{l_sign_up}" onClick="document.location='{url_main}join.php'; return false;" class="btn lower_header_color fl_right big" value="{l_sign_up}">
+								<div style="clear:both;height:20px;"></div>
+
+				</form>
+				<!-- end_loginform_social -->
+                <!-- end_login_form_right -->
+				<!-- begin_video2 -->
+                    <!-- begin_small_banner_right -->
+                    <div class="small_main_banner">
+                    <a href="{url_small_banner}"><img width="250" height="121" src="{url_main}tmpl_img_loader.php?tmpl={tmpl_loaded}&dirs=img&file={small_banner_file}&lang={lang_loaded}" alt="" /></a>
+                    </div>
+                    <!-- end_small_banner_right -->
+                    <!-- begin_featured_video_right-->
+                    <div class="video bt">
+					<h2>{l_videos}</h2>
+					<p class="index-page-big-video"><a href="{url_main}vids_watch.php?id={video2_id}" class="imgb">
+						<img class="round_corner" src="{video2_image_b}" width="250" height="161" alt="" />
+					</a></p>
+					<p class="moret"><a href="{url_main}vids.php">{l_more_videos}</a></p>
+                    </div>
+                    <!-- end_featured_video_right-->
+				<!-- end_video2 -->
+                <!-- begin_featured_members_right -->
+				<!-- begin_users -->
+				<div class="usr_main">
+					<h2>{l_cool_new_people}</h2>
+					<ul>
+						<!-- begin_user -->
+						<li>
+							<a href="{url_main}search_results.php?display=profile_info&name={name}">
+								<img class="round_corner" src="{url_files}{photo}" alt="{name}" />
+								<span class="a">{name}</span>
+							</a>
+						</li>
+						<!-- end_user -->
+					</ul>
+				</div>
+				<!-- end_users -->
+                                <!-- end_featured_members_right -->
+                                <!-- end_right_order -->
+			</div>
+</div>
+<!-- end_main_social -->
+<!-- begin_main_dating -->
+<div class="main_page_dating">
+<img src="{url_file_main_page_image}" />
+
+<div id="side">
+	<!-- begin_loginform_dating -->
+	<h2>{l_member_login}</h2>
+
+	<!-- begin_facebook_register_dating -->
+	<a id="fb-join" class="fb_button_round" href="{facebook_login_url}"><strong class="fb_button_text">{l_login_with_facebook}</strong></a>
+	<!-- end_facebook_register_dating -->
+
+	<form class="login-form" action="{url_main}join.php?cmd=login" method="POST" class="login">
+			<div class="login-label"><label  for="email">{l_username}:</label></div>
+			<div class="login-input"><input type="text" class="no_abk" name="user" id="email" value="" /></div>
+		<div style="clear:both;height:10px;"></div>
+
+				<div class="login-label"><label for="password">{l_password}:</label></div>
+				<div class="login-input"><input class="no_abk" type="password" name="password" id="password" value="" /></div>
+				<div style="clear:both;height:10px;"></div>
+					<div style="float:left;"><input type="checkbox" id="remember" name="remember" value="1" /></div>
+					<div style="float:left; margin-top:3px; margin-left:5px; width: 225px;">
+						<label for="remember">{l_remember_me}</label>
+						<a style="float: right;" href="{url_main}forget_password.php?">{l_forgot_password}</a>
+				</div>
+					<div style="clear:both;height:20px;"></div>
+
+			<input type="submit" alt="{l_login_button}" title="{l_login_button}" onClick="submit();" class="btn upper_header_color fl_right big" value="{l_login_button}">
+
+			<input style="margin: 0 10px 0 0;" type="submit" alt="{l_sign_up}" title="{l_sign_up}" onClick="document.location='{url_main}join.php'; return false;" class="btn lower_header_color fl_right big" value="{l_sign_up}">
+					<div style="clear:both;height:10px;"></div>
+
+	</form>
+	<!-- end_loginform_dating -->
+</div>
+</div>
+<!-- end_main_dating -->
+{footer}
+<script>
+<!-- begin_demo -->
+$(document).ready(function() {
+	$('#email').val('{login_user}');
+	$('#password').val('{login_password}');
+});
+<!-- end_demo -->
+</script>

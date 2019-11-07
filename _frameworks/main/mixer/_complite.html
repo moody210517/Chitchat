@@ -1,0 +1,52 @@
+<!-- begin_profile_completion_on -->
+<div class="profilec">
+            <strong>{l_profile_completion}:</strong>
+            <span class="compl"><span style="width: {profile_complite_percent}%"></span></span>
+            <span class="small">{profile_complite_percent}%</span>
+          </div><!-- /profilec -->
+<!-- end_profile_completion_on -->
+<!-- begin_profile_completion_off -->		<div id="content">
+        <div class="decor-t"></div>
+        <div class="in">
+	<table><tr><td width="33%" valign="top">
+		<h2>{l_profile_completion}</h2>
+
+			<div>{your_profile_is_level_completed}</div><br>
+			<ul>
+				<li class="gr">
+					<div>
+						<table>
+							<tr>
+								<td width="{profile_complite_percent}%">&nbsp;<!--  --></td>
+								<td width="{profile_complite_percent}%" class="graph">&nbsp;<!--  --></td>
+							</tr>
+						</table>
+					</div>
+				</li>
+			</ul>
+	</td><td width="33%" valign="top">
+		<div align="left" style="font-weight:bold;">
+  <!-- begin_yes_settings -->
+		<a href="{url_main}profile.php">{l_basic_info}</a>&nbsp;&middot;&nbsp;{basic}%<br>
+        <!--begin_yes_personal -->
+            <a href="{url_main}profile_personal.php">{l_personal_info}</a>&nbsp;&middot;&nbsp;{personalc}%<br>
+		<!-- end_yes_personal -->
+        <!--begin_yes_partner -->
+            <a href="{url_main}profile_partner.php">{l_partner_info}</a>&nbsp;&middot;&nbsp;{partnerc}%<br>
+		<!-- end_yes_partner -->
+    <!-- end_yes_settings -->
+    </div>
+	</td><td width="33%" valign="top">
+		<div>
+			{l_great_profile}
+			<br><br>
+			<a href="{url_main}profile_photo.php" style="padding-top:10px;">{l_update_photo_now}</a>
+		</div>
+		<br>
+	</td></tr></table>
+		</div>
+        <div class="decor-b"></div>
+        <div class="decor-l"></div>
+        <div class="decor-r"></div>
+      </div><!-- /content -->				
+      <!-- end_profile_completion_off -->

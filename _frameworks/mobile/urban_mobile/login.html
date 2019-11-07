@@ -1,0 +1,26 @@
+{header}
+<script>
+    var login = new CJoin('login', '{is_ios}'*1);
+    login.langParts = {'log_in' : '{j_log_in}',
+                       'please_agree_to_the_terms' : '{j_please_agree_to_the_terms}',}
+
+	<!-- begin_demo -->
+	$(document).ready(function() {
+		$('#form_login_user').val('{login_user}');
+		$('#form_login_pass').val('{login_password}');
+	});
+	<!-- end_demo -->
+</script>
+<form id="form_login" class="form_login frm frm_center" method="post" action="{url_main}join.php">
+	<input type="hidden" name="cmd" value="login" />
+	<input type="hidden" name="ajax" class="ajax" value="0" />
+
+	<label class="bl">{l_email_login}: <input id="form_login_user" name="user" class="inp" type="text" /></label>
+	<label class="bl">{l_password}: <input id="form_login_pass" name="password" class="inp" type="password" /></label>
+	<label class="bl remember"><input id="remember" name="remember" value="1" type="checkbox" checked="checked"/> {l_remember_me}</label>
+    <!-- begin_login_frm_terms -->
+    <label class="bl terms"><input id="terms" type="checkbox" checked="checked"/>{l_i_agree_to_the} <a target="_blank" href="{url_main}info.php?page=term_cond&lang={lang_loaded}">{l_terms}</a> </label>
+    <!-- end_login_frm_terms -->
+	<a class="link forgot" href="{url_main}forgot_password.php">{l_forgot_password}</a>
+</form>
+{footer}

@@ -1,0 +1,198 @@
+{header}
+{ims}
+<!--<script language="javascript" type="text/javascript">
+$(function(){
+   $('[id ^= DescEditable_]').editable({editor: 'textarea', 
+       empty: true,
+       classInput: 'profile_photo_edit_editable_textarea', 
+       classHover: 'profile_photo_edit_editable_hover', 
+       type: 'photo'});
+});
+</script>-->
+<div id="profile" class="box"><div class="bbt"><div class="bbb"><div class="bbl"><div class="bbr"><div class="bbtl"><div class="bbtr"><div class="bbbl"><div class="bbbr">
+
+{profile_menu}
+
+			<!-- begin_photo_edit -->
+			<div>
+				<!-- begin_photo-->
+                        <div  class=header_small style="padding-top:30px; padding-bottom:15px;">
+				{l_profile_edit_photos}
+			</div>
+				<table width="100%" border="0" cellpadding="0" cellspacing="0" style="padding-bottom: 20px;"><tr>
+					<td width="280" style="padding-left: 8px;" align="left">
+
+					<!-- begin_photo_item-->
+						<table border="0" cellpadding="0" cellspacing="0"><tr><td valign="top" rowspan="2" style="padding-right: 10px;">
+						<div id="photo_info">
+                            <!-- begin_photo_item_photo -->
+                            <a href="{url_main}search_results.php?display=photo&uid={user_id}&photo_offset={photo_offset}">
+                                <img class="img_border" src="{url_files}photo/{user_id}_{photo_id}_s.jpg">
+                            </a>
+                            <!-- end_photo_item_photo -->
+                            <!-- begin_photo_item_photo_not_approval -->
+                            <img class="img_border" src="{url_files}photo/{user_id}_{photo_id}_s.jpg">
+                            <!-- end_photo_item_photo_not_approval -->
+						</div>
+						</td><td valign="top" class="body_little">
+                            <div><b>{numer}.</b><div class="profile_photo_edit_editable" id="DescEditable_{photo_id}">{description}</div></div>
+						<div class="pri_little_bold">{visible}</div>
+
+						<!-- begin_default -->{l_photo_default_sign} {l_default}<!-- end_default -->
+
+						<!-- begin_set_default --><a href="{url_page}?id={photo_id}&cmd=main">{default_title}</a><!-- end_set_default -->
+
+						<!-- begin_set_private --><br/><a href="{url_page}?id={photo_id}&cmd=private">{private_title}</a><!-- end_set_private -->
+						<!-- begin_set_public --><br/><a style="text-decoration: none;" href="{url_page}?id={photo_id}&cmd=public">{l_photo_private_sign}</a> <a href="{url_page}?id={photo_id}&cmd=public">{l_private}</a><!-- end_set_public -->
+
+						</td>
+						</tr>
+						<tr><td valign="bottom" class="body_little"><div><table border="0" cellpadding="0" cellspacing="0"><tr><td class="body_little"><table border="0" cellpadding="0" cellspacing="0"><tr><td><div class="button_border_2">
+						<input type="button" value="{l_delete}" onClick="if(confirm('{l_this_action_can_not_be_undone}')) parent.location.href='{url_main}profile_photo.php?cmd=delete&id={photo_id}';" class="button" style=" padding-left: 5px; padding-right: 5px; cursor: pointer; cursor: hand;" title="{l_delete}" onMouseOver="window.status='{l_delete}'; return true;" onMouseOut="window.status=''; return true;">
+						</div></td></tr></table></td><td style="padding-left: 8px;"><table border="0" cellpadding="0" cellspacing="0"><tr><td><div class="button_border_2">
+						<input type="button" value="{l_edit_text}" onClick="location.href='{url_main}profile_photo_edit.php?id={photo_id}';" class="button" style=" padding-left: 5px; padding-right: 5px; cursor: pointer; cursor: hand;" title="{l_edit_text}" onMouseOver="window.status='{l_edit_text}'; return true;" onMouseOut="window.status=''; return true;">
+						</div></td></tr></table></td></tr></table></div></td></tr>
+						</table>
+						<!-- begin_photo_odd-->
+						</td><td align="left">
+						<!-- end_photo_odd-->
+						<!-- begin_photo_even-->
+						</td>
+						</tr><tr>
+						<td style="height: 20px;"></td>
+						</tr><tr>
+						<td style="padding-left: 8px;" align="left">
+						<!-- end_photo_even-->
+					<!-- end_photo_item-->
+
+					<!-- begin_nophoto_item-->
+						<table border="0" cellpadding="0" cellspacing="0"><tr><td valign="top" rowspan="2" style="padding-right: 10px;">
+							<div id="photo_info">
+							<img src="{url_files}mixer_nophoto_s.jpg" width="90" height="100" class="img_border">
+							</div>
+						</td><td valign="top" class="body_little">
+							<div><b>{numer}. ({l_empty})</b></div>
+						</td></tr></table>
+						<!-- begin_nophoto_odd-->
+						</td><td align="left">
+						<!-- end_nophoto_odd-->
+						<!-- begin_nophoto_even-->
+						</td>
+						</tr><tr>
+						<td style="height: 20px;"></td>
+						</tr><tr>
+						<td style="padding-left: 8px;" align="left">
+						<!-- end_nophoto_even-->
+					<!-- end_nophoto_item-->
+
+					</td>
+				</tr></table>
+				<!-- end_photo-->
+			</div>
+			<!-- end_photo_edit -->
+
+
+<!-- begin_photo_upload -->
+
+<div  class=header_small style="padding-top:30px; padding-bottom:15px;">
+	{l_upload_your_photo}
+</div>
+<div>
+	<table border="0" cellpadding="0" cellspacing="0"><tr>
+		<td valign="top" style="padding-right: 10px;" align="left" width="280px">
+			<!-- begin_photo_rules -->
+			<div class="body_text">
+				{l_photo_will_be} <a href="#" onclick="javascript:OpenWindow('{url_main}info.php?page=photo_guidelines&lang={lang_loaded}','650','400','yes');" class="pri_text_bold">{l_photo_guidelines}</a>.
+			</div>
+			<br>
+			<!-- end_photo_rules -->
+			<div class="body_little">
+				<b>{l_note}:</b> {l_photo_must_be}
+			</div>
+		</td>
+
+		<td valign="top">
+<script Language="JavaScript" type="text/javascript">
+  var blockSubmission = false;
+  function removeSubmissionBlock() {
+    blockSubmission = false;
+  }
+  function isSubmissionAllowed() {
+    if(blockSubmission){
+       return false;
+    }
+    return;
+   }
+  document.onclick = isSubmissionAllowed;
+  document.onkeydown = isSubmissionAllowed;
+
+  function onValidateUploadPhotoForm() {
+    var form = document.forms['UploadPhotoForm'];
+    // "photo_file" field validation.
+    if (!(validateRequiredField(form['photo_file'], '{l_file_location}'))) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "photo_description" field validation.
+    if (!(validateMaxLength(form['description'], '{l_photo_description}','100'))) {
+      removeSubmissionBlock();
+      return false;
+    }
+    return true;
+  }
+  function validateUploadPhotoForm() {
+    blockSubmission = true;
+     if (typeof beforeUploadPhotoFormValidation != 'undefined') {
+       beforeUploadPhotoFormValidation();
+    }
+    var validated = onValidateUploadPhotoForm();
+    if (validated && (typeof uponSuccessfulUploadPhotoFormValidation != 'undefined')) {
+      validated = uponSuccessfulUploadPhotoFormValidation();
+    }
+    else if (!validated && (typeof uponUnsuccessfulUploadPhotoFormValidation != 'undefined')) {
+      uponUnsuccessfulUploadPhotoFormValidation();
+    }
+    if (!validated) {
+      removeSubmissionBlock();
+    }
+    return validated;
+  }
+  function submitUploadPhotoForm() {
+   if (validateUploadPhotoForm()) document.UploadPhotoForm.submit();
+    }
+</script>
+<form  name="UploadPhotoForm" method="POST" enctype="multipart/form-data" action="{url_main}profile_photo.php" onSubmit="return validateUploadPhotoForm();" >
+			<input type="hidden" name="cmd" value="insert">
+			<table border="0" cellpadding="0" cellspacing="0"><tr>
+				<td class="body_little" valign="bottom" style="padding-right: 8px;" align="left">
+					<label for="PHOTO_FILE" style="padding: 0 0 5px; display: block;" >{l_file_location} ({max_size})</label>
+					<input type="file" name="photo_file" class="file" size="35"><br /><br />
+				</td>
+			</tr><tr style="padding-top: 8px;">
+				<td class="body_little" colspan="2" align="left">
+					<label for="PHOTO_DESCRIPTION" style="padding: 0 0 5px; display: block;">{l_photo_description} ({l_max_100})</label>
+					<textarea  name="description" style="width: 250px; height: 75px;"></textarea>
+				</td>
+			</tr><tr style="padding-top: 8px;">
+				<td colspan="2" align="left">
+                    <div style="padding-top:14px; font-weight: bold; margin-bottom: -10px;">{message}</div>
+					<br>
+                    <div>
+                    <input type="button" value="{l_upload_photo}" onClick="submitUploadPhotoForm();" class="button" style="width: 132px padding-left: 5px; padding-right: 5px; cursor: pointer; cursor: hand;" title="{l_upload_photo}" onMouseOver="window.status='{l_upload_photo}'; return true;" onMouseOut="window.status=''; return true;">
+                    <a style="float: right;" href="{url_main}search_results.php?offset=1&display=photo&name={name}">{l_view_profile_pictures}</a> 
+                    </div>
+                </td>
+			</tr></table>
+	</form>
+
+		</td>
+
+	</tr></table>
+</div>
+<!-- end_photo_upload -->
+
+<br><br>
+</div></div></div></div></div></div></div></div></div>
+{complite}
+{footer}
+

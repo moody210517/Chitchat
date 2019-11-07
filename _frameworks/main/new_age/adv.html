@@ -1,0 +1,88 @@
+{header}
+<script type="text/javascript">
+function equalHeight(group) {
+    tallest = 0;
+    group.each(function() {
+        thisHeight = $(this).height();
+        if(thisHeight > tallest) {
+        tallest = thisHeight;
+        }
+    });
+    group.height(tallest);
+}
+$(document).ready(function() {
+    equalHeight($(".in,.userinfo-c"));
+});
+</script>
+
+
+<div class="sidebar">
+<div class="in">
+	<h3>{l_search}</h3>
+	<form method="GET" action="adv_cat.php" >
+	<input style="width: 115px;" type="text" value="" name="find_str"><br>
+	<select style="width: 130px;" name="cat_id">{select_cats}
+	</select><br><br>
+	<input type="Submit" value="{l_find_now}" class="button" />
+	</form>
+    <!-- begin_banner_right_column -->
+    <div class="banner_right_column_search">
+        {banner_right_column}
+    </div>
+    <!-- end_banner_right_column -->
+</div>
+</div>
+
+<div class="wrapper">
+<div class="userinfo-c">
+	<div class="userinfo smallphoto clearfix">
+
+<input type="button" value="{l_add}" class="button" onclick="location='{url_main}adv_edit.php';" title="{l_add}">
+<input type="button" value="{l_my_ads}" class="button" onclick="location='{url_main}adv_my.php';" title="{l_my_ads}">
+<br><br>
+
+	<table border="0" width="100%" id="adv_gl" class="font_12px" cellspacing=0>
+     <tr>
+      <td valign="top">
+
+		<table id="adv_in">
+		<tr><td class="header">{cat_name1}</td></tr>
+		<tr><td>{goods1}<br /></td></tr>
+		<tr><td class="header">{cat_name2}</td></tr>
+		<tr><td>{goods2}<br /></td></tr>
+		<tr><td class="header">{cat_name3}</td></tr>
+		<tr><td>{goods3}<br /></td></tr>
+		</table>
+
+	</td><td>&nbsp;</td><td valign="top">
+
+		<table id="adv_in">
+		<tr><td class="header">{cat_name4}</td></tr>
+		<tr><td>{goods4}<br /></td></tr>
+		<tr><td class="header">{cat_name5}</td></tr>
+		<tr><td>{goods5}<br /></td></tr>
+		<tr><td class="header">{cat_name6}</td></tr>
+		<tr><td>{goods6}<br /></td></tr>
+		<tr><td class="header">{cat_name7}</td></tr>
+		<tr><td>{goods7}<br /></td></tr>
+		<tr><td class="header">{cat_name8}</td></tr>
+		<tr><td>{goods8}<br /></td></tr>
+		</table>
+
+	</td><td>&nbsp;</td><td valign="top">
+
+		<table id="adv_in">
+		<tr><td class="header">{cat_name9}</td></tr>
+		<tr><td>{goods9}<br /></td></tr>
+		<tr><td class="header">{cat_name10}</td></tr>
+		<tr><td>{goods10}<br /></td></tr>
+		<tr><td class="header">{cat_name11}</td></tr>
+		<tr><td>{goods11}<br /></td></tr>
+		</table>
+
+	</td></tr></table>
+
+
+</div><div class="userinfo-links"></div></div>
+</div>
+{footer}

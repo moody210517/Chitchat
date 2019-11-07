@@ -1,0 +1,63 @@
+{header}
+<script type="text/javascript" src="{url_main}_server/js/chart.bundle.min.js{cache_version_param}"></script>
+<script>
+$(function(){
+    $jq('.main').scroll(function(){
+        if($jq('.main').scrollTop()>($jq('.column_main').height()-$jq('.main').height()-1000)){
+            loadBaseListUsers();
+        }
+    })
+})
+
+function loadBaseListUsers(){
+    if(isLoadBaseListUsers||isLastLoadBaseListItem)return;
+    $.ajax({url:'{url_main}mutual_attractions.php', data:{ajax:1,cmd:'{cmd}',last_id:lastIdBaseList},
+            beforeSend:function(){
+                isLoadBaseListUsers=true;
+                $jq('#loader_base_page').removeClass('hidden');
+            },
+            success:function(res){
+                $jq('#loader_base_page').addClass('hidden');
+                var data=checkDataAjax(res);
+                if(data===false){
+                    return;
+                }
+                var list=$(trim(data));
+                list.filter('script').appendTo('#update_server');
+                updateUsersList(list.filter('.item'));
+            }
+    })
+}
+</script>
+<div class="col_center">
+    <div class="head icon_head_{page_class}">{page_title}</div>
+    <div class="cont">
+        <div id="page_list_users" class="block_statistics {page_class}">
+            {items}
+        </div>
+        <div id="loader_base_page" class="css_loader loader_base_page hidden">
+            <div class="spinner center">
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+            </div>
+        </div>
+        <!-- begin_no_one_here_yet -->
+        <div class="bl_no_one">
+            <div class="icon"></div>
+            <div class="txt">{l_no_one_here_yet}</div>
+        </div>
+        <!-- end_no_one_here_yet -->
+        <div class="cl"></div>
+    </div>
+</div>
+{footer}

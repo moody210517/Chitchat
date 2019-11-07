@@ -1,0 +1,123 @@
+<!--<div id="pp_message" class="pp_message" style="display:block;">
+        <div class="message_tab">
+           <span class="msg">{l_header_menu_messages} <div class="count"><b id="pp_message_count_all">{messages_count}</b></div> </span>
+        </div>-->
+        <div class="head"><div>
+            <span data-im-status="1" id="status_view_im_1" onclick="Messages.status_display(1);" class="btn_msg active status_view_im">
+                <span class="all">{l_message_all}</span>
+            </span>
+            <span data-im-status="0" id="status_view_im_0" onclick="Messages.status_display(0);" class="btn_msg status_view_im">
+                <span class="status">{l_message_on_line}</span>
+            </span>
+            <div class="head_line"></div>
+                <span id="pp_message_sound" onclick="Messages.setOptionSound()" class="icon_sound <!--begin_no_sound-->off<!--end_no_sound-->"><span class="on"></span><span class="off"></span></span>
+        </div></div>
+        <div class="cont">
+            <div class="name">
+                <div class="search_name">
+					<div id="pp_message_select_im" class="link">
+						<a id="pp_message_select_all" onclick="Messages.select_all(); return false;" href="#">{l_message_select_all_im}</a>
+						<span>/</span>
+						<a id="pp_message_none" onclick="Messages.select_none(); return false;" href="#">{l_message_none_im}</a>
+					</div>
+                    <div class="frm_search_name">
+                        <input id="pp_message_search_inp" onkeyup="Messages.search_up(event);" class="inp placeholder" placeholder="{l_message_search}" type="text" value=""/>
+                        <a id="pp_message_search" onclick="Messages.search_scroll(); return false;" class="icon_search" href="#"></a>
+
+
+                    </div>
+                    <a id="pp_message_delete_open_im" onclick="Messages.select_open(); return false;" class="icon_delete" href="#"></a>
+                </div>
+                <!-- search_name_list -->
+                <div id="pp_message_list_user" class="search_name_list">
+                    <div id="pp_message_list_user_open_im" class="search_name_list_min_height">
+
+                        {user_list}
+
+                    </div>
+                </div>
+                <div id="pp_message_delete_im" class="search_name_list_btn hidden">
+                    <input onclick="Messages.confirmDeleteSelectedIm(); return false;" id="pp_message_delete_im_btn" disabled type="button" class="btn red" value="{l_message_delete_im}" />
+                </div>
+                <!-- /search_name_list -->
+            </div>
+
+            <div class="name_chat">
+                <div id="pp_message_name_chat_info" class="name_chat_info">
+
+                    {message_list_title}
+                    <div id="pp_message_action" class="action">
+                        <a id="pp_message_action_current" class="link_action" href="#">{l_message_action}</a>
+                        <div class="pp_message_action_list" id="pp_message_action_item">
+                            <ul class="pp_small_decor_br">
+                                <li id="pp_message_action_clear"><a onclick="Messages.confirmClearHistoryMessages(); return false;" class="clear" href="#"><span>{l_message_action_clear}</span></a></li>
+                                <!-- begin_user_blocking -->
+                                <li id="pp_message_action_block"><a onclick="Messages.confirmblockUser(); return false;" class="block" href="#"><span>{l_message_action_block}</span></a></li>
+                                <!-- end_user_blocking -->
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="media_button">
+                    <!-- begin_citychat_button -->
+                    <div class="citychat-button" onclick="Messages.streetChatInvite(); return false;"></div>
+                    <!-- end_citychat_button -->
+                    <!-- begin_audiochat_button -->
+                    <div class="audiochat-button" onclick="Messages.audioChatInvite(); return false;"></div>
+                    <!-- end_audiochat_button -->
+                    <!-- begin_videochat_button -->
+                    <div class="videochat-button" onclick="Messages.videoChatInvite(); return false;"></div>
+                    <!-- end_videochat_button -->
+                    </div>
+                </div>
+
+                {message_list}
+
+                <form class="post" name="pp_message_frm" id="pp_message_frm">
+                    <input type="hidden" name="to_user" value="{user_to_id}" />
+                    <textarea id="pp_message_message" class="inp" name="msg"></textarea>
+                    <button id="pp_message_send" class="btn dblue">{l_send}</button>
+                </form>
+            </div>
+			<script>
+var pp_message=$('#pp_message'),
+    pp_message_chat_info=$('#pp_message_name_chat_info'),
+    $ppMessageCont=$('.cont',pp_message),
+    $ppMessageNameChat=$('.name_chat',pp_message),
+    $ppMessageStatusViewIm=$('.status_view_im',pp_message),
+	pp_message_action=$('#pp_message_action'),
+	pp_message_action_item=$('#pp_message_action_item'),
+	pp_message_message=$('#pp_message_message').autosize().css({boxSizing: 'border-box'})
+	.keydown(doOnEnter(Messages.send)).on('input propertychange', Messages.send_input),
+	pp_message_msg_empty=$('#im_list_msg_empty'),
+	pp_message_msg_empty_info=$('#im_list_msg_empty_info'),
+	pp_message_frm=$('#pp_message_frm').submit(Messages.send),
+	pp_message_im_open=$('#pp_message_list_user_open_im'),
+	pp_message_im_list=$('#pp_message_list_user'),
+
+	pp_message_search=$('#pp_message_search'),
+	pp_message_search_inp=$('#pp_message_search_inp'),
+	pp_message_select_im=$('#pp_message_select_im'),
+	pp_message_delete_im=$('#pp_message_delete_im'),
+	pp_message_delete_im_btn=$('#pp_message_delete_im_btn'),
+
+	pp_message_action_clear=$('#pp_message_action_clear'),
+	pp_message_action_block=$('#pp_message_action_block');
+
+last_id={last_id};
+isVisibleMessages=true;
+console.log('Open IM', last_id, isVisibleMessages);
+Messages.setData({
+    userTo:{current_user_to_id},
+    next_search:0,
+    isEnter:false
+})
+/*Messages.userTo={current_user_to_id};
+Messages.next_search=0;
+Messages.isEnter=false;*/
+Messages.disabled_frm_post();
+Messages.dialogScroll();
+Messages.set_counter_all('{messages_count}');
+			</script>
+        </div>
+        <!--<div class="foot"></div>
+    </div>-->

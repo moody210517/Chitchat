@@ -1,0 +1,552 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>{title}</title>
+	<script language="javascript" type="text/javascript">
+		var bgLast=(name+',0,0').split(','),
+            bg='url('+bgLast[0]+') center/'+bgLast[1]+'px auto fixed';
+        /*<!-- begin_main_page_video_header_js -->
+        bg='url('+bgLast[0]+') center 43px/'+bgLast[1]+'px no-repeat scroll';
+        <!-- end_main_page_video_header_js -->*/
+		if (!bgLast[2]) document.documentElement.style.background=bg
+		else if (bgLast[0]) document.documentElement.style.background='url({url_tmpl_main}images/patterns/'+bgLast[0]+') '+
+		(-bgLast[1])+'px '+(-bgLast[2])+'px repeat';
+	</script>
+
+    <meta name="viewport" content="width=1000" />
+    <meta http-equiv="Content-Type" content="text/html; charset={l_charset}" />
+    <meta name="description" content="Chat with fun new people, share photos and interests, even date. All about Meeting and dating around the world and South Africa">
+    <meta name="keywords" content="{keywords}">
+    {to_head_meta}
+    {header_favicon}
+
+    <script type="text/javascript" src="{url_tmpl_main}js/jquery-1.9.1.js{cache_version_param}"></script>
+
+    <!-- begin_visitor_head_custom -->
+    <link rel="stylesheet" type="text/css" href="{url_tmpl_main}css/index_page.css{cache_version_param}" />
+    <!-- end_visitor_head_custom -->
+
+    <!-- begin_member_head_custom -->
+    <link rel="stylesheet" type="text/css" href="{url_tmpl_main}css/style.css{cache_version_param}" />
+    <link rel="stylesheet" href="{url_main}_server/audiochat/audio.css{cache_version_param}" type="text/css" />
+    <link rel="stylesheet" href="{url_main}_server/video/video.css{cache_version_param}" type="text/css" />
+
+    <script type="text/javascript" src="{url_tmpl_main}js/script_member.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_tmpl_main}js/chat.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_tmpl_main}js/city_street_chat.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_tmpl_main}js/profile.js{cache_version_param}"></script>
+
+    <script type="text/javascript" src="{url_tmpl_main}js/encounters.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_tmpl_main}js/my_friends.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_main}_server/jquery/jquery.cookie.js{cache_version_param}"></script>
+    <!-- end_member_head_custom -->
+
+    <link rel="stylesheet" type="text/css" href="{url_tmpl_main}css/selectbox.css{cache_version_param}" />
+    <link rel="stylesheet" type="text/css" href="{url_main}_frameworks/common/css/jquery.formstyler.css{cache_version_param}" />
+
+    <!--<script type="text/javascript" src="{url_tmpl_main}js/jcarousel.js{cache_version_param}"></script>-->
+
+    <script type="text/javascript" src="{url_tmpl_main}js/jcarousel/jquery.jcarousel.min.js{cache_version_param}"></script>
+    <!--<script type="text/javascript" src="{url_tmpl_main}js/jcarousel/jquery.jcarousel-autoscroll.min.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_tmpl_main}js/jcarousel/jcarousel.connected-carousels.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_tmpl_main}js/jcarousel/core_plugin.js{cache_version_param}"></script>-->
+    <script type="text/javascript" src="{url_tmpl_main}js/jcarousel/modernizr.js{cache_version_param}"></script>
+
+    <script type="text/javascript" src="{url_tmpl_main}js/prettyCheckable.js{cache_version_param}"></script>
+
+
+    <script type="text/javascript" src="{url_tmpl_main}js/jquery-ui-1.10.3.js{cache_version_param}"></script>
+
+
+    <script type="text/javascript" src="{url_tmpl_main}js/script.js{cache_version_param}"></script>
+
+    <script type='text/javascript' src='{url_tmpl_main}js/jquery.popup.js{cache_version_param}'></script>
+    <script type='text/javascript' src='{url_tmpl_main}js/jquery.scrollTo.js{cache_version_param}'></script>
+
+    <script type="text/javascript" src="{url_main}_server/jquery/jquery.autosize.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_main}_server/jquery/jquery.form.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_main}_server/lib.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_tmpl_main}js/selectbox.js{cache_version_param}"></script>
+
+    <script type="text/javascript" src="{url_main}_server/jquery/jquery.formstyler.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_main}_server/jquery/jquery.location.js{cache_version_param}"></script>
+
+    <script type="text/javascript" src="{url_tmpl_main}js/login_form.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_tmpl_main}js/profile_photo.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_tmpl_main}js/messages.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_main}_server/jquery/jquery.lazyload.js{cache_version_param}"></script>
+
+    <script type="text/javascript" src="{url_main}_server/server.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_main}_server/js/sound/soundmanager2-nodebug-jsmin.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_main}_server/jquery/jquery.winFocus.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_main}_server/jquery/jquery.highlight.js{cache_version_param}"></script>
+
+    <script type="text/javascript" src="{url_tmpl_main}js/users_rated_me.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_tmpl_main}js/rate_people_photo.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_tmpl_main}js/gifts.js{cache_version_param}"></script>
+
+    <script type="text/javascript" src="{url_main}_server/js/device.min.js{cache_version_param}"></script>
+
+    <link href="{url_main}_server/videojs/video-js.css{cache_version_param}" rel="stylesheet">
+    <!-- If you'd like to support IE8 -->
+    <script src="{url_main}_server/videojs/ie8/videojs-ie8.min.js{cache_version_param}"></script>
+
+    <link href="{url_tmpl_main}css/videojs.css{cache_version_param}" rel="stylesheet">
+
+
+    {include_city}
+
+    <link rel="stylesheet" type="text/css" href="{url_main}css.php{cache_version_param}&set_template_runtime={tmpl_loaded}" />
+
+    <script type="text/javascript" src="{url_main}js.php{cache_version_param}&file=tmpl.js&set_template_runtime={tmpl_loaded}&set_language_runtime={lang_loaded}"></script>
+
+    <script>
+        var mainPageBgMap = true;
+    </script>
+    {animated_js}
+
+    <script language="javascript" type="text/javascript">
+    <!-- begin_smooth_scroll -->
+    if (window.WheelEvent&&!window.MouseScrollEvent) $(document).wheel(smooth_scroll);
+    <!-- end_smooth_scroll -->
+
+    var user_profile_bg='{user_profile_bg}';
+    var user_profile_bg_video={user_profile_bg_video};
+
+    <!-- begin_main_page_video_js -->
+    var isBgVideoMute = {main_page_video_mute};
+    var bgVideoVolume = {main_page_video_volume};
+    var bgVideoOnce = {main_page_video_show_video_once};
+    <!-- end_main_page_video_js -->
+    var is_bg_video_all_page={is_bg_video_all_page};
+    var profile_bg_video_quality='{profile_bg_video_quality}';
+    var ajax_login_status={xajax_login_status};
+    var siteTitle='{site_title}';
+    var urlMain=url_main='{url_main}';
+    var urlPageLogin='{url_login_page}';
+    var urlFiles='{url_files}';
+    var url_tmpl_main='{url_tmpl_main}';
+    var url_tmpl_images=url_tmpl_main+'images/';
+    var url_ajax='{url_main}ajax.php';
+    var urlServer=url_server='{url_main}_server/update_server_ajax.php';
+    var dirTmplMain='.'+'{url_tmpl_main}';
+    var currentPage='{url_page}';
+    var activePage='{current_page}';
+    var isPlayerNative='{is_player_native}'*1;
+	var isCurUserSuperPowers = '{is_super_powers}'*1;
+	var paidAccesMode = '{paid_access_mode}';
+
+    // Server
+    var requestUserId='{request_user_id}';
+
+    preloadImages(
+        url_tmpl_images+'lazy_loader.gif',
+        url_tmpl_images+'lazy_loader_black.gif',
+        url_tmpl_images+'pp_small_decor_r.png',
+        url_tmpl_images+'alert_decor_question.png',
+        url_tmpl_images+'alert_decor_error.png',
+        url_tmpl_images+'empty.png',
+        url_tmpl_images+'icon_close_grey.png',
+        url_tmpl_images+'icon_close_grey_hover.png',
+        url_tmpl_images+'pp_small_decor_r_profile.png',
+        url_tmpl_images+'pp_small_list_marker.png',
+        url_tmpl_images+'button_video_chat-hover.png'
+    );
+
+    siteLangParts = {'server_error_try_again' : '{j_server_error_try_again}'}
+    
+    $(function(){
+        lazyLoadImage();
+        $('.lazy_btn').lazyload({event:'load', effect:'fadeIn', skip_invisible:false, effect_speed:50});
+        lazyLoadProfilePhotoInit();
+
+        <!-- begin_main_page_image_content_js -->
+
+        var image_main_page_urban="{main_page_image}";
+        var background_color_urban="{background_color_urban}";
+
+        var main_page_image_content=$('#main_page_image_content');
+
+        if(document.cookie.indexOf('bgMainPage={main_page_image}')>=0){
+            main_page_image_content.addClass('header_main_page_image');
+            $(".header_main_page_image").css('background-image',"url({main_page_image})");
+            $(".header_main_page_image").css('background-color',"{background_color_urban}");
+        } else {
+            var main_page_image_content_height = $('#main_page_image_content').css('height');
+
+            $('<div></div>').css('height', main_page_image_content_height).css('margin-bottom', '-' + main_page_image_content_height).css('background-color', '{background_color_urban}').insertBefore('#main_page_image_content');
+
+            $('<div id="main_page_image_content_bg"></div>').css('height', main_page_image_content_height).css('margin-bottom', '-' + main_page_image_content_height).css('background-color', '{background_color_urban}').insertBefore('#main_page_image_content');
+
+            main_page_image_content = $('#main_page_image_content_bg');
+
+            var bg=new Image();bg.src='{main_page_image}';
+            main_page_image_content.css('opacity','0').addClass('header_main_page_image');
+            $(".header_main_page_image").css('background-image','url({main_page_image})');
+            $(bg).load(function(){
+                main_page_image_content.css({opacity:'1', transition:'1.5s linear'});
+                document.cookie='bgMainPage={main_page_image}';
+            })
+        }
+
+        <!-- end_main_page_image_content_js -->
+    })
+    </script>
+    {custom_head}
+</head>
+
+<body>
+<!-- begin_fb_like_button_script -->
+{fb_like_button_script}
+<!-- end_fb_like_button_script -->
+<!-- wrapper -->
+<div id="bg_video_tumb" class="bg_video tumb"></div>
+<div class="bg_video" id="bg_video"></div>
+<div class="main">
+<div class="wrapper">
+    <div class="profile_bg"> </div>
+	<script language="javascript" type="text/javascript">
+        $('.wrapper').height(curHiState.doc_h);
+        $('.main').scrollTop(curHiState.y).scrollLeft(curHiState.x);
+        if (bgLast[0]&&bgLast[2]) {
+            durVideoPreviev=600;
+            $('.profile_bg').css({
+                background: 'url('+url_tmpl_main+'images/patterns/'+bgLast[0]+')'
+                + ((curHiState.x||0)-bgLast[1])+'px '+((curHiState.y||0)-bgLast[2])+'px repeat',
+                transition: 'none'
+            })
+        };
+        var Gifts = new CGifts('{is_credits_enabled}');
+        Gifts.langParts = {'gift_free' : '{j_grab_attention_with_a_gift_free}',
+                           'gift_price' : '{j_grab_attention_with_a_gift}'}
+	</script>
+<!-- begin_member_header -->
+<script language="javascript" type="text/javascript">
+$(function(){if (location.hash=='#logout') {location.hash=''; Profile.confirmLogout()} })
+    preloadImages(
+        url_tmpl_images+'photo_carousel_top.png',
+        url_tmpl_images+'is_writing.png'
+    );
+
+/* Messages */
+var Messages = new CMessages('{user_id}','{user_name}','{request_user_id}', '{url_tmpl_main}', '{im_history_messages}', '{notifications_lifetime}', '{notifications_position}');
+    Messages.url_ajax = '{url_main}ajax.php';
+    Messages.url_main = '{url_main}';
+    Messages.url_tmpl_main = '{url_tmpl_main}';
+    Messages.counter_all = '{messages_counter_value}'*1;
+    Messages.langParts = {'delete_counter' : '{j_message_delete_im}',
+                          'clear_conversation' : '{j_message_clear_conversation}',
+                          'you_granted_access' : '{j_private_photo_you_granted_access}',
+                          'sorry_albums_today' : '{j_private_photo_request_declined}',
+                          'your_account_is_temporarily_blocked': '{j_your_account_is_temporarily_blocked}',
+                          'user_has_been_blocked' : '{j_the_user_has_been_blocked}',
+                          'server_error_try_again' : '{j_server_error_try_again}',
+						  'to_update_profile' : '{j_you_need_to_upgrade_your_profile_first}'
+                          }
+    lastNewMsgId = '{last_new_msg_id}';
+/* Messages */
+var audioChat = new CChat('audio','{is_allowed_audio_chat}');
+    audioChat.price = '{audio_chat_price}'*1;
+    audioChat.langParts = {'please_wait_for' : '{j_please_wait_for_confirmation}',
+                           'invitation_sent' : '{j_invitation_sent}',
+                           'in_block_list' : '{j_you_are_in_block_list}',
+                           'chat_from_user' : '{audio_chat_from_user}',
+                           'chat_nowe' : '{j_do_you_accept_this_chat}',
+                           'attention' : '{j_attention}',
+                           'refused' : '{j_refused_audiochat}',
+                           'buy_credits': '{j_buy_credits}',
+                           'you_have_no_enough_credits': '{j_you_have_no_enough_credits}',
+                           'chat_paid': '{j_chat_paid}',
+                           'service_costs': '{j_this_service_costs_credits}',
+                           'you_have_credits': '{j_you_have_credits}'
+                           }
+var videoChat = new CChat('video','{is_allowed_video_chat}');
+    videoChat.price = '{video_chat_price}'*1;
+    videoChat.isDemoUser = '{is_demo_user}'*1;
+    videoChat.langParts = {'please_wait_for' : '{j_please_wait_for_confirmation}',
+                           'invitation_sent' : '{j_invitation_sent}',
+                           'in_block_list' : '{j_you_are_in_block_list}',
+                           'chat_from_user' : '{video_chat_from_user}',
+                           'chat_nowe' : '{j_do_you_accept_this_chat}',
+                           'attention' : '{j_attention}',
+                           'refused' : '{j_refused_videochat}',
+                           'buy_credits': '{j_buy_credits}',
+                           'you_have_no_enough_credits': '{j_you_have_no_enough_credits}',
+                           'chat_paid': '{j_chat_paid}',
+                           'service_costs': '{j_this_service_costs_credits}',
+                           'you_have_credits': '{j_you_have_credits}'
+                           }
+
+var cityStreetChat = new CCityStreetChat('{is_allowed_street_chat}');
+    cityStreetChat.isDemoUser = '{is_demo_user}'*1;
+    cityStreetChat.langParts = {'please_wait_for' : '{j_please_wait_for_confirmation}',
+                                'invitation_sent' : '{j_invitation_sent}',
+                                'chat_nowe' : '{j_do_you_accept_this_chat}',
+                                'chat_from_user' : '{street_chat_from_user}',
+                                'attention' : '{j_attention}',
+                                'refused' : '{j_refused_street_chat}',
+                                }
+
+var Profile = new CProfile('{user_id}', '{spotlight_photos_number}', '{request_uri}', '{is_free_site}');
+    Profile.init('{is_photo_default_public}', '{is_photo_public}', '{spotlight_i_am}', '{spotlight_costs}', '{hide_my_presence}');
+    Profile.langParts = {'do_you_want_to_log_out' : '{j_do_you_want_to_log_out}',
+                         /*'service_spotlight' : '{j_service_spotlight}',
+                         'service_search' : '{j_service_search}',
+                         'service_encounters' : '{j_service_encounters}',*/
+                         'refill_now' : '{j_refill_now}',
+                         'credit_balance' : '{j_credit_balance}',
+                         'user_has_been_blocked' : '{j_the_user_has_been_blocked}',
+                         'please_add_public_photo_first' : '{j_please_add_public_photo_first}',
+                         'you_do_not_have_a_public_photo' : '{j_you_do_not_have_a_public_photo_or_the_photo_is_being_moderated_now}',
+                         'credits_have_been_added' : '{j_the_credits_have_been_added}',
+                         'alert_success' : '{j_alert_success}',
+                         'your_account_is_temporarily_blocked': '{j_your_account_is_temporarily_blocked}',
+                         'friend_request' : '{j_the_friend_request_has_been_sent}',
+                         'friend_approve' : '{j_your_request_has_been_confirmed}',
+                         'friend_remove' : '{j_the_user_has_been_unfriended}',
+                         'unfriend' : '{j_unfriend}',
+                         'add_friends' : '{j_add_to_friends}',
+                         'your_wink_has_been_sent' : '{j_your_wink_has_been_sent}',
+                         'report_sent' : '{j_report_sent}',
+                         'report_title_user' : '{j_add_a_message_for_the_administrator}',
+                         'report_title_photo' : '{j_report_this_photo_to_administrator}',
+                         'only_you_will_see_your_photo_in_the_spotlight' : '{j_only_you_will_see_your_photo_in_the_spotlight}'
+                        }
+
+    <!-- begin_notif_welcoming_message -->
+    $(function(){
+        Messages.showNotifAllMsg({notif_welcoming_message});
+    })
+    <!-- end_notif_welcoming_message -->
+</script>
+    <!-- header -->
+    <div class="header header_color">
+        <div class="header_w">
+            <div class="logo"><h1><a href="{url_main}{url_logo}"><img src="{header_url_logo}" alt="Free online dating site registration logo"/></h1></a></div>
+
+
+            <!-- begin_header_menu_container -->
+            <div class="nav">
+                <ul>
+                    <!-- begin_header_menu -->
+                        <!-- begin_header_menu_people_nearby_item -->
+                        <li order="header_menu_people_nearby">
+                            <!-- begin_header_menu_people -->
+                            <a href="{url_main}{url_page_search_results}">
+                                <span class="people">{l_header_menu_people_nearby}</span>
+                            </a>
+                            <!-- end_header_menu_people -->
+                            <!-- begin_header_menu_people_selected -->
+                            <div class="selected">
+                                <span class="people">{l_header_menu_people_nearby}</span>
+                            </div>
+                            <!-- end_header_menu_people_selected -->
+                        </li>
+                        <!-- end_header_menu_people_nearby_item -->
+
+                        <!-- begin_header_menu_encounters_item -->
+                        <li order="header_menu_encounters">
+                            <!-- begin_header_menu_encounters -->
+                            <a href="{url_main}{url_page_encounters}">
+                                <span class="encounters">{l_header_menu_encounters}</span>
+                            </a>
+                            <!-- end_header_menu_encounters -->
+                            <!-- begin_header_menu_encounters_selected -->
+                            <div class="selected">
+                                <span class="encounters">{l_header_menu_encounters}</span>
+                            </div>
+                            <!-- end_header_menu_encounters_selected -->
+                        </li>
+                        <!-- end_header_menu_encounters_item -->
+
+                        <!-- begin_header_menu_messages_item -->
+                        <li order="header_menu_messages"><a data-user-id="0" class="show_messages" href="#">
+                                <span class="msg">{l_header_menu_messages}
+                                    <div <!--begin_messages_counter -->style="display:none;"<!--end_messages_counter --> id="messages_counter" class="count"><b id="messages_counter_value">{messages_counter_value}</b></div>
+                                </span>
+                            </a>
+                        </li>
+                        <!-- end_header_menu_messages_item -->
+
+                        <!-- begin_header_menu_city_module_item -->
+                            <!-- begin_header_menu_city_module -->
+                            <li order="menu_city">
+                                <!-- begin_header_menu_city -->
+                                <a href="{url_main}{header_menu_city_url_city}">
+                                    <span class="city3d">{l_menu_city}</span>
+                                </a>
+                                <!-- end_header_menu_city -->
+                                <!-- begin_header_menu_city_selected -->
+                                <div class="selected">
+                                    <span class="city3d">{l_menu_city}</span>
+                                </div>
+                                <!-- end_header_menu_city_selected -->
+                            </li>
+                            <!-- end_header_menu_city_module -->
+                        <!-- end_header_menu_city_module_item -->
+
+                        <!-- begin_header_menu_wall_item -->
+                        <li order="header_menu_wall">
+                            <!-- begin_header_menu_wall -->
+                            <a href="{url_main}{url_page_wall}">
+                                <span class="wall">{l_header_menu_wall}</span>
+                            </a>
+                            <!-- end_header_menu_wall -->
+                            <!-- begin_header_menu_wall_selected -->
+                            <div class="selected">
+                                <span class="wall">{l_header_menu_wall}</span>
+                            </div>
+                            <!-- end_header_menu_wall_selected -->
+                        </li>
+                        <!-- end_header_menu_wall_item -->
+
+                    <!-- end_header_menu -->
+                </ul>
+            </div>
+            <!-- end_header_menu_container -->
+
+            <div class="avka" id="avka_link" data-direction="right">
+                <div class="frame">
+                    <img data-main-photo="{main_photo_id}" src="{url_files}{avka_user_photo}" alt="" />
+                    <a href="#"></a>
+                </div>
+                <div class="fl_left">
+                    <a href="#" id="current" class="header_pic_marker"></a>
+                    <div class="avka_item" id="item">
+                    <ul class="pp_small">
+                        <li class="profile_only"><a class="profile" href="{url_main}{url_page_profile_view}">{l_profile}</a></li>
+                        <li><a class="settings" href="{url_main}{url_page_profile_settings}">{l_settings}</a></li>
+                        <!-- begin_moderator --><li><a class="moderator" href="{url_main}{url_page_moderator}">{l_top_moderator}</a></li><!-- end_moderator -->
+                        <li><a class="log" onclick="return Profile.confirmLogout()" href="#logout">{l_log_out}</a></li>
+                    </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- begin_credits_header -->
+            <div class="link_credit"><a onclick="Profile.incPop(); return false;" id="credits_balans_header" href="">{credits_header_balance}</a></div>
+            <!-- end_credits_header -->
+        <div class="cl"></div>
+        </div>
+    </div>
+    <!-- /header -->
+
+    <!-- content -->
+    <div id="member_content" class="content <!-- begin_content_city -->content_city<!-- end_content_city -->">
+        <div class="cont_w">
+            <!-- begin_spotlight -->
+            <div class="bl_carousel_photo">
+                <div class="decor_photo_carousel <!-- begin_spotlight_top -->top<!-- end_spotlight_top -->">
+                    <div class="frame">
+                        <!-- begin_spotlight_increase -->
+                        <script>preloadImages('{url_files}{spotlight_main_photo}');</script>
+                        <div id="spotlight_increase" <!-- begin_spotlight_increase_hide -->class="display_none"<!-- end_spotlight_increase_hide -->>
+                          <img data-main-photo="{spotlight_main_photo_id}" src="{url_files}{spotlight_main_photo}"/>
+                          <a onclick="Profile.incPopOpenPaymentSpotlight('spotlight'); return false;" href="">{l_put_me_here}</a>
+                        </div>
+                        <!-- end_spotlight_increase -->
+                        <div onclick="Profile.incPopOpenPaymentSpotlight('spotlight'); return false;" id="spotlight_your" class="spotlight_increase_more <!-- begin_spotlight_your_hide -->display_none<!-- end_spotlight_your_hide -->">
+                            <img src="{url_tmpl_main}images/photo_carousel_top.png"/>
+                            <span onclick="Profile.incPopOpenPaymentSpotlight('spotlight'); return false;">{l_your_are_here}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bl_carousel">
+                    <div id="header_spotlight" class="carousel">
+                        <ul id="header_spotlight_list">
+                            <!-- begin_spotlight_item -->
+                            <script>preloadImages('{url_files}{spotlight_item_photo}');</script>
+                            <li data-id="{spotlight_item_id}" class="header_spotlight_list_item">
+                                <div class="item">
+                                    <a title="{spotlight_item_name}, {spotlight_item_age}, {spotlight_item_city}" href="{url_main}{url_profile}">
+                                        <img <!-- begin_spotlight_item_main -->data-main-photo="{spotlight_item_photo_id}"<!-- end_spotlight_item_main --> src="{url_files}{spotlight_item_photo}"/>
+                                    </a>
+                                </div>
+                            </li>
+                            <!-- end_spotlight_item -->
+                            <!-- begin_spotlight_item_empty -->
+                            <li class="header_spotlight_list_item spotlight_empty"></li>
+                            <!-- end_spotlight_item_empty -->
+                        </ul>
+						<div id="header_spotlight_next" class="next"></div>
+                    </div>
+                </div>
+            <div class="cl"></div>
+            </div>
+            <!-- end_spotlight -->
+
+            <div class="cl"></div>
+<!-- end_member_header -->
+
+<!-- begin_visitor_header -->
+	<!-- header -->
+	<div class="header header_color" >
+        <div class="header_w">
+
+            <div class="logo"><a href="{url_main}{url_page_index}"><img src="{header_url_logo}"/></a></div>
+
+            <!--<div class="logo" style="background: url({header_url_logo}) 0 0 no-repeat;"><a href="{url_main}{url_home_page}"></a></div>-->
+
+			<!-- begin_view -->
+			<script>
+				var pageUrlWithoutLanguage = '{page_url}';
+			</script>
+
+            <div class="lang" data-direction="left">
+                <a id="current" class="language" href="#">{language_current}</a>
+                <div class="lang_item" id="item">
+                    <ul class="pp_small" id="pp_language">
+                        <!-- begin_language -->
+                        <li><a href="#" onclick="siteSetLanguage('{language_value}'); return false;"><span class="{language_class}">{language_title}</span></a></li>
+                        <!-- end_language -->
+                    </ul>
+                </div>
+            </div>
+			<!-- end_view -->
+
+            <!-- begin_btn_download_app_top -->
+            <div class="bl_btn_app">
+                <!-- begin_btn_download_app_top_item -->
+                <a target="_blank" class="{btn_download_app_top_item_class}" href="{btn_download_app_top_item_url}" title="{btn_download_app_top_item_title}">
+                    <img src="{url_tmpl_main}images/icon_btn_{btn_download_app_top_item_icon}.png" alt="" /> {btn_download_app_top_item_title}
+                </a>
+                <!-- end_btn_download_app_top_item -->
+            </div>
+            <!-- end_btn_download_app_top -->
+            <div class="info_account">
+				<!-- begin_header_for_login_page -->
+                <span>{l_header_visitor_text}</span> <a href="{url_main}{url_page_join}">{l_header_visitor_register}</a>
+				<!-- end_header_for_login_page -->
+				<!-- begin_header_for_join_page -->
+                <span>{l_header_visitor_text_login}</span> <a href="{url_main}{url_page_login}">{l_header_visitor_login}</a>
+				<!-- end_header_for_join_page -->
+            </div>
+
+        </div>
+		<div class="cl"></div>
+	</div>
+	<!-- /header -->
+
+	<!-- begin_header_members -->
+    <div class="header_decor_photo">
+        <div class="cont_w">
+			<!-- begin_header_members_user -->
+            <div class="item{header_members_user_index}"><a href="{url_main}{header_members_user_url}" title="{header_members_user_name}, {header_members_user_age}"><img src="{url_files}{header_members_user_photo}" alt="{header_members_user_name}" /></a></div>
+			<!-- end_header_members_user -->
+        </div>
+    </div>
+	<!-- end_header_members -->
+
+	<!-- content -->
+    <div id="main_page_image_content" class="content {content_animated_class}">
+
+        {animated_html}
+
+        <div class="cont_w {cont_w_animated_class}">
+<!-- end_visitor_header -->
+
+    <!-- begin_banner_header -->
+    <div class="banner_header">{banner_header}</div>
+    <!-- end_banner_header -->

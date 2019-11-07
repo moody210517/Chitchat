@@ -1,0 +1,27 @@
+    <!-- begin_banner_footer_mobile -->
+    <div class="banner_footer">
+        {banner_footer_mobile}
+    </div>
+    <!-- end_banner_footer_mobile -->
+</div>
+	<script>
+		{footer_custom_js}
+	</script>
+<!-- begin_gdpr_cookie_popup -->
+<script>
+    $(function(){
+        //document.cookie = 'cookiesAccepted=; path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        var options = {
+            title: '{j_cookies_accept_title}',
+            text: '{cookies_accept_text}',
+            acceptButtonText: '{j_cookies_accept_accept_button_text}',
+            theme: 'dark',
+            learnMore: false,
+            position: 'bottom'
+        };
+        $.acceptCookies(options);
+    })
+</script>
+<!-- end_gdpr_cookie_popup -->
+</body>
+</html>

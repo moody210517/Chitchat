@@ -1,0 +1,678 @@
+{header}
+
+{ims}
+<script type="text/javascript">
+function equalHeight(group) {
+    tallest = 0;
+    group.each(function() {
+        thisHeight = $(this).height();
+        if(thisHeight > tallest) {
+        tallest = thisHeight;
+        }
+    });
+    group.height(tallest);
+}
+$(document).ready(function() {
+    equalHeight($(".in,.userinfo-c"));
+});
+<!-- begin_alert_email_confirmed -->
+$( document ).ready(function() {
+    alert('{l_email_confirmed}');
+});
+<!-- end_alert_email_confirmed -->
+</script>
+{complite}
+
+
+<div class="wrapper">
+    <div class="userinfo-c">
+
+        <div class="userinfo smallphoto clearfix">
+
+    {profile_menu}
+
+
+<div class="nav_title">
+    <!-- begin_yes_settings -->
+        <b>{l_basic}</b>&nbsp;&nbsp;
+        <!-- begin_yes_personal -->
+            <a href="{url_main}profile_personal.php"><b>{l_personal}</b></a>&nbsp;&nbsp;
+        <!-- end_yes_personal -->
+        <!-- begin_yes_partner -->
+            <a href="{url_main}profile_partner.php"><b>{l_partner}</b></a>
+        <!-- end_yes_partner -->
+    <!-- end_yes_settings -->
+</div>
+
+
+
+	<script language="JavaScript" type="text/javascript">
+
+				function OpenWindow( sUri, iWidth, iHeight )
+
+				{
+
+					var sWindowName = 'win' + Math.floor( Math.random()*1000 )
+
+					var iRealWidth = iWidth ? iWidth : 600
+
+					var iRealHeight = iHeight ? iHeight : screen.height - 300
+
+
+
+					var iLeft = Math.round( (screen.width-iRealWidth)/2 )
+
+					var iTop =  Math.round( (screen.height-iRealHeight)/2 ) - 35
+
+
+
+					var sWindowOptions = 'status=yes,menubar=no,toolbar=no'
+
+					sWindowOptions += ',resizable=yes,scrollbars=yes,location=no'
+
+					sWindowOptions += ',width='  + iRealWidth
+
+					sWindowOptions += ',height=' + iRealHeight
+
+					sWindowOptions += ',left='   + iLeft
+
+					sWindowOptions += ',top='    + iTop
+
+
+
+					var oWindow = window.open( sUri, sWindowName, sWindowOptions )
+
+					oWindow.focus()
+
+
+
+					return oWindow;
+
+				}
+
+	</script>
+
+
+
+<script Language="JavaScript" type="text/javascript">
+
+  var blockSubmission = false;
+
+  function removeSubmissionBlock() {
+
+    blockSubmission = false;
+
+  }
+
+  function isSubmissionAllowed() {
+
+    if(blockSubmission){
+
+       return false;
+
+    }
+
+    return;
+
+   }
+
+  document.onclick = isSubmissionAllowed;
+
+  document.onkeydown = isSubmissionAllowed;
+
+
+
+  function onValidateEditProfileBasicForm() {
+    var form = document.forms['profile'];
+
+                <!-- begin_name_edit_on_js -->
+			    if (!(validateUserName(form['user_name'], '{l_username}', '{username_length_min}', '{username_length}'))) {
+			      removeSubmissionBlock();
+			      return false;
+			    }
+                <!-- end_name_edit_on_js -->
+ 				<!-- begin_text_js -->
+			    if (!(validateRequiredField(form['{name}'], '{field_js}', ''))) {
+			      removeSubmissionBlock();
+			      return false;
+			    }
+			    if (!(validateMaxLength(form['{name}'], '{field_js}','{maxlen}'))) {
+			      removeSubmissionBlock();
+			      return false;
+			    }
+			    <!-- end_text_js -->
+				<!-- begin_textarea_js -->
+			    if (!(validateRequiredField(form['{name}'], '{field_js}', ''))) {
+			      removeSubmissionBlock();
+			      return false;
+			    }
+			    if (!(validateMaxLength(form['{name}'], '{field_js}','{maxlen}'))) {
+			      removeSubmissionBlock();
+			      return false;
+			    }
+			    <!-- end_textarea_js -->
+
+    // "email" field validation.
+    if (!(validateRequiredField(form['email'], '{l_email_address}'))) {
+      removeSubmissionBlock();
+      return false;
+    }
+
+    // "email" field validation.
+    if (!(validateMaxLength(form['email'], '{l_email_address}', '{mail_length_max}'))) {
+      removeSubmissionBlock();
+      return false;
+    }
+
+    // "email" field validation.
+    if (!(validateEmailField(form['email'], '{l_email_address}'))) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "country" field validation.
+    if (!(validateRequiredSelect(form['country'],'{l_country}','0'))) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "state" field validation.
+    if (!(validateRequiredSelect(form['state'],'{l_state_province}','0'))) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "city" field validation.
+    if (!(validateRequiredSelect(form['city'],'{l_city}','0'))) {
+      removeSubmissionBlock();
+      return false;
+    }
+    <!-- begin_const_js -->
+	if (!(validateRequiredSelect(form['{name}'],'{field_js}','00')))
+	{
+	  removeSubmissionBlock();
+      return false;
+	}
+	<!-- end_const_js -->
+    return true;
+  }
+
+  function validateEditProfileBasicForm() {
+
+    blockSubmission = true;
+
+     if (typeof beforeEditProfileBasicFormValidation != 'undefined') {
+
+       beforeEditProfileBasicFormValidation();
+
+    }
+
+    var validated = onValidateEditProfileBasicForm();
+
+    if (validated && (typeof uponSuccessfulEditProfileBasicFormValidation != 'undefined')) {
+
+      validated = uponSuccessfulEditProfileBasicFormValidation();
+
+    }
+
+    else if (!validated && (typeof uponUnsuccessfulEditProfileBasicFormValidation != 'undefined')) {
+
+      uponUnsuccessfulEditProfileBasicFormValidation();
+
+    }
+    if (!validated) {
+      removeSubmissionBlock();
+    }
+    return validated;
+  }
+
+  function submitEditProfileBasicForm() {
+
+   if (validateEditProfileBasicForm()) document.profile.submit();
+
+  }
+
+  function exitConfirm() {
+
+    var form = document.forms['profile'];
+
+    if(isFormModified(form, null, null)){
+
+      return(confirm('{l_leave_page}'));    };
+
+  return true;
+
+  } </script>
+
+<!-- begin_title_basic_fields_text -->
+<div class=header_big style="padding-bottom:20px;"><img src="{url_tmpl_main}/images/basic.png" class="png" align="absmiddle" alt="" width=48 height=48>{l_basic_information}</div>
+<!-- end_title_basic_fields_text -->
+<form name="profile" method="POST" action="{url_main}profile.php?cmd=update" onSubmit="return validateEditProfileBasicForm();" style="padding: 0px; margin: 0px;">
+
+
+
+	<h1>{update_message}</h1>
+
+
+
+
+    <!-- begin_basic_fields_text -->
+	<table border="0" cellpadding="0" class="head_l" cellspacing="0" width="100%">
+    <!-- begin_fields_text -->
+    <!-- begin_text -->
+	<script type="text/javascript">
+		function init{name}Counter() {
+			characterCounter('{name}', {maxlen}, '{name}Counter');
+		}
+		addOnload(init{name}Counter);
+		function clear{name}({name}Field)
+		{
+			if ({name}Field.value == "") {name}Field.value = '';
+		}
+	</script><tr>
+
+		<td align="left" class="sec_med_bold">
+
+			<b>{field}</b>
+
+		</td><td align="right">
+
+			(<b><span id="{name}Counter">0</span></b> / {maxlen} {l_characters_used})
+
+		</td>
+
+        <tr><td colspan="2" style="padding:0px 12px 12px 12px;"><input type="text" name="{name}" id="{name}" value="{value}" maxlength="{maxlen}" style="width:500px; font-size:12px;" tabindex="1" onFocus="clear{name}(this); characterCounter('{name}', 100, '{name}Counter');" onKeyUp="characterCounter('{name}', 100, '{name}Counter');"></td>
+
+	</tr>
+	<!-- end_text -->
+
+
+
+	<!-- begin_textarea -->
+	<tr>
+
+		<td align="left" class="sec_med_bold">
+
+			<b>{field}</b>
+
+		</td><td align="right">
+
+			(<b><span id="{name}Counter">0</span></b> / {maxlen} {l_characters_used})
+
+		</td>
+
+        <tr><td colspan="2" style="padding:0px 12px 12px 12px;">
+
+	<script type="text/javascript">
+
+		function init{name}Counter() {
+
+			characterCounter('{name}', {maxlen}, '{name}Counter');
+
+		}
+
+		addOnload(init{name}Counter);
+
+		function clear{name}({name}Field) {
+
+			if ({name}Field.value == "") {name}Field.value = '';
+
+		}
+
+	</script>
+
+	<textarea name="{name}" id="{name}" style="height:104px;" tabindex="2" rows="5" onFocus="clear{name}(this); characterCounter('{name}', {maxlen}, '{name}Counter');" onKeyUp="characterCounter('{name}', {maxlen}, '{name}Counter');">{value}</textarea>
+ 	</tr>
+   <!-- end_textarea -->
+   <!-- end_fields_text -->
+   </table>
+ 	<table border="0" cellpadding="0" cellspacing="0" width="100%">
+   {l_try_our} <a href="#" onclick="javascript:OpenWindow('{url_main}info.php?page=writing_tips&lang={lang_loaded}','650','400');" class="pri_text_bold"><b>{l_writing_tips}</b></a>.</td>
+   <!-- begin_essays1_text -->
+    <tr>
+		<td class="body_tiny" valign="top" style="padding:15px 0 0;">
+            {l_all_essays}
+        </td>
+    </tr>
+    <!-- end_essays1_text -->
+    <tr>
+		<td class="body_tiny" valign="top" style="padding:15px 0 0;">
+			{l_please_do_not}:
+
+			<table border="0" cellpadding="0" class="head_in" cellspacing="0" style="margin-top: 15px;"><tr>
+
+				<td>
+
+					<table border="0" cellpadding="0" cellspacing="0" class="body_tiny">
+
+						<tr style="padding-bottom: 2px;">
+
+							<td style="padding-right: 6px;" valign="middle"><img src="{url_tmpl_main}images/bullet-header.gif" width="4" height="4" alt="" border="0"></td>
+
+							<td valign="middle" class="body_tiny">{l_email_addresses}</td>
+
+						</tr><tr style="padding-bottom: 2px;">
+
+							<td valign="middle"><img src="{url_tmpl_main}images/bullet-header.gif" width="4" height="4" alt="" border="0"></td>
+
+							<td valign="middle" class="body_tiny">{l_im_screen_names}</td>
+
+
+					</table>
+
+				</td>
+
+				<td style="padding-left: 20px;">
+
+					<table border="0" cellpadding="0" cellspacing="0" class="body_tiny">
+
+						</tr><tr style="padding-bottom: 2px;">
+
+							<td valign="middle"><img src="{url_tmpl_main}images/bullet-header.gif" width="4" height="4" alt="" border="0"></td>
+
+							<td valign="middle" class="body_tiny">{l_phone_numbers}</td>
+
+						</tr>
+
+
+                        <tr style="padding-bottom: 2px;">
+
+							<td style="padding-right: 6px;" valign="middle"><img src="{url_tmpl_main}images/bullet-header.gif" width="4" height="4" alt="" border="0"></td>
+
+							<td valign="middle" class="body_tiny">{l_coarse_language}</td>
+
+						</tr>
+
+
+
+					</table>
+
+				</td>
+
+                <td style="padding-left: 20px;">
+                <table border="0" cellpadding="0" cellspacing="0" class="body_tiny">
+                <tr style="padding-bottom: 2px;">
+
+							<td valign="middle" style="padding-right: 6px;"><img src="{url_tmpl_main}images/bullet-header.gif" width="4" height="4" alt="" border="0"></td>
+
+							<td valign="middle" class="body_tiny">{l_urls}</td>
+
+						</tr><tr style="padding-bottom: 2px;">
+
+							<td valign="middle"><img src="{url_tmpl_main}images/bullet-header.gif" width="4" height="4" alt="" border="0"></td>
+
+							<td valign="middle" class="body_tiny">{l_home_address}</td>
+
+						</tr>
+                </table>
+                </td>
+
+			</tr></table>
+
+		</td>
+
+	</tr>
+    <!-- begin_essays2_text -->
+    <tr><td style="padding:15px 0 0; font-weight:bold;"><img src="{url_tmpl_main}images/dang.gif" /> {l_please_note_that_approval_may_take_up_to_24_hours}</td></tr>
+    <!-- end_essays2_text -->
+    </table>
+    <!-- end_basic_fields_text -->
+	<div class="header_big" style="padding-top:20px; padding-bottom:20px;"><img src="{url_tmpl_main}images/account.png" class="png" align="absmiddle" alt="" width=48 height=48> {l_account_information}</div>
+
+
+
+					<div class="line_ch" style="padding:12px 12px 8px;">
+                    <table border="0" class="acc_i" cellpadding="0" cellspacing="0" width="100%"><tr>
+
+						<td valign="top" style="padding-right: 10px;">
+
+							<table class="body_text" border="0" cellpadding="0" cellspacing="0">
+
+								<tr>
+
+									<td style="padding:0 5px 10px 0;"><b>{l_username}:</b></td>
+                                    <!-- begin_name_edit_on -->
+                                        	<td><input type="text" name="user_name" value="{name}" style="width: 149px; font-size:12px;" size="35"></td>
+                                    <!-- end_name_edit_on -->
+                                    <!-- begin_name_edit_off -->
+                                        <td class="body_text">{name}</td>
+                                    <!-- end_name_edit_off -->
+                                    <!-- begin_name_error -->
+                                    <td class="body_text"><img src="{url_tmpl_main}images/danger.png" /></td>
+                                    <!-- end_name_error -->
+								</tr>
+                                <!-- begin_orientation_edit_off -->
+                                <tr>
+									<td style="padding:0 5px 10px 0;"><b>{l_orientation}:</b></td>
+									<td class="body_text">{orientation_value}</td>
+								</tr>
+                                <!-- end_orientation_edit_off -->
+
+                                <!-- begin_const -->
+                                <tr>
+									<td style="padding:0 5px 10px 0;"><b>{field}:</b></td>
+									<td class="body">
+                                        <select class="input" style="width: 165px;" name="{name}">
+                                                {options}
+                                        </select>
+                                    </td>
+								</tr>
+                                <!-- end_const -->
+
+                                <!-- begin_p_orientations -->
+                                <tr>
+                                    <td style="padding:0 5px 10px 0;"><b style="margin-top: -3px; display: block;">{l_im_looking_for}:</b></td>
+                                    <td class="body">
+                                        <!-- begin_p_orientation -->
+                                        <div class="one_checkbox">
+                                        <label style="line-height: 14px;">
+                                            <input id="p_orientation_{id}" name="{name}[]" value="{id}" {checked} type="checkbox">
+                                            <span style="display: inline-block; position: relative; top: -2px;">{title}</span>
+                                        </label>
+                                        </div>
+                                        <!-- end_p_orientation -->
+                                    </td>
+                                </tr>
+                                <!-- end_p_orientations -->
+                                <!-- begin_looking_your_orientation -->
+                                <tr>
+                                    <td style="padding:0 5px 10px 0;"><b style="margin-top: -3px; display: block;">{l_im_looking_for}:</b></td>
+                                    <td class="body">
+                                        <div style="position: relative; top: -3px; left:1px;">{name}</div>
+                                    </td>
+                                </tr>
+                                <!-- end_looking_your_orientation -->
+
+                                <tr>
+
+									<td style="padding:0 5px 10px 0; line-height: 18px;"><b>{l_date_of_birth}:</b></td>
+
+									<td><table><tr><td><select name="month" style="width:68px;" onChange="updateDay('month','profile','year','month','day')">{month_options}</select></td><td><select style="width:42px;" name="day">{day_options}</select></td><td><select style="width:54px;" name="year" onChange="updateDay('year','profile','year','month','day')">{year_options}</select></td></tr></table></td>
+                                    <!-- begin_birthday_error -->
+                                    <td class="body_text"><img src="{url_tmpl_main}images/danger.png" /></td>
+                                    <!-- end_birthday_error -->
+								</tr>
+
+							</table>
+
+						</td>
+
+
+
+						<td class="body_text" align="right" valign="top">
+
+								<table border="0" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td style="padding:0 5px 10px 0; text-align:left; line-height: 18px;"><b>{l_email}:</b></td>
+                                        <td align="right" valign="top"><input type="text" name="email" value="{mail}" style="width: 132px; font-size:12px;" size="35"></td>
+                                        <!-- begin_email_error -->
+                                        <td class="body_text"><img src="{url_tmpl_main}images/danger.png" /></td>
+                                        <!-- end_email_error -->
+                                    </tr>
+									<tr>
+										<td style="padding:0 5px 10px 0; text-align:left; line-height: 18px;"><b>{l_country}:</b></td>
+										<td align="right" valign="top">
+											<select style="width: 145px;" name="country" id="country" onchange="show_load_animation(1); xajax_states(country.value, 0)">
+											{country_options}
+											</select>
+										</td>
+                                    <!-- begin_country_error -->
+                                    <td class="body_text"><img src="{url_tmpl_main}images/danger.png" /></td>
+                                    <!-- end_country_error -->
+									</tr>
+
+									<tr>
+										<td style="padding:0 5px 10px 0; text-align:left; line-height: 18px;"><b>{l_state_province}:</b></td>
+										<td align="right" valign="top">
+											<img id="load_animation1" style="visibility:hidden;" src="{url_tmpl_main}images/load_animation.gif">&nbsp;
+                                            <select name="state" style="width: 145px;" id="state" onchange="show_load_animation(2); xajax_cities(state.value, 0)">
+											<option value="0">{l_select_all}</option>
+											{state_options}
+											</select>
+                                        <!-- begin_state_error -->
+                                        <td class="body_text"><img src="{url_tmpl_main}images/danger.png" /></td>
+                                        <!-- end_state_error -->
+                                            </td>
+									</tr>
+
+									<tr>
+										<td style="padding:0 5px 10px 0; text-align:left; line-height: 18px;">
+											<label  for="CITY"><b>{l_city}:</b></label>
+										</td>
+										<td align="right" valign="top">
+											<img id="load_animation2" style="visibility:hidden;" src="{url_tmpl_main}images/load_animation.gif">&nbsp;
+                                            <select name="city" id="city" style="width: 145px;">
+											<option value="0">{l_select_all}</option>
+											{city_options}
+											</select>
+                                        <!-- begin_city_error -->
+                                        <td class="body_text"><img src="{url_tmpl_main}images/danger.png" /></td>
+                                        <!-- end_city_error -->
+                                            </td>
+</tr>
+<tr>
+<td style="padding:0 5px 10px 0; text-align:left;"><!-- begin_paid_site --><b>{l_account}</b><!-- end_paid_site --></td>
+<td style="padding-left:24px" align=left>
+<!-- begin_payment_free -->
+{payment_free}
+<!-- end_payment_free -->
+
+<!-- begin_payment_paid -->
+{payment_paid}
+<!-- end_payment_paid -->
+
+<!-- begin_payment_free_access -->
+<b>{payment_free_access}</b>
+<!-- end_payment_free_access -->
+
+</td>
+
+									</tr></table>
+
+
+				</td></tr></table>
+                </div>
+
+	<div style="padding:15px 12px; text-align:right;"><input type="button" value="{l_update_my_profile}" onClick="submitEditProfileBasicForm();" class="button" style=" padding-left: 5px; padding-right: 5px; cursor: hand; width:145px;" title="{l_update_my_profile}" onMouseOver="window.status='{l_update_my_profile}'; return true;" onMouseOut="window.status=''; return true;"></div>
+
+</form>
+
+
+<!-- begin_couple -->
+<div class="line_ch" style="padding:12px;">
+
+	<!-- begin_couple_request -->
+
+		<form method="POST" action="{url_main}profile.php">
+
+		<input type="hidden" name="cmd" value="couple_request" />
+
+		<table width="100%">
+            <tr>
+                <td><b style="position:relative; top:3px; margin-right:5px;">{l_i_am_couple}</b></td>
+
+                <td><input type="text" name="couple_mail" value="{couple_mail}" style="width: 200px; font-size:12px;" /></td>
+                <!-- begin_couple_error -->
+                    <td class="body_tiny"><img src="{url_tmpl_main}images/danger.png" /></td>
+                <!-- end_couple_error -->
+                <td align=right><input type="submit" value="{l_update_my_status}" class="button" style="width:145px; margin-left:20px;"></td>
+            </tr>
+        </table>
+
+		</form>
+    <br />
+	<!-- end_couple_request -->
+
+	<!-- begin_couple_request_cancel -->
+
+		<form method="POST" action="{url_main}profile.php">
+
+		<input type="hidden" name="cmd" value="couple_request_cancel" />
+
+		<b>{l_pending_couple_by}</b> {couple_name}<br /><br />
+
+		<input type="submit" value="{l_cancel_request}" class="button" style="padding-left: 5px; padding-right: 5px; cursor: hand;"><br/><br/>
+
+		</form>
+
+	<!-- end_couple_request_cancel -->
+
+	<!-- begin_couple_approve -->
+
+		<b>{l_pending_couple}</b> {couple_name}<br /><br />
+
+		<table><tr><td>
+
+		<form method="POST" action="{url_main}profile.php">
+
+		<input type="hidden" name="cmd" value="couple_approve" />
+
+		<input type="submit" value="{l_approve_couple}" class="button" style=" padding-left: 5px; padding-right: 5px; cursor: hand;">
+
+		</form>
+
+		</td><td>
+
+		<form method="POST" action="{url_main}profile.php">
+
+		<input type="hidden" name="cmd" value="couple_query_cancel" />
+
+		<input type="submit" value="{l_decline_couple}" class="button" style="padding-left: 5px; padding-right: 5px; cursor: hand;"><br/><br />
+
+		</form>
+
+		</td></tr></table>
+
+	<!-- end_couple_approve -->
+
+	<!-- begin_couple_cancel -->
+
+		<form method="POST" action="{url_main}profile.php">
+
+		<input type="hidden" name="cmd" value="couple_cancel" />
+
+		<b>{l_you_are_couple}</b> {couple_name}<br /><br />
+
+		<input type="submit" value="{l_cancel_couple}" class="button" style="padding-left: 5px; padding-right: 5px; cursor: hand;">
+
+		</form>
+
+	<!-- end_couple_cancel -->
+
+</div>
+<!-- end_couple -->
+<div class="nav_title">
+    <!-- begin_yes_settings -->
+        <b>{l_basic}</b>&nbsp;&nbsp;
+        <!-- begin_yes_personal -->
+            <a href="{url_main}profile_personal.php"><b>{l_personal}</b></a>&nbsp;&nbsp;
+        <!-- end_yes_personal -->
+        <!-- begin_yes_partner -->
+            <a href="{url_main}profile_partner.php"><b>{l_partner}</b></a>
+        <!-- end_yes_partner -->
+    <!-- end_yes_settings -->
+</div>
+</div>
+</div>
+    <div class="userinfo-links"></div>
+</div>
+{footer}
+
+

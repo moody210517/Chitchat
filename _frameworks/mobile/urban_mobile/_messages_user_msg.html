@@ -1,0 +1,98 @@
+<!-- begin_message_list -->
+
+    <!-- begin_messages_block_start -->
+    <div class="item">
+        <div class="bl">
+            <div class="pic" style="opacity: 0;">
+                <!-- begin_messages_block_start_photo -->
+                <a data-user-id="{messages_block_start_from_user}" class="im_open to_profile" href="">
+                    <img class="im_photo_user" src="{url_files}{messages_block_start_photo_url}" alt=""  onload="$(this).closest('div').fadeTo(200,1);" />
+                </a>
+                <!-- end_messages_block_start_photo -->
+            </div>
+            <div class="message">
+                <div class="msg im_msg_box">
+    <!-- end_messages_block_start -->
+
+    <!-- begin_message -->
+    <div id="msg_{message_id}" data-id="{message_id}" data-msg-user-id="{message_user_id}" data-to-user-id="{message_to_user_id}" data-sp="{message_user_sp}" class="im_msg_one">
+        <!-- begin_message_text -->
+        <div class="txt {message_whose} messages_msg">
+            {message}
+            <!-- begin_message_original_text -->
+            <div class="show_original_message" onclick="messages.showOriginalMessage(this);return false;"></div>
+            <div class="original_message">
+                {message_original}
+            </div>
+            <!-- end_message_original_text -->
+
+            <!-- begin_message_block -->
+            {l_you_are_in_block_list}
+            <!-- end_message_block -->
+        </div>
+        <!-- end_message_text -->
+
+        <!-- begin_message_gift -->
+        <div class="{message_whose} messages_gift messages_msg">
+            <div class="gift">
+                <div class="gift_pic" style="opacity: 0;">
+                <img src="{gift_img_url}" alt="" onload="$(this).closest('div').fadeTo(1,1);">
+                </div>
+                <!-- begin_message_gift_text -->
+                <div class="txt">
+                    <p>{gift_text}</p>
+                </div>
+                <!-- end_message_gift_text -->
+            </div>
+        </div>
+        <!-- end_message_gift -->
+
+        <div class="time_ago_{message_id} time_{message_whose}">
+            <img id="msg_read_{message_id}" class="msg_read <!-- begin_read -->hide<!-- end_read -->"  src="{url_tmpl_mobile}images/icon_msg_check.png" width="10" height="7" alt="">
+            {message_date}
+        </div>
+
+        <div class="cl"></div>
+    </div>
+    <script>
+        messages.messagesCacheAdd('{message_to_user_id}', '{message_id}', '{message_user_sp}');
+        <!-- begin_message_new -->
+        //mobileAppLoaded = true;
+        if(mobileAppLoaded) {
+            //console.log(appTitle, '{message_user_id}', '{message_notification_text}');
+            schedule(appTitle, '{message_user_id}', '{message_notification_text}');
+        }
+        <!-- end_message_new -->
+    </script>
+    <!-- end_message -->
+
+    <!-- begin_messages_block_end -->
+            </div>
+        </div>
+        <div class="cl"></div>
+        </div>
+    </div>
+    <!-- end_messages_block_end -->
+
+<!-- end_message_list -->
+
+<!-- begin_update_messages -->
+<script>
+<!-- begin_show_read_marks -->
+messages.setReadMsg('{show_read_marks}'*1);
+<!-- end_show_read_marks -->
+</script>
+<!-- end_update_messages -->
+
+<script>
+<!-- begin_update_writing_users -->
+messages.updateWritingUser();
+<!-- end_update_writing_users -->
+<!-- begin_delete_writing_users -->
+messages.deleteWritingUser();
+<!-- end_delete_writing_users -->
+
+<!-- begin_messages_existing_ajax_DISABLED -->
+messages.checkExistenceMessagesOneChat('{existing_messages_DISABLED}');
+<!-- end_messages_existing_ajax_DISABLED -->
+</script>

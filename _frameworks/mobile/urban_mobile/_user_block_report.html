@@ -1,0 +1,29 @@
+<!-- begin_block_report -->
+<div id="tip_report" class="tooltip_settings">
+    <div id="tip_report_action" class="bl_choose">
+		<!-- begin_block_report_friend_add -->
+        <div id="tip_report_action_friend" onclick="cprofile.actionFriend();" data-action="{block_report_friend_action}" class="item">
+            <div class="txt" id="tip_report_friend">{block_report_friend_title}</div>
+        </div>
+        <!-- end_block_report_friend_add -->
+        <!-- begin_block_report_blocked -->
+        <div id="tip_report_action_blocked" onclick="cprofile.blockedUser();" data-action="blocked_user" class="item">
+            <div class="txt" id="tip_report_blocked_user">{block_report_blocked_title}</div>
+        </div>
+        <!-- end_block_report_blocked -->
+        <div id="tip_report_action_user" onclick="cprofile.reportUser('user');" class="item">
+            <div class="txt">{l_tip_report_user}</div>
+        </div>
+
+        <div id="tip_report_action_photo" onclick="cprofile.reportUser('photo');" class="item" style="display:none;">
+            <div class="txt">{l_tip_report_photo}</div>
+        </div>
+    </div>
+    <div id="tip_report_send" class="bl_choose">
+        <textarea class="placeholder" placeholder="{a_add_a_message_for_the_administrator}"></textarea>
+        <div class="item send">
+            <div onclick="cprofile.sendReport($(this));" class="txt">{l_submit_your_report}</div>
+        </div>
+    </div>
+</div>
+<!-- end_block_report -->

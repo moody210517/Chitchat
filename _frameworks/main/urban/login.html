@@ -1,0 +1,78 @@
+{header}
+<script>
+    alertHtmlArea = '.bl_frm';
+</script>
+            <div class="bl_frm frm_top">
+
+                <div class="part_l <!-- begin_social_login_no_class -->no_dot<!-- end_social_login_no_class -->">
+
+                    <div class="bl_link_back" >
+                        <a href="{url_from}">{l_go_back}</a>
+                    </div>
+
+                    <div class="l">
+                        <div class="title">
+                            <h2>{l_log_in_to}</h2>
+                            <p>{l_please_enter_your_sign_in_details}</p>
+                            <p><a href="{url_main}join.php">{l_sign_up_here}</a> {l_if_you_are_not_registered_yet}</p>
+                        </div>
+
+                        <form id="form_login" class="form_login" action="{url_main}ajax.php">
+                            <input type="hidden" name="cmd" value="login" />
+                            <input type="hidden" name="ajax" class="ajax" value="0" />
+                            <div class="frm frm_login">
+                                <div class="cont">
+                                    <label>{l_email_name}:</label>
+                                    <input id="form_login_user" name="user" class="inp" type="text" />
+
+                                    <div class="cl"></div>
+
+                                    <label>{l_password}:</label>
+                                    <input id="form_login_pass" name="password" class="inp" type="password" />
+                                </div>
+                                <div class="foot">
+                                    <div class="fl_left">
+                                        <input id="Remember" name="remember" value="1" type="checkbox" value="1" checked="checked"/>
+                                        <label for="Remember">{l_remember_me}</label>
+                                    </div>
+
+                                    <input type="submit" class="btn-login btn blue fl_right" value="{l_log_in}" />
+                                    <div class="cl"></div>
+                                </div>
+                            </div>
+
+                            <div class="infa">
+                                <a href="{url_main}{url_page_forget_password}">{l_forgot_password}</a>
+                            </div>
+
+                        </form>
+                    </div>
+
+
+                </div>
+
+
+				<!-- begin_social_login -->
+				<div class="part_r">
+					<ul class="bl_social_buttons bl_social_buttons_register">
+						<!-- begin_social_login_item -->
+                        <li class="login_{social_login_item_type}"><a href="{social_login_item_url}">&nbsp;</a></li>
+						<!-- end_social_login_item -->
+                    </ul>
+					<div class="vertical_dot_txt">{l_or}</div>
+				</div>
+				<!-- end_social_login -->
+            </div>
+
+            <div class="empty"></div>
+
+<!-- begin_demo -->
+<script>
+$(document).ready(function() {
+    $('#form_login_user').val('{login_user}');
+    $('#form_login_pass').val('{login_password}');
+});
+</script>
+<!-- end_demo -->
+
+{footer}

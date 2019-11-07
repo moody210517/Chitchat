@@ -1,0 +1,87 @@
+{header}
+<script language="javascript" type="text/javascript">
+$(function(){
+   $('#country').location({first_option_state: '{j_choose_a_state}', first_option_city: '{j_choose_a_city}'});
+   $('#state').location({method: 'cities', first_option_city: '{j_choose_a_city}'});
+});
+
+function  validateprofile() {
+    var error = '';
+    if ($('#state').val() == 0)
+        error = '{l_state_is_required}\r\n' ;
+    if ($('#city').val() == 0)
+        error += '{l_city_is_required}\r\n';
+    if (!checkEmail($('#email').val()))
+        error += '{l_incorrect_email}\r\n';
+    if (error != '') {
+        alert(error);
+    } else {
+        $("form").submit();
+    }
+}
+</script>
+{profile_menu}
+
+<form name="profile" method="POST" action="{url_main}profile_info.php?cmd=update">
+
+<tfoot>
+	<tr>
+		<td align="right">
+			<!-- begin_changes_saved -->{l_changes_saved}&nbsp;<!-- end_changes_saved -->
+			<a href="#" onclick="return validateprofile();"  class="orange_btn btn">{l_save_changes}</a>
+		</td>
+	</tr>
+</tfoot>
+
+<tbody>
+	<tr>
+		<td class="content addgroup">
+			<table class="list" cellspacing="0" cellpadding="0">
+			<tr>
+				<th><label>{l_country}:</label></th>
+				<td>
+                    <select name="country" id="country">{country_options}</select>
+                </td>
+			</tr>
+            <tr>
+				<th><label>{l_state_province}:</label></th>
+				<td>
+                    <select name="state" id="state">
+ 						{state_options}
+					</select>
+                </td>
+			</tr>
+            <tr>
+				<th><label>{l_city}:</label></th>
+				<td>
+                    <select name="city" id="city">
+ 						{city_options}
+					</select>
+                </td>
+			</tr>
+			<tr class="haspad">
+				<th><label>{l_birthday}:</label></th>
+				<td><select class="month" name="month" onChange="updateDay('month','profile','year','month','day')">{month_options}</select><div class="spc"></div><select class="day" name="day">{day_options}</select><select class="year" name="year" onChange="updateDay('year','profile','year','month','day')">{year_options}</select></td>
+			</tr>
+			<tr class="hasborder">
+				<th><label>{l_email}:</label></th>
+				<td><input id="email" type="text" name="email"  class="txt" value="{mail}"></td>
+			</tr>
+			</table>
+		</td>
+	</tr>
+</tbody>
+</table>
+</form>
+
+</td></tr></table>
+
+{user_menu}
+
+<!-- begin_error -->
+<script type="text/javascript"><!--
+alert('{error_message}');
+//--></script>
+<!-- end_error -->
+
+{footer}

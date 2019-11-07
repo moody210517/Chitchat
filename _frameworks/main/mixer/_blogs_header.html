@@ -1,0 +1,57 @@
+<link rel="stylesheet" type="text/css" media="all" href="{url_tmpl_main}abkstyle/abkstyle.css{cache_version_param}" />
+<link rel="stylesheet" type="text/css" href="{url_tmpl_main}css/blogs.css{cache_version_param}" />
+<!--[if IE]>
+<link rel="stylesheet" href="{url_tmpl_main}css/blogs_ie.css{cache_version_param}" type="text/css" />
+<![endif]-->
+<script language="javascript" src="{url_tmpl_main}abkstyle/abkstyle.js{cache_version_param}"></script>
+
+    <div class="blogs_new">
+        <div class="blogs_new_head">
+         <script type="text/javascript">
+         function blogs_header_search_on_submit()
+         {
+            query = $("#blogs_header_search input[name='q']").val();
+			 
+            if(($.trim(query) != '')&&(query != '{l_blogs_search_text}'))
+            {
+               return true;
+            }
+
+            alert('{l_blogs_please_enter_what_you_search}');
+        
+        return false;
+        }
+         </script>
+
+            <table>
+                <tr>
+                    <td class="td_l">&nbsp;</td>
+                    <td class="td_c">
+                              <div class="new_mods_head_txt fl_left">
+                          <a href="{url_main}blogs.php" style="font-weight:bold;color:#fff;text-decoration:none;">{l_blogs_blogs} ::</a> {total_posts} {l_blogs_posts}
+                        </div>
+	<form id="blogs_header_search" action="{url_main}blogs_results.php" method="get" onsubmit="return blogs_header_search_on_submit();">
+      					     <div class="blog_input_box1 fl_right"> <input type="button" value="{l_blogs_write_to_blog}" onclick="document.location='{url_main}blogs_write.php'"/></div>
+                       <div class="blog_input_box2 fl_right" style="position:relative;left:-2px;"><input type="submit" value="{l_search}"/></div>                 
+
+	 <div class="blog_input_text_box1 fl_right" style="position:relative;left:-10px;"><input class="no_abk" type="text" value="{topquery}" name="q" onblur="javascript:if(this.value=='')this.value='{l_blogs_search_text}'" onFocus="if(this.value=='{l_blogs_search_text}') this.value=''"/></div>
+	   </form>
+                    </td>
+                    <td class="td_r">&nbsp;</td>
+                </tr>
+            </table>
+
+            <div class="blogs_new_menu_bg">
+                <ul class="blogs_new_menu">
+                    <li><a href="{url_main}blogs_blog.php">{l_blogs_my_blog}</a></li>
+                    <li><a href="{url_main}blogs_collect.php?t=f">{l_blogs_my_friends_blog}</a></li>
+                    <li><a href="{url_main}blogs_collect.php?t=s">{l_blogs_my_subscriptions}</a></li>
+                    <li class="last"><a href="{url_main}blogs_write.php">{l_blogs_write_to_blog}</a></li>
+                </ul>
+            <div class="justify"></div>
+            </div>
+        </div>
+
+        <table class="tb_blogs_new">
+            <tr>
+                <td class="td_main">

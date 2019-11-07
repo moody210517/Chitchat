@@ -1,0 +1,38 @@
+<!-- begin_users_list_item -->
+<div id="profile_visitors_item_{user_id}" class="profile_visitors_item item {id} <!-- begin_border_top -->item_border_top<!-- end_border_top --><!-- begin_border_none -->item_border_none<!-- end_border_none -->">
+    <script>last_id='{profile_visitors_id}';</script>
+    <div class="pic">
+        <a href="{url_main}{user_profile_link}" style="opacity:0;">
+            <img src="{url_files}{photo_r}" onload="$(this).parent().fadeTo(400,1)">
+        </a>
+    </div>
+    <div class="info">
+        <p><strong><a href="{url_main}{user_profile_link}">{name}</a></strong>, {age}, {city}</p>
+        <!-- begin_profile_visitors_new -->
+        <div class="pl_new">{l_new}</div>
+        <!-- end_profile_visitors_new -->
+        <p>{profile_visitor_referer}</p>
+    </div>
+    <div class="visitors_or">
+        <div class="pl_btn <!-- begin_gifts_disabled1 -->not_gift<!-- end_gifts_disabled1 -->">
+            <ul class="visitors">
+                <li><a data-user-id="{user_id}" class="chat show_messages" href="#">{l_chat_nowe}</a></li>
+                <!-- begin_gifts_enabled -->
+                <li><a data-user-id="{user_id}" data-is-blocked-me="{var_is_blocked_me}" class="gift send_user_gift" href="#">{l_give_a_gift}</a></li>
+                <!-- end_gifts_enabled -->
+                <li class="visitors_or_menu">
+                    <a class="or" href="#">{l_or}</a>
+                    <div class="visitors_or_item" >
+                        <ul class="pp_small_decor_tl pp_visitors_funk">
+                            <li><a onclick="confirmDeleteVisitor({user_id}); return false;" class="delete" href="#">{l_remove}</a></li>
+                            <!-- begin_user_lock -->
+                            <li><a onclick="confirmBlockUser({user_id},'block_visitor_user'); return false;" class="block" href="#">{l_block}</a></li>
+                            <!-- end_user_lock -->
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+ </div>
+<!-- end_users_list_item -->

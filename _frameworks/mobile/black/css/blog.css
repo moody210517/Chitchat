@@ -1,0 +1,57 @@
+.tab {border-top:4px solid #634357;background:#634357;}
+.tab thead td {padding:3px 4px 2px 4px;font-size:14px;line-height:16px;color:#fff;background:#921b91;}
+.tab thead th {height:26px;padding:0 4px;vertical-align:middle;font-size:14px;line-height:16px;color:#cc69cb;background:#921b91;text-align:left;white-space:nowrap;}
+.tab thead th.small {text-align:right;font-size:12px;font-weight:normal;text-align:right;}
+.tab thead th a {color:#cc69cb;}
+.tab tfoot td {background:#921b91;}
+.tab thead td a {color:#fff;}
+
+.tab tfoot td.add {width:20%;font-weight:bold;}
+
+.tab .content {padding:0;color:#fff;line-height:27px;}
+.tab .txt,.tab textarea {border:1px solid #d6b0d1;background:#713e64;}
+.tab .btn {color:#68465f;background:#d5cad3 url('../img/btn/purple.gif') repeat-x 0 100%;}
+
+.searchform {width:60%;}
+.searchform .txt {width:60%;margin-right:5px;}
+.form2 {width:85%;}
+.form3 {width:100%;text-align:center;}
+.searchform .btn {width:60px;}
+
+.list {width:100%;line-height:18px;}
+.list th {padding:6px 4px;border-bottom:1px solid #b988b8;color:#cc69cb;font-weight:bold;text-align:left;}
+.list th a {color:#cc69cb;}
+.list td {padding:6px 4px;color:#fff;}
+.list td a {color:#fff;}
+.list td.yellow a {color:#eade9b;}
+.list td b {color:#a419a3;}
+.list td b a {color:#eade9b !important;}
+
+
+.list .head th {border:none;font-size:14px;line-height:19px;color:#bc61bb;background:#921b91;}
+
+.list td.readmessage {height:176px;line-height:24px;}
+.list th.title {width:60%;}
+.list th.small {text-align:right;font-size:12px;font-weight:normal;text-align:right;color:#bc61bb;}
+.list td.readmessage b {color:#fff;}
+
+.alert .alertbg {border:1px solid #8f5087;background:#934f8d url('../img/block/purple.png') repeat-x 0 -2px;}
+.alert .btn {color:#eade9b;}
+
+.addblog {text-align:center;}
+.addblog .txt,.addblog textarea {width:95%;margin:0 auto;display:block;}
+.addblog .txt {margin-top:4px;margin-bottom:8px;}
+.addblog textarea {height:176px;}
+
+.addcomment {text-align:center;}
+.addcomment p {text-align:left;}
+.addcomment textarea {width:95%;height:76px;margin:0 auto;}
+
+.back_btn {width:65px;}
+.addcomm_btn {width:85px;}
+.comm_btn {width:115px;}
+.create_btn {width:115px;}
+.mygroup_btn {width:100px;}
+.join_btn {width:90px;}
+.newpost_btn {width:120px;}
+.invite_btn {width:80px;}

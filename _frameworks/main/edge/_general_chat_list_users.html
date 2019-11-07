@@ -1,0 +1,13 @@
+<div id="general_chat_users" class="dialog_users">
+    <!-- begin_list_user -->
+    <div id="general_chat_user_{list_user_user_id}" class="user_info">
+        <div class="pic"><a target="_blank" href="{url_main}{list_user_profile_link}" title="{list_user_name}"><img alt="" src="{url_files}{list_user_photo}"></a></div>
+        <div class="info">
+            <a target="_blank" href="{url_main}{list_user_profile_link}" title="{list_user_name}">{list_user_name}</a>
+            <div class="user_city text-overflow" title="{list_user_city}, {list_user_age}">{list_user_city}, {list_user_age}</div>
+        </div>
+        <div class="cl"></div>
+    </div>
+    <!-- end_list_user -->
+    <script>updateCounter('#narrow_general_chat_count','{number_users_visitors}');</script>
+</div>

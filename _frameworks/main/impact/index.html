@@ -1,0 +1,48 @@
+{header}
+    <div class="bl_join_done">
+        <div class="slogan">{l_join_the_best_dating_site_in_the_world}</div>
+        <form id="frm_join_index_step_1" action="{url_main}{url_page_join}" method="POST">
+            <div class="bl_form bl_form_index">
+                <!-- begin_title_join -->
+                <label>{l_i_am}</label>
+                <!-- end_title_join -->
+                <!-- begin_field_sexuality -->
+                <div class="bl_select">
+                <select name="p_sexuality" class="select_main select_index">
+                {options_sexuality}
+                </select>
+                </div>
+                <!-- end_field_sexuality -->
+                <!-- begin_field_orientation -->
+                <div class="bl_select">
+                    <select id="bl_join_done_orientation" name="orientation" class="select_main select_index">
+                    {options_orientation}
+                    </select>
+                    <div id="orientation_error" class="error to_hide">{l_orientation_is_required}</div>
+                </div>
+                <!-- end_field_orientation -->
+                <button type="submit" class="btn pink">{l_continue}</button>
+                <script>if(!$('.select_index')[0])$jq('.bl_form_index').addClass('show');</script>
+            </div>
+        </form>
+        <script>
+        $jq('#bl_join_done_orientation').styler({
+            onSelectOpened:function(){
+                $('#orientation_error').addClass('to_hide');
+            }
+        })
+        $('#frm_join_index_step_1').submit(function(){
+            var $frm=$(this),isError=false;
+            $('select',$frm).each(function(){
+                if(!this.value || this.value == 0){
+                    isError=true;
+                    $('#'+this.name+'_error').removeClass('to_hide');
+                }
+            })
+            if(isError){
+                return false;
+            }
+        })
+        </script>
+    </div>
+{footer}

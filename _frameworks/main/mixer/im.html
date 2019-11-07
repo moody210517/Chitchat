@@ -1,0 +1,28 @@
+  <div class="im_oryx" onmousedown="xajax_im_save_position_input({user_id});" id="xajax_im_open_{user_id}" style="left: {x}px; top: {y}px; z-index: {z};">
+	<div class="im_top" title="{l_chat_with} {name}">
+		<img src="{url_tmpl_main_window}images/im/btn_close.png" alt="{l_close}" onclick="xajax_im_close({user_id});" />
+		<div id="xajax_im_head_{user_id}">{l_chat_with} {name}</div>
+	</div>
+	<div class="im_body">
+		<div id="scrollbarY" class="scrollbarY_{user_id}" onclick="xajax_im_save_position_input({user_id});">
+			<div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+			<div class="viewport">
+				<div class="overview">
+					<div id="xajax_im_msgs_{user_id}"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="im_bottom_1"></div>
+	<div class="im_bottom_2">
+		<form id="sent_msg_{user_id}" name="im_form_{user_id}" onsubmit="document.im_form_{user_id}.msg.value=''; return false;">
+			<input type="hidden" name="to_user" value="{user_id}" />
+                         <textarea id="msg_field_{user_id}" class="msg_field" name="msg" onclick="xajax_im_save_position_input({user_id});" style="overflow: hidden; word-wrap: break-word; resize: none; height: 15px;"></textarea>
+		</form>
+	</div>
+	<div class="im_bottom_3"></div>
+</div>
+<script>
+$("#msg_field_{user_id}").keydown(doOnEnter(im_sent)).autosize()
+  .on('input propertychange', function(){status_writing[{user_id}] = parseInt((new Date())/1000)});
+</script>

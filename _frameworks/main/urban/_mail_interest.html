@@ -1,0 +1,45 @@
+<script>offset='no';isNewWink='{wink_is_new}'*1;countWink='{wink_count}';</script>
+<!-- begin_users_list_pages -->
+<!-- begin_users_list_next_page -->
+<script>offset='{offset}';</script>
+<!-- end_users_list_next_page -->
+<!-- end_users_list_pages -->
+<!-- begin_users_list_item -->
+<div id="profile_item_{user_id}" class="profile_visitors_item item <!-- begin_border_top -->item_border_top<!-- end_border_top --><!-- begin_border_none -->item_border_none<!-- end_border_none -->">
+    <script>last_id='{wink_id}';</script>
+    <div class="pic">
+        <a href="{url_main}{user_profile_link}" style="opacity:0;">
+            <img src="{url_files}{photo_r}" onload="$(this).parent().fadeTo(400,1)">
+        </a>
+    </div>
+    <div class="info">
+        <p <!-- begin_wink_old -->class="old_wink"<!-- end_wink_old -->><strong><a href="{url_main}{user_profile_link}">{name}</a></strong>, {age}, {city}</p>
+        <!-- begin_wink_status -->
+        <div class="pl_new">{l_new}</div>
+        <!-- end_wink_status -->
+        <p>{wink_time_ago} | <a onclick="Profile.sendWink('{user_id}'); return false;" href="#">{l_wink}</a></p>
+    </div>
+    <div class="visitors_or">
+        <div class="pl_btn">
+            <ul class="visitors">
+                <li><a data-user-id="{user_id}" class="chat show_messages" href="#">{l_chat_nowe}</a></li>
+                <!-- begin_gifts_enabled -->
+                <li><a data-user-id="{user_id}" data-is-blocked-me="{var_is_blocked_me}" class="gift send_user_gift" href="#">{l_give_a_gift}</a></li>
+                <!-- end_gifts_enabled -->
+                <li class="visitors_or_menu additional_menu_{user_id}">
+                    <a class="or" href="#">{l_or}</a>
+                    <div class="visitors_or_item" >
+                        <ul class="pp_small_decor_tl pp_visitors_funk">
+                            <li><a onclick="Profile.sendWinkFromMenuPage('{user_id}'); return false;" class="wink_page" href="#">{l_wink}</a></li>
+                            <li class="li_wink_delete"><a onclick="confirmRemoveWinkUser({user_id}); return false;" class="wink_delete" href="#">{l_remove}</a></li>
+                            <!-- begin_user_lock -->
+                            <li><a onclick="confirmBlockUser({user_id},'block_visitor_user'); return false;" class="block" href="#">{l_block}</a></li>
+                            <!-- end_user_lock -->
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+ </div>
+<!-- end_users_list_item -->

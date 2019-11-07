@@ -1,0 +1,63 @@
+<!-- begin_message_list -->
+    <!-- begin_message -->
+    <div id="im_open_msg_{message_id}" class="bl_im_msg_one" data-send="{message_send}" data-id="{message_id}" data-msg-user-id="{message_user_id}" data-to-user-id="{message_to_user_id}">
+        <script class="in_content">imChats.messagesCacheAdd('{message_to_user_id}', '{message_id}', '{message_user_sp}');</script>
+        <!-- begin_message_answer -->
+        <div class="bl_msg_check">
+            <div class="top_msg_check">
+                <div class="msg_check im_msg_user <!-- begin_message_answer_info_arrow -->msg_arrow<!-- end_message_answer_info_arrow -->" title="" data-date="{message_date}">
+                    <p>{message}<!-- begin_message_block --><span style="color:red;">{l_you_are_in_block_list}</span><!-- end_message_block --></p>
+                    <div id="msg_read_{message_id}" data-mid="{message_id}" class="icon_check_msg <!-- begin_read_hide -->hide<!-- end_read_hide -->"></div>
+                    <!--<div class="upgrade_msg hide">{l_upgrade_to_see_if_read}</div>-->
+                </div>
+                <!-- begin_message_answer_info -->
+                <div class="pic_msg_check pic_user">
+                    <a href="{message_answer_info_profile_url}">
+                        <img onload="$(this).parent('a').addClass('show')" src="{url_files}{message_answer_info_photo_url}" alt="" title="" />
+                    </a>
+                </div>
+                <!-- end_message_answer_info -->
+            </div>
+        </div>
+        <!-- end_message_answer-->
+        <!-- begin_message_responder -->
+        <div class="top">
+            <!-- begin_message_responder_info -->
+            <div class="pic pic_user">
+                <a href="{message_responder_info_profile_url}">
+                    <img onload="$(this).parent('a').addClass('show')" src="{url_files}{message_responder_info_photo_url}" alt="" title="{message_responder_info_name}, {message_responder_info_age}" />
+                </a>
+            </div>
+            <!-- end_message_responder_info -->
+            <div class="msg im_msg_user <!-- begin_message_responder_info_arrow -->msg_arrow<!-- end_message_responder_info_arrow -->" title="" data-date="{message_date}">
+                {message}
+                <!-- begin_message_original_text -->
+                <div class="bl_original_message">{l_the_message_was_autotranslated}
+                    <div class="show_original_message" onclick="imChats.showOriginalMessage($(this));">{l_show_original_message}</div>
+                    <div class="original_message">{message_original}</div>
+                </div>
+                <!-- end_message_original_text -->
+            </div>
+        </div>
+        <!-- end_message_responder -->
+        <!-- begin_message_set_credits -->
+        <script>updateCounterText('#credits_balans_header', '{new_credits_balans}');</script>
+        <!-- end_message_set_credits -->
+    </div>
+    <!-- end_message -->
+<!-- end_message_list -->
+<!-- begin_update_messages -->
+<div class="script"  style="display:none;">
+    <script>
+        <!-- begin_show_read_marks -->
+        imChats.showReadMsg({show_read_marks});
+        <!-- end_show_read_marks -->
+        <!-- begin_update_writing_users -->
+        imChats.updateWritingUsers({update_writing_users});
+        <!-- end_update_writing_users -->
+        <!-- begin_delete_writing_users -->
+        imChats.deleteWritingUsers({delete_writing_users});
+        <!-- end_delete_writing_users -->
+    </script>
+</div>
+<!-- end_update_messages -->

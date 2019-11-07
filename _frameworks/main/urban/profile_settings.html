@@ -1,0 +1,731 @@
+{header}
+<script>
+alertHtmlArea='.column_main';
+$(function(){
+    alertHtmlArea = '.column_main';
+    var box_profile_settings=$('#box_profile_settings'),
+        selection=$('.show_fields',box_profile_settings),
+        tip1=$('<div class="pp_tip_small" />').hide(),
+        tip2=$('<div class="pp_tip_small" />').hide(),
+        tip3=$('<div class="pp_tip_small" />').hide(),
+
+        frm_profile_settings=$('#frm_profile_settings'),
+        btn_save_settings=$('.save_settings',frm_profile_settings),
+        settings_loader=$('.settings_loader',frm_profile_settings),
+
+        cur_el,ajax=1,settings={},isAllowedInvisibleMode='{is_allow_invisible_mode}'*1;
+
+    $('.styler_settings', frm_profile_settings).styler({singleSelectzIndex: '2'});
+
+    /* Update settings */
+    selection.on('click',function(e){
+        if(this.id==3&&!isAllowedInvisibleMode){
+            window.location.href=url_main+'upgrade.php';
+            return false;
+        }
+        selection.removeClass('selected');
+        $(this).addClass('selected');
+        $('.fields',box_profile_settings).hide();
+        $('#fields_'+this.id).show();
+        $('#box_profile_settings .pp_tip_small').stop().hide();
+        box_profile_settings.find('input.inp').removeClass('wrong').val('');
+    })
+
+    function setSettingsInfo(){
+        $('input:radio:checked, select', frm_profile_settings).each(function(){
+            settings[this.name]=this.value;
+        })
+    }
+
+    setSettingsInfo();
+
+    function isModifiedSettingsInfo(){
+        var is=0;
+        $('input:radio:checked, select', frm_profile_settings).each(function(){
+            is|=(this.value!=settings[this.name])
+        })
+        return is;
+    }
+
+    $('input:radio, select', frm_profile_settings).on('change',setDisabledSettingsSave);
+
+    function setDisabledSettingsSave() {
+        btn_save_settings.prop('disabled',!isModifiedSettingsInfo());
+    }
+
+    frm_profile_settings.submit(function(){
+        Profile.hideMyPresence = this.set_hide_my_presence.value*1;
+        btn_save_settings.prop('disabled',true);
+        if (!isModifiedSettingsInfo()||this.ajax.value==1) return false;
+        this.ajax.value=1;
+        settings_loader.show();
+        $(this).ajaxSubmit({success:profile_settings_response});
+        $('input:radio, select', this).prop('disabled',true).trigger('refresh');
+        return false;
+    })
+
+    function profile_settings_response(res){
+        $('input:radio, select',frm_profile_settings).prop('disabled',false).trigger('refresh');
+        $('input.ajax',frm_profile_settings).val(0);
+        settings_loader.hide();
+        if(checkDataAjax(res)!==false){
+            if(settings.set_language!=$("select[name='set_language']",frm_profile_settings).val()){
+                window.location.href='{url_page}';
+            } else {
+                alertCustom('{j_changes_saved}',true,ALERT_HTML_SUCCESS);
+                setSettingsInfo();
+            }
+        }else{
+           btn_save_settings.prop('disabled',false);
+        }
+    }
+    /* Update settings */
+
+    /* Update email */
+    var btn_update_mail=$('#btn_update_mail'),
+        update_mail_loader=$('.update_mail_loader'),
+        ajax_email=$('#ajax_email'),
+        password_email=$('#password_email'),
+        //current_email=$('#current_email'),
+        new_email=$('#new_email'),
+        update_mail_input=$('input.inp, input.ajax', '#fields_6'),
+        data_ajax_email={},
+        isErrorUpdateMail=false;
+
+    btn_update_mail.click(function(){
+        btn_update_mail.prop('disabled',true);
+        if (ajax_email.val()==1) return false;
+        isErrorUpdateMail=false;
+        var l=password_email.val().length;
+        if(l<{password_length_min}||l>{password_length_max}) {
+            showTip_profile_settings(tip3,'#password_email',btn_update_mail,'{max_min_length_password}');
+            isErrorUpdateMail=true;
+        }
+        if(!checkEmail($.trim(new_email.val()))){
+            showTip_profile_settings(tip2,'#new_email',btn_update_mail,'{j_incorrect_email}');
+            isErrorUpdateMail=true;
+        };
+        /*if(!checkEmail(current_email.val())){
+            showTip_profile_settings(tip1,'#current_email',btn_update_mail,'{j_incorrect_email}');
+            isErrorUpdateMail=true;
+        };*/
+
+        if(isErrorUpdateMail) return false;
+
+        update_mail_loader.show();
+        ajax_email.val(1);
+        update_mail_input.each(function(){
+            data_ajax_email[$(this).attr('name')]=$(this).val();
+        })
+        update_mail_input.prop('disabled',true);
+        $.post('{url_main}profile_settings.php',data_ajax_email,
+                    function(res){
+                        update_mail_input.prop('disabled',false);
+                        ajax_email.val(0);
+                        update_mail_loader.hide();
+                        var data=checkDataAjax(res);
+                        if(data!==false){
+                            var $data=$(data),
+                                passError=$data.filter('.password_error'),
+                                newEmailError=$data.filter('.email_new_error');
+                            if(passError[0])showTip_profile_settings(tip3,'#password_email',btn_update_mail,passError.text());
+                            if(newEmailError[0])showTip_profile_settings(tip2,'#new_email',btn_update_mail,newEmailError.text());
+                            //if(curEmailError[0])showTip_profile_settings(tip1,'#current_email',btn_update_mail,curEmailError.text());
+                            if(data==''){
+                                $('input.inp','#fields_6').val('');
+                                alertCustom('{j_changes_saved}',true,ALERT_HTML_SUCCESS);
+                            }else{isErrorUpdateMail=true}
+                        }
+        })
+
+        return false;
+    })
+
+    $('#password_email').on('change propertychange input', function(e){
+        var val=this.value,l=val.length;
+        if(~val.indexOf("'")<0)showTip_profile_settings(tip3,'#password_email',btn_update_mail,'{j_invalid_password_contain}')
+        else if(isErrorUpdateMail&&(l<{password_length_min}||l>{password_length_max})) {
+            showTip_profile_settings(tip3,'#password_email',btn_update_mail,'{max_min_length_password}')
+        } else {
+            tip3.fadeOut();
+            $(this).removeClass('wrong');
+            setDisabledUpdateMailSave();
+        }
+    }).focus(function(){
+        if ($(this).is('.wrong')) tip3.stop().fadeIn()
+    }).blur(function(){tip3.stop().fadeOut()})
+
+    $('#new_email').on('change propertychange input', function(e){
+        var val=this.value,l=val.length;
+        if(checkEmail(val))
+        {
+            tip2.fadeOut();
+            $(this).removeClass('wrong');
+            setDisabledUpdateMailSave();
+        }
+    }).focus(function(){
+        if ($(this).is('.wrong')) tip2.stop().fadeIn()
+    }).blur(function(){tip2.stop().fadeOut()})
+
+
+
+  /*  $('#new_email').on('change propertychange input', function(e){
+        if(isErrorUpdateMail){
+            var val=this.value,pp_tip=(this.name=='new_email')?tip1:tip2;
+            if(!checkEmail(val)){showTip_profile_settings(pp_tip,'#'+this.name,btn_update_mail,'{j_incorrect_email}')}
+            else {
+                pp_tip.fadeOut();
+                $(this).removeClass('wrong');
+            }
+        }
+        setDisabledUpdateMailSave();
+    }).focus(function(){
+        var pp_tip=(this.name=='new_email')?tip1:tip2;
+        if ($(this).is('.wrong')) pp_tip.stop().fadeIn()
+    }).blur(function(){
+        var pp_tip=(this.name=='new_email')?tip1:tip2;
+        pp_tip.stop().fadeOut()
+    })
+*/
+    function setDisabledUpdateMailSave(){
+        var is=0;
+        $('input.inp', '#fields_6').each(function(){
+            var val=this.value;
+            if($(this).is('.mail'))val=$.trim(val);
+            is|=(val==''||$(this).is('.wrong'));
+        })
+        btn_update_mail.prop('disabled',is);
+    }
+    /* Update email */
+    /* Profile delete */
+    var frm_profile_delete=$('#frm_profile_delete','#fields_7'),
+        btn_profile_delete=$('#btn_profile_delete',frm_profile_delete),
+        delete_loader=$('.update_profile_delete_loader',frm_profile_delete),
+        password_delete=$('#password_delete',frm_profile_delete),
+        profile_cmd=$('#cmd',frm_profile_delete),
+        profile_ajax=$('input.ajax',frm_profile_delete);
+
+    btn_profile_delete.click(function(){
+        //var l=password_delete.val().length;
+        //if(l<{password_length_min}||l>{password_length_max}) {
+            //showTip_profile_settings(tip3,'#password_delete',btn_profile_delete,'{max_min_length_password}');
+            //isErrorDelete=true;
+        //}else{
+            //isErrorDelete=false;
+            frm_profile_delete.submit();
+            pp_check_password.open();
+        //}
+        return false;
+    })
+
+    frm_profile_delete.keydown(function(e){
+        if(e.keyCode == 13) {
+            password_delete.blur();
+            btn_profile_delete.click();
+            return false;
+        }
+    })
+
+    frm_profile_delete.submit(function(){
+        if (this.ajax.value==1) return false;
+        this.ajax.value=1;
+        delete_loader.show();
+        btn_profile_delete.prop('disabled',true);
+
+        pp_check_password_loader.show();
+        if (this.cmd.value=='check_password') {
+            pp_check_password_title.text('{j_checking_password}');
+        } else {
+            pp_check_password_title.text('{j_deleting_profile}');
+        }
+        pp_check_btn.hide();
+        pp_check_cont.hide();
+
+        $(this).ajaxSubmit({success:function(res){
+            delete_loader.hide();
+            profile_ajax.val(0);
+            password_delete.prop('disabled',false);
+            var data=checkDataAjax(res);
+            if(data!==false){
+                var $data=$(data);
+                pp_check_password_loader.hide();
+                if($data.is('error')){
+                    showTip_profile_settings(tip3,'#password_delete',btn_profile_delete,$data.text());
+                    tip3.stop().fadeOut();
+                    password_delete.blur();
+                    pp_check_password_title.text('{j_alert_html_title_error}');
+                    pp_check_cont.html($data.text()).css('display','table-cell');
+                    pp_check_close_ok.show();
+                }else if(data=='check'){
+                    pp_check_password_title.text('{j_are_you_sure}');
+                    pp_check_cont.html('{j_the_profile_will_be_deleted_forever}').css('display','table-cell');
+                    pp_check_cancel.show();
+                    pp_check_ok.show();
+                }else if(data=='delete'){
+                    pp_check_password.close();
+					chProfileBg(0, 1);
+                    window.location.href='{url_main}index.php';
+                }else if (data=='demo') {
+                    password_delete.val('');
+                    pp_check_password.close();
+                }
+                profile_cmd.val('check_password');
+            }
+        }});
+        password_delete.prop('disabled',true);
+        return false;
+    })
+
+    password_delete.on('change propertychange input', function(e){
+        var val=this.value,l=val.length;
+        if(~val.indexOf("'")<0)showTip_profile_settings(tip3,'#password_delete',btn_profile_delete,'{j_invalid_password_contain}')
+        else if(l<{password_length_min}||l>{password_length_max}) {
+            showTip_profile_settings(tip3,'#password_delete',btn_profile_delete,'{max_min_length_password}')
+        } else {
+            tip3.fadeOut();
+            $(this).removeClass('wrong');
+            setDisabledProfileDeleteSave();
+        }
+    }).focus(function(){if($(this).is('.wrong')){tip3.stop().fadeIn()}
+    }).blur(function(){tip3.stop().fadeOut()})
+
+    function setDisabledProfileDeleteSave(){
+        btn_profile_delete.prop('disabled',password_delete.val()=='');
+    }
+
+    var pp_check_password=$('#pp_check_password').modalPopup(),
+        pp_check_cont=$('#pp_check_password > .cont .question'),
+        pp_check_btn=$('#pp_check_password > .foot .btn'),
+
+        pp_check_close_ok=$('#check_password_close_ok',pp_check_password);
+        pp_check_cancel=$('#check_password_cancel',pp_check_password);
+        pp_check_ok=$('#check_password_ok',pp_check_password);
+
+        pp_check_password_title=$('#pp_check_password_title',pp_check_password),
+        pp_check_password_loader=$('.pp_check_password_loader',pp_check_password),
+
+
+    $('.check_password_close',pp_check_password).click(function(){
+        //password_delete.focus();
+        if(pp_check_password_title.text()=="{j_are_you_sure}"
+           &&profile_ajax.val()){password_delete.val('')}
+        pp_check_password.close();
+        return false;
+    })
+    pp_check_cancel.click(function(){
+        password_delete.val('');
+        pp_check_password.close();
+        return false;
+    })
+    pp_check_ok.click(function(){
+        profile_cmd.val('profile_delete');
+        frm_profile_delete.submit();
+        return false;
+    })
+
+    /* Profile delete */
+    /* Update password */
+    var save_password=$('#save_password', '#fields_5'),
+        update_pass_input=$('input.password, input.ajax', '#fields_5'),
+        pass_loader=$('#pass_loader'),
+        pass_input=$('input.password', '#fields_5'),
+        new_pass=$('#new_password', '#fields_5'),
+        ver_pass=$('#verify_new_password', '#fields_5'),
+        ajax_pass=$('#ajax_pass', '#fields_5'),
+        isErrorUpdatePass=false,
+        data_ajax_pass={};
+
+    pass_input.on('change propertychange input', function(e){
+        var val=this.value,l=val.length,pp_tip=getTip(this.name);
+        if(~val.indexOf("'")<0)showTip_profile_settings(pp_tip,'#'+this.name,save_password,'{j_invalid_password_contain}')
+        else if(isErrorUpdatePass&&(l<{password_length_min}||l>{password_length_max})) {
+            showTip_profile_settings(pp_tip,'#'+this.name,save_password,'{max_min_length_password}')
+        }else if(isErrorUpdatePass&&this.name=='verify_new_password'&&this.value!=new_pass.val()){
+            showTip_profile_settings(tip3,'#verify_new_password',save_password,'{j_passwords_not_same}')
+        }else if(isErrorUpdatePass&&this.name=='new_password'&&this.val==ver_pass.val()){
+            showTip_profile_settings(tip3,'#verify_new_password',save_password,'{j_old_and_new_passwords_are_the_same}')
+        }else{
+            pp_tip.fadeOut();
+            $(this).removeClass('wrong');
+            setDisabledUpdatePassSave()
+        }
+    }).focus(function(){
+        if ($(this).is('.wrong')) getTip(this.name).stop().fadeIn()
+    }).blur(function(){getTip(this.name).stop().fadeOut()})
+
+    function getTip(name){
+        if(name=='old_password'){return tip1}
+        else if(name=='new_password'){return tip2}
+        else{return tip3}
+    }
+
+    function setDisabledUpdatePassSave(){
+        var is=0;
+        pass_input.each(function(){
+            is|=(this.value==''||$(this).is('.wrong'));
+        })
+        save_password.prop('disabled',is);
+    }
+
+    save_password.click(function(){
+        isErrorUpdatePass=false;
+        var old_pass=$('#old_password'),old_val=old_pass.val(),
+            new_pass=$('#new_password'),new_val=new_pass.val(),
+            ver_pass=$('#verify_new_password'),ver_val=ver_pass.val();
+        if(new_val.length!=ver_val.length){
+            isErrorUpdatePass=true;
+            showTip_profile_settings(tip3,'#verify_new_password',save_password,'{j_passwords_not_same}')
+        }else if(old_val==new_val) {
+            isErrorUpdatePass=true;
+            showTip_profile_settings(tip2,'#new_password',save_password,'{j_old_and_new_passwords_are_the_same}');
+        }else{
+            save_password.prop('disabled',true);
+            if (ajax_pass.val()==1) return false;
+            ajax_pass.val(1);
+            pass_loader.show();
+            update_pass_input.each(function(){
+                data_ajax_pass[$(this).attr('name')]=$(this).val();
+            })
+            pass_input.prop('disabled',true);
+            $.post('{url_main}profile_settings.php',data_ajax_pass,
+                function(res){
+                    ajax_pass.val(0);
+                    pass_input.prop('disabled',false);
+                    pass_loader.hide();
+                    var data=checkDataAjax(res);
+                    if(data!==false){
+                        var $data=$(data),
+                            oldPass=$data.filter('.old_password_error'),
+                            newPass=$data.filter('.new_password_error'),
+                            verPass=$data.filter('.ver_password_error');
+                            if(verPass[0])showTip_profile_settings(tip3,'#verify_new_password',save_password,verPass.text());
+                            if(newPass[0])showTip_profile_settings(tip2,'#new_password',save_password,newPass.text());
+                            if(oldPass[0])showTip_profile_settings(tip1,'#old_password',save_password,oldPass.text());
+                            if(data==''){
+                                pass_input.val('');alertCustom('{j_changes_saved}',true,ALERT_HTML_SUCCESS);
+                            }else{isErrorUpdatePass=true}
+                    }
+            })
+        }
+        return false;
+    })
+    /* Update password */
+
+    function showTip_profile_settings(tip,el,btn,html){
+        $(el).addClass('wrong').focus();
+        btn.prop('disabled', true);
+        tip.html('<div>'+html+'</div>').appendTo(box_profile_settings)
+        .stop().fadeTo(200,1).position({ my: 'center bottom-2', at: 'center top', of: el})
+    }
+
+    <!-- begin_saved_set_language_alert -->
+    setTimeout(alertCustom('{j_changes_saved}',true,ALERT_HTML_SUCCESS),100);
+    <!-- end_saved_set_language_alert -->
+})
+</script>
+<div class="column_main">
+    <div class="column_main_head">
+        <div class="decor">
+            <h1>{l_your_settings}</h1>
+            <div class="cl"></div>
+        </div>
+    </div>
+    <div class="column_main_cont">
+        <div id="box_profile_settings" class="bl_settings">
+            <div class="list_settings">
+                <ul>
+                    <li class="selected show_fields" id="1">{l_profile_settings}</li>
+                    <!-- begin_autotranslator_settings --><li class="show_fields" id="8">{l_autotranslator_settings}</li><!-- end_autotranslator_settings -->
+                    <!-- begin_notification_settings --><li class="show_fields" id="2">{l_notification_settings}</li><!-- end_notification_settings -->
+                    <!-- begin_invisible_mode --><li class="show_fields" id="3">{l_invisible_mode}</li><!-- end_invisible_mode -->
+                    <!--<li class="show_fields" id="4">{l_payment_settings}</li>-->
+                </ul>
+                <ul>
+                    <li class="show_fields" id="5">{l_change_password}</li>
+                    <li class="show_fields" id="6">{l_change_email_address}</li>
+                    <!-- begin_delete_profile --><li class="show_fields" id="7">{l_delete_profile}</li>  <!-- end_delete_profile -->
+                </ul>
+            </div>
+            <form id="frm_profile_settings" name="profile_settings" method="POST" action="{url_main}profile_settings.php">
+            <input type="hidden" name="cmd" value="mail"/>
+            <input type="hidden" name="ajax" class="ajax" value="0" />
+            <div id="fields_1" class="list_settings_cont select_var2 fields">
+            <div class="bl_item" >
+            <!-- begin_field_1 -->
+                <!-- begin_field_select_1 -->
+                <div class="item">
+                    <div class="name">{label}</div>
+                    <div class="field">
+                        <select name="{name_select}" class="styler_settings">
+                            <!-- begin_field_select_item_1 -->
+                            <option {selected} value="{value}">{title}</option>
+                            <!-- end_field_select_item_1 -->
+                        </select>
+                    </div>
+                    <div class="cl"></div>
+                </div>
+                <!-- end_field_select_1 -->
+
+                <!-- begin_field_radio_1 -->
+                <div class="item">
+                    <div class="name">{label}</div>
+                        <div class="field" style="float:left; margin-left:11px;">
+                        <!-- begin_field_radio_item_1 -->
+                            <input class="rb styler_settings" value={value} name="{name_radio}" id="radio_{name_radio}_{value}" type="radio" {checked}/>
+                            <label for="radio_{name_radio}_{value}">{title}</label>
+                        <!-- end_field_radio_item_1 -->
+                        </div>
+                    <div class="cl"></div>
+                </div>
+                <!-- end_field_radio_1 -->
+            <!-- end_field_1 -->
+
+            <!-- begin_timezone -->
+                <div class="item">
+                <div class="name">{l_timezone}</div>
+            <div class="field timezone">
+
+            <select id="timezone" class="styler_settings" name="timezone">{selectbox_options}</select>
+            <!-- begin_info_timezone -->
+            <script type="text/javascript">
+                $('#timezone').change(function(){
+                    var zone = $(this).val();
+                    $.post('{url_administration}ajax.php', {cmd: 'timezone', zone: zone}, function(data) {
+                        $('#info_timezone').html(data);
+                    });
+                });
+            </script>
+            <div id="info_timezone" style="margin-left: 2px;">{info_timezone}</div>
+            <!-- end_info_timezone -->
+            </div>
+                    <div class="cl"></div>
+            </div>
+            <!-- end_timezone -->
+
+            <!-- begin_sp_active -->
+            <div class="item">
+                    <div class="name">{l_super_powers}</div>
+                        <div class="field" style="float:left; margin-left: 14px;">
+                            {sp_active_till}
+                        </div>
+                    <div class="cl"></div>
+            </div>
+            <!-- end_sp_active -->
+            </div>
+            <input type="submit" class="btn dblue fl_right save_settings" value="{l_save}" disabled/>
+            <img class="settings_loader fl_right" src="{url_tmpl_main}images/loader_small.gif">
+            </div>
+
+            <div id="fields_8" class="list_settings_cont select_var2 fields" style="display:none;">
+            <div class="bl_item" >
+            <!-- begin_field_8 -->
+                <!-- begin_field_select_8 -->
+                <div class="item">
+                    <div class="name">{label}</div>
+                    <div class="field">
+                        <select name="{name_select}" class="styler_settings">
+                            <!-- begin_field_select_item_8 -->
+                            <option {selected} value="{value}">{title}</option>
+                            <!-- end_field_select_item_8 -->
+                        </select>
+                    </div>
+                    <div class="cl"></div>
+                </div>
+                <!-- end_field_select_8 -->
+
+                <!-- begin_field_radio_8 -->
+                <div class="item">
+                    <div class="name">{label}</div>
+                        <div class="field">
+                        <!-- begin_field_radio_item_8 -->
+                            <input class="rb styler_settings" value={value} name="{name_radio}" id="radio_{name_radio}_{value}" type="radio" {checked}/>
+                            <label for="radio_{name_radio}_{value}">{title}</label>
+                        <!-- end_field_radio_item_8 -->
+                        </div>
+                    <div class="cl"></div>
+                </div>
+                <!-- end_field_radio_8 -->
+            <!-- end_field_8 -->
+            </div>
+            <input type="submit" class="btn dblue fl_right save_settings" value="{l_save}" disabled/>
+            <img class="settings_loader fl_right" src="{url_tmpl_main}images/loader_small.gif">
+            </div>
+
+
+            <div id="fields_2" class="list_settings_cont select_var2 fields" style="display:none;">
+            <div class="bl_item" >
+            <!-- begin_field_2 -->
+                <!-- begin_field_select_2 -->
+                <div class="item">
+                    <div class="name">{label}</div>
+                    <div class="field">
+                        <select name="{name_select}" class="styler_settings">
+                            <!-- begin_field_select_item_2 -->
+                            <option {selected} value="{value}">{title}</option>
+                            <!-- end_field_select_item_2 -->
+                        </select>
+                    </div>
+                    <div class="cl"></div>
+                </div>
+                <!-- end_field_select_2 -->
+
+                <!-- begin_field_radio_2 -->
+                <div class="item">
+                    <div class="name">{label}</div>
+                        <div class="field">
+                        <!-- begin_field_radio_item_2 -->
+                            <input class="rb styler_settings" value={value} name="{name_radio}" id="radio_{name_radio}_{value}" type="radio" {checked}/>
+                            <label for="radio_{name_radio}_{value}">{title}</label>
+                        <!-- end_field_radio_item_2 -->
+                        </div>
+                    <div class="cl"></div>
+                </div>
+                <!-- end_field_radio_2 -->
+            <!-- end_field_2 -->
+            </div>
+            <input type="submit" class="btn dblue fl_right save_settings" value="{l_save}" disabled/>
+            <img class="settings_loader fl_right" src="{url_tmpl_main}images/loader_small.gif">
+            </div>
+
+            <div id="fields_3" class="list_settings_cont select_var2 fields" style="display:none;">
+            <div class="bl_item" >
+            <!-- begin_field_3 -->
+                <!-- begin_field_select_3 -->
+                <div class="item">
+                    <div class="name">{label}</div>
+                    <div class="field">
+                        <select name="{name_select}" class="styler_settings">
+                            <!-- begin_field_select_item_3 -->
+                            <option {selected} value="{value}">{title}</option>
+                            <!-- end_field_select_item_3 -->
+                        </select>
+                    </div>
+                    <div class="cl"></div>
+                </div>
+                <!-- end_field_select_3 -->
+
+                <!-- begin_field_radio_3 -->
+                <div class="item">
+                    <div class="name">{label}</div>
+                        <div class="field">
+                        <!-- begin_field_radio_item_3 -->
+                            <input class="rb styler_settings" value={value} name="{name_radio}" id="radio_{name_radio}_{value}" type="radio" {checked}/>
+                            <label for="radio_{name_radio}_{value}">{title}</label>
+                        <!-- end_field_radio_item_3 -->
+                        </div>
+                    <div class="cl"></div>
+                </div>
+                <!-- end_field_radio_3 -->
+            <!-- end_field_3 -->
+            </div>
+            <input type="submit" class="btn dblue fl_right save_settings" value="{l_save}" disabled/>
+            <img class="settings_loader fl_right" src="{url_tmpl_main}images/loader_small.gif">
+            </div>
+            </form>
+
+            <div id="fields_4" class="list_settings_cont select_var2 fields" style="display:none;">
+
+            </div>
+
+            <div id="fields_5" class="list_settings_cont fields" style="display:none;">
+            <div class="bl_item" >
+
+                <input id="cmd_pass" type="hidden" name="cmd" class="ajax" value="password" />
+                <input id="ajax_pass" type="hidden" name="ajax" class="ajax" value="0" />
+                <div class="item" style="position: relative;">
+                    <div class="name">{l_current_password}</div>
+                    <div class="field">
+                        <input id="old_password" maxlength="{password_length_max}" class="inp password" type="password" name="old_password" />
+                    </div>
+                    <div class="cl"></div>
+                </div>
+
+                <div class="item">
+                    <div class="name">{l_new_password}</div>
+                    <div class="field">
+                        <input id="new_password" maxlength="{password_length_max}" class="inp password" type="password" name="new_password" />
+                    </div>
+                    <div class="cl"></div>
+                </div>
+
+                <div class="item">
+                    <div class="name">{l_retype_new_password}</div>
+                    <div class="field">
+                        <input id="verify_new_password" maxlength="{password_length_max}" class="inp password" type="password" name="verify_new_password"/>
+                    </div>
+                    <div class="cl"></div>
+                </div>
+                </div>
+                <input id="save_password" type="button" class="btn dblue fl_right" value="{l_save}" disabled/>
+                <img id="pass_loader" class="pass_loader fl_right" src="{url_tmpl_main}images/loader_small.gif">
+            </div>
+
+
+            <div id="fields_6" class="list_settings_cont fields" style="display:none;">
+            <div class="bl_item" >
+
+
+                <input id="cmd_email" type="hidden" name="cmd" class="ajax" value="update_email" />
+                <input id="ajax_email" type="hidden" name="ajax" class="ajax" value="0" />
+                <div class="item">
+                    <div class="name">{l_new_email_address}</div>
+                    <div class="field">
+                        <input id="new_email" name="new_email" class="inp mail" type="text" />
+                    </div>
+                    <div class="cl"></div>
+                </div>
+                <div class="item">
+                    <div class="name">{l_current_password}</div>
+                    <div class="field">
+                        <input id="password_email" name="password" maxlength="{password_length_max}"  class="inp" type="password" />
+                    </div>
+                    <div class="cl"></div>
+                </div>
+                </div>
+
+                <input type="button" id="btn_update_mail" class="btn dblue fl_right" value="{l_save}" disabled/>
+                    <img class="update_mail_loader fl_right" src="{url_tmpl_main}images/loader_small.gif">
+            </div>
+
+            <div id="fields_7" class="list_settings_cont fields" style="display:none;">
+
+                <form id="frm_profile_delete" name="profile_delete" method="POST" action="{url_main}profile_settings.php" autocomplete="off">
+                <div class="bl_item" >
+                <input id="cmd" type="hidden" name="cmd" value="check_password" />
+                <input id="ajax" type="hidden" name="ajax" class="ajax" value="0" />
+                <div class="item">
+                    <div class="name">{l_current_password}</div>
+                        <div class="field">
+                            <input id="password_delete" class="inp" name="password" type="password" />
+                        </div>
+                    <div class="cl"></div>
+                </div>
+                </div>
+                <input type="button" id="btn_profile_delete" class="btn dblue fl_right" value="{l_delete_profile}" disabled/>
+                <img class="update_profile_delete_loader fl_right" src="{url_tmpl_main}images/loader_small.gif">
+                </form>
+                </div>
+
+        </div>
+    </div>
+</div>
+<div id="pp_check_password" class="popup pp_check_password" style="display:none;">
+    <div class="head"><strong id="pp_check_password_title">{l_checking_password}</strong>
+        <a class="icon_close_pass check_password_close" href="#"></a>
+    </div>
+    <div class="cont">
+        <img class="pp_check_password_loader" src="{url_tmpl_main}images/lazy_loader.gif">
+        <div class="question"></div>
+    </div>
+    <div class="foot">
+        <input id="check_password_ok" type="button" class="check_password_ok btn green fl_right" value="{l_ok}" />
+        <input id="check_password_cancel" type="button" class="btn black fl_right" style="margin-right: 8px;" value="{l_cancel}" />
+        <input id="check_password_close_ok" type="button" class="check_password_close btn black fl_right" value="{l_ok}" />
+
+    </div>
+</div>
+
+<div class="column_narrow">
+    {profile_column_narrow}
+</div>
+{footer}

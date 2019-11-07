@@ -1,0 +1,74 @@
+{header}
+<script>
+	messages.setLastId('{last_id}');
+    messages.initOneChat('{user_to}', '{limit_start}', '{is_one_chat}', '{user_to_photo}', '{first_msg_id}');
+    messages.usersCacheAdd('{user_to_id}');
+</script>
+
+<div class="col_center">
+	<div class="head icon_head_messages head_line">
+        <a href="" onclick="goLink('{url_main}{url_profile}', 'ref=one_chat'); return false;">{user_to_name}</a>
+        <span class="icon_message_back" onclick="redirectUrl('{url_main}{url_page_messages}')">
+            <span class="back"></span>
+            <span class="back_hover"></span>
+        </span>
+    </div>
+    <div id="bl_cont" class="cont" style="opacity:0;">
+        <div class="scrollbarY message_chat_scroll">
+            <div class="scrollbar"><div class="track"><div id="scrollbarY_thumb" class="thumb animate"></div></div></div>
+            <div id="bl_viewport" class="viewport">
+                <div id="bl_overview" class="overview">
+                    <div class="message_chat">
+                        <div id="chat_cont" class="chat_cont">
+                            <div id="more_load_cont_im" class="css_loader more_load_cont_im">
+                                <div class="spinner center">
+                                <div class="spinner-blade"></div>
+                                <div class="spinner-blade"></div>
+                                <div class="spinner-blade"></div>
+                                <div class="spinner-blade"></div>
+                                <div class="spinner-blade"></div>
+                                <div class="spinner-blade"></div>
+                                <div class="spinner-blade"></div>
+                                <div class="spinner-blade"></div>
+                                <div class="spinner-blade"></div>
+                                <div class="spinner-blade"></div>
+                                <div class="spinner-blade"></div>
+                                <div class="spinner-blade"></div>
+                                </div>
+                            </div>
+                            <div id="msg_profile_pic" class="msg_profile_pic <!-- begin_one_chat_profile_pic_hide -->hide<!-- end_one_chat_profile_pic_hide -->">
+                                <div class="profile_pic">
+                                    <button <!-- begin_messages_users_list_item_plug_private_photos -->class="plug_private_photos"<!-- end_messages_users_list_item_plug_private_photos --> onclick="goLink('{url_main}{url_profile}', 'ref=one_chat'); return false;" style="background-image: url({url_files}{user_to_photo});" title=""></button>
+                                </div>
+
+                            </div>
+                            {users_list}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="message_field_chat">
+            <textarea id="msg_text" class="placeholder" placeholder="{a_enter_your_message}"></textarea>
+        </div>
+        <div class="cl"></div>
+	</div>
+</div>
+<div style="display:none;">
+	<div id="template_msg" class="im_msg_one" data-send="{message_send}" data-id="" data-msg-user-id="" data-to-user-id="" data-sp="">
+		<div class="item answer">
+			<div class="data">
+				<span class="date_msg" style="opacity:0;">&nbsp;</span>
+				<div class="msg_read hide"></div>
+				<div class="upgrade_msg hide">{l_upgrade_to_see_if_read}</div>
+			</div>
+			<div class="msg">
+				<div class="info"></div>
+				<div class="pic" onclick="redirectUrl('{url_main}{message_user_profile_link}')">
+					<button title="" style="background-image: url({url_files}{current_user_photo});"></button>
+				</div>
+			</div>
+		</div>
+    </div>
+</div>
+{footer}

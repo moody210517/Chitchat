@@ -1,0 +1,592 @@
+{header}
+<script language="javascript" type="text/javascript">
+$(function(){
+   $('#country').location({first_option_state: '- {l_state_province} -', first_option_city: '- {l_city} -', location: 'users_edit.php'});
+   $('#state').location({method: 'cities', first_option_city: '- {l_city} -', location: 'users_edit.php'});
+
+   partnerCheckboxCheckUncheck();
+});
+
+var url_files='{url_files}';
+
+</script>
+<div class="block_narrow">
+    <ul class="lmenu_lgreen">
+        <li class="active"><a href="{url_main}administration/users_results.php">{l_menu_users}</a></li>
+        <li><a href="{url_main}administration/users_approval.php">{l_menu_users_approval}</a></li>
+        <li><a href="{url_main}administration/users_search.php">{l_menu_search}</a></li>
+        <li><a href="{url_main}administration/users_photo.php">{l_menu_photos}</a></li>
+        <li><a href="{url_main}administration/users_text.php">{l_menu_texts}</a></li>
+        <li><a href="{url_main}administration/users_filter.php">{l_menu_filter}</a></li>
+    </ul>
+</div>
+<div class="block_main">
+    <h2>{l_title_current} - {user_name}</h2>
+
+    <div class="bl_form checkbox_fields_area">
+        <p>
+            <!-- begin_menu_editblog -->
+            <a href="{url_main}administration/blogs_blogger_posts.php?id={user_id}">{l_editblog}</a> |
+            <!-- end_menu_editblog -->
+            <!-- begin_menu_im -->
+            <a href="{url_main}administration/look_message_im.php?user_id={user_id}">{l_user_im}</a>
+            <!-- end_menu_im -->
+            <!-- begin_menu_chat -->
+            | <a href="{url_main}administration/look_message_chat.php?user_id={user_id}">{l_user_chat}</a> |
+            <!-- end_menu_chat -->
+            <!-- begin_menu_mail -->
+            <a href="{url_main}administration/look_message_mail.php?user_id={user_id}">{l_user_mails}</a>
+            <!-- end_menu_mail -->
+            <!-- begin_menu_add_spotlight -->
+            | <a href="{url_main}administration/users_edit.php?id={user_id}&cmd=add_spotlight"  onclick="if(confirm('{l_are_you_sure}')){return true;}else{return false;}">{l_add_to_the_spotlight}</a>
+            <!-- end_menu_add_spotlight -->
+            <!-- begin_menu_remove_spotlight -->
+            | <a href="{url_main}administration/users_edit.php?id={user_id}&cmd=remove_spotlight" onclick="if(confirm('{l_are_you_sure}')){return true;}else{return false;}">{l_remove_from_the_spotlight}</a>
+            <!-- end_menu_remove_spotlight -->
+        </p>
+
+		<p class="error">{message}</p>
+
+        <form method="POST" action="{url_main}administration/users_edit.php?cmd=update&id={user_id}">
+
+        <label><input style="width:auto; margin:0px;" type="checkbox" name="use_as_online" value="1" {use_as_online}> {l_use_as_online}</label>
+
+		<br>
+
+        <label>{l_username}:</label>
+        <input type="text" maxlength="{username_length}" name="username" value="{user_name}">
+
+        <label>{l_password}:</label>
+        <input type="text" name="password" value="{password}">
+
+        <label><input style="width:auto; margin:0px;" type="checkbox" name="user_admin" value="1" {checked_user_admin}> {l_assign_user_as_sender_of_welcoming_message}</label>
+        <!-- begin_moderator -->
+		<label><input style="width:auto; margin:0px;" type="checkbox" name="moderator_profiles" value="1" {moderator_profiles}> {l_moderator_profiles}</label>
+        <label><input style="width:auto; margin:0px;" type="checkbox" name="moderator_photo" value="1" {moderator_photo}> {l_moderator_photo}</label>
+        <label><input style="width:auto; margin:0px;" type="checkbox" name="moderator_vids_video" value="1" {moderator_vids_video}> {l_moderator_video}</label>
+        <label><input style="width:auto; margin:0px;" type="checkbox" name="moderator_texts" value="1" {moderator_texts}> {l_moderator_text}</label>
+		<br>
+        <!-- end_moderator -->
+
+        <!-- begin_type_plan -->
+        <label>{l_type}:</label>
+        <select name="type" class="input">
+        {type_options}
+        </select>
+        <!-- end_type_plan -->
+
+        <!-- begin_user_gold_days -->
+        <label>{l_gold_days_left}:</label>
+        <input type="text" maxlength="{paid_days_length}" name="gold_days" value="{gold_days}">
+        <!-- end_user_gold_days -->
+
+        <!-- begin_user_credits -->
+        <label>{l_credits_left}:</label>
+        <input type="text" name="credits" value="{credits}">
+        <!-- end_user_credits -->
+
+        <!-- begin_const -->
+        <label>{field}:</label>
+        <select class="input" name="{name}">
+          {options}
+        </select>
+        <!-- end_const -->
+
+        <label>{l_email_address}:</label>
+        <input type="text" name="email" value="{mail}">
+
+        <label>{l_date_of_birth}:</label>
+        <select name="month" onChange="updateDay('month','EditProfileBasicForm','year','month','day')" class="birth month">
+        {month_options}
+        </select>
+        <select name="day" class="birth day">
+        {day_options}
+        </select>
+        <select name="year" class="birth year" onChange="updateDay('year','EditProfileBasicForm','year','month','day')">
+        {year_options}
+        </select>
+
+        <label>{l_country}:</label>
+        <select class="input" name="country"  id="country">
+        {country_options}
+        </select>
+
+        <label>{l_state_province}:</label>
+        <select class="input" name="state" id="state">
+        <option value="0">- {l_state_province} -</option>
+        {state_options}
+        </select>
+
+        <label>{l_city}:</label>
+        <select class="input" name="city" id="city">
+        <option value="0">- {l_city} -</option>
+        {city_options}
+        </select>
+        <!-- begin_profile_status -->
+        <label>{l_profile_status}:</label>
+        <input type="text" name="profile_status" value="{profile_status}" maxlength="25">
+        <!-- end_profile_status -->
+
+        <!-- begin_btn_update -->
+        <div class="btn fl_right"><a href="#" class="submit">{l_update_profile}</a>
+			<input type="submit" style="visibility:hidden;position:absolute;">
+		</div>
+        <div class="empty"></div>
+        <!-- end_btn_update -->
+        <!-- begin_personal_enabled -->
+        <!-- begin_fields_text -->
+        <!-- begin_text -->
+        <label>{field}:</label>
+        <input type="text" name="{name}" id="{name}" value="{value}" maxlength="{maxlen}">
+        <!-- end_text -->
+
+        <!-- begin_textarea -->
+        <label>{field}:</label>
+        <textarea name="{name}" id="{name}" class="textarea_small">{value}</textarea>
+        <!-- end_textarea -->
+        <!-- end_fields_text -->
+        <div class="btn fl_right"><a href="#" class="submit">{l_update_profile}</a>
+			<input type="submit" style="visibility:hidden;position:absolute;">
+		</div>
+        <div class="empty"></div>
+
+
+        <!-- begin_edit_looking -->
+        <h2>{l_i_am_here_to}</h2>
+        <!-- begin_i_am_here_to -->
+        <div class="bl bl_here field_i_am_here">
+            <!-- begin_i_am_here_to_item -->
+            <div  style="padding: 4px 0px;">
+                <label>
+                <input style="width:auto; margin:0px;" class="rb" id="rb_{id}" name="{name}" value="{id}" type="radio" {checked} />
+                {title}</label>
+            </div>
+            <!-- end_i_am_here_to_item -->
+        </div>
+        <!-- end_i_am_here_to -->
+
+        <!-- begin_p_orientations -->
+        <div style="margin-top: 10px; <!-- begin_p_orientations_hide -->display:none;<!-- end_p_orientations_hide -->">
+            <!-- begin_p_orientation -->
+            <label style="padding: 4px 0px;">
+            <input style="width:auto; margin:0px;" id="rb_looking_{id}" name="{name}[]" value="{id}" type="checkbox" {checked} />
+            {title}</label>
+            <!-- end_p_orientation -->
+        </div>
+        <!-- end_p_orientations -->
+        <!-- begin_age_range_urban -->
+        <table border="0" cellpadding="0" cellspacing="0" class="body_little" style="margin-left: -28px;">
+            <tr>
+                <td class="body_text line_ch" align="right" style="padding:12px; padding-left:0px; width: 90px;">
+                    {l_age_range}:
+                </td>
+                <td class="line_ch" style="padding:12px; width: 135px;">
+                    <table>
+                        <tr>
+                            <td height="22">
+                                <select style="width:46px;" name="p_age_from">
+                                    {p_age_from_options}
+                                </select>
+                            </td>
+                            <td style="padding:0 5px;">
+                                <span class="body_little"><label for="PARTNER_AGE_TO">{l_to}</label></span>
+                            </td>
+                            <td>
+                                <select style="width:46px;" name="p_age_to">
+                                    {p_age_to_options}
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td class="line_ch" style="padding:12px;">&nbsp;</td>
+            </tr>
+            <tr><td colspan="3" height="12">&nbsp;</td></tr>
+        </table>
+        <!-- end_age_range_urban -->
+
+        <div class="btn fl_right" style="margin-top: -30px;"><a href="#" class="submit">{l_update_profile}</a>
+			<input type="submit" style="visibility:hidden;position:absolute;">
+		</div>
+        <div class="empty"></div>
+        <!-- end_edit_looking -->
+
+
+
+        <!-- begin_personal_fields_1 -->
+        <h2>{l_personal_details}</h2>
+        <!-- begin_personal_fields_item_1 -->
+        <!-- begin_int_1 -->
+        <label>{field}:</label>
+        <select class="input" name="{name}" {disabled}>
+        <option selected value="0">{l_please_choose}</option>
+        {options}
+        </select>
+        <!-- end_int_1 -->
+
+        <!-- begin_personal_text_1 -->
+        <label>{field}:</label>
+        <input type="text" name="{name}" id="{name}" value="{value}" maxlength="{maxlen}">
+        <!-- end_personal_text_1 -->
+
+        <!-- begin_checkbox_1 -->
+        <!-- begin_checkbox_item_1 -->
+        <label>{field}</label>
+        <select id="chk_{name}_{num}" data-checkbox="{name}" name="{name}[]" class="input">
+            <option selected value="0">{l_please_choose}</option>
+            {options}
+        </select>
+        <!-- end_checkbox_item_1 -->
+        <a id="link_add_{name}" data-type-add="{name}" class="link_add" style="display:{display_add}; margin-top: -7px; margin-bottom: 10px;" href="#">+ Add</a>
+        <!-- end_checkbox_1 -->
+
+        <!-- end_personal_fields_item_1 -->
+        <div class="btn fl_right"><a href="#" class="submit">{l_update_profile}</a>
+			<input type="submit" style="visibility:hidden;position:absolute;">
+		</div>
+        <div class="empty"></div>
+
+        <script>
+        $(function(){
+            $('.link_add').click(function(){
+                    var el=$(this),
+                        type = el.data('typeAdd'),
+                        select = el.prev('select'),
+                        countOption = select.find('option').length,
+                        countSelect = $('[data-checkbox='+type+']').length+1,
+                        id='chk_'+type+'_';
+                if (countOption <= countSelect+1){$(this).hide()}
+                if (countOption > countSelect) {
+                    select.clone(false).attr({id:id+(countSelect-1)}).insertAfter(select).end()
+                    .find('option').removeAttr('selected').eq(0).attr({selected:'selected'});
+                }
+                return false;
+            })
+
+            $('body').on('click', 'select[data-checkbox]', function(e){
+                this.lastValue=$(this).val();
+            }).on('change', 'select[data-checkbox]', function(e){
+                var el=$(this),type=el.data('checkbox'),id=el.attr('id'),
+                    val=el.val(),lastValue=this.lastValue;
+                $('[id != "'+id+'"][data-checkbox='+type+']').each(function(){
+                    if ($(this).val()==val) {
+                        alertCustom('{l_you_have_already_chosen_this_option}');
+                        el.val(lastValue);
+                        return false;
+                    }
+                })
+            })
+        })
+        </script>
+
+        <!-- end_personal_fields_1 -->
+
+        <!-- begin_personal_fields_2 -->
+        <h2>{field_physical_datails}</h2>
+        <!-- begin_int_2 -->
+        <label>{field}:</label>
+        <select class="input" name="{name}" {disabled}>
+        <option selected value="0">{l_please_choose}</option>
+        {options}
+        </select>
+        <!-- end_int_2 -->
+        <div class="btn fl_right"><a href="#" class="submit">{l_update_profile}</a>
+			<input type="submit" style="visibility:hidden;position:absolute;">
+		</div>
+        <div class="empty"></div>
+        <!-- end_personal_fields_2 -->
+
+        <!-- begin_personal_fields_3 -->
+        <h2>{l_other_details}</h2>
+        <!-- begin_int_3 -->
+        <label>{field}:</label>
+        <select class="input" name="{name}">
+        <option selected value="0">{l_please_choose}</option>
+        {options}
+        </select>
+        <!-- end_int_3 -->
+        <div class="btn fl_right"><a href="#" class="submit">{l_update_profile}</a>
+			<input type="submit" style="visibility:hidden;position:absolute;">
+		</div>
+        <div class="empty"></div>
+        <!-- end_personal_fields_3 -->
+        <!-- end_personal_enabled -->
+
+        <!-- begin_partner_enabled -->
+        <h2>{l_profile_partner}</h2>
+        <!-- begin_age_range -->
+        <table border="0" cellpadding="0" cellspacing="0" class="body_little">
+            <tr>
+                <td class="body_text line_ch" align="right" style="padding:12px; width: 90px;">
+                    {l_age_range}:
+                </td>
+                <td class="line_ch" style="padding:12px; width: 135px;">
+                    <table>
+                        <tr>
+                            <td height="22">
+                                <select style="width:46px;" name="p_age_from">
+                                    {p_age_from_options}
+                                </select>
+                            </td>
+                            <td style="padding:0 5px;">
+                                <span class="body_little"><label for="PARTNER_AGE_TO">{l_to}</label></span>
+                            </td>
+                            <td>
+                                <select style="width:46px;" name="p_age_to">
+                                    {p_age_to_options}
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td class="line_ch" style="padding:12px;">&nbsp;</td>
+            </tr>
+            <tr><td colspan="3" height="12">&nbsp;</td></tr>
+        </table>
+        <!-- end_age_range -->
+        <!-- begin_partner_fields_1 -->
+        <h2>{l_partner} {l_personal_details}</h2>
+        <table border="0" cellpadding="0" cellspacing="0" class="body_little" width="100%">
+            <!-- begin_fields_checks_1 -->
+            <!-- begin_p_from_to_1 -->
+            <tr>
+                <td class="body_text" align="left" style="padding:12px 0px 12px 12px; width: 150px;">
+                    {field}:
+                </td>
+                <td style="padding:12px 0px;" colspan="2">
+
+                    <table class="sepok">
+                        <tr>
+                            <td><span class="body_little">{l_from}</span></td>
+                            <td><select style="width:150px;" name="{name_from}" onChange="if (this.options[this.selectedIndex].value == '0') { document.forms['EditProfilePartnerForm'].{name_to}.disabled = true; } else { document.forms['EditProfilePartnerForm'].{name_to}.disabled = false; }">
+                                    <option selected value="0">{l_doesnt_matter}</option>
+                                    {from_options}
+                                </select></td>
+                            <td><span class="body_little">{l_to}</span></td>
+                            <td><select style="width:150px;" name="{name_to}">
+                                    <option selected value="0">{l_doesnt_matter}</option>
+                                    {to_options}
+                                </select></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <!-- end_p_from_to_1 -->
+            <!-- begin_checks_1 -->
+            <tr>
+                <td valign="top" class="body_text line_ch" align="left" style="padding:12px 12px 0; width: 150px;">
+                    {field}
+                </td>
+                <td valign="top" style="padding:12px 0px;" class="body_little line_ch">
+                    <!-- begin_check_1 -->
+                    <div class="">
+                    <input name="{name}[]" id="{name}{id}" class="check" {checked} type="checkbox" value="{id}">
+                    <label for="{name}{id}" class="profile_label">{title}</label>
+                    </div>
+                    <!-- begin_check_column_1 -->
+                </td><td valign="top" style="padding:12px 0px 12px 105px;" class="body_little line_ch">
+                    <!-- end_check_column_1 -->
+                    <!-- end_check_1 -->
+                    <div>
+                    <input name="{name}[]" id="{name}[]_0" class="check" {nm_check} type="checkbox" value="0">
+                    <label for="{name}[]_0" class="profile_label">{l_doesnt_matter}</label>
+                    </div>
+                </td>
+            </tr>
+            <!-- end_checks_1 -->
+            <!-- end_fields_checks_1 -->
+        </table>
+        <div class="btn fl_right"><a href="#" class="submit">{l_update_profile}</a>
+			<input type="submit" style="visibility:hidden;position:absolute;">
+		</div>
+        <div class="empty"></div>
+        <!-- end_partner_fields_1 -->
+        <!-- begin_partner_fields_2 -->
+        <h2>{l_partner} {l_physical_details}</h2>
+        <table border="0" cellpadding="0" cellspacing="0" class="body_little" width="100%">
+            <!-- begin_fields_checks_2 -->
+            <!-- begin_p_from_to_2 -->
+            <tr>
+                <td class="body_text" align="left" style="padding:12px 0px 12px 12px; width: 150px;">
+                    {field}:
+                </td>
+                <td style="padding:12px 0px;" colspan="2">
+
+                    <table class="sepok">
+                        <tr>
+                            <td><span class="body_little">{l_from}</span></td>
+                            <td><select style="width:150px;" name="{name_from}" onChange="if (this.options[this.selectedIndex].value == '0') { document.forms['EditProfilePartnerForm'].{name_to}.disabled = true; } else { document.forms['EditProfilePartnerForm'].{name_to}.disabled = false; }">
+                                    <option selected value="0">{l_doesnt_matter}</option>
+                                    {from_options}
+                                </select></td>
+                            <td><span class="body_little">{l_to}</span></td>
+                            <td><select style="width:150px;" name="{name_to}">
+                                    <option selected value="0">{l_doesnt_matter}</option>
+                                    {to_options}
+                                </select></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <!-- end_p_from_to_2 -->
+            <!-- begin_checks_2 -->
+            <tr>
+                <td valign="top" class="body_text line_ch" align="left" style="padding:12px 12px 0; width: 150px;">
+                    {field}
+                </td>
+                <td valign="top" style="padding:12px 0px;" class="body_little line_ch">
+                    <!-- begin_check_2 -->
+                    <div class="">
+                    <input name="{name}[]" id="{name}{id}" class="check" {checked} type="checkbox" value="{id}">
+                    <label for="{name}{id}" class="profile_label">{title}</label>
+                    </div>
+                    <!-- begin_check_column_2 -->
+                </td><td valign="top" style="padding:12px 0px 12px 200px;" class="body_little line_ch">
+                    <!-- end_check_column_2 -->
+                    <!-- end_check_2 -->
+                    <div>
+                    <input name="{name}[]" id="{name}[]_0" class="check" {nm_check} type="checkbox" value="0">
+                    <label for="{name}[]_0" class="profile_label">{l_doesnt_matter}</label>
+                    </div>
+                </td>
+            </tr>
+            <!-- end_checks_2 -->
+            <!-- end_fields_checks_2 -->
+        </table>
+        <div class="btn fl_right"><a href="#" class="submit">{l_update_profile}</a>
+			<input type="submit" style="visibility:hidden;position:absolute;">
+		</div>
+        <div class="empty"></div>
+       <!-- end_partner_fields_2 -->
+       <!-- begin_partner_fields_3 -->
+       <h2>{l_partner} {l_other_details}</h2>
+       <table border="0" cellpadding="0" cellspacing="0" class="body_little" width="100%">
+            <!-- begin_fields_checks_3 -->
+            <!-- begin_p_from_to_3 -->
+            <tr>
+                <td class="body_text" align="left" style="padding:12px 0px 12px 12px; width: 150px;">
+                    {field}:
+                </td>
+                <td style="padding:12px 0px;" colspan="2">
+
+                    <table class="sepok">
+                        <tr>
+                            <td><span class="body_little">{l_from}</span></td>
+                            <td><select style="width:150px;" name="{name_from}" onChange="if (this.options[this.selectedIndex].value == '0') { document.forms['EditProfilePartnerForm'].{name_to}.disabled = true; } else { document.forms['EditProfilePartnerForm'].{name_to}.disabled = false; }">
+                                    <option selected value="0">{l_doesnt_matter}</option>
+                                    {from_options}
+                                </select></td>
+                            <td><span class="body_little">{l_to}</span></td>
+                            <td><select style="width:150px;" name="{name_to}">
+                                    <option selected value="0">{l_doesnt_matter}</option>
+                                    {to_options}
+                                </select></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <!-- end_p_from_to_3 -->
+            <!-- begin_checks_3 -->
+            <tr>
+                <td valign="top" class="body_text line_ch" align="left" style="padding:12px 12px 0; width: 150px;">
+                    {field}
+                </td>
+                <td valign="top" style="padding:12px 0px;" class="body_little line_ch">
+                    <!-- begin_check_3 -->
+                    <div class="">
+                    <input name="{name}[]" id="{name}{id}" class="check" {checked} type="checkbox" value="{id}">
+                    <label for="{name}{id}" class="profile_label">{title}</label>
+                    </div>
+                    <!-- begin_check_column_3 -->
+                </td><td valign="top" style="padding:12px 0px 12px 200px;" class="body_little line_ch">
+                    <!-- end_check_column_3 -->
+                    <!-- end_check_3 -->
+                    <div>
+                    <input name="{name}[]" id="{name}[]_0" class="check" {nm_check} type="checkbox" value="0">
+                    <label for="{name}[]_0" class="profile_label">{l_doesnt_matter}</label>
+                    </div>
+                </td>
+            </tr>
+            <!-- end_checks_3 -->
+            <!-- end_fields_checks_3 -->
+        </table>
+        <div class="btn fl_right"><a href="#" class="submit">{l_update_profile}</a>
+			<input type="submit" style="visibility:hidden;position:absolute;">
+		</div>
+        <div class="empty"></div>
+        <!-- end_partner_fields_3 -->
+        <!--end_partner_enabled-->
+        <div style="height:20px"></div>
+
+        <h2>{l_edit_photos} ({num_photos})</h2>
+
+<div style="width: 100%;  /*height: 180px;*/" class="photo_container">
+
+        <!-- begin_photo_edit -->
+            <!-- begin_photo-->
+                <!-- begin_photo_item-->
+                <div style="width:110px; vertical-align: top; display: inline-block; padding-right: 5px; overflow: hidden; position: relative;">
+                    <img id="photo_{photo_id}" src="{url_files}{photo}">
+                    <a id="photo_rotate_{photo_id}" data-photo-id="{photo_id}" data-user-id="{user_id}" data-photo-size="s" class="icon_rotate" title="{a_rotate}" href="" ></a>
+
+                    <p class="mod_bl_pending">{visible}</p>
+                    <p class="mod_bl_description" title="{description}">{description}&nbsp;</p>
+                    <div class="mod_bl_action">
+                        <a class="mod_link_action" onclick="if(confirm('{l_this_action}')) parent.location.href='{url_main}administration/users_edit.php?cmd=delete_photo&photo_id={photo_id}&id={user_id}';">{l_delete}</a>
+                        <!-- begin_photo_access -->
+                        <a class="mod_link_action" onclick="window.location.href='{url_main}administration/users_edit.php?cmd=set_photo_access&photo_id={photo_id}&id={user_id}';">{photo_access}</a>
+                        <!-- end_photo_access -->
+                    </div>
+                    <!-- begin_photo_approve -->
+                    <a class="mod_btn_submit_custom mod_link_profile" onclick="redirectUrl('{url_main}administration/users_edit.php?cmd=approve_photo&photo_id={photo_id}&id={user_id}'); return false;">{l_photo_approve}</a>
+                    <!-- end_photo_approve -->
+
+                    <!-- begin_photo_odd-->
+                    <!-- end_photo_odd-->
+                    <!-- begin_photo_even-->
+                    <!-- end_photo_even-->
+                    <div style="height:20px"></div>
+                </div>
+
+				<!-- begin_photo_delimiter1 -->
+				<br clear="all">
+				<!-- end_photo_delimiter1 -->
+
+                <!-- end_photo_item-->
+                <!-- begin_nophoto_item-->
+                <div style="width:115px; float: left;">
+                    <img src="{url_files}nophoto_s.jpg" width="90" height="100">
+                    <p><b>{numer}. ({l_empty})</b></p>
+                    <!-- begin_nophoto_odd-->
+                    <!-- end_nophoto_odd-->
+                    <!-- begin_nophoto_even-->
+                    <!-- end_nophoto_even-->
+                    <div style="height:15px"></div>
+                </div>
+                <!-- end_nophoto_item-->
+
+            <!-- end_photo-->
+        <!-- end_photo_edit -->
+</div>
+
+</form>
+
+<br clear="all">
+
+<h2>{l_add_photo}</h2>
+<form method="post" action="{url_page}" enctype="multipart/form-data">
+    <input type="hidden" name="cmd" value="insert_photo">
+    <input type="hidden" name="id" value="{user_id}">
+    <label for="private_photo"><input type="checkbox" id="private_photo" name="private" value="1" style="margin: 0; width: auto;"> {l_private}</label>
+    <br>
+    <input type="text" name="description" placeholder="{l_description}">
+    <br>
+
+    <input type="file" name="photo_file">
+    <div class="btn fl_right"><a href="#" class="submit">{l_upload}</a>
+        <input type="submit" style="visibility:hidden;position:absolute;">
+    </div>
+</form>
+
+</div>
+{footer}

@@ -1,0 +1,58 @@
+<!-- begin_my_friends -->
+<form name="delete_friend" action="{url_page}?cmd=delete{params}" method="post">
+<table cellspacing="0" cellpadding="0" class="tab">
+<tbody>
+	<tr>
+		<td class="content" colspan="2">
+			<table cellspacing="0" cellpadding="0" class="list">
+			<tr>
+				<td>
+					<table class="userlist-my" cellspacing="3" cellpadding="0">
+<!-- end_my_friends -->
+<!-- begin_another_user_friends -->
+<table cellspacing="0" cellpadding="0" class="tab">
+<thead>
+	<tr>
+		<td colspan="2"><a href="{url_main}profile_view.php?user_id={user_id}">{name}</a>{l_user_friend_list}</td>
+	</tr>
+</thead>
+<tbody>
+	<tr>
+		<td class="content" colspan="2">
+			<table cellspacing="0" cellpadding="0" class="list">
+			<tr>
+				<th colspan="2">
+					<table cellpadding="0" cellspacing="0" class="smenu">
+						{profile_view_menu}
+					</table>
+				</th>
+			</tr>
+			<tr>
+				<td class="friends_list" >
+					<table class="userlist" cellspacing="3" cellpadding="0">
+<!-- end_another_user_friends -->
+
+					<tr>
+					<!-- begin_users_list_item -->
+						<td><div style="background-image:url('{url_files}{photo}');"><a href="{url_main}profile_view.php?user_id={user_id}">{name_first}</a></div><!-- begin_delete_checkbox --><p><input class="checkbox" type="checkbox" name="delete_{user_id}"/><!-- end_delete_checkbox --></p></td>
+						{row_break}
+					<!-- end_users_list_item -->
+					<!-- begin_users_list_no_item -->
+						<td></td>
+						{row_break}
+					<!-- end_users_list_no_item -->
+					</tr>
+					</table>
+					<!-- begin_delete_button -->
+					<a href="#" onclick="if(confirm('{l_are_you_sure}')) document.forms['delete_friend'].submit();"  class="orange_btn btn">{l_delete_selected}</a>
+					<!-- end_delete_button -->
+					<!-- begin_users_list_next_page -->
+					<p class="next"><a href="{url_page}?offset={offset}{params}">{l_next}</a></p>
+					<!-- end_users_list_next_page -->
+				</td>
+			</tr>
+			</table>
+		</td>
+	</tr>
+</tbody>
+</table>

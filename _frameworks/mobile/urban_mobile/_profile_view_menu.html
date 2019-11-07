@@ -1,0 +1,26 @@
+<div class="bl_nav_profile">
+    <ul id="profile_view_menu" class="col{class_col_menu} {menu_hide}">
+        <!-- begin_my_menu -->
+        <li><a href="{url_main}profile_view.php?user_id={user_id}&display=profile_info"><span class="profile">{l_menu_profile}</span><span class="cloud"></span></a></li>
+        <li><a href="{url_main}profile_photo.php"><span class="photos">{l_menu_photos}</span><span class="cloud"></span></a></li>
+        <!-- begin_my_menu_credits -->
+        <li><a href="{url_main}upgrade.php?action=refill_credits"><span class="credits">{l_menu_credits}</span><span class="cloud"></span></a></li>
+        <!-- end_my_menu_credits -->
+        <!-- begin_my_menu_upgrade -->
+        <li><a href="{url_main}upgrade.php"><span class="on">{superpowers_active_title}</span><span class="cloud"></span></a></li>
+        <!-- end_my_menu_upgrade -->
+        <li><a href="{url_main}messages.php"><span class="chats">{l_menu_chats}</span><span class="cloud"></span></a></li>
+        <!-- end_my_menu -->
+
+        <!-- begin_not_my_menu -->
+        <li><a class="profile_info" href="{url_main}profile_view.php?user_id={user_id}&display=profile_info&from={from_page}"><span class="profile">{l_menu_profile}</span><span class="cloud"></span></a></li>
+        <!-- begin_not_my_menu_like_to_meet -->
+        <li><a href="#meet"><span class="meet {not_my_menu_like_to_meet_selected}">{l_menu_meet}</span><span class="cloud"></span></a></li>
+        <!-- end_not_my_menu_like_to_meet -->
+        <!-- begin_not_my_menu_gift -->
+        <li><a href="{url_main}gifts_send.php?user_id={user_id}"><span class="gift">{l_menu_gift}</span><span class="cloud"></span></a></li>
+        <!-- end_not_my_menu_gift -->
+        <li><a href="{url_main}messages.php?display=one_chat&user_id={user_id}"><span class="chats">{l_menu_chat}</span><span class="cloud"></span></a></li>
+        <!-- end_not_my_menu -->
+    </ul>
+</div>

@@ -1,0 +1,18 @@
+.groups input.inp_violet{_margin: 0; }
+.groups .groups_pl_violet2{_margin: 0px -5px 20px 5px; }
+.groups input{ padding: 0 5px 2px; height: 19px; }
+.groups .groups_head_pad{ _padding: 1px 0 0 18px; }
+.groups td .groups_tb_sub td.first img{ width: 40px !important; }
+.groups .bl_search{ margin: 1px 10px 0 0 !important; }
+.groups .groups_search{ margin: -29px 0 0; position: relative; }
+.groups .groups_search input.btn_yellow{ $margin: -4px 0 0; _margin: -2px 0 0;  }
+.groups td .groups_tb_sub_r td{ height: 22px; padding: 3px 0 0; vertical-align: top; }
+.groups td .groups_tb_sub_r td{ height: 19px; }
+.groups td .groups_tb_sub th.th_t_c{ height: 16px; padding: 4px 0 0; }
+.groups .groups_foto ul{ _padding: 0 0 0 95px; }
+.groups .groups_search_head{ _margin: 3px 0 0; }
+.groups .groups_search_head input.btn_yellow{ $margin: -4px 0 0; _margin: -2px 0 0; }
+.groups .groups_img_yellow{$padding: 2px 2px 0; }
+.groups .groups_frm_come_all{ zoom: 1; }
+.groups .groups_frm_come_all .inp{ $margin: 0 0 0 20px; }  
+.groups .pl_violet_b{ _position: none; }    

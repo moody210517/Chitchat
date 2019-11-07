@@ -1,0 +1,263 @@
+﻿.section {
+    border: 1px solid #DDDDDD;
+    margin: 0 0 30px;
+    padding: 16px 20px 20px;
+}
+.nowidth .selectbox .select, .nowidth .selectbox ul.dropdown {
+    width: auto;
+}
+.maxheight .selectbox ul.dropdown {
+    max-height: 203px;
+}
+.selectbox {
+    cursor: pointer;
+    vertical-align: middle;
+}
+.selectbox .select {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-image: none;
+    border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-left-radius: 4px; border-bottom-right-radius: 4px; -moz-border-radius: 4px;
+    border-style: solid;
+    border-width: 1px;
+    color: #000;
+    font: 14px/20px Tahoma,sans-serif;
+    height: 22px;
+    padding: 0 25px 0 10px;
+	margin: 0;
+    border: none;
+    background: #eceae4;
+}
+.selectbox .select:active {
+    background: none repeat scroll 0 0 #F5F5F5;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1) inset;
+}
+.selectbox.focused .select {
+    border: 1px solid #5794BF;
+}
+.selectbox .select .text {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+	font-size: 14px;
+
+}
+.selectbox .trigger {
+/*    border-left: 1px solid #CCCCCC;*/
+    background: #c4bca3 url(../images/select_trigger.png) 50% 50% no-repeat;
+    width: 25px;
+    height: 22px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-radius: 0 4px 4px 0;
+    border-top-right-radius: 4px; border-bottom-right-radius: 4px; -moz-border-radius: 0 4px 4px 0;
+}
+.selectbox .trigger .arrow {
+/*    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #000000;*/
+    height: 0;
+    opacity: 0.3;
+    overflow: hidden;
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    width: 0;
+}
+.selectbox:hover .arrow {
+    opacity: 1;
+}
+.selectbox ul.dropdown {
+    background: #eceae4;
+    border: none;
+    border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-left-radius: 4px; border-bottom-right-radius: 4px; -moz-border-radius: 4px;
+    font: 11px/22px Tahoma,sans-serif;
+    margin: 0;
+    padding: 4px 0;
+    top: 23px;
+}
+.selectbox li {
+    color: #000;
+    padding: 0 10px;
+	font-size: 14px;
+    line-height: 22px;
+}
+.selectbox li:hover, .selectbox li.selected {
+    background: none repeat scroll 0 0 #968f77;
+    color: #fff;
+}
+.selectbox li.disabled {
+    color: #AAAAAA;
+}
+.selectbox li.disabled:hover {
+    background: none repeat scroll 0 0 transparent;
+}
+
+.bl_select .day .selectbox .select{ width: 25px; }
+.bl_select .day .selectbox ul.dropdown{ width: 60px; }
+
+.bl_select .month .selectbox .select{ width: 69px; }
+.bl_select .month .selectbox ul.dropdown{ width: 104px; }
+
+.bl_select .year .selectbox .select{ width: 54px; }
+.bl_select .year .selectbox ul.dropdown{ width: 89px; }
+
+.bl_select .selectbox .select{ width: 238px; }
+.bl_select .selectbox ul.dropdown{ width: 272px; }
+
+.bl_select .country .selectbox .select{ width: 96px; }
+.bl_select .country .selectbox ul.dropdown{ width: 131px; }
+
+
+
+.bl_select .day .jq-selectbox li {padding: 0 5px 0 5px; }
+.bl_select .day .jq-selectbox__select { width: 25px; border: 1px solid transparent; padding: 0 5px 0 5px;}
+.bl_select .day .jq-selectbox__select.wrong {background: none repeat scroll 0% 0% #FFB898;}
+.bl_select .day .jq-selectbox.focused .jq-selectbox__select {border: 1px solid  transparent;}
+
+.bl_select .day .jq-selectbox__select-text {}
+.bl_select .day .jq-selectbox__trigger {width: 25px; height: 24px; top: -1px; right: -30px; }
+.bl_select .day .jq-selectbox__dropdown {width: 54px; top: 25px; border: 1px solid transparent;}
+.bl_select .day .jq-selectbox li.selected {}
+.bl_select .day .jq-selectbox li:hover {}
+
+.bl_select .month .jq-selectbox li {padding: 0 5px 0 5px; }
+.bl_select .month .jq-selectbox__select { width: 72px; border: 1px solid transparent; padding: 0 5px 0 5px;}
+.bl_select .month .jq-selectbox__select.wrong {background: none repeat scroll 0% 0% #FFB898;}
+.bl_select .month .jq-selectbox.focused .jq-selectbox__select {border: 1px solid transparent;}
+.bl_select .month .jq-selectbox__select-text {}
+.bl_select .month .jq-selectbox__trigger {width: 25px; height: 24px; top: -1px; right: -32px; }
+.bl_select .month .jq-selectbox__dropdown {width: 104px; top: 25px; border: 1px solid transparent;}
+.bl_select .month .jq-selectbox li.selected {}
+.bl_select .month .jq-selectbox li:hover {}
+
+.bl_select .year .jq-selectbox li {padding: 0 5px 0 5px; }
+.bl_select .year .jq-selectbox__select { width: 59px; border: 1px solid transparent; padding: 0 5px 0 5px; }
+.bl_select .year .jq-selectbox__select.wrong {background: none repeat scroll 0% 0% #FFB898;}
+.bl_select .year .jq-selectbox.focused .jq-selectbox__select {border: 1px solid transparent;}
+.bl_select .year .jq-selectbox__select-text {}
+.bl_select .year .jq-selectbox__trigger {width: 25px; height: 24px; top: -1px; right: -32px; }
+.bl_select .year .jq-selectbox__dropdown {width: 89px; top: 25px; border: 1px solid transparent;}
+.bl_select .year .jq-selectbox li.selected {}
+.bl_select .year .jq-selectbox li:hover {}
+
+.bl_select .state .jq-selectbox li {padding: 0 5px 0 5px; }
+.bl_select .state .jq-selectbox__select { width: 100px; border: 1px solid transparent; padding: 0 5px 0 5px; }
+.bl_select .state .jq-selectbox.focused .jq-selectbox__select {border: 1px solid transparent;}
+.bl_select .state .jq-selectbox__select-text {}
+.bl_select .state .jq-selectbox__trigger {width: 25px; height: 24px; top: -1px; right: -30px; }
+.bl_select .state .jq-selectbox__dropdown {width: 128px; top: 25px; border: 1px solid transparent;}
+.bl_select .state .jq-selectbox li.selected {}
+.bl_select .state .jq-selectbox li:hover {}
+
+.bl_select .country .jq-selectbox li {padding: 0 5px 0 5px; }
+.bl_select .country .jq-selectbox__select { width: 100px; border: 1px solid transparent; padding: 0 5px 0 5px; }
+.bl_select .country .jq-selectbox.focused .jq-selectbox__select {border: 1px solid transparent;}
+.bl_select .country .jq-selectbox__select-text {}
+.bl_select .country .jq-selectbox__trigger {width: 25px; height: 24px; top: -1px; right: -30px; }
+.bl_select .country .jq-selectbox__dropdown {width: 128px; top: 25px; border: 1px solid transparent;}
+.bl_select .country .jq-selectbox li.selected {}
+.bl_select .country .jq-selectbox li:hover {}
+
+.bl_select.city .jq-selectbox li {padding: 0 5px 0 5px; }
+.bl_select.city .jq-selectbox__select { width: 240px; border: 1px solid transparent; padding: 0 5px 0 5px;}
+.bl_select.city .jq-selectbox.focused .jq-selectbox__select {border: 1px solid transparent;}
+.bl_select.city .jq-selectbox__select-text {}
+.bl_select.city .jq-selectbox__trigger {width: 25px; height: 24px; top: -1px; right: -32px; }
+.bl_select.city .jq-selectbox__dropdown {width: 272px; top: 25px; border: 1px solid transparent;}
+.bl_select.city .jq-selectbox li.selected {}
+.bl_select.city .jq-selectbox li:hover {}
+
+.bl_select.iam .jq-selectbox li {padding: 0 5px 0 5px; }
+.bl_select.iam .jq-selectbox__select { width: 240px; border: 1px solid transparent; padding: 0 5px 0 5px;}
+.bl_select.iam .jq-selectbox__select.wrong {background: none repeat scroll 0% 0% #FFB898;}
+.bl_select.iam .jq-selectbox.focused .jq-selectbox__select {border: 1px solid transparent;}
+.bl_select.iam .jq-selectbox__select-text {}
+.bl_select.iam .jq-selectbox__trigger {width: 25px; height: 24px; top: -1px; right: -32px; }
+.bl_select.iam .jq-selectbox__dropdown {width: 272px; top: 25px; border: 1px solid transparent;}
+.bl_select.iam .jq-selectbox li.selected {}
+.bl_select.iam .jq-selectbox li:hover {}
+
+.styler_join{display:none;}
+
+/*-- view 2  --*/
+.select_var2{  }
+.select_var2 .selectbox li{ font-size: 12px; }
+.select_var2 .selectbox .select{ width: 145px; border: 1px solid #cfcfcf; font-size: 12px;  background: #fff; padding: 0 25px 0 5px; }
+.select_var2 .selectbox .select .text{  font-size: 12px; }
+.select_var2 .selectbox .select .trigger{ background: #000 url(../images/select_trigger.png) 50% 50% no-repeat; width: 25px; height: 24px; top: -1px; right: -2px; }
+.select_var2 .selectbox ul.dropdown{ top: 25px; border: 1px solid #cfcfcf; background: #fff; font-size: 12px; }
+
+.select_var2 .selectbox li:hover, .select_var2 .selectbox li.selected{ background: #313131; }
+
+.select_var2 .jq-selectbox li {padding: 0 25px 0 5px; font-size: 12px;  }
+.select_var2.payment .jq-selectbox li {width: 200px; padding: 0 25px 0 5px; font-size: 12px; text-align: left;}
+.select_var2 .jq-selectbox__select { width: 25px; border: 1px solid #cfcfcf; font-size: 12px;  background: #fff; padding: 0 25px 0 5px; }
+.select_var2.payment .jq-selectbox__select { width: 200px; border: 1px solid #cfcfcf; font-size: 12px;  background: #fff; padding: 0 25px 0 5px; }
+.select_var2 .jq-selectbox__select-text {font-size: 12px;}
+.select_var2.payment .jq-selectbox__select-text {font-size: 12px; text-align: left;}
+.select_var2 .jq-selectbox__trigger {background: #000 url(../images/select_trigger.png) 50% 50% no-repeat; width: 25px; height: 24px; top: -1px; right: -2px; }
+
+.select_var2 .jq-selectbox__dropdown { top: 25px; border: 1px solid #cfcfcf; background: #fff; font-size: 12px; }
+.select_var2 .jq-selectbox li.selected { background: #313131; }
+.select_var2 .jq-selectbox li:hover { background: #313131; }
+/*-- /view 2  --*/
+
+.list_settings_cont .item .field .jq-selectbox__select{ width: 145px; }
+.list_settings_cont .item .field .jq-selectbox__dropdown {width: 175px; top: 25px; border: 1px solid #cfcfcf; background: #fff; font-size: 12px; }
+/*.list_settings_cont .item .field.timezone .jq-selectbox__select{ width: 385px; }*/
+.list_settings_cont .item .field.timezone .jq-selectbox__dropdown {width: 220px; top: 25px; border: 1px solid #cfcfcf; background: #fff; font-size: 12px; margin-left:-45px; }
+
+.list_settings_cont .selectbox .select{ width: 145px; }
+.list_settings_cont .selectbox ul.dropdown{ width: 177px; }
+
+.popup.pp_activate .cont .selectbox .select{ width: 185px; }
+.popup.pp_activate .cont .selectbox ul.dropdown{ width: 217px; }
+
+.popup.pp_activate .cont .edit .selectbox .select{ width: 200px; }
+.popup.pp_activate .cont .edit .selectbox ul.dropdown{ width: 232px; }
+
+.popup.pp_activate .cont .edit .day .selectbox .select{ width: 25px; }
+.popup.pp_activate .cont .edit .day .selectbox ul.dropdown{ width: 60px; }
+
+.popup.pp_activate .cont .edit .month .selectbox .select{ width: 69px; }
+.popup.pp_activate .cont .edit .month .selectbox ul.dropdown{ width: 104px; }
+
+.popup.pp_activate .cont .edit .year .selectbox .select{ width: 34px; }
+.popup.pp_activate .cont .edit .year .selectbox ul.dropdown{ width: 69px; }
+
+.popup.pp_activate .cont .edit .hw .selectbox .select{ width: 81px; }
+.popup.pp_activate .cont .edit .hw .selectbox ul.dropdown{ width: 116px; }
+
+.popup.pp_increase .cont .selectbox .select{ width: 205px; text-align: left; margin: 0 0 10px; }
+.popup.pp_increase .cont .selectbox ul.dropdown{ width: 237px; text-align: left; }
+
+.popup.pp_increase .cont .selectbox .select{ width: 205px; text-align: left; margin: 0 0 10px; }
+.popup.pp_increase .cont .selectbox ul.dropdown{ width: 237px; text-align: left; }
+
+
+/*-- view 3  --*/
+.select_var3{  }
+.select_var3 .selectbox li{ font-size: 12px; padding: 0 5px; }
+.select_var3 .selectbox .select{ width: 145px; border: 1px solid #848484; font-size: 12px; line-height: 19px; height: 20px; background: #fff; padding: 0 25px 0 5px; }
+.select_var3 .selectbox .select .text{  font-size: 12px; }
+.select_var3 .selectbox .select .trigger{ background: #8e8e8e url(../images/select_trigger.png) 50% 50% no-repeat; width: 25px; height: 22px; top: -1px; right: -2px; }
+.select_var3 .selectbox ul.dropdown{ top: 24px; border: 1px solid #cfcfcf; background: #fff; font-size: 12px; }
+.select_var3 .selectbox li:hover, .select_var3 .selectbox li.selected{ background: #8e8e8e; }
+/*-- /view 3  --*/
+
+.bl_who .selectbox .select{ width: 21px; float: left; display: block; }
+.bl_who .selectbox ul.dropdown{ width: 53px; }
+
+.bl_browse .filter .part2 .bl .selectbox .select{ width: 150px; }
+.bl_browse .filter .part2 .bl .selectbox ul.dropdown{ width: 180px; }
+
+.bl_browse .filter .part2 .bl .sel_height .selectbox .select{ width: 33px; }
+.bl_browse .filter .part2 .bl .sel_height .selectbox ul.dropdown{ width: 65px; }
+
+.verify_account_system .selectbox li, .verify_account_system .text{text-align: left;}

@@ -1,0 +1,39 @@
+{header}
+<script>
+    messages.setLastId('{last_id}');
+    messages.initGeneral();
+</script>
+<div class="col_center bl_message_list">
+    <div class="head icon_head_messages">{l_messages}</div>
+    <div class="cont">
+        <div id="messages_box" class="message_list">
+            {users_list}
+        </div>
+        <div id="loader_messages" class="css_loader loader_messages hidden">
+            <div class="spinner center">
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+            </div>
+        </div>
+        <div id="im_list_users_empty">
+		<div class="dialog pp_message_user_info">
+            <div class="bl">
+                <img src="{url_tmpl_main}images/decor_msg_empty.png" width="239" height="207" alt=""/>
+                <div class="bl_txt_msg_empty"><span>{l_you_have_no_messages_yet}</span></div>
+            </div>
+        </div>
+        </div>
+        <div class="cl"></div>
+    </div>
+</div>
+{footer}

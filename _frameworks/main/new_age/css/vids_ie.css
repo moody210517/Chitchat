@@ -1,0 +1,8 @@
+.vids_new input{ padding: 0 5px 2px; height: 19px; }
+.vids_new_comments_frm{ _padding: 0 0 0 65px; }
+.vids_new td .vids_new_tb_sub td.first img{ width: 40px !important; }
+.vids_new .bl_overflow{ $margin: 0; }
+.vids_new_frm_decor_c input{ margin: 0 !important;}
+.tb_vids_new_frm th{ $padding: 3px 4px 20px; }
+.vids_new_decor_btn{ $float: left; $margin: 0; $width: 124px; }
+.vids_new .bl_search form{ margin-top:-1px;}

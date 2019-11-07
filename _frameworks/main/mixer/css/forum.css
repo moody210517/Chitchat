@@ -1,0 +1,63 @@
+table {border-collapse:collapse;}
+table.tborder {background:none repeat scroll 0 0 #EAEAEA;border:1px solid #FF7900;color:#000000; margin: 0 0 -1px; }
+.thead {background:url("../img/forum/techron_headbg.gif") repeat-x scroll left top #ffa200;color:#FFFFFF;font:bold 11px tahoma,verdana,geneva,lucida,arial,helvetica,sans-serif;margin:0.5em;padding:0.5em;}
+.tborder {background:none repeat scroll 0 0 #EAEAEA;border:1px solid #FF7900;color:#000000;}
+.tborder td.tcat span{ padding: 5px 10px 6px; display: block; }
+#profileTable td, tr {vertical-align:top;}
+.alt2, .alt2Active {background:#FFfff5;border:1px solid #FF7900;color:#000000;font-family:tahoma,verdana,geneva,lucida,'lucida grande',arial,helvetica,sans-serif;padding: 10px 6px 6px 6px;}
+screen.css table td {font-size:11px;}
+table td.alt1 {font-size:11px;}
+.alt1, .alt1Active {  line-height: 16px; background:#FFfff5;border:1px solid #FF7900;color:#000000;margin:0.5em;padding:0.5em;}
+div.forum {width:750px;margin:0 auto;position:relative;left:17px;}
+div.forum_video  a.lightbox img {border:1px solid #000000; max-width: 540px;}
+div.forum tr td ul {position:relative;left:-50px;top:2px;}
+div.forum tr td ul li {float:left;padding:0 10px;}
+div.forum tr td ul li a {float:left; color:black;}
+div.forum table.tborder td.alt1 div.forum_video {margin:0 auto;position:relative;left:17px;}
+.thead a:hover, .thead a:active{color:#fff;}
+.thead a { color:#fff;text-decoration:none;}
+.tcat a:link, .tcat a:visited {color:#333;}
+.tcat a:hover, .tcat a:active{color:#333;}
+.alt1Active a:link {color:#A30636;}
+.alt1Active a:visited {color:#A30636;}
+.alt1Active a:hover{color:#72A508;}
+.alt1 a:link {color:#A30636;}
+.alt1 a:visited {color:#A30636;}
+.alt1 img { vertical-align: middle; }
+.navbar a:link {color:#000;}
+.navbar a:visited {color:#000;}
+.navbar_bulit_color {color:#000;}
+.panel {border:0 outset;color:#000000;padding:10px;}
+.forum_button {font-family:tahoma,verdana,geneva,lucida,'lucida grande',arial,helvetica,sans-serif;font-size:11px;font-size-adjust:none;font-stretch:normal;font-style:normal;font-variant:normal;font-weight:normal;line-height:normal;cursor:pointer;}
+.forum_error {font-family:tahoma,verdana,geneva,lucida,'lucida grande',arial,helvetica,sans-serif;font-size:11px;font-size-adjust:none;font-stretch:normal;font-style:normal;font-variant:normal;font-weight:normal;line-height:normal;color:red; }
+.smallfont {font-family:tahoma,verdana,geneva,lucida,'lucida grande',arial,helvetica,sans-serif;font-size:11px;font-size-adjust:none;font-stretch:normal;font-style:normal;font-variant:normal;font-weight:normal;line-height:normal;margin-bottom:10px;}
+.navbar {-x-system-font:none;font-family:tahoma,verdana,geneva,lucida,'lucida grande',arial,helvetica,sans-serif;font-size:11px;font-size-adjust:none;font-stretch:normal;font-style:normal;font-variant:normal;font-weight:normal;line-height:normal;color:#000;}
+.tcat {background:#ffa200;border-left:1px solid #FF7900;border-right:1px solid #FF7900;font-size:11px;font-size-adjust:none;font-stretch:normal;font-style:normal;font-variant:normal;font-weight:bold;line-height:normal;margin:0.5em;}
+.bigusername {color:#000000 !important; font-weight:bold !important; font-size:11px !important;}
+.smallfont a {color:#000000 !important;  }
+.content a:hover {text-decoration:none;}
+
+.font_title{ font-size: 18px; margin: 0 0 5px; }
+.font_title a{ text-decoration: none; }
+
+.bl_forum_msg{ clear: both; }
+.bl_forum_msg .head{ background: #ffa200; border-left:1px solid #FF7900; border-right: 1px solid #FF7900; margin: 0 0 5px; padding: 4px 5px 5px; font-size: 11px; line-height: 20px; }
+.bl_forum_msg .head a{ color: #000; }
+.bl_forum_msg .head .title{ font-weight: bold; font-size: 12px; float: left; }
+.bl_forum_msg .head .info{ float: right; }
+.bl_forum_msg .cont{ background: #EAEAEA; padding: 10px 40px; }
+.bl_forum_msg .cont label{ display: block; margin: 0 0 3px; }
+.bl_forum_msg .cont input.inp{ width: 100%; padding: 0; margin: 0 0 10px; }
+.bl_forum_msg .cont textarea{ width: 100%; padding: 0; margin: 0 0 10px; }
+.bl_forum_msg .cont .bl_btn{ text-align: center; }
+.bl_forum_msg .cont .bl{  }
+
+ul.list_smiles{ margin: 0; padding: 0; float: left; clear: both; display: table-row; width: 100%; }
+ul.list_smiles li{ margin: 0 2px 0 0; padding: 0 2px 0 0; vertical-align: middle; display: table-cell; height: 25px; }
+ul.list_smiles li img{ vertical-align: middle;  }
+
+.error{ color: #f00; }
+.cl{ clear: both; padding: 0; margin: 0; font-size: 0; line-height: 0; }
+
+.forum_message{ width: 540px; word-wrap: break-word; }
+.forum_message .forum_video img {margin-top: 10px;}

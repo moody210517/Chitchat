@@ -1,0 +1,162 @@
+<!-- begin_users_list_items -->
+<script type="text/javascript" src="{url_main}_server/js/chart.bundle.min.js{cache_version_param}"></script>
+{profile_photos_init}
+<script>
+var isSuperPowers = '{is_super_powers}'*1;
+var isFreeSite = '{is_free_site}'*1;
+var isPageProfile = true;
+var urlSearchResults = '{url_page}';
+$(function(){
+    Photo.init(true);
+})
+</script>
+<!-- col_center -->
+<div data-uid="{user_id}" data-gender="{gender}" data-fuid="{friend_id}" class="col_center col_encounters to_hide">
+<script>
+$(function(){
+    var hB=0;
+    if ($('.banner_header_bl')[0]) {
+       hB=$('.banner_header_bl').height();
+    }
+    $jq('.column_main').css({transition:'height .35s',height:($('.col_center:first').height()+20+hB)});
+	$('.col_center:first').toggleClass('to_hide to_show',0);
+})
+
+updateCountersLikes(checkDataAjax('{update_menu_counters_data}'));
+
+</script>
+	<div class="cont bl_profile">
+       <div class="bl_pic_info">
+            <div id="photo_pic_main" class="pic">
+                <div class="profile_pic_one">
+                    <img onclick="Photo.openGalleryId('{photo_main_id}');" data-offset-id="{photo_main_id}"  class="photo show_photo_gallery" onload="Profile.onLoadMainPhoto($(this));"  oncontextmenu="return false;" data-main-photo="{photo_main_id}" id="pic_main_img" src="{url_files}{photo_main}" title="{photo_main_title}" <!--begin_main_cursor_def-->style="cursor:default"<!--end_main_cursor_def-->/>
+                    <script>
+                        Photo.setPhotoInfo('{photo_main_id}', 'public', {gallery_photo_public_not_photo_info});
+                    </script>
+                </div>
+			</div>
+			<div class="info">
+				<!-- block_statistics -->
+				<div class="block_statistics">
+                    <div class="item">
+                        {profile_charts}
+                    </div>
+				</div>
+				<div class="name_info">
+                    <div class="bl_info">
+                        <div class="name name_hot_or_not"><a href="{user_profile_link}">{user_name}</a></div>
+                        <div class="bl_list_info">
+                            <ul class="list_info">
+                                <li><span>{age}</span><span class="basic_info">•</span></li>
+                                <li><span>{city} {country}</span><span class="basic_info">•</span></li>
+                                <li>{user_orientation}</li>
+                            </ul>
+                        </div>
+                    </div>
+				</div>
+			</div>
+        <div class="cl"></div>
+		</div>
+		<div class="choose_btn">
+            <div class="bl l">
+                <button onclick="Profile.sendLikeEncounters('{user_id}','N',$(this));" class="btn pink large"><img width="21" height="24" alt="" src="{url_tmpl_main}images/icon_cancel.png"></button>
+            </div>
+            <div class="bl r">
+                <button onclick="Profile.sendLikeEncounters('{user_id}','Y',$(this));" class="btn lgreen large"><img width="24" height="22" alt="" src="{url_tmpl_main}images/icon_star_big.png"></button>
+            </div>
+            <div class="cl"></div>
+        </div>
+	</div>
+    <div class="tabs_profile choose_profile">
+		<div class="tabs_content">
+			<div class="tab_about tab_cont">
+				<!-- begin_photo_public_block -->
+				<div class="tab_photos">
+					<div class="list_photos_public">
+                        <!-- begin_photo_public -->
+                        <div id="{photo_public_id}"  class="item profile_photo_frame">
+                            <a onclick="Photo.openGalleryId('{photo_public_id}'); return false;" data-offset-id="{photo_public_id}" class="show_photo_gallery" style="opacity:0;" href="">
+                                <img data-photo-id="{photo_public_id}" oncontextmenu="return false;" id="photo_{photo_public_id}" title="{photo_public_title}" class="photo lazy_deferred" data-src="{url_files}{url_photo_public}" width="126" height="140" alt="" />
+                            </a>
+                            <script>
+                                Photo.setPhotoInfo('{photo_public_id}', 'public', {gallery_photo_public_info});
+                            </script>
+                        </div>
+                        <!-- end_photo_public -->
+                        <div class="cl"></div>
+					</div>
+                </div>
+				<!-- end_photo_public_block -->
+				<div class="col_left">
+                    <!-- begin_module_fields_urban -->
+                        <!-- begin_basic -->
+                        <div class="bl">
+                            <div class="title">
+                                <div id="basic_anchor_{name}" class="title_icon_edit">{field}</div>
+                                <div class="cl"></div>
+                            </div>
+                            <p id="basic_{name}">
+                                {value}
+                                <!-- begin_forced_show_more -->
+                                <a href="#" onclick=" confirmHtmlRedirect('{forced_phrase}','profile_view.php?cmd=edit_field&field_name={field_name}', closeAlert,ALERT_HTML_ALERT, '',null,'wrong');return false;">{l_show_more}</a>
+                                <!-- end_forced_show_more -->
+                                <!-- begin_basic_show_more -->
+                                <a href="{url_main}{url_page_login}">{l_show_more}</a>
+                                <!-- end_basic_show_more -->
+                            </p>
+                        </div>
+                        <!-- end_basic -->
+                    <!-- end_module_fields_urban -->
+                </div>
+				<div class="col_right">
+                    <!-- begin_looking_for_visitor -->
+					<div class="bl">
+						<div class="title">{l_i_am_looking_for}</div>
+						<ul class="list_interest info_right_col">
+                            <!-- begin_looking_for_visitor_orientation -->
+                            <li><span>•</span><span>{looking_for_visitor_orientation}</span></li>
+                            <!-- end_looking_for_visitor_orientation -->
+							<!-- begin_looking_for_visitor_ages -->
+							<li><span>•</span>{looking_for_visitor_ages}</li>
+							<!-- end_looking_for_visitor_ages -->
+							<li><span>•</span>{looking_for_visitor_near_me}</li>
+							<li><span>•</span>{looking_for_visitor_i_am_here_to}</li>
+						</ul>
+					</div>
+                    <!-- end_looking_for_visitor -->
+					<!-- begin_personal_impact -->
+                    <div class="bl">
+                        <div class="title">
+                            <div class="title_icon_edit">{l_personal_info}</div>
+                            <div class="cl"></div>
+                        </div>
+                        <table id="personal_items">
+                            <!-- begin_personal_item -->
+                            <tr>
+                                <th>{field}</th>
+                                <td id="personal_info_value_{name}">
+                                    {value}
+                                    <!-- begin_int_1_show_more -->
+                                    <a href="{url_main}{url_page_login}">{l_show}</a>
+                                    <!-- end_int_1_show_more -->
+                                </td>
+                            </tr>
+                            <!-- end_personal_item -->
+                        </table>
+                    </div>
+					<!-- end_personal_impact -->
+				</div>
+			</div>
+        </div>
+		<div class="cl"></div>
+	</div>
+</div>
+<!-- end_users_list_items -->
+<!-- begin_users_list_noitems -->
+<div class="col_center">
+	<div class="bl_no_one bl_no_one_encounters">
+        <div class="icon"></div>
+		<div class="txt">{l_no_one_found_please_edit_the_filter}</div>
+	</div>
+</div>
+<!-- end_users_list_noitems -->

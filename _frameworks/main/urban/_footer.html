@@ -1,0 +1,394 @@
+
+    <div class="cl"></div>
+    <!-- begin_banner_footer -->
+    <div class="banner_footer">{banner_footer}</div>
+    <!-- end_banner_footer -->
+    </div>
+
+	<!--<div class="video_controls"><button></button> <button></button></div>-->
+    </div>
+    <!-- /content -->
+    <!-- begin_member_footer -->
+
+    <!-- footer -->
+    <div class="footer footer_tile_color">
+    <!-- end_member_footer -->
+
+    <!-- begin_visitor_footer -->
+    <!-- footer -->
+    <div class="footer {visitor_footer_logout} footer_tile_color">
+
+        <div class="footer_w">
+		<!-- begin_visitor -->
+            <div class="footer_tb">
+                <div class="l">
+                     <ul class="list">
+                         <li class="msg"><div>{l_send_and_receive_messages}</div></li>
+                         <li id="footer_ico_upload" class="upload"><div>{l_upload_and_share_photos}</div></li>
+                         <li class="meet"><div>{l_meet_in_person}</div></li>
+                     </ul>
+                </div>
+                <div class="r">
+                    <ul class="nav">
+                        <li><a href="{url_main}{url_page_search_results}">{l_browse}</a></li>
+                        <li><a href="{url_main}{url_page_login}">{l_log_in}</a></li>
+                        <li><a href="{url_main}{url_page_join}">{l_register}</a></li>
+                    </ul>
+                    <!-- begin_fb_like_button_html -->
+                    <div class="fc_like">
+                        {fb_like_button_html}
+                    </div>
+                    <!-- end_fb_like_button_html -->
+
+                    <div class="cl"></div>
+
+                    <div class="logo_footer">
+                        <img src="{header_url_logo_footer}" />
+                    </div>
+
+                </div>
+            </div>
+
+		<!-- end_visitor -->
+		<!-- begin_member1 -->
+        {l_footer_c}{title_orig} {year}
+		<!-- end_member1 -->
+        </div>
+    <!-- end_visitor_footer -->
+
+        <div class="footer_info">
+            <div class="footer_copy">{l_footer_c}{title_orig} {year}</div>
+            <!-- begin_link_partner -->
+            <div class="stick"> | </div>
+            <div class="contact">
+                <a href="{url_main}partner/" target="_blank" title="{l_affiliates}">{l_affiliates}</a>
+            </div>
+            <!-- end_link_partner -->
+            <!-- begin_contact_on -->
+            <div class="stick"> | </div>
+            <div id="contact" class="contact">
+                <a href="">{l_contact_us}</a>
+            </div>
+            <!-- end_contact_on -->
+
+
+            <!-- begin_bottom_menu -->
+            <!-- begin_bottom_menu_item -->
+            <div class="stick"> | </div>
+            <div class="contact"><a class="{bottom_menu_item_class}" href="{url_main}{bottom_menu_item_url}">{bottom_menu_item_title}</a></div>
+            <!-- end_bottom_menu_item -->
+            <!-- end_bottom_menu -->
+
+            <!-- begin_btn_download_app_bottom -->
+            <div class="bl_btn_app">
+                <!-- begin_btn_download_app_bottom_item -->
+                <a target="_blank" class="{btn_download_app_bottom_item_class}" href="{btn_download_app_bottom_item_url}" title="{btn_download_app_bottom_item_title}">
+                    <img src="{url_tmpl_main}images/icon_btn_{btn_download_app_bottom_item_icon}.png" alt="" />&nbsp;{btn_download_app_bottom_item_title}
+                </a>
+                <!-- end_btn_download_app_bottom_item -->
+            </div>
+            <!-- end_btn_download_app_bottom -->
+
+            <div class="footer-ssl-seal">{ssl_seal_html}</div>
+
+        </div>
+        <div class="footer_decor footer_decor_image"></div>
+    </div>
+    <!-- /footer -->
+</div></div>
+<!-- /wrapper -->
+
+<div class="page_shadow"></div>
+<div class="page_shadow_confirm"></div>
+<div class="page_shadow_empty"></div>
+
+<div class="box_for_popup_alerts"></div>
+
+<!-- begin_member_footer_custom -->
+<div style="display:none;">
+    <div id="notifications_tmpl" class="notifications">
+        <div class="close_notif">
+            <a class="close_notif_a" href="" onclick="Messages.hideNotifMsg($(this).closest('.notifications')); return false;">&nbsp;</a>
+        </div>
+        <div class="avatar" data-uid="" data-url="" onclick="redirectOrOpenMessage($(this).data('url'), $(this).data('uid'))">
+            <img onload="$(this).parent().css('opacity', 1);" src="" width="62" height="62"/>
+        </div>
+        <div class="messages">
+            <div class="title"></div>
+            <div class="text notifications_show_msg"></div>
+        </div>
+    </div>
+    <!-- begin_pp_message_blank -->
+    <div id="pp_message" class="pp_message">
+        <div id="pp_message_preloader" class="pp_message_preloader"></div>
+        <div id="pp_message_tab" class="message_tab">
+           <span class="msg">{l_header_menu_messages} <div class="count"><b id="pp_message_count_all">{messages_count}</b></div> </span>
+        </div>
+        <div id="pp_message_update" class="update">
+		<span id="pp_message_close" class="icon_close"></span>
+        <div class="head"></div>
+        <div class="cont preloader"></div>
+        </div>
+        <div class="foot"></div>
+    </div>
+    <!-- end_pp_message_blank -->
+
+    <!-- begin_pp_gift -->
+    <div id="pp_gift" class="popup pp_gift">
+        <div class="head">
+            <span id="pp_gift_title" style="color:#000;">{pp_gift_title}</span>
+            <a id="pp_gift_close" class="icon_close" href="#"></a>
+        </div>
+        <div class="cont">
+            <div id="pp_gift_list_gift" class="bl_gift">
+                <ul>
+                <!-- begin_pp_gift_img -->
+                <li>
+                    <a class="gift_img <!-- begin_pp_gift_select -->selected<!--end_pp_gift_select -->" data-credits="{pp_gift_credits}" data-gift="{pp_gift_id}" href="#">
+                        <img src="{pp_gift_url}" alt="" />
+                        <span class="frame"></span>
+                    </a>
+
+                </li>
+                <!-- end_pp_gift_img -->
+                </ul>
+            </div>
+            <div class="gift_textarea_decor">
+                <textarea id="pp_gift_text" name="textbox" maxlength="58" class="placeholder" placeholder="{l_your_gift_note}"></textarea>
+            </div>
+            <!-- begin_pp_gift_credits -->
+            <div class="gift_credits_send">
+                <input id="pp_gifts_credits" type="text" class="inp placeholder" placeholder="{l_give_some_of_my_credits}">
+            </div>
+            <!-- end_pp_gift_credits -->
+            <div class="bl_ch">
+                <label>
+                    <input class="ch" id="pp_gift_recipient" type="checkbox"/>
+                    {l_show_your_gift_only_to_the_recipient}
+                </label>
+            </div>
+        </div>
+        <div class="foot"><input id="pp_gift_send" type="button" class="btn blue" value="{l_continue}" /></div>
+    </div>
+    <!-- end_pp_gift -->
+    <!-- Payment -->
+    <div id="pp_increase_payment" class="popup pp_increase">
+        <div class="head">
+            <strong></strong>
+            <a onclick="Profile.incPopClosePayment(); return false;" class="icon_close" href=""></a>
+        </div>
+        <div class="cont_loader">
+            <img src="{url_tmpl_main}images/lazy_loader.gif">
+        </div>
+        <div class="foot">
+        </div>
+    </div>
+    <!-- Payment -->
+</div>
+
+<!-- pp_gallery -->
+<div id="pp_gallery_photos_content" class="pp_photos pp_photos_empty" style="display: none;">
+    <div id="pp_gallery_photo_one_cont" class="cont">
+        <a id="pp_gallery_photos_close" class="icon_close" href="#"></a>
+        <div class="cl"></div>
+        <h2 class="fl_left">&nbsp;<span></span></h2>
+        <div class="cl"></div>
+        <div id="pp_photo_carousel_box" class="bl_carousel"></div>
+        <div class="bl_photo_one">
+            <a id="photo_show_prev" onclick="Photo.showGalleryPhotoOne('next_id'); return false;" href="#" class="arrows prev_p"></a>
+            <div class="bl_photo_one_cont">
+                <div id="request_private_title" class="request_access" class="txt_top"></div>
+                <div id="gallery_photo_one" class="vertica gallery_photo_one_box"><!---->
+                    <img oncontextmenu="return false;" id="gallery_photo_one_img" src="" alt="" />
+                    <div title="{a_report_photo}" id="report_photo_gallery" onclick="Photo.openReport(); return false;" class="report_photo_gallery"></div>
+                </div>
+                <div id="request_access_action" class="request_access" class="txt_bottom"></div>
+            </div>
+            <div class="bl_video_one_cont">
+				<div id="video_loader" class="css_loader">
+					<div class="spinner center">
+						<div class="spinner-blade"></div>
+						<div class="spinner-blade"></div>
+						<div class="spinner-blade"></div>
+						<div class="spinner-blade"></div>
+						<div class="spinner-blade"></div>
+						<div class="spinner-blade"></div>
+						<div class="spinner-blade"></div>
+						<div class="spinner-blade"></div>
+						<div class="spinner-blade"></div>
+						<div class="spinner-blade"></div>
+						<div class="spinner-blade"></div>
+						<div class="spinner-blade"></div>
+					</div>
+				</div>
+            </div>
+            <a id="photo_show_next" onclick="Photo.showGalleryPhotoOne('prev_id'); return false;" href="#" class="arrows next_p"></a>
+        </div>
+    </div>
+    <div class="photo_funk"></div>
+    <div id="pp_gallery_photos_footer_empty" class="foot foot_empty">
+        <div class="comments_hidden"><img src="{url_tmpl_main}images/comment_visibility_off.png"/><div>{l_comments_hidden}</div></div>
+    </div>
+</div>
+<!-- pp_gallery -->
+
+
+
+<!-- pp_wall_comments -->
+<div id="pp_wall_one_post" class="pp_photos pp_wall_one_post" style="display: none;">
+    <div class="cont wall_one_post_cont">
+        <a onclick="Wall.closeOnePost(); return false;" class="icon_close" href="#"></a>
+        <div class="cl"></div>
+        <div class="bl_photo_one wall_one_post">
+			<div id="pp_wall_one_post_cont"></div>
+        </div>
+    </div>
+    <div id="pp_wall_one_post_foot" class="foot">
+		<div id="pp_wall_wall_one_post_frm" class="frm_post">
+			<div class="pic">
+				<a href="{url_main}{url_profile_link}">
+					<img src="{url_files}{avka_user_photo}" alt="" />
+				</a>
+			</div>
+			<div class="post">
+				<textarea id="pp_wall_wall_one_post_comment" class="placeholder" placeholder="{l_write_your_comment}"></textarea>
+				<button id="pp_wall_wall_one_post_comment_send" onclick="Wall.postComment()" class="btn_post"></button>
+			</div>
+			<div class="cl"></div>
+		</div>
+		<div id="pp_wall_wall_one_post_list_comment">
+			<div id="wall_item_comments_{id}" class="items wall_one_post_list_comment" style="border:none;">
+
+			</div>
+			<div style="display:none;" id="pp_wall_wall_one_post_load_comments" onclick="Wall.loadComments(); return false;" class="wall_load_comments" href="#">
+				<span class="bl_wall_load_comments">
+				{l_load_more_comment_one}
+				<div class="wall_load_comments_loader css_loader hidden">
+					<div class="spinner center">
+						<div class="spinner-blade"></div>
+						<div class="spinner-blade"></div>
+						<div class="spinner-blade"></div>
+						<div class="spinner-blade"></div>
+						<div class="spinner-blade"></div>
+						<div class="spinner-blade"></div>
+						<div class="spinner-blade"></div>
+						<div class="spinner-blade"></div>
+						<div class="spinner-blade"></div>
+						<div class="spinner-blade"></div>
+						<div class="spinner-blade"></div>
+						<div class="spinner-blade"></div>
+					</div>
+				</div>
+				</span>
+			</div>
+			<div class="cl"></div>
+		</div>
+		<div class="wall_comments_loader css_loader">
+			<div class="spinner center">
+				<div class="spinner-blade"></div>
+				<div class="spinner-blade"></div>
+				<div class="spinner-blade"></div>
+				<div class="spinner-blade"></div>
+				<div class="spinner-blade"></div>
+				<div class="spinner-blade"></div>
+				<div class="spinner-blade"></div>
+				<div class="spinner-blade"></div>
+				<div class="spinner-blade"></div>
+				<div class="spinner-blade"></div>
+				<div class="spinner-blade"></div>
+				<div class="spinner-blade"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- pp_wall_comments -->
+
+
+<div id="pp_user_report" class="popup pp_activate pp_contact" style="top: 30px; left: 50px; margin: 0; display:none;">
+    <div class="head">
+        <strong></strong>
+        <a onclick="Profile.closeReport(); return false;" class="icon_close" href="#close"></a>
+    </div>
+    <div class="cont basic_fields">
+    <div class="edit">
+        <textarea style="margin-left: 10px;" class="mail_info" id="pp_user_report_msg" name="comment"></textarea>
+    </div>
+    </div>
+    <div class="foot">
+        <input onclick="Profile.sendReport(); return false;" type="button" class="btn green fl_right"  value="{a_send}"/>
+        <a onclick="Profile.cancelReport(); return false;" class="link" href="#reset">{l_cancel}</a>
+    </div>
+</div>
+
+
+<!-- end_member_footer_custom -->
+
+<!-- begin_visitor_footer_custom -->
+
+<!-- end_visitor_footer_custom -->
+<!-- Contact -->
+<div id="pp_contact" class="popup pp_activate pp_contact" style="top: 30px; left: 50px; margin: 0; display:none;">
+    <div class="head">
+        <strong>{l_send_a_message_to_the_admin}</strong>
+        <a id="pp_contact_close" class="icon_close" href="#"></a>
+    </div>
+    <div class="cont basic_fields">
+        <div class="edit textarea_loader">
+            <img src="{url_tmpl_main}images/lazy_loader_green.gif">
+        </div>
+    </div>
+    <div class="foot">
+    </div>
+</div>
+<!-- Contact -->
+
+<div id="ajax_server"></div>
+<div style="display:none;" id="update_server"></div>
+<script>
+    try {initServer();}
+    catch(e){};
+    {footer_custom_js}
+    <!-- begin_alert_after_page_loaded -->
+    $win.load(function(){
+        alertCustom('{alert_after_page_loaded_msg}',true,ALERT_HTML_SUCCESS);
+    })
+    <!-- end_alert_after_page_loaded -->
+</script>
+
+    <script src="{url_main}_server/videojs/video.js{cache_version_param}"></script>
+	<script>videojs.options.flash.swf="{url_main}_server/videojs/video-js.swf"</script>
+
+<!-- begin_facebook_invite -->
+<script src="https://connect.facebook.net/en_US/all.js"></script>
+<script type="text/javascript">
+    FB.init({
+        appId: '{facebook_appid}',
+        cookie: true,
+        status: true
+    });
+
+    var j_facebook_invite_message = '{j_facebook_invite_message}';
+
+</script>
+<!-- end_facebook_invite -->
+
+<!-- begin_gdpr_cookie_popup -->
+<script>
+    $(function(){
+        //document.cookie = 'cookiesAccepted=; path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        var options = {
+            title: '{j_cookies_accept_title}',
+            text: '{cookies_accept_text}',
+            acceptButtonText: '{j_cookies_accept_accept_button_text}',
+            theme: 'dark',
+            learnMore: false,
+            position: 'bottom'
+        };
+        $.acceptCookies(options);
+    })
+</script>
+<!-- end_gdpr_cookie_popup -->
+
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+{header}
+<script id="script_replace_page">
+    urlPageHistory='{url_page_games}';
+    console.log(urlPageHistory);
+</script>
+<div class="head">
+    <span class="title"><i class="fa fa-gamepad" aria-hidden="true"></i> {l_page_title}</span>
+</div>
+<div class="main_bl_game">
+    <!-- begin_game -->
+	<div class="bl_games {game}">
+		<img style="opacity:0;" onload="$(this).fadeTo(400,1)" src="{url_tmpl_common}games/game_{game}_bg.jpg" alt="" />
+		<a class="bl" href="{game_url}" onclick="goToGame($(this)); return false;">
+            <span class="bl_loader" data-type-loader="fade_btn">
+                <span class="bl_title">{game_title}</span>
+            </span>
+        </a>
+	</div>
+    <!-- end_game -->
+    <script>
+        function goToGame($link){
+            $link.children('.bl_loader').addLoader();
+            setTimeout(function(){
+                redirectUrl($link[0].href);
+            },220)
+        }
+    </script>
+</div>
+{footer}

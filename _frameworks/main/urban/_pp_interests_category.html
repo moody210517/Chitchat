@@ -1,0 +1,93 @@
+<div id="pp_5" class="popup pp_activate" style="top: 30px; left: 50px; margin: 0;">
+    <div class="head">
+        <span id="val_interest_title" style="font-weight: bold;color:#B2B2B2;float:left;">{l_add_a_new_interest}:</span>
+        <span id="val_interest" class="text-overflow" style="padding-left:4px;font-weight:bold;float:left;width: 200px;">{interest}</span>
+        <a id="pp_5_close" class="icon_close" href="#"></a>
+    </div>
+    <div class="cont">
+        <div class="list_rb">
+            <!-- begin_interests_category -->
+            <!-- begin_interests_category_item -->
+                <div class="edit_part {interests_class}">
+                    <input class="rb" id="rb_{id}" name="add_new_interest" value="{id}" type="radio" />
+                    <label for="rb_{id}">{title}</label>
+                </div>
+            <!-- begin_interests_category_column -->
+            <div class="cl"></div>
+            <!-- end_interests_category_column -->
+            <!-- end_interests_category_item -->
+            <!-- end_interests_category -->
+        <div class="cl"></div>
+        </div>
+    </div>
+    <div class="foot">
+        <input id="pp_5_add" type="button" class="btn green fl_right" value="{l_add}" />
+        <a id="pp_5_cancel" class="link" href="#">{l_cancel}</a>
+    </div>
+</div>
+<script>
+    var pp_5 = $('#pp_5').modalPopup().open(),
+        pp_5_category,
+        id_category,
+        name_interest,
+        interests_loader = $('#interests_loader'),
+        pp_5_ajax = 1;
+
+    $('#val_interest').width(325-$('#val_interest_title')[0].clientWidth);
+
+    function setCategoryInterestsParams(name)
+    {
+        $('input:radio[name=add_new_interest]').attr('checked', false);
+        $('#val_interest').text(name);
+        pp_5.open();
+    }
+
+    $('#pp_5_cancel, #pp_5_close').click(function (){
+        $("#add_interests").val('');
+        pp_5.close();
+        return false;
+    });
+
+    $('#pp_5_add').click(function (){
+        pp_5_category = $('input:radio[name=add_new_interest]:checked');
+        if(pp_5_category.length){
+            pp_5_ajax = 0;
+            id_category = pp_5_category.val();
+            name_interest = $('#val_interest').text();
+            interests_loader.show();
+            pp_5.close();
+            $.post('ajax.php',{cmd:'add_new_interest',value:name_interest,cat_id:id_category}, update_inetersts);
+        } else {
+            alertHtmlCustom = true;
+            alertHtmlArea = '.column_main_cont';
+            alertCustom('{j_please_select_category}');
+        }
+
+        return false;
+    });
+
+    function update_inetersts(res)
+    {
+        pp_5_ajax = 1;
+        $('#add_interests').val('');
+        interests_loader.hide();
+        var data=checkDataAjax(res);
+        if(data!==false){
+            $($.trim(data)).hide().prependTo('#list_interest_user').show({duration:300,step:show_interests_dots,complete:show_interests_dots});
+        }else{
+            //Error
+        }
+    }
+
+    $('.pp_body').on('click', function(e){
+        pp_5_category = $('input:radio[name=add_new_interest]:checked');
+        if(e.target==this
+           &&$('#pp_5:visible')[0]
+           &&!pp_5_category[0]){
+            $('#pp_5_close').click();
+            return false;
+        }
+    })
+
+
+</script>

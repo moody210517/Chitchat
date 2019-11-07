@@ -1,0 +1,287 @@
+</div>
+<div id="footer_bl" class="cham-footer-style-3">
+    <!-- begin_banner_footer -->
+    <div class="banner_footer">
+        {banner_footer}
+    </div>
+    <!-- end_banner_footer -->
+
+
+    <div class="container">
+        <div class="row p-b">
+            <div class="col-md-5 col-sm-6 cham-footer-widget">
+                <div class="cham-logo">
+                    <a class="logo_main_page" href="#">
+                        <img src="{header_url_logo_footer}" alt="logo">
+                    </a>
+                </div>
+                <ul class="list">
+                    <li class="footer_title_orig">{l_footer_c}{title_orig} {year}</li>
+                </ul>
+            </div>
+            <!-- begin_footer_about -->
+            <div class="col-md-3 col-sm-6 cham-footer-widget fl_right">
+                <h3>{l_menu_bottom_about_us}</h3>
+                <p>{footer_about_content_short} <a href="{url_page_about}">{l_read_more_link}</a></p>
+                <!-- begin_footer_about_contact -->
+                <p>
+                    <a href="" onclick="contactFrmShow(); return false;" class="btn btn-success btn-sm btn-outline">{l_contact_us}</a>
+                </p>
+                <!-- end_footer_about_contact -->
+            </div>
+            <!-- end_footer_about -->
+            <!-- begin_footer_social_links -->
+            <div class="col-md-2 col-sm-6 cham-footer-widget fl_right">
+                <h3>{l_social_links_title}</h3>
+                <ul class="cham-links cham-social">
+                    <!-- begin_footer_social_links_item -->
+                    <li>
+                        <a href="{footer_social_links_item_url}" target=_blank>
+                            <i class="fa fa-{footer_social_links_item_type}{footer_social_links_item_prf}"></i>{footer_social_links_item_title}
+                        </a>
+                    </li>
+                    <!-- end_footer_social_links_item -->
+                </ul>
+            </div>
+            <!-- end_footer_social_links -->
+            <!-- begin_bottom_menu -->
+            <div class="col-md-2 col-sm-6 cham-footer-widget fl_right">
+                <h3>{l_sections}</h3>
+                <ul class="cham-links">
+                    <!-- begin_bottom_menu_item -->
+                    <li>
+                        <a <!-- begin_bottom_menu_item_target -->target="_blank"<!-- end_bottom_menu_item_target --> href="{url_main}{bottom_menu_item_url}">{bottom_menu_item_title}</a>
+                    </li>
+                    <!-- end_bottom_menu_item -->
+                </ul>
+            </div>
+            <!-- end_bottom_menu -->
+        </div>
+    </div>
+</div>
+
+</div>
+
+<!-- begin_footer_visitor -->
+</div>
+<div id="pp_forgot" class="modal fade bs-example-modal-sm custom_modal forms_field" tabindex="-1" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h3 class="modal-title">{l_forgot_password}</h3>
+        </div>
+        <div class="modal-body">
+            <div class="bl_forms">
+                <div class="section fields">
+                    <div class="col-lg-12 col-md-12 field">
+                        <input id="pp_resend_password_email" type="text" class="form-control placeholder" placeholder="{a_your_email}">
+                    </div>
+                </div>
+            </div>
+        <div class="clearfix"></div>
+        </div>
+        <div class="modal-footer">
+            <div class="col-lg-12 col-md-12">
+                <button id="pp_resend_password_submit" type="button" class="btn btn-success" disabled>
+                    <span class="icon message"></span><span>{l_send_password}</span>
+                </button>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+<!-- begin_page_info -->
+<div id="pp_term_cond" class="pp_info_page modal fade bs-example-modal-sm custom_modal" tabindex="-1" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">{terms_title}</h3>
+            </div>
+            <div class="pp_information" data-cl-loader="loader_pp_info_page"></div>
+        </div>
+    </div>
+</div>
+<div id="pp_priv_policy" class="pp_info_page modal fade bs-example-modal-sm custom_modal" tabindex="-1" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">{priv_title}</h3>
+            </div>
+            <div class="pp_information" data-cl-loader="loader_pp_info_page"></div>
+        </div>
+    </div>
+</div>
+<!-- end_page_info -->
+
+<!-- end_footer_visitor -->
+
+<!-- begin_footer_member -->
+{footer_custom}
+
+{pp_messages}
+
+<div class="bl_templates">
+    {pp_galley_comment_item}
+</div>
+<!-- end_footer_member -->
+
+<div id="pp_contact" class="modal fade bs-example-modal-sm custom_modal forms_field" tabindex="-1" role="dialog" data-backdrop="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content bl_contact_frm">
+            <div class="modal-header">
+                <h3 class="modal-title">{l_contact_us}</h3>
+            </div>
+            <div class="contact_frm"></div>
+        </div>
+    </div>
+</div>
+<div style="display:none;">
+	<div id="pp_increase_payment" class="popup pp_increase">
+        <div class="head">
+            <strong></strong>
+            <a onclick="Profile.incPopClosePayment(); return false;" class="icon_close" href=""></a>
+        </div>
+        <div class="cont_loader">
+            <img src="{url_tmpl_main}images/lazy_loader.gif">
+        </div>
+        <div class="foot">
+        </div>
+    </div>
+</div>
+
+<div id="update_server"></div>
+<!-- begin_sound_silence_activate -->
+<iframe src="{url_main}_server/im_new/sounds/025s_silence.mp3" allow="autoplay" style="display:none"></iframe>
+<script>initNotificationSound();</script>
+<!-- end_sound_silence_activate -->
+
+<script>
+    try {
+        initServer();
+    }
+    catch(e){};
+    {footer_custom_js}
+
+    $win.load(function(){
+        <!-- begin_error_accessing_user -->
+        alertCustom('{error_accessing_user}');
+        <!-- end_error_accessing_user -->
+    })
+</script>
+
+<script type="text/javascript" src="{url_main}_server/videojs/video.js{cache_version_param}"></script>
+<script>videojs.options.flash.swf="{url_main}_server/videojs/video-js.swf"</script>
+
+<div class="page_preloader">
+    <div class="wrapper">
+        <div class="wrapper_logo">
+            <img class="header-loader-logo" src="{header_url_logo}" alt="{title}" title="{title}">
+        </div>
+        <div class="css_loader loader_layer_block_page">
+            <div class="spinner center">
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- begin_mobile_app -->
+<script>
+appCityLastMsgId = '{city_last_msg_id}';
+mobileAppLoaded = '{mobile_app_push_notifications}'*1;
+// global for access from all scripts
+adMobBannerConfig = false;
+
+document.ondragstart = function(){ return false; };
+
+$(function(){
+    document.addEventListener("deviceready", function(){
+        appSetExternalUrlHandler();
+        <!-- begin_banner_admob_top -->
+        adMobBannerConfig = {
+            id: '{banner_admob_top}',
+            bannerAtTop: true,
+        };
+        <!-- end_banner_admob_top -->
+        <!-- begin_banner_admob_bottom -->
+        adMobBannerConfig = {
+            id: '{banner_admob_bottom}',
+            bannerAtTop: false,
+        };
+        <!-- end_banner_admob_bottom -->
+        showAdmobBanner(adMobBannerConfig);
+    });
+});
+</script>
+<!-- end_mobile_app -->
+
+<!-- begin_mobile_app_android -->
+<script>
+    $(function(){
+        document.addEventListener("deviceready", function(){navigator.splashscreen.hide()}, false);
+    });
+</script>
+<script src="{url_tmpl_common_apps}android/cordova.js{cache_version_param}"></script>
+<script src="{url_tmpl_common_apps}android/js/core.js{cache_version_param}"></script>
+<!-- end_mobile_app_android -->
+
+<!-- begin_mobile_app_ios -->
+<script>
+    // disable hover in webview
+    try {
+        for (var si in document.styleSheets) {
+            var styleSheet = document.styleSheets[si];
+            if (!styleSheet.rules) continue;
+
+            for (var ri = styleSheet.rules.length - 1; ri >= 0; ri--) {
+                if (!styleSheet.rules[ri].selectorText) continue;
+
+                if (styleSheet.rules[ri].selectorText.match(':hover')) {
+                    styleSheet.deleteRule(ri);
+                }
+            }
+        }
+    } catch (ex) {}
+</script>
+<script src="{url_tmpl_common_apps}ios/cordova.js{cache_version_param}"></script>
+<script src="{url_tmpl_common_apps}ios/js/core.js{cache_version_param}"></script>
+<!-- end_mobile_app_ios -->
+
+<!-- begin_show_message_js -->
+<script>
+    $(function(){
+        clMessages.show('{show_message_uid_sender}');
+    })
+</script>
+<!-- end_show_message_js -->
+<!-- begin_gdpr_cookie_popup -->
+<script>
+    $(function(){
+        //document.cookie = 'cookiesAccepted=; path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        var options = {
+            title: '{j_cookies_accept_title}',
+            text: '{cookies_accept_text}',
+            acceptButtonText: '{j_cookies_accept_accept_button_text}',
+            theme: 'dark',
+            learnMore: false,
+            position: 'bottom'
+        };
+        $.acceptCookies(options);
+    })
+</script>
+<!-- end_gdpr_cookie_popup -->
+
+<script>checkMediaChatRequest();</script>
+</body>
+</html>

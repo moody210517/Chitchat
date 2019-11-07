@@ -1,0 +1,107 @@
+<!-- begin_module_fields_urban -->
+    <!-- begin_map -->
+        <!-- Not used -->
+        <div class="title_edit">
+            <h2 id="map_title">{city_title}{country_title}</h2>
+            <!-- begin_city_choose -->
+            <a id="profile_city_choose" class="icon_edit" href="#"></a>
+            <!-- end_city_choose -->
+
+           
+            <div class="cl"></div>
+        </div>
+
+        <div class="bl_edit profile_map">
+            <img id="profile_map" class="lazy_map" data-original="//maps.googleapis.com/maps/api/staticmap?markers=color:red%7Clabel:%7C{ip_map_lat},{ip_map_long}&center={ip_map_lat},{ip_map_long}&zoom=10&size=459x277&sensor=false&scale=1">
+            <noscript><img src="//maps.googleapis.com/maps/api/staticmap?markers=color:red%7Clabel:%7C{ip_map_lat},{ip_map_long}&center={ip_map_lat},{ip_map_long}&zoom=10&size=459x277&sensor=false&scale=1"/></noscript>
+        </div>
+    <!-- end_map -->
+
+    <!-- begin_basic -->
+        <div class="title_edit">
+            <h2>{field}</h2>
+            <!-- begin_basic_edit -->
+            <a id="about_edit_{name}" class="icon_edit" href="#"></a>
+            <!-- end_basic_edit -->
+            <div class="cl"></div>
+        </div>
+        <div class="bl_edit">
+            <p id="{name}">
+            {value}
+            <!-- begin_basic_show_more -->
+            <a id="show_more_{name}" href="#">{l_show_more}</a>
+            <!-- end_basic_show_more -->
+            </p>
+        </div>
+    <!-- end_basic -->
+
+    <!-- begin_interests -->
+        <!-- begin_list_interest_user_item_js -->
+        <script>
+            if (typeof interests_all['{cat_id}'] == 'undefined') {
+                interests_all['{cat_id}'] = {};
+            }
+            interests_all['{cat_id}']['{int_id}'] = '{interest}';
+            if (typeof interests_step_all['{cat_id}'] == 'undefined') {
+                interests_step_all['{cat_id}'] = 0;
+            }
+        </script>
+        <!-- end_list_interest_user_item_js -->
+        <!-- begin_list_interest_user_title -->
+        <div class="title_edit">
+            <h2>{l_interests}</h2>
+            <div class="cl"></div>
+        </div>
+        <!-- end_list_interest_user_title -->
+        <!-- begin_list_interest_user -->
+        <div class="refine">
+        <ul id="list_interest_user">
+            <!-- begin_list_interest_user_item -->
+            <li><span class="ico_{cat_id}">{interest}</span></li>
+            <!-- end_list_interest_user_item -->
+        </ul>
+        <!--<a href="#">Show more...</a>-->
+        <div class="cl"></div>
+        </div>
+        <!-- end_list_interest_user -->
+
+        <!-- begin_interests_edit -->
+        <div class="bl_add_interests">
+        <strong>Add 10 interests</strong>
+        <input id="add_interests" type="text" class="inp" />
+
+        <div id="add_interests_drop_list" class="add_interests_drop" style="display:none;">
+            <ul id="add_interests_drop">
+                <li><a id="add_new_interest" href="#"></a></li>
+            </ul>
+        </div>
+        <ul class="list_interest">
+        <!-- begin_interests_item -->
+        <li class="more_interests_item" id="list_interest_{id}"><a href="#"><span class="ico_{id}">{title}</span></a>
+        <ul class="more_interests" style="display:none;">
+        </ul>
+        </li>
+        <!-- end_interests_item -->
+        </ul>
+        </div>
+        <!-- end_interests_edit -->
+    <!-- end_interests -->
+
+    <!-- begin_personal -->
+        <div class="title_edit">
+            <h2>{l_personal_info}</h2>
+            <!-- begin_personal_edit -->
+            <a id="personal_info_edit" class="icon_edit" href="#"></a>
+            <!-- end_personal_edit -->
+            <div class="cl"></div>
+        </div>
+        <div class="bl_edit">
+            <dl id="personal_items" class="personal_info">
+                <!-- begin_personal_item -->
+                <dt>{field}:</dt>
+                <dd>{value}</dd>
+                <!-- end_personal_item -->
+            </dl>
+        </div>
+    <!-- end_personal -->
+<!-- end_module_fields_urban -->

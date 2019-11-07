@@ -1,0 +1,71 @@
+<!-- begin_message_list -->
+<div id="pp_message_list_message_{user_to_id}" data-uid="{user_to_id}" class="pp_message_user_list_message scrollbarY">
+    <div class="scrollbar"><div class="track"><div id="im_thumb_{user_to_id}" class="thumb im_trans_{user_to_id}"></div></div></div>
+    <div id="im_viewport_{user_to_id}" class="viewport">
+        <div id="im_overview_{user_to_id}" data-uid="{user_to_id}" class="overview im_trans_{user_to_id}">
+
+        <!-- begin_message -->
+            <!-- begin_message_answer -->
+            <div id="pp_message_msg_{message_id}" data-msg="{message_notif}" data-send="{message_send}" data-id="{message_id}" data-to-user-id="{message_to_user_id}" data-msg-user-id="{message_user_id}" class="pp_message_msg_item replies">
+                <!-- begin_message_answer_info -->
+                <button class="pp_message_profile_pic pp_message_profile_pic_{message_answer_info_user_id} to_hide" onclick="redirectUrl('{message_answer_info_profile_url}');" style="background-image: url({url_files}{message_answer_info_photo_url})"></button>
+                <script>clMessages.showPic('{url_files}{message_answer_info_photo_url}',{message_answer_info_user_id});</script>
+                <!-- end_message_answer_info -->
+                <div data-tooltip-data="true" title="{message_date}" class="msg">
+                    <span>{message}</span>
+                    <!-- <div class="ellipsis">
+                        <span></span><span></span><span></span>
+                    </div> -->
+                    <div id="msg_read_{message_id}" data-mid="{message_id}" class="icon_check_msg <!-- begin_read -->to_hide<!-- end_read -->"></div>
+                </div>
+            </div>
+            <!-- end_message_answer-->
+
+            <!-- begin_message_responder -->
+            <div id="pp_message_msg_{message_id}" data-msg="{message_notif}" data-send="{message_send}" data-id="{message_id}" data-to-user-id="{message_to_user_id}" data-msg-user-id="{message_user_id}" class="pp_message_msg_item sent <!-- begin_message_to_new-->to_new<!-- end_message_to_new-->">
+                <!-- begin_message_responder_info -->
+                <button class="pp_message_profile_pic pp_message_profile_pic_{message_responder_info_user_id} to_hide" title="{message_responder_info_name}, {message_responder_info_age}" onclick="redirectUrl('{message_responder_info_profile_url}');" style="background-image: url({url_files}{message_responder_info_photo_url});"></button>
+                <script>clMessages.showPic('{url_files}{message_responder_info_photo_url}',{message_responder_info_user_id});</script>
+                <!-- end_message_responder_info -->
+                <div data-tooltip-data="true" title="{message_date}" class="msg">
+                    {message}
+                    <!-- begin_message_original_text -->
+                    <div class="bl_original_message">{l_the_message_was_autotranslated}
+                        <div class="show_original_message" onclick="clMessages.showOriginalMessage($(this));">{l_show_original_message}</div>
+                        <div class="original_message">{message_original}</div>
+                    </div>
+                    <!-- end_message_original_text -->
+                </div>
+
+            </div>
+            <!-- end_message_responder -->
+        <!-- end_message -->
+        </div>
+    </div>
+    <script>clMessages.initUserChat({user_to_id});</script>
+</div>
+<!-- end_message_list -->
+
+<script class="script_update_before">
+<!-- begin_update_messages -->
+<!-- begin_sound -->
+clMessages.notifNewMsg();
+<!-- end_sound -->
+<!-- begin_show_read_marks -->
+clMessages.showReadMsg({show_read_marks});
+<!-- end_show_read_marks -->
+<!-- end_update_messages -->
+
+<!-- begin_update_users_status -->
+clMessages.updateOnlineUsers({update_users_status});
+<!-- end_update_users_status -->
+</script>
+
+<script class="script_update_after">
+<!-- begin_update_writing_users -->
+clMessages.updateWritingUsers({update_writing_users});
+<!-- end_update_writing_users -->
+<!-- begin_delete_writing_users -->
+clMessages.deleteWritingUsers({delete_writing_users});
+<!-- end_delete_writing_users -->
+</script>

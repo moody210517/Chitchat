@@ -1,0 +1,32 @@
+<!-- begin_user_gift_item -->
+    <li data-id="{user_gift_item_id}" id="profile_user_gift_{user_gift_item_id}">
+        <a class="gift_img" href="#"><img title="{user_gift_item_title}" src="{user_gift_item_url}" alt="" /></a>
+        <!-- begin_user_gift_item_delete -->
+        <a data-id="{user_gift_item_id}" data-uid="{user_gift_item_user_id}" data-img="{user_gift_item_img_id}" class="icon_delete user_gift_delete" href="#"></a>
+        <!-- end_user_gift_item_delete -->
+        <!-- begin_user_gift_item_text -->
+        <div class="profile_gift_decor">
+            <div class="profile_gift_decor_txt">
+                <div><a href="{user_gift_item_user_profile_link">{user_gift_item_name_short}</a> {user_gift_item_date} </div>
+                <p>{user_gift_item_text}
+                <!-- begin_user_gift_item_credits -->
+                {gifts_credits}
+                <!-- end_user_gift_item_credits -->
+                </p>
+                <!-- begin_user_gift_item_text_delete -->
+                <a data-id="{user_gift_item_id}" class="icon_delete_decor user_gift_text_delete" href="#"></a>
+                <!-- end_user_gift_item_text_delete -->
+            </div>
+        </div>
+        <!-- end_user_gift_item_text -->
+    </li>
+    <!-- begin_user_gift_item_set_credits -->
+    <script>Profile.setBalansCredit('{credits}');</script>
+    <!-- end_user_gift_item_set_credits -->
+    <!-- begin_user_gift_item_update -->
+    <script>Gifts.update('{user_gift_item_id}');</script>
+    <!-- end_user_gift_item_update -->
+<!-- end_user_gift_item -->
+<!-- begin_user_gift_existing -->
+<script>Gifts.checkExistenceGifts('{existing_gifts}');</script>
+<!-- end_user_gift_existing -->

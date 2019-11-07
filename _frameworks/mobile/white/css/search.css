@@ -1,0 +1,37 @@
+.tab {border-top:4px solid #fff;background:#e5e5e5;}
+.tab thead td {color:#000;background:#f4f4f4;}
+.tab thead a {color:#1282c4;}
+.tab tfoot td {background:#f4f4f4;}
+.tab .content {padding:0;}
+.tab .txt {border:1px solid #000;background:#e5e5e5;}
+
+.searchpage .cnt {padding:0;background:#e5e5e5;}
+.searchpage .cnt .content {height:222px;}
+.searchpage tfoot .btn {width:90px;margin-right:5px; text-align:center;}
+
+.searchform {width:95%;border-collapse:collapse;margin:0 auto;}
+.searchform th {padding:6px 4px;text-align:right;vertical-align:middle; width:13%;}
+.searchform th label {color:#000;}
+.searchform td {padding:6px 4px 6px 0;vertical-align:middle;color:#1282c4;}
+.searchform td .txt {width:100%;background:#fff; padding:0px; margin:0px;}
+.searchform td select {width:100%;background:#fff; padding:0px; margin:0px;}
+.searchform td .narrow {width:86px}
+.searchform td .to {padding:0 15px; color:#000;}
+.searchform td.title {padding:0 8px 8px 8px;text-align:left;}
+
+.alert .alertbg {background:#f4f4f4;}
+.alert .btn {width:90px; text-align:center; margin-bottom:7px;}
+
+.searchpage .black {background:#000;}
+.userlist {width:100%;}
+.userlist td.next {font-size:24px;line-height:28px;text-align:center;vertical-align:middle;}
+.userlist td.next a {padding:12px;}
+.userlist td.user {width:50%;padding:5px;background:#e5e5e5;}
+.userlist td.user table {width:100%;border-collapse:collapse;}
+.userlist td.user table th {width:64px;padding:0 4px 0 0;text-align:right;}
+.userlist td.user table th div {max-width:62px;height:70px;padding:0;margin:0 auto;background:url('') no-repeat 50% 0;}
+.userlist td.user table th div a {height:16px;padding:54px 3px 0 3px;display:block;font-size:10px;line-height:12px;text-decoration:none;color:#FBEBBC;}
+.userlist td.user table td {padding:0 4px 0 0;}
+.userlist td.user table td p {font-size:12px;line-height:18px;}
+.userlist td.user table td p.name {margin:0 0 4px 0;font-weight:bold;line-height:14px;}
+.userlist td.user table td p a {color:#1282c4;}

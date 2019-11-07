@@ -1,0 +1,71 @@
+{header}
+
+<table class="cnt" cellspacing="0" cellpadding="0"><tr><td>
+<div class="block welcome">
+	<h3>{l_welcome}</h3> <br />{l_welcome_description}<a href="{url_main}join.php">{l_welcome_register}</a>{l_welcome_description_2}<a href="{url_main}forgot_password.php">{l_welcome_forgot_password}</a>{l_welcome_description_3}<br /><br />
+</div>
+
+<!-- begin_users -->
+<div class="block purple">
+	<p class="title"><b>{l_our_new_faces}</b></p>
+	<table class="userlist" cellspacing="0" cellpadding="0"><tr>
+			<!-- begin_user --><td><div style="background-image:url('{url_files}{photo}');"></div></td><!-- end_user -->
+	</tr></table>
+</div>
+<!-- end_users -->
+</td></tr></table>
+<div class="blue"><div id="ftr">
+
+<!-- begin_loginform -->
+	<form action="{url_main}join.php?cmd=login" method="POST" class="login">
+		<table cellspacing="0" cellpadding="0" width="100%"><tr>
+			<th width="15%"><label>{l_sign_up}</label></th>
+			<td width="40%"><input type="text" name="user" id="email" class="txt" value="{l_username}" onfocus="if(this.value=='{l_username}'){this.value='';};" onblur="if(this.value==''){this.value='{l_username}';};"/></td>
+			<td width="40%"><input type="password" name="password" id="password" class="txt" value="password" onfocus="if(this.value=='password'){this.value='';};" onblur="if(this.value==''){this.value='password';};"/></td>
+			<th width="5%"><input type="submit" class="green_btn btn" value="{l_sign_up_go}"/></th>
+		</tr>
+		</table>
+	</form>
+<!-- end_loginform -->
+</div></div>
+    <!-- begin_banner_footer_mobile -->
+    <div class="banner_footer">
+        {banner_footer_mobile}
+    </div>
+    <!-- end_banner_footer_mobile -->
+</div>
+	<script>
+		var MSG_YOU_ARE_IN_BLOCK_LIST = '{l_you_are_in_block_list}';
+		{footer_custom_js}
+
+<!-- begin_demo -->
+$(document).ready(function() {
+    $('#email').val('{login_user}');
+    $('#password').val('{login_password}');
+});
+<!-- end_demo -->
+	</script>
+
+<!-- begin_gdpr_cookie_popup -->
+<script>
+    $(function(){
+        //document.cookie = 'cookiesAccepted=; path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        var options = {
+            title: '{j_cookies_accept_title}',
+            text: '{cookies_accept_text}',
+            acceptButtonText: '{j_cookies_accept_accept_button_text}',
+            theme: 'dark',
+            learnMore: false,
+            position: 'bottom'
+        };
+        $.acceptCookies(options);
+    })
+</script>
+<!-- end_gdpr_cookie_popup -->
+</body>
+<!-- begin_alert_message -->
+<script type="text/javascript"><!--
+alert('{message}');
+//--></script>
+<!-- end_alert_message -->
+</html>

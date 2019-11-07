@@ -1,0 +1,387 @@
+<!-- begin_column_narow_item -->
+<!-- begin_refine_interests -->
+    <script>
+    $(function(){
+        var list_interests_search=$('#list_interest_user_search > li.interests_user_item'),
+            dots_search=$('#interest_dots_search'),
+            refine_search=$('#refine_interest_search');
+
+        dots_search.click(function(){
+            var h=list_interests_search.last().position().top+14,f=true;
+            $(this).hide();
+            refine_search.animate({height:h+'px'},
+                                  {step:function(now,fx){if(now>128&&f){
+                                        list_interests_search.css('opacity',1);
+                                        f=false;
+                                  }}},300);
+        })
+
+        $('.interest_cancel_search').click(function(){
+			moduleSearchShowResultsByParam('#filter_interest', 0, true);
+            // Clear search
+            var f=true;
+            $(this).hide().closest('.interests_user_item').css('cursor','pointer');
+
+//   list_interests_search.filter(".no-in-my-list").remove();
+
+            refine_search.animate({height:'126px'},
+                                  {step:function(now,fx){if(now>24&&f){
+                                        list_interests_search.css('opacity',1).show();
+                                        f=false;
+                                  }},complete:show_interests_dots_search},300);
+            //refine_search.animate({height:'126px'},300,show_interests_dots_search);
+            //int.attr('title','{j_refine_by_one_of_your_interests}');
+
+            return false;
+        })
+
+        list_interests_search.click(function(){
+            var int=$(this),id=int.data('id');
+			moduleSearchShowResultsByParam('#filter_interest', id, true);
+            refine_search.animate({height:'22px'},300,function(){
+                list_interests_search.each(function(){
+                    if(id!=$(this).data('id')){$(this).hide()}
+                })
+                int.css('cursor','default').find('a').show();
+            });
+            dots_search.hide();
+            //int.attr('title','Cancel');
+        })
+
+        show_interests_dots_search();
+
+        function show_interests_dots_search(){
+            var l,w,is=false,el;
+            list_interests_search.each(function(){
+                el=$(this);
+                if(el.position().top<122){
+                    l=el.position().left;
+                    w=el.width();
+                    el.css('opacity',1);
+                }else{
+                    el.css('opacity',0);
+                    is=true;//return false
+                }
+            });
+            if(is){dots_search.css({left:(l+w+9)+'px'}).show()}else{dots_search.hide()}
+        }
+        <!-- begin_refine_interests_set -->
+        $('#list_interest_user_search > li[data-id = {refine_interests_set_value}]').css({cursor:'default',opacity:'1'}).find('a').show();
+        list_interests_search.each(function(){
+            if({refine_interests_set_value}!=$(this).data('id')){$(this).hide()}
+        })
+        dots_search.hide();
+        <!-- end_refine_interests_set -->
+    })
+
+    </script>
+    <div class="bl refine">
+        <div class="head">
+            <div class="title">{l_refine_by_one_of_your_interests}:</div>
+        </div>
+        <div id="refine_interest_search" class="cont" style="height:{refine_interests_search_height}px; padding-right: 19px; overflow:hidden; position: relative;">
+            <ul id="list_interest_user_search">
+                <!-- begin_list_interest_user_item -->
+                <li class="interests_user_item <!-- begin_no_in_my_list_item -->no-in-my-list<!-- end_no_in_my_list_item -->" data-id="{int_id}" title="{l_refine_by_one_of_your_interests}" style="cursor:pointer; opacity:0; "
+                >
+                    <span class="{interest_class} column">{interest}</span>
+                    <a class="icon_delete interest_cancel_search" style="display:none;" href="#"></a>
+                </li>
+                <!-- end_list_interest_user_item -->
+            </ul>
+            <div id="interest_dots_search" title="{l_show_more}" class="dots dots_column">...</div>
+            <div class="cl"></div>
+        </div>
+    </div>
+<!-- end_refine_interests -->
+
+<!-- begin_search_by_username -->
+    <div class="bl search_username">
+        <div class="head">
+            <div class="title">{l_search_by_username}</div>
+        </div>
+        <div class="cont">
+            <input type="text" id="search_by_username" value="" placeholder="{l_please_enter_a_name}" title="{l_please_enter_a_name}">
+            <!--<a id="username_cancel_search" class="icon_delete username_cancel_search" style="" href="#"></a>-->
+        </div>
+    </div>
+
+    <script>
+    $(function(){
+        var search_input=$("#search_by_username");
+
+        search_input.keydown(function(e){
+            if(isKeyPressed(e,13)) {
+                var username=search_input.val();
+                clearGlobalSearchByUsername=false;
+                moduleSearchShowResultsByParam('#global_search_by_username', username, true);
+                /*
+                if(username!=''){
+                    $("#username_cancel_search").show();
+                } else {
+                    $("#username_cancel_search").hide();
+                }
+                */
+            }
+        })
+
+    });
+
+    function clearGlobalSearchByUsernameF(){
+        $('#global_search_by_username').val('');
+        $("#search_by_username").val('');
+        clearGlobalSearchByUsername=true;
+    }
+    </script>
+<!-- end_search_by_username -->
+
+<!-- begin_rating_photos -->
+    <div class="bl rating">
+        <div class="head">
+            <div class="title">{l_rating_of_your_photos}</div>
+        </div>
+        <div class="cont">
+        <div class="bl_slider">
+            <div class="slider_bg">
+                <div class="slider_range <!-- begin_rating_photos_noslider -->slider_range_empty<!-- end_rating_photos_noslider -->" style="width:{rating_photos_slider}%;">
+                    <div class="count">
+                        <div class="count_decor"></div>
+                        <div class="count_cont">{rating_photos_average}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- begin_rating_photos_average -->
+        <p><a href="{url_main}{url_page_rate_people}">{l_rate_other_people}</a> {l_to_get_more_ratings}</p>
+        <!-- end_rating_photos_average -->
+        <!-- begin_rating_photos_average_empty -->
+        <p><a href="{url_main}{url_page_rate_people}">{l_rate_other_people}</a> {l_to_find_out_what_your_average_rating_is}</p>
+        <input type="button" class="btn blue" onclick="window.location.href='{url_main}{url_page_rate_people}'" value="{l_get_your_rating}" />
+        <!-- end_rating_photos_average_empty -->
+        </div>
+    </div>
+<!-- end_rating_photos -->
+
+<!-- begin_customization -->
+<script language="javascript" type="text/javascript">
+$(function(){
+	function rowH(){return (items.eq(3).offset().top-items.eq(0).offset().top)};
+	$('#pattern_clear').click(function(){
+        hideWinAddVideo(1);
+		if (user_profile_bg_video[1]) {
+			chProfileBgVideo('');
+		} else {
+            user_profile_bg='';
+            chProfileBg('');
+        };
+		//member_content.css({background: 'none'})
+		return false;
+	})
+
+	var cont=$('.profile_custom .cont').on('scroll', function(e){
+		$('.ico_move').removeClass('disabled');
+		var h=rowH();
+		cont.not(':animated').clearQueue().delay(200).animate({
+			scrollTop: Math.round(cont.scrollTop()/h)*h
+		}, 200, function(){
+			if (cont.scrollTop()<10) $('.ico_move[href="#up"]').addClass('disabled');
+			if (cont.scrollTop()>(items.length/3-2)*h-9) $('.ico_move[href="#down"]').addClass('disabled');
+		});
+	}).wheel(function(e){
+		var dir=e.deltaY>0?'+=':'-=';
+		cont.not(':animated').animate({scrollTop: dir+(rowH()*2)},250,function(){cont.scroll()});
+		return false
+	})
+
+	var items=$('.profile_custom .item button:not(#video_bg_user)').fadeTo(0,0).click(function(){
+		$('.profile_custom .item').addClass('preloader');
+		var pic=$(this).data('patternApply');
+		if (this.disabled||(pic===bgLast[0])) return;
+		items.prop('disabled', true);
+		$(this).addClass('loading');
+		//user_profile_bg=[pic];
+        user_profile_bg=pic;
+		if (user_profile_bg_video[1]) {
+			chProfileBgVideo('');
+			chProfileBg(pic);
+		} else {
+			chProfileBg(pic);
+		}
+
+	}).lazyload({container:cont, effect_speed:0, load:function(){$(this).fadeTo(0,1)}});
+
+	cont.scroll();
+
+	$('.profile_custom .ico_move').click(function(){
+		if ($(this).is('.disabled')) return false;
+		var top=cont.scrollTop()
+		cont.animate({scrollTop: (this.hash=='#up'?'-=':'+=')+rowH()}, 250, function(){cont.scroll()})
+		return false;
+	})
+
+    <!-- begin_profile_customization_video_js -->
+	videoAlert={
+		empty : '{j_please_enter_youtube_video_id}',
+		exist: '{j_this_id_youtube_is_already}',
+		wrong: '{j_youtube_video_id_not_correct}',
+		disabled: '{j_youtube_video_disabled}',
+		error: '{j_youtube_player_error}'
+	}
+    var pp_add_video=$('#pp_add_video'),
+        pp_add_video_btn=$('#pp_add_video_bg'),
+        code=bgVideoCode=$('#pp_add_video_code')
+		 .val(user_profile_bg_video[0]).on('input propertychange keydown', function(){
+			$('#tip_'+this.id).fadeOut(200); $(this).removeClass('wrong')
+		}),
+        pp_add_video_loader=$('#pp_add_video_loader'),
+        prepareVideo=false, durV=400;
+    $('#video_bg_user').fadeTo(0,0).lazyload({container:cont, effect_speed:0, load:function(){$(this).fadeTo(0,1)}})
+    .click(function(){
+        isYError=false;
+        if (pp_add_video.is(':visible')) {
+            pp_add_video.fadeOut(durV);
+			customHideTip(bgVideoCode, '#pp_add_video_bg')
+        } else {
+            bgVideoCode.val('');//user_profile_bg_video[0]
+			//if (!user_profile_bg_video[1]) code.val(code.val()||user_profile_bg_video[0])
+            code.focus();
+            pp_add_video.fadeIn(durV);
+        }
+    })
+    pp_add_video_btn.click(function(){
+        customHideTip(code, '#pp_add_video_bg');
+		var yCode=$.trim(code.val()), alert=yCode?'':'empty';
+		yCode=(yCode.match(/(?:^|\/|v=)([\w\-]{11,11})(?:\?|&|#|$)/) || [])[1];
+		if (!yCode) alert=alert||'wrong';
+		if (yCode==user_profile_bg_video[0] && user_profile_bg_video[1]) alert='exist';
+		if (alert) {
+			customShowTip(code, $(this), videoAlert[alert], 'body');
+			return false;
+		}
+		pp_add_video_btn.hide()
+		pp_add_video_loader.show();
+		chProfileBgVideo(yCode);
+		return false;
+    })
+    bgVideoCode.keydown(function(e){
+        if(isKeyPressed(e,13))pp_add_video_btn.click()
+    })
+    <!-- end_profile_customization_video_js -->
+})
+    </script>
+    <div class="bl profile_custom">
+        <div class="head">
+            <div class="title">{l_column_narrow_profile_customization} </div>
+            <a id="pattern_clear" class="link_clear" href="#">{l_column_narrow_clear}</a>
+            <span><a class="ico_move" href="#up"></a>
+            <a class="ico_move" href="#down"></a></span>
+            <div class="cl"></div>
+        </div>
+
+            <!-- begin_profile_customization_video_add_tip -->
+            <div class="bl_pp_tooltip">
+            <div id="pp_add_video" class="pp_tooltip" style="display:none; z-index:5;">
+                <div class="pp_tooltip_cont" >
+                    <ul class="icons_tooltip_list">
+                        <li>
+                            <span class="link">
+                                <div class="link_frm">
+                                    <input type="text" value="" id="pp_add_video_code" placeholder="{l_paste_youtube_link}" title="{l_paste_youtube_link}">
+                                    <a id="pp_add_video_bg" href="#" class="btn_check"></a>
+                                    <img id="pp_add_video_loader" class="video_loader" src="{url_tmpl_main}images/loader_m.gif">
+                                    <div class="cl"></div>
+                                </div>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            </div>
+            <!-- end_profile_customization_video_add_tip -->
+
+            <div class="cont">
+                <!-- begin_profile_customization_video -->
+                <div class="item">
+                    <button id="video_bg_user" data-pattern-apply="video" data-original="{url_tmpl_main}images/video_bg_btn.png"></button>
+                </div>
+                <!-- end_profile_customization_video -->
+                <!-- begin_profile_customization_item -->
+                <div class="item">
+                    <button data-pattern-apply="{pattern}" data-original="{url_tmpl_main}images/patterns_sm/{pattern}"></button>
+                </div>
+                <!-- end_profile_customization_item -->
+                <div class="cl"></div>
+            </div>
+
+    </div>
+<!-- end_customization -->
+
+<!-- begin_activate_super_powers -->
+<a class="btn_green_star_ico" href="{url_main}{url_page_upgrade}">{l_activate_super_powers}<span class="icon"></span></a>
+<!-- end_activate_super_powers -->
+
+<!-- begin_popularity -->
+<script language="javascript" type="text/javascript">
+    $(function(){
+        Messages.number_blocked_users='{number_blocked_users}';
+    })
+</script>
+<div class="bl popularity">
+    <div class="head">
+        <div class="bl_title">
+            <div class="title <!-- begin_popularity_free_site -->no_increase<!-- end_popularity_free_site -->" >{l_column_narrow_your_popularity}</div>
+            <div id="popularity_level_column_narrow" class="txt_popularity {level_decor}">{level}</div>
+            <!-- begin_popularity_increase -->
+            <input id="popularity_increase_column_narrow" onclick="Profile.incPop(); return false;" type="button" class="btn blue" value="{l_column_narrow_increase}" />
+            <!-- end_popularity_increase -->
+            <div id="popularity_star_column_narrow" class="popularity_decor_star" <!-- begin_popularity_decor_star -->style="display:block;"<!-- end_popularity_decor_star -->></div>
+        </div>
+        <div class="pic_popularity_low">
+            <img id="popularity_low_column_narrow" src="{url_tmpl_main}images/pic_popularity_{level_decor}.png" width="103" height="63" alt="" />
+        </div>
+        <div class="cl"></div>
+    </div>
+    <div class="cont">
+        <div class="tb_popularity">
+            <!-- begin_narrow_menu -->
+            <!-- begin_narrow_menu_item -->
+            <a id="{narrow_menu_item_link_id}" href="{url_main}{narrow_menu_item_url}" class="item <!-- begin_narrow_menu_item_inactive -->narrow_link_decor<!-- end_narrow_menu_item_inactive --> {narrow_menu_item_class}">
+                <span class="link">{narrow_menu_item_title}</span>
+                <span id="{narrow_menu_item_count_id}" class="count <!-- begin_narrow_menu_item_decor -->decor<!-- end_narrow_menu_item_decor -->">{narrow_menu_item_count}</span>
+                <div class="cl"></div>
+            </a>
+            <!-- end_narrow_menu_item -->
+            <!-- end_narrow_menu -->
+        </div>
+        <div class="cl"></div>
+    </div>
+</div>
+<!-- end_popularity -->
+
+<!-- begin_see_my_video_greeting -->
+<a id="see_my_video_greeting" class="btn_violet_video_ico" href="#" onclick="Photo.openGalleryOnTheWallVideo({video_greeting},{uid});return false;" style="<!-- begin_see_video_greeting_hide -->display:none;<!-- end_see_video_greeting_hide -->"  ><span class="txt_btn">{l_see_my_video_greeting}</span> <span class="icon_video"></span></a>
+<!-- end_see_my_video_greeting -->
+
+<!-- end_column_narow_item -->
+
+<!-- begin_banner_right_column -->
+<div class="bl banner_right_column">
+    <div class="cont">
+        {banner_right_column}
+    </div>
+</div>
+<!-- end_banner_right_column -->
+
+
+<!-- begin_column_narow_select_lang -->
+<div id="column_lang" class="column_lang">
+    <a id="current" class="language {language_bright}" href="" onclick="return false;">{language_current}</a>
+    <div class="lang_item" id="column_lang_item">
+        <ul class="pp_small" id="pp_language">
+            <!-- begin_language -->
+            <li><a href="#" onclick="siteSetLanguage('{language_value}'); return false;"><span class="{language_class}">{language_title}</span></a></li>
+            <!-- end_language -->
+        </ul>
+    </div>
+</div>
+<!-- end_column_narow_select_lang -->

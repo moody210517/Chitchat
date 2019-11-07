@@ -1,0 +1,6 @@
+.music_new input.inp_violet_border{margin: 2px 0 0 !important; }
+.music_new input{ padding: 0 5px 2px; height: 19px; }
+.music_new_head_pad{ _padding: 4px 0 0 18px; }
+
+.music_new td .music_new_tb_sub td.first img{ width: 40px !important; }
+.music_new_search{ margin: 5px 0 10px 0; position: relative; }

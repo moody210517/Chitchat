@@ -1,0 +1,231 @@
+<!-- begin_wall_items -->
+<tr id="wall_item_{id}" class="{wall_item_class_shared}">
+    
+	<td class="{wall_item_class}">
+        <div class="cont">
+		<table cellpadding="0" cellspacing="0"><tr><td width="39">
+		<a href="{url_main}search_results.php?display={display_profile}&name={item_name}"><img src="{url_files}{photo}" width="31" height="35" align="left" alt="" class="feed_user_photo" /></a>
+				<!--width="62/43" height="70/49"-->
+		</td><td>
+            <p class="feed_title">
+				<!-- begin_wall_item_delete -->
+				<a href="#" onclick="if(confirm('{l_are_you_sure}')) { Wall.itemDelete({id}); } return false;" class="feed_del"><img src="{url_tmpl_mobile}images/wall/feed_delete.gif" width="10" height="10" align="bottom"></a>
+				<!-- end_wall_item_delete -->
+				{wall_item_title}<!-- begin_wall_comment -->
+<!--                 <span class="feed_txt_comment">{time_ago}</span>
+ -->
+                <br /><span class="feed_title_cmt">{wall_item_comment}</span><!-- end_wall_comment -->
+
+<!-- begin_wall_friends_friend -->{wall_friends_delimiter}<a href="{url_main}search_results.php?display={display_profile}&name={friend_name}">{friend_name}</a><!-- end_wall_friends_friend --><!-- begin_wall_friends_last --> {l_and} <a href="{url_main}search_results.php?display={display_profile}&name={friend_name}">{friend_name}</a><!-- end_wall_friends_last -->
+
+            </p>
+			<!-- begin_wall_shared_item_start -->
+			<div class="feed_share_photo">
+				<a href="{url_main}search_results.php?display={display_profile}&name={share_name}"><img src="{url_files}{share_photo}" width="62" height="70" alt=""/></a>
+			</div>
+			<div class="feed_share_content">
+			<!-- end_wall_shared_item_start -->
+            
+            <!-- begin_wall_photo_comment -->
+            <div class="feed_img_txt_l">
+                <a target="_blank" href="{url_files}{item_photo_b}"><img class="frame" src="{url_files}{item_photo}" /></a>
+                <div class="feed_txt_inf">
+                    <p class="btxt">
+                        {item_comment}
+                    </p>
+                </div>
+            </div>
+            <!-- end_wall_photo_comment -->
+ 
+            <!-- begin_wall_music_photo -->
+                <!-- begin_wall_music_photo_single -->
+                <div class="image_comment">
+                    <img src="{url_files}music_song_images/{music_photo_item_id}_b.jpg"/>
+                </div>
+                <!-- end_wall_music_photo_single -->
+				<!-- begin_wall_music_photo_images -->
+				<ul class="feed_list_photo_frame">
+					<!-- begin_music_photo_item -->
+					<li><a target="_blank" rel="lightbox[{id}]" href="{url_files}music_song_images/{music_photo_item_id}_b.jpg"><img src="{url_files}music_song_images/{music_photo_item_id}_th_b.jpg" width="160" height="119" alt=""/></a></li>
+					<!-- end_music_photo_item -->
+				</ul>
+				<!-- end_wall_music_photo_images -->
+            <!-- end_wall_music_photo -->
+            
+            
+            <!-- begin_wall_musician_photo -->
+                <!-- begin_wall_musician_photo_single -->
+                <div class="image_comment">
+                    <img src="{url_files}music_musician_images/{musician_photo_item_id}_b.jpg"/>
+                </div>
+                <!-- end_wall_musician_photo_single -->
+				<!-- begin_wall_musician_photo_images -->
+				<ul class="feed_list_photo_frame">
+					<!-- begin_musician_photo_item -->
+					<li><a target="_blank" href="{url_files}music_musician_images/{musician_photo_item_id}_b.jpg"><img src="{url_files}music_musician_images/{musician_photo_item_id}_th_b.jpg" width="160" height="119" alt=""/></a></li>
+					<!-- end_musician_photo_item -->
+				</ul>
+				<!-- end_wall_musician_photo_images -->
+            <!-- end_wall_musician_photo -->
+              
+            <!-- begin_wall_event_photo -->
+                <!-- begin_wall_event_photo_single -->
+                 <!-- style="width: {wall_pics_width}px;"-->    
+                 <div class="image_comment">
+                    <img src="{url_files}events_event_images/{event_photo_item_id}_b.jpg"/>
+                 </div>
+                <!-- end_wall_event_photo_single -->
+                <!-- begin_wall_event_photo_images -->
+				<ul class="feed_list_photo_frame">
+					<!-- begin_event_photo_item -->
+					<li><a target="_blank" href="{url_files}events_event_images/{event_photo_item_id}_b.jpg"><img src="{url_files}events_event_images/{event_photo_item_id}_th_b.jpg" width="160" height="119" alt=""/></a></li>
+					<!-- end_event_photo_item -->
+				</ul>
+				<!-- end_wall_event_photo_images -->
+            <!-- end_wall_event_photo -->
+             
+            <!-- begin_wall_places_photo -->
+                <!-- begin_wall_places_photo_single -->
+                <div class="image_comment">
+                <img src="{url_files}places_images/{place_image_id}_b.jpg"/>
+                </div>
+                <!-- end_wall_places_photo_single -->
+                <!-- begin_wall_places_photo_images -->
+				<ul class="feed_list_photo_frame">
+					<!-- begin_places_photo_item -->
+					<li><a target="_blank" href="{url_files}places_images/{place_image_id}_b.jpg"><img src="{url_files}places_images/{place_image_id}_th.jpg" width="80" height="80" alt=""/></a></li>
+					<!-- end_places_photo_item -->
+				</ul>
+				<!-- end_wall_places_photo_images -->
+            <!-- end_wall_places_photo -->
+          
+            <!-- begin_wall_friends -->
+            <ul class="feed_list_photo">
+                <!-- begin_wall_friends_friend_photo -->
+                <li><a href="{url_main}search_results.php?display={display_profile}&name={friend_name}"><img src="{url_files}{friend_photo}" width="35" height="40" alt="{friend_name}"/></a></li>
+                <!-- end_wall_friends_friend_photo -->
+            </ul>
+            <!-- end_wall_friends -->
+            <!-- begin_wall_photo_default -->
+            <div>                
+                <a target="_blank" href="{url_files}{url_profile_photo_new_b}"><img style="width: {wall_photo_width}px;" src="{url_files}{url_profile_photo_new_b}" alt=""/></a>
+            </div>
+            <!-- end_wall_photo_default -->
+            <!-- begin_wall_pics -->
+                <!-- begin_wall_album_desc -->
+				<p>{wall_album_desc}</p>
+				<!-- end_wall_album_desc -->
+				<!-- begin_wall_pics_single -->
+                                <div class="image_comment">
+                                    <a target="_blank" href="{wall_pics_image_big}">
+					<img src="{wall_pics_image_big}"/>
+					<!--<img style="width: {wall_pics_width}px;" src="{wall_pics_image_big}"/>-->
+                                    </a>
+                                </div>
+                                <!-- end_wall_pics_single -->
+				<!-- begin_wall_pics_images -->
+				<ul class="feed_list_photo_frame">
+					<!-- begin_wall_pics_image -->
+					<li><a target="_blank" href="{wall_pics_image_big}"><img src="{wall_pics_image}"/></a></li>
+					<!-- end_wall_pics_image -->
+				</ul>
+				<!-- end_wall_pics_images -->
+            <!-- end_wall_pics -->
+            
+			<!-- begin_wall_shared_item_end -->
+			</div>
+			<!-- end_wall_shared_item_end -->
+
+		</td></tr></table>
+            <!-- begin_wall_item_like -->
+            <div class="feed_pl_green {wall_like_class}" id="feed_like_result_{id}">
+				<!-- begin_link_unlike --><a href="#" onclick="Wall.likeDelete({id}); return false;" title="{l_unlike}"><img title="{l_unlike}" alt="{l_unlike}" class="wall-like-symbol wall-like-symbol-link" src="{url_tmpl_mobile}images/wall/feed_ico_hand.png"></a><!-- end_link_unlike --><!-- begin_icon_like --><a href="#" title="{l_like}" alt="{l_like}" onclick="Wall.likeAdd({id}); return false;"><img class="wall-like-symbol" src="{url_tmpl_mobile}images/wall/feed_ico_hand.png"></a><!-- end_icon_like -->
+			<div>			   
+			   	<!-- begin_wall_like_one -->{wall_like_one}<!-- end_wall_like_one -->
+				<!-- begin_wall_like_you -->{l_wall_you}<!-- end_wall_like_you --><!-- begin_wall_like_user -->{wall_like_delimiter}<a href="{url_main}search_results.php?display={wall_like_display_profile}&name={wall_like_name}">{wall_like_name}</a><!-- end_wall_like_user -->
+				<!-- begin_wall_like_more -->{wall_and_more_people_like_this}<!-- end_wall_like_more -->
+				<!-- begin_wall_like_names -->{l_wall_several_people_like_this}<!-- end_wall_like_names -->			   
+            </div></div>
+            <!-- end_wall_item_like -->
+            <div id="wall_item_comments_{id}" class="comments_block">
+                <!-- begin_wall_item_comment -->
+                <div id="wall_item_comment_{wall_item_comment_id}" class="feed_bl_chat{wall_item_comment_index} wall_item_comment_{wall_item_comment_id}">
+                    <div class="feed_bl_chat{wall_item_comment_index}_t">&nbsp;</div>
+                    <div class="feed_bl_chat{wall_item_comment_index}_c">
+						<!-- begin_wall_comment_delete -->
+						<a href="#" onclick="if(confirm('{l_are_you_sure}')) { Wall.commentDelete({id}, {wall_item_comment_id}); } return false;" class="comment_del"><img src="{url_tmpl_mobile}images/wall/feed_delete.gif" width="10" height="10" align="bottom"></a>
+						<!-- end_wall_comment_delete -->
+                        <a class="feed_link_photo" href="{url_main}search_results.php?display={wall_item_comment_display_profile}&name={wall_item_comment_name}"><img class="frame" src="{url_files}{wall_item_comment_photo}" width="21" height="24" alt=""/></a>
+                        <p>
+                            <strong><a href="{url_main}search_results.php?display={wall_item_comment_display_profile}&name={wall_item_comment_name}">{wall_item_comment_name}</a><span class="feed_time">{wall_item_comment_time}</span></strong>
+                            <span class="feed_title_cmt" >
+                            {wall_item_comment_text}</span>
+                        </p>
+                        <div class="justify"></div>
+                    </div>
+                    <div class="feed_bl_chat{wall_item_comment_index}_b">&nbsp;</div>
+                </div>
+				<script>
+				Wall.commentsCacheAdd('{id}', '{wall_item_comment_id}');
+				</script>				
+                <!-- end_wall_item_comment -->
+            </div>
+			<div id="wall_item_comments_new_{id}" class="comments_block">
+			</div>
+            <div id="comment_container_{id}"></div>
+            <div class="feed_blue_bl feed_comment_{id}" style='display:none;'>
+                <div class="feed_blue_bl_t">&nbsp;</div>
+                <div class="feed_blue_bl_c">
+				<table width=100%>
+					<tr>
+                    <td width=21><img class="frame" src="{url_files}{visitor_photo}" width="21" height="24" alt=""/></td>
+                    <td><textarea class="wall_comment_area" id="wall_comment_area_{id}"></textarea></td>
+                    <td width=30><a href="#" onclick="Wall.commentAdd({id}); return false;"><img src="{url_tmpl_mobile}images/wall/feed_ico_add.png" width="30" height="29" alt=""/></a></td>
+					</tr>
+				</table>
+                </div>
+                <div class="feed_blue_bl_b">&nbsp;</div>
+            </div>
+
+			<div class="feed_bl">
+                 <div class="feed_txt_comment">{time_ago}</div>
+                <!-- begin_wall_module_comment -->
+                <button class="feed_btn_comment" onclick="Wall.commentShow({id}); return false;">{l_comment}</button>
+				<!-- end_wall_module_comment -->
+				<!-- begin_wall_module_like -->
+                <button class="feed_btn_like {wall_like_hidden} {wall_like_class_button}" id="feed_like_{id}" onclick="Wall.likeAdd({id}); return false;">{l_like}</button>
+				<!-- end_wall_module_like -->
+				<!-- begin_wall_module_share -->
+                <button class="feed_btn_share {class_module_share_hide} feed_share_{real_wall_id}" onclick="Wall.share({real_wall_id}); return false;">{l_share}</button>
+				<!-- end_wall_module_share -->
+				<!-- begin_wall_load_more_comments -->
+				<script>
+					Wall.itemCommentsSet('{id}', '{wall_item_comment_id}');
+				</script>				
+				<!-- end_wall_load_more_comments  -->
+				<a class="wall_load_more_comments wall_load_more_comments_{id}" href="#" onclick="Wall.commentsLoad({id}); return false;"></a>
+			<div class="cl"></div>
+            </div>
+		</div>
+    </td>
+</tr>
+<script>
+	Wall.itemInfoSet('{id}', '{wall_last_action_like}', '{wall_last_action_comment}', '{wall_comments_count}', '{wall_item_comment_is_viewed}');
+</script>
+<!-- end_wall_items -->
+<!-- begin_wall_items_script -->
+<script>
+	Wall.firstPostId = '{wall_first_post_id}';
+    <!-- begin_wall_items_script_last_post_id -->
+	Wall.lastPostId = '{wall_last_post_id}';
+	<!-- end_wall_items_script_last_post_id -->
+	
+	<!-- begin_no_more_items -->
+	$(document).ready(function() {
+		$('.wall_load_old_items').remove();
+		Wall.oldItemsExists = false;
+	});
+	<!-- end_no_more_items -->	
+</script>
+<!-- end_wall_items_script -->
+{wall_ajax}

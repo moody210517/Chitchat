@@ -1,0 +1,164 @@
+{header}
+
+			<!-- begin_main_page_frm_login_position -->
+            <style>
+            .bl_main_login{right:{login_form_position_right}px; bottom:{login_form_position_bottom}px !important;}
+            .frm_login_shadow{right:0px  !important; bottom:-95px  !important;}
+            .main_arrow{right:70px !important; top:220px !important;}
+            .info_block{left:{info_block_position_left}px !important; bottom:{info_block_position_bottom}px !important;}
+            </style>
+			<!-- end_main_page_frm_login_position -->
+
+            <!-- map -->
+			<!-- begin_ip_map -->
+            <div class="bl_map">
+
+                <!-- begin_ip_map_google_map -->
+                <div class="bl_google_map">
+                    <img id="lazy_index_map" width="815" height="359" src="{url}" src="{url_tmpl_main}images/empty.png" onload="$(this).css({opacity:'1', transition:'opacity 1.5s'})" style="opacity:0">
+                </div>
+                <!-- end_ip_map_google_map -->
+
+                <div class="google_map_shadow {ip_map_bg_transparent}">
+					<!-- begin_ip_map_user -->
+                    <div id="ip_map_frame_{ip_map_user_id}" class="map_photo_move map_photo var{ip_map_user_row} pos{ip_map_user_column} count{ip_map_user_num} " style="opacity:0;">
+                        <div class="photo">
+                            <div class="frame">
+                                <a href="{url_main}{ip_map_user_url}" title="{ip_map_user_name}, {ip_map_user_age}">
+                                    <img src="{url_files}{ip_map_user_photo_needed}" onload="$('#ip_map_frame_{ip_map_user_id}').css({opacity:'.99', transition:'0.7s linear'})">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="map_photo_shadow"></div>
+                    </div>
+					<!-- end_ip_map_user -->
+                </div>
+            </div>
+			<!-- end_ip_map -->
+            <!-- /map -->
+
+            <!-- begin_main_page_image -->
+            <div class="main_pic" style="height: {main_page_image_height};" >
+                <!-- begin_ip_city_image -->
+                <div class="bl_title var info_block"><!-- var без картинки-->
+                    <div class="title_icon">
+                        <h1>
+                            <!-- begin_main_page_location_image -->
+                            {l_meet_new_people_in} <a href="{url_main}{url_page_search_results}?{type_location}={ip_city_id}{params}">{ip_city_title}</a>!
+                            <!-- end_main_page_location_image -->
+                            <!-- begin_main_page_title_location_image -->
+                            {main_page_title_location_image}
+                            <!-- end_main_page_title_location_image -->
+                        </h1>
+                        <span>{l_chat_with_fun_new_people_share_photos_and_interests_even_date}</span>
+                    </div>
+                    <!-- begin_main_page_arrow_image -->
+                    <div class="main_arrow"></div>
+                    <!-- end_main_page_arrow_image -->
+                </div>
+                <!-- end_ip_city_image -->
+            </div>
+            <!-- end_main_page_image -->
+
+            <!-- login -->
+            <div class="bl_main_login main_page_login_frm">
+                <!-- begin_facebook_login1 -->
+                <div class="login_facebook">
+                    <a href="{facebook_login_url}">{l_log_in_with_facebook}</a>
+                </div>
+                <!-- end_facebook_login1 -->
+
+            <!-- begin_social_login -->
+                <ul class="bl_social_buttons">
+                <!-- begin_social_login_item -->
+                    <li class="login_{social_login_item_type}"><a href="{social_login_item_url}">&nbsp;</a></li>
+                <!-- end_social_login_item -->
+                </ul>
+            <!-- end_social_login -->
+            <!-- begin_social_login_no_class -->
+            <!-- end_social_login_no_class -->
+
+                <form id="form_login" class="form_login" method="post" autocomplete="on" action="{url_main}ajax.php">
+                    <input id="form_login_cmd" type="hidden" name="cmd" value="login" />
+                    <input type="hidden" name="ajax" class="ajax" value="0" />
+                    <div class="frm_login">
+                        <div class="cont">
+                            <label>{l_email_name}:</label>
+                            <input id="form_login_user" name="user" class="inp" type="text" />
+
+                            <div class="cl"></div>
+
+                            <label>{l_password}:</label>
+                            <input id="form_login_pass" class="inp" type="password" name="password"/>
+                        </div>
+                        <div class="foot">
+                            <input type="button" id="form_login_join" class="btn blue fl_left" value="{l_register}" />
+                            <input type="submit" id="form_login_submit" class="btn-login btn orange fl_right" value="{l_log_in}" />
+                        </div>
+                    </div>
+
+                    <div class="infa infa_login">
+                        <a href="{url_main}{url_page_forget_password}">{l_forgot_password}</a>
+
+                        <div class="fl_right">
+                            <input id="form_login_remember" name="remember" value="1" type="checkbox" checked="checked"/>
+                            <label for="form_login_remember">{l_remember_me}</label>
+                        </div>
+                    </div>
+
+                </form>
+
+                <!-- begin_main_page_frm_login_shadow -->
+                <div class="frm_login_shadow"></div>
+                <!-- end_main_page_frm_login_shadow -->
+
+                <!-- begin_main_page_arrow -->
+                <div class="main_arrow"></div>
+                <!-- end_main_page_arrow -->
+            </div>
+            <!-- /login -->
+
+            <!-- begin_btn_download_app_bottom_login_form -->
+            <div class="bl_btn_app">
+                <!-- begin_btn_download_app_bottom_login_form_item -->
+                <a target="_blank" class="{btn_download_app_bottom_login_form_item_class}" href="{btn_download_app_bottom_login_form_item_url}" title="{btn_download_app_bottom_login_form_item_title}">
+                    <img src="{url_tmpl_main}images/icon_btn_{btn_download_app_bottom_login_form_item_icon}.png" alt="" />&nbsp;{btn_download_app_bottom_login_form_item_title}
+                </a>
+                <!-- end_btn_download_app_bottom_login_form_item -->
+            </div>
+            <!-- end_btn_download_app_bottom_login_form -->
+
+			<!-- begin_ip_city -->
+            <div class="bl_title info_block">
+                <div class="title_icon">
+                    <h1>
+                        <!-- begin_main_page_location -->
+                        {l_meet_new_people_in} <a href="{url_main}{url_page_search_results}?{type_location}={ip_city_id}{params}">{ip_city_title}</a>!
+                        <!-- end_main_page_location -->
+                        <!-- begin_main_page_title_location -->
+                        {main_page_title_location}
+                        <!-- end_main_page_title_location -->
+                    </h1>
+                    <span>{l_chat_with_fun_new_people_share_photos_and_interests_even_date}</span>
+                </div>
+            </div>
+			<!-- end_ip_city -->
+
+            <!-- begin_demo -->
+            <script>
+            $(function(){
+                $('#form_login_user').val('{login_user}');
+                $('#form_login_pass').val('{login_password}')
+            });
+            </script>
+            <!-- end_demo -->
+
+            <!-- begin_user_profile_delete_alert -->
+            <script>
+            $(function(){
+                alertHtmlArea = '#main_page_image_content';
+                alertCustom('{j_thanks_for_being_with_us}', true, '{j_profile_deleted}');
+            });
+            </script>
+            <!-- end_user_profile_delete_alert -->
+{footer}

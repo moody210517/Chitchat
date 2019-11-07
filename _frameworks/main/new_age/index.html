@@ -1,0 +1,411 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+	<title>{title}</title>
+	<meta name="description" content="{description}">
+    <meta name="keywords" content="{keywords}">
+<link rel="stylesheet" type="text/css" media="all" href="{url_tmpl_main}abkstyle/abkstyle_index.css{cache_version_param}" />
+<!--[if lt IE 7]>
+<style type="text/css">
+input{visibility: expression( (this.type=="text" || this.type=="password" || this.type=="file" ) ? 'hidden' : 'inherit' );}
+</style>
+<![endif]-->
+{to_head}
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Cache-Control" content="no-cache,post-check=0,pre-check=0,no-cache" />
+{header_favicon}
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="Thu,01Dec199416:00:00GMT" />
+<link rel="stylesheet" href="{url_tmpl_main}css/screen_public.css{cache_version_param}" type="text/css" media="screen">
+<!--<link rel="stylesheet" href="{url_tmpl_main}css/main_public.css{cache_version_param}" type="text/css" media="screen">-->
+<script type="text/javascript" src="{url_main}_server/jquery/jquery-last.js{cache_version_param}"></script>
+<script type="text/javascript" src="{url_main}_server/lib.js{cache_version_param}"></script>
+
+<link rel="stylesheet" type="text/css" href="{url_tmpl_main}css/cookiepopup.css{cache_version_param}" />
+<script type="text/javascript" src="{url_tmpl_main}js/cookiepopup.js{cache_version_param}"></script>
+<script language="javascript" type="text/javascript">
+    setOptionsSite({site_options});
+ </script>
+<script language="javascript" type="text/javascript">
+    var siteTitle = '{js_title}';
+	var imagesPath = "{url_tmpl_main}abkstyle/img/";
+	var abkStyleRun = true;
+	{footer_custom_js}
+
+	$(document).ready(function() {
+        var $changeLanguage=$('.module_change_language'), notShowLang=false;
+        if ($changeLanguage[0]) {
+            $changeLanguage.find('ul').autocolumnlist({columns: getSiteOption('number_of_columns_in_language_selector'), clickEmpty:function(){
+                notShowLang=true;
+                $('#module_change_language_item').stop().animate({height:'toggle'},300, function(){
+                setTimeout(function(){notShowLang=false},100);
+                })
+            }});
+            $changeLanguage.hover(function(){
+                if(notShowLang)return;
+                var width = $(this).children('.module_change_language_current').width();
+                $('#module_change_language_item').css('left', (width + 13)+'px').stop().animate({height: "toggle"}, 300);
+            })
+        }
+	});
+</script>
+<script language="javascript" type="text/javascript" src="{url_tmpl_main}abkstyle/abkstyle.js{cache_version_param}"></script>
+<script type="text/javascript" src="{url_main}js.php{cache_version_param}&set_template_runtime={tmpl_loaded}&set_language_runtime={lang_loaded}"></script>
+
+<!--[if lte IE 6]> <script language="javascript" type="text/javascript" src="{url_tmpl_main}js/iepngfix_tilebg.js{cache_version_param}"></script><![endif]-->
+
+<style>
+.fmembers .fmembers-bg{background: url({url_main}tmpl_img_loader.php?tmpl={tmpl_loaded}&dirs=images&file=fmembers-bg.png&lang={lang_loaded}); width: 297px; height: 185px; position: absolute; top: 0; left: 0;}
+</style>
+
+</head>
+<body>
+<!-- begin_banner_top -->
+<div class='banner_top'>
+{banner_top}
+</div>
+<!-- end_banner_top -->
+	<div id="wrapper">
+		<div id="header_left"><div id="header_right">
+		<div id="header">
+			<h1><div class="logo"><img src="{header_url_logo}" alt="{title}" class="png_bg" ></div></h1>
+
+    <!-- begin_view -->
+    <div class="module_change_language">
+      <a class="module_change_language_current" href="#">{language_current}</a>
+      <div id="module_change_language_item">
+        <ul>
+            <!-- begin_language -->
+            <li><a href="{url_page}?{url_page_params}set_language={language_value}"><span class="{language_class}">{language_title}</span></a></li>
+            <!-- end_language -->
+        </ul>
+      </div>
+    </div>
+    <!-- end_view -->
+
+				<ul class="top_menu">
+                <!-- begin_news_on -->
+				<li><a href="{url_main}news.php?view=4"><img src="{url_main}tmpl_img_loader.php?tmpl={tmpl_loaded}&dirs=images&file=menu-01.gif&lang={lang_loaded}" height="7" alt="{l_site_tour}"></a></li>
+				<li><a href="{url_main}news.php?cat=2"><img src="{url_main}tmpl_img_loader.php?tmpl={tmpl_loaded}&dirs=images&file=menu-02.gif&lang={lang_loaded}" height="7" alt="{l_success_stories}"></a></li>
+				<li><a href="{url_main}news.php"><img src="{url_main}tmpl_img_loader.php?tmpl={tmpl_loaded}&dirs=images&file=menu-03.gif&lang={lang_loaded}" height="7" alt="{l_date_info}"></a></li>
+                <!-- end_news_on -->
+               </ul>
+
+		</div></div></div>
+
+<!-- begin_banner_header -->
+<div class="banner_header">{banner_header}</div>
+<!-- end_banner_header -->
+<div id="main">
+	<div id="main-in" class="main-in-{main_page_mode}">
+		<div id="main-out">
+         <center><span style="color: #F7941C;font-size: 11px;"><b>{login_message}</b></span></center>
+		<div style="top:90px; left:400px; z-index:10;">
+			<form {autocomplete} method="post" action="{url_main}join.php?cmd=login" id="login-f" class="clearfix">
+				<table width="100%">
+                <tr>
+                <td height="33" style="padding-top:8px;"><label for="login" style="margin-left:18px;_margin-left:9px; margin-top:2px;">{l_members}:</label></td>
+				<td style="padding-top:8px;"><input {autocomplete} class="index_top" name="user" type="text" value="{l_username}" onfocus="if (this.value == '{l_username}') this.value = ''" onblur="if (this.value == '') this.value = '{l_username}'" id="login" tabindex="1" style="width:109px;"></td>
+				<td style="padding-top:8px;"><input {autocomplete} class="index_top" name="password" type="password" value="{l_password}" onfocus="if (this.value == '{l_password}') this.value = ''" onblur="if (this.value == '') this.value = '{l_password}'" id="login_password" tabindex="2" style="width:109px;"></td>
+				<td style="padding-top:6px; padding-right: 6px;">
+					<button type="submit" tabindex="3" alt="{l_go}" class="btn_go">{l_go}</button>
+				</td>
+                </tr>
+				<tr>
+                <td colspan="4" align="right">
+                 <table>
+                  <tr>
+                   <td height="30" style="vertical-align:middle">
+                     <input name="remember" type="checkbox" id="remember" class="chk" value="1" type="checkbox" checked="checked">
+                   </td>
+                   <td style="vertical-align:middle"><label for="remember" class="remember">{l_remember_me}</label> | <a style="color:#000000" href="{url_main}forget_password.php?">{l_forgot_password}</a></td>
+                  </tr>
+                 </table>
+                </td>
+                </tr>
+                </table>
+			</form>
+		</div>
+
+
+	<div style="height:28px;"></div>
+	<!-- begin_users -->
+	<div class="fmembers" style="top: 80px; left: 30%;">
+		<div class="fmembers-bg"></div>
+		<ul class="people">
+			<!-- begin_user -->
+			<li>
+				<dl>
+					<dt><a href="{url_main}search_results.php?display=profile&name={name}&uid={user_id}"><img src="{url_files}{photo}" width="62" height="70" alt=""></a></dt>
+					<dd>{name}, {age}</dd>
+				</dl>
+			</li>
+			<!-- begin_newline -->
+			<!-- end_newline -->
+			<!-- end_user -->
+		</ul>
+	</div>
+	<!-- end_users -->
+	<!-- begin_search -->
+	<div class="fsearch" style="top: 260px; left: 30%;">
+	<div class="fsearch-bg"></div>
+		<form method="GET" action="{url_main}search_results.php">
+			<table>
+            <tr>
+            <!-- begin_orientation -->
+            <td>{l_i_am}&nbsp;</td><td><select name="p_orientation_search" style="width:166px;" />{p_orientation_options}</select></td>
+            <!-- end_orientation -->
+            <td rowspan="2"><input type="submit" value=" " class="btn"></td>
+            </tr>
+            <tr>
+			<td>{l_from}</td><td><table><tr><td><select name="p_age_from" style="width: 45px;">{p_age_from_options}</select></td><td>
+            &nbsp;{l_to}&nbsp;</td>
+            <td><select name="p_age_to" style="width: 45px;">{p_age_to_options}</select></td><td>&nbsp;{l_years_old}</td></tr></table></td>
+			</tr>
+            </table>
+		</form>
+	</div>
+	<!-- end_search -->
+
+
+			<!-- begin_join -->
+			<script language="JavaScript" type="text/javascript">
+			  function onValidateJoinForm() {
+			    var form = document.forms['JoinForm'];
+			    if (!(validateUserName(form['join_handle'], '{l_username}', '{username_length_min}', '{username_length}'))) {
+			      return false;
+			    }
+
+			    if (!(validateRequiredField(form['join_password'], '{l_password}'))) {
+			      return false;
+			    }
+			    if (!(validateMinLength(form['join_password'], '{l_password}','{password_length_min}'))) {
+			      return false;
+			    }
+			    if (!(validateMaxLength(form['join_password'], '{l_password}','{password_length_max}'))) {
+			      return false;
+			    }
+			    if (!(validateAlphaNumeric(form['join_password'], '{l_password}'))) {
+			      return false;
+			    }
+
+			    if (!(validateRequiredField(form['email'], '{l_email_address}'))) {
+			      return false;
+			    }
+			    if (!(validateMaxLength(form['email'], '{l_email_address}','{mail_length_max}'))) {
+			      return false;
+			    }
+			    if (!(validateEmailField(form['email'], '{l_email_address}'))) {
+			      return false;
+			    }
+                <!-- begin_field_orientation_js -->
+			    if (!(validateRequiredSelect(form['orientation'],'{l_orientation}','0'))) {
+			      return false;
+			    }
+			    if (!(validateRequiredField(form['orientation'], '{l_orientation}', '0'))) {
+
+			      return false;
+			    }
+                <!-- end_field_orientation_js -->
+			    if (!(validateRequiredSelect(form['country'],'{l_country}','-1'))) {
+			      return false;
+			    }
+			    if (!(validateRequiredField(form['country'], '{l_country}', '-1'))) {
+			      return false;
+			    }
+			    if (!(validateRequiredField(form['month'], '{l_month}'))) {
+			      return false;
+			    }
+			    if (!(validateRequiredField(form['day'], '{l_day}'))) {
+			      return false;
+			    }
+			    if (!(validateRequiredField(form['year'], '{l_year}'))) {
+			      return false;
+			    }
+			    if (!(validateRequiredCheckbox(form['privacy_policy'],'','{l_agree_privete_policy}'))) {
+			      return false;
+			    }
+			    return true;
+			  }
+
+			  function validateJoinForm() {
+			    blockSubmission = true;
+			     if (typeof beforeJoinFormValidation != 'undefined') {
+			       beforeJoinFormValidation();
+			    }
+			    var validated = onValidateJoinForm();
+			    if (validated && (typeof uponSuccessfulJoinFormValidation != 'undefined')) {
+			      validated = uponSuccessfulJoinFormValidation();
+			    }
+			    else if (!validated && (typeof uponUnsuccessfulJoinFormValidation != 'undefined')) {
+			      uponUnsuccessfulJoinFormValidation();
+			    }
+			    if (!validated) {
+
+			    }
+			    return validated;
+			  }
+
+			  function submitJoinForm() {
+			   if (validateJoinForm()) document.JoinForm.submit();
+			   else return false;
+			  }
+				function OpenWindow( sUri, iWidth, iHeight )
+				{
+					var sWindowName = 'win' + Math.floor( Math.random()*1000 )
+					var iRealWidth = iWidth ? iWidth : 600
+					var iRealHeight = iHeight ? iHeight : screen.height - 300
+
+					var iLeft = Math.round( (screen.width-iRealWidth)/2 )
+					var iTop =  Math.round( (screen.height-iRealHeight)/2 ) - 35
+
+					var sWindowOptions = 'status=yes,menubar=no,toolbar=no'
+					sWindowOptions += ',resizable=yes,scrollbars=yes,location=no'
+					sWindowOptions += ',width='  + iRealWidth
+					sWindowOptions += ',height=' + iRealHeight
+					sWindowOptions += ',left='   + iLeft
+					sWindowOptions += ',top='    + iTop
+
+					var oWindow = window.open( sUri, sWindowName, sWindowOptions )
+
+
+					return oWindow
+				}
+			</script>
+
+
+
+
+						<form {autocomplete} name="JoinForm" method="post" action="{url_main}join.php?cmd=register" onSubmit="return validateJoinForm();" id="join">
+                        <table>
+                        <tr>
+                        <td>
+                        <label for="username">{l_username}:</label></td><td><input type="text" maxlength="{username_length}" id="username" style="width:120px;" name="join_handle" /></td></tr>
+						<tr><td><label for="create-password">{l_create_password}:</label></td><td><input type="password" style="width:120px;" id="create-password" name="join_password" /></td></tr>
+
+						<tr><td><label for="email">{l_email}:</label></td><td><input type="text" id="email" style="width:120px;" name="email" /></td></tr>
+
+						</table><table>
+                        <!-- begin_field_orientation -->
+						<tr><td><label for="iam">{l_i_am}:</label></td>
+							<td>
+                            <table><tr><td height="22"><select name="orientation" id="iam">
+								 {orientation_options}
+							</select></td></tr></table>
+                            </td></tr>
+                        <!-- end_field_orientation -->
+						<tr><td>
+						<label for="from">{l_from}:</label></td>
+							<td>
+                            <table><tr><td height="22"><select name="country" id="from">
+								 <option value="-1" selected="selected">{l_country_select}</option>
+								 {country_options}
+							</select></td></tr></table>
+                            </td></tr>
+						<tr><td>
+						<label for="month">{l_born_on}:</label></td>
+							<td><table><tr><td height="22"><select name="month" id="month" onChange="updateDay('month','JoinForm','year','month','day')">
+								{month_options}
+							</select></td><td style="padding:0 2px;"><select name="day" id="day">
+								{day_options}
+							</select></td><td><select name="year" id="year" onChange="updateDay('year','JoinForm','year','month','day')">
+								{year_options}
+							</select></td></tr></table>
+							</td></tr>
+							<tr><td colspan="2">
+								<div class="frame_submitJoinForm"><a onClick="submitJoinForm();" class="submitJoinForm" title="{l_join_now}">{l_join}</a></div>
+							</td></tr>
+							<tr><td colspan="2"><div id="terms" style="width:600px;"><input name="privacy_policy" type="checkbox" value="1" id="agree" > <label for="agree"> {l_i_agree} <span style="text-decoration:underline" onClick="javascript:OpenWindow('{url_main}info.php?page=term_cond&lang={lang_loaded}','800','600');">{l_terms_and_conditions}</span> {l_and} <span style="text-decoration:underline" onClick="javascript:OpenWindow('{url_main}info.php?page=priv_policy&lang={lang_loaded}','800','600');">{l_privacy_policy}</span></label></div></td>
+                            </tr>
+                            </table>
+						</form>
+					<!-- end_join -->
+
+					<!-- begin_main_social -->
+					<div class="baloon_txt1">
+						<strong>{l_social_username_1}</strong> {l_social_text_1}
+					</div>
+					<div class="baloon_txt2">
+						<strong>{l_social_username_2}</strong> {l_social_text_2}
+					</div>
+					<div class="baloon_txt3">
+						<strong>{l_social_username_3}</strong> {l_social_text_3}
+					</div>
+
+					<div class="baloon_txt_b">{l_make_friends_wherever_you_are}</div>
+					<!-- end_main_social -->
+
+					<!-- begin_main_dating -->
+                    <div id="baloon">
+						<table><tr><td height="50">{l_thanks}, <strong>{title}</strong>!</td></tr></table>
+					</div>
+					<img id="join-now" src="{url_tmpl_main}images/join-now-text.gif" width="139" height="53" alt="{l_join_now}">
+					<!-- end_main_dating -->
+
+					<!-- begin_facebook_register -->
+					<a id="fb-join" class="fb_button_round" href="{facebook_login_url}"><strong class="fb_button_text">{l_login_with_facebook}</strong></a><br><br>
+					<!-- end_facebook_register -->
+
+				</div>
+			</div>
+		</div>
+		<!--div id="shadow"></div-->
+        <div id="footer">
+            <!-- begin_banner_footer -->
+            <div class="banner_footer">
+                {banner_footer}
+            </div>
+            <!-- end_banner_footer -->
+			<p>
+                <!-- begin_news_on1 -->
+				<a href="{url_main}news.php?view=1" title="{l_how_it_works}">{l_how_it_works}</a> |
+				<a href="{url_main}news.php?view=2" title="{l_about_us}">{l_about_us}</a>
+                <!-- end_news_on1 -->
+                <!-- begin_help_on -->
+                {dash1}
+                    <a href="{url_main}help.php" title="{l_help}">{l_help}</a>
+                <!-- end_help_on -->
+				<!-- begin_link_partner -->
+				{dash2}
+                <a href="{url_main}partner/" target="_blank" title="{l_affiliates}">{l_affiliates}</a>
+				<!-- end_link_partner -->
+                <!-- begin_news_on2 -->
+				|
+                <a href="{url_main}news.php?view=3" title="{l_testimonials}">{l_testimonials}</a> |
+		 		<a href="{url_main}news.php" title="{l_dating_news}">{l_dating_news}</a>
+                <!-- end_news_on2 -->
+                <!-- begin_contact_on -->
+		 		{dash3}
+                <a href="{url_main}contact.php" title="{l_contact_us}">{l_contact_us}</a><br />
+                <!-- end_contact_on -->
+			</p>
+			<p class="abledating">{l_online_dating} <a href="{url_main}" title="{title_orig}">{title_orig}</a></p>
+		</div>
+	</div>
+
+<!-- begin_gdpr_cookie_popup -->
+<script>
+    $(function(){
+        //document.cookie = 'cookiesAccepted=; path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        var options = {
+            title: '{j_cookies_accept_title}',
+            text: '{cookies_accept_text}',
+            acceptButtonText: '{j_cookies_accept_accept_button_text}',
+            theme: 'dark',
+            learnMore: false,
+            position: 'bottom'
+        };
+        $.acceptCookies(options);
+    })
+</script>
+<!-- end_gdpr_cookie_popup -->
+</body>
+<script>
+<!-- begin_demo -->
+$(document).ready(function() {
+	$('#login').val('{login_user}');
+	$('#login_password').val('{login_password}');
+});
+<!-- end_demo -->
+</script>
+</html>

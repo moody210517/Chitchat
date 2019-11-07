@@ -1,0 +1,21 @@
+{header}
+<div class="frame_content">
+<div class="chat_bg">
+<div class="module_media_chat module_videochat">
+<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="530" height="500" id="video_in" align="middle">
+<param name="allowScriptAccess" value="sameDomain" />
+<param name="movie" value="{url_main}_server/video/videochat.swf?login={my_name}&enemy={enemy_name}" />
+<param name="quality" value="high" />
+<param name="bgcolor" value="#ffffff" />
+<param name="wmode" value="opaque">
+<param name="flashvars" value="skin=_server%2Fvideo%2Fskin.xml&lang={url_page}%3Fcmd%3Dlang%26lang%3D{lang_loaded}" />
+
+<embed wmode="opaque" src="{url_main}_server/video/videochat.swf?login={my_name}&enemy={enemy_name}"  quality="high" bgcolor="#ffffff" width="530" height="500" name="video_in" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="skin=_server%2Fvideo%2Fskin.xml&lang={url_page}%3Fcmd%3Dlang%26lang%3D{lang_loaded}" />
+</object>
+</div>
+</div>
+</div>
+<!-- begin_alert_js -->
+<script>alertCustom('{j_the_user_is_offline_now_please_try_later}', ALERT_HTML_ALERT);</script>
+<!-- end_alert_js -->
+{footer}

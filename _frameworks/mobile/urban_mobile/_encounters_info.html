@@ -1,0 +1,47 @@
+
+<div id="profile_view_photo" class="bl_img bl_img_one" >
+    <div class="no_one_found no_one_found_item hidden"><span>{l_no_one_found_please_edit_the_filter_above}</span></div>
+    <img id="profile_view_photo_img" onload="$(this).removeClass('hidden')" src="{photo_cur}" class="hidden">
+    <div class="loader loader_image">
+        <div class="spinner center">
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        </div>
+    </div>
+</div>
+<span id="bl_tinder_btn_left" class="no bl_tinder_btn">{l_no}</span>
+<span id="bl_tinder_btn_right" class="yes bl_tinder_btn">{l_yes}</span>
+<script>
+    var photos = new CProfilePhoto();
+    photos.langParts = {'position_photo' : '{j_position_photo}',
+                    'number_private_photo' : '{j_number_private_photo}'}
+    photos.setDisplayParam('encounters');
+    photos.langParts = {'position_photo' : '{j_position_photo}',};
+    photos.initProfileView();
+    csearch.setDisplayParam('encounters');
+    $(function(){
+    cprofile.prepareReportTip('{user_id}', '{is_blocked_user}');
+    $('.bl_check_photo a').mousedown(function(){$('span.cloud', this).stop().fadeTo(0,1)})
+     .on('mouseup drag', function(){$('span.cloud', this).stop().delay(50).fadeTo(0,0)})
+    })
+</script>
+
+<div id="encounters_btn_like" class="bl_check_photo <!-- begin_show_btn_encounters -->visible<!-- end_show_btn_encounters -->">
+    <ul>
+        <li><a id="encounters_like_no" class="no btn_like" onclick="photos.isSwipe=0; csearch.likeToMeet('N','reply',$(this)); return false;" href=""><span class="txt">{l_no}</span><span class="cloud"></span></a></li>
+        <li><a class="maybe btn_like" onclick="photos.isSwipe=0; csearch.likeToMeet('M','reply',$(this)); return false;" href=""><span class="txt">{l_maybe}</span><span class="cloud"></span></a></li>
+        <li><a id="encounters_like_yes" class="yes btn_like" onclick="photos.isSwipe=0; csearch.likeToMeet('Y','reply',$(this)); return false;" href=""><span class="txt">{l_yes}</span><span class="cloud"></span></a></li>
+    </ul>
+</div>
+{items}
+{user_block_report}

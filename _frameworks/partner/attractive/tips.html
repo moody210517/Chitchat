@@ -1,0 +1,60 @@
+{header}
+
+    <div id="main_r">
+<div class="main_bgrnd_padding">
+<div id="columns" align="left" style="position: relative;">
+
+<div class="content_bgrnd" align="left" style="padding: 20px; padding-right: 30px;">
+<div class="ter_big">{l_promotional_tips}</div>
+<div style="height: 10px;"><span></span></div>
+<div>{l_we_have_created}</div><br>
+<div>{l_if_you_have} <a href="{url_main}partner/contact.php" class="redlink">{l_contact}</a>.</div>
+
+<div style="height: 10px;"><span></span></div>
+      <div align="left" style="margin-bottom: 1px;">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%"><tr>
+          <td></td>
+          <td class="body_little" align="right" valign="middle"><a href="
+				javascript:
+				<!-- begin_show -->
+				blockingall('question{id}-on');
+				hidingall('question{id}-off');
+				<!-- end_show -->
+			" class="viewlink">{l_show_all_tips}</a> | <a href="
+				javascript:
+				<!-- begin_hide -->
+				blockingall('question{id}-off');
+				hidingall('question{id}-on');
+				<!-- end_hide -->
+			" class="viewlink">{l_hide_all_tips}</a></td>
+        </tr></table>
+      </div>
+      <div class="keyline" style="height: 1px; margin-bottom: 16px;"><span></span></div>
+
+      <!-- begin_question -->
+      <div id="question{id}-off" style="display: block; padding-left: 10px;" align="left" class="advsview1">
+        <table border="0" cellpadding="0" cellspacing="0" class="body"><tr>
+          <td valign="top" style="padding-top: 12px; padding-right: 8px;"><img src="{url_tmpl_partner}images/r3_search_arrow1.gif" width="7" height="7" border="0"></td>
+          <td style="padding-bottom: 16px; color: #2B5376; padding-top: 8px;">{name} - <a href="" onclick="div_show('question{id}-on'); div_hide('question{id}-off');return false;" class="body_little">{l_show_this_tip}</a></td>
+        </tr></table>
+      </div>
+      <div id="question{id}-on" style="display: none; padding-left: 10px;" align="left" class="advsview1">
+        <table border="0" cellpadding="0" cellspacing="0" class="body"><tr>
+          <td valign="top" style="padding-top: 4px; padding-right: 8px;"><img src="{url_tmpl_partner}images/r3_search_arrow2.gif" width="7" height="7" border="0"></td>
+          <td class="burgtext">{name} - <a href="" onclick="div_show('question{id}-off'); div_hide('question{id}-on');return false;" class="body_little">{l_hide_this_tip}</a></td>
+        </tr><tr>
+          <td></td>
+          <td style="padding-bottom: 16px;" class="body">{text}</td>
+        </tr></table>
+      </div>
+      <!-- end_question -->
+</div>
+
+</div>
+</div>
+
+    </div>
+
+
+
+{footer}

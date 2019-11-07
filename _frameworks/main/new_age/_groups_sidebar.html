@@ -1,0 +1,106 @@
+    <script type="text/javascript">
+    function groups_sidebar_search_on_submit()
+    {
+        value = $("#groups_sidebar_search input[name='query']").val();
+
+        if((value != '')&&(value !='{l_groups_default_search_query}'))
+            return true;
+
+        alert('{l_groups_please_enter_search_term}');
+
+        return false;
+    }
+    </script>
+
+    <!-- begin_block_1 -->
+    <h1 class="white" >{block_title}</h1>
+
+    <!-- begin_group_1 -->
+    <div class="groups_foto" >
+        <div class="groups_img">
+            <a <!-- begin_group_link_img-->href="{url_main}groups_group_show.php?group_id={group_id}"<!-- end_group_link_img--><!-- begin_private_group_alert --> style = "cursor:pointer;" onClick="alert('{l_events_private_group_alert}')" <!-- end_private_group_alert -->><img src="{image_thumbnail}" width="85" height="64" alt="{group_title_full}"/></a>
+        </div>
+
+        <ul>
+            <li class="nowrap_header"><strong><a <!-- begin_group_link-->href="{url_main}groups_group_show.php?group_id={group_id}"<!-- end_group_link--><!-- begin_private_group_alert --> style = "cursor:pointer;" onClick="alert('{l_events_private_group_alert}')" <!-- end_private_group_alert -->>{group_title}</a></strong></li>
+            <li class="slogan">{group_description}</li>
+            <li>{l_groups_members}: {group_n_members}</li>
+            <li>{l_groups_posts}: {group_n_posts}</li>
+        </ul>
+    <div class="justify"></div>
+    </div>
+
+    <!-- begin_group_1_not_last --><div class="line_dashed"></div><!-- end_group_1_not_last -->
+    <!-- end_group_1 -->
+
+    <!-- narrow_pl -->
+    <div class="narrow_pl">
+        <div class="cont">
+            <div class="pic">
+                <img src="{url_tmpl_main}images/groups/ico_browse.png" width="34" height="34" alt=""/>
+            </div>
+            <ul class="list">
+                <li><a href="{url_main}groups_group_list_{block_type}.php">{l_groups_browse_all}</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- /narrow_pl -->
+
+    <!-- end_block_1 -->
+
+    <!-- begin_block_2 -->
+    <div class="cl"></div>
+    <h1 class="yellow">{block_title}</h1>
+
+    <!-- begin_group_2 -->
+    <div class="groups_foto" >
+        <div class="groups_img">
+            <a <!-- begin_group_link_img2--> href="{url_main}groups_group_show.php?group_id={group_id}"<!-- end_group_link_img2--><!-- begin_private_group_alert --> style = "cursor:pointer;" onClick="alert('{l_events_private_group_alert}')" <!-- end_private_group_alert -->><img src="{image_thumbnail}" width="85" height="64" alt="{group_title_full}"/></a>
+        </div>
+
+        <ul>
+            <li class="nowrap_header"><strong><a <!-- begin_group_link2--> href="{url_main}groups_group_show.php?group_id={group_id}" <!-- end_group_link2--><!-- begin_private_group_alert --> style = "cursor:pointer;" onClick="alert('{l_events_private_group_alert}')" <!-- end_private_group_alert -->>{group_title}</a></strong></li>
+            <li class="slogan">{group_description}</li>
+            <li>{l_groups_members}: {group_n_members}</li>
+            <li>{l_groups_posts}: {group_n_posts}</li>
+        </ul>
+    <div class="justify"></div>
+    </div>
+
+    <!-- begin_group_2_not_last --><div class="line_dashed"></div><!-- end_group_2_not_last -->
+    <!-- end_group_2 -->
+
+    <!-- narrow_pl -->
+    <div class="narrow_pl">
+        <div class="cont">
+            <div class="pic">
+                <img src="{url_tmpl_main}images/groups/ico_browse.png" width="34" height="34" alt=""/>
+            </div>
+            <ul class="list">
+                <li><a href="{url_main}groups_group_list_{block_type}.php">{l_groups_browse_all}</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- /narrow_pl -->
+
+    <!-- end_block_2 -->
+
+    <div class="cl groups_empty"></div>
+
+</td>
+
+</tr>
+
+<tr>
+    <td class="td_main">&nbsp;</td>
+    <td class="td_narrow">
+        <div class="groups_search">
+            <div class="bl_mt fl_right">
+            <form id="groups_sidebar_search" action="{url_main}groups_search.php" method="get" onsubmit="return groups_sidebar_search_on_submit();">
+                <input class="inp_violet no_abk" name="query" type="text" value="{l_groups_default_search_query}"  onblur="javascript:if(this.value=='')this.value='{l_groups_default_search_query}'"      onFocus="this.value=''"/>
+                <input class="btn_yellow" type="submit" value="{l_groups_search}"/>
+            </form>
+            </div>
+        </div>
+    </td>
+</tr>

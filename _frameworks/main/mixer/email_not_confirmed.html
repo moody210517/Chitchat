@@ -1,0 +1,28 @@
+{header}
+
+<div id="wide" class="box"><div class="bbt"><div class="bbb"><div class="bbl"><div class="bbr"><div class="bbtl"><div class="bbtr"><div class="bbbl"><div class="bbbr">
+
+		<div id="Reg">
+			<div align="center" style="padding-top: 20px; padding-bottom: 20px;">
+				<div align="left" style="width: 586px;">
+					<div style="padding-bottom: 12px;"><span class="header_big"><!-- begin_email_sent_title -->{l_email_sent}<!-- end_email_sent_title --><!-- begin_default_title -->{l_please_confirm}<!-- end_default_title --></span></div>
+					<div style="padding-bottom: 20px;">
+						<form action="{url_main}email_not_confirmed.php" method="POST" name="Forget">
+						{l_account_blocked}<br><br>
+						<b>{message}</b><br>
+						<table>
+                        <tr>
+                        <td><b><label for="STATE">{l_your_email}:</label></b></td>
+						<td style="padding:0 5px;"><input type="text" name="email" maxlength="100" style="width: 400px;" /></td>
+						<td><input type="submit" value="{l_submit}" class="button" style=" padding-left: 5px; padding-right: 5px; cursor: pointer; cursor: hand;" tabindex="26" title="{l_submit}" onMouseOver="window.status='{l_submit}'; return true;" onMouseOut="window.status=''; return true;"></td>
+                        </tr>
+                        </table>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+</div></div></div></div></div></div></div></div></div>
+
+{footer}

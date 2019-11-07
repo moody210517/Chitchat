@@ -1,0 +1,641 @@
+						<link rel="stylesheet" href="{url_tmpl_main}/js/jquery-ui-themes/smoothness/jquery-ui.css{cache_version_param}">
+
+						<!-- filter -->
+						<div class="bl_filter">
+							<input type="hidden" id="filter_offset" name="offset" value="{offset}">
+							<input type="hidden" id="filter_interest" name="interest" value="">
+							<input type="hidden" id="set_filter" name="set_filter" value="1">
+							<input type="hidden" id="filter_country" name="country" value="{country}">
+							<input type="hidden" id="filter_state" name="state" value="{state}">
+							<input type="hidden" id="filter_city" name="city" value="{city}">
+							<input type="hidden" id="radius" name="radius" value="{radius}">
+							<input type="hidden" id="global_search_by_username" name="global_search_by_username" value="">
+                            <input type="hidden" id="filter_people_nearby" name="people_nearby" value="{people_nearby}"/>
+
+							<div id="filter_part_all" class="filter select_var3 <!--begin_general_class-->svert<!--end_general_class-->" <!--begin_general_hide-->style="min-height:17px; overflow:hidden;"<!--end_general_hide-->>
+                                <div class="part" style="cursor:pointer;<!--begin_part_hide-->display:none;<!--end_part_hide-->">
+                                    <strong>{filter_looking_for}</strong>
+                                    <div class="toogle_filter">
+                                        <input id="filter_show_part_btn" type="button" class="btn show_filter fl_right filter_show_part1" value="{l_show_filter}" />
+                                        <div class="filter_icon_hide filter_show_part1"></div>
+                                    </div>
+                                </div>
+                                <div class="part1" <!--begin_part1_hide-->style="display:none;"<!--end_part1_hide-->>
+									<!-- begin_i_am_here_to -->
+                                    <div class="bl bl_here field_i_am_here <!--begin_am_here_to_center-->am_here_to_center<!--end_am_here_to_center-->">
+                                        <h4>{l_i_m_here_to}:</h4>
+
+										<!-- begin_i_am_here_to_item -->
+										<div class="rb {i_am_here_to_class}" style="margin: 0 0 5px;">
+											<input class="rb styler_looking" id="rb_{id}" name="{name}" value="{id}" type="radio" {checked} />
+											<label for="rb_{id}">{title}</label>
+										</div>
+										<!-- end_i_am_here_to_item -->
+
+                                    </div>
+									<!-- end_i_am_here_to -->
+
+                                    <!-- begin_orientations_and_age -->
+                                    <div class="bl bl_who <!-- begin_field_i_am_here_to_off -->who_not_border<!-- end_field_i_am_here_to_off -->">
+                                        <h4>{l_with_who}:</h4>
+
+										<!-- begin_p_orientations -->
+                                        <div class="ch" <!-- begin_p_orientations_hide -->style="display:none;"<!-- end_p_orientations_hide -->>
+											<!-- begin_p_orientation -->
+											<label for="p_orientation_{id}"><input id="p_orientation_{id}" name="p_orientation[]" value="{id}" type="checkbox" {checked} />
+                                            {title}</label>
+											<!-- end_p_orientation -->
+                                        </div>
+										<!-- end_p_orientations -->
+
+                                        <!-- begin_looking_your_orientation -->
+                                        <div class="ch">
+                                            {name}
+                                        </div>
+                                        <!-- end_looking_your_orientation -->
+
+                                        <!-- begin_age_range -->
+                                        <div>
+                                            <select id="p_age_from" name="p_age_from" class="styled22">
+                                                {p_age_from_options}
+                                            </select>
+                                            <span class="def">&#x2012;</span>
+                                            <select name="p_age_to" class="styled22">
+                                                {p_age_to_options}
+                                            </select>
+                                        </div>
+                                        <!-- end_age_range -->
+                                    </div>
+                                    <!-- end_orientations_and_age -->
+
+                                    <div class="bl slider <!--begin_slider_center-->slider_center<!--end_slider_center-->" >
+
+                                        <div class="bl_slider">
+                                            <div class="slider_bg slider_bg_init">
+                                                <div id="radius_slider">
+                                                    <div class="count display_none">
+                                                        <div class="count_cont"></div>
+                                                        <div class="count_decor"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <p><strong id="filter_module_location_title">{city_title}</strong> <a href="#" class="profile_city_choose">{l_choose_another_city}</a> </p>
+                                    </div>
+                                    <!-- begin_filter_show_active -->
+                                    <div id="filter_hide_part1" class="filter_icon_show"></div>
+                                    <!-- end_filter_show_active -->
+                                </div>
+
+                                <div class="part2">
+
+                                    <div class="bl l filter_module_1">
+                                        <select id="filter_module_1" class="styled2 field_filter_disabled">
+                                            <option value="0">{l_the_1st_filter}</option>
+											{filter_options}
+                                        </select>
+                                    </div>
+
+                                    <div class="bl c filter_module_2">
+                                        <select id="filter_module_2" class="styled2 field_filter_disabled">
+                                            <option value="0">{l_the_2nd_filter}</option>
+											{filter_options}
+                                        </select>
+                                    </div>
+
+                                    <div class="bl r filter_module_3">
+                                        <select id="filter_module_3" class="styled2 field_filter_disabled">
+                                            <option value="0">{l_the_3d_filter}</option>
+											{filter_options}
+                                        </select>
+                                    </div>
+
+									<div class="filter_fields_set" style="display:none;">
+										<!-- begin_fields_checks -->
+										<div class="filter_field" id="filter_field_{name}">
+											<!-- begin_checks -->
+											<div class="ch_rb_list">
+												<!-- begin_check -->
+												<div>
+													<input class="fieldItem" disabled name="{name}[]" {checked} type="checkbox" id="{name}_{id}" value="{id}"/>
+													<label for="{name}_{id}">{title}</label>
+												</div>
+												<!-- end_check -->
+											</div>
+											<!-- end_checks -->
+
+                                            <!-- begin_int -->
+											<div class="ch_rb_list">
+												<!-- begin_int -->
+												<div>
+													<input class="fieldItem" disabled name="{name}[]" {checked} type="checkbox" id="{name}_{id}" value="{id}"/>
+													<label for="{name}_{id}">{title}</label>
+												</div>
+												<!-- end_int -->
+											</div>
+											<!-- end_int -->
+
+                                            <!-- begin_checkbox -->
+                                            <div class="sel_checkbox">
+                                                <!-- begin_checkbox_item -->
+
+                                                    <select class="fieldItem" disabled style="margin-bottom: 8px;" id="chk_{name}_{num}" data-checkbox="{name}" name="{name}[]">
+                                                        <option selected value="">{l_choose_a_value}</option>
+                                                        {options}
+                                                    </select>
+
+                                                <!-- end_checkbox_item -->
+                                                <a id="link_add_{name}" data-type-add="{name}" class="link_add" style="display:{display_add}; clear: both;" href="#">{l_add_value_field}</a>
+                                            </div>
+                                            <!-- end_checkbox -->
+
+											<!-- begin_p_from_to -->
+											<div class="sel_height">
+												<select disabled name="{name_from}" class="fieldItem"> <!-- styled2 -->
+                                                    <option value="">{l_choose_a_value}</option>
+													{from_options}
+												</select>
+												<span>-</span>
+												<select disabled name="{name_to}" class="fieldItem"> <!-- styled2 -->
+                                                    <option value="">{l_choose_a_value}</option>
+													{to_options}
+												</select>
+											</div>
+											<!-- end_p_from_to -->
+										</div>
+										<!-- end_fields_checks -->
+									</div>
+
+                                </div>
+                            <div class="cl"></div>
+                            </div>
+
+                            <div id="filter_extended_search" class="filter_decro"  <!--begin_btn_extended_hide-->style="opacity:0; display:none;"<!--end_btn_extended_hide-->>
+                                <div class="filter_decro_bl filter_decro_bl_custom">
+                                    <span>
+                                        <a id="filter_extended_search_href" class="{btn_extended_class}" href="#">{l_extended_search}</a>
+                                    </span>
+                                    <div id="filter_extended_search_label">*</div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- /filter -->
+
+<script>
+var isSuperPowers = '{is_super_powers}';
+
+var tmplCityTitle = '{j_find_new_friends_in_city_now}';
+
+var isFilterOnchangeActive = true;
+
+var moduleFilterClass = '.bl_filter';
+
+var urlSearchResults = '{url_page}';
+
+var searchParamsValue = '';
+
+var isNavigatingPages = false;
+
+var lGeneral = {'i_am_here_to' : {}, 'p_orientation' : {}}
+
+var lGeneralTitle = '{general_title}';
+
+var lGeneralTitleNotHereTo = '{j_profile_search_filter_looking_not_here_to}';
+
+var lAgeDelimiter = '{j_profile_short_info_age_delimiter}';
+
+var lFieldsDelimiter = '{j_profile_short_info_fields_delimiter}';
+
+var lProfileOrientationsDelimiter = '{j_profile_orientations_delimiter}';
+
+var lProfileOrientationsLastDelimiter = '{j_profile_orientations_last_delimiter}';
+
+var lProfileOrientationsSomebody = '{j_somebody}';
+
+var lSearchRadius = '{profile_search_filter_radius}';
+
+var lSearchFromCity = '{j_profile_search_filter_from_city}';
+
+var lSearchFromAll = '{j_profile_search_filter_from_all}';
+
+var lSearchFromRegion = '{j_profile_search_filter_from_region}';
+
+var lSearchFromCountry = '{j_profile_search_filter_from_country}';
+
+var lSearchAge = '{j_profile_search_filter_age}';
+
+var lSearchLooking = '{j_profile_search_filter_looking}';
+
+var maxRadius = parseInt('{radius_max}');
+
+var isMaxFilterDistanceCountry = '{max_filter_distance_country}'*1;
+
+var counterTitle;
+
+var clearGlobalSearchByUsername=true;
+
+var allItems=new Array('{j_all_countries}','{j_all_regions}','{j_all_cities}');
+
+var isSearchList = true;
+
+var lAllRegions = '{j_all_regions_by_country}';
+
+function moduleSearchSetParam(param, value)
+{
+	$(moduleFilterClass + ' ' + param).val(value);
+}
+
+function moduleSearchShowResultsByParam(param, value, isOnChangeCall)
+{
+	isOnChangeCall = defaultFunctionParamValue(isOnChangeCall, true);
+	moduleSearchSetParam(param, value);
+	if(isOnChangeCall) {
+		$(moduleFilterClass).change();
+	} else {
+		searchResultsLoad();
+	}
+}
+
+function getSearchParams()
+{
+	return $(moduleFilterClass).find('input[name],select[name],textarea[name]').not('.field_filter_disabled').map(function () {
+        return $(this).val().trim() == "" ? null : this;
+    }).serialize();
+}
+
+function searchResultsLoad() {
+
+	var searchParams = getSearchParams();
+
+	var filterParamStatus = $('.module_search_show .selected').attr('data-value'),
+        filterParamStatusStart = '';
+	if(filterParamStatus) {
+		if(searchParams) {
+			filterParamStatusStart = '&';
+		}
+		searchParams += filterParamStatusStart + 'status=' + filterParamStatus;
+	}
+
+    filterParamStatusStart = '';
+    if(searchParams) {
+        filterParamStatusStart = '&';
+	}
+
+    var isEncounters = (typeof Encounters!=='undefined'),
+        isRatePeople = (typeof ratePeople!=='undefined'),
+        customParams = '';
+
+    searchParams += filterParamStatusStart;
+    if (!isEncounters && !isRatePeople && $('#module_search_with_photo')[0]) {
+        searchParams += 'with_photo=' + $('#module_search_with_photo').prop('checked')*1;
+    } else if (isEncounters || isRatePeople) {
+        searchParams += 'with_photo=' + $('#module_search_with_photo').val()*1;
+    }
+
+
+    if(searchParamsValue == searchParams && !isEncounters && !isRatePeople) {
+        return;
+    } else {
+        searchParamsValue = searchParams;
+    }
+
+    if(isEncounters) {
+        customParams = (searchParamsValue == searchParams && Encounters.isSend) ? Encounters.getParams() : '&display=encounters';
+        Encounters.isSend = false;
+    }else if(isRatePeople){
+        customParams = (searchParamsValue == searchParams && ratePeople.isSend) ? ratePeople.getParams() : '&display=rate_people';
+        ratePeople.isSend = false;
+    } else {
+        var items0=$('.module_filter_result>*').fadeTo(300,.3);
+    }
+	$.post(urlSearchResults + '?' + searchParams + customParams, 'ajax=1', function(data){
+        if(isEncounters) {
+            Encounters.reload(data);
+        } else if (isRatePeople) {
+            ratePeople.reload(data);
+        } else {
+            var dataBlocks = {
+                //'.items' : '.module_filter_result',
+                '.pages' : '.paging',
+                '.found' : '.bl_shadow_result_found'
+            }, items=$('>*', $(data).filter('.items')).hide();
+			items0.delay(200).fadeOut(200, function(){ items0.remove() });
+			items.appendTo('.module_filter_result');//.fadeIn(300);
+            setTimeout(function(){
+                animationDiesProfile();
+                insertFromDataHtmlToHtml(data, dataBlocks);
+            },10);
+            if(isNavigatingPages){
+                isNavigatingPages = false;
+                var scrollEl,d;
+                if (ajax_login_status){
+                    scrollEl = $('.column_main');
+                    d = 76;
+                } else {
+                    scrollEl = $('#main_page_image_content');
+                    d = 8;
+                }
+                $('body, html').animate({scrollTop:scrollEl[0].offsetTop+d},900);
+            }
+        }
+	});
+}
+
+var moduleFilterActiveFields = {};
+
+var filterCityValue = '{country} {state} {city}';
+var param_geo_init = [];
+var mapLocationInit;
+var cityTitleVisitor='{city_title_visitor}';
+var countryTitleVisitor='{country_title_visitor}';
+$(function(){
+
+// location slider
+    if(!isMaxFilterDistanceCountry)maxRadius -=1;
+
+    var CLocationRadiusSlider = function(sliderTitles, radius) {
+
+        var $this = this;
+        this.titles = sliderTitles;
+        this.radius = radius;
+        this.radiusNew = radius;
+        this.radiusMax = maxRadius;//201
+
+
+        this.setTitle = function(radius) {
+
+            var index = 'city';
+
+            if(radius > 0) {
+                index = 'radius';
+            }
+
+            if(isMaxFilterDistanceCountry && radius >= this.radiusMax) {
+                index = 'country';
+            }
+
+            $('.bl_slider .count_cont', '.bl_filter').html(this.titles[index].replace('%1', radius));
+
+            var cssWidth = parseInt($('#radius_slider .count').css('width'));
+            // +2px offset to center over slider
+            var cssRight = (cssWidth / 2) + 2;
+            $('.bl_slider .count', '.bl_filter').css('right', -(cssRight));
+        }
+
+        this.updateSearch = function() {
+            if(this.radius != this.radiusNew) {
+                this.radius = this.radiusNew;
+                $('#radius').val(this.radius);
+                replaceTitlePage();
+                $(moduleFilterClass).change();
+            }
+        }
+
+        $('#radius_slider').slider({
+            range: 'min',
+            value: $this.radius,
+            min: 0,
+            max: $this.radiusMax,
+            create: function() {
+                $this.setTitle($this.radius);
+                $('#radius_slider .count').appendTo('.ui-slider-range-min').removeClass('display_none');
+                $('.slider_bg').removeClass('slider_bg_init');
+            },
+            slide: function(event, ui) {
+                $this.radiusNew = ui.value;
+                $this.setTitle($this.radiusNew);
+            },
+            stop: function() {
+                $this.updateSearch();
+            }
+        });
+
+        return this;
+    }
+
+    sliderTitles = {
+        'city' : '{j_slider_in_the_whole_city}',
+        'radius' : '{slider_within}',
+        'country' : '{j_slider_in_the_whole_country}'
+    };
+
+    // init to base value - set slider position
+    locationRadiusSliderNew = new CLocationRadiusSlider(sliderTitles, '{radius}');
+
+// location slider
+
+
+	param_geo_init[0] = '{country}';
+	param_geo_init[1] = '{state}';
+	param_geo_init[2] = '{city}';
+
+	chooseLocationInit = {
+		country : {country},
+		state : {state},
+		city : {city}
+	};
+
+	$('.styled123').styler();
+
+	var radioActive = '';
+
+	$('input:radio[class=rb]').click(function() {
+		if(radioActive === $(this).val()) {
+			if($(this).prop('checked')) {
+				$(this).removeAttr('checked');
+				radioActive = '';
+				$(moduleFilterClass).change();
+			}
+		} else {
+			radioActive = $(this).val();
+		}
+	});
+
+
+	$(moduleFilterClass).change(function(e){
+		if(!isFilterOnchangeActive) {
+			return;
+		}
+        var el = $(e.target);
+        if (el.data('checkbox')) {
+            var type=el.data('checkbox'),id=el.attr('id'),
+            val=el.val();
+            if (val != 0) {
+                $('[id != "'+id+'"][data-checkbox='+type+']').each(function(){
+                    if ($(this).val()==val) {
+                        alertCustom('{j_you_have_already_chosen_this_option}');
+                        el.val(lastValueCheckbox);
+                        return false;
+                    }
+                })
+            } else {
+                var countSelect = $('[data-checkbox='+type+']').length;
+                if (countSelect > 1) {
+                    el.remove();
+                }
+                $('#link_add_'+type).show();
+            }
+        }
+        setLabelExtendedSearch();
+		moduleSearchSetParam('#filter_offset', 1);
+
+        if(clearGlobalSearchByUsername){
+            if(typeof clearGlobalSearchByUsernameF=='function'){
+                clearGlobalSearchByUsernameF();
+            }
+        }
+        clearGlobalSearchByUsername=true;
+
+		searchResultsLoad();
+	});
+
+	$('#filter_module_1, #filter_module_2, #filter_module_3').change(function(){
+
+		var filterModule = $(this).attr('id');
+
+		// move previous field to dataset
+		// add new field to area
+
+		$('.' + filterModule + ' .filter_field .fieldItem').prop('disabled', 'disabled');
+		$('.' + filterModule + ' .filter_field').appendTo('.filter_fields_set');
+
+		var filterField = $(this).val();
+		//console.log('show', '#filter_field_p_' + filterField);
+
+		var filterFieldPrevValue = '';
+		if(filterModule in moduleFilterActiveFields) {
+			filterFieldPrevValue = moduleFilterActiveFields[filterModule];
+		}
+
+		//console.log('filter field value', typeof filterField, filterField);
+
+		var filterIndex;
+
+		for(filterIndex = 1; filterIndex <= 3; filterIndex++) {
+			if('filter_module_' + filterIndex != filterModule) {
+				if(filterField !== '0') {
+					fieldOptionDisable('#filter_module_' + filterIndex, filterField);
+				}
+				if(filterFieldPrevValue) {
+					fieldOptionEnable('#filter_module_' + filterIndex, filterFieldPrevValue);
+				}
+			}
+		}
+
+		if(filterField) {
+			$('#filter_field_p_' + filterField + ' .fieldItem, ' + '#filter_field_p_' + filterField + '_from .fieldItem').prop('disabled', '');
+			$('#filter_field_p_' + filterField + ', ' + '#filter_field_p_' + filterField + '_from').appendTo('.' + filterModule);
+			//$('#filter_field_p_' + filterField).prop('disabled', '').appendTo('.' + filterModule);
+			//$('#filter_field_p_' + filterField + '_from').prop('disabled', '').appendTo('.' + filterModule);
+		}
+
+        setLabelExtendedSearch();
+		// active value in current filter
+		moduleFilterActiveFields[filterModule] = filterField;
+	});
+
+
+	// activate filters
+	isFilterOnchangeActive = false;
+	<!-- begin_filter_init -->
+	$('#filter_module_{filter_number}').val('{filter_value}').change();
+	<!-- end_filter_init -->
+	isFilterOnchangeActive = true;
+
+    <!-- begin_set_general_l -->
+    lGeneral['{set_general_l_key}'] = {set_general_l_value};
+    <!-- end_set_general_l -->
+
+    searchParamsValue = getSearchParams();
+
+
+    $('.link_add').click(function(){
+        var el=$(this),
+            type = el.data('typeAdd'),
+            select = el.prev('select'),
+            countOption = select.find('option').length,
+            countSelect = $('[data-checkbox='+type+']').length+1,
+            id='chk_'+type+'_';
+        if (countOption <= countSelect+1){$(this).hide()}
+        if (countOption > countSelect) {
+            select.clone(false).attr({id:id+(countSelect-1)}).insertAfter(select).end()
+                  .find('option').removeAttr('selected').eq(0).attr({selected:'selected'});
+            }
+        return false;
+    })
+
+    var lastValueCheckbox;
+    $('body').on('click', 'select[data-checkbox]', function(e){
+        lastValueCheckbox=$(this).val();
+    })
+});
+
+function fieldOptionDisable(selector, values)
+{
+	fieldChangeOptionDisabledStatus(selector, values, 'disabled');
+}
+
+function fieldOptionEnable(selector, values)
+{
+	fieldChangeOptionDisabledStatus(selector, values, '');
+}
+
+function fieldChangeOptionDisabledStatus(selector, values, status)
+{
+	$(selector + ' option').each(function() {
+		var option = $(this);
+		if(typeof values !== 'object') {
+			//console.log('not array');
+			valuesKey = values;
+			values = [];
+			values[valuesKey] = true;
+		}
+
+		var isDisabled = false;
+		for(key in values) {
+			//console.log(key, values[key]);
+			if(option.val() == key) {
+				option.prop('disabled', status);
+				isDisabled = true;
+			}
+		}
+	});
+}
+
+function setLabelExtendedSearch()
+{
+    var extendedSearchHref = $('#filter_extended_search_href'),
+        extendedSearchLabel = $('#filter_extended_search_label')
+                              .css('right', extendedSearchHref[0].offsetLeft+8).hide(),
+        params = $('.filter_module_1, .filter_module_2, .filter_module_3')
+                .find('input[name],select[name],textarea[name]')
+                .not('.field_filter_disabled').map(function () {
+                    return $(this).val().trim() == "" ? null : this;
+                }).serialize();
+    if (params !== '') {
+        extendedSearchLabel.show();
+        extendedSearchHref.css({paddingRight:'22px',color:'#93a612'});
+        if($('.part2', '.bl_filter').is(':visible')){
+            extendedSearchHref.removeClass('down_active').addClass('up_active');
+        } else {
+            extendedSearchHref.removeClass('up_active').addClass('down_active');
+        }
+    } else {
+        extendedSearchLabel.hide();
+        extendedSearchHref.css({paddingRight:'13px',color:'#626262'}).toggleClass('down_active up_active', false);
+    }
+}
+
+</script>
+
+<div id="pp_choose_city" class="popup pp_choose_city" style="display: none;">
+    <div class="head">
+        <span id="title" style="color:black;">{l_choose_a_city}</span>
+    </div>
+    <div class="cont loader" style="background: none; background-color:#FFF;">
+        <img src="{url_tmpl_main}images/lazy_loader.gif">
+    </div>
+    <div class="foot"></div>
+</div>

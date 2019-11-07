@@ -1,0 +1,182 @@
+{header}
+<script type="text/javascript" src="{url_tmpl_mobile}js/upgrade.js{cache_version_param}"></script>
+<script id="script_replace_page">
+    urlPageHistory='{url_page_profile_upgrade}';
+    console.log(urlPageHistory);
+</script>
+<!-- begin_payment_module_refill -->
+<div class="head">
+    <span class="title"><i class="fa fa-money" aria-hidden="true"></i> {l_refill_credits}</span>
+</div>
+<div id="block_page_boost_profile" class="decor_block_page_boost_profile">
+    <img class="img_refill" onload="$(this).fadeTo(600,1)" src="{url_tmpl_mobile}images/features_refill_b.png" alt="" />
+    <p class="pl_refill">{l_payment_plan_description_refill}</p>
+</div>
+<!-- end_payment_module_refill -->
+<!-- begin_payment_module_search -->
+<div class="head">
+    <span class="title"><i class="fa fa-bolt" aria-hidden="true"></i> {l_boost_profile}</span>
+</div>
+<div id="block_page_boost_profile" class="decor_block_page_boost_profile <!-- begin_service_info_search -->profile_boosted<!-- end_service_info_search -->">
+    <p id="pl_service_info" class="pl_service <!-- begin_service_info_hide_search -->hide<!-- end_service_info_hide_search -->">{you_have_credits}</p>
+    <img class="img_search" onload="$(this).fadeTo(600,1)" src="{url_tmpl_mobile}images/boost_profile_decor_page.png" alt="" />
+    <div class="pl_service <!-- begin_service_info_hide_search -->hide<!-- end_service_info_hide_search -->">
+        <p class="cont_desc">{service_costs}</p>
+        <p id="pl_service_info_last" class="cont_desc last">{l_do_you_want_to_use_your_credits_buy_service}</p>
+    </div>
+    <p class="pl_refill <!-- begin_refill_info_hide_search -->hide<!-- end_refill_info_hide_search -->">{l_payment_plan_description_search}</p>
+</div>
+<!-- end_payment_module_search -->
+<!-- begin_payment_module_video_chat -->
+<div class="head">
+    <span class="title"><i class="fa fa-money" aria-hidden="true"></i> {l_refill_credits}</span>
+</div>
+<div id="block_page_boost_profile" class="decor_block_page_boost_profile <!-- begin_service_info_video_chat -->profile_boosted<!-- end_service_info_video_chat -->">
+    <p id="pl_service_info" class="pl_service <!-- begin_service_info_hide_video_chat -->hide<!-- end_service_info_hide_video_chat -->">{you_have_credits}</p>
+    <img class="img_video_chat" onload="$(this).fadeTo(600,1)" src="{url_tmpl_mobile}images/features_video_chat_b.png" alt="" />
+    <div class="pl_service <!-- begin_service_info_hide_video_chat -->hide<!-- end_service_info_hide_video_chat -->">
+        <p class="cont_desc">{service_costs}</p>
+        <p id="pl_service_info_last" class="cont_desc last">{l_do_you_want_to_use_your_credits_buy_service}</p>
+    </div>
+    <p class="pl_refill <!-- begin_refill_info_hide_video_chat -->hide<!-- end_refill_info_hide_video_chat -->">{l_payment_plan_description_video_chat}</p>
+</div>
+<!-- end_payment_module_video_chat -->
+<!-- begin_payment_module_audio_chat -->
+<div class="head">
+    <span class="title"><i class="fa fa-money" aria-hidden="true"></i> {l_refill_credits}</span>
+</div>
+<div id="block_page_boost_profile" class="decor_block_page_boost_profile <!-- begin_service_info_audio_chat -->profile_boosted<!-- end_service_info_audio_chat -->">
+    <p id="pl_service_info" class="pl_service <!-- begin_service_info_hide_audio_chat -->hide<!-- end_service_info_hide_audio_chat -->">{you_have_credits}</p>
+    <img class="img_audio_chat" onload="$(this).fadeTo(600,1)" src="{url_tmpl_mobile}images/features_audio_chat_b.png" alt="" />
+    <div class="pl_service <!-- begin_service_info_hide_audio_chat -->hide<!-- end_service_info_hide_audio_chat -->">
+        <p class="cont_desc">{service_costs}</p>
+        <p id="pl_service_info_last" class="cont_desc last">{l_do_you_want_to_use_your_credits_buy_service}</p>
+    </div>
+    <p class="pl_refill <!-- begin_refill_info_hide_audio_chat -->hide<!-- end_refill_info_hide_audio_chat -->">{l_payment_plan_description_audio_chat}</p>
+</div>
+<!-- end_payment_module_audio_chat -->
+
+
+<!-- begin_payment_module_message -->
+<div class="head">
+    <span class="title"><i class="fa fa-money" aria-hidden="true"></i> {l_refill_credits}</span>
+</div>
+<div id="block_page_boost_profile" class="decor_block_page_boost_profile <!-- begin_service_info_message -->profile_boosted<!-- end_service_info_message -->">
+    <p id="pl_service_info" class="pl_service <!-- begin_service_info_hide_message -->hide<!-- end_service_info_hide_message -->">{you_have_credits}</p>
+    <img class="img_refill" onload="$(this).fadeTo(600,1)" src="{url_tmpl_mobile}images/features_message_b.png" alt="" />
+    <div class="pl_service <!-- begin_service_info_hide_message -->hide<!-- end_service_info_hide_message -->">
+        <p class="cont_desc">{service_costs}</p>
+        <p id="pl_service_info_last" class="cont_desc last">{l_do_you_want_to_use_your_credits_buy_service}</p>
+    </div>
+    <p class="pl_refill pl_refill_credit_add <!-- begin_refill_info_hide_credit_add -->hide<!-- end_refill_info_hide_credit_add -->">{l_the_credits_have_been_added}</p>
+    <p class="pl_refill <!-- begin_refill_info_hide_message -->hide<!-- end_refill_info_hide_message -->">{l_payment_plan_description_message}</p>
+</div>
+<!-- end_payment_module_message -->
+
+<!-- begin_superpowers_info -->
+<div class="head">
+    <span class="title"><i class="fa fa-diamond" aria-hidden="true"></i> {l_page_title}</span>
+</div>
+<div class="bl_upgrade">
+    <ul>
+        <!-- begin_feature_3d_city -->
+        <li class="icon_upgrade_city">
+            <strong>{l_3dcity_a_wonderful_live_experience}</strong>
+            {l_chat_with_your_friends_and_meet_new_people_in_a_real_3d_environment}
+        </li>
+        <!-- end_feature_3d_city -->
+        <!-- begin_feature_extended_search -->
+        <li class="icon_upgrade_search_options">
+            <strong>{l_extended_search_impact}</strong>
+            {l_extended_search_impact_desc}
+        </li>
+        <!-- end_feature_extended_search -->
+        <!-- begin_feature_encounters -->
+        <li class="icon_upgrade_who_likes_you">
+            <strong>{l_encounters_impact}</strong>
+            {l_encounters_impact_desc}
+        </li>
+        <!-- end_feature_encounters -->
+        <!-- begin_feature_invisible_mode -->
+        <li class="icon_upgrade_profiles_invisibly">
+            <strong>{l_invisible_mode_impact}</strong>
+            {l_browse_profiles_invisibly_desc}
+        </li>
+        <!-- end_feature_invisible_mode -->
+        <!-- begin_feature_message_read_receipts -->
+        <li class="icon_upgrade_message">
+            <strong>{l_message_read_receipts}</strong>
+            {l_message_read_receipts_desc}
+        </li>
+        <!-- end_feature_message_read_receipts -->
+        <!-- begin_feature_kill_the_ads -->
+        <li class="icon_upgrade_kill_ads">
+            <strong>{l_kill_the_ads}</strong>
+            {l_kill_the_ads_desc}
+        </li>
+        <!-- end_feature_kill_the_ads -->
+        <!-- begin_feature_audiochat -->
+        <li class="icon_upgrade_audiochat">
+            <strong>{l_audiochat}</strong>
+            {l_want_to_have_long_phone}
+        </li>
+        <!-- end_feature_audiochat -->
+        <!-- begin_feature_videochat -->
+        <li class="icon_upgrade_videochat">
+            <strong>{l_videochat}</strong>
+            {l_chat_with_your_friends_using_the_webcam}
+        </li>
+        <!-- end_feature_videochat -->
+    </ul>
+</div>
+<!-- end_superpowers_info -->
+<!-- begin_payment_module -->
+<div id="bl_payment_system" class="wrap_cont bl_payment_system">
+    <form id="frm_upgrade" action="{url_page}" method="post">
+    <input name="cmd" value="upgrade" type="hidden"/>
+    <input name="ajax" value="1" type="hidden"/>
+    <input id="type_service" name="service" value="{service}" type="hidden"/>
+    <input id="allow_paid_service" name="allow_paid_service" value="{allow_paid_service}" type="hidden"/>
+    <input id="request_uid" name="request_uid" value="{request_uid}" type="hidden"/>
+    <div id="frm_upgrade_plan" class="bl_frm <!-- begin_payment_module_hide -->hide<!-- end_payment_module_hide -->">
+            <div class="bl">
+                <label>{l_choose_plan}</label>
+                <div class="field">
+                    <select id="payment_items" name="item">
+                        <!-- begin_payment_item_old -->
+                        <option value="{item}">{item_name}</option>
+                        <!-- end_payment_item_old -->
+                    </select>
+                </div>
+            </div>
+            <div class="bl">
+                <label>{l_pay_through}</label>
+                <div class="field">
+                    <select name="system" id="payment_system">
+                        <!-- begin_payment_system -->
+                        <option value="{system}" class="{hide_class}">{system_name}</option>
+                        <!-- end_payment_system -->
+                    </select>
+                </div>
+            </div>
+    </div>
+    <div id="bl_btn_action_upgrade" class="frm_btn">
+        <button id="btn_action_upgrade" class="btn large <!-- begin_btn_action_pink -->pink<!-- end_btn_action_pink --><!-- begin_btn_action_blue -->lblue<!-- end_btn_action_blue -->">{btn_action}</button>
+    </div>
+    </form>
+</div>
+<!-- end_payment_module -->
+<!-- begin_payment_module_info -->
+<div class="bl_txt_power">
+    {payment_module_info_text}
+</div>
+<!-- end_payment_module_info -->
+<!-- begin_response_refill_credits -->
+<script>
+$(function(){
+  setTimeout(function(){showAlert('{j_your_balance_is_refilled}')},400);
+})
+</script>
+<!-- end_response_refill_credits -->
+<script>upgradeInit();</script>
+{footer}

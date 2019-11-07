@@ -1,0 +1,156 @@
+{header}
+{ims}
+
+
+<div id="profile" class="box"><div class="bbt"><div class="bbb"><div class="bbl"><div class="bbr"><div class="bbtl"><div class="bbtr"><div class="bbbl"><div class="bbbr">
+
+{profile_menu}
+
+<div style="height: 20px;"></div>
+
+
+<div class="nav_title">
+	<a href="{url_main}profile.php"><b>{l_basic}</b></a>
+	<b>{l_personal}</b>
+        <!-- begin_yes_partner -->
+            <a href="{url_main}profile_partner.php"><b>{l_partner}</b></a>
+        <!-- end_yes_partner -->
+</div>
+
+<script Language="JavaScript" type="text/javascript">
+  var blockSubmission = false;
+  function removeSubmissionBlock() {
+    blockSubmission = false;
+  }
+  function isSubmissionAllowed() {
+    if(blockSubmission){
+       return false;
+    }
+    return;
+   }
+  document.onclick = isSubmissionAllowed;
+  document.onkeydown = isSubmissionAllowed;
+
+  function onValidateEditProfilePersonalForm() {
+    var form = document.forms['EditProfilePersonalForm'];
+    <!-- begin_int_1_js -->
+	if (!(validateRequiredSelect(form['{name}'],'{field_js}','00')))
+	{
+        removeSubmissionBlock();
+		return false;
+	}
+	<!-- end_int_1_js -->
+
+    <!-- begin_int_2_js -->
+	if (!(validateRequiredSelect(form['{name}'],'{field_js}','00')))
+	{
+        removeSubmissionBlock();
+		return false;
+	}
+	<!-- end_int_2_js -->
+
+    <!-- begin_int_3_js -->
+	if (!(validateRequiredSelect(form['{name}'],'{field_js}','00')))
+	{
+        removeSubmissionBlock();
+		return false;
+	}
+	<!-- end_int_3_js -->
+    return true;
+  }
+  function validateEditProfilePersonalForm() {
+    blockSubmission = true;
+     if (typeof beforeEditProfilePersonalFormValidation != 'undefined') {
+       beforeEditProfilePersonalFormValidation();
+    }
+    var validated = onValidateEditProfilePersonalForm();
+    if (validated && (typeof uponSuccessfulEditProfilePersonalFormValidation != 'undefined')) {
+      validated = uponSuccessfulEditProfilePersonalFormValidation();
+    }
+    else if (!validated && (typeof uponUnsuccessfulEditProfilePersonalFormValidation != 'undefined')) {
+      uponUnsuccessfulEditProfilePersonalFormValidation();
+    }
+    if (!validated) {
+      removeSubmissionBlock();
+    }
+    return validated;
+  }
+  function submitEditProfilePersonalForm() {
+   if (validateEditProfilePersonalForm()) document.EditProfilePersonalForm.submit();
+    }
+  function exitConfirm() {
+    var form = document.forms['EditProfilePersonalForm'];
+    if(isFormModified(form, null, null)){
+      return(confirm('{l_leave_page}'));    };
+  return true;
+  } </script>
+<!-- begin_personal_fields -->
+<form  name="EditProfilePersonalForm" method="POST" action="{url_main}profile_personal.php?cmd=update" onSubmit="return validateEditProfilePersonalForm();" style="padding: 0px; margin: 0px;">
+<div class="header_big"><img src="{url_tmpl_main}img/pers.png" class="png_behavior" align="absmiddle" alt="" width=48 height=48> {l_personal_information}</div>
+<!-- begin_personal_fields_1 -->
+				<div class="personal_header">{l_personal_details}</div>
+				<div class="list_select" align="center" style="padding-top: 16px; padding-bottom: 22px;">
+					<table border="0" cellpadding="0" cellspacing="0" class="body_text">
+					<!-- begin_int_1 -->
+					<tr>
+						<td width=200 align="right" style="padding-right: 7px; padding-bottom: 7px;"><b>{field}:</b> </td>
+						<td width=300 align="left">
+						<select name="{name}" style="margin-bottom: 7px;">
+                        <option selected value="00">{l_please_choose}</option>
+						{options}
+						</select></td>
+					</tr>
+					<!-- end_int_1 -->
+					</table>
+				</div>
+      				<div class="content_bgrnd_2" style="padding-top: 6px; padding-bottom: 6px; padding-left: 10px; padding-right: 10px; margin-bottom: 6px;"><table border="0" cellpadding="0" cellspacing="0"><tr><td class="body_little" style="padding-right: 14px;">{l_press} <b>"{l_update_profile}"</b> {l_button_after}</td><td><table border="0" cellpadding="0" cellspacing="0"><tr><td><div class="button_border_1"><input type="button" value="{l_update_my_profile}" onClick=" submitEditProfilePersonalForm();" class="button" style=" padding-left: 5px; padding-right: 5px; cursor: pointer; cursor: hand;" title="{l_update_my_profile}" onMouseOver="window.status='{l_update_my_profile}'; return true;" onMouseOut="window.status=''; return true;"></div></td></tr></table></td></tr></table></div>
+<!-- end_personal_fields_1 -->
+<!-- begin_personal_fields_2 -->
+				<div class="sec_med_bold personal_header">{l_physical_details}</div>
+				<div class="list_select" align="center" style="padding-top: 16px; padding-bottom: 22px;">
+					<table border="0" cellpadding="0" cellspacing="0" class="body_text">
+					<!-- begin_int_2 -->
+					<tr>
+						<td width=200 align="right" style="padding-right: 7px; padding-bottom: 7px;"><b>{field}:</b> </td>
+						<td width=300 align="left">
+						<select name="{name}" style="margin-bottom: 7px;">
+                        <option selected value="00">{l_please_choose}</option>
+						{options}
+						</select></td>
+					</tr>
+					<!-- end_int_2 -->
+					</table>
+				</div>
+                		<div class="content_bgrnd_2" style="padding-top: 6px; padding-bottom: 6px; padding-left: 10px; padding-right: 10px; margin-bottom: 6px;"><table border="0" cellpadding="0" cellspacing="0"><tr><td class="body_little" style="padding-right: 14px;">{l_press} <b>"{l_update_profile}"</b> {l_button_after}</td><td><table border="0" cellpadding="0" cellspacing="0"><tr><td><div class="button_border_1"><input type="button" value="{l_update_my_profile}" onClick=" submitEditProfilePersonalForm();" class="button" style=" padding-left: 5px; padding-right: 5px; cursor: pointer; cursor: hand;" title="{l_update_my_profile}" onMouseOver="window.status='{l_update_my_profile}'; return true;" onMouseOut="window.status=''; return true;"></div></td></tr></table></td></tr></table></div>
+<!-- end_personal_fields_2 -->
+<!-- begin_personal_fields_3 -->
+				<div class="sec_med_bold personal_header">{l_other_details}</div>
+				<div class="list_select" align="center" style="padding-top: 16px; padding-bottom: 22px;">
+					<table border="0" cellpadding="0" cellspacing="0" class="body_text">
+					<!-- begin_int_3 -->
+					<tr>
+						<td width=200 align="right" style="padding-right: 7px; padding-bottom: 7px;"><b>{field}:</b> </td>
+						<td width=300 align="left">
+						<select name="{name}" style="margin-bottom: 7px;">
+                        <option selected value="00">{l_please_choose}</option>
+						{options}
+						</select></td>
+					</tr>
+					<!-- end_int_3 -->
+					</table>
+				</div>
+				<div class="content_bgrnd_2" style="padding-top: 6px; padding-bottom: 6px; padding-left: 10px; padding-right: 10px; margin-bottom: 6px;"><table border="0" cellpadding="0" cellspacing="0"><tr><td class="body_little" style="padding-right: 14px;">{l_press} <b>"{l_update_profile}"</b> {l_button_after}</td><td><table border="0" cellpadding="0" cellspacing="0"><tr><td><div class="button_border_1"><input type="button" value="{l_update_my_profile}" onClick=" submitEditProfilePersonalForm();" class="button" style=" padding-left: 5px; padding-right: 5px; cursor: pointer; cursor: hand;" title="{l_update_my_profile}" onMouseOver="window.status='{l_update_my_profile}'; return true;" onMouseOut="window.status=''; return true;"></div></td></tr></table></td></tr></table></div>
+<!-- end_personal_fields_3 -->
+</form>
+<!-- end_personal_fields -->
+<div class="nav_title">
+	<a href="{url_main}profile.php"><b>{l_basic}</b></a>
+	<b>{l_personal}</b>
+        <!-- begin_yes_partner -->
+            <a href="{url_main}profile_partner.php"><b>{l_partner}</b></a>
+        <!-- end_yes_partner -->
+</div>
+</div></div></div></div></div></div></div></div></div>
+
+{complite}
+{footer}

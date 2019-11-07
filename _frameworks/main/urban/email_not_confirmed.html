@@ -1,0 +1,32 @@
+{header}
+
+<div class="column_main" style="width: 100%">
+    <div class="column_main_head">
+        <div class="decor">
+            <h1><!-- begin_email_sent_title -->{l_email_sent}<!-- end_email_sent_title --><!-- begin_default_title -->{l_please_confirm}<!-- end_default_title --></h1>
+            <div class="cl"></div>
+        </div>
+    </div>
+    <div class="column_main_cont">
+        <div id="box_profile_settings" class="bl_settings">
+
+            <form action="{url_main}email_not_confirmed.php" method="POST" name="Forget">
+                {l_account_blocked}<br><br>
+                <b>{message}</b><br>
+                <table style="width:50%">
+                <tr>
+                <td nowrap><b><label for="STATE">{l_your_email}:</label></b></td>
+                <td style="padding:0 5px;"><input type="text" name="email" maxlength="100" style="width: 400px; border: 1px solid;" /></td>
+                <td><input type="submit" value="{l_submit}" class="btn dblue" tabindex="26" title="{l_submit}" onMouseOver="window.status='{l_submit}'; return true;" onMouseOut="window.status=''; return true;"></td>
+                </tr>
+                </table>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<div class="column_narrow">
+    {profile_column_narrow}
+</div>
+{footer}

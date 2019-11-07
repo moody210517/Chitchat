@@ -1,0 +1,126 @@
+<script>
+    var photos = new CProfilePhoto();
+    photos.setDisplayParam('profile');
+    photos.setInfoProfileView('{user_id}', {photos_info}, '{guid}', '{friend_id}', '{photo_number}', '{photo_number_private}', '{photo_cur_id}', '{is_blocked_user}', '{is_upload_photo_to_see_photos}', '{photo_rating_enabled}');
+    photos.setData({reportUser:'{report_user}'*1,
+                    photoDefault:'{url_files}{photo_main}'
+                   });
+    photos.langParts = {'position_photo' : '{j_position_photo}',
+                        'number_private_photo' : '{j_number_private_photo}',
+                        'please_upload_photo_to_see_photos' : '{please_upload_photo_to_see_photos}'}
+    photos.initProfileView();
+
+    $(function(){
+        <!-- begin_error_accessing_user -->
+        $(window).load(function(){
+            setTimeout(function(){
+                showAlert('{error_accessing_user}','.st-content','red',0,true);
+            },1000)
+        })
+        <!-- end_error_accessing_user -->
+        photos.setNumberPrivatePhoto();
+        cprofile.setInfoProfile('{user_id}', '{is_blocked_user}');
+        cprofile.showAlertSentGift('{user_id}');
+        var photoCurId='{photo_cur_id}'*1;
+        if(!photoCurId){
+            $('#photo_img_cur').removeClass('hidden');
+            return;
+        }
+        photos.photosInfo[photoCurId].load=photos.isPublic(photoCurId)?$('<img src="{photo_cur}" class="hidden">'):photos.$privateBox;
+        photos.show('show', photoCurId);
+        photos.setPhotoInfo(photoCurId);
+        photos.setPosition(photos.photosInfo[photoCurId].offset);
+    })
+</script>
+
+<div id="profile_view_photo" class="bl_img bl_img_one" title="{a_swipe_to_get_to_the_next_photo}" >
+    <img id="photo_img_cur" src="" class="hidden" onload="$(this).removeClass('hidden')">
+    <div id="private_photo_box" class="bl_private_photo hidden">
+        <div class="count"></div>
+        <img src="{url_tmpl_mobile}images/photo_blocked.png" width="51" height="59" alt=""/>
+        <div id="access_requested" class="txt <!-- begin_no_request_friends_hide -->hide<!-- end_no_request_friends_hide -->">{l_access_requested}</div>
+        <div id="request_access" class="txt <!-- begin_is_request_friends_hide -->hide<!-- end_is_request_friends_hide -->"><a onclick="photos.sendRequestPrivateAccess(); return false;" href="#">{l_request_access}</a></div>
+    </div>
+    <div class="loader loader_image">
+        <div class="spinner center">
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        </div>
+    </div>
+</div>
+
+<div id="no_photo_box" class="bl_add_photo">
+    <a id="profile_to_add_photo" onclick="photos.redirectAddPhoto(); return false;" class="add_photo" href=""></a>
+</div>
+
+<div id="blocked_photo" class="bl_blocked_photo {sign_blocked_user_hide}"></div>
+
+<div class="bl_info_photo_top">
+    <div id="profile_view_photo_position" style="opacity: 0;" class="count"><span></span></div>
+    <div class="name">
+        <!-- begin_status_online -->
+        <div class="status online"></div>
+        <!-- end_status_online -->
+        {name}, {age}
+        <a href="{url_city}index.php?view=mobile&from={user_id}" class="status_3dcity <!-- begin_status_3dcity_profile -->to_show<!-- end_status_3dcity_profile -->"></a>
+    </div>
+
+</div>
+
+<!-- begin_response_superpowers_activated -->
+<script>
+$(function(){
+  setTimeout(function(){showAlert('{j_your_super_powers_are_now_activated}','.main','blue')},1000);
+})
+
+</script>
+<!-- end_response_superpowers_activated -->
+
+<div id="profile_gifts_list" class="bl_gift_profile user_info">
+<ul>
+    <!-- begin_user_gift_item -->
+    <li><a href="" onclick="cprofile.redirectToSendGift('{user_id}'); return false;"><img alt="" src="{user_gift_item_url}"></a></li>
+    <!-- end_user_gift_item -->
+    <!-- begin_user_gift_item_more -->
+    <li><a href="" onclick="cprofile.redirectToSendGift('{user_id}'); return false;" class="nogift">{user_gift_item_more}</a>
+    <!-- end_user_gift_item_more -->
+</ul>
+
+</div>
+
+<!-- begin_list_interest_user -->
+<div class="list_interest_photo_cont user_info">
+<ul class="list_interest_photo">
+    <!-- begin_list_interest_user_item -->
+    <li class="item {interest_class}">{interest}</li>
+    <!-- end_list_interest_user_item -->
+    <!-- begin_list_interest_user_more_part -->
+    <li data-count="{list_interest_user_more_part_data_value}" data-tmpl="{list_interest_user_more_part_data_tmpl}" class="nopic item">{list_interest_user_more_part_value}</li>
+    <!-- end_list_interest_user_more_part -->
+</ul>
+</div>
+<!-- end_list_interest_user -->
+
+<div id="photo_average" class="bl_vslider photo_info" style="display:none;">
+    <div class="vslider_range" style="height: 50%;">
+        <div class="count">
+            <div class="count_decor"></div>
+            <div class="count_cont">4.87</div>
+        </div>
+    </div>
+</div>
+
+<div id="photo_description" class="bl_slideup_msg photo_info" style="display:none;">
+    {photo_main_description}
+</div>
+{user_block_report}

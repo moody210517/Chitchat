@@ -1,0 +1,85 @@
+<div class="increase_payment" style="display:none;">
+<!-- begin_inc_pop_show -->
+<script>$(function(){Profile.incPopShow();})</script>
+<!-- end_inc_pop_show -->
+<!-- begin_payment -->
+<div class="head">
+    <strong>{pp_payment_title}</strong>
+    <a onclick="Profile.incPopClosePayment(); return false;" class="icon_close" href=""></a>
+</div>
+<div class="cont cont_reloader">
+    <div class="txt select_var2 payment payment_block">
+        <strong></strong>
+        <p class="last">{pp_payment_desc}</p>
+        <select class="my_payment item_plan"  onchange="Profile.incPopRefill($(this).val(),$('#item_system').val());">
+            <!-- begin_payment_item -->
+            <option value="{payment_item}" {payment_item_selected}>{payment_item_name}</option>
+            <!-- end_payment_item -->
+        </select>
+        <div style="margin-top: 10px;"></div>
+        <select class="item_system" id="item_system">
+            <!-- begin_payment_system -->
+            <option value="{payment_system}" {payment_system_selected}>{payment_system_name}</option>
+            <!-- end_payment_system -->
+        </select>
+        <input data-costs="{costs}" class="my_payment_type" type="hidden" name="type" value="{type}" />
+    </div>
+</div>
+<div class="foot">
+    <input onclick="Profile.incPopPay('{action}', $(this)); return false;" type="button" class="btn green fl_right " value="{l_refill}" />
+    <img class="have_credits_loader" src="{url_tmpl_main}images/loader_small_clear.gif">
+</div>
+<!-- end_payment -->
+<!-- begin_have_credits -->
+<div class="head pay_with_credits">
+    <strong>{you_have_credits}</strong>
+    <a onclick="Profile.incPopClosePayment(); return false;" class="icon_close" href=""></a>
+</div>
+<div class="cont">
+    <div class="txt select_var2 txt_block">
+        <strong>{service_costs}</strong>
+        <p>{l_do_you_want_to_use_your_credits_buy_service}</p>
+        <!--<input class="my_payment" type="hidden" name="type" value="{balans}" />-->
+        <input data-costs="{costs}" class="my_payment_type" type="hidden" name="type" value="{type}" />
+    </div>
+</div>
+<div class="foot">
+    <input onclick="Profile.incPopPay('payment_service', $(this)); return false;" type="button" class="btn green fl_right" value="{l_go}" />
+    <img class="have_credits_loader" src="{url_tmpl_main}images/loader_small_clear.gif">
+</div>
+<!-- end_have_credits -->
+<!-- begin_payment_error -->
+<div class="head">
+    <strong>{l_problem_with_the_payment}</strong>
+    <a onclick="Profile.incPopClosePayment(); return false;" class="icon_close" href=""></a>
+</div>
+<div class="cont">
+    <div class="wrong">{l_seems_there_problem_with_your_payment}</div>
+</div>
+<div class="foot">
+    <input onclick="Profile.incPopClosePayment(); return false;" type="button" class="btn green fl_right" value="{l_done}" />
+</div>
+<!-- end_payment_error -->
+<!-- begin_payment_success -->
+<div class="head">
+    <strong>{l_success}</strong>
+    <a onclick="Profile.incPopClosePayment('{payment_success_type}'); return false;" class="icon_close" href=""></a>
+</div>
+<div class="cont">
+    <div class="success">
+        {payment_success_msg}
+    </div>
+    <input class="balans" type="hidden" name="type" value="{payment_success_balans}" />
+    <!-- begin_payment_success_activity_services -->
+    <input class="activity_services" type="hidden" name="active_service" value="{payment_success_activity_services}" />
+    <input class="level_popularity" type="hidden" name="level_popularity" value="{payment_success_level}" />
+    <input class="level_popularity_decor" type="hidden" name="level_popularity_decor" value="{payment_success_level_decor}" />
+    <!-- end_payment_success_activity_services -->
+</div>
+<div class="foot">
+    <input onclick="Profile.incPopClosePayment('{payment_success_type}'); return false;" type="button" class="btn green fl_right" value="{l_done}" />
+</div>
+{spotlight}
+<!-- end_payment_success -->
+</div>
+

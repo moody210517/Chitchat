@@ -1,0 +1,44 @@
+<!-- begin_comment_block_start -->
+<div id="pp_gallery_photos_list_comment_items" class="items">
+<!-- end_comment_block_start -->
+<!-- begin_comment -->
+<div id="gallery_photos_comment_{comment_id}" class="frm_post <!-- begin_comment_hide -->no_visible<!-- end_comment_hide -->">
+    <div class="pic">
+            <!-- begin_old_url -->
+    <a href="search_results.php?display={comment_display_profile}&uid={comment_user_id}">
+            <!-- end_old_url -->
+            <!-- begin_seo_url -->
+                <a href="{comment_user_profile_link}">
+            <!-- end_seo_url -->
+
+    <img <!-- begin_data_my_photo -->data-main-photo="{comment_user_photo_id}"<!-- end_data_my_photo --> src="{url_files}{comment_user_photo}" alt="" onload="this.style.opacity=1" /></a></div>
+        <div class="post">
+            <div class="info">
+            <!-- begin_old_url -->
+                <a href="search_results.php?display={comment_display_profile}&uid={comment_user_id}">
+            <!-- end_old_url -->
+            <!-- begin_seo_url -->
+                <a href="{comment_user_profile_link}">
+            <!-- end_seo_url -->
+
+                {comment_user_name}</a> <span class="date">{comment_date}</span>
+                <!-- begin_comment_delete -->
+                <a onclick="Photo.confirmDeleteComment('{comment_id}'); return false;" class="icon_delete" href="#"></a>
+                <!-- end_comment_delete -->
+                <p>{comment_text}</p>
+            </div>
+        </div>
+    <div class="cl"></div>
+</div>
+<!-- end_comment -->
+<!-- begin_comment_block_end -->
+<div class="cl"></div>
+</div>
+<!-- end_comment_block_end -->
+<!--begin_items_comment_no_border -->
+<script>$('#pp_gallery_photos_list_comment_items').css('border-bottom','none');</script>
+<!--end_items_comment_no_border -->
+<!--begin_load_more_comments -->
+<a id="gallery_photos_load_comments" onclick="Photo.loadMoreComments(); return false;" class="link_load_comments" style="float:left;" href="#">{load_more_comments_count}</a>
+<div class="cl"></div>
+<!--end_load_more_comments -->

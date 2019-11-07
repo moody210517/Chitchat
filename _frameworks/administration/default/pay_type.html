@@ -1,0 +1,57 @@
+{header}
+<div class="block_narrow">
+    {menu_page}
+</div>
+
+<style>
+table.pay_type {
+    width: auto;
+}
+
+table.pay_type td {
+    text-align: center;
+}
+table.pay_type td input {
+    margin: 0;
+    width: auto;
+}
+</style>
+
+<div class="block_main">
+    <h2>{l_title_current}</h2>
+    <div style="width: 450px; font-size: 12px; border-radius: 4px; background-color:#ececec; padding: 6px 6px 6px 10px; margin-bottom: 12px;">{l_description}</div>
+    <div class="bl_form">
+        <form action="{url_page}" method="POST">
+        <input type="hidden" name="cmd" value="update">
+        <table border=0 class="pay_type">
+        <tr>
+            <td></td>
+            <td width="10"></td>
+            <td><b>{l_silver}</b></td>
+            <td width="10"></td>
+            <td><b>{l_gold}</b></td>
+            <td width="10"></td>
+            <td><b>{l_platinum}</b></td>
+        </tr>
+        <!-- begin_item  -->
+        <tr>
+            <td><label style="float:left;">{pay_name}</label></td>
+            <td></td>
+            <td><input type="checkbox" name="silver[{item}]" value="{pay_code}" id="silver[{item}]"{silver_checked}></td>
+            <td></td>
+            <td><input type="checkbox" name="gold[{item}]" value="{pay_code}" id="gold[{item}]"{gold_checked}></td>
+            <td></td>
+            <td><input type="checkbox" name="platinum[{item}]" value="{pay_code}" id="platinum[{item}]"{platinum_checked}></td>
+        </tr>
+        <!-- end_item -->
+		</table>
+        <div class="btn fl_left"><a href="#" class="submit">{l_save}</a>
+					<input type="submit" style="visibility:hidden;position:absolute;">
+
+		</div>
+        </form>
+    </div>
+
+    <div class="empty"></div>
+</div>
+{footer}

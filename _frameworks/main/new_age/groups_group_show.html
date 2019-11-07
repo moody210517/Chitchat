@@ -1,0 +1,77 @@
+{header}
+<div class="wrapper-wide">
+<div class="userinfo-c-wide">
+<div class="userinfo">
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+    {alert_script}
+});
+
+</script>	
+
+    <div class="groups">
+
+		{groups_header}
+
+        <table class="tb_groups">
+            <tr>
+                <!-- td_main -->
+                <td class="td_main">
+                
+                    {groups_group_show}
+                    
+                    <div class="groups_shadow groups_shadow_bg">&nbsp;</div>
+
+                    <div class="groups_p pl_top_m">
+
+                        <div class="groups_title">
+                            <h1 class="fl_left">{l_groups_group_wall}</h1>
+                            <a class="fl_right groups_go_forums" href="{url_main}groups_group_forum_list.php?group_id={group_id}">{l_groups_go_to_forums}</a>
+                        </div>
+                        <div class="cl">&nbsp;</div>
+                        
+                        {groups_group_comment_list}
+
+                    </div>
+
+                    <div class="groups_empty"></div>
+                </td>
+                <!-- /td_main -->
+
+                <td class="td_narrow">
+	
+					{groups_group_member_list}
+					{groups_group_forum_list_sidebar}
+				
+				</td>
+
+            </tr>
+
+        </table>
+
+        <div class="groups_foot">
+
+            <table>
+                <tr>
+                    <td class="td_l">&nbsp;</td>
+                    <td class="td_c">&nbsp;</td>
+                    <td class="td_r">&nbsp;</td>
+                </tr>
+            </table>
+
+        </div>
+
+
+    <div class="decor_top"></div>
+    </div>
+
+
+
+</div>
+<br>
+<div class="userinfo-links-wide"></div>
+</div>
+</div>
+{footer}

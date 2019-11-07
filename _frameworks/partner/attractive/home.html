@@ -1,0 +1,120 @@
+{header}
+
+
+    <div id="main_r">
+
+
+<div class="main_bgrnd_padding">
+<div id="columns" align="left" style="position: relative;">
+
+
+<!-- begin_home -->
+<div class="content_bgrnd" align="left" style="padding:20px; padding-right:30px;">
+<span><b>{l_welcome} {name}!</b></span><br><br>
+<span class="ter_big">{l_affiliaters_center}</span>
+&nbsp;<b>&middot;</b>&nbsp; <a href="{url_main}partner/home_edit.php" class="sec_little_bold">{l_edit_information}</a>
+&nbsp;<b>&middot;</b>&nbsp; <a href="{url_main}partner/home_bank.php" class="sec_little_bold">{l_edit_payment_information}</a>
+&nbsp;<b>&middot;</b>&nbsp; <a href="{url_main}partner/home_banners.php" class="sec_little_bold">{l_banners}</a>
+&nbsp;<b>&middot;</b>&nbsp; <a href="{url_main}partner/index.php?cmd=logout" class="sec_little_bold">{l_logout}</a>
+
+<div style="height: 20px;"><span></span></div>
+<div class="sec_med_bold">{l_partner_information}</div>
+<div class="content_bgrnd" style="padding: 20px; font-size:1.1em; line-height:1.2;" align="justify">
+	<table width="300">
+	<tr><td width="160" align="left">{l_company_name}:</td><td align="left"><b>{company}</b></td></tr>
+	<tr><td align="left">{l_domains}:</td><td align="left"><b>{domain}</b></td></tr>
+	<tr><td align="left">{l_partner_name}:</td><td align="left"><b>{real_name}</b></td></tr>
+	<tr><td align="left">{l_email}:</td><td align="left"><b>{mail}</b></td></tr>
+	<tr><td align="left">{l_phone}:</td><td align="left"><b>{phone}</b></td></tr>
+	<tr><td align="left">{l_address1}:</td><td align="left"><b>{adress}</b></td></tr>
+	<tr><td align="left">{l_address2}:</td><td align="left"><b>{adress2}</b></td></tr>
+    <tr><td align="left">{l_country}:</td><td align="left"><b>{country}</b></td></tr>
+    <tr><td align="left">{l_state_province}:</td><td align="left"><b>{state_province}</b></td></tr>
+    <tr><td align="left">{l_city}:</td><td align="left"><b>{city}</b></td></tr>
+    <tr><td align="left">{l_zip_code}:</td><td align="left"><b>{zip}</b></td></tr>
+    <tr><td align="left">{l_tax_id}:</td><td align="left"><b>{tax}</b></td></tr>
+	<tr><td align="left">&nbsp;</td><td align="left"></td></tr>
+  <tr>
+    <td>{l_bank_name}:</td>
+    <td align="left">{bank_name}</td>
+  </tr><tr>
+    <td>{l_bank_phone}:</td>
+    <td align="left">{bank_phone}</td>
+  </tr><tr>
+    <td>{l_bank_address1}:</td>
+    <td align="left">{bank_adress1}</td>
+  </tr><tr>
+    <td>{l_bank_address2}:</td>
+    <td align="left">{bank_adress2}</td>
+  </tr><tr>
+    <td>{l_bank_city}:</td>
+    <td align="left">{bank_city}</td>
+  </tr><tr>
+    <td>{l_bank_state}:</td>
+    <td align="left">{bank_state}</td>
+  </tr><tr>
+    <td>{l_bank_zipcode}:</td>
+    <td align="left">{bank_zip}</td>
+  </tr><tr>
+    <td>{l_bank_country}:</td>
+    <td align="left">{bank_country}</td>
+  </tr><tr>
+    <td>{l_bank_account}:</td>
+    <td align="left">{bank_account}</td>
+  </tr><tr>
+    <td>{l_bank_aba_code}:</td>
+    <td align="left">{bank_aba}</td>
+  </tr><tr>
+    <td>{l_bank_swift_code}:</td>
+    <td align="left">{bank_swift}</td>
+  </tr><tr>
+    <td>{l_bank_account_type}:</td>
+    <td align="left">{bank_type}</td>
+  </tr><tr>
+    <td>{l_make_payments}:</td>
+    <td align="left">{bank_to}</td>
+  </tr>
+	</table>
+</div>
+
+<div style="height: 10px;"><span></span></div>
+<div class="sec_med_bold"> {l_stats} </div>
+<div class="content_bgrnd" style="padding: 20px;" align="justify">
+	<table width="100%">
+	<tr><td width="120" align="right">{l_summary_sales} :&nbsp;</td><td>{l_currency_sign}<b>{summary}</b>{l_currency_text} </td></tr>
+	<tr><td align="right">{l_account} :&nbsp;</td><td>{l_currency_sign}<b>{account}</b>{l_currency_text}</td></tr>
+	<tr><td align="right">{l_for_payment} :&nbsp;</td><td>{l_currency_sign}<b>{payment}</b>{l_currency_text}</td></tr>
+	<tr><td align="right">{l_your_users} :&nbsp; </td><td><b>{count_users}</b></td></tr>
+	<tr><td align="right">{l_your_paid_users} :&nbsp;</td><td><b>{count_golds}</b></td></tr>
+	</table>
+</div>
+
+<div style="height: 10px;"><span></span></div>
+<div class="sec_med_bold">{l_payment}</div>
+<div class="content_bgrnd" style="padding: 20px;" align="justify">
+	<script Language="JavaScript" type="text/javascript">
+		var message = "{message}";
+		if (message != "")
+		{
+			alert("{message}");
+		}
+	</script>
+	{account_info}<br><br>
+	<form name="payment" action="{url_main}partner/home.php?cmd=payment" method="POST">
+	{l_take_money} ({l_minimal_payment} - {l_currency_sign}{partner_min_money}):<br><br>
+	{l_currency_sign} <input type="text" name="payment" style="width: 62px; height: 15px;"> {l_currency_text}<br><br>
+	<table border="0" cellpadding="0" cellspacing="0"><tr><td><div class="button_border_1"><input type="submit" value="{l_payment}" onClick=" submitJoinForm();" class="button_1"></div></td></tr></table> <br>
+	</form>
+</div>
+<!-- end_home -->
+
+
+
+</div>
+</div>
+
+    </div> </div>
+
+
+
+{footer}

@@ -1,0 +1,7 @@
+* {zoom:1;}
+.bg {border-collapse:collapse;}
+.btn {padding:1px 3px 0 3px;}
+.tab td.content {height:190px;}
+.settings .radio,.list .rads .radio {position:relative;top:-2px;}
+.friends .userlist p input.checkbox {margin:4px 0;}
+.edit .first td textarea {height:71px;}

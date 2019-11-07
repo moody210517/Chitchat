@@ -1,0 +1,73 @@
+<!-- begin_wall_item_like -->
+<script>
+Wall.prepareLikesItem('{id}', '{wall_like_user_list}', {wall_like_user_info_list});
+</script>
+<!-- end_wall_item_like -->
+
+<!-- begin_wall_items_delete_script -->
+<script>
+<!-- begin_wall_item_delete_script -->
+Wall.itemExists({wall_item_id_delete}, 'not exists');
+<!-- end_wall_item_delete_script -->
+</script>
+<!-- end_wall_items_delete_script -->
+
+<!-- begin_wall_item_info_script -->
+<script>
+<!-- begin_wall_item_info -->
+Wall.itemInfoSet('{id}', '{wall_last_action_like}', '{wall_last_action_comment}', '{wall_comments_count}', '{wall_item_comment_is_viewed}', null, '{wall_like_user_list}');
+<!-- end_wall_item_info -->
+</script>
+<!-- end_wall_item_info_script -->
+
+<!-- begin_wall_interests -->
+<script>
+<!-- begin_wall_interests_show -->
+Wall.showInterest('{id}', '{int_id}', '{int_cat}', '{int_title}','{main_interest}','{j_show_users_who_have_this_interest}');
+<!-- end_wall_interests_show -->
+<!-- begin_wall_interests_remove -->
+Wall.removeInterest('{id}', '{int_id}');
+<!-- end_wall_interests_remove -->
+<!-- begin_wall_interests_info -->
+Wall.setListInterests('{id}', '{wall_interests_list}');
+<!-- end_wall_interests_info -->
+</script>
+<!-- end_wall_interests -->
+
+<!-- begin_wall_item_comment -->
+<div id="wall_item_comment_{wall_item_comment_id}" data-id="{wall_item_comment_id}" class="frm_post wall_item_comment">
+	<script>
+		Wall.itemCommentsLastId='{last_comment_id}'*1;
+		Wall.commentsCacheAdd('{id}', '{wall_item_comment_id}');
+	</script>
+    <div class="pic">
+		<a href="{wall_item_comment_url}">
+            <img src="{url_files}{wall_item_comment_photo}" alt="" style="opacity:1;" />
+        </a>
+	</div>
+    <div class="post">
+        <div class="info">
+			<a href="{wall_item_comment_url}">{wall_item_comment_name}</a>
+			<span class="date">{wall_item_comment_time}</span>
+            <!-- begin_wall_comment_delete -->
+            <a onclick="Wall.confirmCommentDelete({id}, {wall_item_comment_id}); return false;" class="icon_delete" href="#"></a>
+            <!-- end_wall_comment_delete -->
+            <div>{wall_item_comment_text}</div>
+        </div>
+    </div>
+	<div class="cl"></div>
+</div>
+<!-- end_wall_item_comment -->
+<!-- begin_wall_item_comments_delete_script -->
+<script>
+<!-- begin_wall_item_comment_delete_script -->
+Wall.commentDeleteFromPage({id}, {wall_item_comment_id_delete});
+Wall.itemInfoSet('{id}', '{wall_last_action_like}', '{wall_last_action_comment}', '{wall_comments_count}');
+<!-- end_wall_item_comment_delete_script -->
+</script>
+<!-- end_wall_item_comments_delete_script -->
+
+<script>
+Wall.isFriendResponse = '{is_friend}'*1;
+</script>
+{wall_js}

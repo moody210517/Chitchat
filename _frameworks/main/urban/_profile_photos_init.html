@@ -1,0 +1,92 @@
+<script language="javascript" type="text/javascript">
+var Photo = new CProfilePhoto('{user_id}');
+Photo.setData({guid : '{guid}',
+               fuid : '{friend_id}'*1,
+               url_files : '{url_files}',
+               url_main : '{url_main}',
+               url_main_images : '{url_tmpl_main}images/',
+               url_ajax : '{url_main}ajax.php',
+               photoWidthMain : '{photo_main_width}'*1,
+               //ajaxLoginStatus : ajax_login_status,
+               uploadLimitPhotoCount : '{upload_limit_photo_count}'*1,
+               isUploadPhotoToSeePhotos : '{is_upload_photo_to_see_photos}'*1,
+               maxFileSize : '{photo_file_size_limit}'*1,
+               maxVideoSize : '{video_file_size_limit}'*1,
+               notLockedUser : '{not_locked_user}'*1,
+               photoRatingEnabled : '{photo_rating_enabled}'*1,
+               autoPlayVideo : '{auto_play_video}',
+               greetingVideoId : '{greeting_video_id}'*1
+});
+
+//Photo.setNotLockedUser({not_locked_user});
+
+/*Photo.guid = '{guid}';
+Photo.fuid = '{friend_id}';
+Photo.url_files = '{url_files}';
+Photo.url_main = '{url_main}';
+Photo.url_main_images = '{url_tmpl_main}images/';
+Photo.url_ajax = '{url_main}ajax.php';
+Photo.photoWidthMain = '{photo_main_width}';
+Photo.ajaxLoginStatus = ajax_login_status;
+Photo.uploadLimitPhotoCount = '{upload_limit_photo_count}';
+Photo.maxFileSize = '{photo_file_size_limit}';
+*/
+<!-- begin_counter -->
+Photo.counter.{type} = '{count}';
+<!-- end_counter -->
+
+Photo.langParts = {
+    'counter' : "{j_count_photos}",
+    'file_upload_failed' : "{j_photo_file_upload_failed}",
+    'uploaded' : "{j_uploaded}",
+    'make_private' : "{j_make_private}",
+    'make_public' : "{j_make_public}",
+    'delete_photo' : "{j_delete_photo}",
+    'maxNumberOfFiles' : "{j_maximum_number_files}",
+    'acceptFileTypes' : "{j_accept_file_types}",
+    'maxFileSize' : "{max_photo_file_size_limit}",
+    'maxVideoSize' : "{max_video_file_size_limit}",
+    'minFileSize' : "{j_min_file_size}",
+    'addCaption' : "{j_click_to_add_caption}",
+    'addTitle' : "{j_click_to_add_title}",
+    'save' : "{j_btn_save}",
+    'cancel' : "{j_btn_cancel}",
+    'saving' : "{j_saving}",
+    'uploadCounter' : '{j_count_profile_photo}',
+    'uploadCounterVideo' : '{j_count_profile_video}',
+    'position_photo' : '{j_position_photo}',
+    'load_more_comments' : '{j_load_more_comments}',
+    'position_photo' : '{j_position_photo}',
+    'load_more_comments' : '{j_load_more_comments}',
+    'photo_caption' : '{j_click_here_to_add_a_photo_caption}',
+    'video_caption' : '{j_click_here_to_add_a_video_caption}',
+    'set_default_photo' : '{j_this_photo_has_been_set}',
+    'uploaded_several_photos' : '{j_you_have_already_uploaded_several_photos}',
+    'uploaded_several_videos' : '{j_you_have_already_uploaded_several_videos}',
+    'being_checked_by_moderators' : '{j_being_checked_by_moderators}',
+    'access_requested_please_wait' : '{j_access_requested_please_wait}',
+    'marked_photos_private' : '{marked_photos_private}',
+    'marked_photos_private_m' : '{j_the_user_has_marked_of_his_photos_as_private_m}',
+    'marked_photos_private_f' : '{j_the_user_has_marked_of_his_photos_as_private_f}',
+    'next_photo' : '{j_next_photo}',
+    'access_been_requested' : '{j_access_has_been_requested}',
+    'photos_will_not_be_published' : '{j_your_photos_will_not_be_published}',
+    'not_see_this_gallery' : '{j_currently_you_can_not_view_this_gallery}',
+    'can_only_be_public' : '{j_profile_picture_can_only_be_public}',
+    'you_can_not_delete_spotlight_photo' : '{j_you_can_not_delete_a_spotlight_photo}',
+    'server_error_try_again' : '{j_server_error_try_again}',
+    'upload_more_than_limit' : '{upload_more_than_limit}',
+    'upgrade' : '{j_upgrade}',
+    'please_upload_photo_to_see_photos' : '{please_upload_photo_to_see_photos}',
+    'delete_photo' : '{j_delete_photo}',
+    'delete_video' : '{j_delete_video}',
+    'next_video' : '{j_next_video}',
+    'prev_video' : '{j_prev_video}',
+    'prev_photo' : '{j_prev_photo}',
+    'error_license_title' : '{j_error_license_title}',
+    'error_license_signature' : '{j_error_license_signature}',
+    'set_background_video' : '{j_set_background_video}',
+    'set_greeting_video' : '{j_set_greeting_video}',
+    'number_comments_to_wall' : '{j_number_comments_to_wall}'
+};
+</script>

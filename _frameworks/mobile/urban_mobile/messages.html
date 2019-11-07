@@ -1,0 +1,66 @@
+{header}
+<script>
+    messages.setLastId('{last_id}');
+    messages.setData({
+        imHistoryMessages : '{im_history_messages}'*1,
+    });
+    <!-- begin_set_data_one_chat -->
+    messages.initOneChat('{user_to}', '{limit_start}', '{user_to_photo}', '{first_msg_id}');
+    <!-- end_set_data_one_chat -->
+
+    $(function(){
+        <!-- begin_set_general_chat -->
+        messages.hideBtnSettings(1);
+        messages.showLinkNoOneFound();
+        <!-- end_set_general_chat -->
+        messages.prepareMsgBeforeShow();
+    })
+</script>
+<div class="wrapper">
+    <div class="content" style="padding: 47px 0 118px;">
+        <div class="no_one_found no_one_found_item hide">
+            <span><div>{you_have_no_messages_yet}</div></span>
+        </div>
+        <div id="loader_box_msg">
+            <div class="loader_msg show">
+                <div class="spinner center">
+                    <div class="spinner-blade"></div>
+                    <div class="spinner-blade"></div>
+                    <div class="spinner-blade"></div>
+                    <div class="spinner-blade"></div>
+                    <div class="spinner-blade"></div>
+                    <div class="spinner-blade"></div>
+                    <div class="spinner-blade"></div>
+                    <div class="spinner-blade"></div>
+                    <div class="spinner-blade"></div>
+                    <div class="spinner-blade"></div>
+                    <div class="spinner-blade"></div>
+                    <div class="spinner-blade"></div>
+                </div>
+            </div>
+        </div>
+        <div id="one_chat_profile_pic" class="msg_profile_pic <!-- begin_one_chat_profile_pic_hide -->hide<!-- end_one_chat_profile_pic_hide -->" >
+            <a class="one_chat_to_profile_user" href="{url_main}profile_view.php?user_id={user_to_id}">
+                <img id="" src="{url_files}{user_to_photo}" alt=""/>
+            </a>
+        </div>
+        <div id="messages_box" class="bl_message_one <!-- begin_general -->general<!-- end_general -->">
+            {users_list}
+        </div>
+        <div id="loader_general" class="css_loader loader_general">
+            <div class="spinner center">
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+            </div>
+        </div>
+{footer}

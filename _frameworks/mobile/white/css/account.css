@@ -1,0 +1,24 @@
+.tab {border-top:4px solid #fff;background:#f4f4f4;}
+.tab thead td {color:#000;background:#a746a3;}
+.tab thead a {color:#000;}
+.tab tfoot td {background:#8b1b7c;}
+
+.tab .content {padding:0;}
+.tab .txt {border:1px solid #000;background:#fff;}
+.tab .btn {width:90px;margin-right:5px; text-align:center;}
+
+.list {width:100%;}
+.list label {color:#000;}
+.list th {padding:4px 7px 5px 7px;font-size:12px;color:#000;text-align:left;background:#e5e5e5;}
+.list td {padding:5px 7px 6px 7px;color:#000;}
+.list td.left {width:105px;padding:3px 0 3px 7px;font-size:12px;font-weight:bold;vertical-align:middle;}
+.list td.left label {width:105px;padding:0;display:block;text-align:right;}
+.list td.right {width:80%;}
+.list td.right .txt {width:95%;}
+.list .rads {padding:8px 7px 6px 7px;}
+.list .rads .radio {margin:3px 5px 0 0;position:relative;top:1px;}
+.list .rads label {padding-right:12px;}
+
+.list .save {padding:12px 7px 6px 7px;border-top:1px solid #efd1ea;text-align:right;font-size:12px;}
+.list .save label {width:auto;padding:0;display:block;text-align:right;font-weight:normal;float:right; margin-right:10px;}
+.list .save .btn {width:90px;margin-right:5px; text-align:center; float:right;}

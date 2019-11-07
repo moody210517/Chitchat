@@ -1,0 +1,36 @@
+    <!--[if lte IE 6]> <script language="javascript" type="text/javascript" src="{url_tmpl_main}js/iepngfix_tilebg.js{cache_version_param}"></script>
+		<script>
+    DD_belatedPNG.fix('.music_new .pl_lviolet,.music_new .textarea_green,.music_textarea .ABKTextareaBottomRight,.music_textarea .ABKTextareaBottomLeft,.music_textarea .ABKTextareaBottom,.music_textarea .ABKTextareaTopRight,.music_textarea .ABKTextareaTopLeft,.music_new input.inp_lviolet_border,.music_new .textarea_violet,.music_inp_file .ABKFileLeft');
+</script>
+	<![endif]-->
+	
+	
+<div class="music_new_head">
+
+    <table>
+        <tr>
+            <td class="td_l">&nbsp;</td>
+            <td class="td_c">
+                <div class="music_new_head_txt">
+                    <strong><a href="{url_main}music.php" style="text-decoration:none;">{l_music_music}</a> :: </strong> {n_songs} {l_music_uploaded}
+                </div>
+                <div class="music_new_head_pad fl_right">
+                    <form method="post" action="{url_main}music_search_and_upload.php">
+                    <input class="style1" type="submit" value="{l_music_upload_song}"/>
+                    </form>
+                </div>
+            </td>
+            <td class="td_r">&nbsp;</td>
+        </tr>
+    </table>
+
+    <div class="music_new_menu_bg">
+        <ul class="music_new_menu fl_left">
+            <!-- begin_categories_item --><!-- begin_categories_item_active --><li{class_last}>{category_title}</li><!-- end_categories_item_active --><!-- begin_categories_item_not_active --><li{class_last}><a href="{url_main}music_settings_change.php?category_id={category_id}">{category_title}</a></li><!-- end_categories_item_not_active --><!-- end_categories_item -->
+        </ul>
+        <ul class="music_new_menu fl_right">
+            <!-- begin_limits_item --><!-- begin_limits_item_active --><li{class_last}>{limit_title}</li><!-- end_limits_item_active --><!-- begin_limits_item_not_active --><li{class_last}><a href="{url_main}music_settings_change.php?limit={limit_id}">{limit_title}</a></li><!-- end_limits_item_not_active --><!-- end_limits_item -->
+        </ul>
+    <div class="justify"></div>
+    </div>
+</div>

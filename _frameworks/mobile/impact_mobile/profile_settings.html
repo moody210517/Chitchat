@@ -1,0 +1,209 @@
+{header}
+<script type="text/javascript" src="{url_tmpl_mobile}js/settings.js{cache_version_param}"></script>
+<script type="text/javascript" src="{url_tmpl_mobile}js/checkable.js{cache_version_param}"></script>
+<script id="script_replace_page">
+    urlPageHistory='{url_page_profile_settings}';
+</script>
+<div class="head">
+    <span class="title"><i class="fa fa-cog" aria-hidden="true"></i> {l_page_title}</span>
+</div>
+<div id="settings_box" class="bl_frm bl_frm_settings">
+    <div class="profile_settings">
+        <!-- begin_field_1 -->
+        <!-- begin_field_select_1 -->
+        <div class="bl">
+            <label class="lsetting">{label}</label>
+            <div class="field">
+                <select id="{name_select}" name="{name_select}">
+                    <!-- begin_field_select_item_1 -->
+                    <option {selected} value="{value}">{title}</option>
+                    <!-- end_field_select_item_1 -->
+                </select>
+            </div>
+        </div>
+        <!-- end_field_select_1 -->
+        <!-- end_field_1 -->
+        <!-- begin_timezone -->
+        <div class="bl">
+            <label class="lsetting">{l_timezone}</label>
+            <div class="field">
+                <select id="timezone" name="timezone">
+                    {selectbox_options}
+                </select>
+            </div>
+        </div>
+        <!-- end_timezone -->
+        <!-- begin_sp_active -->
+        <p>{l_premium_account} {sp_active_till}</p>
+        <!-- end_sp_active -->
+        <div class="frm_btn">
+            <button class="btn small pink btn_profile_settings save_settings" disabled>{l_save}</button>
+        </div>
+
+
+        <div class="bl arrow">
+        <div class="title">{l_notification_settings}
+            <div class="cl"></div>
+        </div>
+        </div>
+        <div class="bl_radio">
+        <!-- begin_field_2 -->
+        <!-- begin_field_radio_2 -->
+        <div class="bl">
+            <label class="lsetting">{label}</label>
+            <div class="field">
+                <div class="list_radio">
+                    <!-- begin_field_radio_item_2 -->
+                    <input class="niceRadio" data-label="{title}" value={value} name="{name_radio}" id="radio_{name_radio}_{value}" type="radio" {checked}/>
+                    <!-- end_field_radio_item_2 -->
+                </div>
+                <div class="cl"></div>
+            </div>
+        </div>
+        <!-- end_field_radio_2 -->
+        <!-- end_field_2 -->
+        </div>
+        <div class="frm_btn">
+            <button class="btn small pink btn_profile_settings save_settings" disabled>{l_save}</button>
+        </div>
+        <!-- begin_invisible_mode -->
+        <div class="bl arrow">
+        <div class="title">{l_invisible_mode_impact}
+            <div class="cl"></div>
+        </div>
+        </div>
+        <div class="bl_radio">
+        <!-- begin_invisible_mode_settings_upgrade -->
+        <div class="info_link">{l_upgrade_your_account}</div>
+        <!-- end_invisible_mode_settings_upgrade -->
+        <!-- begin_invisible_mode_settings -->
+        <!-- begin_field_3 -->
+        <!-- begin_field_radio_3 -->
+        <div class="bl">
+            <label class="lsetting">{label}</label>
+            <div class="field">
+                <div class="list_radio">
+                    <!-- begin_field_radio_item_3 -->
+                    <input class="niceRadio" data-label="{title}" value={value} name="{name_radio}" id="radio_{name_radio}_{value}" type="radio" {checked}/>
+                    <!-- end_field_radio_item_3 -->
+                </div>
+                <div class="cl"></div>
+            </div>
+        </div>
+        <!-- end_field_radio_3 -->
+        <!-- end_field_3 -->
+        <div class="frm_btn">
+            <button class="btn small pink btn_profile_settings save_settings" disabled>{l_save}</button>
+        </div>
+        <!-- end_invisible_mode_settings -->
+        </div>
+        <!-- end_invisible_mode -->
+
+        <!-- begin_autotranslator_settings -->
+        <div class="bl arrow">
+        <div class="title">{l_autotranslator_settings}
+            <div class="cl"></div>
+        </div>
+        </div>
+        <div class="bl_radio">
+        <!-- begin_field_8 -->
+        <!-- begin_field_radio_8 -->
+        <div class="bl">
+            <label class="lsetting">{label}</label>
+            <div class="field">
+                <div class="list_radio">
+                    <!-- begin_field_radio_item_8 -->
+                    <input class="niceRadio" data-label="{title}" value={value} name="{name_radio}" id="radio_{name_radio}_{value}" type="radio" {checked}/>
+                    <!-- end_field_radio_item_8 -->
+                </div>
+                <div class="cl"></div>
+            </div>
+        </div>
+        <!-- end_field_radio_8 -->
+        <!-- end_field_8 -->
+        </div>
+        <div class="frm_btn">
+            <button class="btn small pink btn_profile_settings save_settings" disabled>{l_save}</button>
+        </div>
+        <!-- end_autotranslator_settings -->
+    </div>
+
+    <div class="bl arrow">
+        <div class="title">{l_change_password}
+            <div class="cl"></div>
+        </div>
+    </div>
+    <div class="profile_settings_password">
+        <div class="bl">
+            <label>{l_current_password}</label>
+            <div class="field">
+                <input id="old_password" maxlength="{password_length_max}" type="password" name="old_password" />
+            </div>
+        </div>
+        <div class="bl">
+            <label>{l_new_password}</label>
+            <div class="field">
+                <input id="new_password" maxlength="{password_length_max}" type="password" name="new_password" />
+            </div>
+        </div>
+        <div class="bl">
+            <label>{l_retype_new_password}</label>
+            <div class="field">
+                <input id="verify_new_password" maxlength="{password_length_max}" type="password" name="verify_new_password"/>
+            </div>
+        </div>
+        <div class="frm_btn">
+            <button id="pp_profile_looking_save" class="btn small pink btn_profile_password save_settings" disabled>{l_save}</button>
+        </div>
+    </div>
+
+
+    <div class="bl arrow">
+        <div class="title">{l_change_email_address}
+            <div class="cl"></div>
+        </div>
+    </div>
+    <div class="profile_settings_email">
+        <div class="bl">
+            <label>{l_new_email_address}</label>
+            <div class="field">
+                <input id="new_email" name="new_email" type="text" />
+            </div>
+        </div>
+        <div class="bl">
+            <label>{l_current_password}</label>
+            <div class="field">
+                <input id="password_email" maxlength="{password_length_max}" name="password" type="password" />
+            </div>
+        </div>
+        <div class="frm_btn">
+            <button id="pp_profile_looking_save" class="btn small pink btn_profile_email save_settings" disabled>{l_save}</button>
+        </div>
+    </div>
+    <!-- begin_delete_profile -->
+    <div class="bl arrow">
+        <div class="title">{l_delete_profile}
+            <div class="cl"></div>
+        </div>
+    </div>
+    <div class="profile_settings_delete">
+        <input id="cmd_profile_delete" type="hidden" name="cmd" value="check_password" />
+        <div class="bl">
+            <label class="lsetting">{l_current_password}</label>
+            <div class="field">
+                <input maxlength="{password_length_max}" id="password_delete" type="password" name="password"/>
+            </div>
+        </div>
+        <div class="frm_btn">
+            <button id="pp_profile_looking_save" class="btn small pink btn_profile_delete save_settings" disabled>{l_delete}</button>
+        </div>
+    </div>
+    <!-- end_delete_profile -->
+    <script>
+        var minCahrPass = '{password_length_min}'*1,
+            maxCahrPass = '{password_length_max}'*1,
+            lMinMaxLenPass='{max_min_length_password}';
+        initProfileSettings();
+    </script>
+</div>
+{footer}

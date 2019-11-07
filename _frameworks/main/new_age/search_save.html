@@ -1,0 +1,58 @@
+{header}
+<div class="wrapper-wide">
+<div class="userinfo-c-wide">
+	<div class="userinfo">				
+
+{search}
+
+    <div  class="header_big" style="padding-top:30px; padding-bottom:15px;">
+    <img src="{url_tmpl_main}images/kdvi.png" class="png" align="absmiddle" alt="">
+ {l_saved_searches}</div>
+		{l_save_your_search}
+    <div class="advsearch">
+	<table cellpadding="0" border="0">
+		<!-- begin_search_save -->
+		<tr>
+		<td class="list_view1_alt" style="height: 30px; padding-left: 16px;"><a href="{url_main}search_results.php?{query}" class="pri_text_bold"><b>{name}</b></a></td>
+		<td width="165" align="center" class="list_view1_alt"><span class="body_little"><a href="{url_main}{url_search}?{query}" class="body_little">{l_edit}</a> &nbsp;&nbsp; <b>&middot;</b> &nbsp;&nbsp; <a href="{url_main}search_save.php?cmd=delete&id={id}" class="body_little">{l_delete}</a></span></td>
+		</tr>
+		<!-- end_search_save -->
+	</table>
+
+    </div>
+    <!-- begin_tab_enabled -->
+    <!-- begin_quick_search_container -->
+    <div  class="header_big" style="padding-top:30px; padding-bottom:15px;">
+    <img src="{url_tmpl_main}images/kdvi.png" class="png" align="absmiddle" alt="">
+    {l_quick_search}</div>{l_more_ways}
+      <div>
+          <!-- begin_quick_search -->
+                        <!-- begin_quick_search_whos_online_item -->
+          <!-- begin_online_tab_enabled -->
+          <a href="{url_main}users_online.php" class="pri_little_bold"><b>{l_whos_online}</b></a> - {l_whos_online_text}<br>
+          <!-- end_online_tab_enabled -->
+                        <!-- end_quick_search_whos_online_item -->
+                        <!-- begin_quick_search_whos_new_item -->
+          <!-- begin_new_tab_enabled --> 
+          <a href="{url_main}users_new.php" class="pri_little_bold"><b>{l_whos_new}</b></a> - {l_whos_new_text}<br>		
+          <!-- end_new_tab_enabled -->
+                        <!-- end_quick_search_whos_new_item -->
+                        <!-- begin_quick_search_birthdays_item -->
+          <!-- begin_birthdays_tab_enabled -->  
+          <a href="{url_main}users_birthdays.php" class="pri_little_bold"><b>{l_birthdays}</b></a> - {l_birthdays_text}<br>	
+          <!-- end_birthdays_tab_enabled -->
+                        <!-- end_quick_search_birthdays_item -->
+                        <!-- begin_quick_search_menu_users_featured_item -->
+          <!-- begin_matching_tab_enabled --> 
+          <a href="{url_main}users_featured.php" class="pri_little_bold"><b>{l_featured}</b></a> - {l_featured_text}<br>
+          <!-- end_matching_tab_enabled -->
+                        <!-- end_quick_search_menu_users_featured_item -->
+          <!-- end_quick_search -->
+      </div>
+    <!-- end_quick_search_container -->
+    <!-- end_tab_enabled -->
+	</div>
+	<div class="userinfo-links-wide"></div>
+</div>
+</div>
+{footer}

@@ -1,0 +1,52 @@
+<script>
+    var photos = new CProfilePhoto();
+    photos.setDisplayParam('rate_people');
+    photos.langParts = {'position_photo' : '{j_position_photo}',}
+    photos.initProfileView();
+
+    csearch.setDisplayParam('rate_people');
+    $(function(){
+        cprofile.prepareReportTip('{user_id}', '{is_blocked_user}');
+    })
+</script>
+
+<div id="profile_view_photo" class="bl_img bl_img_one rate" >
+    <div class="no_one_found no_one_found_item hidden"><span>{l_no_one_found_please_edit_the_filter_above}</span></div>
+    <img class="photo_rate hidden" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/>
+
+    <div class="loader loader_image">
+        <div class="spinner center">
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        </div>
+    </div>
+</div>
+
+<!-- begin_show_btn_rate_people -->
+<div id="rate_people_list_rate_box" class="bl_rate">
+    <ul id="rate_people_list_rate" class="list_rate">
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">6</a></li>
+        <li><a href="#">7</a></li>
+        <li><a href="#">8</a></li>
+        <li><a href="#">9</a></li>
+        <li><a href="#">10</a></li>
+    </ul>
+</div>
+<!-- end_show_btn_rate_people -->
+{items}
+{user_block_report}

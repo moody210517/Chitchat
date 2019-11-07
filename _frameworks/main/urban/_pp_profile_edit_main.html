@@ -1,0 +1,201 @@
+<!-- popup -->
+<form id="frm_profile_edit_main" class="edit_form" name="frm_profile_edit_main"  method="post" action="{url_main}ajax.php">
+        <input type="hidden" name="cmd" value="profile_edit_main_save" />
+        <input type="hidden" name="ajax" class="ajax" value="0" />
+        <div class="head">
+            <strong>{l_basic_info}</strong>
+            <a id="profile_edit_main_close" class="icon_close" href="#close"></a>
+        </div>
+        <div class="cont select_var2">
+            <div style="padding: 5px 0;">
+            <!-- begin_name_edit_on -->
+            <div class="edit">
+                <div class="name">{l_name_or_nickname}</div>
+                <img id="profile_edit_main_loader" src="{url_tmpl_main}images/loader_small.gif" style="display:none; position:absolute; right: 17px; top:49px;">
+                <input id="profile_edit_main_nickname" name="nickname" type="text" class="inp nickname" value="{nickname}" title="{nickname_title}"/>
+            </div>
+            <!-- end_name_edit_on -->
+            <!-- begin_name_edit_off -->
+            <div class="edit">
+                <div class="name" style="padding: 0;">{l_username}</div>
+                <div style="display: inline-block;"> <!-- margin-top: 4px; --><b>{nickname}</b></div>
+            </div>
+            <!-- end_name_edit_off -->
+
+
+            <!-- begin_field_orientation_edit_on -->
+            <div class="edit">
+                <div class="name">{l_i_am}</div>
+                <select name="orientation" class="styled">
+                    {orientation_options}
+                </select>
+            </div>
+            <!-- end_field_orientation_edit_on -->
+            <!-- begin_field_orientation_edit_off -->
+            <div class="edit">
+                <div class="name">{l_i_am}</div>
+                <div style="display: inline-block; margin-top: 4px;"><b>{field_orientation_value}</b></div>
+            </div>
+            <!-- end_field_orientation_edit_off -->
+            <div class="edit">
+                <div class="name">{l_birthday}</div>
+                <div class="day">
+                    <select id="profile_edit_main_day" name="day" class="styled">
+                        {day_options}
+                    </select>
+                </div>
+                <div class="month">
+                    <select id="profile_edit_main_month" name="month" class="styled" onChange="updateDay('month','frm_profile_edit_main','year','month','day')">
+                        {month_options}
+                    </select>
+                </div>
+                <div class="year">
+                    <select id="profile_edit_main_year" name="year" class="styled" onChange="updateDay('year','frm_profile_edit_main','year','month','day')">
+                        {year_options}
+                    </select>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="foot">
+            <button id="profile_edit_main_save" type="submit" class="btn green fl_right" disabled>{l_save}</button>
+            <a id="profile_edit_main_cancel" class="link" href="#reset">{l_cancel}</a>
+        </div>
+</form>
+<script>
+    var pp_profile_edit_main = $('#pp_profile_edit_main'),//.modalPopup().open()
+        profile_edit_main_loader = $('#profile_edit_main_loader'),
+        frm_profile_edit_main = $('#frm_profile_edit_main'),
+        nick_profile_edit_main=$('#profile_edit_main_nickname'),
+        profile_edit_main_save=$('#profile_edit_main_save');
+        tip_profile_edit_main = $('<div class="pp_tip" />').hide(),
+        btnCancel=$('#profile_edit_main_cancel'),
+        basic_info = {}, last_exists_username='#', is_error = false;
+
+    $('#profile_edit_main_cancel, #profile_edit_main_close').click(function (){
+        if (this.hash=='#close'||!isModifiedBasicInfo()) pp_profile_edit_main.close();
+        resetBasicInfo();
+        return false;
+    });
+    $('#profile_edit_main').click(function(){
+        pp_profile_edit_main.open();
+        return false;
+    });
+
+    $('.styled').on('change', setDisabledSave);
+
+    $('#profile_edit_main_nickname').on('change propertychange input', function(){
+        var val=this.value, l=$.trim(val).length;
+        is_error = true;
+        if (/[#&'"\/\\<]/.test(val)) showTip_profile_edit_main('{j_invalid_username}')
+        else if (l<'{minLength}'*1||l>'{maxLength}'*1) showTip_profile_edit_main(this.title)
+        else if (last_exists_username.search('#'+val+'#')+1) showTip_profile_edit_main('{j_exists_username}')
+        else {
+            is_error = false;
+            $('#pp_profile_edit_main .pp_tip').fadeOut();
+            //profile_edit_main_save.removeAttr('disabled');
+            setDisabledSave();
+            $(this).removeClass('wrong');
+        }
+    }).focus(function(){
+        if ($(this).is('.wrong')) $('#pp_profile_edit_main .pp_tip').stop().fadeIn()
+    }).blur(function(){$('#pp_profile_edit_main .pp_tip').stop().fadeOut()})
+
+    frm_profile_edit_main.submit(function() {
+        nick_profile_edit_main.val($.trim(nick_profile_edit_main.val()));
+        $('button', this).attr('disabled', '')
+        if (!isModifiedBasicInfo()) return false;
+        this.ajax.value=1;
+        //pp_profile_edit_main.fadeTo(300, .5);
+        profile_edit_main_loader.show();
+        $(this).ajaxSubmit({success: profile_edit_main_response});
+        this.ajax.value=0;
+        $('input, select', this).attr('disabled', '');
+        return false;
+    });
+
+    function setDisabledSave() {
+        if (isModifiedBasicInfo()&&!is_error){
+            btnCancel.text('{j_reset}');
+            profile_edit_main_save.removeAttr('disabled');
+        } else {
+            btnCancel.text('{j_cancel}');
+            profile_edit_main_save.attr('disabled', '');
+        }
+    }
+
+    function profile_edit_main_response(data) {
+        //pp_profile_edit_main.stop().fadeTo(300, 1);
+        var data=checkDataAjax(data);
+        if(data!==false){
+            profile_edit_main_loader.hide();
+            $('input, select', frm_profile_edit_main).removeAttr('disabled');
+            if ($(data).is('error')) {
+                var text=$(data).text(), nick=nick_profile_edit_main.val();
+                showTip_profile_edit_main(text);
+                if (text=='{j_exists_username}'&&last_exists_username.search('#'+nick+'#')<0) last_exists_username+=nick+'#'
+            } else {
+                updateSiteSeo(data.seo);
+
+                setBasicInfo();
+
+                $('#name_profile').text(data.title_name);
+                $('#age_profile').html(data.age);
+                if (typeof Wall === 'object' && typeof Wall.updater === 'function') {
+                    Wall.replaceUserInfo(data.title_name, data.age);
+                }
+
+                var hash=location.hash, $li=$('[href="'+hash+'"].tabs_switch.set');
+				if(data.name_seo!='' && window.history && history.pushState){
+					history.replaceState(history.state, document.title, url_main+data.name_seo);
+				}
+                if ($li[0]) {
+                    location.hash=hash;
+                    document.title=siteTitle+' '+$li.text();
+                    siteTitle=document.title;
+                }
+                if(data.star_sign!=''){$('#personal_info_value_star_sign').html(data.star_sign)}
+                pp_profile_edit_main.close();
+                btnCancel.text('{j_cancel}');
+            }
+        }
+    }
+
+    function setBasicInfo() {
+        $('input[name], select', frm_profile_edit_main).each(function(){
+            basic_info[this.name]=this.value
+        })
+    }
+    setBasicInfo();
+
+    function resetBasicInfo() {
+        $('input[name], select', frm_profile_edit_main).each(function(){
+            this.value=basic_info[this.name]
+        })
+        nick_profile_edit_main.change()
+    }
+
+    function isModifiedBasicInfo() {
+        var is=0;
+        $('input:not(.ajax), select', frm_profile_edit_main).each(function(){
+            is|=(this.value!=basic_info[this.name])
+        })
+        return is;
+    }
+
+    function showTip_profile_edit_main(html){
+        $('#profile_edit_main_nickname').addClass('wrong').focus();
+        profile_edit_main_save.attr('disabled', '');
+        tip_profile_edit_main.html('<div>'+html+'</div>').appendTo(pp_profile_edit_main)
+        .stop().fadeTo(200,1).position({ my: 'center bottom-13', at: 'center top', of: '#profile_edit_main_nickname'})
+    }
+
+    $('.pp_body').on('click', function(e){
+        if(e.target==this
+           &&$('#pp_profile_edit_main:visible')[0]
+           &&!isModifiedBasicInfo()){
+           pp_profile_edit_main.close()
+        }
+    })
+
+</script>

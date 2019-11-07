@@ -1,0 +1,204 @@
+{header}
+<script type="text/javascript" src="{url_tmpl_mobile}js/filter.js{cache_version_param}"></script>
+<script type="text/javascript" src="{url_tmpl_mobile}js/checkable.js{cache_version_param}"></script>
+<!--<script type="text/javascript" src="{url_tmpl_mobile}js/rangetouch.js{cache_version_param}"></script>-->
+<script>
+var lSelectAll = '{j_select_all}';
+var maxRadius = parseInt('{radius_max}');
+var isMaxFilterDistanceCountry = '{max_filter_distance_country}'*1;
+var sliderTitles = {
+        'city' : '{j_slider_in_the_whole_city}',
+        'radius' : '{slider_within}',
+        'country' : '{j_slider_in_the_whole_country}'
+    };
+/*window.rangetouch.set('thumbWidth', 10);*/
+$(function(){
+	function setTitle(radius) {
+		radius *=1;
+        var index = 'city';
+        if(radius > 0)index = 'radius';
+        if(isMaxFilterDistanceCountry && radius >= maxRadius)index = 'country';
+        $radiusCountTitle.html(sliderTitles[index].replace('%1', radius));
+		var d=20*(radius/maxRadius-.5)+6;
+		var left=$radius[0].offsetWidth*radius/maxRadius-d,
+			leftPos=left-$radiusCountTitle[0].offsetWidth/2+4;
+		if((leftPos-10)<=0){
+			leftPos=-3;
+		}
+		if((left+$radiusCountTitle[0].offsetWidth/2)>=($radius[0].offsetWidth-3)){
+			leftPos=$radius[0].offsetWidth-$radiusCountTitle[0].offsetWidth;
+		}
+		$radiusCount.css({left:leftPos+'px', opacity:1});
+		$radiusCountDecor.css({left:left, opacity:1});
+    }
+	var $radius=$('#radius'),
+		$radiusCount=$('#radius_slider .count'),
+		$radiusCountTitle=$('#count_cont'),
+		$radiusCountDecor=$('#radius_slider .count_decor');
+	$radius.on('change input', function(){
+		setTitle(this.value);
+	})
+	$win.resize(function(){
+		$radius.change();
+	})
+})
+</script>
+
+
+<div class="wrapper">
+<div class="content" style="padding: 47px 0;">
+<form id="frm_filter" name="filter" method="GET" action="{url_main}search_results.php">
+<input name="set_filter" value="1" type="hidden"/>
+<input name="display" value="{display_params}" type="hidden"/>
+<input id="people_nearby" name="people_nearby" value="{people_nearby}" type="hidden"/>
+<!-- begin_i_am_here_to_and_orientations -->
+<div class="head">
+    {l_i_am_here_to}
+</div>
+<div class="bl_filter_choose">
+    <!-- begin_i_am_here_to -->
+    <ul class="col{count_column_first}">
+    <!-- begin_i_am_here_to_item -->
+    <li class="i_am_here_to <!-- begin_i_am_here_to_selected -->selected<!-- end_i_am_here_to_selected -->">
+        <a href="">
+            <span class="vblock">
+                <span class="vblock_pic">
+                <input style="display:none;" name="{name}" value="{id}" type="radio" {checked}/>
+                <img src="{url_tmpl_mobile}images/field_i_am_here_to_{id}.png" alt="" />
+                </span>
+            </span>
+            <span class="signature">{title}</span>
+            <span class="icon_filter_check"></span>
+        </a>
+    </li>
+    <!-- begin_i_am_here_to_column -->
+    </ul>
+    <ul class="col{count_column}">
+    <!-- end_i_am_here_to_column -->
+    <!-- end_i_am_here_to_item -->
+    </ul>
+    <!-- end_i_am_here_to -->
+
+    <!-- begin_p_orientations -->
+    <ul class="col{count_column_first}" <!--begin_p_orientations_hide-->style="display:none;"<!--end_p_orientations_hide-->>
+        <!-- begin_p_orientation -->
+        <li class="orientation <!-- begin_p_orientation_selected -->selected<!-- end_p_orientation_selected -->">
+            <a href="">
+                <span class="vblock">
+                    <span class="vblock_pic">
+                        <input style="display:none;" name="p_orientation[]" value="{id}" type="checkbox" {checked}/>
+                        <img src="{url_tmpl_mobile}images/field_orientation_{id}.png" alt="" />
+                    </span>
+                </span>
+                <span class="signature">{title}</span>
+                <span class="icon_filter_check"></span>
+            </a>
+        </li>
+        <!-- begin_p_orientation_column -->
+        </ul>
+        <ul class="col{count_column}">
+        <!-- end_p_orientation_column -->
+        <!-- end_p_orientation -->
+    </ul>
+    <!-- end_p_orientations -->
+    <div class="cl"></div>
+</div>
+<!-- end_i_am_here_to_and_orientations -->
+
+<div class="head">
+    {l_filter_data}
+</div>
+
+<div id="filter_loacation_box" class="bl_settings filter" style="position: relative;">
+    <!-- begin_age_range -->
+    <div class="frm search var_sel">
+        <div class="bl form_resize">
+            <div class="partl">
+                <div class="resizel">
+                    <select id="p_age_from" name="p_age_from">
+                        {p_age_from_options}
+                    </select>
+                </div>
+            </div>
+            <div class="def">-</div>
+            <div class="partr">
+                <div class="resizer">
+                    <select id="p_age_to" name="p_age_to">
+                    {p_age_to_options}
+                    </select>
+                </div>
+            </div>
+            <div class="cl"></div>
+         </div>
+    </div>
+    <!-- end_age_range -->
+    <div class="frm search var_sel">
+        <div class="bl form_resize" >
+            <div id="country_part" class="partl">
+                <div id="country_res" class="resizel">
+                    <select name="country" id="country" data-location="geo_states" class="location">
+                    <option value="people_nearby">{l_filter_people_nearby}</option>
+                    <option value="0">{l_select_all}</option>
+                    {country_options}
+                    </select>
+                </div>
+            </div>
+
+            <div class="partr">
+                <div class="resizer">
+                    <select name="state" id="state" data-location="geo_cities" class="location" style="display:none;">
+                    <option value="0">{l_select_all}</option>
+                    {state_options}
+                    </select>
+                </div>
+            </div>
+        <div class="cl"></div>
+        </div>
+        <div class="bl form_resize">
+            <select name="city" id="city" class="location" style="display:none;">
+                <option value="0">{l_select_all}</option>
+ 				{city_options}
+            </select>
+        </div>
+    </div>
+	<div class="frm search var_sel" id="radius_bl">
+		<div class="bl form_resize bl_slider">
+			<div id="radius_slider">
+				<input name="radius" type="range" min="0" max="{radius_max}" step="1" id="radius" value="{radius}">
+                <div  class="count">
+                    <div id="count_cont" class="count_cont"></div>
+                </div>
+				<div class="count_decor"></div>
+            </div>
+		</div>
+	</div>
+    <div class="frm search var_sel">
+        <div class="bl form_resize" >
+            <div class="<!-- begin_with_photo_partl -->partl<!-- end_with_photo_partl -->">
+                <div class="<!-- begin_with_photo_resizel -->resizel<!-- end_with_photo_resizel -->">
+                    <select name="status">
+                        {status_options}
+                    </select>
+                </div>
+            </div>
+			<!-- begin_with_photo_param -->
+            <div class="partr">
+                <div class="resizer">
+                    <label class="label_with_photo" for="module_search_with_photo">{l_with_photo}</label>
+                    <input id="module_search_with_photo" name="with_photo" class="niceRadio1 with_photo" type="checkbox" <!-- begin_with_photo_checked -->checked="checked"<!-- end_with_photo_checked --> />
+                </div>
+            </div>
+			<!-- end_with_photo_param -->
+            <div class="cl"></div>
+        </div>
+    </div>
+
+    <div class="frm search var_sel">
+        <div class="bl form_resize" class="form_resize">
+            <input class="input-full-width" type="text" name="global_search_by_username" placeholder="{a_search_by_username_small}" >
+        </div>
+    </div>
+
+</div>
+</form>
+{footer}

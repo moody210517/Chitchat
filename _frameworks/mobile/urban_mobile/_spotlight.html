@@ -1,0 +1,30 @@
+<script>
+    csearch.setSpotlightNumber('{spotlight_photos_number}','{spotlight_is_service}', '{spotlight_request_uri}', '{hide_my_presence}');
+    <!-- begin_response_refill_credits -->
+    $(function(){
+        csearch.spotlightActivated();
+    })
+    <!-- end_response_refill_credits -->
+</script>
+
+<!-- begin_spotlight -->
+<div class="spotlight_indent">
+<div class="bl_list_photo profile_top ">
+	<a class="list_photo_decor_green" onclick="csearch.spotlightActivated(); return false;" href="#">
+        <span>{spotlight_title}</span>
+    </a>
+    <ul id="spotlight" class="cbp-rfgrid"> <!-- spotlight_list -->
+        <!-- begin_spotlight_item --><li data-id="{spotlight_item_id}">
+            <a href="{url_main}profile_view.php?user_id={spotlight_item_user_id}&ref=spotlight&from={from_page}" class="people_nearby_to_user spotlight">
+                <img style="opacity:0;" onload="$(this).fadeTo(400,1)" src="{url_files}{spotlight_item_photo}" alt="" />
+            </a>
+        </li><!-- end_spotlight_item --><!-- begin_spotlight_item_empty --><li class="empty">
+            <a href="#">
+                <img style="opacity:0;" onload="$(this).fadeTo(400,1)" src="{url_tmpl_mobile}images/spotlight_empty.png" alt="" />
+            </a>
+        </li><!-- end_spotlight_item_empty -->
+
+    </ul>
+</div>
+</div>
+<!-- end_spotlight -->

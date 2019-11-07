@@ -1,0 +1,227 @@
+{header}
+
+
+
+{ims}
+
+
+
+
+
+
+
+<div id="profile" class="box"><div class="bbt"><div class="bbb"><div class="bbl"><div class="bbr"><div class="bbtl"><div class="bbtr"><div class="bbbl"><div class="bbbr">
+
+
+<input type="button" value="{l_menu_profile_edit}" class="button_small" onclick="location='{url_main}profile.php';" title="{l_menu_profile_edit}">
+
+<input type="button" value="{l_menu_profile_edit_photos}" class="button_small" onclick="location='{url_main}profile_photo.php';" title="{l_menu_profile_edit_photos}">
+
+<input type="button" value="{l_menu_profile_edit_music}" class="button_small" onclick="location='{url_main}music_my.php';" title="{l_menu_profile_edit_music}">
+
+
+
+<input type="button" value="{l_menu_profile_settings}" class="button_small" onclick="location='{url_main}profile_settings.php';" title="{l_menu_profile_settings}">
+
+<input type="button" value="{l_menu_profile_view}" class="button_small" onclick="location='{url_main}profile_view.php';" title="{l_menu_profile_view}">
+
+<input type="button" value="{l_menu_profile_my_audio}" class="button_small" onclick="location='{url_main}profile_audio_view.php';" title="{l_menu_profile_my_audio}">
+
+<!-- begin_my_blog -->
+
+<input type="button" value="{l_menu_profile_my_blog}" class="button_small active_btn" onclick="location='{url_main}blogs_blog.php';" title="{l_menu_profile_my_blog}">
+
+<!-- end_my_blog -->
+
+
+
+
+
+
+
+
+
+
+
+	<div align="center" class="contentpad content_bgrnd">
+
+		<div class="fullprof">
+
+
+
+            <div align="center" class="contentpad content_bgrnd">
+
+               <div class=nav_title>
+
+                  <b>{num_total}</b> {l_in_your_blog} |
+
+                  <a href="{url_main}profile_blog_new.php" class="pri_little_bold">{l_new_post}</a> | <a href="{url_main}profile_blog_subscribe.php" class="pri_little_bold">{l_subscribtion}</a>
+
+               </div>
+
+            <!-- begin_blogs_list_item -->
+
+			<div class=header_small style="float:left; margin-top:20px; margin-bottom:5px;"><a href="{url_main}profile_blog_full.php?id={id}">{subject}</a></div>
+
+			<div style="float:right; margin-top:25px; margin-bottom:5px;"><b>{name}</b></a> | {dt}</div>
+
+
+
+
+
+			<table width="100%" border="0" class=light style="clear:both;"><tr  class="blog_bg">
+
+				<td width="1" valign="top">
+
+					<div style="padding: 10px;">
+
+					<!-- begin_blogs_list_image -->
+
+					<img src="{url_files}blog/{image}" border="0"  class="blog_img">
+
+					<!-- end_blogs_list_image -->
+
+					</div>
+
+				</td>
+
+				<td valign="top">
+
+					<div id="blog_message" style="padding: 5px; ">{msg}</div>
+
+				</td>
+
+			</tr></table>
+
+
+
+
+
+			<div  align="right" class="blog_inf">
+
+			<a href="{url_main}profile_blog_full.php?id={id}" class="pri_little_bold">{l_view_comments} ({count_comment})</a>
+
+			|
+
+			<a href="{url_main}profile_blog_edit.php?id={id}" class="pri_little_bold">{l_edit_post}</a>
+
+			|
+
+			<a href="#" onclick="if(confirm('{l_are_you_sure}')) { location='{url_main}blogs_blog.php?del={id}'; }" class="pri_little_bold">{l_delete}</a>
+
+			</div>
+
+
+
+            <!-- end_blogs_list_item -->
+
+
+
+		<!-- begin_blogs_list_noitems -->
+
+		<div style="height: 250px;"></div>
+
+		<!-- end_blogs_list_noitems -->
+
+		<div style="height: 20px;"></div>
+
+	    <!-- begin_blogs_list_pages -->
+
+			<div class="body_text" style="padding-bottom: 16px;">
+
+				<!-- begin_blogs_list_prev_page -->
+
+				<a href="{url_main}{url_page}?offset={offset}{params}" class="pri_text_bold">{l_prev}</a>&nbsp; | &nbsp;
+
+				<!-- end_blogs_list_prev_page -->
+
+				<!-- begin_blogs_list_prev_page_off -->
+
+				<b>{l_prev}</b>&nbsp; | &nbsp;
+
+				<!-- end_blogs_list_prev_page_off -->
+
+
+
+				<!-- begin_blogs_list_first_page -->
+
+				<a href="{url_main}{url_page}?offset={offset}{params}" class="pri_text_bold">{l_page_1}</a>&nbsp;
+
+				<!-- end_blogs_list_first_page -->
+
+
+
+				<!-- begin_blogs_list_prev_pages -->
+
+				<a href="{url_main}{url_page}?offset={offset}{params}" class="pri_text_bold">&lt;&lt;</a>&nbsp;
+
+				<!-- end_blogs_list_prev_pages -->
+
+
+
+				<!-- begin_blogs_list_page -->
+
+					<!-- begin_blogs_list_link_page -->
+
+					<a href="{url_main}{url_page}?offset={offset}{params}" class="pri_text_bold">{page}</a>&nbsp;
+
+					<!-- end_blogs_list_link_page -->
+
+					<!-- begin_blogs_list_this_page -->
+
+					<b>{page}</b>
+
+					<!-- end_blogs_list_this_page -->
+
+				<!-- end_blogs_list_page -->
+
+
+
+				<!-- begin_blogs_list_next_pages -->
+
+				<a href="{url_main}{url_page}?offset={offset}{params}" class="pri_text_bold">&gt;&gt;</a>&nbsp;
+
+				<!-- end_blogs_list_next_pages -->
+
+
+
+				<!-- begin_blogs_list_last_page -->
+
+				<b>{l_of}</b> <a href="{url_main}{url_page}?offset={offset}{params}" class="pri_text_bold">{num_pages}</a>&nbsp;
+
+				<!-- end_blogs_list_last_page -->
+
+
+
+				<!-- begin_blogs_list_next_page -->
+
+				&nbsp; | &nbsp;<a href="{url_main}{url_page}?offset={offset}{params}" class="pri_text_bold">{l_next}</a>
+
+				<!-- end_blogs_list_next_page -->
+
+				<!-- begin_blogs_list_next_page_off -->
+
+				&nbsp; | &nbsp;<b>{l_next}</b>
+
+				<!-- end_blogs_list_next_page_off -->
+
+			</div>
+
+
+
+            <!-- end_blogs_list_pages -->
+
+
+
+           </div>
+
+		   </div>
+
+         </div>
+
+</div></div></div></div></div></div></div></div></div>
+
+
+{complite}
+{footer}
+

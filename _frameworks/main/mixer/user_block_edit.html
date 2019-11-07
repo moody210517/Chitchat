@@ -1,0 +1,68 @@
+{header}
+
+<div id="wide" class="box"><div class="bbt"><div class="bbb"><div class="bbl"><div class="bbr"><div class="bbtl"><div class="bbtr"><div class="bbbl"><div class="bbbr">
+<table width=100% border=0 cellpadding=0 cellspacing=0>
+<tr>
+<td>
+	{friends_menu}
+</td></tr>
+<tr>
+<td align=center>
+<div class="header_big">{l_block_users}</div>
+<form method="POST">
+
+<input type="hidden" name="uid" value="{user_id}" />
+
+<input type="hidden" name="action" value="update" />
+
+
+
+
+
+<table width=100% border=0 cellpadding=0 cellspacing=6 class="gr_table">
+
+<tr>
+
+	<td class="gr_header" valign="top" colspan=2>{l_block} {user_name}</td>
+
+</tr>
+
+<!-- begin_options -->
+<!-- begin_option -->
+<!-- begin_delimiter -->
+<!-- end_delimiter -->
+<tr>
+	<td width="95%" class="gr_cell">{option_title}</td>
+	<td class="gr_cell"><input type="checkbox" name="block_option_{option}" value="1" {option_checked} /></td>
+</tr>
+<!-- end_option -->					
+<!-- end_options -->
+</table>
+
+<br>
+<center>
+<input style="width:100px;" type="submit" value="{l_edit}" class="button"/>&nbsp;&nbsp;&nbsp;
+
+<input style="width:100px;" type="button" value="{l_back}" onclick="location(history.back());" class="button"/>
+
+</center>
+
+</form>
+
+</td>
+</tr>
+</table>
+
+
+</div></div></div></div></div></div></div></div></div>
+
+
+
+{footer}
+
+
+
+
+
+
+

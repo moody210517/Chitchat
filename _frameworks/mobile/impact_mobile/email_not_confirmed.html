@@ -1,0 +1,36 @@
+{header}
+<div class="content_logo">
+    <img class="logo_main_page" <!-- begin_logo_params -->style="height:{logo_height}px;"<!-- end_logo_params --> id="img_logo" src="{header_url_logo_mobile}" alt="" />
+    <script>$(function(){initClickOnLogoMainPage()})</script>
+</div>
+<div class="page_confirm_email">
+    <div class="bl_frm large_field">
+        <div class="bl">
+            <!-- begin_email_sent_info -->
+            <div class="info_sent">{l_email_sent}</div>
+            <!-- end_email_sent_info -->
+            <div class="info">
+                {l_account_blocked}
+            </div>
+        </div>
+        <form id="form_email_not_confirmed" method="post" action="{url_main}email_not_confirmed.php">
+            <input type="hidden" name="ajax" class="ajax" value="1" />
+            <div class="bl">
+                <label>{l_your_mail}</label>
+                <input id="form_email_not_confirmed_mail" type="text" class="inp" name="email" value=""/>
+            </div>
+        </form>
+    </div>
+    <div class="frm_btn">
+        <button id="form_email_not_confirmed_submit" class="btn large pink" disabled>{l_submit}</button>
+    </div>
+    <!-- begin_banner_footer_mobile_content -->
+    <div class="banner_content_member {banner_footer_mobile_content_class}">
+        {banner_footer_mobile_content}
+    </div>
+    <!-- end_banner_footer_mobile_content -->
+</div>
+<script>
+    clProfile.notConfirmedEmailInit();
+</script>
+{footer}

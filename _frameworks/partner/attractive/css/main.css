@@ -1,0 +1,474 @@
+/* defaults=1 */
+html, body {margin: 0;padding: 0;line-height: 1.0;}
+h1,h2,h3,h4,h5,h6,pre,code {font-size: 1em;}
+ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,body,html,p,blockquote,fieldset,input {margin: 0;padding: 0;}
+ul,ol {list-style: none;}
+label {cursor: pointer;cursor: hand;}
+dd, blockquote {margin-left: 1em;}
+fieldset {border: solid 0 transparent;}
+input, select, textarea {font-size: 100%;}
+img {border: 0;}
+
+#min-width {position:relative; height:1px; text-align: center; padding: 50px 0 30px 0; width: expression((document.body.clientWidth<=940)?'940px':'auto'); voice-family: "\"}\""; voice-family: inherit; width: auto;}
+html>body #min-width {min-width:940px; height:auto;}
+
+#width{width: 800px;text-align: left;margin: 0 auto;}
+
+/* ta-da! */
+body{font-family: Tahoma, sans-serif; font-size: .8em; color: #7F7F7F;}
+
+#header{padding: 0 60px 0 70px;}
+
+.box {position:relative; border:1px solid #AE6161; height:1px;}
+.tl-b, .tr-b, .bl-b, .br-b {position:relative; background-repeat:no-repeat}
+.tl-b {background-image:url(../images/tl-b.gif); background-position:0 0; top:-1px; left:-1px}
+.tr-b {background-image:url(../images/tr-b.gif); background-position:100% 0; right:-2px}
+.bl-b {background-image:url(../images/bl-b.gif); background-position:0 100%; bottom:-2px !important; bottom /**/:-2px; left:-2px}
+.br-b {background-image:url(../images/br-b.gif); background-position:100% 100%; width:auto !important; width /**/:100%; padding:5px 10px 7px 10px; right:-2px; bottom:0 !important; bottom /**/:0; height:1px}
+html>body .tr-b {bottom:0 !important}
+html>body .bl-b {bottom:-2px !important}
+html>body .br-b, html>body .box {height:auto}
+
+#nav h1 a{float:left; overflow: hidden; text-indent: -999em; display:block; width: 322px; height: 35px; background: url(../images/logo.gif); background-repeat: no-repeat;}
+#nav ul{float: right; padding: 11px 32px 0 0;}
+#nav li{float: left; padding-left: 16px; padding-top: 0px; display: block; background: url(../images/nav-b.gif) no-repeat 0 0;}
+li.first{background: none !important;}
+#nav li a{margin-right: 10px;text-indent: -999em; overflow: hidden; display: block;background-position: 0 0; background-repeat: no-repeat;}
+#n-tour a{background: url(../images/nav-1.gif); width: 51px; height: 11px;}
+#n-stories a{background: url(../images/nav-2.gif); width: 87px; height: 11px;}
+#n-info a{background: url(../images/nav-3.gif); width: 52px; height: 11px;}
+#n-partner a{background: url(../images/nav-4.gif); width: 270px; height: 13px;}
+
+#login{padding: 0 58px 0 67px;text-align: center;background: url(../images/bg-header.gif) no-repeat 67px 100%;color: #F7941C;}
+#log-in{width: 550px; margin: 0 auto;text-align: left;position: relative;padding: 17px 0 27px 0;}
+#login label{margin-right: 4px;color: #FFF !important;}
+#login input{font-size: 1em;padding: 1px;margin-right: 4px;}
+#btn-go{border: none !important;width: 29px; height: 30px;position: absolute;margin: -7px 0 0 3px;_margin-left: 0 !important;}
+#members, #password{width: 120px;border: 1px solid #F7941C;}
+#chk{margin-left: 42px;width: 15px;height: 15px;}
+#login a{color: #F7941C;}
+
+.box-m {position:relative; border: 3px solid #F7941C; height:1px;background: #FFF url(../images/bg-sp-0.jpg) repeat-y top left;}
+.tl-m, .tr-m, .bl-m, .br-m {position:relative; background-repeat:no-repeat}
+.tl-m {background-image:url(../images/tl-m.gif); background-position:0 0; top:-3px; left:-3px}
+.tr-m {background-image:url(../images/tr-m.gif); background-position:100% 0; right:-6px}
+.bl-m {background-image:url(../images/bl-m.gif); background-position:0 100%; bottom:-6px !important; bottom /**/:-6px; left:-6px}
+.br-m {background-image:url(../images/br-m.gif); background-position:100% 100%; width:auto !important; width /**/:100%; right:-6px; bottom:0 !important; bottom /**/:0; height:1px}
+html>body .tr-m {bottom:0 !important}
+html>body .bl-m {bottom:-6px !important}
+html>body .br-m, html>body .box-m {height:auto}
+
+img.png{behavior: url("design/css/pngbehavior.htc");}
+
+#sp-1{left: -3px;top: -3px;position: relative;background: url(../images/bg-sp-0-b.jpg) no-repeat top left;}
+#sp-2{background: url(../images/sp-1.gif) no-repeat top left;height: 357px;}
+html>body #sp-2{height: auto;min-height: 357px;}
+#sp-3{position: absolute;left: 235px;top:92px;width: 198px;height: 88px;z-index: 99;}
+#sp-4{position: absolute;bottom: 0;_margin-bottom: -1px;left: 142px;}
+#sp-5{position: absolute;bottom: 0;_margin-bottom: -1px;}
+
+#cont{padding: 30px 60px 0 390px;text-align: right;}
+h2 span{display:none;}
+#t-join{background: url(../images/t-join.gif) no-repeat 100% 0;height: 18px;margin-bottom: 15px;}
+#cont label{margin-right: 3px;}
+
+#username, #create-password, #re-password, #email, #re-email
+{width: 103px;}
+#iam, #from{width: 160px;}
+#btn-join{margin: 10px 0;}
+span.note{color: #6F0000;}
+
+#footer{background: url(../images/bg-footer.gif) no-repeat 33px 0;}
+#footer-in{background: url(../images/bg-footer-in.gif) no-repeat 300px 0;padding: 30px 125px 0 0;text-align: right;color: #F7941C;line-height: 1.3;}
+#footer a{color: #FFF; text-decoration: none;}
+a.yel{color: #F7941C !important; text-decoration: underline !important;}
+
+/* clear */
+#nav:after,
+div.br-b:after
+{content: "."; height: 0; clear: both; visibility: hidden;}
+
+
+/*
+ * Primary Color
+ */
+.pri_little_bold            {font-size: 8pt; font-family: Arial; color: #CA0000; font-weight: bold;}
+.pri_little_bold:hover      {font-size: 8pt; font-family: Arial; color: #B40101; font-weight: bold;}
+
+/* class of small link text used mostly in right-hand navigation (e.g., edit, delete, etc.), and some informational sub-links (e.g., what's this?, more info, etc.) */
+.pri_little                 {font-size: 8pt; font-family: Arial; color: #CA0000; font-weight: normal;}
+.pri_little:hover           {font-size: 8pt; font-family: Arial; color: #B40101; font-weight: normal;}
+
+/* class for two links on full profile page -- "add to favorites" and "see more photos" */
+.pri_tiny                   {font-size: 7.5pt; font-family: Arial; color: #CA0000; font-weight: normal;}
+.pri_tiny:hover             {font-size: 7.5pt; font-family: Arial; color: #B40101; font-weight: normal;}
+
+/* general link class -- most links that are "normal" (i.e., not navigation or otherwise specific) will be this class; please note: this class is also used in some places that are NOT links -- just text */
+.pri_text_bold              {font-size: 9pt; font-family: Arial; color: #CA0000; font-weight: bold; text-transform: none;}
+.pri_text_bold:hover        {font-size: 9pt; font-family: Arial; color: #B40101; font-weight: bold;}
+
+/* primarily used for member's name on full profile page and on member's home under my profile */
+.pri_big                    {font-size: 12pt; font-family: Arial; color: #CA0000; font-weight: bold;}
+
+/* used for headings on full profile page (about member_name, essay title, about member_name's partner, etc.) and as member's name link text (link to full profile) in search results */
+.pri_med_bold               {font-size: 11pt; font-family: Arial; color: #CA0000; font-weight: bold;}
+.pri_med_bold:hover         {font-size: 11pt; font-family: Arial; color: #B40101; font-weight: bold;}
+
+
+
+
+
+/*
+ * Secondary Color
+ */
+/* only used for links in messages inbox -- for messages that are checked */
+.sec_little_bold            {font-size: 8pt; font-family: Arial; color: #4C6E89; font-weight: bold;}
+.sec_little_bold:hover      {font-size: 8pt; font-family: Arial; color: #31516A; font-weight: bold;}
+
+/* primarily used for "support" and "logout" links at top of every page (next to "welcome membername"); also, on messages inbox page, used for links in right-hand navigation under "message folders" */
+.sec_little                 {font-size: 8pt; font-family: Arial; color: #4C6E89; font-weight: normal;}
+.sec_little:hover           {font-size: 8pt; font-family: Arial; color: #31516A; font-weight: normal;}
+
+/* a heading class -- used for "Required Criteria" in Advanced Search and for "Dating Advice", "Entertainment", and "Weekly Poll" under "This Week in Date Info" on Members Home */
+.sec_big                    {font-size: 12pt; font-family: Arial; color: #758FA6; font-weight: bold;}
+
+/* one of the largest heading classes -- used on Registration Step 3 ("People with headings get noticed!") and Profile-specific upgrade page ("Could MemberName be the one?") */
+.sec_huge                   {font-size: 13.5pt; font-family: Arial; color: #758FA6; font-weight: bold;}
+
+/* on Advanced Search page, sub-headings and input definitions (Age Range, Height Range, Member Status, etc.) NOTE: Not a link on Advanced Search */
+/* on Members Home page, control links under My Profile (e.g., Add/Edit Photos, Hide Profile, etc.) */
+.sec_text                   {font-size: 9pt; font-family: Arial; color: #2B5475;}
+.sec_text_bold              {font-size: 9pt; font-family: Arial; color: #CA0000; font-weight: bold;}
+.sec_text_bold:hover        {font-size: 9pt; font-family: Arial; color: #204360; font-weight: bold;}
+
+/* a medium sized heading, used throughout the site */
+.sec_med_bold               {font-size: 11pt; font-family: Arial; color: #758FA6; font-weight: bold;}
+/* Used on the ContactUs page as a secondary header.  E.g. "Send Photos to:" and "Send check or money orders to:" */
+.sec_med_bold_2             {font-size: 11pt; font-family: Arial; color: #2B5475; font-weight: bold;}
+
+
+
+
+/*
+ * Tertiary Color
+ */
+.ter_big                    {font-size: 12pt; font-family: Arial; color: #000; font-weight: bold;}
+.ter_huge                   {font-size: 13.5pt; font-family: Arial; color: #000; font-weight: bold;}
+.ter_med_bold               {font-size: 11pt; font-family: Arial; color: #000; font-weight: bold;}
+.ter_text_bold              {font-size: 9pt; font-family: Arial; color: #000; font-weight: bold;}
+.ter_tiny_2                 {font-size: 8pt; font-family: Arial; color: #000; font-weight: normal; text-decoration: none; }
+.ter_tiny                   {font-size: 7.5pt; font-family: Arial; color: #000; font-weight: normal; text-decoration: none; }
+a.ter_tiny                  {font-size: 7.5pt; font-family: Arial; color: #2F4174; font-weight: normal; text-decoration: underline; }
+a.ter_tiny:hover            {text-decoration: none;}
+a.ter_tiny_udrline          {font-size: 7pt; font-family: Arial; color: #47677f; font-weight: normal; text-decoration: underline; }
+
+
+
+
+/*
+ * Error Color
+ */
+.err_text_bold              {font-size: 9pt; font-family: Arial; color: #CA0000; font-weight: bold;}
+.err_med                    {font-size: 10pt; font-family: Arial; color: #AC0000; }
+
+
+/*
+ * Misc Fonts
+ */
+
+/* E.g.  "You've already taken the first steps ... Redeem your OnlineDatingKit" */
+.misc_med                   {font-size: 10pt; font-family: Arial; color: #000000;}
+.misc_huge                  {font-size: 13pt; font-family: Arial; color: black;}
+
+/* E.g.  "If you're serious about finding the one... redem free trial offer..*/
+.misc_text                  {font-size: 9pt; font-family: Arial; color: #666666;}
+/* Used when your CC transaction fails on the page where you enter your CC information */
+.misc_text_2                {font-size: 9pt; font-family: Arial; color: #494A4A;}
+.misc_text_2 a              {text-decoration: none; color: #3C496E;}
+
+/* Used at the top of the page indicating which steps he/she has completed when a user is first joining.  (Found on ShowJoinPage2, ShowJoinPage3, ShowJoinPage4) */
+.regtop                     {font-size: 8pt; font-family: Arial; color: #FFFFFF; font-weight: normal;}
+
+.highlight                  {font-size: 10pt; font-family: Arial; color: #000000; font-weight: bold; Text-Decoration: none; }
+.misc_tiny_2                {font-size: 8pt;}
+
+/* Used for sidebar content */
+.side_content_bold        {font-size: 8pt; font-family: Arial; font-weight: bold; color: #545454; }
+
+
+
+/*******************************************
+ * BACKGROUNDS
+ *******************************************/
+
+ /* creates a background for areas where there are lists and a distinction is necessary between lines -- used in message inbox and on upgrade pages where there are pay scales */
+.list_new                   {background-color: #E4E1DA; border-bottom: solid 1px #FFFFFF; height: 23px; font-size: 8pt; font-family: Arial; color: #787676; font-weight: normal;}
+.list_new a                 {background-color: #E4E1DA; height: 23px; font-size: 8pt; font-family: Arial; color: #CA0000; font-weight: bold;}
+.list_new a:hover           {font-size: 8pt; font-family: Arial; color: #B40101; font-weight: bold; text-decoration: underline;}
+
+ /* creates a background for areas where there are lists and a distinction is necessary between lines -- used in message inbox */
+.list_select                {background-color: #DAE0E1; border-bottom: solid 1px #FFFFFF; height: 23px; font-size: 8pt; font-family: Arial; color: #787676; font-weight: normal;}
+.list_select a              {background-color: #DAE0E1; height: 23px; font-size: 8pt; font-family: Arial; color: #4C6E89; font-weight: bold;}
+.list_select a:hover        {font-size: 8pt; font-family: Arial; color: #31516A; font-weight: bold; text-decoration: underline;}
+
+ /* creates a background for areas where there are lists and a distinction is necessary between lines -- used in advanced search, message inbox, who's online list, and on upgrade pages where there are pay scales */
+.list_view1                 {background-color: #F8F8F7; border-bottom: solid 1px #FFFFFF; height: 23px; font-size: 8pt; font-family: Arial; color: #787676; font-weight: normal;}
+.list_view1 a               {background-color: #F8F8F7; height: 23px; font-size: 8pt; font-family: Arial; color: #CA0000; font-weight: bold;}
+.list_view1 a               {font-size: 8pt; font-family: Arial; color: #B40101; font-weight: bold; text-decoration: underline;}
+
+ /* creates a background for areas where there are lists and a distinction is necessary between lines -- used in advanced search, message inbox, who's online list, and on upgrade pages where there are pay scales */
+.list_view2                 {background-color: #EFEFEE; border-bottom: solid 1px #FFFFFF; height: 23px; font-size: 8pt; font-family: Arial; color: #787676; font-weight: normal;}
+.list_view2 a               {background-color: #EFEFEE; height: 23px; font-size: 8pt; font-family: Arial; color: #CA0000; font-weight: bold;}
+.list_view2 a:hover         {font-size: 8pt; font-family: Arial; color: #B40101; font-weight: bold; text-decoration: underline;}
+
+ /* creates a background for areas where there are lists and a distinction is necessary between lines -- used in advanced search and on upgrade pages where there are pay scales -- alternates between lighter and darger colours*/
+.list_view1_alt             {background-color: #F6F7F9; border-bottom: solid 1px #FFFFFF; font-family: Arial; font-size: 9pt; color: #787676;}
+.list_view2_alt             {background-color: #EEF2F5; border-bottom: solid 1px #FFFFFF; font-family: Arial; font-size: 9pt; color: #787676;}
+
+
+
+
+/*******************************************
+ * BUTTONS
+ *******************************************/
+.button_border_2            {border: solid 1px #8F0100;}
+.button_border_1            {border: solid 1px #8F0100;}
+.button_text                {font-size: 7pt; font-family: Verdana; color: #FFFFFF; font-weight: bold; text-decoration: none; text-transform: uppercase;}
+.button_2                   {border: solid 1px #FFFFFF; background-color: #9F9F9F; padding: 2px; color: #ffffff; font-family: verdana; font-size: 7.5pt; font-weight: bold;}
+.button_1                   {border: solid 1px #FFFFFF; background-color: #8F0100; padding: 2px; color: #ffffff; font-family: verdana; font-size: 7.5pt; font-weight: bold;}
+.list_button                {font-size: 7pt; font-family: Verdana; color: #2B5475; font-weight: bold; text-decoration: none; text-transform: uppercase; background-color: #FFAD42; border: solid 1px #EE8717; border-right: solid 2px #EE8717; border-bottom: solid 2px #BCBCBD;}
+.list_button_dark           {background-color: #E9B893;}
+.list_button_darker         {background-color: #E9B893;}
+.list_botton_light          {background-color: #E9B893;}
+.list_button_text           {font-size: 7pt; font-family: Verdana; color: #FFFFFF; font-weight: bold; text-decoration: none; text-transform: uppercase;}
+.list_button_text_inactive  {font-size: 7pt; font-family: Verdana; color: #EEEEEE; font-weight: bold; text-decoration: none; text-transform: uppercase;}
+.im_nav                     {font-size: 7.5pt; font-family: Arial; color: #ffffff; font-weight: normal; background-color: #9DABB8;}
+a.im_nav                    {font-size: 7.5pt; font-family: Arial; color: #ffffff; font-weight: normal; background-color: #9DABB8; text-decoration: none;}
+a.im_nav:hover              {font-size: 7.5pt; font-family: Arial; color: #ffffff; font-weight: normal; background-color: #9DABB8; text-decoration: underline;}
+
+
+
+
+
+/*******************************************
+ * TITLES
+ *******************************************/
+.title_line                 {background-color: #EE8717;}
+.title_link                 {font-size: 7pt; font-family: Verdana; color: #FFFFFF; font-weight: bold; text-transform: uppercase; text-decoration: none;}
+.title_link_on              {font-size: 7pt; font-family: Verdana; color: #FFFFFF; font-weight: bold; text-transform: uppercase; text-decoration: none;}
+.title_off                  {border-right: solid 1px #E9B893;}
+.title_on                   {font-size: 7pt; font-family: Verdana; color: #8F0100; font-weight: bold; text-transform: uppercase; background-color: #CE7201; border-right: solid 1px #E9B893;}
+.title_text                 {font-size: 7pt; font-family: Verdana; color: #AC8C00; font-weight: bold; text-transform: uppercase;}
+.title_bgrnd                {border: solid 1px #E9B893; border-right: solid 2px #FFDA61; border-bottom: none; background-color: #FFEFBD; padding: 4px; padding-left: 8px;}
+.title_text_reg             {font-size: 8pt; font-family: Arial; color: #FFFFFF; font-weight: normal;}
+
+
+
+
+/*******************************************
+ * NAVIGATIONS
+ *******************************************/
+.nav                        {font-size: 7pt; font-family: Verdana; text-transform: uppercase; color: #FFFFFF; font-weight: bold; background-color: #FFAD42; height: 23px; border: solid 1px #EE8717; border-right: solid 1px #E9B893;}
+.nav_title                  {border: solid 1px #E9B893; border-right: solid 2px #E9B893; border-bottom: none; background-color: #FFAD42; height: 21px;}
+.nav_button                 {font-size: 7pt; font-family: Verdana; color: #FFFFFF; font-weight: bold; text-decoration: none; text-transform: uppercase;}
+.nav_selected               {font-size: 7pt; font-family: Verdana; text-transform: uppercase; color: #FFFFFF; font-weight: bold; background-color: #CE7201; height: 23px; border: solid 1px #985D23;}
+.nav_upgrade                {font-size: 7pt; font-family: Verdana; text-transform: uppercase; color: #FFFFFF; font-weight: bold; background-color: #D10000; height: 23px; border: solid 1px #D10000;}
+
+
+
+
+/*******************************************
+ * BACKGROUNDS AND BORDERS
+ *******************************************/
+.banner_bgrnd               {background-color: #F4F6F9; border: solid 1px #C4C9D3; padding-top: 7px; padding-bottom: 7px; width: 757px; }
+.body_logout                {background-color: #F4F6F9; border: solid 1px #C4C9D3; border-top: solid 1px #F4F6F9; width: 625px; padding-top: 8px; position: relative; }
+.completion_bar             {background-color: #FFFFFF; border: solid 1px #7F7F7F; padding: 1px; width: 130px; }
+.content_bgrnd              {background-color: #FFFFFF; border: solid 1px #B7B7B7; border-right: solid 2px #B7B7B7; border-bottom: solid 2px #B7B7B7; }
+.content_bgrnd_2            {background-color: #FFFEF0; border: solid 1px #FDFAD0; }
+.content_bgrnd_3            {background-color: #FFFFFF; border: solid 1px #E4E5E7; padding: 7px; text-align: left; color: #2B5475;}
+.content_bgrnd_3_off        {background-color: #F6F7F9; border: none; padding: 7px; text-align: left;}
+.credit_bgrnd               {background-color: #F5F7F9; border: solid 1px #E3E5E6; }
+.img_lrg_border             {border: solid 1px #4B6E8A;}
+.img_med_border             {background-color: #D0DAE3; border: solid 1px #4B6E8A; width: 126px; height: 140px; text-align: center;}
+.img_sml_border             {background-color: #D0DAE3; border: solid 1px #4B6E8A; width: 90px; height: 100px; text-align: center;}
+.keyline                    {background-color: #E5E5E5;}
+.main_bgrnd_padding         {background-color: #FFFEF0; border: solid 1px #C4C9D3; padding: 8px; position: relative; width: auto; }
+.searchprof_bgrnd           {background-color: #F6F7F9; border: solid 1px #CCCCCC; border-bottom: none; padding-top: 8px; padding-bottom: 8px; width: 527px; }
+.sec_bgrnd                  {background-color: #86A2B8;}
+.ter_bgrnd                  {background-color: #8f0100;}
+.main_bgrnd                 {background-color: #F4F6F9; border: solid 1px #C4C9D3; }
+.flat_border                {border: solid 1px #7D97B0; margin-left: 4px; padding-left: 4px; }
+
+.folderbullet               {background-image: url(/images/bullet_body.gif);}
+.fullprof_bot_border        {border-left: solid 1px #D9D9D9; border-right: solid 1px #D9D9D9; width: 536px; padding-top: 22px; padding-bottom: 12px; }
+.fullprof_top_border        {border-top: solid 1px #D9D9D9; border-right: solid 1px #D9D9D9; width: 408px; padding-left: 16px; }
+
+/*******************************************
+ * REPORTING STYLES
+ *******************************************/
+.reportHeader2     {background-color: #FFFFFF; font-family: Arial; font-size: 9pt; color: #787676; font-weight: bold;}
+.reportSummaryRow  {background-color: #CECECE; font-family: Arial; font-size: 9pt; color: #787676; font-weight: bold;}
+
+
+
+
+/*******************************************
+ * LAYOUT TAGS
+ *******************************************/
+
+
+.content            {padding-bottom: 8px;}
+.contentpad         {padding: 8px;}
+.absolute           {position: absolute;}
+.titleid            {position: relative; left: 21px;}
+.fullprof           {width: 536px;}
+.profcontent        {padding-left: 26px; padding-right: 26px; text-align: left; padding-bottom: 8px;}
+.advsearch          {width: 660px; text-align: left;}
+.searchbut          {width: 527px; text-align: left;}
+.view_link          {font-size: 8pt; font-family: Arial; color: #666666; font-weight: normal; text-decoration: underline;}
+.view_link:hover    {font-size: 8pt; font-family: Arial; color: #666666; font-weight: normal; text-decoration: none;}
+.photo_content      {border: solid 1px #E4E5E7; border-top: none; background-color: #F6F7F9; padding-top: 15px; padding-bottom: 15px;}
+.narrow_search      {border: solid 1px #E4E5E7; background-color: #F6F7F9; padding: 15px;}
+
+/* SITE TOUR */
+.sitetourlogo {background-color: #86A2B8}
+.sitetourhead{font-family: arial, sans-serif; font-size: 14px; color: #ffffff;}
+.sitetourmain{border: solid 1px #E3E2DE; width: 770px;}
+td.sitetournav{border-right: solid 1px #e3e2de;}
+.sitetournav div a{font-family: arial, sans-serif; color: #B3B3B3; font-size: 12px; line-height: 2; padding-left: 7px; text-decoration: none;}
+.sitetournav div a.selectedST{font-family: arial, sans-serif; color: #990000; font-size: 12px; line-height: 2; text-decoration: none;}
+.sitetournav div a:hover{font-family: arial, sans-serif; color: #B3B3B3; font-size: 12px; line-height: 2; padding-left: 7px; text-decoration: underline;}
+.sitetournav div a.selectedST:hover{font-family: arial, sans-serif; color: #990000; font-size: 12px; line-height: 2; text-decoration: underline;}
+.sitetourcontent{font-weight: normal; padding-left: 30px;}
+.sitetourcontent ul{padding: 0px; padding-left: 18px; padding-bottom: 10px; margin: 0px;}
+.sitetourcontent li{padding: 0px; margin: 0px;}
+
+div#messagecenter   {padding-top: 5px; padding-bottom: 5px;}
+div#gutter          {position: absolute; width: 8px; top: 0px; left: 573px;}
+div#sidebar         {position: absolute; width: 159px; top: 0; left: 581px;}
+
+
+a					{color: #494a4a; text-decoration: underline;}
+a:hover				{text-decoration: none;}
+
+
+
+/* CHAT */
+table.chat,table.pchat{empty-cells:show;}
+table.chat{position:absolute;}
+thead.chat{cursor:move;}
+td.chathead,td.chathead2,td.pchathead,td.pchathead2{width:5px; height:38px; padding:0px 0px 0px 0px;}
+td.chathead1,td.pchathead1{background-image:url(../images/im/box_T.gif);  width:100%;}
+td.chathead,td.pchathead{background-image:url(../images/im/box_TL.gif);}
+td.chathead2,td.pchathead2{background-image:url(../images/im/box_TR.gif);}
+
+td.chaticon{background-image:url(../images/im/icone_chat.gif);}
+td.chattopic{padding:0px 10px 0px 10px; width:100%;}
+span.chatTopicNick{font-weight:900;}
+td.chathide,td.chatclose{cursor:pointer;}
+td.chathide{background-image:url(../images/im/btn_hide.gif);}
+td.chatclose{background-image:url(../images/im/btn_close.gif);}
+td.chaticon,td.chathide,td.chatclose{height:36px; width:36px; padding:31px 31px 5px 0px; background-repeat:no-repeat; background-position:center center;}
+
+td.chatbody,td.chatbody2,td.pchatbody,td.pchatbody2{width:5px; padding:0px 5px 0px 0px;}
+td.chatbody,td.pchatbody{background-image:url(../images/im/box_ML.gif);}
+td.chatbody1,td.pchatbody1{background-image:url(../images/im/box_M.gif); padding:5px 5px 5px 5px; vertical-align:top;}
+td.chatbody2,td.pchatbody2{background-image:url(../images/im/box_MR.gif);}
+
+td.chatfoot,td.chatfoot2,td.pchatfoot,td.pchatfoot2{width:5px; height:60px; padding:0px 0px 0px 0px;}
+td.chatfoot1,td.pchatfoot1{background-image:url(../images/im/bx_B.gif);}
+td.chatfoot,td.pchatfoot{background-image:url(../images/im/box_BL.gif);}
+td.chatfoot2,td.pchatfoot2{background-image:url(../images/im/box_BR.gif);}
+
+div.chatbox{background-color: #FFFFFF; border: 1px solid #938F86; color:#000000; vertical-align:top;}
+
+/* UList */
+span.cunick{color:green;}
+div.cumsg,div.csmsg{color:#0000ff; margin:2px 2px 4px 2px;}
+div.csmsg{color:#FF0000;}
+a.chat{ color:#000000;}
+a.chat:hover{text-decoration:none;}
+
+/* input */
+form.cinput{display:inline;}
+input.cinput{background-color: #FFFFFF; border: 1px solid #938F86; width: 100%; height:20px; font-size:16px; padding:2px 2px 2px 2px;}
+table.cinput{width:100%;}
+tr.cinput{}
+td.cinput{width:100%;}
+td.ckeyb{width:32px;  height:29px; padding:29px 32px 5px 5px; background-image:url(../images/im/icone_keyb.gif); background-repeat:no-repeat; background-position:center center;}
+td.csubmit{cursor:pointer; background-image:url(../images/im/btn_send.gif); width:63px; height:32px; padding:32px 63px 5px 5px; background-repeat:no-repeat; background-position:center center;}
+span.sysb{font-weight:900;}
+
+* {margin: 0; padding: 0;}
+ul,li {list-style: none;}
+a img {border: none;}
+table, td {border-collapse: collapse; vertical-align: top;}
+body {font-family: "Times New Roman", Times, serif;}
+
+#wrapper_r {width: 850px; margin: 0 auto;}
+
+#header_r img{margin:30px 15px;}
+#header_r .menu_r {height: 49px; background: #f1f1f1; border-bottom: 1px solid #e0e0e0; font-family: Tahoma, Arial, sans-serif;}
+#header_r .menu_r li {float: left; font-size: 14px; padding: 17px 16px 10px 68px;}
+#header_r .menu_01 {background: url(../images/icon_1.jpg) no-repeat 25px 10px;}
+#header_r .menu_02 {background: url(../images/icon_2.jpg) no-repeat 25px 10px;}
+#header_r .menu_03 {background: url(../images/icon_3.jpg) no-repeat 25px 10px;}
+#header_r .menu_04 {background: url(../images/icon_4.jpg) no-repeat 25px 10px;}
+#header_r .menu_05 {background: url(../images/icon_5.jpg) no-repeat 25px 10px;}
+#header_r .menu_r a {color: #494949; font-weight: bold;}
+#header_r .menu_r a:hover {text-decoration: none;}
+
+#join_r {height: 240px; background: url(../images/join_bg.jpg) no-repeat;}
+#join_r h3 {font-size: 48px; font-weight: normal; padding: 35px 0 0 75px; color: #006ea7;}
+#join_r small {color: #777777; font-size: 20px; display: block; padding-left: 120px;}
+#join_r big {color: #000; font-size: 48px; display: block; padding-left: 60px; margin-top: -15px;}
+#join_r span {color: #00a2ff; font-weight: bold;}
+#join_r span big {color: #00a2ff; display: inline; margin: 0; padding: 0; font-size: 24px;}
+#join_r p {color: #000; font-size: 16px; padding-left: 50px;}
+
+#main_r {margin-top: 20px;}
+#content_r {border-top: 1px solid #e0e0e0; background: url(../images/content_bg.gif) repeat-x;}
+#left_r {float: left; width: 330px; padding: 10px 35px 0;}
+#right_r {float: left; width: 390px; padding: 10px 30px 0;}
+#content_r h3 {font-size: 20px; padding: 15px 0; font-weight: normal; color: #000;}
+#content_r p {font-size: 14px; color: #4c4c4c; padding-bottom: 10px;}
+#content_r .red_r {color: #fe4b4b;}
+#content_r .signup_r {padding: 15px; border: 1px solid #cbcbcb; width: 280px; margin: 15px 0 5px;}
+#content_r .signup_r a {font-size: 16px; color: #0075b1; font-weight: bold; text-decoration: none;}
+.list_r {padding-top: 20px;}
+.list_r li {padding: 0 0 0 80px; background-image: url(../images/list.jpg); background-repeat: no-repeat; margin-bottom: 20px; font-size: 13px; color: #4c4c4c; height: 65px;}
+.list_r h4 {color: #000; font-size: 20px; font-weight: normal;}
+.list_01 {background-position: 0 -5px;}
+.list_02 {background-position: 0 -100px;}
+.list_03 {background-position: 0 -195px;}
+.list_04 {background-position: 0 -280px;}
+.sign_r {color: #0075b1; font-size: 22px; font-weight: bold; display: block; padding: 10px 0 20px;}
+#right_r h2 {font-size: 30px; padding-top: 10px; font-weight: normal; color: #000;}
+#right_r h2 small {color: #006ea7; font-size: 20px;}
+.form_r {padding: 20px 20px 10px; background: #fff687; margin: 10px 0 15px; color: #544528; font-size: 14px; white-space: nowrap;}
+.form_r input.text {border-top: 1px solid #6f6870; border-left: 1px solid #6f6870; border-bottom: 1px solid #bebc65; border-right: 1px solid #bebc65; margin: 0 0 10px 10px; width: 200px; height: 19px; padding-top: 3px;}
+.form_r input.text_01 {border-top: 1px solid #6f6870; border-left: 1px solid #6f6870; border-bottom: 1px solid #bebc65; border-right: 1px solid #bebc65; margin: 0 0 10px 10px; width: 280px; height: 19px; padding-top: 3px;}
+.form_r input.text_02 {border-top: 1px solid #6f6870; border-left: 1px solid #6f6870; border-bottom: 1px solid #bebc65; border-right: 1px solid #bebc65; margin: 0 0 10px 10px; width: 240px; height: 19px; padding-top: 3px;}
+.form_r select.text_02 {border-top: 1px solid #6f6870; border-left: 1px solid #6f6870; border-bottom: 1px solid #bebc65; border-right: 1px solid #bebc65; margin: 0 0 10px 10px; width: 240px; height: 22px;}
+.form_r .button {margin: 0 0 10px 10px;}
+
+#footer_r {color: #4b4b4b; font-size: 12px; margin-top: 20px;}
+#footer_r p {padding: 20px 20px 40px;}
+#footer_r .menu_r {height: 49px; background: #f1f1f1; border-bottom: 1px solid #e0e0e0;  font-family: Tahoma, Arial, sans-serif;}
+#footer_r .menu_r li {float: left; font-size: 14px; padding: 17px 16px 10px 68px;}
+#footer_r .menu_01 {background: url(../images/icon_1.jpg) no-repeat 25px 10px;}
+#footer_r .menu_02 {background: url(../images/icon_2.jpg) no-repeat 25px 10px;}
+#footer_r .menu_03 {background: url(../images/icon_3.jpg) no-repeat 25px 10px;}
+#footer_r .menu_04 {background: url(../images/icon_4.jpg) no-repeat 25px 10px;}
+#footer_r .menu_05 {background: url(../images/icon_5.jpg) no-repeat 25px 10px;}
+#footer_r .menu_r a {color: #494949; font-weight: bold;}
+#footer_r .menu_r a:hover {text-decoration: none;}
+div#left_r div.ter_text_bold {margin:5px 0 3px 0;}
+
+.button_join{ background: url(../images/button_join_bg.gif) 0 0 repeat-x; height: 42px; border: none; width: 200px; padding: 0; margin: 0; font-weight: bold; font-size: 18px; font-family: arial; cursor: pointer; float: right; }
+
+.contact_input{width: 350px;}
+.contact_textarea{resize:vertical; font-size: 12px; font-family: Arial; width: 350px; height: 100px; margin-bottom: 6px; vertical-align: top;}
+.contact_submit{margin-left: 17px;}
+.refresh_captcha{float:left; margin:2px 5px;}
+.input_captcha{float:left; margin:3px 5px;}

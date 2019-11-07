@@ -1,0 +1,43 @@
+{header}
+
+<table class="cnt" cellspacing="0" cellpadding="0"><tr><td>
+<div class="block profile">
+<table class="ptable" cellspacing="0" cellpadding="0">
+<tr>
+	<td class="photo">
+		<div>
+			<!-- begin_user_no_photo --><a href="{url_main}profile_photo_edit.php" class="add">{l_add_photo}</a><!-- end_user_no_photo -->
+			<!-- begin_user_photo --><img width="90" height="100" src="{url_files}{photo}"/><!-- end_user_photo -->
+		</div>
+	</td>
+	<td class="info">
+		<table class="info" cellspacing="0" cellpadding="0">
+		<tr>
+			<td class="col1">
+				<p class="name"><b>{name}</b></p>
+				<p>{l_age}: <b>{age}</b></p>
+				{city_title}
+				<p>{country_title}</p>
+			</td>
+			<td class="col2">
+				<p class="edit"><nobr><a href="{url_main}profile.php">{l_edit_profile}</a></nobr></p>
+				<!-- begin_mail_on -->
+                <p><nobr>{l_new_mail}: <b><!-- begin_new_mails_none -->0<!-- end_new_mails_none --><!-- begin_new_mails_exists --><a href="{url_main}mail.php">{new_mails}</a><!-- end_new_mails_exists --></b></nobr></p>
+                <!-- end_mail_on -->
+                <!-- begin_viewed_me -->
+				<p><nobr>{l_new_views}: <b><!-- begin_new_views_none -->0<!-- end_new_views_none --><!-- begin_new_views_exists --><a href="{url_main}users_viewed_me.php">{new_views}</a><!-- end_new_views_exists --></b></nobr></p>
+                <!-- end_viewed_me -->
+            </td>
+		</tr>
+		</table>
+	</td>
+</tr>
+</table>
+</div>
+
+{friends_list}
+
+</td></tr></table>
+
+{user_menu}
+{footer}

@@ -1,0 +1,178 @@
+<script>
+    $(function(){
+        <!-- begin_error_accessing_user -->
+        $(window).load(function(){
+            setTimeout(function(){
+                showAlert('{error_accessing_user}','.st-content','red',0,true);
+            },1000)
+        })
+        <!-- end_error_accessing_user -->
+    })
+    <!-- begin_field_interests_normal_style -->
+    preloadImages(url_tmpl_mobile_images+'{name}.png')
+    <!-- end_field_interests_normal_style -->
+
+    var photos = new CProfilePhoto();
+
+</script>
+<div class="wrapper">
+    <div class="content">
+<!-- begin_user_profile_photo -->
+<div class="profile_info_pic" >
+    <a class="" href="{url_main}profile_view.php?user_id={user_id}">
+        <img id="" src="{url_files}{user_profile_photo_url}" alt=""/>
+    </a>
+</div>
+<!-- end_user_profile_photo -->
+<!-- begin_list_interest_user -->
+<div class="head">
+    <div class="fl_left head_title">{l_interests}</div>
+    <!-- begin_main_interest_edit -->
+    <div class="fl_right" style="position: relative;">
+        <a class="link_edit profile_info_edit" href="{url_main}profile_interests_edit.php">{l_edit}</a>
+    </div>
+    <!-- end_main_interest_edit -->
+    <div class="cl"></div>
+</div>
+<ul id="list_interest_profile_info" class="list_interest_profile_info">
+    <!-- begin_list_interest_user_item -->
+    <li class="item {interest_class}">{interest}</li>
+    <!-- end_list_interest_user_item -->
+</ul>
+<!-- end_list_interest_user -->
+
+<!-- begin_photo_public_block -->
+<div class="head">
+    <div class="fl_left head_title">{l_public_photos}</div>
+        <div class="bl_list_profile_photo">
+            <ul data-list-private="0" id="line_photo_public" class="cbp-rfgrid">
+                <!-- begin_photo_public -->
+                <li>
+                    <div>
+                    <a id="photo_{photo_id}" title="{description_attr}" href="{url_main}profile_view.php?user_id={user_id}&photo_cur_id={photo_id}"><img class="photo_item"  style="opacity:0;" onload="$(this).fadeTo(400,1);" src="{url_files}{url_photo_public}" alt="" /></a>
+                    </div>
+                </li>
+                <!-- end_photo_public -->
+            </ul>
+        <div class="cl"></div>
+        </div>
+</div>
+<!-- end_photo_public_block -->
+
+<!-- begin_photo_private_block -->
+<div class="head">
+    <div class="fl_left head_title">{l_private_photos}</div>
+        <div class="bl_list_profile_photo">
+            <ul data-list-private="0" id="line_photo_private" class="cbp-rfgrid">
+                <!-- begin_photo_private -->
+                <li>
+                    <div>
+                    <a id="photo_{photo_id}" title="{description_attr}" href="{url_main}profile_view.php?user_id={user_id}&photo_cur_id={photo_id}"><img class="photo_item"  style="opacity:0;" onload="$(this).fadeTo(400,1);" src="{url_files}{url_photo_private}" alt="" /></a>
+                    </div>
+                </li>
+                <!-- end_photo_private -->
+            </ul>
+        <div class="cl"></div>
+        </div>
+</div>
+
+<!-- end_photo_private_block -->
+
+
+<!-- begin_video_public_block -->
+<div class="head">
+    <div class="fl_left head_title">{l_videos}</div>
+    <div class="bl_list_profile_photo">
+        <ul data-list-private="0" id="line_video_public" class="cbp-rfgrid">
+            <!-- begin_video_public -->
+            <li>
+                <div>
+                <a id="video_{video_id}" onclick="photos.playVideo('{video_id}'); return false;" title="{description_attr}" href=""><img class="photo_item"  style="opacity:0;" onload="$(this).fadeTo(400,1);" src="{url_files}{url_video_public}" alt="" /></a>
+                </div>
+            </li>
+            <!-- end_video_public -->
+        </ul>
+    <div class="cl"></div>
+    </div>
+
+</div>
+<!-- end_video_public_block -->
+
+<!-- begin_video_private_block -->
+<div class="head">
+    <div class="fl_left head_title">{l_private_videos}</div>
+    <div class="bl_list_profile_photo">
+        <ul data-list-private="0" id="line_video_private" class="cbp-rfgrid">
+            <!-- begin_video_private -->
+            <li>
+                <div>
+                <a id="video_{video_id}" onclick="photos.playVideo('{video_id}'); return false;" title="{description_attr}" href=""><img class="photo_item"  style="opacity:0;" onload="$(this).fadeTo(400,1);" src="{url_files}{url_video_private}" alt="" /></a>
+                </div>
+            </li>
+            <!-- end_video_private -->
+        </ul>
+    <div class="cl"></div>
+    </div>
+
+</div>
+<!-- end_video_private_block -->
+
+<div class="head">
+    <div class="fl_left head_title">{l_personal_info}</div>
+    <!-- begin_personal_edit -->
+    <div class="fl_right" style="position: relative;">
+        <a class="link_edit profile_info_edit" href="{url_main}profile_personal_edit.php">{l_edit}</a>
+    </div>
+    <!-- end_personal_edit -->
+    <div class="cl"></div>
+</div>
+<table id="list_personal_info" class="list_personal_info">
+    <!-- begin_profile_looking_for -->
+    <tr>
+    <th>{l_im_here_to}:</th>
+    <td>{profile_looking_for}</td>
+    </tr>
+    <!-- end_profile_looking_for -->
+    <!-- begin_location -->
+    <tr>
+    <th>{l_city}:</th>
+    <td>{city}</td>
+    </tr>
+    <!-- end_location -->
+    <!-- begin_module_fields_urban -->
+    <!-- begin_basic -->
+    <tr>
+    <th>{field}:</th>
+    <td>{value}
+        <!-- begin_forced_show_more -->
+        <script>
+        function goEditField_{field_name}(){
+            var href='{url_main}profile_personal_edit.php#field_{field_name}';
+            window.location.href=href;
+            return false;
+        }
+        </script>
+        <a href="#" onclick="showConfirm('{forced_phrase}', '{l_write}', '{l_cancel}', goEditField_{field_name}, 'blue', '#st-container', null); return false;">{l_show_more}</a>
+        <!-- end_forced_show_more -->
+    </td>
+    </tr>
+    <!-- end_basic -->
+    <!-- begin_personal -->
+    <!-- begin_personal_item -->
+    <tr>
+    <th>{field}:</th>
+    <td>{value}</td>
+    </tr>
+    <!-- end_personal_item -->
+    <!-- end_personal -->
+    <!-- end_module_fields_urban -->
+</table>
+
+<!-- player -->
+<div id="tip_video_player" class="bl_tooltip_btn center tip_photo_info_edit1" style="margin:0px;display:none;z-index:102;">
+<video id="video_player" width="100%" height="100%" controls controlsList="nodownload" autoplay>
+  <source src="" type="video/mp4">
+</video>
+
+</div>
+<!-- /player -->

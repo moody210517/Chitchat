@@ -1,0 +1,274 @@
+{header}
+<!--[if lte IE 6]><script language="javascript" type="text/javascript" src="{url_tmpl_main}js/iepngfix_tilebg.js{cache_version_param}"></script><![endif]-->
+<!-- begin_select -->
+
+<script Language="JavaScript" type="text/javascript">
+$('body').on('click', '[id ^= close_]', function(e){
+    var wnd = $(this).attr('id').replace('close_', '');
+    $('#xajax_' + wnd).remove();
+})
+var selected_game_id = 0;
+var selected_user_id = {selected_user_id};
+var game_request_sent = false;
+
+function select_user_id(user_id)
+{
+
+if(game_request_sent) return false;
+
+    if(selected_user_id != user_id)
+    {
+        if(selected_user_id)
+        {
+            $("#user_" + selected_user_id + " .frame").fadeOut(200);
+        }
+    
+        selected_user_id = user_id;
+    
+        $("#user_" + selected_user_id + " .frame").fadeIn(200);
+    }
+
+    return false;
+}
+
+function select_game(game_id)
+{
+
+if(game_request_sent) return false;
+
+    if(selected_game_id != game_id)
+    {
+	    if(selected_game_id)
+	    {
+	        $("#game_" + selected_game_id + " .games_check").fadeOut(0);
+	    }
+	
+	    selected_game_id = game_id;
+	
+	    $("#game_" + selected_game_id + " .games_check").fadeIn(0);
+    }
+
+	return false;
+}
+
+function send_invite()
+{
+
+if(game_request_sent) return false;
+
+    if(selected_game_id && selected_user_id)
+    {
+    	xajax_game_invite(selected_user_id, selected_game_id);
+		game_request_sent = true;
+		// IE scroll fix
+        $.scrollTo( {top:0,left:0}, 1000,  {axis:'y'} );
+    }
+    else if(selected_game_id)
+    {
+        alert('{l_please_select_a_friend_first}');
+    }
+    else if(selected_user_id)
+    {
+        alert('{l_please_select_a_game_first}');
+    }
+    else
+    {
+    	alert('{l_please_select_a_friend_and_a_game_first}');
+    }
+
+	return false;
+}
+</script>
+
+<script type="text/javascript" src="{url_main}_server/jquery/jquery.scrollTo-min.js{cache_version_param}"></script>
+<script type="text/javascript">
+function equalHeight(group) {
+    tallest = 0;
+    group.each(function() {
+        thisHeight = $(this).height();
+        if(thisHeight > tallest) {
+        tallest = thisHeight;
+        }
+    });
+    group.height(tallest);
+}
+$(document).ready(function() {
+    equalHeight($(".in,.userinfo-c"));
+});
+</script>
+
+
+{complite}
+<div class="wrapper">
+<div class="userinfo-c">
+<div class="userinfo">  
+	
+	<div class="games">
+	
+	    <div class="games_head">
+	        <table>
+	            <tr>
+	                <td class="td_l">&nbsp;</td>
+	                <td class="td_c">
+	                   <strong>{l_games_for_online_friends}</strong>
+	                </td>
+	                <td class="td_r">&nbsp;</td>
+	            </tr>
+	        </table>
+	    </div>
+	
+	    <div class="games_main">
+	        <div class="games_decor_top ">
+	
+	            <div class="games_foto_pad">
+	
+	                <!-- begin_row_1_user -->
+	                <div class="games_foto {games_last}" id="user_{user_id}">
+	                    <a href="#" onclick="return select_user_id({user_id});" title="{user_name_full}">
+                            <img src="{user_photo}" width="62" height="70" alt=""/>
+	                        <div class="frame" {user_selected}>&nbsp;</div>
+	                        <span>{user_name}</span>
+	                    </a>
+	                </div>
+	                <!-- end_row_1_user -->
+	
+                    <!-- begin_row_1_no_user -->
+                    <div class="games_foto {games_last}">
+                        <img style="behavior: url({url_tmpl_main}css/iepngfix.htc);" src="{url_tmpl_main}images/games/foto_empty.png" width="62" height="70" alt=""/>
+                    </div>
+                    <!-- end_row_1_no_user -->
+	            </div>
+	
+	            <div class="cl"></div>
+	            <div class="games_foto_pad" >
+	
+                    <!-- begin_row_2_user -->
+                    <div class="games_foto {games_last}" id="user_{user_id}">
+                        <a href="#" onclick="return select_user_id({user_id});" title="{user_name_full}">
+                            <img src="{user_photo}" width="62" height="70" alt=""/>
+                            <div class="frame" {user_selected}>&nbsp;</div>
+                            <span class="green">{user_name}</span>
+                        </a>
+                    </div>
+                    <!-- end_row_2_user -->
+
+                    <!-- begin_row_2_no_user -->
+                    <div class="games_foto {games_last}">
+                        <img style="behavior: url({url_tmpl_main}css/iepngfix.htc);" src="{url_tmpl_main}images/games/foto_empty.png" width="62" height="70" alt=""/>
+                    </div>
+                    <!-- end_row_2_no_user -->
+	
+	            </div>
+	            <div class="games_btn_top">{l_choose_a_friend}</div>
+	
+	        </div>
+	    </div>
+	
+	    <!-- green -->
+	    <div class="games_bg_green">
+	
+	          <div class="games_blfoto">
+	
+	              <!-- begin_full_rows -->
+                  <!-- begin_row_3 -->
+	              <div class="games_shadow line1">
+                    <!-- begin_row_3_user -->
+                    <div class="games_foto {games_last}" id="user_{user_id}">
+                        <a href="#" onclick="return select_user_id({user_id});" title="{user_name_full}">
+                            <img src="{user_photo}" width="62" height="70" alt=""/>
+                            <div class="frame" {user_selected}>&nbsp;</div>
+                            <span>{user_name}</span>
+                        </a>
+                    </div>
+                    <!-- end_row_3_user -->
+
+                    <!-- begin_row_3_no_user -->
+                    <div class="games_foto {games_last}">
+                        <img style="behavior: url({url_tmpl_main}css/iepngfix.htc);" src="{url_tmpl_main}images/games/foto_empty.png" width="62" height="70" alt=""/>
+                    </div>
+                    <!-- end_row_3_no_user -->
+	              </div>
+	              <!-- end_row_3 -->
+	
+	              <!-- begin_row_4 -->
+	              <div class="games_shadow line0">
+                    <!-- begin_row_4_user -->
+                    <div class="games_foto {games_last}" id="user_{user_id}">
+                        <a href="#" onclick="return select_user_id({user_id});" title="{user_name_full}">
+                            <img src="{user_photo}" width="62" height="70" alt=""/>
+                            <div class="frame" {user_selected}>&nbsp;</div>
+                            <span>{user_name}</span>
+                        </a>
+                    </div>
+                    <!-- end_row_4_user -->
+
+                    <!-- begin_row_4_no_user -->
+                    <div class="games_foto {games_last}">
+                        <img style="behavior: url({url_tmpl_main}css/iepngfix.htc);" src="{url_tmpl_main}images/games/foto_empty.png" width="62" height="70" alt=""/>
+                    </div>
+                    <!-- end_row_4_no_user -->
+	              </div>
+	              <!-- end_row_4 -->
+                  <!-- end_full_rows -->
+	
+	          <div class="justify"></div>
+	          </div>
+	    </div>
+	    <!-- /green -->
+		
+	    <!-- orange -->
+	    <div class="games_ye">
+	
+	        <div class="green_balloon">
+	            {l_choose_a_game}
+	        </div>
+			<!-- begin_game -->
+	        <div class="games_bg {band_class}" id="game_{key}">
+	            <table>
+	                <col width="226px"/>
+	                <tr>
+	                    <td>
+                            <div class="games_check_pos">
+                                <a href="#" onclick="return select_game('{key}');"><img src="{url_tmpl_main}images/games/{img}" style="behavior: url({url_tmpl_main}css/iepngfix.htc);" width="213" height="129" alt=""/></a>
+                                <div class="games_check" style="display:none;"><img style="behavior: url({url_tmpl_main}css/iepngfix.htc);" src="{url_tmpl_main}images/games/check.png" width="70" height="69" alt=""/></div>
+                            </div>
+                        </td>
+	                    <td>
+	                        <h2>{name}</h2>
+	                        <p>{description}</p>
+	                    </td>
+	                </tr>
+	            </table>
+            </div>
+            <!-- end_game -->
+	        <div class="games_decor_bot">
+	            <a href="#" onclick="return send_invite();">{l_go}</a>
+	        </div>
+	
+	    </div>
+	    <!-- /orange -->
+	
+	    <div class="games_foot">
+	        <table>
+	            <tr>
+	                <td class="td_l">&nbsp;</td>
+	                <td class="td_c">&nbsp;</td>
+	                <td class="td_r">&nbsp;</td>
+	            </tr>
+	        </table>
+	    </div>
+	
+	</div>
+	
+	
+</div>
+<br>
+<div class="userinfo-links"></div>
+</div>
+</div>
+
+<!-- end_select -->
+{flash_game}
+<!--<script>document.getElementById('{game_id}').focus();</script>-->
+
+{footer}

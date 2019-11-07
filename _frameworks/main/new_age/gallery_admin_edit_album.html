@@ -1,0 +1,106 @@
+{header}
+{gallery_menu}
+<script language="javascript" type="text/javascript" src="_server/jquery/jquery.hint.js{cache_version_param}" ></script>
+<script language="javascript" type="text/javascript">
+$(document).ready(function () {
+$("[id ^= img_desc_]").hint({hint:'{l_description}'});
+});
+var l_del_image = "{l_del_image}";
+	
+function check_title(){
+var form = document.forms['albumedit'];
+	if(!validateRequiredField(form['albumtitle'], '{l_album_title}')){
+		return false;
+	}
+	return true;
+}	
+	
+</script>
+
+	<center><h1 style="font-size:20px; padding-top:30px; padding-bottom:30px;">{l_edit_album}</h1></center>
+	
+	<form name="albumedit" action="?action=save" method="post" style="margin-bottom:30px;" onsubmit="return check_title();">
+          <input type="hidden" name="album_id" value="{album_id}" />
+
+          <div class="box" style="padding: 15px;border-bottom-width: 1px; margin-bottom:5px;">
+            <h2>{l_editing} "{album_title}"</h2>
+			<br />
+            <table>
+              <tr><td valign="top" width="112">{l_album_title}: </td> <td><input type="text" name="albumtitle" style="width:535px;" value="{album_title}" onblur="if(trim(this.value) == '') { this.value = '{l_untitled}'}" onFocus="if(trim(this.value) == '{l_untitled}') { this.value = ''; }" /></td></tr>
+              <tr><td valign="top">{l_album_desc}: </td> <td style="padding-bottom: 1px;"><textarea name="albumdesc" style="width:535px; height: 40px;">{album_desc}</textarea></td></tr>
+              
+			  <!-- begin_images_select -->
+			  <tr><td valign="top">{l_thumb}: </td>
+                <td>
+                  <table><tr><td><select id="thumbselect" class="thumbselect" name="thumb" onchange="updateThumbPreview(this)" style="width:548px;">
+					<!-- begin_thumb -->
+                    <option class="thumboption" style="background-image: url({img_fullpath}); background-repeat: no-repeat;" value="{img_filename}" {selected}>{img_title} ({img_filename})</option>
+					<!-- end_thumb -->
+                  </select></td></tr></table>
+                  <script type="text/javascript">updateThumbPreview(document.getElementById('thumbselect'));</script>
+                </td>
+              </tr>
+			  <!-- end_images_select -->
+              <tr><td valign="top">{l_access}: </td>
+                <td>
+                  <table><tr><td><select  class="thumbselect" name="access"  style="width:548px;">
+					{set_access}
+                  </select></td></tr></table>
+                </td>
+              </tr>
+			  
+            </table>
+          </div>
+
+          <input type="hidden" name="totalimages" value="{num_images}" />
+
+          <p><input type="submit" value="{l_save}" class="button"/></p>
+          <br />
+
+<!-- begin_images -->		  
+          <div class="box" style="padding: 15px;border-bottom-width: 1px; margin-bottom:5px;">
+
+
+          <table id="edittable">
+            <!-- begin_image -->
+			<input type="hidden" name="{current_image}-id" value="{image_id}" />
+            <tr id="">
+              <td valign="top">
+                <img class=img_big_border id="thumb-{current_image}" src="{img_fullpath}" alt="{img_filename}"  />
+              </td>
+
+              <td>
+                <div  style="margin-left:10px; margin-top:5px;">
+                <input type="hidden" name="{current_image}-filename" value="{img_filename}" />
+                <textarea id="img_desc_{image_id}" name="{current_image}-desc" style="width:535px; height: 91px;">{img_desc}</textarea>
+                <br /><br />
+                </div>
+              </td>
+
+              <td style="padding-top:6px; padding-left:3px;">
+                <a href="javascript: confirmDeleteImage('?action=deleteimage&album_id={album_id}&image_id={image_id}');" title="{l_delete_the_image} {img_filename}"><img class="png" src="{url_tmpl_main}images/delete.png" style="border: 0px;" alt="x" /></a>
+              </td>
+
+
+            </tr>
+           <!-- end_image -->
+
+          </table>
+          </div>
+
+		
+          <p><input type="submit" value="{l_save}" class="button" /></p>
+<!-- end_images -->
+        
+
+		  <br />
+          <p><a href="gallery_admin_edit_album_selection.php">&laquo; {l_back}</a></p>
+        </form>
+
+
+	</div>
+	<div  class="userinfo-links-wide"></div>
+</div>
+</div>
+
+{footer}

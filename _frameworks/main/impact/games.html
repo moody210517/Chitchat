@@ -1,0 +1,15 @@
+{header}
+<div class="col_center">
+    <div class="head icon_head_games">{l_page_title}</div>
+    <div class="cont">
+        <!-- begin_game -->
+        <style>.bl_games .game.{game}{ background: url({url_tmpl_common}games/game_{game}_bg.jpg) 0 0 no-repeat;}</style>
+		<div class="bl_games {game}">
+            <img style="opacity:0;" onload="$(this).fadeTo(400,1)" src="{url_tmpl_common}games/game_{game}_bg.jpg" alt="" />
+			<a class="bl_link" href="{game_url}"><span class="bl_name"><span class="name">{game_title}</span></span></a>
+		</div>
+        <!-- end_game -->
+        <div class="cl"></div>
+    </div>
+</div>
+{footer}

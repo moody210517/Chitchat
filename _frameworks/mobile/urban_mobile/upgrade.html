@@ -1,0 +1,155 @@
+{header}
+<script>
+$(function(){
+    var $plansSp = $('.item', '#payment_plans_sp');
+    var fullPaysList=$("#pay_system").html();
+    $plansSp.on('click', function() {
+        $plansSp.removeClass('selected'); $(this).addClass('selected');
+        var item = $('#payment_plans_sp').find('.selected').data('item');
+//        $("#pay_system option").show();
+//        $("#pay_system .hide_for_"+item).hide();
+          oldSelect=$("#pay_system").val();
+          $("#pay_system").html(fullPaysList);
+          $("#pay_system .hide_for_"+item).remove();
+          $("#pay_system [value='"+oldSelect+"']").attr("selected", "selected");
+    })
+
+    $('.main').on('click', function(){
+        var tip=$('#tip_parent_show_error_red');
+        if(tip.is(':visible'))tip.stop().fadeOut()
+    });
+
+    var $frmUpgrade=$('#frm_upgrade'),
+        $btnPerformAction=$('#perform_action_upgrade');
+    $btnPerformAction.click(function(){
+        hideAlert();
+        $(this).html(getLoader());
+        var item = $('#payment_plans_sp').find('.selected').data('item');
+        $('input[name=item]:hidden', $frmUpgrade).val(item);
+        $frmUpgrade.ajaxSubmit({success:upgrade});
+        return false;
+    });
+
+    function upgrade(data){
+        var data=checkDataAjax(data);
+        if (data && data!='before_error'){
+            tools.redirect(data);
+        }else{
+            $btnPerformAction.html('{j_btn_perform_action}');
+            tools.showServerError();
+        }
+    }
+
+});
+
+$(document).ready(function(){
+    var fullPaysList=$("#pay_system").html();
+    var item = $('#payment_plans_sp').find('.selected').data('item');
+    $("#pay_system .hide_for_"+item).remove();
+});
+</script>
+<div class="wrapper">
+<div class="content">
+    <!-- begin_superpowers_info -->
+    <div class="head">
+        {l_why_you_need_super_powers}
+    </div>
+    <div class="bl_activate">
+        <!-- begin_feature_3d_city -->
+        <div class="item">
+            <div class="icon city">
+                <div class="title">{l_3dcity_a_wonderful_live_experience}</div>
+                <p>{l_chat_with_your_friends_and_meet_new_people_in_a_real_3d_environment}</p>
+            </div>
+        </div>
+        <!-- end_feature_3d_city -->
+        <!-- begin_feature_encounters -->
+        <!--script>$(function(){$('.wrapper > .content').css({minHeight:'775px'})})</script-->
+        <div class="item">
+            <div class="icon encounters">
+                <div class="title">{l_encounters}</div>
+                <p>{l_get_the_encounters_folder_to_find_out_who_said}</p>
+            </div>
+        </div>
+        <!-- end_feature_encounters -->
+        <!-- begin_feature_chat_with_popular_users -->
+        <div class="item">
+            <div class="icon chat">
+                <div class="title">{l_chat_with_popular_users}</div>
+                <p>{l_get_exclusive_access_to_the_most_popular_people}</p>
+            </div>
+        </div>
+        <!-- end_feature_chat_with_popular_users -->
+        <!-- begin_feature_invisible_mode -->
+        <div class="item">
+            <div class="icon invisible">
+                <div class="title">{l_invisible_mode}</div>
+                <p>{l_view_other_members_profiles_invisibly}</p>
+            </div>
+        </div>
+        <!-- end_feature_invisible_mode -->
+        <!-- begin_feature_special_delivery -->
+        <div class="item">
+            <div class="icon special">
+                <div class="title">{l_special_delivery}</div>
+                <p>{l_get_all_your_messages_read_first}</p>
+            </div>
+        </div>
+        <!-- end_feature_special_delivery -->
+        <!-- begin_feature_audiochat -->
+        <div class="item">
+            <div class="icon audiochat">
+                <div class="title">{l_audiochat}</div>
+                <p>{l_want_to_have_long_phone}</p>
+            </div>
+        </div>
+        <!-- end_feature_audiochat -->
+        <!-- begin_feature_videochat -->
+        <div class="item">
+            <div class="icon videochat">
+                <div class="title">{l_videochat}</div>
+                <p>{l_chat_with_your_friends_using_the_webcam}</p>
+            </div>
+        </div>
+        <!-- end_feature_videochat -->
+    </div>
+    <!-- end_superpowers_info -->
+    <div class="head" id="parent_show_error">
+        {payment_module_info_head}
+    </div>
+    <!-- begin_payment_module -->
+    <form id="frm_upgrade" action="{url_page}" method="post">
+    <input name="cmd" value="upgrade" type="hidden"/>
+    <input name="ajax" value="1" type="hidden"/>
+    <input name="item" value="" type="hidden"/>
+    <input name="service" value="{service}" type="hidden"/>
+    <input name="user_to" value="{user_to}" type="hidden"/>
+    <input name="request_uri" value="{request_uri}" type="hidden"/>
+    <div id="payment_plans_sp" class="bl_choose">
+        <!-- begin_payment_item_old -->
+        <div data-item="{item}" class="item {payment_selected}">
+            <div class="check "></div>
+            <div class="txt">{item_name}</div>
+        </div>
+        <!-- end_payment_item_old -->
+        <select name="system" id="pay_system">
+            <!-- begin_payment_system -->
+            <option value="{system}" class="{hide_class}">{system_name}</option>
+            <!-- end_payment_system -->
+        </select>
+    </div>
+    </form>
+    <!-- end_payment_module -->
+    <!-- begin_payment_module_info -->
+    <div class="bl_choose">
+        <p>{payment_module_info_text}</p>
+    </div>
+    <!-- end_payment_module_info -->
+<!-- begin_response_refill_credits -->
+<script>
+$(function(){
+  setTimeout(function(){showAlert('{j_your_balance_is_refilled}','.wrapper','blue')},400);
+})
+</script>
+<!-- end_response_refill_credits -->
+{footer}

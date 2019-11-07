@@ -1,0 +1,140 @@
+<!-- begin_footer_member -->
+</div>
+    <!-- /content -->
+</div>
+<!-- /wrapper -->
+<script>
+    clCommon.init();
+    try {initServer()}catch(e){};
+</script>
+</div>
+<!-- end_footer_member -->
+</div><!-- /main_wrap -->
+<div id="page_shadow_empty" class="page_shadow_empty"></div>
+<div id="layer_block_page" class="layer_block_page to_hide">
+    <div id="loader_layer_block_page" class="frame_loader_search_list">
+    <div class="css_loader loader_layer_block_page hidden">
+		<div class="spinner center">
+			<div class="spinner-blade"></div>
+			<div class="spinner-blade"></div>
+			<div class="spinner-blade"></div>
+            <div class="spinner-blade"></div>
+			<div class="spinner-blade"></div>
+			<div class="spinner-blade"></div>
+			<div class="spinner-blade"></div>
+			<div class="spinner-blade"></div>
+			<div class="spinner-blade"></div>
+			<div class="spinner-blade"></div>
+			<div class="spinner-blade"></div>
+			<div class="spinner-blade"></div>
+		</div>
+	</div>
+    </div>
+</div>
+<div id="update_server">
+    <script id="script_replace_footer">
+        setPageData('{js_title}','{js_description}','{js_keywords}');
+        commonInitPage();
+        var requestUserId = '{request_user_id_mobile}'*1;
+        var requestUserOnline = '{request_user_online}'*1;
+    </script>
+    <script class="default_values">
+        var urlFiles='{url_files}';
+        var urlTmplMobileImages='{url_tmpl_mobile}images/';
+        var appTitle = '{js_title}';
+        var imMessagesCount = '{number_messages}';
+        var isInAppPurchaseEnabled = '{is_in_app_purchase_enabled}'*1;
+        var appVibrationDuration = '{app_vibration_duration}'*1000;
+        {footer_custom_js}
+    </script>
+</div>
+<!-- begin_mobile_app -->
+<div class="page-preloader">
+    <div class="wrapper">
+        <div class="content">
+            <div class="block_map_index">
+                <div class="header-loader" style="opacity: 1; transition: 0.7s linear; -webkit-transition: 0.7s linear;">
+                    <img class="header-loader-logo" src="{header_url_logo_mobile}" alt="{title}" title="{title}">
+                </div>
+                <div class="css_loader loader_layer_block_page">
+                    <div class="spinner center">
+                        <div class="spinner-blade"></div>
+                        <div class="spinner-blade"></div>
+                        <div class="spinner-blade"></div>
+                        <div class="spinner-blade"></div>
+                        <div class="spinner-blade"></div>
+                        <div class="spinner-blade"></div>
+                        <div class="spinner-blade"></div>
+                        <div class="spinner-blade"></div>
+                        <div class="spinner-blade"></div>
+                        <div class="spinner-blade"></div>
+                        <div class="spinner-blade"></div>
+                        <div class="spinner-blade"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script class="always_run_after_loading">
+appCityLastMsgId = '{city_last_msg_id}';
+mobileAppLoaded = '{mobile_app_push_notifications}'*1;
+// global for access from all scripts
+adMobBannerConfig = false;
+
+$(function(){
+    document.addEventListener("deviceready", function(){
+        var adMobBannerConfig = false;
+        <!-- begin_banner_admob_top -->
+        adMobBannerConfig = {
+            id: '{banner_admob_top}',
+            bannerAtTop: true,
+        };
+        <!-- end_banner_admob_top -->
+        <!-- begin_banner_admob_bottom -->
+        adMobBannerConfig = {
+            id: '{banner_admob_bottom}',
+            bannerAtTop: false,
+        };
+        <!-- end_banner_admob_bottom -->
+        showAdmobBanner(adMobBannerConfig);
+    });
+});
+</script>
+<!-- end_mobile_app -->
+
+<!-- begin_mobile_app_android -->
+<script>
+    $(function(){
+        document.addEventListener("deviceready", function(){navigator.splashscreen.hide()}, false);
+    });
+</script>
+<script src="{url_tmpl_common_apps}android/cordova.js{cache_version_param}"></script>
+<script src="{url_tmpl_common_apps}android/js/core.js{cache_version_param}"></script>
+<!-- end_mobile_app_android -->
+
+<!-- begin_mobile_app_ios -->
+<script src="{url_tmpl_common_apps}ios/cordova.js{cache_version_param}"></script>
+<script src="{url_tmpl_common_apps}ios/js/core.js{cache_version_param}"></script>
+<!-- end_mobile_app_ios -->
+
+<!-- begin_gdpr_cookie_popup -->
+<script>
+    $(function(){
+        //document.cookie = 'cookiesAccepted=; path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        var options = {
+            title: '{j_cookies_accept_title}',
+            text: '{cookies_accept_text}',
+            acceptButtonText: '{j_cookies_accept_accept_button_text}',
+            theme: 'dark',
+            learnMore: false,
+            position: 'bottom'
+        };
+        $.acceptCookies(options);
+    })
+</script>
+<!-- end_gdpr_cookie_popup -->
+</body>
+</html>

@@ -1,0 +1,390 @@
+{header}
+<style>
+#main-out {_padding-bottom:40px;}
+</style>
+
+
+<div id="main2" >
+	<div id="main-in2" >
+		<div id="main-out2">
+<div class="wrapper-wide" >
+<div class="userinfo-c-wide">
+	<div class="userinfo smallphoto clearfix">
+
+		<div id="Reg">
+			<script Language="JavaScript" type="text/javascript">
+			  function onValidateJoinPage2Form() {
+			    var form = document.forms['JoinPage2Form'];
+			    if (!(validateRequiredSelect(form['state'],'{l_state}','-1'))) {
+			      return false;
+			    }
+			    if (!(validateRequiredSelect(form['city'],'{l_city}','-1'))) {
+			      return false;
+			    }
+                <!--begin_age_range_js-->
+                if (!(validateRequiredSelect(form['partner_age_from'],'{l_age_from}','00'))) {
+                    return false;
+                }
+                if (!(validateRequiredSelect(form['partner_age_to'], '{l_age_to}', '00'))) {
+                  return false;
+                }
+                <!--end_age_range_js-->
+                <!-- begin_const_js -->
+                if (!(validateRequiredSelect(form['{name}'],'{field_js}','00')))
+                {
+                  return false;
+                }
+                <!-- end_const_js -->
+                <!-- begin_int_1_js -->
+			    if (!(validateRequiredSelect(form['{name}'],'{field_js}','00')))
+			    {
+			      return false;
+			    }
+			    <!-- end_int_1_js -->
+
+                <!-- begin_int_2_js -->
+			    if (!(validateRequiredSelect(form['{name}'],'{field_js}','00')))
+			    {
+			      return false;
+			    }
+			    <!-- end_int_2_js -->
+
+                <!-- begin_int_3_js -->
+			    if (!(validateRequiredSelect(form['{name}'],'{field_js}','00')))
+			    {
+			      return false;
+			    }
+			    <!-- end_int_3_js -->
+				<!-- begin_text_js -->
+			    if (!(validateRequiredField(form['{name}'], '{field_js}', '')))
+			    {
+			      return false;
+			    }
+			    if (!(validateMaxLength(form['{name}'], '{field_js}','{maxlen}')))
+			    {
+			      return false;
+			    }
+			    if (!(validateMaxLength(form['{name}'], '{field_js}','{maxlen}')))
+			    {
+			      return false;
+			    }
+			    <!-- end_text_js -->
+
+				<!-- begin_textarea_js -->
+			    if (!(validateRequiredField(form['{name}'], '{field_js}', '')))
+			    {
+			      return false;
+			    }
+			    if (!(validateMaxLength(form['{name}'], '{field_js}','{maxlen}')))
+			    {
+			      return false;
+			    }
+			    if (!(validateMaxLength(form['{name}'], '{field_js}','{maxlen}')))
+			    {
+			      return false;
+			    }
+			    <!-- end_textarea_js -->
+
+			    return true;
+			  }
+			  function validateJoinPage2Form() {
+			     if (typeof beforeJoinPage2FormValidation != 'undefined') {
+			       beforeJoinPage2FormValidation();
+			    }
+			    var validated = onValidateJoinPage2Form();
+			    if (validated && (typeof uponSuccessfulJoinPage2FormValidation != 'undefined')) {
+			      validated = uponSuccessfulJoinPage2FormValidation();
+			    }
+			    else if (!validated && (typeof uponUnsuccessfulJoinPage2FormValidation != 'undefined')) {
+			      uponUnsuccessfulJoinPage2FormValidation();
+			    }
+			    return validated;
+			  }
+			  function submitJoinPage2Form() {
+			   if (validateJoinPage2Form()) document.JoinPage2Form.submit();
+			    }
+			</script>
+			<form  name="JoinPage2Form" method="POST" action="{url_main}join2.php?cmd=action" onSubmit="return validateJoinPage2Form();" style="padding: 0px; margin: 0px;">
+			<div style="padding-top: 20px;">
+
+
+
+			<h2>{join_message}</h2>
+
+					<div  class="header_big" style="padding-bottom:20px; padding-left:74px;">{l_step_2}</div>
+
+                    <div class="toper" >
+						<table width="590px">
+							<tr>
+								<td width="14"><img src="{url_tmpl_main}images/join-top_left.png" class="png"/></td>
+								<td width="1"><div  class="header_small">{l_where_live}</div></td>
+								<td width="561"><i>&nbsp;</i></td>
+								<td width="14"><img src="{url_tmpl_main}images/join-top_right.png"class="png" /></td>
+							</tr>
+						</table>
+					</div>
+                    <div class="join_e">
+                    <div>
+
+						<div>
+							<table>
+                                <tr>
+                                    <td align="right" style="padding-right: 10px;" width="140">
+                                        <b><label for="state">{l_state}:</label></b>
+                                    </td>
+                                    <td height="22">
+                                        <select name="state" tabindex="1" id="state" style="width:340px;" onchange="show_load_animation(2); xajax_cities(state.value, 0)">
+                                            <option value="-1">- {l_state} -</option>
+                                            {state_options}
+                                        </select>
+                                    </td>
+								</tr>
+								<tr>
+                                     <td align="right" style="padding-right: 10px;" >
+                                        <b><label for="city">{l_city}:</label></b>
+                                    </td>
+                                    <td height="22">
+                                        <select name="city" id="city" tabindex="2" style="width:340px;" onchange="{city_change}">
+                                            <option selected value="-1">- {l_city} -</option>
+                                            {city_options}
+                                        </select>&nbsp;<img id="load_animation2" style="visibility:hidden;" src="{url_tmpl_main}images/load_animation.gif">
+                                    </td>
+                                </tr>
+                            </table>
+
+							<!-- begin_zip_code -->
+							<div class="body_text"><b><label for="zip">{l_zip_code}</label></b>
+							<input type="text" name="zip_code" id="zip_code" onkeyup="xajax_GetZipCode(this.value,document.JoinPage2Form.state.value)" style="width: 40px; margin-left: 0px;"></div>
+							<!-- end_zip_code -->
+						</div>
+					</div>
+
+</div>
+<i class="topir"></i>
+<!-- begin_relation_age_fields -->
+<div class="toper"><table width="590"><tr><td width="14"><img src="{url_tmpl_main}images/join-top_left.png" class="png" /></td><td width="1"><div class="header_small">{l_what_kind}</div></td><td width="561"><i>&nbsp;</i></td><td width="14"><img src="{url_tmpl_main}images/join-top_right.png" class="png" /></td></tr></table></div>
+
+<div class="join_e">
+<div>
+
+						<div>
+                          <!--begin_partner_on-->
+                          <!--begin_age_range-->
+                          <div class="body_text iop">
+                            <table>
+                                <tr>
+                                    <td height="22">
+                                        <strong>{l_age_from_text}&nbsp;</strong>
+                                    </td>
+                                    <td>
+                                        <select name="partner_age_from" tabindex="3" style="width:108px;">
+                                            {p_age_from_options}
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <strong>&nbsp;{l_age_and}&nbsp;</strong>
+                                    </td>
+                                    <td>
+                                        <select name="partner_age_to" tabindex="4" style="width:108px;">
+                                            {p_age_to_options}
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                                </div>
+                          <br />
+                          <!--end_age_range-->
+                          <!-- end_partner_on -->
+                          <!--begin_const-->
+							<div class="body_text"><table><tr><td width="140" align="right" style="padding-right: 10px;"><strong><label for="REL_TYPE">{l_friendship_type}&nbsp;</label></strong></td>
+								<td height="22"><select name="relation" tabindex="6" style="width:340px;">
+									<option selected value="00">{l_please_choose}</option>
+									{options}
+								</select></td></tr></table>
+							</div>
+                          <!--end_const-->
+						</div>
+					</div>
+					</div>
+<i class="topir"></i>
+<!-- end_relation_age_fields -->
+<!-- begin_partner_fields -->
+<div class="toper"><table width="590"><tr><td width="14"><img src="{url_tmpl_main}images/join-top_left.png" class="png" /></td><td width="1"><div  class="header_small">{l_what_unique}</div></td><td width="561"><i>&nbsp;</i></td><td width="14"><img src="{url_tmpl_main}images/join-top_right.png" class="png" /></td></tr></table></div>
+<div class="join_e">
+                    <div>
+
+						<div >
+                            <!-- begin_join_fields_1 -->
+							<!-- begin_int_1 -->
+							<div class="body_text" style="padding-left: 0px;">
+								<table width="100%"><tr>
+								<td width="140" align="right" style="padding-right: 10px;">
+								<b><label for="{name}">{field}</label></b>
+								</td><td align="left" height="22">
+                                    <select name="{name}" tabindex="20" style="width:340px;">
+                                        <option selected value="00">{l_please_choose}</option>
+                                        {options}
+                                    </select>
+								</td>
+								</tr></table>
+							</div>
+							<!-- end_int_1 -->
+                            <!-- end_join_fields_1 -->
+                            <!-- begin_join_fields_2 -->
+							<!-- begin_int_2 -->
+							<div class="body_text" style="padding-left: 0px;">
+								<table width="100%"><tr>
+								<td width="140" align="right" style="padding-right: 10px;">
+								<b><label for="{name}">{field}</label></b>
+								</td><td align="left" height="22">
+                                    <select name="{name}" tabindex="20" style="width:340px;">
+                                        <option selected value="00">{l_please_choose}</option>
+                                        {options}
+                                    </select>
+								</td>
+								</tr></table>
+							</div>
+							<!-- end_int_2 -->
+                            <!-- end_join_fields_2 -->
+                            <!-- begin_join_fields_3 -->
+							<!-- begin_int_3 -->
+							<div class="body_text" style="padding-left: 0px;">
+								<table width="100%"><tr>
+								<td width="140" align="right" style="padding-right: 10px;">
+								<b><label for="{name}">{field}</label></b>
+								</td><td align="left" height="22">
+                                    <select name="{name}" tabindex="20" style="width:340px;">
+                                        <option selected value="00">{l_please_choose}</option>
+                                        {options}
+                                    </select>
+								</td>
+								</tr></table>
+							</div>
+							<!-- end_int_3 -->
+                            <!-- end_join_fields_3 -->
+
+						</div>
+					</div>
+                    </div>
+<i class="topir"></i>
+<!-- end_partner_fields -->
+
+<!-- begin_basic_fields_text -->
+<div class="toper"><table width="590"><tr><td width="14"><img src="{url_tmpl_main}images/join-top_left.png" class="png"  /></td><td width="1"><div  class="header_small">{l_what_know}</div></td><td width="561"><i>&nbsp;</i></td><td width="14"><img src="{url_tmpl_main}images/join-top_right.png" class="png" /></td></tr></table></div>
+<div class="join_e">
+					<div align="left">
+
+						<table cellpadding=0 cellspacing=0 border=0>
+                        <!-- begin_fields_text -->
+						<!-- begin_text -->
+						<tr>
+							<td></td>
+							<td class="body_little" style="text-align:right;">(<b><span id="{name}Counter">0</span></b> / {maxlen} {l_characters_used})</td>
+						</tr><tr>
+							<td class="body_text" style="padding-bottom: 6px;"><b><label for="{name}">{field}&nbsp;</label></b></td>
+							<td style="padding-bottom: 6px;">
+
+
+								<script type="text/javascript">
+									function init{name}Counter() {
+										characterCounter('{name}', {maxlen}, '{name}Counter');
+									}
+									addOnload(init{name}Counter);
+									function clear{name}({name}Field)
+									{
+										if ({name}Field.value == "") {name}Field.value = '';
+									}
+								</script>
+								<input type="text" name="{name}" id="{name}" value="{value}" maxlength="{maxlen}" style="width:410px;" tabindex="23" onFocus="clear{name}(this); characterCounter('{name}', 100, '{name}Counter');" onKeyUp="characterCounter('{name}', 100, '{name}Counter');">
+
+							</td>
+
+						</tr>
+						<!-- end_text -->
+
+						<!-- begin_textarea -->
+						<tr>
+							<td></td>
+							<td class="body_little" style="text-align:right;">(<b><span id="{name}Counter">0</span></b> / {maxlen} {l_characters_used})</td>
+						</tr>
+						<tr>
+							<td valign=top class="body_text"><b><label for="{name}">{field}&nbsp;</label></b></td>
+							<td>
+
+								<script type="text/javascript">
+									function init{name}Counter() {
+										characterCounter('{name}', {maxlen}, '{name}Counter');
+									}
+									addOnload(init{name}Counter);
+									function clear{name}({name}Field) {
+										if ({name}Field.value == "") {name}Field.value = '';
+									}
+								</script>
+								<textarea  name="{name}" id="{name}" style="width: 420px; height: 81px;" tabindex="24" onFocus="clear{name}(this); characterCounter('{name}', {maxlen}, '{name}Counter');" onKeyUp="characterCounter('{name}', {maxlen}, '{name}Counter');">{value}</textarea>
+							</td>
+						</tr>
+						<!-- end_textarea -->
+                        <!-- end_fields_text -->
+						</table>
+					</div>
+                    </div>
+<i class="topir"></i>
+
+					<div>
+						<table cellpadding=0 cellspacing=0 border=0><tr>
+							<!-- begin_essays1_text -->
+                            <td width=50% class="body_tiny" style="padding: 12px; padding-left: 74px; line-height: 1.8;">
+								<div style="width:275px;">{l_essays_are_audited}</div>
+								<div style="padding-top:10px; width:275px;">{l_approval_24_hours}</div>
+							</td>
+                            <!-- end_essays1_text -->
+							<td width=50% valign=top style="padding: 12px; padding-left: 18px;">
+								<i class="topers"></i>
+                                <div class="joins_e">
+                                <table cellpadding=0 cellspacing=0 border=0><tr>
+									<td colspan=4 class="body_tiny" style="line-height:1.8; padding-bottom:10px;">{l_do_not_include}</td>
+								</tr><tr>
+									<td width=12><img src="{url_tmpl_main}images/bullet_pri.gif" style="position:relative; top:5px;" /></td>
+									<td class="body_tiny" width=95>{l_email_adress}</td>
+									<td width=12><img src="{url_tmpl_main}images/bullet_pri.gif" style="position:relative; top:5px;" /></td>
+									<td class="body_tiny" width=95>{l_coarse_language}</td>
+								</tr><tr>
+									<td width=12><img src="{url_tmpl_main}images/bullet_pri.gif" style="position:relative; top:5px;" /></td>
+									<td class="body_tiny" width=95>{l_im_handles}</td>
+									<td width=12><img src="{url_tmpl_main}images/bullet_pri.gif" style="position:relative; top:5px;" /></td>
+									<td class="body_tiny" width=95>{l_urls}</td>
+								</tr><tr>
+									<td width=12><img src="{url_tmpl_main}images/bullet_pri.gif" style="position:relative; top:5px;" /></td>
+									<td class="body_tiny" width=95>{l_phones}</td>
+									<td width=12><img src="{url_tmpl_main}images/bullet_pri.gif" style="position:relative; top:5px;" /></td>
+									<td class="body_tiny" width=95>{l_adress}</td>
+								</tr></table>
+                                </div>
+                                <i class="topirs"></i>
+							</td>
+						</tr></table>
+
+					</div>
+                    <!-- end_basic_fields_text -->
+				</div>
+
+				<div align="right"><input type="button" value="{l_to_step_3}" onClick="submitJoinPage2Form();" class="button" style=" width:120px; padding-left: 5px; padding-right: 5px; margin-right:53px; cursor: pointer; cursor: hand;" tabindex="26" title="{l_to_step_3}" onMouseOver="window.status='{l_to_step_3}'; return true;" onMouseOut="window.status=''; return true;"></div>
+
+			</div>
+
+		<br/>
+
+	<div align="right">
+	</div>
+</form>
+
+
+
+</div></div>
+<div class="userinfo-links-wide" style="clear:both; width:750px; top:0;"></div>
+</div>
+</div>
+<br>
+</div></div>
+
+{footer}

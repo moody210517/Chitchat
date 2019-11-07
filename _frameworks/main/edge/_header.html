@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html style="background-color: {html_background_color}!important;"><head>
+    <script>
+    if(/IOSWebview/i.test(navigator.userAgent))document.documentElement.classList.add('ios_app');
+    </script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{title}</title>
+    <meta name="description" content="{description}">
+    <meta name="keywords" content="{keywords}">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <!-- begin_meta_viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no<!-- begin_meta_viewport_device_dpi -->, target-densitydpi=device-dpi<!-- end_meta_viewport_device_dpi -->" />
+    <!-- end_meta_viewport -->
+    <!-- begin_city_set_viewport_js -->
+    <style id="style_mobile_city"></style>
+    <script>
+        var dpr=window.devicePixelRatio;
+        if(dpr){
+            document.write('<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale='+(1/dpr)+', target-densitydpi=device-dpi">');
+        }else{
+            document.write('<meta name="viewport" content="user-scalable=no, target-densitydpi=device-dpi">');
+        }
+    </script>
+    <!-- end_city_set_viewport_js -->
+
+    <base href="{base_url_main_head}">
+    <meta name="theme-color" content="{meta_theme_color}">
+
+    <!-- begin_pwa_ios_old -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="{title_orig}">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <script type="text/javascript">
+        (function(document,navigator,standalone) {
+            if ((standalone in navigator) && navigator[standalone]) {
+                /* Load page */
+                var location = document.location,
+                    startUrl = 'index.php?mobile_app_type=pwa',
+                    currentUrl = localStorage['navigate_current_url'],
+                    lastUrl = localStorage['navigate_last_url'] || startUrl;
+                    //alert(lastUrl);
+
+                if(currentUrl){
+                    localStorage.removeItem('navigate_current_url');
+                } else {
+                    //alert(lastUrl + '/' + location.href);
+                    localStorage['navigate_current_url'] = lastUrl;
+                    //if(lastUrl != location.href){
+                        if(lastUrl.indexOf('?') === -1) {
+                            lastUrl = lastUrl + '?';
+                        } else {
+                            lastUrl = lastUrl + '&';
+                        }
+                        lastUrl += 'mobile_app_type=pwa';
+                        location.href = lastUrl;
+                        return;
+                    //}
+                }
+
+                window.addEventListener('pagehide', function (e) {
+                    localStorage['navigate_current_url'] = location.href;
+                })
+                localStorage['navigate_last_url'] = location.href;
+                /* Load page */
+
+                // prevents links from apps from oppening in mobile safari
+
+                /*
+                if(target.tagName === 'A') {
+                    if('href' in target && ( target.href.indexOf('http') || ~target.href.indexOf(location.host) ) ) {
+                        e.preventDefault();
+                        if(curnode.hasAttribute('onclick') || curnode.onclick) {
+                            return;
+                        }
+                        location.href = target.href;
+                    }
+                }*/
+                var curnode, stop=/^(a|html)$/i;
+                document.addEventListener('click', function(e) {
+                    curnode=e.target;
+                    while (!(stop).test(curnode.nodeName)) {
+                        curnode=curnode.parentNode;
+                    }
+                    // Condidions to do this only on links to your own app
+                    // if you want all links, use if('href' in curnode) instead.
+                    if('href' in curnode && $(curnode).attr('target') != '_blank' && ( curnode.href.indexOf('http') || ~curnode.href.indexOf(location.host) ) ) {
+                        e.preventDefault();
+                        if(curnode.hasAttribute('onclick') || curnode.onclick) {
+                            return;
+                        }
+                        location.href = curnode.href;
+                    }
+                },false);
+            }
+        })(document,window.navigator,'standalone');
+    </script>
+    <!-- end_pwa_ios_old -->
+
+    <link rel="apple-touch-icon" href="{icon_pwa_url}">
+    <link rel="manifest" href="{url_main}manifest.php{cache_version_param}">
+
+    {to_head_meta}
+    {header_favicon}
+
+    <script language="javascript" type="text/javascript">
+        var isAppAndroid = '{is_app_android}'*1,
+            isIframeDemo = false;
+        <!-- begin_main_page_video_background_head_js -->
+		var bgLast = '';
+        if(name) {
+            bgLast = name;
+            var bgLastParts = bgLast.split(',');
+            var bgLastUrl = bgLastParts[0];
+            if({main_page_video_background_head_js_is_index_page}) {
+                document.documentElement.style.background='url('+bgLastUrl+') center top / cover transparent';
+            }
+         }
+        <!-- end_main_page_video_background_head_js -->
+        <!-- begin_check_demo_iframe -->
+        if (parent.window.frames['iframe_demo']) {
+            document.documentElement.classList.add('iframe_demo');
+			isIframeDemo = true;
+            var urlDemo=window.location.href,
+                urlPageDemo='{url_page}';
+            if(urlPageDemo=='city.php' && urlDemo.indexOf('view=mobile') === -1){
+                if(urlDemo.indexOf('?') === -1) {
+                    urlDemo += '?';
+                } else {
+                    urlDemo += '&';
+                }
+                urlDemo += 'view=mobile_demo';
+                window.location.href = urlDemo;
+                console.log('Redirect mobile CITY', urlDemo);
+            }
+        }
+        <!-- end_check_demo_iframe -->
+    </script>
+
+    <script type="text/javascript" src="{url_main}_server/js/webfontloader.js{cache_version_param}"></script>
+    <script>WebFont.load({custom: {families: ['FontAwesome', 'Glyphicons Halflings']},timeout:1000});</script>
+    <link rel="stylesheet" type="text/css" href="{url_tmpl_main}css/font-awesome.min.css{cache_version_param}">
+
+    <script type="text/javascript" src="{url_tmpl_main}js/device.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_main}_server/jquery/jquery-1.11.2.min.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_main}_server/jquery/jquery-ui-1.11.4.min.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_main}_server/jquery/jquery.cookie.js{cache_version_param}"></script>
+	<script type="text/javascript" src="{url_tmpl_main}js/selectbox.js{cache_version_param}"></script>
+	<script type="text/javascript" src="{url_main}_server/jquery/jquery.formstyler.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_tmpl_main}js/bootstrap.min.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_tmpl_main}js/bootstrap-select.js{cache_version_param}"></script>
+
+    <script type="text/javascript" src="{url_tmpl_main}js/bootstrap-slider.js{cache_version_param}"></script>
+
+    <script type="text/javascript" src="{url_main}_server/jquery/jcarousel/modernizr.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_tmpl_main}js/common.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_main}_server/lib.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_tmpl_main}js/script.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_main}_server/server_edge.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_main}_server/js/sound/soundmanager2-nodebug-jsmin-20170601.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_main}_server/jquery/jquery.winFocus.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_tmpl_main}js/jquery.scrollTo.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_main}_server/js/requestAnimationFrame.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_main}_server/js/webnotification.js{cache_version_param}"></script>
+	<link rel="stylesheet" type="text/css" href="{url_tmpl_main}css/selectbox.css{cache_version_param}" />
+    <link rel="stylesheet" type="text/css" href="{url_main}_frameworks/common/css/jquery.formstyler.css{cache_version_param}" />
+	
+    <link rel="stylesheet" type="text/css" href="{url_tmpl_main}css/bootstrap.css{cache_version_param}">
+    <link rel="stylesheet" type="text/css" href="{url_tmpl_main}css/bootstrap-select.css{cache_version_param}">
+    <link rel="stylesheet" type="text/css" href="{url_tmpl_main}css/bootstrap-slider.css{cache_version_param}">
+
+    <link rel="stylesheet" type="text/css" href="{url_main}_server/videojs/video-js.css{cache_version_param}">
+    <link rel="stylesheet" type="text/css" href="{url_tmpl_main}css/city_mobile_elements.css{cache_version_param}">
+    <link rel="stylesheet" type="text/css" href="{url_tmpl_main}css/style.css{cache_version_param}"/>
+
+    <!-- begin_app_android_style -->
+    <link rel="stylesheet" type="text/css" href="{url_tmpl_main}css/app_android.css{cache_version_param}"/>
+    <!-- end_app_android_style -->
+
+
+    <!-- begin_app_ios_style -->
+	<style type="text/css">
+	a {-webkit-touch-callout: none !important;}
+	</style>
+    <!-- end_app_ios_style -->
+
+    <link rel="stylesheet" type="text/css" href="{url_tmpl_main}css/cookiepopup.css{cache_version_param}"/>
+    <script type="text/javascript" src="{url_tmpl_main}js/cookiepopup.js{cache_version_param}"></script>
+
+    <link rel="stylesheet" type="text/css" href="{url_tmpl_main}css/tinyscrollbar.css{cache_version_param}"/>
+    <script type="text/javascript" src="{url_main}_server/jquery/jquery.tinyscrollbar.js{cache_version_param}"></script>
+
+    <!-- begin_header_visitor_js -->
+    <script type="text/javascript" src="{url_tmpl_main}js/script_visitor.js{cache_version_param}"></script>
+    <!-- end_header_visitor_js -->
+
+    <!-- begin_header_member_js -->
+    <link rel="stylesheet" type="text/css" href="{url_tmpl_main}css/chat.css{cache_version_param}">
+    <link rel="stylesheet" type="text/css" href="{url_tmpl_main}css/dropzone.css{cache_version_param}">
+    <link rel="stylesheet" type="text/css" href="{url_tmpl_main}css/videojs.css{cache_version_param}">
+    <script type="text/javascript" src="{url_main}_server/videojs/ie8/videojs-ie8.min.js{cache_version_param}"></script>
+
+    <script type="text/javascript" src="{url_tmpl_main}js/counters.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_tmpl_main}js/script_member.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_tmpl_main}js/mason.js{cache_version_param}"></script>
+	
+    <script type="text/javascript" src="{url_tmpl_main}js/profile.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_tmpl_main}js/profile_photo.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_tmpl_main}js/friends.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_tmpl_main}js/events.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_tmpl_main}js/chat.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_tmpl_main}js/messages.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_tmpl_main}js/blogs.js{cache_version_param}"></script>
+    <!--<script type="text/javascript" src="{url_tmpl_main}js/groups.js{cache_version_param}"></script>-->
+    <script type="text/javascript" src="{url_tmpl_main}js/dropzone.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_tmpl_main}js/city_street_chat.js{cache_version_param}"></script>
+	<script type='text/javascript' src='{url_tmpl_main}js/jquery.popup.js{cache_version_param}'></script>
+    <script type="text/javascript" src="{url_main}_server/jquery/jquery.autosize.js{cache_version_param}"></script>
+
+    <script type="text/javascript" src="{url_main}_server/jquery/jquery.touchSwipe.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_main}_server/js/imagesloaded.pkgd.min.js{cache_version_param}"></script>
+
+    <script language="javascript" type="text/javascript">
+        var clProfile = new CProfile('{user_id}', '{header_uid}');
+        clProfile.setStatusOnline('{real_status_online}', '{user_status_online}');
+        clProfile.setData({
+            isBlocked : '{is_profile_blocked}'*1
+        })
+        var clProfilePhoto = new CProfilePhoto('{user_id}', '{header_param_uid}');
+        clProfilePhoto.setData({
+            guid : '{user_id}'*1,
+            maxphotoFileSize : '{photo_file_size_limit}'*1,
+            maxphotoFileSizeLimit : '{max_photo_file_size_limit}',
+            maxvideoSize : '{video_file_size_limit}'*1,
+            maxvideoFileSizeLimit : '{max_video_file_size_limit}',
+            autoPlayVideo : '{auto_play_video}',
+            numberCommentsFrmShow : '{number_comments_frm_show}'*1,
+            galleryImageHeightMobile : '{gallery_image_height_mobile}'*1,
+            limitLoadMediaData : '{gallery_preload_data_number}'*1,
+            cropMinWidth : '{crop_min_width}'*1,
+            cropMinHeight : '{crop_min_height}'*1
+        });
+
+        var clFriends = new CFriends('{user_id}');
+        var clEvents = new CEvents('{user_id}');
+        var clCounters = new CCounters();
+        var clMessages = new CMessages('{user_id}', '{user_photo_m}', '{im_history_messages}');
+        var clBlogs = new CBlogs();
+        var clVideoChat = new CChat('video');
+        clVideoChat.langParts = {
+            'chat_from_user' : '{video_chat_from_user}'
+        };
+        var clAudioChat = new CChat('audio');
+        clAudioChat.langParts = {
+           'chat_from_user' : '{audio_chat_from_user}'
+        };
+        var clCityStreetChat = new CCityStreetChat();
+        clCityStreetChat.langParts = {
+            'chat_from_user' : '{street_chat_from_user}'
+        };
+        /*var clGruops = new CGroups('{user_id}');*/
+    </script>
+    <!-- end_header_member_js -->
+
+    <script type="text/javascript" src="{url_tmpl_main}js/media_tools.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_tmpl_main}js/pages.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_tmpl_main}js/search.js{cache_version_param}"></script>
+    <script language="javascript" type="text/javascript">
+        var clMediaTools = new CMediaTools();
+        var clPages = new CPages('{user_id}');
+        var clSearch = new CSearch();
+    </script>
+
+    <script>
+        var user_profile_bg_video = {user_profile_bg_video};
+        var is_bg_video_all_page = {is_bg_video_all_page};
+
+        <!-- begin_main_page_video_background_js -->
+        var profile_bg_video_play_disabled = {main_page_video_play_disabled};
+        var profile_bg_video_quality = 'default';
+        var isBgVideoMute = {main_page_video_mute};
+        var bgVideoVolume = {main_page_video_volume};
+        var bgVideoOnce = {main_page_video_show_video_once};
+        var bgLast = [0, 0, 0];
+        <!-- end_main_page_video_background_js -->
+    </script>
+
+
+    <!-- FOR IE9 below -->
+    <!--[if lt IE 9]>
+    <script src="{url_tmpl_main}js/respond.min.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript" src="{url_main}js.php{cache_version_param}&get_lang=1&file=set_language.js&set_template_runtime={tmpl_loaded}&set_language_runtime={lang_loaded}"></script>
+    <script type="text/javascript" src="{url_main}js.php{cache_version_param}&get_lang=1&file=set_language.js&set_template_runtime={tmpl_loaded}&set_language_runtime={lang_loaded}&page={current_page}"></script>
+
+    <style type="text/css">
+        @font-face{
+            font-family:'FontAwesome';
+            src:url('{url_tmpl_main}fonts/awesome/fontawesome-webfont.eot?v=4.7.0');
+            src:url('{url_tmpl_main}fonts/awesome/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'),
+                url('{url_tmpl_main}fonts/awesome/fontawesome-webfont.woff2?v=4.7.0') format('woff2'),
+                url('{url_tmpl_main}fonts/awesome/fontawesome-webfont.woff?v=4.7.0') format('woff'),
+                url('{url_tmpl_main}fonts/awesome/fontawesome-webfont.ttf?v=4.7.0') format('truetype'),
+                url('{url_tmpl_main}fonts/awesome/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
+            font-weight:normal;
+            font-style:normal
+        }
+        @font-face {
+            font-family: 'Glyphicons Halflings';
+            src: url('{url_tmpl_main}fonts/bootstrap/glyphicons-halflings-regular.eot');
+            src: url('{url_tmpl_main}fonts/bootstrap/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+                 url('{url_tmpl_main}fonts/bootstrap/glyphicons-halflings-regular.woff2') format('woff2'),
+                 url('{url_tmpl_main}fonts/bootstrap/glyphicons-halflings-regular.woff') format('woff'),
+                 url('{url_tmpl_main}fonts/bootstrap/glyphicons-halflings-regular.ttf') format('truetype'),
+                 url('{url_tmpl_main}fonts/bootstrap/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+        }
+    </style>
+
+    <!-- begin_color_scheme_general -->
+    <style type="text/css">
+        .modal-dialog .modal-content{background-color: {modal_dialog_background_color};}
+        .modal-dialog .modal-content .modal-header h3, .modal-dialog .modal-content .modal-body{color: {modal_dialog_text_color};}
+
+        .pagination a:before{background-color: {pagination_background_color};}
+        .pagination a{color: {pagination_text_color};}
+        .pagination a:hover,
+        .pagination .pagination-active,
+        .pagination a .pagination-active{color: {pagination_text_color_hover};}
+        .mobile .pagination a:hover{color: {pagination_text_color};}
+        .mobile .pagination a.pagination-active:hover,
+        .mobile .pagination a:hover .pagination-active{color: {pagination_text_color_hover};}
+        .pagination a.disabled:hover, .pagination a.disabled {color: {pagination_text_color_disabled};}
+
+        .btn-success{background-color: {btn_success_background_color}; color: {btn_success_text_color}; border-color: {btn_success_border_color};}
+        .btn-success:hover, .btn-success:focus, .btn-success:active{background-color: {btn_success_background_color_hover}!important; color: {btn_success_text_color_hover}; border-color: {btn_success_border_color_hover}!important;}
+        .btn-success:disabled, .btn-success:disabled:hover, .btn-success:disabled:focus,
+        .btn-success:disabled:active{background-color: {btn_success_background_color_disabled}!important; color: {btn_success_text_color_disabled}!important; border-color: {btn_success_border_color_disabled}!important;}
+
+        .btn-info, .btn-primary{background-color: {btn_primary_background_color}; color: {btn_primary_text_color}!important; border-color: {btn_primary_border_color};}
+        .btn-info:hover, .btn-info:focus, .btn-info:active,
+        .btn-primary:hover, .btn-primary:focus, .btn-primary:active{background-color: {btn_primary_background_color_hover}!important; color: {btn_primary_text_color_hover}!important; border-color: {btn_primary_border_color_hover}!important;}
+        .btn-info:disabled, .btn-info:disabled:hover, .btn-info:disabled:focus, .btn-info:disabled:active,
+        .btn-primary:disabled, .btn-primary:disabled:hover, .btn-primary:disabled:focus, .btn-primary:disabled:active{background-color: {btn_primary_background_color_disabled}!important; color: {btn_primary_text_color_disabled}!important; border-color: {btn_primary_border_color_disabled}!important;}
+
+        .btn-secondary{background-color: {btn_secondary_background_color}; color: {btn_secondary_text_color}; border-color: {btn_secondary_border_color};}
+        .btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active{background-color: {btn_secondary_background_color_hover}!important; color: {btn_secondary_text_color_hover}; border-color: {btn_secondary_border_color_hover}!important;}
+        .btn-secondary:disabled, .btn-secondary:disabled:hover, .btn-secondary:disabled:focus,
+        .btn-secondary:disabled:active {background-color: {btn_secondary_background_color_disabled}!important; color: {btn_secondary_text_color_disabled}!important; border-color: {btn_secondary_border_color_disabled}!important;}
+
+        .bl_ads{background-color: {banner_background_color}; border-color: {banner_border_color};}
+        .link_show_banner{color: {banner_btn_remove_color};}
+        .link_show_banner:hover{color: {banner_btn_remove_color_hover};}
+
+        .online_triangle:after{border-top-color: {color_online_user};}
+        .bl_grid_inner_photo_center .user_pic_frame .status.online{background-color:{color_1};}
+        .header .fa-star.active{color: {color_2};}
+        .chat .sidepanel .contacts ul li.contact.online .wrap span.contact-status{background: {color_1};}
+        .wall_upload_image.to_delete i{color: {color_2};}
+
+        body.city_body, .city_body .page_content, .bl_3dchat, .bs_main, .bl_3dchat #myIFrame,
+        #loading_screen, .mobile_keyboard, .bs_main, .mobile_keyboard .mobile_keyboard_iframe .frame,
+        .app_preloader {background-color: {3dcity_background_color}!important;}
+
+        .cookie-popup{background-color: {cookie_popup_background_color}; color: {cookie_popup_text_color};}
+
+        #footer_bl{background: {footer_background_color};}
+        .footer_title_orig{color: {footer_title_orig_color};}
+        .cham-footer-style-3 h3{color: {footer_title_h3_color}!important;}
+        .cham-footer-style-3 a{color: {footer_menu_color};}
+        .cham-footer-style-3 a:hover{color: {footer_menu_color_hover};}
+        .cham-footer-style-3 p{color: {footer_text_color};}
+        .cham-footer-style-3 .btn {
+            border-color: {footer_btn_border_color};
+            color: {footer_btn_text_color};
+            background: {footer_btn_background_color};
+        }
+        .cham-footer-style-3 .btn:hover {
+            border-color: {footer_btn_border_color_hover}!important;
+            color: {footer_btn_text_color_hover};
+            background: {footer_btn_background_color_hover}!important;
+        }
+    </style>
+    <!-- end_color_scheme_general -->
+    <!-- begin_color_scheme_visitor -->
+    <style type="text/css">
+    .body_visitor .page_content{background-color: {visitor_content_background_color};}
+    .body_visitor.body_main_page .page_content{background-color: {main_page_content_background_color};}
+
+    .background-overlay{background: {main_page_header_background_color};}
+    .background-overlay.inner{background: {main_page_header_background_color_inner};}
+    .cham-content-style-10.bl_info{background: {main_page_info_block_background_color};}
+    .cham-content-style-10.bl_info h2, .cham-content-style-10.bl_info p{color: {main_page_info_block_text_color};}
+
+    .cham-content-style-10 .btn-outline{
+        background: {main_page_info_block_btn_more_background_color};
+        color: {main_page_info_block_btn_more_text_color};
+        border-color: {main_page_info_block_btn_more_border_color};
+    }
+    .cham-content-style-10 .btn-outline:hover{
+        background: {main_page_info_block_btn_more_background_color_hover};
+        color: {main_page_info_block_btn_more_text_color_hover};
+        border-color: {main_page_info_block_btn_more_border_color_hover};
+    }
+
+    h1, h2, h3, h4, h5, h6{color: {visitor_header_tag_color};}
+    .body_main_page h1, .body_main_page h2, .body_main_page h3, .body_main_page h4, .body_main_page h5, .body_main_page h6{color: {main_page_header_tag_color};}
+
+    .bl_forms .signature{color: {visitor_signature_text_color};}
+    .body_main_page .bl_forms .signature{color: {main_page_signature_text_color};}
+
+    .bl_forms .row .cham-icon i{color: {visitor_icon_color};}
+    .body_main_page .bl_forms .row .cham-icon i{color: {main_page_icon_color};}
+
+    #frm_login_header.frm_login .bl.bl_user .fa{color: {main_page_header_login_frm_icon_color}!important;}
+    #frm_login_header.frm_login .bl{color: {main_page_header_login_frm_text_color}!important;}
+    #frm_login_header.frm_login .bl .sign a {color: {main_page_header_login_frm_text_color}!important; border-bottom: 1px solid {main_page_header_login_frm_text_color};}
+    /* #frm_login_header.frm_login .bl .sign a.link_color{color: {main_page_header_login_frm_register_link_color}!important; border-bottom: 1px solid {main_page_header_login_frm_register_link_color};} */
+    #frm_login_header.frm_login .bl_social a{color:{main_page_header_login_frm_social_icon_color}!important}
+    #frm_login_header.frm_login .bl_social a:hover{color:{main_page_header_login_frm_social_icon_color_hover}!important}
+
+    .body_main_page .cham-cover .cham-cover-text .cover-text-lead,
+    .body_main_page .cham-cover .cham-cover-text .cover-text-sublead{color:{main_page_welcome_text_color}}
+
+    .body_main_page .main_page_btn_outline{background: {main_page_btn_action_background_color}!important; border-color: {main_page_btn_action_border_color}!important;
+        color: {main_page_btn_action_text_color}!important;
+    }
+    .body_main_page .main_page_btn_outline:hover{background: {main_page_btn_action_background_color_hover}!important; border-color: {main_page_btn_action_border_color_hover}!important;
+        color: {main_page_btn_action_text_color_hover}!important;
+    }
+
+    .bl_download_apps{background: {main_page_download_apps_block_background_color};}
+    .bl_download_apps h2, .bl_download_apps p{color: {main_page_download_apps_block_text_color};}
+
+    .hr_main_page{border-top: 1px solid {main_page_separator_color};}
+
+    .body_visitor .bl_forms a{color:{visitor_form_link_color};}
+    .body_visitor .bl_forms a:hover, .body_main_page .join_agree a:focus,
+    .body_visitor .bl_forms a:hover{color:{visitor_form_link_color_hover};}
+
+    .body_main_page .bl_forms a{color:{main_page_form_link_color};}
+    .body_main_page .bl_forms a:hover, .body_main_page .join_agree a:focus,
+    .body_main_page .bl_forms a:hover{color:{main_page_form_link_color_hover};}
+
+    .body_visitor .bl_social_frm a{color:{visitor_social_btn_color};}
+    .body_visitor .bl_social_frm a:hover, .body_visitor .bl_social_frm a:focus,
+    .body_visitor .bl_social_frm a:hover{color:{visitor_social_btn_color_hover};}
+
+    .body_main_page .bl_social_frm a{color:{main_page_social_btn_color};}
+    .body_main_page .bl_social_frm a:hover, .body_main_page .bl_social_frm a:focus,
+    .body_main_page .bl_social_frm a:hover{color:{main_page_social_btn_color_hover};}
+    </style>
+    <!-- end_color_scheme_visitor -->
+    <!-- begin_color_scheme_member -->
+    <style type="text/css">
+        .wall, .page_content, .bl_post_wall_items .wall_post_item, .bl_comments .item, .bl_comments .item ul.list li{
+            background-color: {member_content_background_color};
+        }
+
+        .bl_wall .add_shadow{box-shadow: 0px 10px 30px 0px {member_content_background_color};}
+        .bl_wall .add_shadow_remove{box-shadow: 0px 23px 0px 0px {member_content_background_color};}
+        .bl_wall .add_shadow_post{box-shadow: 0px 10px 20px -10px {member_content_background_color};}
+
+        .timeline-item, .wrap-background-circle, .background-masker{background: {member_content_background_color};}
+        .pl_grid_count .active .bl:after{border-bottom-color: {member_content_background_color}!important;}
+
+        .column.left{background-color: {member_column_left_background_color};}
+        .column.right,
+        .column.right ul.list_photo li.more a{background-color: {member_column_right_background_color};}
+
+
+        /* Navbar */
+        .navbar-default{background-color: {member_navbar_background_color};}
+        ul.icons_info li.icon a.icon_link{color: {member_navbar_menu_short_color};}
+
+        ul.icons_info li.icon a.icon_link:hover .fa,
+        ul.icons_info li.icon a.icon_link:hover .glyphicon,
+        ul.icons_info li.icon a.icon_link:focus .fa,
+        ul.icons_info li.icon a.icon_link:focus .glyphicon,
+        ul.icons_info li.icon a.icon_link:active .fa,
+        ul.icons_info li.icon a.icon_link:active .glyphicon{color:{member_navbar_menu_short_color_hover};}
+
+        ul.icons_info li.icon a.icon_link.disabled,
+        ul.icons_info li.icon a.icon_link.disabled:hover .fa,
+        ul.icons_info li.icon a.icon_link.disabled:hover .glyphicon{color:{member_navbar_menu_short_color_disabled};}
+
+        ul.icons_info li span.count,
+        .menu_collapse > li.link_count span.count{background-color: {member_navbar_menu_counter_background_color}; color: {member_navbar_menu_counter_text_color};}
+
+        .menu_collapse > li > a {color: {member_navbar_menu_text_color}!important;}
+        .menu_collapse > li > a:hover {color: {member_navbar_menu_text_color_hover}!important;}
+
+        .menu_collapse .dropdown-menu,
+        .more_menu_collapse li,
+        .more_menu_collapse li:first-child a::after{background-color: {member_navbar_menu_more_background_color}!important;}
+
+
+        .city_body.city_mobile .menu_collapse .dropdown-menu,
+        /* .city_body.city_mobile .more_menu_collapse li, */
+        .city_body.city_mobile .more_menu_collapse li:first-child a::after,
+        .city_body.city_mobile .navbar-collapse,
+        .city_body.city_mobile .navbar-collapse.in{
+            background-color: {member_navbar_menu_mobile_background_color} !important;
+        }
+
+        .city_body.city_mobile .navbar-collapse,
+        .city_body.city_mobile .navbar-default .navbar-nav .dropdown-menu > li > a,
+        .city_body.city_mobile ul.menu_vertical_scroll > li > a {
+            color: {member_navbar_menu_mobile_text_color} !important;
+        }
+
+        .city_body.city_mobile ul.menu_vertical_scroll > li.active > a{
+            color: {member_navbar_menu_text_color_active} !important;
+        }
+
+        .menu_collapse .dropdown-menu > li > a,
+        .more_menu_collapse > li > a,
+        .wall_post_access > li > a,
+        .wall_post_access > li > a:focus,
+        ul.menu_vertical_scroll > li > a{
+            color: {member_navbar_menu_more_text_color}!important;
+        }
+
+        .menu_collapse > .open > a,
+        .menu_collapse > .open > a:hover,
+        .menu_collapse > .open > a:focus,
+        .menu_collapse li > a:hover,
+        .menu_collapse li > a:focus,
+        .more_menu_collapse > li > a.disabled,
+        .more_menu_collapse > li > a.disabled:hover,
+        .menu_collapse li.active > a,
+        .menu_collapse li.active > a:hover,
+        .menu_collapse li.active > a:focus,
+        .more_menu_collapse li:first-child a:hover::after,
+        .wall_post_access > li.active > a,
+        .wall_post_access > li > a:hover,
+        ul.menu_vertical_scroll > li.active > a{
+            background-color: {member_navbar_menu_background_color_active}!important;
+            color: {member_navbar_menu_text_color_active}!important;
+        }
+
+        /* Loader */
+        .menu_collapse > li > a  .css_loader.header_menu_loader .spinner-blade{
+            background-color: {member_navbar_menu_text_color}!important;
+        }
+
+        .menu_collapse > li > a.disabled .css_loader.more_menu_loader .spinner-blade{
+            background-color: {member_navbar_menu_text_color_active}!important;
+        }
+
+        .menu_collapse li > a .css_loader.header_menu_loader_more .spinner-blade{
+            background-color: {member_navbar_menu_more_text_color}!important;
+        }
+
+        .menu_collapse li > a:hover .css_loader.header_menu_loader .spinner-blade,
+        .menu_collapse li > a:focus .css_loader.header_menu_loader .spinner-blade,
+        .menu_collapse li.active > a .css_loader.header_menu_loader .spinner-blade,
+
+        .menu_collapse li > a:hover .css_loader.header_menu_loader_more .spinner-blade,
+        .menu_collapse li > a:focus .css_loader.header_menu_loader_more .spinner-blade,
+        .menu_collapse li.active > a .css_loader.header_menu_loader_more .spinner-blade{
+            background-color: {member_navbar_menu_text_color_active}!important;
+        }
+
+        @media (max-width: 767px){
+            .menu_collapse li > a .css_loader.header_menu_loader_more .spinner-blade{
+                background-color: {member_navbar_menu_mobile_text_color}!important;
+            }
+
+            .menu_collapse li > a:hover .css_loader.header_menu_loader_more .spinner-blade,
+            .menu_collapse li > a:focus .css_loader.header_menu_loader_more .spinner-blade{
+                background-color: {member_navbar_menu_text_color_active}!important;
+            }
+        }
+        /* Loader */
+
+        .bl_post_wall{background:{member_bl_wall_post_color};}
+
+        .pl_grid_count .menu_inner_wall_posts_edge.active .bl.show_post_input:after{
+            border-bottom-color: {member_bl_wall_post_color}!important;
+        }
+
+        .wall_post_access.disabled > li:not(.active) > a:hover{
+            background-color: #fff!important;
+            color: {member_navbar_menu_more_text_color}!important;
+            cursor: default;
+        }
+
+        .navbar-nav > li > a .fa:after{
+            background-color: {member_navbar_menu_mobile_text_color};
+        }
+
+        .navbar-nav > li.active > a .fa:after{
+            background-color: {member_navbar_menu_text_color_active};
+        }
+
+        @media (max-width: 767px){
+            .navbar-default .navbar-nav .dropdown-menu,
+            .navbar-collapse,
+            .navbar-collapse.in{
+                background-color: {member_navbar_menu_mobile_background_color}!important;
+            }
+
+            .navbar-collapse,
+            .navbar-default .navbar-nav .dropdown-menu > li > a,
+            ul.menu_vertical_scroll > li > a{
+                color: {member_navbar_menu_mobile_text_color} !important;
+            }
+
+            .navbar-default .navbar-nav > li > a:hover,
+            .navbar-default .navbar-nav > li > a:focus,
+            .navbar-default .navbar-nav .dropdown-menu > li.active > a,
+            .navbar-default .navbar-nav .dropdown-menu > li > a:hover,
+            .navbar-default .navbar-nav .dropdown-menu > li > a:focus{
+                background-color: {member_navbar_menu_background_color_active}!important;
+                color: {member_navbar_menu_text_color_active}!important;
+            }
+
+        }
+        /* Navbar */
+        a.mn_circle span,
+        .circles a.circle,
+        a.mn_circle:focus span,
+        .circles a.circle:focus,
+        a.mn_circle:active span,
+        .circles a.circle:active{
+            background-color: {member_circular_menu_background_color};
+            color: {member_circular_menu_color};
+        }
+        a.mn_circle:hover span,
+        .circles a.circle:hover{
+            background-color: {member_circular_menu_background_color_hover};
+            color: {member_circular_menu_color_hover};
+        }
+        a.mn_circle.disabled span,
+        .circles a.circle.disabled{
+            background-color: {member_circular_menu_background_color_disabled};
+            color: {member_circular_menu_color_disabled};
+        }
+
+        a.mn_circle.disabled span .css_loader .spinnerw .spinner-blade,
+        .circles a.circle span .css_loader .spinnerw .spinner-blade{
+            background-color: {member_circular_menu_color_disabled};
+        }
+
+        @media (max-width: 767px){
+            .circles a.circle:hover{
+                background-color: {member_circular_menu_background_color};
+                color: {member_circular_menu_color};
+            }
+
+            .circles a.circle:active{
+                background-color: {member_circular_menu_background_color_hover};
+                color: {member_circular_menu_color_hover};
+            }
+        }
+
+        /* Media chat */
+        .chat_action button{background-color: {member_videochat_btn_background_color}; color: {member_videochat_btn_text_color};}
+        .chat_action button:hover{background-color: {member_videochat_btn_background_color_hover}; color: {member_videochat_btn_text_color_hover};}
+
+        .chat_action button.disconect{background-color: {member_videochat_btn_disconect_background_color}; color: {member_videochat_btn_disconect_text_color};}
+        .chat_action button.disconect:hover{background-color: {member_videochat_btn_disconect_background_color_hover}; color: {member_videochat_btn_disconect_text_color_hover};}
+
+        .chat_action button:disabled{background-color: {member_videochat_btn_disabled_background_color}!important; color: {member_videochat_btn_disabled_text_color}!important;}
+        .chat_action button:disabled:hover{background-color: {member_videochat_btn_disabled_background_color_hover}!important; color: {member_videochat_btn_disabled_text_color_hover}!important;}
+
+        .chat_action.processing button{background-color: {member_videochat_btn_background_color}!important; color: {member_videochat_btn_text_color}!important;}
+        .chat_action.processing button[data-action='disabled']{background-color: {member_videochat_btn_disabled_background_color}!important; color: {member_videochat_btn_disabled_text_color}!important;}
+        .chat_action.processing button.disconect{background-color: {member_videochat_btn_disconect_background_color}!important; color: {member_videochat_btn_disconect_text_color}!important;}
+        /* Media chat */
+        .chat .content .messages .pp_message_msg_item.replies .msg{
+            background: {member_message_sent_background_color};
+            color: {member_message_sent_text_color};
+        }
+        .chat .content .messages .pp_message_msg_item.replies .msg.to_send{
+            background: {member_message_background_color};
+            color: {member_message_text_color};
+        }
+        .chat .content .messages .pp_message_msg_item.sent .msg {
+            background: {member_message_answer_background_color};
+            color: {member_message_answer_text_color};
+        }
+        .chat .content .messages .pp_message_msg_item.sent.to_new .msg{
+            background:{member_new_message_background_color};
+            color: {member_new_message_text_color};
+        }
+        .chat .sidepanel .contacts ul li.contact .wrap .meta .preview.to_new{color:{member_new_message_sidepanel_text_color};}
+        .chat .content .messages .pp_message_msg_item .msg a{color:{member_message_sent_link_text_color};}
+        .chat .content .messages .pp_message_msg_item .msg a:hover{color:{member_message_sent_link_text_color_hover};}
+        .chat .content .messages .pp_message_msg_item.sent .msg a{color:{member_message_answer_link_text_color};}
+        .chat .content .messages .pp_message_msg_item.sent .msg a:hover{color:{member_message_answer_link_text_color_hover};}
+
+        .event_сomment_highlight{background-color: {member_event_comment_highlight_color};}
+    </style>
+    <!-- end_color_scheme_member -->
+
+    <link rel="stylesheet" type="text/css" href="{url_main}css.php{cache_version_param}&set_template_runtime={tmpl_loaded}&page={current_page}&demo_version={demo_version}" />
+
+    <script language="javascript" type="text/javascript">
+        isDemoSite='{is_demo_site}'*1;
+
+        <!-- begin_smooth_scroll -->
+        initSmoothScroll();
+        <!-- end_smooth_scroll -->
+        var ajax_login_status={xajax_login_status};
+        var urlMain=url_main='{url_main}';
+        var urlFiles='{url_files}';
+        var url_tmpl_main='{url_tmpl_main}';
+        var url_tmpl_images=url_tmpl_main+'images/';
+        var url_ajax='{url_main}ajax.php';
+        var url_server='{url_main}_server/update_server_ajax_edge.php';
+        var urlCity = '{url_city}';
+        var currentPage = '{url_page}';
+        var currentPageParam = '{url_get_params}';
+        var requestUserId = '{request_user_id}'*1;
+        var siteTitle = '{js_title}';
+        var isPageMyWall = false;
+        var urlSiteSubfolder = '{url_site_subfolder}';
+
+        /* App */
+        var isAppAndroid = '{is_app_android}'*1;
+        var mobileAppLoaded = false;
+		var imMessagesCount = '{number_messages}'*1;
+		var appTitle = '{js_title}';
+        var appCurrentImUserId = false;
+        var appVibrationDuration = "{app_vibration_duration}" * 1000;
+        var appCityListUser = {};
+        var appCityLastMsgId = 0;
+        var isWebglDetect = true;
+        var urlPageCity = '{url_page_city}';
+        /* App */
+
+        var userAllowedFeature={user_allowed_feature};
+        var chatsPrice={video:'{video_chat_price}'*1, audio:'{audio_chat_price}'*1};
+
+        var isPlayerNative = '{is_player_native_site}' * 1;
+
+        <!-- begin_for_not_login_user_not_exist -->
+        redirectUrl('index.php');
+        <!-- end_for_not_login_user_not_exist -->
+
+        setOptionsSite({site_options});
+        setGUserOptions({guser_options});
+
+        <!-- begin_watch_geo_position -->
+        setWatchPositionTimeOut('{watch_geo_position_time}');
+        watchPosition();
+        <!-- end_watch_geo_position -->
+        setGeoPointData({geo_position_data});
+
+        var faviconUrl='{header_favicon_url}';
+        var cacheVersionParam='{cache_version_param}';
+        notifInit();
+    </script>
+
+    {include_city}
+
+    <style id="style_calc"></style>
+    <style id="style_gallery"></style>
+    <style id="style_header_menu"></style>
+</head>
+<!-- begin_header_visitor -->
+<body class="body_visitor <!-- begin_body_main_page -->body_main_page<!-- end_body_main_page -->">
+    <div id="cham-page">
+
+        <nav class="cham-nav-style-1" role="navigation" data-offcanvass-position="cham-offcanvass-left">
+            <div class="container none_select">
+                <div class="col-md-3 col-sm-3 col-xs-12 cham-logo">
+                    <a class="logo_main_page" href="#">
+                        <img src="{header_url_logo}" alt="">
+                        <span class="bl_loader"></span>
+                    </a>
+                </div>
+                <!-- begin_header_visitor_navbar -->
+                <!-- frm_login -->
+                <div id="frm_login_header" class="frm_login frm_login_hidden_md login_form_module">
+                    <div class="col-lg-3 hidden-md hidden-sm hidden-xs text-right bl bl_user">
+                        <div class="cham-icon">
+                            <i class="fa fa-user"></i>
+                        </div>
+                    </div>
+                    <form>
+                    <div class="col-lg-2 hidden-md hidden-sm hidden-xs bl">
+                        <input tabindex="1" data-toggle="tooltip" data-placement="bottom" id="frm_login_header_name" type="text" name="user" class="form-control" placeholder="{l_email_name}">
+                        <i class="fa fa-plus-square" aria-hidden="true"></i>
+                        <span class="sign">
+                            <a href="" class="join_main_page">{l_register_now}</a>
+                        </span>
+                    </div>
+                    <div class="col-lg-2 hidden-md hidden-sm hidden-xs bl">
+                        <input id="frm_login_header_pass" tabindex="2" type="password" name="password" class="form-control" placeholder="{l_password}">
+                        <i class="fa fa-lock" aria-hidden="true"></i>
+                        <span class="sign">
+                            <a onclick="showForgotFrm(); return false;" href="">{l_forgot_password}</a>
+                        </span>
+                    </div>
+                    </form>
+                    <div class="col-lg-2 hidden-md hidden-sm hidden-xs bl text-center">
+                        <button tabindex="3" data-type-loader="fade_btn" class="btn btn-block btn-success" onclick="loginIn($(this)); return false;">
+                            <span>{l_login}</span>
+                        </button>
+                        <input id="remember_me" class="input_remember_me" name="remember" value="1" checked="checked" type="checkbox">
+                        <label for="remember_me">{l_remember_me}</label>
+                    </div>
+                    <!-- begin_social_login -->
+                    <div class="row hidden-md hidden-sm hidden-xs">
+                        <div class="col-lg-3 text-right col-md-offset-3"></div>
+                        <div class="col-lg-2"> </div>
+                        <div class="col-lg-2 text-left bl_social">
+                            <!-- begin_social_login_item -->
+                            <a onclick="return pwaSocialLogin(this);" href="{social_login_item_url}"><i class="fa fa-{social_login_item_type}"></i></a>
+                            <!-- end_social_login_item -->
+                        </div>
+                    </div>
+                    <!-- end_social_login -->
+                    <!-- begin_social_login_no_class -->
+                    <!-- end_social_login_no_class -->
+                </div>
+                <!-- /frm_login -->
+                <!-- end_header_visitor_navbar -->
+            </div>
+        </nav>
+
+        <!-- begin_header_visitor_main_page -->
+        <div class="cham-cover wrap_cham-cover-text">
+            <div class="cham-cover-text">
+                <div class="container">
+                    <div class="row">
+                        <div class="<!-- begin_info_block_right-->col-md-push-6<!-- end_info_block_right--><!-- begin_info_block_central -->col-md-push-3 text-center<!-- end_info_block_central --> col-md-6 full-height">
+                            <div class="cham-cover-intro none_select">
+                                <!-- begin_info_block_header_visitor -->
+                                <h1 class="cover-text-lead">{l_are_you_social_enough}</h1>
+                                <h2 class="cover-text-sublead">{l_the_social_network_you_were_dreaming_about_all_your_life}</h2>
+                                <a href="#" class="btn btn-outline btn-lg join_main_page main_page_btn_outline">{l_register}</a>
+                                <a id="login_main_page" href="#" class="btn btn-outline btn-lg main_page_btn_outline">{l_login}</a>
+                                <!-- end_info_block_header_visitor -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="bg_video_tumb" class="bg_video tumb"></div>
+            <div class="bg_video" id="bg_video"></div>
+            <div class="bg_video_overlay {main_page_video_background_darken}"></div>
+
+        </div>
+        <div class="cham-cover-style-2 main_page_image" <!-- begin_main_page_image_pic -->style="background-image: url({main_page_image_pic});"<!-- end_main_page_image_pic -->>
+            <!-- begin_main_page_image_pic_darken -->
+            <div class="cham-overlay"></div>
+            <!-- end_main_page_image_pic_darken -->
+        </div>
+        <script>setBgResizeMainPage();</script>
+        <div class="background-overlay"></div>
+        <!-- begin_main_page_image_pic_js -->
+        <script>showBackgroundImagePage('{main_page_image_pic}')</script>
+        <!-- end_main_page_image_pic_js -->
+        <!-- end_header_visitor_main_page -->
+
+        <!-- begin_header_visitor_inner -->
+        <div class="cham-cover-style-top header_registration main_page_image" <!-- begin_main_page_image_pic_inner -->style="background-image: url({main_page_image_pic_inner});"<!-- end_main_page_image_pic_inner -->>
+
+            <div id="bg_video_tumb" class="bg_video tumb"></div>
+            <div class="bg_video" id="bg_video"></div>
+            <div class="bg_video_overlay {main_page_video_background_darken}"></div>
+
+            <!-- begin_main_page_image_pic_inner_darken -->
+            <div class="cham-overlay"></div>
+            <!-- end_main_page_image_pic_inner_darken -->
+        </div>
+        <div class="background-overlay inner"></div>
+        <!-- begin_main_page_image_pic_inner_js -->
+        <script>showBackgroundImagePage('{main_page_image_pic_inner}')</script>
+        <!-- end_main_page_image_pic_inner_js -->
+        <!-- end_header_visitor_inner -->
+
+        <!-- begin_main_page_video_background -->
+        <script>
+            pageBackgroundVideoInit();
+        </script>
+        <!-- end_main_page_video_background -->
+
+        <div class="page_content">
+<!-- end_header_visitor -->
+
+<!-- begin_header_member -->
+<body class="body_member <!-- begin_body_city -->city_body<!-- end_body_city --> {body_class} {city_class}">
+
+    <!-- begin_check_demo_iframe_body -->
+    <script>
+        if (parent.window.frames['iframe_demo'] && '{url_page}'=='city.php'){
+           $('body').removeClass('city_mobile');
+        }
+    </script>
+    <!-- end_check_demo_iframe_body -->
+
+    <!-- nav -->
+    <nav class="navbar navbar-default navbar-fixed-top width_cl none_select">
+        <div class="container-fluid  mb_ct_sc mb_ct_100_vw">
+        <div class="navbar-header">
+
+            <button id="btn_header_menu_nav" type="button" class="navbar-toggle collapsed icon_nav" data-toggle="collapse" data-target="#member_header_menu" aria-expanded="false">
+                <div class="wrap_nav">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+            </button>
+
+            <a class="navbar-brand" href="{url_profile_view}">
+                <span class="logo">
+                    <img src="{header_url_logo_inner}" alt=""/>
+                    <span class="bl_loader"></span>
+                </span>
+            </a>
+
+            <div id="member_header_menu" class="collapse navbar-collapse">
+                <!-- begin_member_header_menu -->
+                <ul class="nav navbar-nav navbar-right menu_collapse member_header_menu">
+                    <!-- begin_member_header_menu_item -->
+                    <li class="link_count navbar_{member_header_menu_item_key} <!-- begin_member_header_menu_item_active -->active<!-- end_member_header_menu_item_active -->  {member_header_menu_item_alias}">
+                        <a id="navbar_{member_header_menu_item_key}" class="{member_header_menu_item_key}" href="{member_header_menu_item_url}" data-href="{member_header_menu_item_url}">
+                            <span class="icon_fa" data-cl-loader="header_menu_loader">
+                                <i class="fa {member_header_menu_item_icon}" aria-hidden="true"></i>
+                            </span>
+                            {member_header_menu_item_title}
+                            <!-- begin_member_header_menu_item_count -->
+                            <span id="{member_header_menu_item_key}_counter" class="count">{member_header_menu_item_count}</span>
+                            <!-- end_member_header_menu_item_count -->
+                        </a>
+                    </li>
+                    <!-- end_member_header_menu_item -->
+
+                    <!-- begin_member_header_menu_more -->
+                    <li class="dropdown">
+                        <a id="navbar_menu_more" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            {l_menu_more} <span class="caret"></span>
+                        </a>
+                        <div id="navbar_menu_more_dropdown" class="dropdown-menu menu_more_menu_navbar_site">
+                        <ul class="menu_vertical_scroll" >
+                            <!-- begin_member_header_menu_more_item -->
+                            <li class="link_count navbar_more_{member_header_menu_more_item_key} <!-- begin_member_header_menu_more_item_active -->active<!-- end_member_header_menu_more_item_active -->  {member_header_menu_item_alias}">
+                                <a id="navbar_{member_header_menu_more_item_key}" class="navbar_menu_more_item {member_header_menu_more_item_key}" href="{member_header_menu_more_item_url}" data-href="{member_header_menu_more_item_url}">
+                                    <span class="icon_fa" data-cl-loader="header_menu_loader_more">
+                                        <i class="fa {member_header_menu_more_item_icon}" aria-hidden="true"></i>
+                                    </span>
+                                    {member_header_menu_more_item_title}
+                                    <!-- begin_member_header_menu_more_item_count -->
+                                    <span id="{member_header_menu_more_item_key}_counter" class="count">{member_header_menu_more_item_count}</span>
+                                    <!-- end_member_header_menu_more_item_count -->
+                                </a>
+                            </li>
+                            <!-- end_member_header_menu_more_item -->
+                        </ul>
+                        </div>
+                    </li>
+                    <!-- end_member_header_menu_more -->
+                </ul>
+                <!-- end_member_header_menu -->
+
+                <form id="search_by_username" action="{url_main}search_results.php" method="post" class="navbar-form navbar-right custom_search hidden-md hidden-sm">
+                    <div class="form-group">
+                        <input type="text" class="form-control placeholder" name="global_search_by_username" placeholder="{a_field_search_for_people}">
+                        <a onclick="searchUserByName(); return false;" class="link_icon_search" href=""><span class="glyphicon glyphicon-search"></span></a>
+                    </div>
+                </form>
+            </div><!-- /.navbar-collapse -->
+
+            <!-- begin_menu_short_md -->
+            <div class="wrap_icons_info">
+                <div class="bl_icons_info">
+                    <ul class="icons_info">
+                        <!-- begin_menu_short_md_item -->
+                        <!-- begin_menu_short_md_item_friends_pending -->
+                        <li class="icon">
+                            <a id="friends_notification_link" href="#" class="dropdown-toggle icon_link friends_pending_link <!-- begin_menu_short_md_item_friends_pending_disabled -->disabled<!-- end_menu_short_md_item_friends_pending_disabled -->" role="button" aria-haspopup="true" aria-expanded="false" >
+                                <i class="fa fa-users"></i>
+                                <span data-counter="{friends_pending_count}" class="count friends_pending_counter <!-- begin_menu_short_md_item_friends_pending_count_show -->to_show<!-- end_menu_short_md_item_friends_pending_count_show -->">{friends_pending_count}</span>
+                            </a>
+                        </li>
+                        <!-- end_menu_short_md_item_friends_pending -->
+                        <!-- begin_menu_short_md_item_new_message -->
+                        <li class="icon">
+                            <a id="message_notification_link" href="#" class="icon_link new_message_link <!-- begin_menu_short_md_item_new_message_disabled -->disabled<!-- end_menu_short_md_item_new_message_disabled -->" onclick="clMessages.show(0,$(this)); return false;">
+                                <span class="glyphicon glyphicon-comment"></span>
+                                <span data-counter="{new_message_count}" class="count new_message_counter <!-- begin_menu_short_md_item_new_message_count_show -->to_show<!-- end_menu_short_md_item_new_message_count_show -->">{new_message_count}</span>
+                            </a>
+                        </li>
+                        <!-- end_menu_short_md_item_new_message -->
+                        <!-- begin_menu_short_md_item_new_events -->
+                        <li class="icon">
+                            <a id="events_notification_link" href="#" class="dropdown-toggle icon_link <!-- begin_menu_short_md_item_new_events_disabled -->disabled<!-- end_menu_short_md_item_new_events_disabled -->" data-toggle="collapse" role="button" aria-haspopup="true" aria-expanded="false" >
+                                <i class="fa fa-bell"></i>
+                                <span data-counter="{new_events_count}" class="count new_events_counter <!-- begin_menu_short_md_item_new_events_count_show -->to_show<!-- end_menu_short_md_item_new_events_count_show -->">{new_events_count}</span>
+                            </a>
+                        </li>
+                        <!-- end_menu_short_md_item_new_events -->
+                        <!-- end_menu_short_md_item -->
+                    </ul>
+                </div>
+
+                <!-- begin_notif_friends_pending -->
+                <div id="friends_notification" class="notification friends collapse pp_hide">
+                    <div id="friends_notification_scrollbox" class="scrollbarY">
+                        <div class="scrollbar">
+                            <div class="track">
+                                <div class="thumb"><div class="end"></div></div>
+                            </div>
+                        </div>
+                        <div class="viewport">
+                            <div class="overview">
+                                <ul id="friends_notification_list" class="notification_list">
+                                    <!-- begin_notif_friends_pending_item -->
+                                    <li id="friends_notification_{notif_friends_pending_item_user_id}" class="friends_notification_item" data-created="{notif_friends_pending_item_created_at}">
+                                        <div class="cont">
+                                            <a class="pic" href="{notif_friends_pending_item_url}">
+                                                <img src="{notif_friends_pending_item_photo}" alt="" />
+                                            </a>
+                                            <span class="text">{notif_friends_pending_item_pending}</span>
+                                        </div>
+                                        <div class="buttons">
+                                            <button onclick="clFriends.actionNotification({notif_friends_pending_item_user_id}, 'approve', $(this))"  class="btn btn-success btn-sm">
+                                                <span>{l_add_friend}</span>
+                                            </button>
+                                            <button onclick="clFriends.actionNotification({notif_friends_pending_item_user_id}, 'remove', $(this))" class="btn btn-secondary btn-sm">
+                                                <span>{l_ignore}</span>
+                                            </button>
+                                        </div>
+                                    </li>
+                                    <!-- end_notif_friends_pending_item -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end_notif_friends_pending -->
+
+                <!-- begin_notif_events -->
+                <div id="events_notification" class="notification events collapse pp_hide">
+                    <div id="events_notification_scrollbox" class="scrollbarY">
+                        <div class="scrollbar">
+                            <div class="track">
+                                <div class="thumb"><div class="end"></div></div>
+                            </div>
+                        </div>
+                        <div class="viewport">
+                            <div class="overview">
+                                <ul id="events_notification_list"  class="notification_list">
+
+                                    <!-- begin_notif_events_item -->
+                                    <li id="{notif_events_item_alias}" data-id="{notif_events_item_id}" data-date="{notif_events_item_date}" data-type="{notif_events_item_type}" data-event-id="{notif_events_item_event_id}" data-event-item-id="{notif_events_item_event_item_id}" data-event-item-parent-id="{notif_events_item_event_item_parent_id}" data-event-user-id="{notif_events_item_event_user_id}" class="events_notification_item <!-- begin_notif_events_item_new -->new<!-- end_notif_events_item_new -->">
+                                        <div class="cont">
+                                            <a class="pic" href="{notif_events_item_url}">
+                                                <img src="{notif_events_item_photo}" alt="" />
+                                            </a>
+                                            <span class="text">
+                                                <span class="event_title">{notif_events_item_title}</span>
+                                                <span class="event_time_ago">{notif_events_item_time_ago}</span>
+                                            </span>
+                                            <!-- begin_notif_events_item_menu_mark_see -->
+                                            <span class="event_menu dropdown-toggle" data-target="#{notif_events_item_alias}_menu" data-toggle="collapse" role="button" aria-haspopup="true">
+                                                <span class="dots_circle"></span>
+                                                <ul id="{notif_events_item_alias}_menu" class="more_menu_collapse menu_collapse collapse">
+                                                    <li>
+                                                        <a href="#" onclick="return false">
+                                                            <span>
+                                                                <span data-cl-loader="more_menu_loader" class="icon_fa"><i class="fa fa-check" aria-hidden="true"></i></span>
+                                                                <span class="btn_title">{l_mark_as_read}</span>
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </span>
+                                            <!-- end_notif_events_item_menu_mark_see -->
+                                        </div>
+                                    </li>
+                                    <!-- end_notif_events_item -->
+
+                                    <li id="events_notification_more" class="events_notification_item events_more <!-- begin_notif_events_hide_more -->hide_more<!-- end_notif_events_hide_more -->">
+                                        <div class="cont">
+                                            <a id="events_notification_more_link" class="events_notification_more" data-rank="{notif_events_rank}" href="#">
+                                                <span class="icon_fa" data-cl-loader="more_menu_loader"><i class="fa fa-chevron-down"></i></span>
+                                                {l_load_more}
+                                            </a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end_notif_events -->
+
+            </div>
+            <!-- end_menu_short_md -->
+        </div>
+        </div>
+    </nav>
+    <!-- /nav -->
+<div id="cham-page">
+    <div id="page_top_area" class="page_top_area"></div>
+    <div class="page_content top_indent_page">
+    {header_custom}
+<!-- end_header_member -->

@@ -1,0 +1,194 @@
+{header}
+{ims}
+
+
+
+<div id="profile" class="box"><div class="bbt"><div class="bbb"><div class="bbl"><div class="bbr"><div class="bbtl"><div class="bbtr"><div class="bbbl"><div class="bbbr">
+
+<input type="button" value="{l_menu_profile_edit}" class="button_small" onclick="location='{url_main}profile.php';" title="{l_menu_profile_edit}">
+<input type="button" value="{l_menu_profile_edit_photos}" class="button_small" onclick="location='{url_main}profile_photo.php';" title="{l_menu_profile_edit_photos}">
+<input type="button" value="{l_menu_profile_edit_music}" class="button_small" onclick="location='{url_main}music_my.php';" title="{l_menu_profile_edit_music}">
+
+<input type="button" value="{l_menu_profile_settings}" class="button_small" onclick="location='{url_main}profile_settings.php';" title="{l_menu_profile_settings}">
+<input type="button" value="{l_menu_profile_view}" class="button_small" onclick="location='{url_main}profile_view.php';" title="{l_menu_profile_view}">
+<input type="button" value="{l_menu_profile_my_audio}" class="button_small" onclick="location='{url_main}profile_audio_view.php';" title="{l_menu_profile_my_audio}">
+<!-- begin_my_blog -->
+<input type="button" value="{l_menu_profile_my_blog}" class="button_small" onclick="location='{url_main}blogs_blog.php';" title="{l_menu_profile_my_blog}">
+<!-- end_my_blog -->
+
+			<div class=header_small style="padding-top:30px; padding-bottom:15px;">
+				{l_edit_video} {message} ({num_videos})
+			</div>
+			<div>
+				<table width="100%" border="0" cellpadding="0" cellspacing="0" style="padding-bottom: 20px;"><tr>
+					<td width="280" style="padding-left: 8px;" align="left">
+
+					<!-- begin_video_item-->
+						<table border="0" cellpadding="0" cellspacing="0"><tr><td valign="top" rowspan="2" style="padding-right: 10px;">
+						<a href="{url_main}profile_video_view.php?id={video_id}">
+							<div id="photo_info">
+							<img src="{url_files}video.jpg"  class="img_border">
+							</div>
+						</a>
+						</td><td valign="top" class="body_little">
+						<div><b>{numer}.&nbsp;<a href="{url_main}profile_video_view.php?id={video_id}">{video_name}</a></b></div>
+						<div>{description}</div>
+						<div class="pri_little_bold">{visible}</div></td></tr><tr><td valign="bottom" class="body_little"><div><table border="0" cellpadding="0" cellspacing="0"><tr><td class="body_little"><table border="0" cellpadding="0" cellspacing="0"><tr><td><div class="button_border_2">
+						<input type="button" value="{l_delete}" onClick="if(confirm('{l_this_action}')) parent.location.href='{url_main}profile_video_edit.php?cmd=delete&id={video_id}';" class="button" style="width:60px; padding-left: 5px; padding-right: 5px; cursor: pointer; cursor: hand;" title="{l_delete}" onMouseOver="window.status='{l_delete}'; return true;" onMouseOut="window.status=''; return true;">
+						</div></td></tr></table></td><td style="padding-left: 8px;"><table border="0" cellpadding="0" cellspacing="0"><tr><td><div class="button_border_2">
+						<input type="button" value="{l_edit_text}" onClick=" location.href='{url_main}profile_video_item.php?id={video_id}';" class="button" style="width:75px; padding-left: 5px; padding-right: 5px; cursor: pointer; cursor: hand;" title="{l_edit_text}" onMouseOver="window.status='{l_edit_text}'; return true;" onMouseOut="window.status=''; return true;">
+						</div></td></tr></table></td></tr></table></div></td></tr>
+						</table>
+						<!-- begin_video_odd-->
+						</td><td align="left">
+						<!-- end_video_odd-->
+						<!-- begin_video_even-->
+						</td>
+						</tr><tr>
+						<td style="height: 20px;"></td>
+						</tr><tr>
+						<td style="padding-left: 8px;" align="left">
+						<!-- end_video_even-->
+					<!-- end_video_item-->
+
+					<!-- begin_novideo_item-->
+						<table border="0" cellpadding="0" cellspacing="0"><tr><td valign="top" rowspan="2" style="padding-right: 10px;">
+							<div id="photo_info">
+							<img src="{url_files}video_empty.jpg" class="img_border">
+							</div>
+						</td><td valign="top" class="body_little">
+							<div><b>{numer}.&nbsp;({l_empty})</b></div>
+						</td></tr></table>
+						<!-- begin_novideo_odd-->
+						</td><td align="left">
+						<!-- end_novideo_odd-->
+						<!-- begin_novideo_even-->
+						</td>
+						</tr><tr>
+						<td style="height: 20px;"></td>
+						</tr><tr>
+						<td style="padding-left: 8px;" align="left">
+						<!-- end_novideo_even-->
+					<!-- end_novideo_item-->
+
+					</td>
+				</tr></table>
+			</div>
+
+
+			<div class="keyline" style="height: 1px; margin-bottom: 8px;"><table border="0" cellpadding="0" cellspacing="0"><tr><td></td></tr></table></div>
+
+
+<!-- begin_video_upload -->
+
+<div class=header_small style="padding-top:30px; padding-bottom:15px;">
+	{l_upload_your_video} {message}
+</div>
+<div>
+	<table border="0" cellpadding="0" cellspacing="0"><tr>
+		<td valign="top" style="padding-right: 10px;" align="left">
+		</td>
+
+		<td valign="top">
+<script Language="JavaScript" type="text/javascript">
+  var blockSubmission = false;
+  function removeSubmissionBlock() {
+    blockSubmission = false;
+  }
+  function isSubmissionAllowed() {
+    if(blockSubmission){
+       return false;
+    }
+    return;
+   }
+  document.onclick = isSubmissionAllowed;
+  document.onkeydown = isSubmissionAllowed;
+
+  function onValidateUploadPhotoForm() {
+    var form = document.forms['UploadPhotoForm'];
+    // "photo_file" field validation.
+    if (!(validateRequiredField(form['video_file'], '{l_file_location}'))) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "photo_name" field validation.
+    if (!(validateRequiredField(form['video_name'], '{l_video_name}'))) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "photo_name" field validation.
+    if (!(validateMaxLength(form['video_name'], '{l_video_name}','10'))) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "photo_description" field validation.
+    if (!(validateRequiredField(form['description'], '{l_video_description}'))) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "photo_description" field validation.
+    if (!(validateMaxLength(form['description'], '{l_video_description}','100'))) {
+      removeSubmissionBlock();
+      return false;
+    }
+    return true;
+  }
+  function validateUploadPhotoForm() {
+    blockSubmission = true;
+     if (typeof beforeUploadPhotoFormValidation != 'undefined') {
+       beforeUploadPhotoFormValidation();
+    }
+    var validated = onValidateUploadPhotoForm();
+    if (validated && (typeof uponSuccessfulUploadPhotoFormValidation != 'undefined')) {
+      validated = uponSuccessfulUploadPhotoFormValidation();
+    }
+    else if (!validated && (typeof uponUnsuccessfulUploadPhotoFormValidation != 'undefined')) {
+      uponUnsuccessfulUploadPhotoFormValidation();
+    }
+    if (!validated) {
+      removeSubmissionBlock();
+    }
+    return validated;
+  }
+  function submitUploadPhotoForm() {
+   if (validateUploadPhotoForm()) document.UploadPhotoForm.submit();
+    }
+</script>
+<form  name="UploadPhotoForm" method="POST" enctype="multipart/form-data" action="{url_main}profile_video_edit.php" onSubmit="return validateUploadPhotoForm();" style="padding: 0px; margin: 0px;">
+			<input type="hidden" name="cmd" value="insert">
+			<table border="0" cellpadding="0" cellspacing="0"><tr>
+				<td class="body_little" valign="bottom" style="padding-right: 8px;" align="left">
+					<label for="PHOTO_FILE">{l_file_location}</label>
+					({l_max_2})
+					<br><input type="file" name="video_file" size="35">
+				</td>
+			</tr><tr style="padding-top: 8px;">
+				<td class="body_little" colspan="2" align="left">
+					<label for="PHOTO_NAME">{l_video_name}</label>
+					({l_max_10})
+					<br><input type="text" name="video_name" style="width: 250px;" size="31">
+				</td>
+			</tr><tr style="padding-top: 8px;">
+				<td class="body_little" colspan="2" align="left">
+					<label for="PHOTO_DESCRIPTION">{l_video_description}</label>
+					({l_max_100})
+					<br>
+					<textarea  name="description" style="width: 250px; height: 75px;"></textarea>
+				</td>
+			</tr><tr style="padding-top: 8px;">
+				<td colspan="2" align="left">
+					<br><input type="button" value="{l_upload_video}" onClick=" submitUploadPhotoForm();" class="button" style="width: 132px padding-left: 5px; padding-right: 5px; cursor: pointer; cursor: hand;" title="{l_upload_video}" onMouseOver="window.status='{l_upload_video}'; return true;" onMouseOut="window.status=''; return true;"></div>
+				</td>
+			</tr></table>
+	</form>
+
+		</td>
+
+	</tr></table>
+</div>
+<!-- end_video_upload -->
+
+</div></div></div></div></div></div></div></div></div>
+{complite}
+{footer}
+

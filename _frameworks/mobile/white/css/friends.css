@@ -1,0 +1,37 @@
+.tab {border-top:1px solid #fff; background:#e5e5e5;}
+.tab thead td {color:#fff;background:#222;}
+.tab thead a {color:#fff;}
+.tab tfoot td {background:#222222;}
+
+.tab .content {padding:0 4px;}
+.tab .txt {border:1px solid #fff;background:#e5e5e5;}
+.tab .btn {width:90px; margin:10px 5px 0px 5px; text-align:center; float:left;}
+
+.list {width:100%;}
+.list th {padding:3px 0 4px 0;color:#000;font-weight:bold;font-size:12px;line-height:14px;text-align:left;}
+.list th a {color:#1282c4;}
+.list td {padding:4px 0;color:#fff;}
+.list td a {color:#fff;}
+.list td b {color:#fff;}
+
+.friends {border-top: 4px solid #fff;}
+.friends .userlist {width:100%;}
+.friends .userlist td {width:25%;height:70px;border:1px solid #e5e5e5;background:#e5e5e5;}
+.friends .userlist div {max-width:62px;height:70px;margin:0 auto;background:url('') no-repeat 50% 0;}
+.friends .userlist div a {height:64px;padding:3px;display:block;font-size:10px;line-height:10px;font-weight:bold;color:#FBEBBC;text-decoration:none;}
+.friends .userlist p {width:62px;padding-top:4px;margin:0 auto;display:block;}
+.friends .userlist p input.checkbox {width:12px;height:12px;}
+
+.friends .userlist-my {width:100%;}
+.friends .userlist-my td {width:25%; height:70px; background:#e5e5e5;}
+.friends .userlist-my div {max-width:62px;height:70px;margin:0 auto;background:url('') no-repeat 50% 0;}
+.friends .userlist-my div a {height:64px;padding:3px;display:block;font-size:10px;line-height:10px;font-weight:bold;color:#FBEBBC;text-decoration:none;}
+.friends .userlist-my p {width:62px;padding-top:4px;margin:0 auto;display:block;}
+.friends .userlist-my p input.checkbox {width:12px;height:12px;}
+
+.friends .tab {background:#fff;}
+.friends .list .userlist td {border:1px solid #e5e5e5;background:#e5e5e5;}
+.friends .next {width:30%;float:right;padding:4px 6px 0 6px;margin:0;font-size:24px;line-height:24px;text-align:right;}
+.friends .delete {width:140px;margin:10px 0 0 4px;float:left;}
+
+.friends_list {background:#f4f4f4;}

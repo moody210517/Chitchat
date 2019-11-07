@@ -1,0 +1,17 @@
+<script>
+    ratePeople.setCurrentInfo('{user_id}','{photo_item_id}');
+    <!-- begin_rating_info -->
+    ratePeople.setRatingInfo({rating_info});
+    <!-- end_rating_info -->
+    counterTitle = '{counter_title}';
+</script>
+<!-- begin_photo_big -->
+<div class="frame" style="width:{photo_width}px; line-height:{photo_height}px;">
+        <!-- begin_photo_big_item -->
+        <a onclick="goLink('{url_main}{user_profile_link}', '{user_profile_param}'); return false;" href="" style="opacity:0;">
+            <img style="height:{photo_height}px;" src="{url_files}{photo_b}" alt="{name}, {age}" onload="$(this).parent().fadeTo(400,1)">
+            <div class="name">{name}, {age}, {city}</div>
+        </a>
+        <!-- end_photo_big_item -->
+</div>
+<!-- end_photo_big -->

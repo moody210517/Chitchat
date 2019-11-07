@@ -1,0 +1,147 @@
+<script type="text/javascript">
+var active = 0;
+var shift = 0;
+$(function(){
+    initLightboxOldTemplateNewAge($('.image_gallery a'));
+    var desc = $('#event_description'),
+        curHeightDefault = desc.height(),
+        current,
+        isCollapse;
+    if ('{description_collapse}' == '0') {
+        $('#show_description').css('display', 'none');
+    }
+    current = desc.data('desc-short');
+    $('body').on('click', '#show_description', function(){
+        var curHeight = desc.height();
+            desc.css('height', curHeight+'px');
+        if (current == desc.data('desc-short')) {
+            current = desc.data('desc');
+            isCollapse = false;
+        } else {
+            current = desc.data('desc-short');
+            isCollapse = true;
+        }
+        if (curHeight >= curHeightDefault && isCollapse) {
+            desc.animate({height: curHeightDefault+'px'}, 200, function() {
+                $(this).html(current+' <a id="show_description" href="">{l_show_all}</a>');
+            });
+        } else {
+            desc.html(current+' <a id="show_description" href="">{l_collapse}</a>');
+            var autoHeight = desc.css('height', 'auto').height();
+            desc.height(curHeight).animate({height: autoHeight}, 200);
+        }
+
+        return false;
+    });
+});
+
+function set_main_image(thumbnail, image, n)
+{
+    $('.image_gallery a').attr('href', image);
+    $('.image_gallery a img').attr('src', thumbnail);
+    $('#image_list li').attr('class','');
+    $('#image_list li:eq('+n+')').attr('class','active');
+    active = n+shift;
+}
+
+</script>
+
+<!-- begin_event -->
+<div class="events_new_decor_l">
+
+    <div class="pl_top">
+          <h1 class="pink" title="{event_title_full}">{event_title} <!-- begin_event_finished --><span class="green">[</span><span class="white">{l_events_finished_event}</span><span class="green">]</span><!-- end_event_finished --></h1>
+
+          <div class="fl_left">
+              <div class="image_gallery events_new_img_pink events_new_margin0">
+                  <!-- begin_image --> <a href="{image_file}"><img src="{image_thumbnail_b}" width="160" height="120" title="{event_title_full}" alt="{event_title_full}"/></a><!--end_image -->
+                  <!-- begin_no_image --> <img src="{image_thumbnail_b}" width="160" height="120" title="{event_title_full}" alt="{event_title_full}"/><!--end_no_image -->
+              </div>
+
+              <div id="events_event_image_list">
+              {events_event_image_list}
+              </div>
+
+              <!-- begin_event_functions -->
+              <div class="events_new_img_txt">
+                  <span class="pink"><a href="{url_main}events_event_add_photos.php?event_id={event_id}">{l_events_add_images}</a><!-- begin_event_edit --> | <a href="{url_main}events_event_edit.php?event_id={event_id}">{l_events_edit_event}</a><!-- end_event_edit --></span>
+              </div>
+              <!-- end_event_functions -->
+          </div>
+
+          <div class="events_new_bl_green">
+              <div class="list_bg_violet">
+                <ul class="list_bg fl_left">
+                    <li><strong>{l_events_category}:</strong> <a href="{url_main}events_search.php?category_id={category_id}" title="{category_title_full}">{category_title}</a></li>
+                    <li><span>{l_events_guests}:</span> {event_n_guests}</li>
+                    <li><span>{l_events_comments}:</span> {event_n_comments}</li>
+                </ul>
+                <ul class="list_bg fl_left">
+                    <li><strong class="white">{event_date} | {event_time}</strong></li>
+                    <li><a class="green" href="{url_main}events_search.php?event_place={event_place_full}" title="{event_place_full}">{event_place}</a><!-- {city_title}--></li>
+                    <li class="address" title="{event_address_full}">{event_address}</li>
+                </ul>
+
+              </div>
+
+              <p title="{event_description_full}">{event_description}</p>
+              <p class="contact">
+                  <!-- begin_event_site --> <strong>{l_events_site}:</strong> <a target="_blank" href="{event_site_full}" rel="nofollow">{event_site}</a>&nbsp;<!-- end_event_site -->
+                  <!-- begin_event_phone --> <strong>{l_events_phone}:</strong> <span title="{event_phone_full}">{event_phone}</span><!-- end_event_phone -->
+              </p>
+          </div>
+
+    </div>
+
+</div>
+<!-- end_event -->
+
+<!-- begin_event_private -->
+<script language="javascript" type="text/javascript">//classHover: 'album_title',classHover: 'album_desc',
+$(function(){
+	$('#EventDescription_{event_id}').editable({
+		lAdd: '{l_add_desc_event_private}',
+		lEdit: '{l_edit_desc_event_private}',
+		lSave: '{l_saving}',
+        type: 'event_private_desc',
+        typeData: 'event_description',
+		classInput: 'event_private_editable_input',
+		classHover: 'event_private_editable_hov',
+		inputLength:1000//{gallery_album_description_length}
+	});
+});
+</script>
+<div class="events_new_p">
+
+	<div class="events_new_decor_no pl_top">
+	      <h1 class="pink" title="{event_title_full}">{event_title_full}</h1>
+
+	      <div class="fl_left">
+		          <div class="image_gallery events_new_img_pink events_new_margin0">
+	                  <a href="{image_file}"><img src="{image_thumbnail_b}" width="160" height="120" title="{event_title_full}" alt="{event_title_full}"/></a>
+		          </div>
+
+		          <div id="events_event_image_list">
+		          {events_event_image_list}
+		          </div>
+
+	              <!-- begin_event_private_functions -->
+	              <div class="events_new_img_txt">
+	                  <span><a href="{url_main}events_event_add_photos.php?event_id={event_id}">{l_events_add_images}</a> | <a href="{url_main}events_event_edit.php?event_id={event_id}">{l_events_edit_entry}</a> | <a class="areyousure" href="{url_main}events_event_delete.php?event_id={event_id}">{l_events_delete}</a></span>
+	              </div>
+	              <!-- end_event_private_functions -->
+	          </div>
+
+	          <div class="events_new_bl_green">
+	              <div class="list_bg_violet2">
+	                    <span>{event_date}</span> | {event_time}
+	              </div>
+                  <div id="EventDescription_{event_id}" style="padding-left: 4px;">{event_description_full}</div>
+	          </div>
+
+	    </div>
+
+	</div>
+
+</div>
+<!-- end_event_private -->

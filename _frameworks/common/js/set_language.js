@@ -1,0 +1,1 @@
+if(typeof siteLangParts=='undefined'){var siteLangParts={}}siteLangParts['{page}']={<!-- begin_lang_item -->'{key}':'{value}',<!-- end_lang_item -->};

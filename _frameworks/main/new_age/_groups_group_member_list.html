@@ -1,0 +1,77 @@
+<!-- begin_container_header -->
+<script type="text/javascript">
+
+function group_member_list_load_page(page_n)
+{
+    $('#group_member_list_container').load(
+            '{url_main}groups_group_member_list_ajax.php?group_id={group_id}&group_member_list_page=' + page_n, 
+            null,
+            function(responseText, textStatus, XMLHttpRequest) {
+                current_page_n = page_n;     
+            });
+
+    return false;
+}
+
+function remove_member_button(page_n, user_id)
+{
+    if(confirm('{l_are_you_sure}'))
+    {
+	    $('#you_not_come_button').hide();
+	    $.ajax({
+	        type: 'POST',
+	        url: '{url_main}groups_group_member_ajax.php',
+	        data: {
+	            cmd: "remove",
+	            group_id: {group_id},
+	            user_id: user_id
+	            },
+	        success: function(data) {
+	            	group_member_list_load_page(page_n);
+	        }
+	      });
+    }
+    return false;
+}
+
+</script>
+<div id="group_member_list_container">
+<!-- end_container_header -->
+
+   <div style="position: relative; z-index: 2;">
+
+   <h1 class="white">{l_groups_group_members}</h1>
+
+   <div class="groups_come_all">
+      <!-- begin_member -->
+      <!-- begin_member_photo -->
+      <div class="groups_come">
+         <a href="{url_main}search_results.php?display=profile&name={user_name_profile}"><img src="{user_photo}" width="62" height="70" alt="{user_name}"/><br /></a>
+         <div class="groups_come_decor">{user_name}
+         <!-- begin_remove_member_button --><a href="#" onclick="return remove_member_button({page}, {user_id})"><img src="{url_tmpl_main}images/groups/ico_delete_yellow.png" width="13" height="14" alt=""></a><!-- end_remove_member_button -->
+         </div>
+      </div>
+      <!-- end_member_photo -->
+      <!-- begin_member_no_photo -->
+      <div class="groups_come">
+         <img src="{url_tmpl_main}images/groups/foto_empty.jpg" width="62" height="70" alt=""/><br />
+         <div class="groups_come_decor">---</div>
+      </div>
+      <!-- end_member_no_photo -->
+      <!-- end_member -->
+      <div class="justify"></div>
+   </div>
+
+   <div class="groups_guests">
+
+      {first_member_n}-{last_member_n} {l_groups_of} {members_count}
+
+      <!-- begin_pager_prev --><div class="decor_l"><a href="#" onclick="return group_member_list_load_page({page_n});"><img src="{url_tmpl_main}images/groups/new_mods_guests_decor_l.png" width="34" height="26" alt=""/></a></div><!-- end_pager_prev -->
+      <!-- begin_pager_prev_inactive --><div class="decor_l"><img src="{url_tmpl_main}images/groups/new_mods_guests_decor_l.png" width="34" height="26" alt=""/></div><!-- end_pager_prev_inactive -->
+      <!-- begin_pager_next --><div class="decor_r"><a href="#" onclick="return group_member_list_load_page({page_n});"><img src="{url_tmpl_main}images/groups/new_mods_guests_decor_r.png" width="34" height="26" alt=""/></a></div><!-- end_pager_next -->
+      <!-- begin_pager_next_inactive --><div class="decor_r"><img src="{url_tmpl_main}images/groups/new_mods_guests_decor_r.png" width="34" height="26" alt=""/></div><!-- end_pager_next_inactive -->
+   </div>
+</div>
+<!-- begin_container_footer -->
+</div>
+<!-- end_container_footer -->

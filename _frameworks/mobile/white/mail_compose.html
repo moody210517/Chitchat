@@ -1,0 +1,96 @@
+{header}
+<script language="javascript" type="text/javascript">
+var isPost = false;
+window.onbeforeunload = function (evt) {
+    if ($.trim($('#text').val()) != '' && isPost == false) {
+        var message = '{l_leave_this_page}';
+        if (typeof evt == "undefined") {
+            evt = window.event;
+        }
+        if (evt) {
+            evt.returnValue = message;
+        }        
+        return message;
+    } 
+}
+</script>
+<table class="cnt newmessage" cellspacing="0" cellpadding="0"><tr><td>
+
+<!-- begin_send_to_user_id -->
+<form  name="AddContactForm" method="POST" action="{url_main}mail_compose.php?cmd=sent{form_url}">
+<table cellspacing="0" cellpadding="0" class="tab">
+<thead>
+	<tr>
+		<td class="mailicon">{l_write_email_to}<a href="{url_main}profile_view.php?user_id={recipient_id}">{name}</a></td>
+	</tr>
+</thead>
+
+<tbody>
+	<tr>
+		<td class="content">
+			<table cellspacing="0" cellpadding="0" class="list">
+			<tr class="smallnav">
+				<th colspan="2">
+					<table cellpadding="0" cellspacing="0" class="smenu">
+						{profile_view_menu}
+					</table>
+				</th>
+			</tr>
+			<tr class="blue">
+				<th>{l_subj}:</th>
+				<td><input type="text" name="subject" value="{subject}" class="txt"/>
+				<input type="hidden" name="name" value="{name}"></td>
+			</tr>
+			<tr class="gray">
+				<th>{l_text}:</th>
+				<td>
+					<textarea id="text" class="addmessage" name="text">{text}</textarea>
+					<div class="bl_btn_center">
+						<a href="#" onclick="isPost = true; document.forms['AddContactForm'].submit();"  class="orange_btn btn">{l_send}</a>
+					</div>
+				</td>
+			</tr>
+			</table>
+		</td>
+	</tr>
+</tbody>
+</table>
+<!-- end_send_to_user_id -->
+
+<!-- begin_send_to_user_name -->
+<form  name="AddContactForm" method="POST" action="{url_main}mail_compose.php?cmd=sent">
+<table cellspacing="0" cellpadding="0" class="tab">
+<tbody>
+<tr class="red">
+	<th>{l_mail_to_upper}:</th>
+	<!-- begin_no_select_from_friends --><td><input type="text" class="txt" name="name" value="{name}"/></td><!-- end_no_select_from_friends -->
+	<!-- begin_select_from_friends --><td class="nofriends"><input type="text" class="txt" name="name" value="{name}"/><label>[+]&nbsp;<a onclick="isPost = true; window.location.href='{url_main}mail_compose_select_friend.php'; return false;" href="">{l_choose_a_friend}</a></label></td><!-- end_select_from_friends -->
+</tr>
+<tr class="blue">
+	<th>{l_subj}:</th>
+	<td><input type="text" class="txt" name="subject" value="{subject}" c/></td>
+</tr>
+<tr>
+	<th>{l_text}:</th>
+	<td>
+		<textarea  id="text" class="addmessage" name="text">{text}</textarea>
+		<a href="#" onclick="isPost = true;  document.forms['AddContactForm'].submit();"  class="orange_btn btn">{l_send}</a>
+	</td>
+</tr>
+</tbody>
+</table>
+<!-- end_send_to_user_name -->
+
+</form>
+
+</td></tr></table>
+
+{user_menu}
+
+<!-- begin_error -->
+<script type="text/javascript"><!--
+alert('{error_message}'); 
+//--></script>
+<!-- end_error -->
+
+{footer}

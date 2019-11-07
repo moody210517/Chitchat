@@ -1,0 +1,59 @@
+{header}
+{profile_menu}
+
+<script language="javascript" type="text/javascript">
+function limitText(limitField, limitNum) {
+	if (limitField.value.length > limitNum) {
+		limitField.value = limitField.value.substring(0, limitNum);
+	}
+}
+</script>
+
+<form name="profile" method="POST" action="{url_main}profile.php?cmd=update">
+
+<tfoot>
+	<tr>
+		<td align="right">
+			<p class="view"><a href="{url_main}profile_view.php">{l_view_profile}</a></p>
+			
+			<a href="#" onclick="document.forms['profile'].submit();"  class="orange_btn btn">{l_save_changes}</a>
+		</td>
+	</tr>
+</tfoot>
+
+<tbody>
+	<tr>
+		<td class="content addgroup">
+			<table class="list" cellspacing="0" cellpadding="0">
+                        <!-- begin_fields_text --> 
+			<!-- begin_text -->
+			<tr>
+				<th><label>{field}:</label></th>
+				<td><input type="text" name="{name}" id="{name}" value="{value}" maxlength="{maxlen}" class="txt" /></td>
+			</tr>
+			<!-- end_text -->
+			<!-- begin_textarea -->
+			<tr>
+				<th><label>{field}:</label></th>
+				<td><textarea name="{name}" id="{name}" >{value}</textarea></td>
+			</tr>
+			<!-- end_textarea -->
+                        <!-- end_fields_text --> 
+			</table>
+		</td>
+	</tr>
+</tbody>
+</table>
+</form>
+
+</td></tr></table>
+
+{user_menu}
+
+<!-- begin_error -->
+<script type="text/javascript"><!--
+alert('{error_message}'); 
+//--></script>
+<!-- end_error -->
+
+{footer}

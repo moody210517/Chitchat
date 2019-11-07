@@ -1,0 +1,43 @@
+{header}
+<style>
+    .st-content-inner{ overflow: hidden !important; }
+</style>
+
+<script>
+    $(function(){
+        cprofile.initGifts('{user_id}');
+        cprofile.langParts['btn_perform_action'] = '{j_btn_perform_action}';
+
+        <!-- begin_response_refill_credits -->
+        cprofile.$listGifts.find('li > a').removeClass('selected');
+        cprofile.preparePaidGift();
+        <!-- end_response_refill_credits -->
+    })
+</script>
+
+<div class="wrapper">
+    <div class="content"> <!-- style="padding-bottom: 130px;" -->
+        <div id="head_gift_price" class="head">
+            {pp_gift_title}
+        </div>
+        <!-- begin_pp_gift -->
+        <div class="bl_gift">
+            <ul id="list_items_gifts">
+                <!-- begin_pp_gift_img -->
+                <li>
+                    <a id="{pp_gift_id}" data-credits="{pp_gift_credits}" class="gift_img <!-- begin_pp_gift_select -->selected<!--end_pp_gift_select -->" href="#" style="opacity: 0;">
+                        <img src="{pp_gift_url}" alt="" onload="$(this).parent('a').fadeTo(200,1);" />
+                    </a>
+                </li>
+                <!-- end_pp_gift_img -->
+            </ul>
+        </div>
+        <!-- end_pp_gift -->
+        <div class="cl"></div>
+    </div>
+
+    <div class="bl_gift_ch_only {is_gift_credits_class}">
+        <input id="gift_recipient" type="checkbox" > <label for="gift_recipient">{l_only_you_and_the_receiver_can_see_it}</label>
+    </div>
+</div>
+{footer}

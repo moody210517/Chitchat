@@ -1,0 +1,341 @@
+{header}
+{ims}
+<script type="text/javascript">
+function equalHeight(group) {
+    tallest = 0;
+    group.each(function() {
+        thisHeight = $(this).height();
+        if(thisHeight > tallest) {
+        tallest = thisHeight;
+        }
+    });
+    group.height(tallest);
+}
+$(document).ready(function() {
+    equalHeight($(".in,.userinfo-c"));
+});
+</script>
+
+
+{complite}
+
+
+<script language="javascript" type="text/javascript">
+$(function(){
+   $('[id ^= DescEditable_]').editable({editor: 'textarea',
+       empty: true,
+       classInput: 'profile_photo_edit_editable_textarea',
+       classHover: 'profile_photo_edit_editable_hover',
+       type: 'photo'});
+});
+
+// save form on "enter"
+function save_form(e,this_form){
+
+	if(window.event) // IE
+	{
+		keynum = e.keyCode
+	}
+	else if(e.which) // Netscape/Firefox/Opera
+	{
+		keynum = e.which
+	}
+
+	if(13==keynum) this_form.parentNode.displayDiv.saveChanges(this_form);
+}
+
+</script>
+
+<div class="wrapper">
+<div class="userinfo-c">
+<div class="userinfo smallphoto clearfix">
+
+    {profile_menu}
+
+<br /><br />
+<!-- begin_message -->
+	<div class="photos_deleted" style="float:right; margin-right:7px; margin-top:-36px;"><i class="left"></i><span>{message}</span><i class="right"></i></div>  <br />
+<!-- end_message -->
+
+
+<!-- begin_photo_edit -->
+
+<!-- begin_photo-->
+
+	<div id="gallery" class="profile_photo">
+
+            <div class="gallery_top ltc">
+                <div class="rtc">
+                    <div class="buck">
+                        <h2 class="noback">{l_profile_edit_photos}</h2>
+                    </div>
+                </div>
+            </div>
+	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<!-- begin_photo_item-->
+		<!-- begin_photo_odd-->
+		<tr class="row{row}">
+		<!-- end_photo_odd-->
+			<td class="profile_img">
+                <!-- begin_photo_item_photo -->
+                <a style="position:relative;" href="{url_main}search_results.php?display=photo&uid={user_id}&photo_offset={photo_offset}">
+                <img class="img_border" src="{url_files}photo/{user_id}_{photo_id}_s.jpg">
+                </a>
+                <!-- end_photo_item_photo -->
+                <!-- begin_photo_item_photo_not_approval -->
+                <img class="img_border" src="{url_files}photo/{user_id}_{photo_id}_s.jpg">
+                <!-- end_photo_item_photo_not_approval -->
+            </td>
+			<td class="profile_info">
+				<div class="profile_photo_edit_editable" id="DescEditable_{photo_id}">{description}</div>
+
+				<div class="photo_visible">
+
+				<div style="margin: 0 0 3px;">
+				<input onclick="xajax_photo_private({photo_id}, 'lb_private_{photo_id}');" {private} type="checkbox" id="chk_{photo_id}"> <label id="lb_private_{photo_id}" for="chk_{photo_id}">{private_title}</label>
+				</div>
+
+				<input onclick="xajax_photo_default({photo_id}, 'lb_default_{photo_id}');" {default} type="radio" name="default[]" value="{photo_id}" id="rd_{photo_id}"> <label id="lb_default_{photo_id}" for="rd_{photo_id}">{default_title}</label>
+				&nbsp;|&nbsp;<a class="img" href="#" onClick="if(confirm('{l_this_action_can_not_be_undone}')) parent.location.href='{url_main}profile_photo.php?cmd=delete&id={photo_id}';" title="{l_delete}" onMouseOver="window.status='{l_delete}'; return true;" onMouseOut="window.status=''; return true;"><img src="{url_tmpl_main}images/delete_photo.png" alt="{l_delete}" border="0" /></a>
+				</div>
+			</td>
+		<!-- begin_photo_even-->
+		</tr>
+		<!-- end_photo_even-->
+
+	<!-- end_photo_item-->
+
+
+
+	<!-- begin_nophoto_item-->
+		<!-- begin_nophoto_odd-->
+		<tr class="row{row}">
+		<!-- end_nophoto_odd-->
+		<td class="profile_img"></td>
+		<td class="profile_info"></td>
+		<!-- begin_nophoto_even-->
+		</tr>
+		<!-- end_nophoto_even-->
+	<!-- end_nophoto_item-->
+	</table>
+
+	<div class="gallery_bottom lbc png">
+                <div class="rbc png">
+                    <div class="buck">
+                        <!-- begin_pages -->
+                        <table width="100%" border="0" class="pag"><tr>
+                              <td align=left width="180">{l_listing} {this_count}-{next_count} {l_of} {all_count}</td>
+                        <td></td>
+
+                        <td align="right">
+                            <table><tr>
+                            <td width="10px" align="left" class="tvCenter">
+                                <!-- begin_left_2 -->
+                                <a href='{url_main}videogallery_video_view.php?fla={fla}&show={show}&cat={cat_id}&start={toleft}'><img src="{url_tmpl_main}images/arrow5_double_l.gif" /></a>
+                                <!-- end_left_2 -->
+                            </td>
+                            <td width="15px" align="left" class="tvCenter">
+                                <!-- begin_prev -->
+                                <a href='{url_main}videogallery_video_view.php?fla={fla}&show={show}&cat={cat_id}&start={back}'>{l_prev}</a>&nbsp;&nbsp;&nbsp;|
+                                <!-- end_prev -->
+                            </td>
+                            <td align="center">
+                                <!-- begin_pages_1 -->
+                                <!-- begin_page -->
+                                <div class="pagesListItem">
+                                    <a href='{url_main}videogallery_video_view.php?fla={fla}&show={show}&cat={cat_id}&start={i}'>{l}</a>
+                                </div>
+                                <!-- end_page -->
+                                <!-- begin_page_1 -->
+                                <div class="pagesListItem pglActive">
+                                {l}
+                                </div>
+                                <!-- end_page_1 -->
+                                <!-- end_pages_1 -->
+                            </td>
+                            <!-- begin_next -->
+                            <td width="15px" align="right" class="tvCenter">
+
+                                &nbsp;&nbsp;&nbsp;|<a href='{url_main}videogallery_video_view.php?fla={fla}&show={show}&cat={cat_id}&start={next}'>{l_next}</a>
+
+                            </td>
+                            <!-- end_next -->
+                            <!-- begin_right_2 -->
+                            <td width="10px" align="right" class="tvCenter">
+
+                                <a href='{url_main}videogallery_video_view.php?fla={fla}&show={show}&cat={cat_id}&start={toright}'><img src="{url_tmpl_main}images/arrow5_double_r.gif" /></a>
+
+                            </td>
+                            <!-- end_right_2 -->
+                            </tr></table>
+                            		</td>
+
+							<td width="1">
+							<!-- end_pages -->
+							</td></tr></table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+<!-- end_photo-->
+
+
+<!-- end_photo_edit -->
+
+
+
+<!-- begin_photo_upload -->
+
+<div  class=header_small style="padding-bottom:15px;">
+	{l_upload_your_photo}
+</div>
+<div>
+	<table border="0" cellpadding="0" cellspacing="0"><tr>
+		<td valign="top" style="padding-right: 10px;" align="left">
+			<!-- begin_photo_rules -->
+			<div class="body_text">
+				{l_photo_will_be} <span style="cursor:hand; text-decoration:underline; cursor:pointer;" onclick="OpenWindow('{url_main}info.php?page=photo_guidelines&lang={lang_loaded}', 650, 400 )">{l_photo_guidelines}</span>.
+			</div>
+			<br>
+			<!-- end_photo_rules -->
+			<div>
+				<b>{l_note}:</b> {l_photo_must_be}
+			</div>
+		</td>
+
+		<td valign="top">
+<script Language="JavaScript" type="text/javascript">
+  var blockSubmission = false;
+  function removeSubmissionBlock() {
+    blockSubmission = false;
+  }
+  function isSubmissionAllowed() {
+    if(blockSubmission){
+       return false;
+    }
+    return;
+   }
+  document.onclick = isSubmissionAllowed;
+  document.onkeydown = isSubmissionAllowed;
+
+
+  function OpenWindow( sUri, iWidth, iHeight )
+{
+	var sWindowName = 'win' + Math.floor( Math.random()*1000 )
+	var iRealWidth = iWidth ? iWidth : 600
+	var iRealHeight = iHeight ? iHeight : screen.height - 300
+
+	var iLeft = Math.round( (screen.width-iRealWidth)/2 )
+	var iTop =  Math.round( (screen.height-iRealHeight)/2 ) - 35
+
+	var sWindowOptions = 'status=yes,menubar=no,toolbar=no'
+	sWindowOptions += ',resizable=yes,scrollbars=yes,location=no'
+	sWindowOptions += ',width='  + iRealWidth
+	sWindowOptions += ',height=' + iRealHeight
+	sWindowOptions += ',left='   + iLeft
+	sWindowOptions += ',top='    + iTop
+
+	var oWindow = window.open( sUri, sWindowName, sWindowOptions )
+	oWindow.focus()
+
+	return oWindow
+}
+
+
+
+
+  function onValidateUploadPhotoForm() {
+    var form = document.forms['UploadPhotoForm'];
+    // "photo_file" field validation.
+    if (!(validateRequiredField(form['photo_file'], '{l_file_location}'))) {
+      removeSubmissionBlock();
+      return false;
+    }
+
+    // "photo_description" field validation.
+    if (!(validateMaxLength(form['description'], '{l_photo_description}','{profile_photo_description_length}'))) {
+      removeSubmissionBlock();
+      return false;
+    }
+    return true;
+  }
+  function validateUploadPhotoForm() {
+    blockSubmission = true;
+     if (typeof beforeUploadPhotoFormValidation != 'undefined') {
+       beforeUploadPhotoFormValidation();
+    }
+    var validated = onValidateUploadPhotoForm();
+    if (validated && (typeof uponSuccessfulUploadPhotoFormValidation != 'undefined')) {
+      validated = uponSuccessfulUploadPhotoFormValidation();
+    }
+    else if (!validated && (typeof uponUnsuccessfulUploadPhotoFormValidation != 'undefined')) {
+      uponUnsuccessfulUploadPhotoFormValidation();
+    }
+    if (!validated) {
+      removeSubmissionBlock();
+    }
+    return validated;
+  }
+  function submitUploadPhotoForm() {
+   if (validateUploadPhotoForm()) {
+        //show_load_animation();
+        document.UploadPhotoForm.submit();
+   }
+  }
+</script>
+
+<style>
+
+.ABKFile .ABKTextCenter {width:179px !important;}
+
+</style>
+
+<form  name="UploadPhotoForm" method="POST" enctype="multipart/form-data" action="{url_main}profile_photo.php" onSubmit="return validateUploadPhotoForm();" style="padding: 0px; margin: 0px;">
+			<input type="hidden" name="cmd" value="insert">
+			<table border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td  valign="bottom" style="padding-right: 8px;" align="left" >
+					<label for="PHOTO_FILE"><b>{l_file_location}</b></label>
+					({max_size})<br>
+
+					<input type="file" name="photo_file" size="22"  style="width:193px !important" /><br />
+				</td>
+			</tr><tr>
+				<td colspan="2" align="left">
+					<label for="PHOTO_DESCRIPTION"><b>{l_photo_description}</b></label>
+					({l_max_100})
+					<br>
+					<div style="width:195px;"><textarea  name="description" style="width:185px; height:75px;"></textarea></div>
+				</td>
+			</tr>
+			<tr style="padding-top: 8px;">
+				<td colspan="2" align="left">
+                    <div style="padding-top:14px; font-weight: bold; margin-bottom: -12px;">{message}</div>
+					<br>
+                    <div>
+                    <input type="button" value="{l_upload_photo}" onClick=" submitUploadPhotoForm();" class="button" style="width:100px; padding-left:5px; padding-right:5px; cursor: pointer; cursor: hand;" title="{l_upload_photo}" onMouseOver="window.status='{l_upload_photo}'; return true;" onMouseOut="window.status=''; return true;">
+                    <br>
+                    <a style="float: left; padding: 10px 0 5px;" href="{url_main}search_results.php?offset=1&display=photo&name={name}">{l_view_profile_pictures}</a>
+                    </div>
+                    <img id="load_animation" style="visibility:hidden;position:relative;top:4px;#top:2px;" src="{url_tmpl_main}images/load_animation.gif">
+                    <a name="ph" id="ph"></a>
+			</td>
+
+			</tr>
+		</table>
+	</form>
+
+		</td>
+
+	</tr></table>
+</div>
+<!-- end_photo_upload -->
+
+
+</div>
+
+</div>
+<div class="userinfo-links"></div>
+</div>
+{footer}

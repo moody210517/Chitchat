@@ -1,0 +1,62 @@
+				<div style="clear:both;"></div>
+                </div>
+			</div>
+		</div>
+        
+		<div id="shadow"></div>
+        
+		<div id="footer">
+			<p>
+                <!-- begin_news_on -->
+				<a href="{url_main}news.php?view=1" title="{l_how_it_works}">{l_how_it_works}</a> |
+				<a href="{url_main}news.php?view=2" title="{l_about_us}">{l_about_us}</a> 
+                <!-- end_news_on -->
+                {dash1}
+                <!-- begin_help_on -->
+                    <a href="{url_main}help.php" title="{l_help}">{l_help}</a> 
+                <!-- end_help_on -->
+                {dash2}
+				<!-- begin_link_partner -->
+				<a href="{url_main}partner/" target="_blank" title="{l_affiliates}">{l_affiliates}</a> 
+				<!-- end_link_partner -->
+                {dash3}
+                <!-- begin_news_on1 -->
+				<a href="{url_main}news.php?view=3" title="{l_testimonials}">{l_testimonials}</a> |
+		 		<a href="{url_main}news.php" title="{l_dating_news}">{l_dating_news}</a> 
+                <!-- end_news_on1 -->
+                 {dash1}
+                <!-- begin_contact_on -->
+		 		<a href="{url_main}contact.php" title="{l_contact_us}">{l_contact_us}</a><br />
+                <!-- end_contact_on -->
+			</p>
+			<p class="abledating">{l_online_dating} <a href="{url_main}" title="{title_orig}">{title_orig}</a></p>
+		</div>
+        
+	</div>
+	<div id="xajax_im"></div>
+	<script>
+
+	
+	</script>
+	
+<script src="{url_tmpl_main}js/instantclick.min.js{cache_version_param}" data-no-instant></script>
+<script data-no-instant>InstantClick.init('mousedown');
+
+            try { initAjax(); }
+            catch(e) {};
+		var MSG_MAX_LENGTH			= '{l_msg_max_length}';
+		var MSG_MIN_LENGTH			= '{l_msg_min_length}';
+		var MSG_REQ_FIELD           = '{l_msg_req_field}';
+		var MSG_INVALID_EMAIL       = '{l_msg_invalid_email}';
+		var MSG_REQUIRED_SELECT		= '{l_msg_required_select}';
+		var MSG_ALPHA_NUMERIC		= '{l_msg_alpha_numeric}';
+		var MSG_NUMERIC             = '{l_msg_numeric}';
+		var MSG_TWO_FIELDS			= '{l_msg_two_fields}';
+		var MSG_NOT_TWO_FIELDS      = '{l_msg_not_two_fields}';
+		var MSG_YOU_ARE_IN_BLOCK_LIST = '{l_you_are_in_block_list}';
+
+		{footer_custom_js}
+
+</script>	
+</body>
+</html>

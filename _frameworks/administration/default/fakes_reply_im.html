@@ -1,0 +1,115 @@
+{header}
+<script>
+var timeoutSec = 10000;
+var status_writing = {};
+$(function() {
+    $('[id ^= msg_field_]').keydown(function(e) {
+        var d = new Date(),
+            data = $(this),
+            param = data[0]['id'].split('_');
+        if (typeof status_writing[param[3]] == 'undefined') {
+            status_writing[param[3]] = {};
+        }
+        status_writing[param[3]]['user_to'] = param[2];
+        status_writing[param[3]]['time'] = parseInt(d.getTime()/1000);
+    })
+
+    setInterval(function(){
+        if ($.isEmptyObject(status_writing) != true) {
+             $.ajax({type: 'POST',
+                     url: '{url_page}',
+                     dataType: 'json',
+                     data: {cmd: 'writing', writing: JSON.stringify(status_writing)}
+            })
+        }
+    }, timeoutSec);
+})
+</script>
+<div class="block_narrow">
+	{menu_page}
+</div>
+<div class="block_main">
+    <h2>{l_title_current}</h2>
+	<div>
+
+	<div style="color:#F00; font-weight:bold;">{message}</div>
+
+<!-- begin_mail_list_items -->
+
+	<!-- begin_mail_list_item -->
+
+        <!-- begin_mail_new -->
+        <div style="float:left; margin-top: 3px;"><img src="{url_tmpl_administration}images/new.png" width="22" height="17" border="0"></div>
+        <!-- end_mail_new -->
+        <!-- begin_mail_old -->
+        <div style="float:left; margin-top: 3px;"><img src="{url_tmpl_administration}images/icon_mail_read.png" width="22" height="17" border="0"></div>
+        <!-- end_mail_old -->
+		<div  style="width: 100%;">
+            <h2 style="padding-bottom: 1px;">{l_from} <a target="_blank" href="../search_results.php?display=profile&uid={from_user}">{user_from}</a> {l_to} <a target="_blank" href="../search_results.php?display=profile&uid={to_user}">{user_to}</a></h2>
+        </div>
+		<p><b>{l_date}:</b> {born} <!-- begin_is_read --><img style="margin-top: -2px; margin-left: 2px;" src="{url_tmpl_administration}images/checkmark.png"><!-- end_is_read --></p>
+		<div style="padding-bottom: 8px;">{msg_im}</div>
+
+        <!-- begin_reply -->
+        <div style="padding-top:10px;">
+        <form method="post">
+            <input type="hidden" name="cmd" value="reply">
+			<input type="hidden" name="user_to" value="{from_user}">
+			<input type="hidden" name="user_from" value="{to_user}">
+            <input id="msg_field_{from_user}_{to_user}" style="width: 100%;" type="text" name="text" class="w2010px" value=""><br>
+            <div class="btn fl_right" style="padding-right:0px; margin-top: 0px;"><a href="#" class="submit">{l_send}</a>
+                <input type="submit" style="visibility:hidden;position:absolute;">
+            </div>
+            <div class="cl"></div>
+        </form>
+        </div>
+        <!-- end_reply -->
+        <!-- begin_reply_block -->
+        <div style="padding:10px 0px 10px 0px; font-weight: bold; font-size: 14px;">
+        {l_you_are_in_block_list}
+        </div>
+        <!-- end_reply_block -->
+
+	<!-- end_mail_list_item -->
+<br />
+<br />
+<!-- end_mail_list_items -->
+
+	    <!-- begin_mail_list_pages -->
+			<div class="body_text" style="padding-bottom: 16px;">
+				<!-- begin_mail_list_prev_page -->
+				<a href="{url_page}?offset={offset}{params}" class="pri_text_bold">{l_prev}</a>&nbsp; | &nbsp;
+				<!-- end_mail_list_prev_page -->
+				<!-- begin_mail_list_prev_page_off -->
+				<b>{l_prev}</b>&nbsp; | &nbsp;
+				<!-- end_mail_list_prev_page_off -->
+				<!-- begin_mail_list_first_page -->
+				<a href="{url_page}?offset={offset}{params}" class="pri_text_bold">{l_page_1}</a>&nbsp;
+				<!-- end_mail_list_first_page -->
+				<!-- begin_mail_list_prev_pages -->
+				<a href="{url_page}?offset={offset}{params}" class="pri_text_bold">&lt;&lt;</a>&nbsp;
+				<!-- end_mail_list_prev_pages -->
+				<!-- begin_mail_list_page -->
+					<!-- begin_mail_list_link_page -->
+					<a href="{url_page}?offset={offset}{params}" class="pri_text_bold">{page}</a>&nbsp;
+					<!-- end_mail_list_link_page -->
+					<!-- begin_mail_list_this_page -->
+					<b>{page}</b>
+					<!-- end_mail_list_this_page -->
+				<!-- end_mail_list_page -->
+				<!-- begin_mail_list_next_pages -->
+				<a href="{url_page}?offset={offset}{params}" class="pri_text_bold">&gt;&gt;</a>&nbsp;
+				<!-- end_mail_list_next_pages -->
+				<!-- begin_mail_list_last_page -->
+				<b>{l_of}</b> <a href="{url_page}?offset={offset}{params}" class="pri_text_bold">{num_pages}</a>&nbsp;
+				<!-- end_mail_list_last_page -->
+				<!-- begin_mail_list_next_page -->
+				&nbsp; | &nbsp;<a href="{url_page}?offset={offset}{params}" class="pri_text_bold">{l_next}</a>
+				<!-- end_mail_list_next_page -->
+				<!-- begin_mail_list_next_page_off -->
+				&nbsp; | &nbsp;<b>{l_next}</b>
+				<!-- end_mail_list_next_page_off -->
+			</div>
+            <!-- end_mail_list_pages -->
+</div></div>
+{footer}

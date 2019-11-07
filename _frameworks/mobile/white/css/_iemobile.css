@@ -1,0 +1,146 @@
+#wrp {height:auto;}
+#hdr {width:100%;height:35px;overflow:visible;background:url('../img/bg.png') repeat-x 50% -42px;}
+#ftr {height:54px;padding-top:3px;background:url('../img/bg.png') repeat-x 50% 0;}
+
+.bg {display:none;}
+.btn {padding:0;}
+.cnt {height:auto;}
+.txt,select,textarea {padding:1px 3px 2px 3px;}
+
+.sign,.nav {text-align:center;}
+.sign table {width:220px;height:42px;text-align:left;}
+.nav table {width:100%;height:42px;text-align:left;}
+.sign td {width:auto;}
+.sign .txt {width:42px;}
+.nav td {width:auto;padding:2px 3px 5px 3px;}
+
+.profile td.photo {padding:5px 3px 0 6px;}
+.block .userlist td {width:25%;text-align:center;}
+.block .userlist div{width:25%;border:none;text-align:center;}
+.friends .list .userlist td div {border:none;text-align:center;}
+.mainpage .block .userlist div {width:auto;}
+.friends .userlist p {width:auto;}
+.block .userlist div a {width:56px;text-align:left;}
+
+.blog .alertspace,.groups .alertspace,.alertspace,.blogpage .alertspace,.mailpage ..alertspace {height:auto !important;padding:50px 0;}
+.alert {width:90%;}
+.alert .txt {width:110px;}
+.alert .btn,.alert .txt {margin:0 2px;}
+
+.tab,.tab tbody,.tab td.content {height:auto;}
+
+
+/* register */
+.reg {width:202px;}
+.reg td {width:116px;}
+.reg .txt {width:116px;}
+.reg select {width:122px;}
+.reg .month {width:122px;margin:0;}
+.reg .day {width:42px;margin:0 6px 0 0;}
+.reg .year {width:70px;}
+.reg label.checkbox {padding:3px 0 0 0;font-size:11px;}
+
+
+/* mainpage */
+.welcome {height:auto;padding:8px;}
+.terms td {padding:5px 8px;}
+.one table {width:98%;}
+
+
+/* homepage */
+.join_group .btn {width:90px;margin:0 5px;color:#fff;}
+.blog .list th {height:16px;padding:1px 0;vertical-align:middle;}
+.blog .searchform .txt {width:85px;}
+.chat .tab td.content {height:180px;}
+.chat .searchform .txt {width:65%;}
+.choose td,.choose th {padding:6px !important;}
+
+
+/* search */
+.searchpage .cnt .content {height:auto;text-align:center;}
+.searchpage .searchform {width:222px;}
+.searchpage .searchform td .txt {width:134px;}
+.searchpage .searchform td .narrow {width:45px}
+.searchpage .searchform td .to {padding:0 10px;}
+.searchpage .userlist td.user {padding:5px 0;}
+.searchpage .userlist td.user table th,.searchpage .userlist td.user table td {padding:0 0 0 2px;}
+
+
+/* online */
+.onlinepage .userlist td.user {padding:5px 0;}
+.onlinepage .userlist td.user table th,.onlinepage .userlist td.user table td {padding:0 0 0 2px;}
+
+/* blog */
+.blogpage .content {padding:4px;}
+.blogpage .tab tfoot td {padding:0 3px;}
+.blogpage .tab tfoot td.add {width:50px;}
+.blogpage .searchform {width:120px;}
+.blogpage .searchform .txt {width:45px;}
+.blogpage .form2 {width:200px;}
+.blogpage .form2 .txt {width:90px;}
+.blogpage .form3 {width:100%;}
+.blogpage .form3 .txt {width:140px;}
+.blogpage .addblog .txt,.blogpage .addblog textarea {width:90%;}
+.blogpage .addblog textarea {margin-bottom:8px;}
+
+/* chat */
+.chatpage .content {padding:4px;}
+.chatpage .searchform {width:100%;text-align:center;}
+.chatpage .searchform .txt {width:135px;}
+
+/* account */
+.accountpage .list td.left label {text-align:left;}
+.accountpage .list td.right .txt {width:90px;}
+.accountpage .list .rads label {padding-right:10px;font-size:11px;}
+.accountpage .list .save label {padding-bottom:5px;display:block;}
+
+/* mail */
+.mailpage .newmessage td.nofriends label a {color:#fff;}
+.mailpage .newmessage td.nofriends .txt {width:25%;}
+
+/* groups */
+.groupspage .tab tfoot td {padding:0 1px;}
+.groupspage .searchform {width:110px;}
+.groupspage .searchform .txt {width:35px;margin-right:2px;}
+.groupspage .searchform .btn {width:55px;}
+.groupspage .searchhalf {width:180px;}
+.groupspage .searchhalf .txt {width:100px;}
+.groupspage .searchfull {width:220px;}
+.groupspage .searchfull .txt {width:130px;}
+.groupspage .addpost textarea {margin-bottom:8px;}
+.groupspage .addgroup .list {margin-bottom:30px;}
+.groupspage .addgroup .list th label {text-align:left;}
+.groupspage .addgroup .list td select {width:108px;padding:0px;border:none;}
+.groupspage .addgroup .list td .txt {width:100px;}
+.groupspage .addgroup .list td .btn {width:108px;}
+
+.groupspage .back_btn {width:52px;}
+.groupspage .addcomm_btn {width:65px;}
+.groupspage .comm_btn {width:98px;}
+.groupspage .create_btn {width:95px;}
+.groupspage .mygroup_btn {width:80px;}
+.groupspage .join_btn {width:80px;}
+.groupspage .newpost_btn {width:95px;}
+.groupspage .invite_btn {width:70px;}
+
+.addgroup .list {width:220px;}
+
+.profilepage .addgroup .list {margin-bottom:30px;}
+.profilepage .pronav th {padding:0 4px 1px 4px;}
+.profilepage .addgroup .list th label {text-align:left;}
+.profilepage .addgroup .list td .txt,.profilepage .addgroup .list td textarea {width:130px;}
+.profilepage input.savechanges {width:100px;}
+.profilepage .addgroup .list .month {width:130px;margin:0 0 5px 0;}
+.profilepage .addgroup .list .day {width:50px;margin:0 5px 0 0;}
+.profilepage .addgroup .list .year {width:65px;}
+.profilepage .addgroup .list .spc {width:100%;display:block;}
+.profilepage .photos td.one table th {width:76px;}
+.profilepage .photos td.one table th div {max-width:74px;}
+.profilepage .photos td.one table td {width:auto;}
+
+.profilepage .edit .first td {width:auto;}
+.profilepage .edit .first td .txt {width:120px;}
+.profilepage .edit .first td textarea {width:120px;height:70px;}
+.profilepage .edit .second td .file {width:210px;border:none;float:none;}
+.profilepage .edit .second td .txt {width:210px;float:none;}
+.profilepage .edit .second td label {float:none;}

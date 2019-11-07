@@ -1,0 +1,64 @@
+{header}
+
+<script type="text/javascript" src="{url_tmpl_main}/js/jquery.hotkeys.js{cache_version_param}"></script>
+<script type="text/javascript" src="{url_tmpl_main}/js/wysiwyg.js{cache_version_param}"></script>
+
+<div class="container editor">
+    <div class="head">
+        <div class="col-lg-8 col-lg-offset-1 text-left title">
+            <h2 id="blog_post_title" contenteditable="true"></h2>
+            <h2 id="blog_post_title_original" class="hide"></h2>
+        </div>
+        <div class="col-lg-2 text-right editor_icons">
+            <div id="editor_toolbar" class="editor_toolbar" data-role="editor-toolbar" data-target="#blog_post">
+                <div class="btn-group">
+                    <span data-edit="fontSize 5"  data-edit-selected="true" class="disabled" data-edit-toggle="true" data-edit-tag="font" data-edit-param1="fontSize 3" data-edit-param2="fontSize 5"  title="{a_heading}">
+                        <i class="fa fa-header" aria-hidden="true"></i>
+                    </span>
+                    <span data-edit="bold" title="{a_format_bold}" class="disabled" data-edit-selected="true">
+                        <i class="fa fa-bold" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <div class="btn-group">
+                    <span class="hyperlink_remove to_hide" data-edit="unlink" title="{a_format_hyperlink_remove}">
+                        <i class="fa fa-chain-broken" aria-hidden="true"></i>
+                    </span>
+                    <span class="hyperlink_creat dropdown-toggle" data-edit-selected="true" data-toggle="dropdown" title="{a_format_hyperlink}">
+                        <i class="fa fa-link" aria-hidden="true"></i>
+                    </span>
+                    <div class="dropdown-menu input-append">
+                        <input class="form-control" placeholder="{a_format_hyperlink_url}" type="text" data-edit="createLink"/>
+                        <button class="btn btn-success" type="button">{l_format_hyperlink_add}</button>
+                    </div>
+                </div>
+                <div class="btn-group bl_upload_image">
+                    <span id="upload_image" title="Insert picture (or just drag & drop)">
+                        <i class="fa fa-picture-o" aria-hidden="true"></i>
+                    </span>
+                    <input class="upload_image" type="file" data-role="magic-overlay" data-target="#upload_image" data-edit="insertImage" />
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div id="blog_post_text" class="col-lg-10 col-lg-offset-1 text-left cont editable"></div>
+    <footer>
+        <div class="col-lg-7 col-md-offset-1 text-left">
+            <input id="blog_post_tags" class="form-control placeholder" type="text" placeholder="{l_add_tags}">
+        </div>
+        <div class="col-lg-3 buttons">
+            <button id="blog_post_cancel" onclick="clBlogs.cancelChangePost();" class="btn btn-default btn-md" disabled>{l_cancel}</button>
+            <button id="blog_post_submit" onclick="clBlogs.savePost();" class="btn btn-primary btn-md" disabled>
+                <span>{l_save_article}</span>
+            </button>
+        </div>
+    </footer>
+
+    {footer}
+
+</div>
+<script>
+    $(function(){
+        clBlogs.initEditor();
+    })
+</script>

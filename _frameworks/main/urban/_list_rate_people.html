@@ -1,0 +1,85 @@
+<script>
+    var ratePeople = new CRatePeople('{hidden_average}');
+    ratePeople.langParts = {'everyone' : '{j_you_have_rated_everyone}',
+                            'your_rating' : '{j_your_rating}'};
+    $(function(){
+        ratePeople.setVars();
+    })
+</script>
+<div class="column_main grey list_user">
+    <div class="column_main_head">
+        <div class="title">
+            <h1 class="find_new_friends_in_city_now">{l_photo_rating}</h1>
+            {users_filter_head}
+            <div class="cl"></div>
+        </div>
+    </div>
+    <div class="column_main_cont">
+    <div class="bl_browse">
+        {users_filter}
+        <div class="bl_encounter">
+            <div id="encounter_box" <!-- begin_rate_people -->style="display:block;"<!-- end_rate_people -->>
+            <h2 class="rate_people_info" id="enc_page_info">{l_what_do_you_think_of_this_photo}</h2>
+            <div class="rate_people_info">
+
+            <div class="pl_btn">
+                <ul id="rate_people_list_rate" class="list_rate">
+                    <li id="rate_people_b_1"><a href="#">1</a></li>
+                    <li id="rate_people_b_2"><a href="#">2</a></li>
+                    <li id="rate_people_b_3"><a href="#">3</a></li>
+                    <li id="rate_people_b_4"><a href="#">4</a></li>
+                    <li id="rate_people_b_5"><a href="#">5</a></li>
+                    <li id="rate_people_b_6"><a href="#">6</a></li>
+                    <li id="rate_people_b_7"><a href="#">7</a></li>
+                    <li id="rate_people_b_8"><a href="#">8</a></li>
+                    <li id="rate_people_b_9"><a href="#">9</a></li>
+                    <li id="rate_people_b_10"><a href="#">10</a></li>
+                </ul>
+                <img id="loader_btn" src="{url_tmpl_main}images/loader_m_clear.gif" class="rate_people_loader">
+            </div>
+            <div class="cl"></div>
+            <div id="enc_page_photo">
+                {photo}
+            </div>
+            <div class="cl"></div>
+            <!-- begin_rate_people_rating -->
+            <div id="rating_info" class="bl_rate_photo">
+                <div class="bl_info">
+                    <div class="info">
+                        {rate_people_rating_next_see}
+                    </div>
+                </div>
+                <div class="pl_photo_sm">
+                    <div class="rate_slider">
+                        <div id="rating_info_slider" style="width: {rate_people_rating_next_see_slider}%;"></div>
+                        <span id="rating_info_slider_span">{rate_people_rating_next_see_count}</span>
+                    </div>
+                    <ul>
+                        <li><img data-photo-id="{rate_people_rating_photo_id}" id="rating_info_img" src="{url_files}{rate_people_rating_photo}" alt="" /></li>
+                    </ul>
+                    <div class="count">
+                        <div id="rating_info_average" class="count_cont">{l_rating_empty}</div>
+                        <div class="count_decor"></div>
+                    </div>
+                </div>
+                <div class="cl"></div>
+            </div>
+            <!-- end_rate_people_rating -->
+            </div>
+            </div>
+            <div class="no_one_here_yet encounters_no_one_here" <!-- begin_users_list_noitems -->style="display:block;"<!-- end_users_list_noitems -->>
+                <div class="bl_no_one">
+                    <div class="people">{l_you_have_rated_everyone}</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="cl"></div>
+    </div>
+    <div class="cl"></div>
+</div>
+
+<div class="column_narrow">
+    {profile_column_narrow}
+</div>

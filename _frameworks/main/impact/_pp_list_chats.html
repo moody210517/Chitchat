@@ -1,0 +1,18 @@
+<div id="list_chats_bl" class="list_chats_bl" style="opacity:0;">
+    {list_chats}
+    {list_chats_im}
+    <div id="open_im_more" class="open_im_more">
+        <div class="open_im_more_bl">
+            <div class="count">10</div>
+            <div class="open_im_more_list_bl">
+                <div class="open_im_more_list_bl_ul">
+                    <ul id="open_im_more_list" class="open_im_more_list">
+                        <!-- begin_list_chats_open_item_more -->
+                        <li id="im_open_more_{user_to_id}" data-uid="{user_to_id}" data-user-name="{user_to_name}" data-new-msg-count="{open_im_new_msg_count}" onclick="imChats.openImWithUser($(this))">{open_im_title}</li>
+                        <!-- end_list_chats_open_item_more -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

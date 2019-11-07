@@ -1,0 +1,131 @@
+{header}
+{vids_header}
+
+<script type='text/javascript'>
+$(document).ready(function(){
+    $("#form_val").validate({
+        rules: {
+            "cat[]": {
+                required: true,
+                minlength: 1,
+                maxlength: 3
+            }
+        },
+        messages: {
+            "cat[]": ''
+        },
+        errorPlacement: function(error, element) {
+        }
+    });
+});
+
+function on_form_submit()
+{
+    /*if ($('#subject').val() == '{l_untitled}') {
+         alert('{l_please_fill_in_all_the_fields}');
+         $('#subject').focus();
+         return false;
+    } else if ($('#text').val() == '{l_no_description}') {
+         alert('{l_please_fill_in_all_the_fields}');
+         $('#text').focus();
+         return false;
+    } else
+    if ($('#tag').val() == '{l_video}') {
+         alert('{l_please_fill_in_all_the_fields}');
+         $('#tag').focus();
+         return false;
+    } else */
+
+    if($("#form_val").valid()) {
+         $('#load_animation').css('visibility', 'visible');
+    } else {
+       alert('{l_please_fill_in_all_the_fields_and_select_category}');
+    }
+    return true;
+}
+</script>
+
+
+<div class="vids_new_p pl_top">
+    <h1 class="green">
+        <!-- begin_upload -->{l_vids_upload_video}<!-- end_upload -->
+        <!-- begin_edit -->{l_vids_edit_video}<!-- end_edit -->
+    </h1>
+
+    <form id="form_val" name="form_val" action="{url_main}vids_edit.php?id={video_id}" method="post" enctype="multipart/form-data" onsubmit="return on_form_submit()">
+    <!--<ul id="form_val_errors"></ul>-->
+    <input type="hidden" name="cmd" value="video_edit">
+    <table class="tb_vids_new_frm">
+        <tr>
+            <th>{l_vids_title}:</th>
+            <td><input onblur="if(trim(this.value) == '') { this.value = '{l_untitled}'}" onFocus="if(trim(this.value) == '{l_untitled}') { this.value = ''; }" class="inp_lviolet_border no_abk" id="subject" name="subject" type="text" value="{video_subject}"/></td>
+        </tr>
+        <tr>
+            <th>{l_vids_description}:</th>
+            <td><div class="videos_textarea"><textarea onblur="if(trim(this.value) == '') { this.value = '{l_no_description}'}" onFocus="if(trim(this.value) == '{l_no_description}') { this.value = ''; }" class="textarea_violet no_abk" id="text" name="text">{video_text}</textarea></div></td>
+        </tr>
+        <tr>
+            <th>{l_vids_tags}:</th>
+            <td><input onblur="if(trim(this.value) == '') { this.value = '{l_video}'}" onFocus="if(trim(this.value) == '{l_video}') { this.value = ''; }" class="inp_lviolet_border no_abk" id="tag" name="tags" type="text" value="{video_tags}"/></td>
+        </tr>
+        <tr>
+            <th>{l_vids_categories}:*</th>
+            <td>
+                <!-- begin_cat -->
+                <!-- begin_last_off -->
+                        <div class="vids_new_frm_decor ">
+                 <!-- end_last_off -->
+                 <!-- begin_last_on -->
+                 <div class="vids_new_frm_decor vids_new_margin0">
+                 <!-- end_last_on -->
+                    <div class="vids_new_frm_decor_top"></div>
+                    <div class="vids_new_frm_decor_c">
+                        <!--begin_cat_item -->
+                            <input id="rb{i}" type="checkbox" name="cat[]" value="{cat_name2}" {checked}/>
+                            <label for="rb{i}">{cat_name}</label>
+                             <div class="cl"></div>
+                        <!-- end_cat_item-->
+                    </div>
+                    <div class="vids_new_frm_decor_bot"></div>
+                </div>
+               <!-- end_cat -->
+            </td>
+        </tr>
+        <tr>
+            <th>{l_visibility}:&nbsp;</th>
+            <td>
+                <div class="vids_new_frm_decor" >
+                    <div class="vids_new_frm_decor_top"></div>
+
+                    <div class="vids_new_frm_decor_c" style="height: 38px;">
+                        <input id="r1" name="private" value="0" type="radio" {check_public}/>
+                        <label for="r1">{l_vids_public}</label>
+                        <div class="cl"></div>
+
+                        <input id="r2" name="private" value="1" type="radio" {check_private}/>
+                        <label for="r2">{l_vids_private}</label>
+                    </div>
+                    <div class="vids_new_frm_decor_bot"></div>
+                </div>
+                <div class="vids_new_decor_btn">
+                    <!-- begin_upload_button -->
+                    <input class="btn_blue_img" style="float: right; margin-left: -5px; margin-right: 20px;" type="submit" value="{l_vids_next}"/>
+                    <img class="vishide" style="float:right;" id="load_animation" src="{url_tmpl_main}images/load_animation.gif">
+
+                    <!-- end_upload_button -->
+                    <!-- begin_edit_button -->
+                    <a style="margin-top: 2px;" onclick="return confirm('{l_delete_confirm}')" href="{url_main}vids_collect.php?m=my&del={video_id}">{l_delete}</a>
+                    <input class="btn_blue_img fl_right" style="margin-top:0px;" type="submit" value="{l_vids_save}"/>
+                    <img class="vishide fl_right" id="load_animation" style="margin-right: -10px;" src="{url_tmpl_main}images/load_animation.gif">
+                    <!-- end_edit_button -->
+                </div>
+            </td>
+        </tr>
+    </table>
+    </form>
+</div>
+<div class="vids_new_empty"></div>
+
+{vids_side}
+{vids_footer}
+{footer}

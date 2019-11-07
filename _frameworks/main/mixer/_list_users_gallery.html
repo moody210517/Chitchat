@@ -1,0 +1,147 @@
+	<div align="center">
+		<div class="list_users_header">
+			<b>{num_total}</b> {l_within_criteria}
+			<!-- begin_sort_by_default -->
+            &nbsp;&nbsp;&nbsp;<b><a href='{url_main}{url_page}?{params_no_order}' style='padding-top: 2px; padding-bottom: 2px;'>{l_sort_by_default}</a></b>
+			<!-- end_sort_by_default -->
+            <!-- begin_params_none_rating -->&nbsp;&nbsp;&nbsp;<b><a href='{url_main}{url_page}?{params_current}&display=gallery' style='padding-top: 2px; padding-bottom: 2px;'>{l_sort_by_rating}</a></b><!-- end_params_none_rating -->
+			<!-- begin_params_asc_rating -->&nbsp;&nbsp;&nbsp;<b><a href='{url_main}{url_page}?{params_current}&display=gallery' style='padding-top: 2px; padding-bottom: 2px;'>{l_sort_by_rating}</a></b><!-- end_params_asc_rating -->
+			<!-- begin_params_desc_rating -->&nbsp;&nbsp;&nbsp;<b><a href='{url_main}{url_page}?{params_current}&display=gallery' style='padding-top: 2px; padding-bottom: 2px;'>{l_sort_by_rating}</a></b><!-- end_params_desc_rating -->
+			<table border='0' cellspacing='0' cellpadding='0'><tr>
+				<td height='21' style='padding-right: 4px; padding-bottom: 4px;'>
+					<div style='padding-top: 2px; padding-bottom: 2px; padding-left: 6px; padding-right: 6px; whitespace: nowrap;'>
+						<b><a href='{url_main}{url_page}?{params}&display=info' style='padding-top: 2px; padding-bottom: 2px;'><img src="{url_tmpl_main}img/i_search_profile.gif" border="0" style="margin-top: 4px; margin-right: 4px;" align="left">{l_profile_view}</a></b>
+					</div>
+				</td><td height='21' style='padding-right: 4px; padding-bottom: 4px;'>
+					<div style='padding-top: 2px; padding-bottom: 2px; padding-left: 6px; padding-right: 6px; whitespace: nowrap;'>
+						<b><a href='{url_main}{url_page}?{params}&display=gallery' style='padding-top: 2px; padding-bottom: 2px;'><img src="{url_tmpl_main}img/i_search_gallery.gif" border="0" style="margin-top: 4px; margin-right: 4px;" align="left">{l_gallery_view}</a></b>
+					</div>
+				</td><td height='21' style='padding-right: 4px; padding-bottom: 4px;'>
+					<div style='padding-top: 2px; padding-bottom: 2px; padding-left: 6px; padding-right: 6px; whitespace: nowrap;'>
+						<b><a href='{url_main}{url_page}?{params}&display=list' style='padding-top: 2px; padding-bottom: 2px;'><img src="{url_tmpl_main}img/i_search_list.gif" border="0" style="margin-top: 4px; margin-right: 4px;" align="left">{l_list_view}</a></b>
+					</div>
+				</td>
+                <!-- begin_search_by_gender -->
+                <td height='21' style='padding-right: 4px; padding-bottom: 4px;'>
+					<a href="{url_page}?{params}&gender=" class="{search_gender_active_all}"><div class="show_all"></div></a>
+					<a href="{url_page}?{params}&gender=M" class="{search_gender_active_m}"><div class="show_men"></div></a>
+					<a href="{url_page}?{params}&gender=F" class="{search_gender_active_f}"><div class="show_women"></div></a>
+                </td>
+				<!-- end_search_by_gender -->
+                <!-- begin_contact_blocking -->
+				<td height='21' style='padding-right: 4px; padding-bottom: 4px;'>
+					<div style='padding-top: 2px; padding-bottom: 2px; padding-left: 6px; padding-right: 6px; whitespace: nowrap;'>
+						<b>| <a href='{url_main}user_block_list.php' style='padding-top: 2px; padding-bottom: 2px;'>{l_banned_users}</a></b>
+					</div>
+				</td>
+                <!-- end_contact_blocking -->
+                </tr>
+			</table>
+		</div>
+		<!-- begin_users_list_pages -->
+			<div class=brd>
+				<!-- begin_users_list_prev_page -->
+				<a href="{url_main}{url_page}?offset={offset}{params}">{l_prev}</a>&nbsp; | &nbsp;
+				<!-- end_users_list_prev_page -->
+				<!-- begin_users_list_prev_page_off -->
+				<b>{l_prev}</b>&nbsp; | &nbsp;
+				<!-- end_users_list_prev_page_off -->
+				<!-- begin_users_list_first_page -->
+				<a href="{url_main}{url_page}?offset={offset}{params}">{l_page_1}</a>&nbsp;
+				<!-- end_users_list_first_page -->
+				<!-- begin_users_list_prev_pages -->
+				<a href="{url_main}{url_page}?offset={offset}{params}">&lt;&lt;</a>&nbsp;
+				<!-- end_users_list_prev_pages -->
+    			<!-- begin_users_list_page -->
+					<!-- begin_users_list_link_page -->
+					<a href="{url_main}{url_page}?offset={offset}{params}">{page}</a>&nbsp;
+					<!-- end_users_list_link_page -->
+					<!-- begin_users_list_this_page -->
+					<b>{page}</b>
+					<!-- end_users_list_this_page -->
+				<!-- end_users_list_page -->
+				<!-- begin_users_list_next_pages -->
+				<a href="{url_main}{url_page}?offset={offset}{params}">&gt;&gt;</a>&nbsp;
+				<!-- end_users_list_next_pages -->
+				<!-- begin_users_list_last_page -->
+				<b>{l_of}</b> <a href="{url_main}{url_page}?offset={offset}{params}">{num_pages}</a>&nbsp;
+				<!-- end_users_list_last_page -->
+				<!-- begin_users_list_next_page -->
+				&nbsp; | &nbsp;<a href="{url_main}{url_page}?offset={offset}{params}">{l_next}</a>
+				<!-- end_users_list_next_page -->
+				<!-- begin_users_list_next_page_off -->
+				&nbsp; | &nbsp;<b>{l_next}</b>
+				<!-- end_users_list_next_page_off -->
+			</div>
+		<!-- end_users_list_pages -->
+	</div>
+<table width="100%" cellspacing="0" cellpadding="0" border="0" style="margin-top:20px;"><tr>
+<!-- begin_users_list_item -->
+	<td style="vertical-align: top;" width="135" align="center">
+		<div  style="padding-bottom: 3px;"><a  class="pri_text_bold" style="font-size: 20px; line-height: 22px; text-decoration:none" href="{url_page}?display=profile&uid={user_id}{params_item}">{name_short}</a></div>
+        <div id="photo_info" style="cursor:hand; margin-left: 7px;">
+            <a href="{url_main}{url_page}?display=profile&uid={user_id}{params_item}">
+                <img class="lazy_user img_border" data-original="{url_files}{photo}" src="{url_tmpl_main}images/empty.png">
+                <noscript><img src="{url_files}{photo}" alt="{name}" class="img_border"></noscript>
+            </a>
+        </div>
+		<div style="padding-top: 3px; padding-bottom: 25px; width:100%; text-align: center;">
+			<!-- begin_favorite_add -->
+                <img src="{url_tmpl_main}img/keditbookmarks.png" class="png_behavior" border="0">
+                <a href="{url_main}mail_favorite_add.php?id={user_id}" >{l_add_to_favorites}</a>
+            <!-- end_favorite_add -->
+            <br />
+            <br />
+         </div>
+	</td>
+	<!-- begin_users_list_item_after_line -->
+	</tr><tr>
+	<!-- end_users_list_item_after_line -->
+<!-- end_users_list_item -->
+</tr></table>
+<!-- begin_users_list_noitems -->
+<div style="height: 250px;"></div>
+<!-- end_users_list_noitems -->
+	<div align="center">
+		<!-- begin_users_list_pages -->
+			<div>
+				<!-- begin_users_list_prev_page -->
+				<a href="{url_main}{url_page}?offset={offset}{params}">{l_prev}</a>&nbsp; | &nbsp;
+				<!-- end_users_list_prev_page -->
+				<!-- begin_users_list_prev_page_off -->
+				<b>{l_prev}</b>&nbsp; | &nbsp;
+				<!-- end_users_list_prev_page_off -->
+				<!-- begin_users_list_first_page -->
+				<a href="{url_main}{url_page}?offset={offset}{params}">{l_page_1}</a>&nbsp;
+				<!-- end_users_list_first_page -->
+				<!-- begin_users_list_prev_pages -->
+				<a href="{url_main}{url_page}?offset={offset}{params}">&lt;&lt;</a>&nbsp;
+				<!-- end_users_list_prev_pages -->
+    			<!-- begin_users_list_page -->
+					<!-- begin_users_list_link_page -->
+					<a href="{url_main}{url_page}?offset={offset}{params}">{page}</a>&nbsp;
+					<!-- end_users_list_link_page -->
+					<!-- begin_users_list_this_page -->
+					<b>{page}</b>
+					<!-- end_users_list_this_page -->
+				<!-- end_users_list_page -->
+				<!-- begin_users_list_next_pages -->
+				<a href="{url_main}{url_page}?offset={offset}{params}">&gt;&gt;</a>&nbsp;
+				<!-- end_users_list_next_pages -->
+				<!-- begin_users_list_last_page -->
+				<b>{l_of}</b> <a href="{url_main}{url_page}?offset={offset}{params}">{num_pages}</a>&nbsp;
+				<!-- end_users_list_last_page -->
+				<!-- begin_users_list_next_page -->
+				&nbsp; | &nbsp;<a href="{url_main}{url_page}?offset={offset}{params}">{l_next}</a>
+				<!-- end_users_list_next_page -->
+				<!-- begin_users_list_next_page_off -->
+				&nbsp; | &nbsp;<b>{l_next}</b>
+				<!-- end_users_list_next_page_off -->
+			</div>
+		<!-- end_users_list_pages -->
+		<div>
+			<b>{num_total}</b> {l_within_criteria}
+		</div>
+	</div>
+
+

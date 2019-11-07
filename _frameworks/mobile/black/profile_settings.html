@@ -1,0 +1,79 @@
+{header}
+{profile_menu}
+
+<form name="profile" method="POST" action="{url_main}profile_settings.php?cmd=update">
+
+<tfoot>
+	<tr>
+		<td align="right">
+			<a href="#" onclick="document.forms['profile'].submit();"  class="orange_btn btn">{l_save_changes}</a>
+		</td>
+	</tr>
+</tfoot>
+
+<tbody>
+	<tr>
+		<td class="content settings">
+			<table class="list" cellspacing="0" cellpadding="0">
+                <!-- begin_field -->
+                <!-- begin_field_select -->
+
+                <tr>
+                    <th colspan="2">{label}</th>
+                </tr>
+                <tr>
+                    <td>
+                        <select name="{name_select}" style="width: 100%">
+                            <!-- begin_field_select_item -->
+                            <option {selected} value="{value}">{title}</option>
+                            <!-- end_field_select_item -->
+                        </select>
+                    </td>
+                </tr>
+
+                <!-- end_field_select -->
+
+                <!-- begin_field_radio -->
+                <tr>
+                    <th colspan="2">{label}</th>
+                </tr>
+                <td>
+                    <!-- begin_field_radio_item -->
+                    <input type="radio" class="radio" id="{name_radio}_{value}" name="{name_radio}" value="{value}" {checked} />
+                    <label for="{name_radio}_{value}">{title}</label>
+                    <!-- end_field_radio_item -->
+                </td>
+                <!-- end_field_radio -->
+                <!-- end_field -->
+
+            <!-- begin_timezone -->
+                <tr>
+                    <th colspan="2">{l_choose_timezone}</th>
+                </tr>
+                <tr>
+                    <td>
+                        <select name="timezone" style="width: 100%">
+                            {selectbox_options}
+                        </select>
+                    </td>
+                </tr>
+            <!-- end_timezone -->
+
+			</table>
+		</td>
+	</tr>
+</tbody>
+</table>
+</form>
+
+</td></tr></table>
+
+{user_menu}
+
+<!-- begin_error -->
+<script type="text/javascript"><!--
+alert("{error_message}");
+//--></script>
+<!-- end_error -->
+
+{footer}

@@ -1,0 +1,58 @@
+    <!--[if lte IE 6]>
+		<script>
+    DD_belatedPNG.fix('.inp_silver_bg,.ABKSelectRight,.ABKTextareaTopRight,.ABKTextareaTopLeft,.ABKTextareaBottomLeft,.ABKTextareaBottomRight,.ABKFileLeft');
+</script>
+
+	<![endif]-->
+<div class="places_new_head">
+
+    <script type="text/javascript">
+    function places_header_search_on_submit()
+    {
+        where = $("#places_header_search input[name='where']").val();
+    	what = $("#places_header_search input[name='what']").val();
+    	
+        if((what != '' && what != '{l_what_question}') || (where != '' && where != '{l_where_question}'))
+        {
+            if(what == '{l_what_question}')
+            	$("#places_header_search input[name='what']").val('');
+            if(where == '{l_where_question}')
+                $("#places_header_search input[name='where']").val('');
+            
+            return true;
+        }
+
+        alert('{l_places_please_enter_what_you_search}');
+        
+        return false;
+    }
+    </script>
+
+    <table>
+        <tr>
+            <td class="td_l">&nbsp;</td>
+            <td class="td_c">
+                <div class="places_new_head_txt">
+                    <strong><a href="{url_main}places.php" style="text-decoration:none">{l_places}</a><!-- begin_places_header_location --> :: </strong> {l_you_are_in} <span title="{location_full}">{location}</span><!-- end_places_header_location -->
+                </div>
+                <div class="places_new_head_pad fl_right" >
+                    <form action="{url_main}places_search_and_write.php" method="post">
+           <span style="display:block;margin:0px;padding:0px;line-height:normal;" class="places_style_222"><input class="no_abk" type="submit" value="{l_write_a_review_button}"/></span>
+                    </form>
+                </div>
+                <div class="fl_right" id="places_header_search" style="width:295px;_width:auto;">
+                    <form  autocomplete="off" action="{url_main}places_search.php" method="post" onsubmit="return places_header_search_on_submit();">
+	                    <div class="inp_silver_bg"><input autocomplete="off" class="no_abk inp_silver" type="text" name="what" value="{l_what_question}" onFocus="if(this.value=='{l_what_question}') this.value=''" onBlur="if(this.value=='') this.value='{l_what_question}';" /></div>
+	                    <div class="inp_silver_bg"><input autocomplete="off" class="no_abk inp_silver" type="text" name="where" value="{l_where_question}" onFocus="if(this.value=='{l_where_question}') this.value=''" onBlur="if(this.value=='') this.value='{l_where_question}';" /></div>
+	                <span style="display:block;margin:0px;padding:0px;line-height:normal;float:right;" class="places_style_111"  >   <input class="no_abk" type="submit" value="{l_search_button}"/></span>
+                    </form>
+                </div>
+            </td>
+            <td class="td_r">&nbsp;</td>
+        </tr>
+    </table>
+
+    <ul class="places_new_menu">
+        <!-- begin_places_category --><li<!-- begin_places_category_last --> class="last"<!-- end_places_category_last -->><a href="{url_main}places_search.php?category_id={category_id}">{category_title}</a></li><!-- end_places_category -->
+    </ul>
+</div>

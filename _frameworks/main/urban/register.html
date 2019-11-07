@@ -1,0 +1,579 @@
+{header}
+<!-- begin_autocomplete_js -->
+<!-- Do not need no form now, do not be auto complete
+<style type="text/css">
+input {outline: none;}
+input:-webkit-autofill {
+    -webkit-box-shadow: inset 0 0 0 50px #eceae4 !important;
+    -webkit-text-fill-color: #000 !important;
+    color: #999 !important;
+}
+</style>
+<script>
+$(function(){
+    function noFill(set){
+        var set=set||'';
+        $('#frm_register').find('.inp').each(function(){
+            if(!($(this).attr('name') in no_fill_autocomplete)){
+               $(this).val(set);
+            }
+        });
+    }
+    var no_fill_autocomplete = {};
+    no_fill_autocomplete = {autocomplete};
+    noFill(" ");
+    setTimeout(noFill,100);
+})
+</script>
+<!-- end_autocomplete_js -->
+<script>
+var responseRecaptcha='', isRecaptcha=false;
+$(function(){
+    var box_register=$('#box_register'),
+        day=$('#day', box_register),
+        state=$('#state', box_register),
+        city=$('#city', box_register),
+        submit_join=$('#submit_join'),
+        email=$('#email', box_register),
+        password=$('#password', box_register),
+        user_name=$('#user_name', box_register),
+        agree=$('#agree', box_register),
+        loader=$('#loader', box_register),
+        birthday=$('.birthday', box_register),
+        day=$('#day', box_register),
+        month=$('#month', box_register),
+        year=$('#year', box_register),
+        captcha=$('#captcha', box_register),
+        orientation=$('#orientation', box_register),
+        data_ajax={},
+        isSubmit=false;
+
+    alertHtmlArea='#box_register';
+
+    birthday.styler({singleSelectzIndex: '12',
+		selectAutoWidth : false,
+        selectAnimation: true,
+        selectAppearsNativeToIOS: false,
+        onSelectOpened: function() {
+            if($(this).find('.jq-selectbox__select').is('.wrong')){
+                $('#tip_month-styler').stop().fadeIn();
+            }
+            recaptchaTipHide();
+            hideOrientationTip();
+        }
+    });
+    $('#orientation', box_register).styler({singleSelectzIndex: '11',
+		selectAutoWidth : false,
+        selectAppearsNativeToIOS: false,
+        selectAnimation: true,
+        onSelectOpened:function(){
+            if($(this).find('.jq-selectbox__select').is('.wrong')){
+                $('#tip_orientation-styler').stop().fadeIn();
+            }
+            recaptchaTipHide();
+            hideBirthdayTip();
+        }
+    });
+    $('#country', box_register).styler({singleSelectzIndex: '10',
+		selectAutoWidth : false,
+        selectAppearsNativeToIOS: false,
+        selectAnimation: true,
+        onSelectOpened:function(){hideSelectTip()}
+    });
+    state.styler({singleSelectzIndex: '9',
+		selectAutoWidth : false,
+        selectAppearsNativeToIOS: false,
+        selectAnimation: true,
+        onSelectOpened:function(){hideSelectTip()}
+    });
+    city.styler({singleSelectzIndex: '8',
+		selectAutoWidth : false,
+        selectAppearsNativeToIOS: false,
+        selectAnimation: true,
+        onSelectOpened:function(){hideSelectTip()}
+    });
+
+    //$('#agree', box_register).styler({singleSelectzIndex: '7'});
+
+    $('.geo', box_register).change(function() {
+        var type=$(this).data('location');
+        $.ajax({type: 'POST',
+                url: '{url_main}ajax.php',
+                data: { cmd:type,
+                        select_id:this.value,
+                        filter:'1',
+                        list: 0},
+                        beforeSend: function(){
+                            // preloader
+                        },
+                        success: function(res){
+                            var data=checkDataAjax(res);
+                            if (data) {
+                                var option='<option value="0">{j_choose_a_city}</option>';
+                                switch (type) {
+                                    case 'geo_states':
+                                        state.html('<option value="0">{j_choose_a_state}</option>' + data.list).trigger('refresh');
+                                        city.html(option).trigger('refresh');
+                                        break
+                                    case 'geo_cities':
+                                        city.html(option + data.list).trigger('refresh');
+                                        break
+                                }
+                            }
+                            setDisabledSubmitJoin();
+                        }
+                    });
+        return false;
+    })
+
+    function hideSelectTip(){
+        hideBirthdayTip();
+        recaptchaTipHide();
+        hideOrientationTip();
+    }
+
+    birthday.change(function() {
+        if(this.id!='day'){
+            updateDay('month','frm_date','year','month','day');
+            day.trigger('refresh');
+        }
+        validateBirthday();
+        setDisabledSubmitJoin();
+    })
+
+    function hideBirthdayTip(){
+        $('#tip_month-styler').fadeTo(0,0).delay(300).hide(1);
+    }
+
+    function validateBirthday(){
+        if(birthDateToAge()){
+            setBirthdayWrong(0);
+            hideSelectTip();
+        }else{
+            setBirthdayWrong(1);
+            customShowTipJoin('.month > .jq-selectbox',submit_join,'{j_incorrect_date}');
+        }
+    }
+
+    function setBirthdayWrong(set){
+        birthday.each(function(){
+            if(set){$(this).next('.jq-selectbox__select').addClass('wrong')
+            }else{$(this).next('.jq-selectbox__select').removeClass('wrong')}
+        })
+    }
+
+    function hideOrientationTip(){
+        $('#tip_orientation-styler').fadeTo(0,0).delay(300).hide(1);
+    }
+
+    <!-- begin_field_orientation_js -->
+    function setOrientationWrong(set){
+        orientation.each(function(){
+            if(set){$(this).next('.jq-selectbox__select').addClass('wrong')
+            }else{$(this).next('.jq-selectbox__select').removeClass('wrong')}
+        })
+    }
+
+    orientation.change(function() {
+        var val=$(this).val()*1;
+        if(val){
+            $('#tip_orientation-styler').fadeTo(0,0).delay(300).hide(1);
+            setOrientationWrong(0);
+            setDisabledSubmitJoin();
+        }else{
+            setOrientationWrong(1);
+            customShowTipJoin('#orientation-styler',submit_join,'{j_required_field}')
+        }
+    })
+    <!-- end_field_orientation_js -->
+
+    $('body').on('click',function(e){
+        var target=$(e.target);
+        if (target.is('div')||target.is('h2')||target.is('p')){
+            hideSelectTip();
+        }
+    })
+
+    $('#submit_join', box_register).click(function(){
+        isSubmit=true;
+        var f=1,isVName=!validateUserName(),
+            isVPassword,isVEmail;
+        if(isVName){f='0'}
+        isVPassword=!validatePassword(f);
+        if(isVPassword){f='0'}
+        isVEmail=!validateEmail();
+        if(isVEmail||isVPassword||isVName){return false}
+        $('input.inp, input.ajax, select', box_register).each(function(){
+            data_ajax[$(this).attr('name')]=$(this).val();
+        })
+        if(isRecaptcha){
+            responseRecaptcha=grecaptcha.getResponse(recaptchaWd);
+            if(responseRecaptcha==''){
+                submit_join.prop('disabled',true);
+                return;
+            }
+            data_ajax['recaptcha']=responseRecaptcha;
+        }
+        submit_join.prop('disabled',true);
+        $('input.inp', box_register).prop('disabled',true);
+        $('.styler_join', box_register).prop('disabled',true).trigger('refresh');
+        loader.show();
+        $.post('{url_main}join.php',data_ajax,
+                    function(data){
+                        loader.hide();
+                        $('input.inp', box_register).prop('disabled',false);
+                        $('.styler_join', box_register).prop('disabled',false).trigger('refresh');
+                        var res=$(data).filter('.redirect');
+                        if(res[0]){window.location.href=res.text();return;}
+                        res=$(data).filter('.wait_approval');
+                        if(res[0]){
+                            alertCustom('{j_no_confirmation_account}',true,'{j_attention}');
+                            $('.pp_alert').find('.icon_close, .icon_ok').on('click',redirectToLoginPage);
+                            $('.alert_wrapper').on('click',redirectToLoginPage);
+                        }else{
+                            if(isRecaptcha){
+                                grecaptcha.reset(recaptchaWd);
+                            }else{
+                                $('#img_join_captcha').click();
+                                captcha.val('');
+                            }
+                            var dataBlocks = {'.birthday' : '.month > .jq-selectbox',
+                                              '.name' : '#user_name',
+                                              '.password' : '#password',
+                                              '.mail' : '#email',
+                                              '.captcha' : '#captcha',
+                                              '.recaptcha' : '#recaptcha',
+                            };
+                            showTipFromDataJoin(data, dataBlocks, submit_join);
+                        }
+        })
+        return false;
+    })
+
+    function validateEmail(f){
+        if(!isSubmit){
+            setDisabledSubmitJoin();
+            return;
+        }
+        var val=trim(email.val()),res=false,f=f||1;
+        if(!checkEmail(val)){customShowTipJoin('#email',submit_join,'{j_incorrect_email}',f)}
+        else {
+            $('#tip_email').fadeTo(0,0).delay(300).hide(1);
+            email.removeClass('wrong');
+            setDisabledSubmitJoin();
+            res=true;
+        }
+        return res;
+    }
+
+    email.on('change propertychange input',validateEmail)
+    .focus(function(){
+        if ($(this).is('.wrong')) $('#tip_email').stop().fadeTo(1,1);
+        hideSelectTip();
+    }).blur(function(){
+        $('#tip_email').fadeTo(0,0).delay(300).hide(1)
+    })
+
+    function validateUserName(f){
+        if(!isSubmit){
+            setDisabledSubmitJoin();
+            return;
+        }
+        var val=user_name.val(),l=$.trim(val).length,res=false,f=f||1;
+        if (/[#&'"\/\\<]/.test(val)){
+            customShowTipJoin('#user_name',submit_join,'{j_invalid_username}',f)
+        }else if(l<'{username_length_min}'*1||l>'{username_length}'*1){
+            customShowTipJoin('#user_name',submit_join,'{max_min_length_username}',f);
+        } else {
+            user_name.removeClass('wrong');
+            $('#tip_join_handle').fadeTo(0,0).delay(300).hide(1);
+            setDisabledSubmitJoin();
+            res=true;
+        }
+        return res;
+    }
+
+    user_name.on('change propertychange input',validateUserName)
+    .focus(function(){
+        if ($(this).is('.wrong')) $('#tip_join_handle').stop().fadeTo(1,1);
+        hideSelectTip();
+    }).blur(function(){
+        $('#tip_join_handle').fadeTo(0,0).delay(300).hide(1)
+    })
+
+    function validatePassword(f){
+        if(!isSubmit){
+            setDisabledSubmitJoin();
+            return;
+        }
+        var val=password.val(),l=val.length,res=false,f=f||1;
+        if(~val.indexOf("'")<0)customShowTipJoin('#password',submit_join,'{j_invalid_password_contain}',f)
+        else if(l<'{password_length_min}'*1||l>'{password_length_max}'*1) {
+            customShowTipJoin('#password',submit_join,'{max_min_length_password}',f)
+        } else {
+            $('#tip_join_password').fadeTo(0,0).delay(300).hide(1);
+            password.removeClass('wrong');
+            setDisabledSubmitJoin();
+            res=true;
+        }
+        return res;
+    }
+
+    password.on('change propertychange input',validatePassword)
+    .focus(function(){
+        if ($(this).is('.wrong')) $('#tip_join_password').stop().fadeTo(1,1);
+        hideSelectTip();
+    }).blur(function(){
+        $('#tip_join_password').stop().fadeTo(0,0).delay(300).hide(1)
+    })
+
+    function recaptchaTipHide(){
+        if(isRecaptcha){$('#tip_recaptcha').fadeTo(0,0).delay(300).hide(1)};
+    }
+
+    <!-- begin_default_captcha_js -->
+    captcha.on('change propertychange input', function(){
+        $('#tip_captcha').fadeTo(0,0).delay(300).hide(1);
+        $(this).removeClass('wrong');
+        setDisabledSubmitJoin();
+    }).focus(function(){
+        if ($(this).is('.wrong')) $('#tip_captcha').stop().fadeTo(1,1);
+        hideSelectTip();
+    }).blur(function(){
+        $('#tip_captcha').fadeTo(0,0).delay(300).hide(1)
+    })
+    <!-- end_default_captcha_js -->
+
+    $('#city, #agree', box_register).on('change',setDisabledSubmitJoin);
+
+    function customShowTipJoin(el,btn,title,f,center,box){
+        var name=$(el).attr('name'),tip,
+            box=box||box_register,center=center||'+0',f=f*1||1;
+        if (typeof name=='undefined'){name=$(el).attr('id')}
+        tip=$('#tip_'+name);
+        if(!tip[0]){tip=$('<div class="pp_tip_small" id="tip_'+name+'" />').hide()}
+
+        if (el=='#captcha'){
+            tip.css('width','150px');
+        }
+
+        if(el=='.month > .jq-selectbox'){
+            setBirthdayWrong(1);
+            center='+23';
+        }else if(el=='#recaptcha'){
+            center='-13';
+        }else if(el=='#orientation-styler'){
+            setOrientationWrong(1);
+            center='+6';
+        }else{
+            $(el).addClass('wrong');
+            if(f){$(el).focus()}
+        }
+        btn.prop('disabled', true);
+        if (f) tip.html('<div>'+title+'</div>').appendTo(box).stop()
+           .fadeTo(1,f*1).position({my:'center bottom-6', at:'center'+center+' top', of:el})
+        else tip.fadeTo(0,0).delay(300).hide(1)
+    }
+
+    function showTipFromDataJoin(data, dataBlocks, btn){
+        var dataBlock = '';
+        for(dataBlocksKey in dataBlocks) {
+            dataBlock = $(data).filter(dataBlocksKey);
+            if(dataBlock.length) {
+                customShowTipJoin(dataBlocks[dataBlocksKey],btn,dataBlock.text())
+            }
+        }
+    }
+});
+
+function birthDateToAge() {
+    var birth=new Date($('#year').val(), $('#month').val()-1, $('#day').val()),
+        now = new Date(),
+        age = now.getFullYear() - birth.getFullYear();
+        age = now.setFullYear(1972) < birth.setFullYear(1972) ? age - 1 : age;
+    return age >= {users_age};
+}
+
+function setDisabledSubmitJoin(){
+    var is=0;
+    $('input.inp, select', '#box_register').each(function(){
+        var val=this.value;
+        if($(this).is('.mail'))val=$.trim(val);
+            is|=(val==0||val==''||$(this).is('.wrong'));
+    })
+    is|=!birthDateToAge();
+    is|=!$('#agree').prop('checked');
+    if(isRecaptcha){is|=(grecaptcha.getResponse(recaptchaWd)=='')}
+    $('#submit_join').prop('disabled',is);
+}
+<!-- begin_re_captcha_js -->
+    isRecaptcha=true;
+    var recaptchaWd,verifyCallback = function(response) {
+            setDisabledSubmitJoin();
+            $('#tip_recaptcha').fadeTo(0,0).delay(300).hide(1);
+            //grecaptcha.reset(recaptcha);
+        };
+    var onloadCallback = function() {
+        recaptchaWd = grecaptcha.render('recaptcha', {
+            'sitekey' : '{re_captcha_sitekey}',
+            'callback' : verifyCallback,
+            'theme' : '{re_captcha_theme}'
+        });
+    };
+<!-- end_re_captcha_js -->
+</script>
+            <div class="bl_frm frm_top">
+
+                <div class="part_l <!-- begin_social_login_no_class -->no_dot<!-- end_social_login_no_class -->">
+
+                    <div class="bl_link_back" >
+                        <a href="{url_from}">{l_go_back}</a>
+                    </div>
+
+                    <div id="box_register" class="l">
+                        <div class="title">
+                            <h2>{l_become_a_member}</h2>
+                            <p>{l_join_to_find_new_friends}</p>
+                            <p>{l_to_request_access_fill_out_this_short_form}</p>
+                        </div>
+
+                        <!--<form name="frm_register" action="" autocomplete="off">-->
+                            <div class="frm">
+                                <div class="cont">
+                                    <input type="hidden" name="cmd" class="ajax" value="register" />
+                                    <input type="hidden" name="ajax" class="ajax" value="1" />
+                                    <label>{l_email}:</label>
+                                    <input id="email" name="email" class="inp mail" type="text" value="{email}"/>
+
+                                    <div class="cl"></div>
+
+                                    <label>{l_password}:</label>
+                                    <input id="password" name="join_password" class="inp" type="password" value="{join_password}"/>
+
+                                    <div class="cl"></div>
+
+                                    <label>{l_username}:</label>
+                                    <input id="user_name" name="join_handle" maxlength="{username_length}" class="inp" type="text" value="{join_handle}"/>
+
+                                    <div class="cl"></div>
+
+                                    <label>{l_date_birth}:</label>
+                                    <div class="bl_select">
+                                        <form name="frm_date" action="" autocomplete="off">
+                                        <div class="day">
+                                            <select name="day" id="day" class="styler_join birthday">
+                                                {day_options}
+                                            </select>
+                                        </div>
+                                        <div class="month">
+                                            <select name="month" id="month" class="styler_join birthday">
+                                                {month_options}
+                                            </select>
+                                        </div>
+                                        <div class="year">
+                                            <select name="year" id="year" class="styler_join birthday">
+												{year_options}
+                                            </select>
+                                        </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="cl"></div>
+                                    <!-- begin_field_orientation -->
+                                    <label>{l_i_am}:</label>
+                                    <div class="bl_select iam">
+                                        <select name="orientation" id="orientation" class="styler_join">
+                                            {orientation_options}
+                                        </select>
+                                    </div>
+                                    <!-- end_field_orientation -->
+                                    <div class="cl"></div>
+
+                                    <label>{l_i_am_from}: </label>
+                                    <div class="bl_select">
+                                        <div class="country">
+                                            <select name="country" id="country" data-location="geo_states" class="geo styler_join">
+                                                {country_options}
+                                            </select>
+                                        </div>
+                                        <div class="state">
+                                            <select name="state" id="state" data-location="geo_cities" class="geo styler_join">
+                                                {state_options}
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="cl"></div>
+
+                                    <label>{l_city}:</label>
+                                    <div class="bl_select city">
+                                        <select name="city" id="city" class="styler_join">
+                                            {city_options}
+                                        </select>
+                                    </div>
+                                    <div class="cl"></div>
+
+                                    <!-- begin_default_captcha -->
+                                    <label>{l_enter_code}:</label>
+                                    <div class="bl_select">
+                                        <div style="width:95px;">
+                                            <img title="{a_refresh}" class="img_captcha" id="img_join_captcha" onclick="refreshCaptcha();" src="{url_main}_server/securimage/securimage_show_custom.php?sid={sid}">
+                                        </div>
+                                        <div class="refresh_captcha">
+                                           <img title="{a_refresh}" onclick="refreshCaptcha();" src="{url_tmpl_main}images/undo.png">
+                                        </div>
+                                        <div class="input_captcha">
+                                            <input id="captcha" name="captcha" class="inp" style="width: 142px;" type="text" value=""/>
+                                        </div>
+                                    </div>
+                                    <div class="cl"></div>
+                                    <!-- end_default_captcha -->
+                                    <!-- begin_re_captcha -->
+                                    <label>{l_enter_code}:</label>
+                                    <div style="float:left; height: 76px;">
+                                        <div id="recaptcha" style="transform:scale(.91); margin-left: -15px;"></div>
+                                    </div>
+                                    <div class="cl"></div>
+                                    <!-- end_re_captcha -->
+
+                                </div>
+                                <div class="foot">
+                                    <div class="fl_right agree">
+                                        <input id="agree" name="privacy_policy" value="1" type="checkbox"/>
+                                        <label for="agree">{l_i_agree_to_the}
+                                        <a href="#" onclick="javascript:OpenWindow('{url_main}info.php?page=term_cond&lang={language_value}','650','400'); return false;">{l_terms}</a> {l_and} <a href="#" onclick="javascript:OpenWindow('{url_main}info.php?page=priv_policy&lang={lang_loaded}','650','400','yes'); return false;">{l_privacy_policy}</a></label>
+                                    </div>
+                                    <div class="cl"></div>
+                                    <div class="bl_loader_btn">
+                                        <img id="loader" class="join_loader" src="{url_tmpl_main}images/loader_small.gif">
+                                        <input id="submit_join" type="button" class="btn blue fl_left" style="margin-left: 38px; margin-top:4px;" disabled value="{a_register}" />
+                                    </div>
+                                <div class="cl"></div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <!-- begin_social_login -->
+                <div class="part_r">
+                    <ul class="bl_social_buttons bl_social_buttons_register">
+						<!-- begin_social_login_item -->
+                        <li class="login_{social_login_item_type}"><a href="{social_login_item_url}">&nbsp;</a></li>
+						<!-- end_social_login_item -->
+                    </ul>
+                    <div class="vertical_dot_txt">{l_or}</div>
+                </div>
+                <!-- end_social_login -->
+            <div class="cl"></div>
+            </div>
+            <div class="empty"></div>
+<!-- begin_re_captcha_script -->
+<script src="//www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit&hl={re_captcha_lang}" async defer></script>
+<!-- end_re_captcha_script -->
+{footer}
+<!-- begin_wait_approval -->
+<script>
+$(function(){
+	alertCustom('{j_no_confirmation_account}',true,'{j_attention}');
+});
+</script>
+<!-- end_wait_approval -->

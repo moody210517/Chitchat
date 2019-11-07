@@ -1,0 +1,88 @@
+<div class="pp_add_photo" id="pp_add_photo">
+        <div class="head">
+            <strong>Add more public photos</strong>
+            <a id="add_photo_close" class="icon_close" href="#"></a>
+        </div>
+        <div class="cont">
+
+            <div class="item color">
+                <div class="pic"><div class="empty_pic"></div></div>
+                <div class="pic_cont">
+                    <div class="name_pic">img233.jpg</div>
+                    <div class="slider">
+                        <a class="icon_delete" href="#"></a>
+                        <div class="slider_bg">
+                            <div style="width: 30%;" class="slider_range"></div>
+                        </div>
+                    </div>
+                </div>
+            <div class="cl"></div>
+            </div>
+
+            <div class="item">
+
+                <div class="pic"><img src="{url_tmpl_main}images/photo/12_405177_r.jpg" /></div>
+                <div class="pic_cont">
+                    <div class="name_pic">85yg987y.jpg</div>
+                    <div class="slider">
+                        <a class="icon_delete" href="#"></a>
+                        <div class="slider_bg">
+                            <div style="width: 70%;" class="slider_range"></div>
+                        </div>
+                    </div>
+                </div>
+            <div class="cl"></div>
+            </div>
+
+            <div class="item color">
+                <div class="pic"><img src="{url_tmpl_main}images/photo/12_405177_r.jpg" /></div>
+                <div class="pic_cont">
+                    <a class="link_click" href="#">Click to add caption</a>
+                    <div class="uploaded">Uploaded</div>
+                </div>
+            <div class="cl"></div>
+            </div>
+
+            <div class="item">
+                <div class="pic"><img src="{url_tmpl_main}images/photo/12_405177_r.jpg" /></div>
+                <div class="frm">
+                    <input class="inp" type="text" />
+                    <input type="button" class="btn green" value="Save" />
+                    <input type="button" class="btn black" value="Cancel" />
+                </div>
+            <div class="cl"></div>
+            </div>
+
+            <div class="item color">
+                <div class="pic"><img src="{url_tmpl_main}images/photo/12_405177_r.jpg" /></div>
+                <div class="pic_cont">
+                    <div class="edit">Here we are together <a class="icon_edit" href="#"></a></div>
+                    <div class="uploaded">Uploaded</div>
+                </div>
+            <div class="cl"></div>
+            </div>
+
+        </div>
+        <div class="foot">
+            <a class="link" href="#">Add more photos</a>
+            <input type="button" class="btn green fl_right" value="Done" />
+        </div>
+    </div>
+<script>
+$(function(){
+    var pp_add_photo = $('#pp_add_photo');
+        pp_add_photo.modalPopup({
+        css: {
+            position: "absolute",
+            top: 254,
+            left: 0
+            }
+        }).open();
+
+    $('#add_photo_close').click(function (){
+        pp_add_photo.close();
+        return false;
+    });
+});
+</script>
+

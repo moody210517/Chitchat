@@ -1,0 +1,115 @@
+<div class="more bl_filter">
+    <input type="hidden" id="filter_offset" name="offset" value="{offset}">
+
+    <span id="filter_open" data-target="#filter_results" class="dropdown-toggle link" data-toggle="collapse" role="button" aria-haspopup="true">
+        <i class="fa fa-filter"></i>{l_filter}<span class="caret"></span>
+    </span>
+    <ul id="filter_results" class="col-lg-6 collapse">
+
+        <li>
+            <div class="bl_forms">
+                <div class="section fields">
+                    <!-- begin_filter_location_show -->
+                    <input type="hidden" id="radius" name="radius" value="{radius}">
+                    <input type="hidden" id="people_nearby" name="people_nearby" value="{people_nearby}">
+
+                    <div class="col-lg-12 col-md-12 field">
+                        <select id="filter_country" class="selectpicker show-tick geo location" data-location="geo_states" name="country" data-live-search="true">
+                            <option value="people_nearby">{l_filter_people_nearby}</option>
+                            <option value="0">{l_all_countries}</option>
+                            {country_options}
+                        </select>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12 field">
+                        <select id="filter_state" class="selectpicker show-tick geo location" data-location="geo_cities" name="state" data-live-search="true">
+                            <option value="0">{l_all_regions}</option>
+                            {state_options}
+                        </select>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12 field">
+                        <select id="filter_city" class="selectpicker show-tick location" name="city" data-live-search="true">
+                            <option value="0">{l_all_cities}</option>
+                            {city_options}
+                        </select>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12 field height_auto radius_slider">
+                        <input id="radius_slider" data-slider-id="search_radius" type="text" data-slider-min="0"  data-slider-step="1"/>
+                    </div>
+                    <!-- end_filter_location_show -->
+                    <!-- begin_filter_location_default -->
+                    <input type="hidden" id="filter_country" name="country" value="{filter_country_id}">
+                    <input type="hidden" id="filter_state" name="state" value="{filter_state_id}">
+                    <input type="hidden" id="filter_city" name="city" value="{filter_city_id}">
+                    <input type="hidden" name="radius" value="0">
+                    <!-- end_filter_location_default -->
+
+                    <!-- begin_p_orientations -->
+                    <div class="col-lg-12 col-md-12 field height_auto">
+                        <div class="field_checkbox custom_checkbox orientation" <!-- begin_p_orientations_hide -->style="display:none;"<!-- end_p_orientations_hide -->>
+                            <!-- begin_p_orientation -->
+                            <input id="p_orientation_{id}" name="p_orientation[]" value="{id}" type="checkbox" {checked} />
+                            <label for="p_orientation_{id}"><span></span>{title}</label>
+                        <!-- end_p_orientation -->
+                        </div>
+                    </div>
+                    <!-- end_p_orientations -->
+
+                    <!-- begin_age_range -->
+                    <div class="col-lg-6 col-md-12 field">
+                        <select id="p_age_from" name="p_age_from" class="selectpicker show-tick" data-live-search="false">
+                        {p_age_from_options}
+                        </select>
+                    </div>
+                    <div class="col-lg-6 col-md-12 field dash">
+                        <select name="p_age_to" class="selectpicker show-tick" data-live-search="false">
+                        {p_age_to_options}
+                        </select>
+                    </div>
+                    <!-- end_age_range -->
+
+                    <div class="col-lg-12 col-md-12 field">
+                        <select id="search_status" class="selectpicker show-tick" data-live-search="false">
+                            <option value="0" <!-- begin_module_search_status_all -->selected="selected"<!-- end_module_search_status_all -->>{l_search_show_all_impact}</option>
+                            <option value="new" <!-- begin_module_search_status_new -->selected="selected"<!-- end_module_search_status_new -->>{l_search_show_new_impact}</option>
+                            <option value="online" <!-- begin_module_search_status_online -->selected="selected"<!-- end_module_search_status_online -->>{l_search_show_online_impact}</option>
+                        </select>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12 field height_auto">
+                        <div class="field_checkbox custom_checkbox with_photo">
+                            <input id="module_search_with_photo" type="checkbox" <!-- begin_module_search_with_photo -->checked<!-- end_module_search_with_photo -->>
+                            <label for="module_search_with_photo"><span></span>{l_only_with_photos}</label>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12 field">
+                        <input id="global_search_by_username" type="text" class="form-control placeholder" name="global_search_by_username" placeholder="{a_search_by_username_small}">
+                    </div>
+
+                    <div class="col-lg-12 col-md-12 field foot">
+                        <button id="search_submit" class="btn btn-block btn-info">
+                            <span>{l_apply_filter}</span>
+                        </button>
+                    </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<script>
+    var currentRadius='{radius}'*1;
+    var maxRadius = parseInt('{radius_max}');
+    var isMaxFilterDistanceCountry = '{max_filter_distance_country}'*1;
+
+    var sliderTitles = {
+        city : '{j_slider_in_the_whole_city}',
+        radius : '{slider_within}',
+        country : '{j_slider_in_the_whole_country}'
+    };
+    clSearch.setData({
+        offset:'{offset}'
+    });
+    clSearch.initList();
+</script>

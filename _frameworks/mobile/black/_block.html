@@ -1,0 +1,12 @@
+<div class="block blockuser red">
+	<p class="title">{l_block_name} {blocked_name}?</p>
+	{blocked_name} {l_will_not_be_able_to_send_you_messages}
+	<div class="buttons">
+		<form name="cancel" action="{url_main}profile_view.php?user_id={blocked_user_id}&display={display}" method="POST">
+			<a href="#" onclick="document.forms['cancel'].submit();"  class="orange_btn btn">{l_cancel}</a>
+		</form>
+		<form name="block" action="{url_main}profile_view_block.php?user_id={blocked_user_id}&cmd=block&display={display}" method="POST">
+			<a href="#" onclick="document.forms['block'].submit();"  class="green_btn btn">{l_block}</a>
+		</form>
+	</div>
+</div>

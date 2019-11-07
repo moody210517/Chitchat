@@ -1,0 +1,213 @@
+    <div class="head">
+        <strong>{l_i_am_here_to}</strong>
+        <a id="pp_edit_looking_close" class="icon_close" href="#close"></a>
+    </div>
+    <form id="frm_pp_edit_looking" class="edit_form" name="frm_pp_edit_looking"  method="post" action="{url_main}ajax.php">
+    <input type="hidden" name="cmd" value="update_edit_looking" class="ajax" />
+    <input type="hidden" name="ajax" class="ajax" value="1" />
+    <div id="pp_edit_looking_fields" class="cont select_var2 {fields_with_hidden}" <!-- begin_looking_fields_style -->style="line-height:50px;"<!-- end_looking_fields_style -->>
+
+        <div class="decor_circle">{l_with}</div>
+        <!-- begin_i_am_here_to -->
+        <div class="bl bl_here field_i_am_here">
+            <!-- begin_i_am_here_to_item -->
+            <div class="rb {i_am_here_to_class}" style="margin: 0 0 5px; line-height:0px;">
+                <input class="rb styler_looking" id="rb_{id}" name="{name}" value="{id}" type="radio" {checked} />
+                <label for="rb_{id}">{title}</label>
+            </div>
+            <!-- end_i_am_here_to_item -->
+        </div>
+        <!-- end_i_am_here_to -->
+
+        <!-- begin_field_i_am_here_to_off -->
+        <div class="bl bl_here i_am_here_to_off">{l_field_i_am_here_to_off_text}</div>
+        <!-- end_field_i_am_here_to_off -->
+
+        <div class="bl bl_who">
+            <!-- begin_p_orientations -->
+			<div class="ch" <!-- begin_p_orientation_style -->style="margin-top:21px;"<!-- end_p_orientation_style -->>
+                 <!-- begin_p_orientation -->
+                <label for="rb_looking_{id}"><input class="rb styler_looking1" id="rb_looking_{id}" name="{name}[]" value="{id}" type="checkbox" {checked} />
+                {title}</label>
+                 <!-- end_p_orientation -->
+            </div>
+            <!-- end_p_orientations -->
+            <!-- begin_looking_your_orientation -->
+            <div class="ch">{name}</div>
+            <!-- end_looking_your_orientation -->
+            
+            <!-- begin_age_range -->
+            <div>
+                <select id="pp_edit_looking_p_age_from" name="p_age_from" class="styler_looking age_select">
+                    {p_age_from_options}
+                </select>
+                <span class="def">&#x2012;</span>
+                <select id="pp_edit_looking_p_age_to" name="p_age_to" class="styler_looking age_select">
+                    {p_age_to_options}
+                </select>
+            </div>
+            <!-- end_age_range -->
+        </div>
+    <div class="cl"></div>
+    </div>
+    <div class="foot">
+        <button id="pp_edit_looking_save" type="submit" class="btn green fl_right" disabled>{l_save}</button>
+        <a id="pp_edit_looking_cancel" class="link" href="#reset">{l_cancel}</a>
+    </div>
+    </form>
+<script>
+    var pp_edit_looking=$('#pp_edit_looking'),
+        frm_pp_edit_looking=$('#frm_pp_edit_looking'),
+        pp_edit_looking_save=$('#pp_edit_looking_save'),
+        pp_edit_looking_fields=$('#pp_edit_looking_fields'),
+        pp_edit_looking_age_from=$('#pp_edit_looking_p_age_from'),
+        pp_edit_looking_age_to=$('#pp_edit_looking_p_age_to'),
+        profile_edit_looking=$('#profile_edit_looking'),
+        edit_looking_loader=$('#edit_looking_loader'),
+        btnLookingCancel=$('#pp_edit_looking_cancel'),
+        editLookingInfo={},
+        curSelLookingInfo={},
+        setDisabledLooking=true;
+
+    $('.styler_looking', pp_edit_looking_fields).styler();
+
+    $('#profile_edit_looking').click(function(){
+        pp_edit_looking.open();
+        return false;
+    });
+
+    $('#pp_edit_looking_cancel, #pp_edit_looking_close').click(function (){
+        var is=isModifiedLookingInfo(),hash=this.hash;
+        if(is){
+            resetLookingInfo();
+            disabledOptionAge();
+        }
+        setTimeout(function(){
+            if (hash=='#close'||!is)pp_edit_looking.close();
+            pp_edit_looking_save.prop('disabled',true);
+            btnLookingCancel.text('{j_cancel}');
+        },1);
+        return false;
+    });
+
+    function disabledOptionAge(){
+        pp_edit_looking_age_from.find('option').toggleDisabled(pp_edit_looking_age_to.val()*1,true);
+        pp_edit_looking_age_to.find('option').toggleDisabled(pp_edit_looking_age_from.val()*1,false);
+        setTimeout(function(){
+            pp_edit_looking_age_from.trigger('refresh');
+            pp_edit_looking_age_to.trigger('refresh');
+        },1);
+    }
+
+    $.fn.toggleDisabled = function(limit,rang) {
+		return this.each(function(){
+            if(rang){
+                if(this.value>limit){this.disabled=true}
+                else{this.disabled=false}
+            }else{
+                if(this.value<limit){this.disabled=true}
+                else{this.disabled=false}
+            }
+		});
+	};
+    setTimeout(disabledOptionAge,200);
+
+    function setLookingInfo(){
+        $('input:radio:checked, input:checkbox, select', frm_pp_edit_looking).each(function(){
+            var k,v;
+            if(this.type=='checkbox'){
+                k=this.id;
+                v=$(this).prop('checked');
+            }else{
+                k=this.name;
+                v=this.value;
+            }
+            editLookingInfo[k]=v;
+            if(this.type=='select-one'){curSelLookingInfo[k]=v}
+        })
+    }
+
+    setLookingInfo();
+
+    function resetLookingInfo(){
+        $('input:not(.ajax), select', pp_edit_looking_fields).each(function(){
+            if(this.type=='select-one'){
+                $(this).val(editLookingInfo[this.name]).trigger('refresh')
+            }else if(this.type=='radio'&&this.value==editLookingInfo[this.name]){
+                $(this).click().trigger('refresh')
+            }else if(this.type=='checkbox'&&$(this).prop('checked')!=editLookingInfo[this.id]) {
+                $(this).prop('checked',editLookingInfo[this.id]);//.trigger('refresh')
+            }
+        })
+    }
+
+    function isModifiedLookingInfo(){
+        var is=0;
+        $('input:radio:checked, input:checkbox, select', frm_pp_edit_looking).each(function(){
+            if(this.type=='checkbox'){
+                is|=($(this).prop('checked')!=editLookingInfo[this.id])
+            }else{is|=(this.value!=editLookingInfo[this.name])}
+        })
+        return is;
+    }
+
+    $('select', pp_edit_looking_fields).on('change',function(){
+        // Do not !
+        /*if(pp_edit_looking_age_from.val()>pp_edit_looking_age_to.val()){
+            alertHtmlArea='.column_main';
+            $(this).val(curSelLookingInfo[this.name]).trigger('refresh');
+            alertCustom('First age should be greater than the second',true);
+        }else{curSelLookingInfo[this.name]=this.value}*/
+        disabledOptionAge();
+        setDisabledLookingSave();
+    });
+
+    $('input:not(.ajax)', pp_edit_looking_fields).on('change',setDisabledLookingSave);
+
+    function setDisabledLookingSave() {
+        if (isModifiedLookingInfo()){
+            btnLookingCancel.text('{j_reset}');
+            pp_edit_looking_save.prop('disabled',false);
+        } else {
+            btnLookingCancel.text('{j_cancel}');
+            pp_edit_looking_save.prop('disabled',true);
+        }
+
+        //pp_edit_looking_save.prop('disabled',!isModifiedLookingInfo());
+    }
+
+    frm_pp_edit_looking.submit(function() {
+        $('button', this).prop('disabled',true);
+        if (!isModifiedLookingInfo()) return false;
+        profile_edit_looking.hide();
+        edit_looking_loader.show();
+        $(this).ajaxSubmit({success: pp_edit_looking_response});
+        //$('input:checkbox', this).prop('disabled',true);
+        //$('input:radio, select', this).prop('disabled',true).trigger('refresh');
+        pp_edit_looking.close();
+        return false;
+    });
+
+    function pp_edit_looking_response(res){
+        edit_looking_loader.hide();
+        profile_edit_looking.show();
+        //$('input:checkbox', frm_pp_edit_looking).prop('disabled',false);
+        //$('input:radio, select', frm_pp_edit_looking).prop('disabled',false).trigger('refresh');
+        btnLookingCancel.text('{j_cancel}');
+        var data=checkDataAjax(res);
+        if(data!==false){
+            setLookingInfo();
+            $('#profile_looking_for').html(data);
+        }
+    }
+
+    $('.pp_body').on('click', function(e){
+        if(e.target==this
+           &&$('#pp_edit_looking:visible')
+           &&!isModifiedLookingInfo()){
+            pp_edit_looking.close()
+        }
+    })
+
+
+</script>

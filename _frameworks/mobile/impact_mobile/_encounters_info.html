@@ -1,0 +1,25 @@
+<script>
+    clSearch.setData({display:'encounters'});
+    var clPhoto = new CProfilePhoto();
+    clPhoto.setData({
+        display:'encounters',
+        numberListUsers:'{number_list_users}'*1
+    });
+</script>
+<div class="bl_one_photo_encounters">
+    <div id="photo_gallery_img_box" class="bl_img bl_img_one bl_img_encounters" >
+        <img id="profile_view_photo_img" onload="$(this).removeClass('hidden')" src="{photo_cur}" class="hidden">
+    </div>
+</div>
+<div class="no_one_found to_hide"><span>{l_no_one_found_please_edit_the_filter_above}</span></div>
+<div id="btn_encounters_action" class="bl_meet">
+    <div class="gradient"></div>
+    <div class="btn_circle_cancel" onclick="clPhoto.likeToMeet('N',$(this),false,true); return false;"><i class="fa fa-times" aria-hidden="true"></i></div>
+    <div class="btn_circle_check" onclick="clPhoto.likeToMeet('Y',$(this),false,true); return false;"><i class="fa fa-check" aria-hidden="true"></i></div>
+</div>
+<!--<span id="bl_tinder_btn_left" class="no bl_tinder_btn">{l_no}</span>
+<span id="bl_tinder_btn_right" class="yes bl_tinder_btn">{l_yes}</span>-->
+{items}
+<script>
+    clPhoto.initEncounters();
+</script>

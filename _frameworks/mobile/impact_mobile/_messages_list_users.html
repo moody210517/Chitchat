@@ -1,0 +1,32 @@
+<div class="script" style="display:none;">
+<!-- begin_general_remove_users -->
+<script>messages.removeUsersGeneralChat({general_remove_users_list});</script>
+<!-- end_general_remove_users -->
+<!-- begin_general_order_users -->
+<script>
+    messages.setOrderUsersGeneralChat({general_order_users_list});
+    messages.setStatusNewMessagesFromUsers({general_users_list_new_msg});
+</script>
+<!-- end_general_order_users -->
+<!-- begin_update_users_status -->
+<script>messages.updateOnlineUsers({update_users_status});</script>
+<!-- end_update_users_status -->
+<!-- begin_general_limit_info -->
+<script>messages.setLimitStart('{limit_start}', '{stop_more}', '{limit_load}');</script>
+<!-- end_general_limit_info -->
+</div>
+<!-- begin_messages_users_list_item -->
+<div id="im_{user_to_id}" class="im_general_user" data-check-order="" data-uid="{user_to_id}" data-order="{user_to_order}">
+    <div id="new_mail_{user_to_id}" class="item to_one_chat <!-- begin_new_messages_item -->unread<!-- end_new_messages_item -->">
+        <div id="msg_user_pic_{message_to_user_id}" class="pic to_opacity_hide">
+            <div class="pic_btn" data-cl-loader="loader_general_msg_to_profile" data-type-loader="fade_btn" data-url="{url_main}{url_page_profile_view}?user_id={message_to_user_id}">
+                <button <!-- begin_messages_users_list_item_plug_private_photos -->class="plug_private_photos"<!-- end_messages_users_list_item_plug_private_photos --> style="background-image: url({url_files}{user_to_photo});"></button>
+                <script class="in_content">messages.showPhotoUser('#msg_user_pic_{message_to_user_id}','{url_files}{user_from_photo}');</script>
+                <span id="im_user_status_{message_to_user_id}" class="status online messages" <!-- begin_status_online -->style="opacity:1;"<!-- end_status_online -->></span>
+            </div>
+        </div>
+        {msg_list}
+        <script class="in_content">messages.usersCacheAdd('{user_to_id}', '{status_online}');</script>
+    </div>
+</div>
+<!-- end_messages_users_list_item -->

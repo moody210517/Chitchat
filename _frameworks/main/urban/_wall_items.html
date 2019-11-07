@@ -1,0 +1,197 @@
+<script>
+<!-- begin_change_condition -->
+Wall.postIdMax=0;
+Wall.stopUdater=true;
+Wall.changeCondition=true;
+Wall.oldItemsExists=true;
+<!-- end_change_condition -->
+Wall.filters = '{wall_filters}';
+</script>
+<!-- begin_wall_items_script -->
+<script>
+    Wall.firstPostId = '{wall_first_post_id}';
+    <!-- begin_wall_items_script_last_post_id -->
+	Wall.lastPostId = '{wall_last_post_id}';
+	<!-- end_wall_items_script_last_post_id -->
+
+	<!-- begin_no_more_items -->
+	$(function(){
+		$('.wall_load_old_items').hide();
+		Wall.oldItemsExists = false;
+	});
+	<!-- end_no_more_items -->
+</script>
+<!-- end_wall_items_script -->
+<!-- begin_wall_items -->
+<div data-id="{id}" id="wall_item_{id}" class="wall_item">
+    <div class="wall_user">
+        <!-- begin_wall_like_to_meet -->
+        <span title="{wall_like_to_meet_title}" onclick="Wall.likeToMeet('{id}', '{item_user_id}', $(this))" class="icon like_wall wall_like_to_meet_{item_user_id} {wall_like_to_meet_selected}"></span>
+        <!-- end_wall_like_to_meet -->
+		<a class="user_item_photo" onclick="goLink('{url_main}{url_profile_link}', '{url_profile_link_param}'); return false;" href="">
+            <div class="tb">
+			     <div class="pic wall_item_user_photo_{item_user_id}" data-url="{url_files}{photo}" style="background-image: url({url_files}{photo});"></div>
+            </div>
+
+			<div class="info wall_item_user_info_{item_user_id}">{name}, <em>{age}</em></div>
+
+		</a>
+        <!-- begin_wall_item_im -->
+        <span title="{l_wall_send_a_message}" onclick="Messages.show({item_user_id},1);" class="icon msg"></span>
+        <!-- end_wall_item_im -->
+    </div>
+    <div class="wall_vline">
+		<div class="wall_txt_action">
+			<span>{wall_item_title}</span>
+		</div>
+    <div class="wall_posted">
+        <!-- begin_wall_comment -->
+        <div onclick="Wall.showOnePost('{id}','{item_user_id}'); return false;" data-name="{name}" id="wall_text_post_{id}" class="bl wall_text_post" <!-- begin_max_media_width -->style="width:{max_media_width}px"<!-- end_max_media_width -->>
+			<div class="wrap_txt_cmt">{wall_item_comment}</div>
+			<div class="txt_name show_one_post">
+				<div onclick="Wall.showOnePost('{id}','{item_user_id}'); return false;" class="comments disabled wall_post_comments_{id}"></div>
+			</div>
+        </div>
+        <!-- end_wall_comment -->
+
+        <!-- begin_wall_photo -->
+        <div class="bl">
+        <!-- begin_wall_photo_single -->
+        <div class="wall_image_post">
+        <a id="wall_photo_{wall_photo_id}" data-wall-item-id="{id}" onclick="Photo.openGalleryOnTheWall({wall_photo_id}, {wall_photo_user_id}, 1, '{wall_photo_user_gender}'); return false;" href="#"><!--{url_files}{wall_photo_url_b} target="_blank" class="lightbox" -->
+            <img onload="$(this).css({opacity:1, transition:'opacity .5s'})" style="opacity: 0;"  src="{url_files}{wall_photo_url}" alt="">
+        </a>
+            <script>
+                Photo.setPhotoInfo('{wall_photo_id}', '{wall_photo_access}', {wall_photo_info});
+            </script>
+        </div>
+        <!-- end_wall_photo_single -->
+        <!-- begin_wall_photo_images -->
+		<ul class="list_photos">
+            <!-- begin_wall_photo_image -->
+            <li>
+                <a data-wall-item-id="{id}" id="wall_photo_{wall_photo_id}" onclick="Photo.openGalleryOnTheWall({wall_photo_id}, {wall_photo_user_id}, 1, '{wall_photo_user_gender}'); return false;" href="#">
+                    <img onload="$(this).css({opacity:1, transition:'opacity .5s'})" style="opacity: 0;"  src="{url_files}{wall_photo_url}" alt="">
+                </a>
+                <script>
+                    Photo.setPhotoInfo('{wall_photo_id}', '{wall_photo_access}', {wall_photo_info});
+                </script>
+            </li>
+            <!-- end_wall_photo_image -->
+        </ul>
+        <!-- end_wall_photo_images -->
+        </div>
+        <!-- end_wall_photo -->
+
+        <!-- begin_wall_vids -->
+        <div class="bl">
+            <div class="wall_video_post wall_one_video">
+                {item_html_code}
+                <div class="txt">
+                    <div title="{item_title_attr}" class="txt_video_name">{item_title}</div>
+                </div>
+                <!-- begin_wall_vids_comments -->
+                <div onclick="onClickWallComments({item_id},{item_user_id},{id}); return false;" class="comments wall_gallery_comments_{id}">{item_number_comments}</div>
+                <!-- end_wall_vids_comments -->
+            </div>
+        </div>
+        <!-- end_wall_vids -->
+
+        <!-- begin_wall_pics -->
+        <div class="bl">
+            <!-- begin_wall_album_desc -->
+				<p>{wall_album_desc}</p>
+				<!-- end_wall_album_desc -->
+        <!-- begin_wall_pics_single -->
+        <div class="wall_image_post">
+        <a target="_blank" class="lightbox lightbox_pics" href="{wall_pics_image_src}">
+            <img onload="$(this).css({opacity:1, transition:'opacity .5s'})" style="opacity: 0;"  src="{wall_pics_image_big}" alt="">
+        </a>
+        </div>
+        <!-- end_wall_pics_single -->
+        <!-- begin_wall_pics_images -->
+		<ul class="list_photos">
+            <!-- begin_wall_pics_image -->
+            <li>
+                <a target="_blank" class="lightbox lightbox_pics" href="{wall_pics_image_src}">
+                    <img onload="$(this).css({opacity:1, transition:'opacity .5s'})" style="opacity: 0;"  src="{wall_pics_image}" alt="">
+                </a>
+            </li>
+            <!-- end_wall_pics_image -->
+        </ul>
+        <!-- end_wall_pics_images -->
+        </div>
+        <!-- end_wall_pics -->
+
+        <!-- begin_wall_interests -->
+        <div class="bl wall_interests_bl">
+        <div id="wall_interests_bl_{id}" class="refine">
+            <ul id="wall_interests_ul_{id}" data-id="{id}" class="user_list_interest">
+                <!-- begin_wall_interests_item -->
+                <li style="cursor:pointer;" id="wall_int_{wall_interests_item_id}" data-interest-id="{wall_interests_item_id}" class="interests_user_item <!--begin_main_interest--> interest_item<!--end_main_interest-->" onclick="searchInterests(this);return false;" title="{l_show_users_who_have_this_interest}">
+                    <span class="field_interests_{wall_interests_item_category}_profile text-overflow ">{wall_interests_item_title}</span>
+                </li>
+                <!-- end_wall_interests_item -->
+            </ul>
+            <div class="cl"></div>
+        </div>
+        <div id="wall_interests_dots_{id}" data-offset="0" class="dots hide" title="{l_show_more}" onclick="Wall.showMoreInterestsDots({id},$(this));">...</div>
+        </div>
+        <script>Wall.prepareShowInterests({id},'{is_update}');</script>
+        <!-- end_wall_interests -->
+    </div>
+    </div>
+
+    <!-- begin_wall_item_like -->
+    <div id="wall_like_bl_{id}" class="wall_like">
+        <span title="{wall_item_like_btn_title}" onclick="Wall.switchLike({id}); return false;" id="btn_wall_like_{id}" class="btn_wall_like <!-- begin_wall_item_like_btn_selected -->selected<!-- end_wall_item_like_btn_selected -->">
+            <span class="like"></span>
+            <span class="like_hover"></span>
+        </span>
+        <div class="people_like l">
+            <!-- begin_wall_like_user_left_list -->
+            <!-- begin_wall_like_user_left -->
+            <a id="wall_like_user_{id}_{wall_like_user_id}" class="wall_like_user show" href="{url_main}{wall_like_user_profile_link}">
+            <div title="{wall_like_user_name}, {wall_like_user_age}" class="pic  wall_like_user_pic_{wall_like_user_id}" data-url="{url_files}{wall_like_user_photo}" style="background-image: url({url_files}{wall_like_user_photo});"></div>
+            </a>
+            <!-- end_wall_like_user_left -->
+            <!-- end_wall_like_user_left_list -->
+        </div>
+        <div class="people_like r">
+            <!-- begin_wall_like_user_right_list -->
+            <!-- begin_wall_like_user_right -->
+            <a id="wall_like_user_{id}_{wall_like_user_id}" class="wall_like_user show" href="{url_main}{wall_like_user_profile_link}">
+            <div title="{wall_like_user_name}, {wall_like_user_age}"  class="pic wall_like_user_pic_{wall_like_user_id}" data-url="{url_files}{wall_like_user_photo}" style="background-image: url({url_files}{wall_like_user_photo});"></div>
+            </a>
+            <!-- end_wall_like_user_right -->
+            <!-- begin_wall_like_user_more -->
+            <div id="wall_like_more_{id}" class="icon_wall_like_item" onclick="Wall.switchMoreLike('{id}',$(this));">
+                <div></div>
+                <div></div>
+            </div>
+            <!-- end_wall_like_user_more -->
+            <!-- end_wall_like_user_right_list -->
+            <div id="wall_like_more_" class="icon_wall_like_item hide" onclick="Wall.switchMoreLike('{id}',$(this));">
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <!--<div onclick="Wall.hideMoreLike('{id}');" class="icon_wall_up_like"></div>-->
+    <div class="cl"></div>
+    </div>
+    <!-- end_wall_item_like -->
+
+    <div class="icons_wall">
+        <!-- begin_wall_item_block_action -->
+        <!-- begin_delete_popup_post -->
+        <span title="{l_wall_delete_post}" class="icon wall_remove" onclick="Wall.confirmItemDelete({id});"></span>
+        <!-- end_delete_popup_post -->
+        <!-- end_wall_item_block_action -->
+        <span title="{time_ago}" class="icon wall_access_time"></span>
+	</div>
+    <script>
+	Wall.itemInfoSet('{id}', '{wall_last_action_like}', '{wall_last_action_comment}', '{wall_comments_count}', '{wall_item_comment_is_viewed}', '{wall_interests_item_list}', '{wall_like_user_list}');
+    </script>
+</div>
+<!-- end_wall_items -->
+{wall_ajax}

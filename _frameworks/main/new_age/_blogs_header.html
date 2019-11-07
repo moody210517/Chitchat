@@ -1,0 +1,67 @@
+<!--[if lte IE 6]> <script language="javascript" type="text/javascript" src="{url_tmpl_main}js/iepngfix_tilebg.js{cache_version_param}"></script> 
+<script>
+    DD_belatedPNG.fix('.blogs_new input.inp_lblue,.blogs_new input.inp_blue,.blogs_new input.inp_blue_save,.blogs_new input.inp_mblue,.blogs_new textarea.textarea_mblue,.blog_inp_file .ABKFileLeft');
+</script>
+<![endif]-->
+
+<link rel="stylesheet" type="text/css" href="{url_tmpl_main}css/blogs.css{cache_version_param}" />
+<!--[if IE]>
+<link rel="stylesheet" href="{url_tmpl_main}css/blogs_ie.css{cache_version_param}" type="text/css" />
+<![endif]-->
+<div class="wrapper-wide">
+<div class="userinfo-c-wide">
+<div class="userinfo" >
+    <div class="blogs_new">
+        <div class="blogs_new_head">
+         <script type="text/javascript">
+         function blogs_header_search_on_submit()
+         {
+            query = $("#blogs_header_search input[name='q']").val();
+			 
+            if(($.trim(query) != '')&&(query != '{l_blogs_search_text}'))
+            {
+               return true;
+            }
+
+            alert('{l_blogs_please_enter_what_you_search}');
+        
+        return false;
+        }
+         </script>
+
+            <table>
+                <tr>
+                    <td class="td_l">&nbsp;</td>
+                    <td class="td_c">
+                        <div class="blogs_new_head_txt">
+                            <strong><a href="{url_main}blogs.php" style="text-decoration:none">{l_blogs_blogs}</a> :: </strong> {total_posts} {l_blogs_posts}
+                        </div>
+                        <div class="fl_right"style="padding:0px;margin:0px;">
+						<span style="display:block;" class="blog_style111">
+                            <input style="padding:0px;margin:0px;background:transparent;cursor:pointer;color:#FFFFFF;" class="no_abk" type="button" value="{l_blogs_write_to_blog}" onclick="document.location='{url_main}blogs_write.php'"/></span>
+                        </div>
+                        <form id="blogs_header_search" action="{url_main}blogs_results.php" method="get" onsubmit="return blogs_header_search_on_submit();">
+                        <div class="fl_right"style="padding:0px;margin:0px;width:380px;">
+                            <span class="blog_style222" style="display:block;"><input class="no_abk"style="padding:0px;margin:0px;background:transparent;color:#FFFFFF;" type="text" value="{topquery}" name="q" onblur="javascript:if(this.value=='')this.value='{l_blogs_search_text}'" onFocus="if(this.value=='{l_blogs_search_text}') this.value=''"/></span>
+                            <span class="blog_style333" style="display:block;"><input class="no_abk"style="padding:0px;margin:0px;background:transparent;cursor:pointer;color:#FFFFFF;" type="submit" value="{l_search}"/></span>
+                        </div>
+                        </form>
+                    </td>
+                    <td class="td_r">&nbsp;</td>
+                </tr>
+            </table>
+
+            <div class="blogs_new_menu_bg">
+                <ul class="blogs_new_menu">
+                    <li><a href="{url_main}blogs_blog.php">{l_blogs_my_blog}</a></li>
+                    <li><a href="{url_main}blogs_collect.php?t=f">{l_blogs_my_friends_blog}</a></li>
+                    <li><a href="{url_main}blogs_collect.php?t=s">{l_blogs_my_subscriptions}</a></li>
+                    <li class="last"><a href="{url_main}blogs_write.php">{l_blogs_write_to_blog}</a></li>
+                </ul>
+            <div class="justify"></div>
+            </div>
+        </div>
+
+        <table class="tb_blogs_new">
+            <tr>
+                <td class="td_main">

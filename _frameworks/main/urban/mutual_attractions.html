@@ -1,0 +1,130 @@
+{header}
+<script>
+var isLoad=false,last_id=0,limit,lastLoadItems=false,mutualItems;
+alertHtmlArea='.column_main';
+$(function(){
+    function hideItems(uid){
+        $('#mutual_user_'+uid).slideUp(300,function(){
+            $(this).remove();
+            var items=$('.mutual_user_list_item:visible');
+                items.first().removeClass('item_border_top').addClass('item_border_none');
+            if(!items[0]){
+                alertCustomRedirect('profile_view.php','{j_there_is_no_one_here_yet}','{j_ooops_seems_no_one_is_here}');
+            }else if(!lastLoadItems){mutualLoadItems(1)}
+        });
+    }
+
+    function deleteMutualUser(){
+        confirmHtmlClose();
+        var uid=mutualItems.data('userId');
+        $.post('{url_main}mutual_attractions.php',{cmd:'delete_mutual_user',user_id:uid,ajax:1},function(res){
+            if(checkDataAjax(res)){
+                updateCounterTitle('#narrow_mutual_count',true);//mutual_attractions_count
+                hideItems(uid);
+            }else{/* Error */}
+        })
+    }
+
+    function blockMutualUser(){
+        confirmHtmlClose();
+        var uid=mutualItems.data('userId');
+        $.post('{url_main}ajax.php',{cmd:'block_user',user_id:uid},function(res){
+            if(checkDataAjax(res)!==false){
+                Messages.number_blocked_users++;
+                $('#narrow_blocked_count').text(Messages.number_blocked_users);//user_block_list_count
+                updateCounterTitle('#narrow_mutual_count',true);//mutual_attractions_count
+                hideItems(uid);
+            }else{/* Error */}
+        })
+    }
+
+    $('body').on('click', '.mutual_delete, .mutual_block, .want_to_btn', function(e){
+        mutualItems=$(this);
+        if(mutualItems.is('.mutual_delete')){
+            confirmCustom(ALERT_HTML_ARE_YOU_SURE, deleteMutualUser);
+            return false;
+        }
+        if(mutualItems.is('.mutual_block')){
+            confirmCustom(ALERT_HTML_ARE_YOU_SURE, blockMutualUser);
+            return false;
+        }
+        if(mutualItems.is('.want_to_btn')){
+            $.post('{url_main}mutual_attractions.php',{cmd:'set_want_to_meet',ajax:1,uid:mutualItems.data('userId'),status:mutualItems.data('status')},function(res){
+                var data=checkDataAjax(res);
+                if(data!==false){
+                    console.log(data.status,data.number);
+                    if(data.status=='del'){
+                        updateCounterWanted(data.number)
+                    } else if(data.status=='met'){
+                        updateCounterTitle('#narrow_want_count',true);//wanted_count
+                        updateCounterMutualAttractions(data.number);
+                    }
+                    hideItems(mutualItems.data('userId'));
+                }else{/*Error*/}
+            })
+            return false;
+        }
+    })
+
+    $win.scroll(function(){
+        if(($win.scrollTop()>$(document).height()-$win.height()-800)&&!isLoad&&!lastLoadItems){
+            mutualLoadItems('{on_page}');
+        }
+    })
+
+    function mutualLoadItems(limit){
+        $.ajax({url:'{url_main}mutual_attractions.php', data:{ajax:1,last_id:last_id,limit:limit<!-- begin_cmd_ajax-->,cmd:'want_to_meet_you'<!-- end_cmd_ajax-->},
+                    beforeSend:function(){isLoad=true;$('#load_animation').slideDown(100);},
+                    success:function(res){
+                        var data=checkDataAjax(res);
+                        if(data!==false){
+                            //start +=5;
+                            isLoad=false;
+                            var list=$($.trim(data)),users,t=200,i=0;
+                            list.filter('script').appendTo('#mutual_attractions_users');
+                            users=list.filter('.mutual_user_list_item').hide();
+                            users.appendTo('#mutual_attractions_users');
+                            (function fu(){
+                                var item=users.eq(i);
+                                item.slideDown(t*=.8, function(){
+                                    i++; fu();
+                                    //item.find('img').lazyload({effect:'fadeIn',skip_invisible:false,effect_speed:400});
+                                });
+                            })()
+                        }
+                        $('#load_animation').slideUp(100);
+                   }
+        })
+    }
+})
+
+</script>
+<div class="column_main">
+    <div class="column_main_head">
+        <div class="decor">
+            <h1>{page_title}</h1>
+            <div class="cl"></div>
+        </div>
+    </div>
+    <div class="column_main_cont">
+        <div id="mutual_attractions_users" class="<!--begin_mutual_cont -->bl_visitors bl_visitors_mutual<!--end_mutual_cont --><!--begin_wanted_cont -->bl_wanted<!--end_wanted_cont -->">
+            {users_list}
+        </div>
+        <div class="cl"></div>
+        <!-- begin_no_one_here_yet -->
+        <div style="padding-top:40px;">
+        <div class="bl_no_one" style="margin-top:0px;">
+            <div class="people">{l_no_one_here_yet}</div>
+        </div>
+        </div>
+        <!-- end_no_one_here_yet -->
+        <div class="loader_users_list">
+            <img class="load_animation" src="{url_tmpl_main}images/loading-spin-oryx.svg" id="load_animation">
+        </div>
+    </div>
+</div>
+
+<div class="column_narrow">
+    {profile_column_narrow}
+</div>
+{footer}

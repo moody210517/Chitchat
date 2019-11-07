@@ -1,0 +1,15 @@
+<tr>
+	
+	<td><a href="{url_main}profile_view_photos.php?user_id={user_id}">{l_photos}</a></td>
+	<!-- begin_user_email --><td>|</td><td><a href="{url_main}mail_compose.php?mode=profile&user_id={user_id}">{l_email}</a></td><!-- end_user_email -->
+	<!-- begin_im_module -->
+	<td>|</td><td><a href="{url_main}profile_view_chat.php?user_id={user_id}">{l_chat}</a></td>
+	<!-- end_im_module -->
+	<!-- begin_wall -->
+	<td>|</td><td><a href="{url_main}profile_view.php?user_id={user_id}&display={display_wall}">{l_feed}</a></td>	
+	<!-- end_wall -->
+	
+	<!-- begin_user_not_blocked --><td>|</td><td><a href="{url_main}profile_view_block.php?user_id={user_id}">{l_block}</a></td><!-- end_user_not_blocked -->
+	<!-- begin_user_blocked --><td>|</td><td><a class="blocked" href="{url_main}profile_view_block.php?user_id={user_id}&cmd=unblock">{l_unblock}</a></td><!-- end_user_blocked -->
+
+</tr>

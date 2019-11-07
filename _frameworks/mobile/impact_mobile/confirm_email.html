@@ -1,0 +1,42 @@
+{header}
+<style>
+    #bl_header{display: none;}
+</style>
+<!-- begin_logo_bl -->
+<div class="content_logo">
+    <img <!-- begin_logo_params -->style="height:{logo_height}px;"<!-- end_logo_params --> id="img_logo" src="{header_url_logo_mobile}" alt="" />
+</div>
+<!-- end_logo_bl -->
+<div class="page_confirm_email <!-- begin_page_visitor -->not_left<!-- end_page_visitor -->">
+    <div class="bl_frm large_field">
+        <div class="bl">
+            <div class="info_sent">{l_thank_you}</div>
+            <div class="info">
+                {l_account_confirmed}<br><br>
+                <a id="go_to_profile" class="link_info" data-cl-loader="loader_link_info" href="{url_main}{url_page_profile_view}">{l_go_to_profile}</a>
+            </div>
+        </div>
+    </div>
+    <!-- begin_banner_footer_mobile_content -->
+    <div class="banner_content_member {banner_footer_mobile_content_class}">
+        {banner_footer_mobile_content}
+    </div>
+    <!-- end_banner_footer_mobile_content -->
+</div>
+<script>
+    if (setAjaxLoad) {
+        $('#go_to_profile').click(function(){
+            if(ajax_login_status){
+                goToPage(this);
+            }else{
+                $(this).addLoader();
+                uploadHomePage(this.href,function(){
+                    $(this).removeLoader();
+                    serverError();
+                })
+            }
+            return false;
+        })
+    }
+</script>
+{footer}

@@ -1,0 +1,69 @@
+.tab {border-top:4px solid #4c6846;background:#4c6846;}
+.tab thead td {padding:0 8px;font-size:14px;line-height:16px;color:#fff;background:#4d911d;}
+.tab thead th {height:26px;padding:0 8px;vertical-align:middle;font-size:14px;line-height:16px;color:#6cc52c;background:#4d911d;text-align:left;}
+.tab thead th a {color:#6cc52c;}
+.tab thead th.small {text-align:right;font-size:12px;font-weight:normal;text-align:right;}
+.tab tfoot td {padding:0 8px;background:#4d911d;}
+.tab thead td a {color:#fff;}
+
+.tab .txt,.tab textarea {border:1px solid #eade9b;background:#418310;}
+.tab .btn {color:#246d15;background:#cbd5c8 url('../img/btn/green.gif') repeat-x 0 100%;}
+
+.list {width:100%;}
+.list a {color:#fff;}
+
+.list th {padding:3px 8px;border-bottom:1px solid #dbe1da;color:#6cc52c;text-align:left;}
+.list th i {font-weight:normal;font-style:normal;}
+.list th a {color:#6cc52c;}
+
+.list td {padding:1px 8px;color:#fff;}
+.list td b {color:#fff;}
+.list td b a {color:#eade9b !important;}
+
+.list .head th {border:none;font-size:14px;line-height:19px;color:#6cc52c;background:#4d921b;}
+.list .smallfont td {padding:8px;font-size:12px;line-height:18px;}
+.list td.readmessage {padding:6px 4px;line-height:24px;}
+.list th.title {width:60%;}
+.list th.small {text-align:right;font-size:12px;font-weight:normal;text-align:right;color:#6cc52c;}
+
+.commentlist .list td {padding:5px 8px;}
+
+.categories td {font-size:12px;line-height:19px;}
+
+.searchform {width:100%;}
+.searchform .txt {width:51%;margin-right:5px;}
+.searchform .btn {width:65px;}
+
+.tab .alertspace {height:190px;}
+.alert .alertbg {border:1px solid #69995e;background:#769e4c url('../img/block/green.png') repeat-x 0 -2px;}
+.alert .btn {color:#eade9b;background-color:#61aa32;}
+
+.addpost {padding:0;text-align:center;}
+.addpost .txt,.addpost textarea {width:95%;border:1px solid #fff;margin:0 auto;display:block;}
+.addpost .txt {margin-top:4px;margin-bottom:8px;}
+.addpost textarea {height:176px;}
+
+.addcomment {text-align:center;color:#fff;line-height:24px;}
+.addcomment p {text-align:left;}
+.addcomment textarea {width:95%;height:76px;border-color:#fff;margin:0 auto;}
+
+.addgroup {text-align:center;}
+.addgroup .list th {width:80px;padding:6px 8px;border-bottom:none;border-align:middle;}
+.addgroup .list th label {width:80px;padding:1px 0;display:block;color:#fff;text-align:right;}
+.addgroup .list td {padding:6px 8px;vertical-align:middle;text-align:left;}
+.addgroup .list td select {width:99%;border-color:#fff;background:#418310;}
+.addgroup .list td textarea,.addgroup .list td .txt {width:95%;border-color:#fff;}
+.addgroup .list td textarea {height:75px;}
+.addgroup .list td .btn {width:115px;color:#fff;}
+
+.list th.nopad {padding:0;}
+.tab thead .green,.tab thead .green a {color:#6cc52c;}
+
+.back_btn {width:65px;}
+.addcomm_btn {width:85px;}
+.comm_btn {width:115px;}
+.create_btn {width:115px;}
+.mygroup_btn {width:100px;}
+.join_btn {width:90px;}
+.newpost_btn {width:120px;}
+.invite_btn {width:80px;}

@@ -1,0 +1,276 @@
+.ABKText {font-size:11px; border:none; vertical-align:middle; margin:0; padding:0;  background:none; float:left; visibility:visible!important;}
+*+html .ABKText {margin-left:-7px; }
+.ABKTextCenter {padding-top:3px; height:20px; background: url(img/input.png) repeat-x;  margin:0 7px; line-height:14px; overflow:hidden;#padding:2px 0px 0px 0px;#height:18px;}
+.ABKTextLeft, .ABKTextRight {height:21px; vertical-align:middle;}
+.ABKTextLeft {height:21px; background:url(img/input-left.png) no-repeat;}
+.ABKTextRight {background:url(img/input-right.png) no-repeat 100% 0;}
+* html .ABKText{ margin-left:-7px; margin-right:-7px; font-size:12px;}
+* html .ABKTextCenter {background: url(img/input.gif) repeat;}
+* html .ABKTextLeft {background:url(img/input-left.gif) no-repeat;}
+* html .ABKTextRight {background:url(img/input-right.gif) no-repeat 100% 0;width:150px;overflow:hidden;}
+/*Radio*/
+.ABKRadio {cursor:pointer; width:13px; height:13px; border:1px solid transparent; background:url(img/radio.png) no-repeat 0 0; z-index:2; display:inline-block; zoom:1;//display:inline;}
+/*Checkbox*/
+.ABKCheck {cursor:pointer; width:12px; height:12px; border:1px solid transparent; background:url(img/checkbox.png) no-repeat 0 0; z-index:2;}
+/*Buttons*/
+.ABKButton {width:auto; height:26px; color:#fff; padding:0 2px; background:url(img/button.png) repeat-x 0 0; cursor:pointer !important; border:none; font:10px/26px Tahoma, Arial, Helvetica, sans-serif; font-weight:bold; text-transform:uppercase; letter-spacing:1px; vertical-align:middle;}
+.ABKButtonLeft, .ABKButtonRight {width:6px; height:26px; vertical-align:middle;}
+.ABKButtonLeft {background:url(img/button-left.png) no-repeat 0 0;}
+.ABKButtonRight {background:url(img/button-right.png) no-repeat 0 0;}
+/*Textareas*/
+.ABKTextarea {border:none; background:none; font:12px/12px Arial, Helvetica, sans-serif; margin-top:-8px; width:100%; overflow: auto; font-size:12px;}
+.ABKTextareaMiddle {background:#ffffff; border-left:1px solid #44626d; border-right:1px solid #44626d; padding:0px 3px 3px 3px;}
+div.userinfo  div.ABKTextareaMiddle textarea.ABKTextarea {font-family:Tahoma, Geneva, sans-serif;font-size:11px;}
+.ABKTextareaTop {height:13px; background: #ffffff url(img/textarea_top.png) repeat-x; margin:0 6px; overflow:hidden;}
+.ABKTextareaTopLeft {background: url(img/textarea_top_left.png) top left no-repeat;}
+* html .ABKTextareaTopLeft {background: url(img/textarea_top_left.gif) top left no-repeat;}
+.ABKTextareaTopRight {background: url(img/textarea_top_right.png) top right no-repeat; }
+* html .ABKTextareaTopRight {background: url(img/textarea_top_right.gif) top right no-repeat; }
+.ABKTextareaBottom {background:#ffffff; height:3px; border-bottom:1px solid #44626d; margin:0 6px; overflow:hidden;} 
+.ABKTextareaBottomLeft {background: url(img/textarea_bottom_left.png) bottom left no-repeat; width:100%; height:4px;} 
+* html .ABKTextareaBottomLeft {background: url(img/textarea_bottom_left.gif) bottom left no-repeat;} 
+.ABKTextareaBottomRight {background: url(img/textarea_bottom_right.png) bottom right no-repeat; width:100%; height:4px;} 
+* html .ABKTextareaBottomRight {background: url(img/textarea_bottom_right.gif) bottom right no-repeat;} 
+/*Files*/
+.ABKFileLeft{background:url(img/input-left.png) no-repeat 0 0; overflow:hidden;}
+* html .ABKFileLeft{background:url(img/input-left.gif) no-repeat 0 0;}
+.ABKFileRight{background:url(img/file.png) no-repeat 100% 0; height:21px; padding: 0 44px 0 7px; overflow:hidden;}
+* html .ABKFileRight{background:url(img/file.png) no-repeat 100% 0;}
+.ABKFileText{background:url(img/input.png) repeat-x; height:100%; overflow:hidden; padding-top:2px; white-space:nowrap; font-family:Tahoma,Verdana,sans-serif; font-size:11px; color:#000000;}
+* html .ABKFileText{background:url(img/input.gif) repeat-x;}
+.ABKFile{height:21px; width:100%; overflow:hidden; margin-top:-21px; font-size:12px;}
+*html .ABKFile input {margin-left:-20px;}
+*+html .ABKFile input {margin-left:-20px;}
+.ABKFile input {height:100%; width:100% !important; font-size:100pt !important; filter: alpha(opacity: 0); opacity: 0;}
+/*Selects*/
+.ABKSelect {height:20px; border:0px solid transparent; text-align:left; display:inline-block; zoom:1;//display:inline; font-size:12px;}
+.ABKSelectLeft {float:left; width:6px; height:20px; background:url(img/select-left.png) no-repeat 0 0; vertical-align:middle;}
+.ABKSelectRight {height:20px; width:auto; line-height:18px; font-weight:normal; white-space:nowrap; overflow:hidden; background:url(img/select-right.png) no-repeat 100% 0; cursor:pointer;  color:#fff; padding-left:0px; zoom:1;} 
+.ABKSelectRight span {display:block; overflow:hidden; margin-right:24px; zoom:1;}
+* html .ABKSelectRight span {margin:0 12px 0 0 ;width:auto;}
+.webkit .ABKSelectRight span{padding-top:1px;}
+.ABKSelectTarget {position:absolute; background:none; margin-left:-13px; margin-top:0px; z-index:3; padding-bottom:13px;}
+ul.ABKSelectOptions {position:relative; background:#fff; border:1px solid #2E5A87; margin-left:16px; margin-top:0; list-style:none; padding:4px 0; color:#FFFFFF; font-weight:normal; z-index:4; max-height:200px; overflow-y:auto; overflow-x:hidden; left:0; top:0;}
+ul.ABKSelectOptions li {padding-bottom:1px;}
+ul.ABKSelectOptions a {display:block; text-decoration:none; color:#FFFFFF!important; padding:2px 3px; background:none;_zoom:1;}
+ul.ABKSelectOptions a.ABKOptionActive {background:#ffffff; color:#3A5B65!important;}
+ul.ABKSelectOptions a:hover {background:#ffffff !important; color:#3A5B65!important;position:relative;}
+* html .ABKSelectLeft {background:url(img/select-left.gif) no-repeat 0 0;_margin-right:-3px;}
+* html .ABKSelectRight {background:url(img/select-right.gif) no-repeat 100% 0;} 
+/*Multiple Selects*/
+.ABKMultiSelect {border:0; background:none; margin:0;}
+.ABKMultiSelectTop, .ABKMultiSelectBottom {height:5px; clear:both; float:none; padding-right:10px;}
+.ABKMultiSelectTop {background:url(img/textarea-tr.png) no-repeat 100% 0;}
+.ABKMultiSelectBottom {background:url(img/textarea-br.png) no-repeat 100% 0; margin-bottom:5px;}
+.ABKMultiSelectTopLeft, .ABKMultiSelectBottomLeft {width:5px; height:5px;}
+.ABKMultiSelectTopLeft {background:#f2f2e6 url(img/textarea-tl.png) no-repeat 0 0;}
+.ABKMultiSelectBottomLeft {background:#f2f2e6 url(img/textarea-bl.png) no-repeat 0 0;}
+.ABKMultiSelectLeft, .ABKMultiSelectRight, .ABKMultiSelectLeftH, .ABKMultiSelectRightH {float:left; padding-bottom:5px;}
+.ABKMultiSelectLeft, .ABKMultiSelectLeftH {width:5px;}
+.ABKMultiSelectLeft {background:url(img/textarea-l-off.png) repeat-y 0 0;}
+.ABKMultiSelectLeftH {background:url(img/textarea-l-over.png) repeat-y 0 0;}
+.ABKMultiSelectRight, .ABKMultiSelectRightH {padding-right:5px; padding-bottom:0;}
+.ABKMultiSelectRight {background:url(img/textarea-r-off.png) repeat-y 100% 0;}
+.ABKMultiSelectRightH {background:url(img/textarea-r-over.png) repeat-y 100% 0;}
+* html .ABKMultiSelectTop {background:url(img/textarea-tr.gif) no-repeat 100% 0;}
+* html .ABKMultiSelectBottom {background:url(img/textarea-br.gif) no-repeat 100% 0;}
+* html .ABKMultiSelectTopLeft {background:url(img/textarea-tl.gif) no-repeat 0 0;}
+* html .ABKMultiSelectBottomLeft {background:url(img/textarea-bl.gif) no-repeat 0 0;}
+* html .ABKMultiSelectLeft {background:url(img/textarea-l-off.gif) repeat-y 0 0;}
+* html .ABKMultiSelectLeftH {background:url(img/textarea-l-over.gif) repeat-y 0 0;}
+* html .ABKMultiSelectRight {background:url(img/textarea-r-off.gif) repeat-y 100% 0;}
+* html .ABKMultiSelectRightH {background:url(img/textarea-r-over.gif) repeat-y 100% 0;}
+/*Focused*/
+.ABKfocused2 {border:1px dotted #666;}
+/*Hovered*/
+.ABKh2 {background-position:0 100%;}
+.ABKhr2 {background-position:100% 100%;}
+/*Hidden*/
+.ABKhidden {opacity:0; z-index:-1; position:absolute; visibility:hidden; zoom:1;}
+.ABKhidden2 {border:1px solid red; opacity:0; z-index:10 !important; position:absolute; top:0px; left:0px; width:100%; filter:alpha(opacity: 0); visibility:visible!important;}
+.ABKhidden2IE {opacity:0; z-index:10 !important; position:absolute; top:0px; left:0px; width:100%; filter:alpha(opacity: 0);visibility:visible!important;}
+.ABKhiddenCheck {opacity:0; z-index:-1; position:absolute;visibility:hidden;}
+/*Safari*/
+select, input, textarea, button {outline:none; resize:none;}
+/* input for places pages */
+/* input text color:grey */
+.place_inp .ABKText {height:16px;font-size:11px; border:none; vertical-align:middle; padding:0px !important; background:none; float:left; visibility:visible!important; color:#C6CCE6;}
+@-moz-document url-prefix() {.place_inp .ABKText { padding-top:2px !important; }}
+*+html .place_inp .ABKText {margin-left:-7px;position:relative;}
+.place_inp .ABKTextCenter {height:18px; background: url(img_places/input.png) repeat-x;  margin:0 7px; line-height:14px; overflow:hidden;  padding:0px !important;}
+.place_inp .ABKTextLeft, .ABKTextRight {height:21px; vertical-align:middle;}
+.place_inp .ABKTextLeft {height:21px; background:url(img_places/input-left.png) no-repeat;}
+.place_inp .ABKTextRight {background:url(img_places/input-right.png) no-repeat 100% 0;}
+* html .place_inp .ABKText{ margin-left:-7px; margin-right:-7px;}
+* html .place_inp .ABKTextCenter {background: url(img_places/input.gif) repeat;}
+* html .place_inp .ABKTextLeft {background:url(img_places/input-left.gif) no-repeat;}
+* html .place_inp .ABKTextRight {background:url(img_places/input-right.gif) no-repeat 100% 0;width:150px;overflow:hidden;}
+/* input text color:black */
+.place_inp_black {float:left; margin-right:8px; margin-bottom:12px;}
+.place_inp_black .ABKText {height:16px;font-size:11px; border:none; vertical-align:middle; margin:0; padding:0px 0px 2px 0px;  background:none; float:left; visibility:visible!important; color:#C6CCE6;}
+@-moz-document url-prefix() {.place_inp_black .ABKText { padding-top:2px; }}
+*+html .place_inp_black .ABKText {margin-left:-7px; }
+.place_inp_black .ABKTextCenter {height:18px; background: url(img_places/black/input.png) repeat-x;  margin:0 7px; line-height:14px; overflow:hidden;  padding:0px !important;}
+.place_inp_black .ABKTextLeft, .ABKTextRight {height:21px; vertical-align:middle;}
+.place_inp_black .ABKTextLeft {height:21px; background:url(img_places/black/input-left.png) no-repeat;}
+.place_inp_black .ABKTextRight {background:url(img_places/black/input-right.png) no-repeat 100% 0;}
+* html .place_inp_black .ABKText{ margin-left:-7px; margin-right:-7px;}
+* html .place_inp_black .ABKTextCenter {background: url(img_places/black/input.gif) repeat;}
+* html .place_inp_black .ABKTextLeft {background:url(img_places/black/input-left.gif) no-repeat;}
+* html .place_inp_black .ABKTextRight {background:url(img_places/black/input-right.gif) no-repeat 100% 0;width:150px;overflow:hidden;}
+/* input text color:purple */
+.place_inp_purple {float:right; margin-right:0px; margin-bottom:12px;}
+.place_inp_purple .ABKText {height:16px; font-size:11px; border:none; vertical-align:middle; margin:0; padding:0px 0px 2px 0px;  background:none; float:left; visibility:visible!important; color:#ee9dd2;}
+@-moz-document url-prefix() {.place_inp_purple .ABKText { padding-top:2px; }}
+*+html .place_inp_purple .ABKText {margin-left:-7px; }
+.place_inp_purple .ABKTextCenter {height:18px; background: url(img_places/purple/input.png) repeat-x;  margin:0 7px; line-height:14px; overflow:hidden;  padding:0px !important;}
+.place_inp_purple .ABKTextLeft, .ABKTextRight {height:21px; vertical-align:middle;}
+.place_inp_purple .ABKTextLeft {height:21px; background:url(img_places/purple/input-left.png) no-repeat;}
+.place_inp_purple .ABKTextRight {background:url(img_places/purple/input-right.png) no-repeat 100% 0;}
+* html .place_inp_purple .ABKText{ margin-left:-7px; margin-right:-7px;}
+* html .place_inp_purple .ABKTextCenter {background: url(img_places/purple/input.gif) repeat;}
+* html .place_inp_purple .ABKTextLeft {background:url(img_places/purple/input-left.gif) no-repeat;}
+* html .place_inp_purple .ABKTextRight {background:url(img_places/purple/input-right.gif) no-repeat 100% 0;width:150px;overflow:hidden;}
+/*Textareas*/
+.place_textarea .ABKTextarea {border:none; background:none; font-size:11px; width:100%; overflow: auto; color:#C6CCE6; margin:-12px 0px 0px 0px !important; padding:0px !important;}
+.place_textarea .ABKTextareaMiddle {background:#616B7C; border-left:0px solid #44626d; border-right:0px solid #44626d; padding:0px 7px 3px 7px;}
+.place_textarea .ABKTextareaTop {height:13px; background: #616B7C url(img_places/textarea_top.png) repeat-x; margin:0 6px; overflow:hidden;}
+.place_textarea .ABKTextareaTopLeft {background: url(img_places/textarea_top_left.png) top left no-repeat;}
+.place_textarea .ABKTextareaTopRight {background: url(img_places/textarea_top_right.png) top right no-repeat; }
+.place_textarea .ABKTextareaBottom {background:#616B7C; height:4px; border-bottom:0px solid #44626d; margin:0 6px; overflow:hidden;} 
+.place_textarea .ABKTextareaBottomLeft {background: url(img_places/textarea_bottom_left.png) bottom left no-repeat; width:100%;} 
+.place_textarea .ABKTextareaBottomRight {background: url(img_places/textarea_bottom_right.png) bottom right no-repeat; width:100%;} 
+/*Files*/
+.place_inp_file .ABKFileLeft{background:url(img_places/input-left.png) no-repeat 0 0;}
+.place_inp_file .ABKFileRight{background:url(img_places/file.png) no-repeat 100% 0; height:18px; padding: 0 28px 0 7px;}
+* html .place_inp_file .ABKFileRight{background:url(img_places/file.png) no-repeat 100% 0;}
+.place_inp_file .ABKFileText{background:url(img_places/input.png) repeat-x; color:#AEBDD6;}
+.place_inp_file  .ABKFile{height:18px; width:100%; overflow:hidden; margin-top:-18px;}
+.place_inp_file  .ABKFile input {height:100%; width:100%; font-size:1000pt; filter: alpha(opacity: 0); opacity: 0;}
+/*Selects*/
+.place_select .ABKSelect {height:20px; border:0px solid transparent; text-align:left; display:inline-block; zoom:1;//display:inline;}
+.place_select .ABKSelectLeft {float:left; width:6px; height:20px; background:url(img_places/select-left.png) no-repeat 0 0; vertical-align:middle;}
+.place_select .ABKSelectRight {height:20px; width:auto; line-height:18px; font-weight:normal; white-space:nowrap; overflow:hidden; background:url(img_places/select-right.png) no-repeat 100% 0; cursor:pointer;  color:#C6CCE6; padding-left:0px; zoom:1;} 
+.place_select .ABKSelectRight span {display:block; overflow:hidden; margin-right:24px; zoom:1;}
+* html .place_select .ABKSelectRight span {margin:0 12px 0 0 ;width:auto;}
+.place_select .ABKSelectTarget {position:absolute; background:none; margin-left:-13px; margin-top:0px; z-index:3; padding-bottom:13px;}
+.place_select .ABKSelectOptions {position:relative; background:#616B7C; margin-left:16px; margin-top:0; list-style:none; padding:4px 0; color:#fff; font-weight:normal; z-index:4; max-height:200px; overflow-y:auto; overflow-x:hidden; left:0; top:0;}
+.place_select .ABKSelectOptions li {padding-bottom:1px;}
+.place_select .ABKSelectOptions a {display:block; text-decoration:none; color:#C6CCE6 !important; padding:2px 3px; background:none;}
+.place_select .ABKSelectOptions a.ABKOptionActive {background:#C6CCE6; color:#616B7C !important;}
+.place_select .ABKSelectOptions a:hover {background:#C6CCE6 !important; color:#616B7C !important;}
+* html .place_select .ABKSelectLeft {background:url(img_places/select-left.gif) no-repeat 0 0;}
+/* input for music pages */
+/* input text color:grey */
+.music_inp {position:relative;}
+.music_inp input {visibility:visible;}
+.music_inp .ABKText { font-size:11px; border:none;  padding:0px !important; background:none; float:left; visibility:visible!important; color:#000;position:relative;}
+*+html .music_inp .ABKText {margin-left:-7px;position:relative;}
+.music_inp .ABKTextCenter {background: url(img_music/input.png) repeat-x;  margin:0 7px; overflow:hidden;  padding:0px !important;}
+.music_inp .ABKTextLeft {background:url(img_music/input-left.gif) no-repeat;}
+.music_inp .ABKTextRight {background:url(img_music/input-right.gif) no-repeat 100% 0;}
+* html .music_inp .ABKText{ margin-left:-7px; margin-right:-7px;}
+* html .music_inp .ABKTextRight {width:150px;overflow:hidden;}
+/* input text color:black */
+.music_inp_black {margin-right:0px; margin-bottom:15px;}
+.music_inp_black .ABKText {height:16px;font-size:11px; border:none; vertical-align:middle; margin:0; padding:0px 0px 2px 0px;  background:none; float:left; visibility:visible!important; color:#CBFF4A;}
+*+html .music_inp_black .ABKText {margin-left:-7px; }
+.music_inp_black .ABKTextCenter {height:18px; background: url(img_music/black/input.png) repeat-x;  margin:0 7px; line-height:14px; overflow:hidden;  padding:0px !important;}
+.music_inp_black .ABKTextLeft, .ABKTextRight {height:21px; vertical-align:middle;}
+.music_inp_black .ABKTextLeft {height:21px; background:url(img_music/black/input-left.png) no-repeat;}
+.music_inp_black .ABKTextRight {background:url(img_music/black/input-right.png) no-repeat 100% 0;}
+* html .music_inp_black .ABKText{ margin-left:-7px; margin-right:-7px;}
+* html .music_inp_black .ABKTextCenter {background: url(img_music/black/input.gif) repeat;}
+* html .music_inp_black .ABKTextLeft {background:url(img_music/black/input-left.gif) no-repeat;}
+* html .music_inp_black .ABKTextRight {background:url(img_music/black/input-right.gif) no-repeat 100% 0;width:150px;overflow:hidden;}
+.webkit .music_inp_black .ABKText {height:14px;}
+/*Textareas*/
+.music_textarea .ABKTextarea {border:none; background:none; font-size:11px; width:100%; overflow: auto; color:#000 !important; margin:-12px 0px 0px 0px !important; padding:0px !important;}
+.music_textarea .ABKTextareaMiddle {background:#4b495f; border-left:1px solid #f9c3f6; border-right:1px solid #f9c3f6; padding:0px 5px 3px 5px;}
+.music_textarea .ABKTextareaTop {height:13px; background: #616B7C url(img_music/textarea_top.png) repeat-x; margin:0 6px; overflow:hidden;}
+.music_textarea .ABKTextareaTopLeft {background: url(img_music/textarea_top_left.png) top left no-repeat;}
+.music_textarea .ABKTextareaTopRight {background: url(img_music/textarea_top_right.png) top right no-repeat; }
+.music_textarea .ABKTextareaBottom {background: url(img_music/textarea_bottom.png) repeat-x;  border-bottom:0px solid #f9c3f6; height:4px; margin:0 6px; overflow:hidden;} 
+.music_textarea .ABKTextareaBottomLeft {background: url(img_music/textarea_bottom_left.png) bottom left no-repeat; width:100%;} 
+.music_textarea .ABKTextareaBottomRight {background: url(img_music/textarea_bottom_right.png) bottom right no-repeat; width:100%;} 
+.music_textarea .textarea_violet {margin-bottom:14px;}
+/*Files*/
+.music_inp_file .ABKFileLeft{background:url(img_music/input-left.png) no-repeat 0 0;}
+.music_inp_file .ABKFileRight{background:url(img_music/file.png) no-repeat 100% 0; height:18px; padding: 0 28px 0 7px;}
+.music_inp_file .ABKFileText{background:url(img_music/input.png) repeat-x; color:#000;}
+.music_inp_file .ABKFile{height:18px; width:100%; overflow:hidden; margin-top:-18px;}
+/*Selects*/
+.music_select .ABKSelect {height:20px; border:0px solid transparent; text-align:left; display:inline-block; zoom:1;_width:396px!important;}
+.music_select .ABKSelectLeft {float:left; width:6px; height:20px; background:url(img_music/select-left.png) no-repeat 0 0; vertical-align:middle;}
+* html .music_select .ABKSelectLeft {background:url(img_music/select-left.gif) no-repeat 0 0; }
+.music_select .ABKSelectRight {height:20px; width:auto; line-height:18px; font-weight:normal; white-space:nowrap; overflow:hidden; background:url(img_music/select-right.png) no-repeat 100% 0; cursor:pointer;  color:#000; padding-left:0px;zoom:1;} 
+* html .music_select .ABKSelectRight {background:url(img_music/select-right.gif) no-repeat 100% 0;} 
+.music_select .ABKSelectRight span {display:block; overflow:hidden; margin-right:24px; zoom:1; margin-left:2px;margin-bottom:1px;}
+.music_select .ABKSelectTarget {position:absolute; background:none; margin-left:-13px; margin-top:0px; z-index:3; padding-bottom:13px;}
+.music_select .ABKSelectOptions {position:relative; margin-left:16px; margin-top:0; list-style:none; padding:4px 0; color:#000; font-weight:normal; z-index:4; max-height:200px; overflow-y:auto; overflow-x:hidden; left:0; top:0;}
+.music_select .ABKSelectOptions li {padding-bottom:1px;}
+.music_select .ABKSelectOptions a {display:block; text-decoration:none; color:#000!important; padding:2px 3px; background:none;}
+.music_select .ABKSelectOptions a.ABKOptionActive {color:#fff !important; background:#2E5A87 !important;}
+.music_select .ABKSelectOptions a:hover {color:#fff !important; background:#2E5A87 !important;}
+div#xajax_im form  input.cinput { visibility:visible !important; }
+/* input for blog pages */
+/*Files*/
+.blog_inp_file {height:18px; margin:0px; padding:0px; 1overflow:hidden;}
+.blog_inp_file  .ABKFileLeft{background:url(img_blogs/input-left.gif) no-repeat 0 0;}
+.blog_inp_file  .ABKFileRight{background:url(img_blogs/file.png) no-repeat 100% 0; height:18px; padding: 0 28px 0 7px;}
+.blog_inp_file  .ABKFileRight{background:url(img_blogs/file.png) no-repeat 100% 0;}
+.blog_inp_file  .ABKFileText{background:url(img_blogs/input.png) repeat-x; color:#ffffff;}
+.blog_inp_file  .ABKFile{height:18px; width:100%; overflow:hidden; margin-top:-18px;}
+/* input for events pages */
+/*Files*/
+.event_inp_file {height:18px; margin:0px; padding:0px; overflow:hidden;}
+.event_inp_file  .ABKFileLeft{background:url(img_events/input-left.gif) no-repeat 0 0;}
+.event_inp_file  .ABKFileRight{background:url(img_events/file.png) no-repeat 100% 0; height:18px; padding: 0 28px 0 7px;}
+* html .event_inp_file  .ABKFileRight{background:url(img_events/file.png) no-repeat 100% 0; height:18px; padding: 0 28px 0 7px;}
+.event_inp_file  .ABKFileText{background:url(img_events/input.png) repeat-x; color:#ffffff;}
+.event_inp_file  .ABKFile{height:18px; width:100%; overflow:hidden; margin-top:-18px;}
+/*Selects*/
+.event_select .ABKSelect {height:20px; border:0px solid transparent; text-align:left;  zoom:1;display:block;}
+.event_select .ABKSelectLeft {float:left; width:7px; height:20px; background:url(img_events/select-left.png) no-repeat 0 0; vertical-align:middle;}
+.event_select .ABKSelectRight {height:20px; width:auto; line-height:18px; font-weight:normal; white-space:nowrap; overflow:hidden; background:url(img_events/select-right.gif) no-repeat 100% 0; cursor:pointer;  color:#ffffff; padding-left:0px; position:relative;_left:-3px;} 
+.event_select .ABKSelectRight span {display:block; overflow:hidden; margin-right:24px; zoom:1;}
+* html .event_select .ABKSelectRight span {margin:0 12px 0 0 ;width:auto;}
+.event_select .ABKSelectTarget {position:absolute; background:none; margin-left:-13px; margin-top:0px; z-index:3; padding-bottom:13px;}
+.event_select .ABKSelectOptions {position:relative; background:#000000; margin-left:16px; margin-top:0; list-style:none; padding:4px 0; color:#fff; font-weight:normal; z-index:4; max-height:200px; overflow-y:auto; overflow-x:hidden; left:0; top:0;}
+.event_select .ABKSelectOptions li {padding-bottom:1px;}
+.event_select .ABKSelectOptions a {display:block; text-decoration:none; color:#FFFFF!important; padding:2px 3px; background:none;zoom:1;}
+.event_select .ABKSelectOptions a.ABKOptionActive {background:#FFFFFF; color:#000000 !important;}
+.event_select .ABKSelectOptions a:hover {background-color:#FFFFFF !important; color:#000000 !important;}
+* html .event_select .ABKSelectLeft {background:url(img_events/select-left.gif) no-repeat 0 0;position:relative;}
+/* input for groups pages */
+/*Files*/
+.group_inp_file {height:18px; margin:0px; padding:0px; overflow:hidden;}
+.group_inp_file  .ABKFileLeft{background:url(img_groups/input-left.gif) no-repeat 0 0;}
+.group_inp_file  .ABKFileRight{background:url(img_groups/file.png) no-repeat 100% 0; height:18px; padding: 0 28px 0 7px;}
+.group_inp_file  .ABKFileText{background:url(img_groups/input.png) repeat-x; color:#946573;}
+.group_inp_file  .ABKFile{height:18px; width:100%; overflow:hidden; margin-top:-18px;}
+table.tb_groups_frm .ABKFileLeft{background:url(img_groups/input-left.gif) no-repeat 0 0;margin-top:5px;width:422px;}
+table.tb_groups_frm .ABKFileRight{background:url(img_groups/file.png) no-repeat 100% 0; height:18px; padding: 0 28px 0 7px;}
+* html   table.tb_groups_frm .ABKFileRight{background:url(img_groups/file.png) no-repeat 100% 0;}
+table.tb_groups_frm .ABKFileText{background:url(img_groups/input.png) repeat-x; color:#946573;}
+/*Selects*/
+.group_select .ABKSelect {height:20px; border:0px solid transparent; text-align:left; display:inline-block; zoom:1;}
+.group_select .ABKSelectLeft {float:left; width:6px; height:20px; background:url(img_groups/select-left.gif) no-repeat 0 0; vertical-align:middle;}
+.group_select .ABKSelectRight {height:18px; width:auto; line-height:16px; font-weight:normal; white-space:nowrap; overflow:hidden; background:url(img_groups/select-right.gif) no-repeat 100% 0; cursor:pointer;  color:#946573; padding-left:0px; zoom:1;} 
+.group_select .ABKSelectRight span {display:block; overflow:hidden; margin: 0 24px 0 0 !important; zoom:1; color:#946573 !important;}
+* html .group_select .ABKSelectRight span {margin:0 12px 0 0 ;width:auto;}
+.group_select .ABKSelectTarget {position:absolute; background:none; margin-left:-13px; margin-top:0px; z-index:3; padding-bottom:13px;}
+.group_select .ABKSelectOptions {position:relative; background:#5A254B; margin-left:16px; margin-top:0; list-style:none; padding:4px 0; color:#946573; font-weight:normal; z-index:4; max-height:200px; overflow-y:auto; overflow-x:hidden; left:0; top:0;}
+.group_select .ABKSelectOptions li {padding-bottom:1px;}
+.group_select .ABKSelectOptions a {display:block; text-decoration:none; color:#946573!important; padding:2px 3px; background:none;}
+.group_select .ABKSelectOptions a.ABKOptionActive {background:#946573; color:#5A254B !important;}
+.group_select .ABKSelectOptions a:hover {background:#946573 !important; color:#5A254B !important;}
+* html .group_select .ABKSelectLeft {background:url(img_groups/select-left.gif) no-repeat 0 0;position:relative;}
+/* input for vids pages */
+/*Files*/
+.vids_inp_file {height:18px; margin:0px; padding:0px; overflow:hidden;}
+.vids_inp_file  .ABKFileLeft{background:url(img_vids/input-left.png) no-repeat 0 0;}
+.vids_inp_file  .ABKFileRight{background:url(img_vids/file.png) no-repeat 100% 0; height:18px; padding: 0 28px 0 7px;}
+* html .vids_inp_file  .ABKFileRight{background:url(img_vids/file.png) no-repeat 100% 0;}
+.vids_inp_file  .ABKFileText{background:url(img_vids/input.png) repeat-x; color:#CDA0D5;}
+.vids_inp_file  .ABKFile{height:18px; width:100%; overflow:hidden; margin-top:-18px;}

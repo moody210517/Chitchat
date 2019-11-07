@@ -1,0 +1,37 @@
+{header}
+{gallery_menu}
+	<h1 class="header_big">{l_comments}</h1>
+    <p>{l_intro_text}</p>
+	<form name="comments" action="?action=deletecomments" method="post" onsubmit="return confirm('{l_are_you_sure_to_delete_comments}');" style="margin-bottom:30px;">
+      <table class="bordered">
+        <tr>
+          <th>&nbsp;</th>
+          <th>{l_image}</th>
+          <th><div style="text-indent:10px;"> {l_author}</div></th>
+          <th><div style="text-indent:15px;">{l_datetime}</div></th>
+          <th><div style="text-indent:10px;">{l_comment}</div></th>
+          <th colspan="2">&nbsp; {l_action}</th>
+        </tr>
+			<!-- begin_comment -->
+			  <tr>
+				<td><input type="checkbox" name="ids[]" value="{comment_id}" onclick="triggerAllBox(this.form, 'ids[]', this.form.allbox);" /></td>
+				<td style="font-size: 7pt;"><div style="width:100px;text-indent:5px;margin-right:3px;overflow:hidden;">{comment_album_title} / {comment_image_filename}</div></td>
+				<td><div style="text-indent:10px;"> <a target="_blank" href="search_results.php?display=profile&name={comment_author_name}">{comment_author_name}</a></div></td>
+				<td style="font-size: 7pt;"><div style="width:100px;text-indent:15px;overflow:hidden;" >{comment_date}</div></td>
+				<td><div style="padding-left:10px;height:auto;width:230px;overflow:hidden;display:block;"><span>{comment_text}</span></div></td>
+				<td><div style="margin-left:5px;margin-right:5px;" ><a href="gallery_admin_editcomment.php?id={comment_id}" >{l_edit}</a></div></td>
+				<td><div style="padding-right:5px;"><a href="javascript: if(confirm('{l_are_you_sure_to_delete}')) { window.location='?action=deletecomments&id={comment_id}'; }" style="color: #c33;">{l_delete}</a></div></td>
+			  </tr>
+			<!-- end_comment -->
+	   	<tr>
+			<td colspan="8" class="subhead"><label><input type="checkbox" name="allbox" onclick="checkAll(this.form, 'ids[]', this.checked);" /> {l_check_all}</label></td>
+		</tr>
+      </table>
+      <input type="submit" value="{l_delete_selected}" class="button" />
+     </select>
+      </form>
+	</div>
+	<div class="userinfo-links-wide"></div>
+</div>
+</div>
+{footer}

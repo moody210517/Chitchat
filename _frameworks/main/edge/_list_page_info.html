@@ -1,0 +1,89 @@
+<div class="blogs_wrap page_list {page_class} <!-- begin_list_people_info -->cham-blog-style-1<!-- end_list_people_info --><!-- begin_list_people_default -->cham-project-style-3<!-- end_list_people_default --><!-- begin_list_video_info -->cham-blog-style-1<!-- end_list_video_info --><!-- begin_list_blogs_info -->cham-blog-style-1<!-- end_list_blogs_info --><!-- begin_list_blogs_info_big -->cham-content-style-5<!-- end_list_blogs_info_big --><!-- begin_list_blogs_info_plain -->cham-blog-style-2<!-- end_list_blogs_info_plain --><!-- begin_list_blogs_info_small -->cham-features-style-4<!-- end_list_blogs_info_small --><!-- begin_list_photos_default -->cham-blog-style-1<!-- end_list_photos_default -->">
+    <div class="container">
+        <div class="row p-b">
+            <div class="col-md-8 col-md-offset-2 text-center">
+                <h3 id="page_list_title" class="cham-heading">{page_title}</h3>
+                <div id="wrap_filter" class="wrap_filter">
+                    {page_description}
+
+                    <!-- begin_page_link_photo_upload -->
+                    <span class="head_link photo_upload">
+                        <i class="fa fa-upload"></i>{l_upload_photo_link}
+                    </span>
+                    <!-- end_page_link_photo_upload -->
+                    <!-- begin_page_link_my_photo -->
+                    <span class="dot"></span>
+                    <span class="head_link">
+                        <a href="{url_page_user_photos_list}"><i class="fa fa-file-image-o"></i>{l_my_photos}</a>
+                    </span>
+                    <!-- end_page_link_my_photo -->
+
+                    <!-- begin_page_link_video_upload -->
+                    <span class="head_link video_upload">
+                        <i class="fa fa-upload"></i>{l_upload_video_link}
+                    </span>
+                    <!-- end_page_link_video_upload -->
+                    <!-- begin_page_link_my_video -->
+                    <span class="dot"></span>
+                    <span class="head_link">
+                        <a href="{url_page_user_vids_list}"><i class="fa fa-file-video-o"></i>{l_your_vids}</a>
+                    </span>
+                    <!-- end_page_link_my_video -->
+
+                    <!-- begin_page_link_add_blog -->
+                    <span class="head_link menu_blogs_add_edge">
+                        <i class="fa fa-pencil-square-o"></i>{l_menu_blogs_add_edge}
+                    </span>
+                    <!-- end_page_link_add_blog -->
+
+                    <!-- begin_page_link_delimiter --><span class="dot"></span><!-- end_page_link_delimiter -->
+
+                    <!-- begin_page_filter -->
+                    {filter}
+                    <!-- end_page_filter -->
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row p-m">
+            <div class="col-md-12">
+                <!-- begin_page_search_query -->
+                <input id="filter_results_search_query"  name="search_query" type="text" value="{search_query}" class="form-control filter_field_add" placeholder="{a_search}">
+                <!-- end_page_search_query -->
+            </div>
+        </div>
+
+        <div class="row p-b">
+            <!-- begin_page_filter_no_result -->
+            <div id="filter_no_result" class="filter_no_result">
+                <div>{l_no_result_found_search_query}</div>
+            </div>
+            <!-- end_page_filter_no_result -->
+            <div class="module_filter_result">
+            {items}
+            <div id="loader_search_list"  class="frame_loader_search_list to_hide">
+                <div class="css_loader loader_search_list" id="loader_search_list">
+                    <div class="spinner center">
+                    <div class="spinner-blade"></div>
+                    <div class="spinner-blade"></div>
+                    <div class="spinner-blade"></div>
+                    <div class="spinner-blade"></div>
+                    <div class="spinner-blade"></div>
+                    <div class="spinner-blade"></div>
+                    <div class="spinner-blade"></div>
+                    <div class="spinner-blade"></div>
+                    <div class="spinner-blade"></div>
+                    <div class="spinner-blade"></div>
+                    <div class="spinner-blade"></div>
+                    <div class="spinner-blade"></div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="paging">
+{pages}
+</div>

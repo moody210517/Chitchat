@@ -1,0 +1,85 @@
+<!--<ul class="bl_social_buttons">
+    <li class="login_facebook"><a href="{facebook_login_url}">&nbsp;</a></li>
+    <li class="login_google_plus"><a href="{google_plus_login_url}">&nbsp;</a></li>
+    <li class="login_linkedin"><a href="{linkedin_login_url}">&nbsp;</a></li>
+    <li class="login_twitter"><a href="{twitter_login_url}">&nbsp;</a></li>
+    <li class="login_vk"><a href="{vk_login_url}">&nbsp;</a></li>
+</ul>-->
+
+<div class="bl_main_login">
+
+                    <form id="form_login" class="form_login" method="post" autocomplete="on" action="{url_main}ajax.php" >
+                        <input id="form_login_cmd" type="hidden" name="cmd" value="login" />
+                        <input type="hidden" name="ajax" class="ajax" value="0" />
+                        <div class="frm_login">
+
+                            <div class="head 11">
+								<!-- begin_facebook_login1 -->
+                                <div class="login_facebook">
+                                    <a href="{facebook_login_url}">{l_log_in_with_facebook}</a>
+                                </div>
+								<!-- end_facebook_login1 -->
+                                <!-- begin_no_facebook_login2 -->
+                                <div class="login_facebook">
+                                    <span>{l_log_in}</span>
+                                </div>
+                                <!-- end_no_facebook_login2 -->
+                                <!-- begin_social_login -->
+                                <ul class="bl_social_buttons">
+                                <!-- begin_social_login_item -->
+                                    <li class="login_{social_login_item_type}"><a href="{social_login_item_url}">&nbsp;</a></li>
+                                <!-- end_social_login_item -->
+                                </ul>
+                                <!-- end_social_login -->
+                            </div>
+
+                            <div class="cont">
+                                <h2>{l_log_in_to}</h2>
+
+                                <label>{l_email_name}:</label>
+                                <input id="form_login_user" class="inp" type="text" name="user" value="" />
+
+                                <div class="cl"></div>
+
+                                <label>{l_password}:</label>
+                                <input id="form_login_pass" class="inp" type="password" name="password" />
+
+                                <div class="infa">
+                                    <div class="fl_left">
+                                        <input id="form_login_remember" type="checkbox" name="remember" value="1" checked="checked"/>
+                                        <label for="form_login_remember">{l_remember_me}</label>
+                                    </div>
+
+                                    <a href="{url_main}{url_page_forget_password}">{l_forgot_password}</a>
+                                <div class="cl"></div>
+                                </div>
+
+                            </div>
+                            <div class="foot">
+                                <input type="button" id="form_login_join" class="btn blue fl_left" value="{l_register}" />
+                                <input type="submit" id="form_login_submit" class="btn-login btn orange fl_right" value="{l_log_in}" />
+                            </div>
+                        </div>
+                    </form>
+
+<!-- begin_banner_right_column -->
+<div class="bl login_form_banner_right_column">
+    <div class="cont">
+        {banner_right_column}
+    </div>
+</div>
+<!-- end_banner_right_column -->
+
+<div class="frm_login_shadow"></div>
+
+</div>
+<!-- /login -->
+
+<!-- begin_demo -->
+<script>
+$(function(){
+	$('#form_login_user').val('{login_user}');
+	$('#form_login_pass').val('{login_password}');
+});
+</script>
+<!-- end_demo -->

@@ -1,0 +1,54 @@
+{header}
+<table class="cnt" cellspacing="0" cellpadding="0"><tr><td>
+<div class="block welcome">
+	<b>{l_welcome}</b> {l_welcome_description}<a href="{url_main}join.php">{l_welcome_register}</a>{l_welcome_description_2}<a href="{url_main}forgot_password.php">{l_welcome_forgot_password}</a>{l_welcome_description_3}
+</div>
+
+<!-- begin_users -->
+<div class="block purple-main">
+	<p class="title"><b>{l_our_new_faces}</b></p>
+	<table class="userlist" cellspacing="0" cellpadding="0"><tr>
+			<!-- begin_user --><td><div style="background-image:url('{url_files}{photo}');"></div></td><!-- end_user -->
+	</tr></table>
+</div>
+<!-- end_users -->
+</td></tr></table>
+<div id="ftr">
+	<table class="bg" cellspacing="0" cellpadding="0">
+		<tr>
+		<td class="brd"></td>
+		<td class="orn"></td>
+		<td class="yel"></td>
+		<td class="grn"></td>
+		<td class="blu"></td>
+		<td class="pur"></td>
+		</tr>
+	</table>
+<!-- begin_loginform -->
+	<form action="{url_main}join.php?cmd=login" method="POST" class="login">
+		<table cellspacing="0" cellpadding="0"><tr>
+			<th><label>{l_sign_up}</label></th>
+			<td><input type="text" name="user" id="email" class="txt" value="{l_username}" onfocus="if(this.value=='{l_username}'){this.value='';};" onblur="if(this.value==''){this.value='{l_username}';};"/></td>
+			<td><input type="password" name="password" id="password" class="txt" value="password" onfocus="if(this.value=='password'){this.value='';};" onblur="if(this.value==''){this.value='password';};"/></td>
+			<th><input type="submit" class="btn" value="{l_sign_up_go}"/></th>
+		</tr>
+		</table>
+	</form>
+<!-- end_loginform -->
+</div>
+<!-- begin_alert_message -->
+<script type="text/javascript"><!--
+alert('{message}');
+//--></script>
+<!-- end_alert_message -->
+
+<!-- begin_demo -->
+<script>
+$(document).ready(function() {
+    $('#email').val('{login_user}');
+    $('#password').val('{login_password}');
+});
+</script>
+<!-- end_demo -->
+
+{footer}

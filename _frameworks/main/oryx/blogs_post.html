@@ -1,0 +1,181 @@
+{header}
+{blogs_header}
+<script type="text/javascript">
+$(function(){
+    <!-- begin_to_comment -->
+    document.location = '#comment{to_comment}';
+    <!-- end_to_comment -->
+
+    $('#form').submit(function() {
+        if ($('#write_comment').val() == '{l_blog_write_a_comment}') {
+            alert('{l_please_enter_text}');
+            return false;
+        };
+        return true;
+    });
+
+    var box = $("#narrow_box"),
+        hide_box = $("#hide_narrow_box"),
+        box_display = box.css('display'),
+        btn = $('#btn_back'),
+        box_object = $('.blogs_video');
+
+    prepareVideoResize(box_object);
+    videoResize(box_object);
+
+    if (box_display == 'none') {
+        hide_box.attr('title', '{l_narrow_box_expand}');
+        btn.removeClass('btn_bl_show_narrow_box');
+        btn.addClass('btn_bl_hide_narrow_box');
+    } else {
+        hide_box.attr('title', '{l_narrow_box_collapse}');
+    }
+
+    hide_box.click(function(){
+        var images = $('[id ^= blogsimg-]');
+
+        imageResize(box, images, '{url_files}blogs', 'o.jpg', 1, '-');
+        videoResizeStepBlog();
+
+        btn.removeClass('btn_bl_hide_narrow_box');
+        btn.addClass('btn_bl_show_narrow_box');
+
+        box.stop().animate(
+                {width: 'toggle'},
+                {duration: 350,
+                 complete: function() {
+                    var isState;
+                    imageResize(box, images, '{url_files}blogs', 's.jpg', 1, '-');
+                    if ($(this).css('display') == 'none') {
+                        hide_box.attr('title', '{l_narrow_box_expand}');
+                        $('#bl_show_narrow_box').css('display', 'block');
+                        $('#bl_hide_narrow_box').css('display', 'none');
+                        btn.removeClass('btn_bl_show_narrow_box');
+                        btn.addClass('btn_bl_hide_narrow_box');
+                        isState = 0;
+                    } else {
+                        hide_box.attr('title', '{l_narrow_box_collapse}');
+                        $('#bl_hide_narrow_box').css('display', 'block');
+                        $('#bl_show_narrow_box').css('display', 'none');
+                        isState = 1;
+                    }
+                    $.post('{url_main}ajax.php', {cmd: 'save_state_narrow_box',
+                                                  type: 'blogs',
+                                                  state: isState}
+                    );
+                    cancelAnimationFrame(globalID);
+                    videoResize($('.blogs_video'));
+                 }
+        });
+        return false;
+    });
+});
+function videoResizeStepBlog() {
+    globalID = requestAnimationFrame(videoResizeStepBlog);
+    videoResize($('.blogs_video'));
+}
+</script>
+
+
+<div class="blogs_new_p pl_top">
+    <a id="hide_narrow_box" href="" title="" style="position:absolute; margin-top:2px; right:0;">
+        <div id="bl_hide_narrow_box" class="bl_hide_narrow_box lower_header_color" style="display: {hide_narrow_box}"></div>
+        <div id="bl_show_narrow_box" class="bl_show_narrow_box upper_header_color" style="display: {show_narrow_box}"></div>
+    </a>
+    <table class="post_header">
+		<tr>
+			<td width="33">
+				<a href="{url_main}blogs_blog.php?id={blogger_user_id}"><img align="left" src="{blogger_photo}" width="26" height="29" alt=""/></a>
+			</td>
+			<td width="75%">
+				<h1 class="txt_upper_header_color">{post_subject_req}</h1></td>
+			<td>
+<!-- 				<div class="fl_right" style="margin: 3px 0 0;">
+                    <input class="btn_red_arrow_left" type="button" value="{l_back}" onclick="history.back()" />
+                </div> -->
+
+                    <div id="btn_back" class="btn_bl_show_narrow_box"><a href="{url_main}blogs_post.php" class="btn round upper_header_color fl_right "><img class="btn_arrows_right" src="{url_tmpl_main}images/btn_arrows_left.png" width="10" height="5" alt="" /> {l_back}&nbsp;</a></div>
+
+			</td>
+		</tr>
+    </table>
+
+
+    <table class="blogs_new_tb_sub">
+<!--         <col width="7px"/>
+        <col width="430px"/> -->
+
+        <tr>
+            <td colspan="3" class="nb nobg_img">
+            <div class="bl_blogs_new_frm">
+
+                <div  <!-- begin_player_custom -->class="player_custom"<!-- end_player_custom -->>
+                    {post_text_readable}
+                </div>
+
+                <ul class="blogs_new_data">
+                    <li class="decor">{post_dt_readable}</li>
+                    <!-- begin_post_edit -->
+                        <li><a class="areyousure" href="{url_main}blogs_blog.php?del={post_id}">{l_blog_delete_post}</a></li>
+                        <li class="list"><a href="{url_main}blogs_write.php?id={post_id}">{l_blog_edit_post}</a></li>
+                    <!-- end_post_edit -->
+                </ul>
+                <div class="cl"></div>
+
+                <!-- begin_post_comment -->
+                    <div class="new_mode_bl_dblue">
+<!--                         <div class="new_mode_bl_dblue_top"></div>
+ -->                        <div class="new_mode_bl_dblue_c">
+                            <a href="{url_main}blogs_blog.php?id={post_comment_user_id}"><img class="fl_left" src="{post_comment_user_photo}" width="21" height="23" alt=""/></a>
+                            <div class="new_mode_bl_dblue_txt" id="comment{post_comment_id}" >
+                                <a href="{url_main}search_results.php?display=profile&uid={post_comment_user_id}">{post_comment_user_name}</a>
+                                {post_comment_text_readable}<br />
+                                <span>{post_comment_dt_readable}</span>
+                            </div>
+                        </div>
+<!--                         <div class="new_mode_bl_dblue_bot"></div>
+ -->                        <!-- begin_post_comment_is_my -->
+                        <div class="new_mode_bl_dblue_delete" ><a class="areyousure" href="{url_main}blogs_post.php?id={post_id}&del={post_comment_id}"><img src="{url_tmpl_main}images/blogs/ico_delete_blue.png" width="13" height="14" alt=""/></a></div>
+                        <!-- end_post_comment_is_my -->
+                    </div>
+                <!-- end_post_comment -->
+
+                <form id="form" action="{url_main}blogs_post.php?id={post_id}" method="post">
+
+          <table class="tb_streight">
+          <col width="100%" />
+          <col width="76px" />
+          <tr>
+            <td>
+                    <div class="blog_input_text_box3 fl_left"><input id="write_comment" name="text" class="no_abk" type="text" value="{l_blog_write_a_comment}" onblur="javascript:if(this.value=='')this.value='{l_blog_write_a_comment}'" onFocus="if(this.value=='{l_blog_write_a_comment}') this.value=''"/></div>
+<!--                     <div class="blog_input_box4 fl_right">
+                        <input class="btn_red" type="submit" value="{l_save}" />
+                    </div> -->
+                    </td>
+                    <td>
+                    <div class="fl_right">
+                    <input style="min-width: 66px;" class="btn upper_header_color round" type="submit" value="{l_save}" />
+                    </div>
+</td>
+</tr>
+</table>
+                </form>
+            </div>
+            </td>
+        </tr>
+
+        <tr>
+            <th class="th_b_l nb">&nbsp;</th>
+            <th class="th_b_c nb">&nbsp;</th>
+            <th class="th_b_r nb">&nbsp;</th>
+        </tr>
+
+    </table>
+
+</div>
+
+
+
+{blogs_side}
+{blogs_footer}
+{footer}

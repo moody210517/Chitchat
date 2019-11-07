@@ -1,0 +1,22 @@
+<!-- begin_message_list -->
+    <!-- begin_message -->
+    <div class="info" data-uid="{message_to_user_id}">
+        <div class="info_bl">
+            <strong>{user_from_name}</strong>
+            <div id="msg_{message_id}" data-id="{message_id}" class="msg im_msg_one">
+                {message}
+                <!-- begin_message_block -->
+                {l_you_are_in_block_list}
+                <!-- end_message_block -->
+            </div>
+        </div>
+    </div>
+    <div id="msg_date_{message_id}" data-uid="{message_to_user_id}" data-cl-loader="loader_history_clear_msg" class="data">
+        <div class="info_date_bl">
+            <div class="info_date"><strong>{message_date_part_1}</strong>{message_date_part_2}</div>
+        </div>
+	    <div class="delete to_hide"><i class="fa fa-trash" aria-hidden="true"></i></div>
+    </div>
+    <script>messages.messagesCacheAdd('{message_to_user_id}', '{message_id}', '{message_user_sp}')</script>
+    <!-- end_message -->
+<!-- end_message_list -->

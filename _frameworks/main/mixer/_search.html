@@ -1,0 +1,146 @@
+<script type="text/javascript">
+  var blockSubmission = false;
+  function removeSubmissionBlock() {
+    blockSubmission = false;
+  }
+  function isSubmissionAllowed() {
+    if(blockSubmission){
+       return false;
+    }
+    return;
+   }
+  document.onclick = isSubmissionAllowed;
+  document.onkeydown = isSubmissionAllowed;
+
+  function onValidatebasicsearch() {
+    var form = document.forms['basicsearch'];
+    // "search_name" field validation.
+    <!-- begin_search_saved_js -->
+    if (!(validateMaxLength(form['search_name'], '{l_search_name}','50'))) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "search_name" field validation.
+    if (!(nonEmptyDependency(form['save_search'], '{l_save_search}', form['search_name'], '{l_search_name}', "{l_save_search_empty}"))) {
+      removeSubmissionBlock();
+      return false;
+    }
+    <!-- end_search_saved_js -->
+    return true;
+  }
+  function validatebasicsearch() {
+    blockSubmission = true;
+     if (typeof beforebasicsearchValidation != 'undefined') {
+       beforebasicsearchValidation();
+    }
+    var validated = onValidatebasicsearch();
+    if (validated && (typeof uponSuccessfulbasicsearchValidation != 'undefined')) {
+      validated = uponSuccessfulbasicsearchValidation();
+    }
+    else if (!validated && (typeof uponUnsuccessfulbasicsearchValidation != 'undefined')) {
+      uponUnsuccessfulbasicsearchValidation();
+    }
+    if (!validated) {
+      removeSubmissionBlock();
+    }
+    return validated;
+  }
+  function submitbasicsearch() {
+   if (validatebasicsearch()) {
+      if ($('#save_search').prop('checked')) {
+                $.post('ajax.php', {cmd: 'save_search', name: $('#search_name').val()},
+                        function(response){
+                            if (response > 0) {
+                                if (confirm('{l_have_saved_search}')) {
+                                   document.basicsearch.submit();
+                                } else {
+                                   $('#search_name').focus();
+                                }
+                            } else {
+                                document.basicsearch.submit();
+                            }
+               });
+               removeSubmissionBlock();
+               return false;
+        } else {
+              document.basicsearch.submit();
+        }
+    }
+  }
+</script>
+
+<div id="content">
+        <div class="decor-t"></div>
+        <div class="in">
+		  <form  name="basicsearch" method="GET" action="{url_main}search_results.php"  id="f-search">
+			<!-- begin_p_orientation -->
+			<input type="hidden" name="p_orientation[]" value="{p_orientation}">
+			<!-- end_p_orientation -->
+
+      <!-- bl_frm_search -->
+      <div class="bl_frm_search">
+        <div class="bl">
+          <div class="title">&nbsp;</div>
+          <div class="age">
+            <b>{l_search_ages}</b>
+            <select name="p_age_from">{p_age_from_options}</select>
+            {l_to}
+            <select name="p_age_to">{p_age_to_options}</select>
+          </div>
+          <!-- begin_relation -->
+          <div class="title">{l_search_rel_type}:</div>
+
+          <table class="rel-type" style="width:220px;">
+          <tr>
+          <!-- begin_p_relation -->
+          <td style="width:110px;">
+            <input name="p_relation[]" type="checkbox" value="{id}" id="rel_{id}" {checked} style="margin:5px 0; vertical-align:middle;">
+            <label for="rel_{id}" class="dash">{title}</label>
+          </td>
+          <!-- begin_p_relation_column -->
+          </tr>
+          <tr>
+          <!-- end_p_relation_column -->
+          <!-- end_p_relation -->
+          </tr>
+          </table>
+          <!-- end_relation -->
+        </div>
+
+        <div class="bl">
+          <div class="title">{l_search_keyword}:</div>
+          <input class="key" type="text" name="keyword" maxlength="200" id="other">
+
+		  <!-- begin_search_field_user_status_enabled -->
+          <div class="title">{l_search_mem_status}:</div>
+          <select name="status" id="member-status" style="width:174px;">
+            {status_options}
+          </select>
+		  <!-- end_search_field_user_status_enabled -->
+        </div>
+
+        <div class="bl">
+          <div class="title">&nbsp;</div>
+			  <!-- begin_with_photo -->
+              <input type="checkbox" {checks_photo} id="with-photo" name="photo" value="1" style="margin:5px 0; vertical-align:middle;">
+              <label for="with-photo" class="dash">{l_search_photo_req}</label>
+			  <!-- end_with_photo -->
+              <!-- begin_search_saved -->
+              <br /><input type="checkbox" value="1" name="save_search" id="save_search" style="margin:5px 0; vertical-align:middle;">
+              <label for="save_search" class="dash">{l_search_save_as}</label><br />
+              <input type="text" id="search_name" name="search_name" placeholder="{l_my_search}" style="width:164px; margin-top:5px; height: 15px; padding: 0 3px;"><br /><br />
+              <a href="{url_main}search_save.php">{l_search_manage_saved}</a></p>
+              <!-- end_search_saved -->
+
+        </div>
+      <div class="cl"></div>
+      </div>
+      <!-- /bl_frm_search -->
+
+            <input type="image" onclick="submitbasicsearch(); return false;"  src="{url_main}tmpl_img_loader.php?tmpl={tmpl_loaded}&dirs=img&file=button-find.gif&lang={lang_loaded}"  class="button" alt="{l_find_now}" />
+          </form>
+        </div>
+        <div class="decor-b"></div>
+        <div class="decor-l"></div>
+        <div class="decor-r"></div>
+      </div><!-- /content -->

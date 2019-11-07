@@ -1,0 +1,73 @@
+.tab {border-top:4px solid #fff;background:#f4f4f4;}
+.tab thead td {height:24px;padding:0;border-bottom:2px solid #fff;font-size:12px;line-height:14px;color:#fff;background:#d94f9b;}
+.tab tfoot td {padding:0 8px 1px 8px;background:#e5e5e5; border-top:2px solid #fff;}
+.pronav {width:100%;height:24px;}
+.pronav th {padding:0 8px 1px 8px;vertical-align:middle;background:#e5e5e5; border-left:1px solid #fff; border-right:1px solid #fff;}
+.pronav th a {color:#1282c4;}
+.pronav th.active {text-decoration:none;background:#f4f4f4;}
+.pronav th.active a {color:#1282c4;text-decoration:none;}
+
+.tab .txt,.tab textarea {border:1px solid #000;background:#fff;}
+.tab .btn {float:right; margin-top:3px;}
+
+.list {width:100%;}
+.list a {color:#1282c4;}
+
+.list th {padding:3px 8px;color:#000;text-align:left;background:#e5e5e5;}
+.list th a {color:#1282c4;}
+
+.list td {padding:1px 8px;color:#000;}
+.list td b {color:#000;}
+.list td b a {color:#1282c4 !important;}
+
+.addgroup {padding-top:4px;text-align:center;}
+.addgroup .list {width:98%;margin:0 auto;}
+.addgroup .list th {width:60px;padding:3px 8px;vertical-align:middle;background-color:#f4f4f4;}
+.addgroup .list th label {width:60px;padding:1px 0;display:block;color:#000;text-align:right;}
+.addgroup .list td {padding:3px 8px 3px 0;vertical-align:middle;text-align:left;}
+.addgroup .list td select {width:99%;border-color:#000;background:#fff;}
+.addgroup .list td select {width:94%;border-color:#000;}
+.addgroup .list td textarea {width:93%;border-color:#000;}
+.addgroup .list td .txt {width:93%;border-color:#000;}
+.addgroup .list td textarea {height:162px;}
+.addgroup .list td .btn {width:110px;color:#fff;}
+.savechanges {width:130px;}
+p.view {padding:0 20px 0 0;display:inline;font-size:12px;line-height:14px;}
+p.view a {color:#1282c4;}
+.addgroup .list .month {width:48%;margin:0 5px 0 0;}
+.addgroup .list .day {width:16%;margin:0 5px 0 0;}
+.addgroup .list .year {width:29%;}
+.addgroup .list .spc {display:none;}
+
+.addgroup .list .hasborder th,.addgroup .list .hasborder td {padding-top:9px;border-top:1px solid #fff;}
+.addgroup .list .haspad th,.addgroup .list .haspad td {padding-bottom:10px !important;}
+
+.settings {padding-top:4px;}
+.settings td {padding:4px 8px 20px 8px;}
+.settings .radio {width:15px;height:15px;padding:0;position:relative;top:2px;}
+.settings label {padding:0 25px 0 0;color:#000;}
+
+.photos {width:100%; background:#fff;}
+.photos td.one {width:50%;padding:4px 4px 2px 4px;background:#f4f4f4;}
+.photos td.one table {width:100%;}
+.photos td.one table th {width:92px;padding-right:5px;text-align:left;}
+.photos td.one table th div {max-width:90px;height:100px;padding:0;margin:0 auto;background:url('') no-repeat 50% 0;background-color:#e5e5e5;}
+.photos td.one table th div a {display:block;height:100px;}
+.photos td.one table td {width:50px;font-size:12px;line-height:26px;}
+.photos td.one table td a {color:#1282c4;}
+.photos td.one table td strong a {color:#1282c4;}
+.photos td.one table th.add div a {height:75px;padding:25px 0 0 0;color:#000;text-align:center;}
+
+.edit {width:100%;}
+.edit th {padding:3px 8px;color:#fff;text-align:left;background:#e5e5e5;}
+.edit .first th {width:92px;padding:10px 5px 6px 10px;text-align:left;background:#f4f4f4;}
+.edit .first th div {max-width:90px;height:100px;padding:0;margin:0 auto;background:url('') no-repeat 50% 0;background-color:#a91983;}
+.edit .first th div a {display:block;height:100px;}
+.edit .first td {width:202px;padding:5px 5px 0 0;}
+.edit .first td .txt {width:96%;border-color:#fff;margin:5px 0 0 0;display:block;}
+.edit .first td textarea {width:96%;height:75px;border-color:#fff;margin:0 0 6px 0;display:block;}
+.edit .second td {padding:6px 12px 0 12px;text-align:center;}
+.edit .second td .file {width:96%;color:#fff;display:block;float:left;}
+.edit .second td .txt {width:65%;border-color:#fff;display:block;float:left;}
+.edit .second td label {padding:2px 6px;display:block;float:left;font-weight:normal;color:#fff;}
+.edit .first th.add div {width:76px;height:54px;padding:32px 0 0 0;border:7px solid #e5e5e5;color:#a61917;background:#f4f4f4;text-align:center;}

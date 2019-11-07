@@ -1,0 +1,69 @@
+*html #content_inn_main {background:url("../images/content_inn_bg_ie6.gif") repeat-y; height:1px;}
+*html #content_inn_main_bottom {background:url("../images/content_inn_bottom_ie6.png") no-repeat;}
+*html #membersWrap {background:url("../images/members_wrap.gif") repeat;}
+*html #members_s {height:133px;}
+*html #members_bottom {background:url("../images/members_bottom_ie6.png") no-repeat;}
+*html #members_top {background:url("../images/members_top_ie6.png") no-repeat;}
+* html .userinfo-c-wide  .userinfo{background:url(../images/userinfo-top-bg-wide-2.gif) 4px 0px no-repeat;}
+* html .userinfo-c  .userinfo{background:url(../images/userinfo-top-bg-2.gif) 3px 0px no-repeat;}
+* html .sidebar{margin-right:-2px;}
+* html .userinfo-c {width:577px ! important;}
+* html div.userinfo-st{position:relative;}
+* html div.userinfo dl dt img{position: relative; top: -226px; left: -424px;}
+* html div.userinfo dl dd.name img{position:relative; top: -224px; left: -424px;}
+* html #terms{width:600px !important;}
+* html a:active {color:#D9F4FC;}
+* html div.menu ul li a:active {color:#C4F1FC;}
+* html div.personal-st a:active{color: #D7DAA8;}
+* html div.userinfo dl dt img{width: 126px; height: 140px; position: static; margin-top: 4px; margin-left: 4px; }
+*html div.userinfo dl dd.home img{position:static; margin-top:6px;}
+* html #gallery .gallery_top {background:url(../images/gallery_top.png); height:30px; text-align:left;}
+* html #gallery .ltc {background:url(../images/gallery_corner.png) no-repeat 0 0; height:30px;}
+* html #gallery .rtc {background:url(../images/gallery_corner.png) no-repeat 100% 0; height:30px;}
+* html #gallery .buck {background:url(../images/gallery_corner.png) repeat-x 0 -10px; margin:0 10px; height:30px;}
+* html #gallery .ltc {background:url(../images/gallery_corner.gif) no-repeat 0 0; height:30px;}
+* html #gallery .rtc {background:url(../images/gallery_corner.gif) no-repeat 100% 0; height:30px;}
+* html #gallery .buck {background:#000000; margin:0 10px; height:30px;}
+* html #gallery .lbc {background:url(../images/gallery_corner.gif) no-repeat 0 100%; height:60px;}
+* html #gallery .rbc {background:url(../images/gallery_corner.gif) no-repeat 100% 100%; height:60px;}
+* html #gallery .gallery_bottom .buck {background:#000000 url(../images/map.gif) no-repeat right 0; margin:0 10px; height:60px;}
+* html  #gallery .row1 {background:#525252 url(../images/quote1.gif) no-repeat 335px 12px !important;}
+* html  #gallery .row2 {background:#000000 url(../images/quote2.gif) no-repeat 335px 12px !important;}
+* html .comment .body {background:#658794;}
+* html .comment .bottom {height:9px !important; overflow:hidden;}
+*html div.sidebar .fix_height{height:330px; }
+*html #photo_info img {left:0px;}
+*html dt#photo_info img {left:1px; top:0px; width:90px; height:100px;}
+*html .img_sml_border div#photo_info img{margin-left:5px;}
+*html .img_med_border {padding-bottom:2px !important; padding-right:3px !important;}
+.new_mods_pl_violet_c, .new_mods_pl_dpink_c, .new_mods_pl_violet_thin_c{ _margin: 0; }
+.new_mods_pl_violet_l, .new_mods_pl_dpink_l, .new_mods_pl_violet_thin_l{ _margin: 0 -3px 0 0; }
+.new_mods_pl_violet_r, .new_mods_pl_dpink_r, .new_mods_pl_violet_thin_r{ _margin: 0 0 0 -3px; }
+.new_mods_pl_dpink{ position: relative; zoom: 1; margin: 0 0 20px; }
+.new_mods_pl_pink{ zoom: 1; margin: 2px 0 0; }
+.new_mods_pl_violet_img img{ _margin: 4px 0 0; }
+.new_mods_pl_violet, .new_mods_foto_thin{ zoom: 1; }
+.new_mods input{ padding: 0 5px; height: 18px; }
+.new_mods_foto_m{ margin: 0 0 15px; zoom: 1; }
+.tb_new_mods_frm th{ padding: 0 0 15px; line-height: 18px; }
+* html .menu img {margin-top:2px;}
+* html #gallery #actions .red {background:url(../images/line_red.gif) no-repeat;}
+* html #gallery #actions .green {background:url(../images/line_green.gif) no-repeat;}
+* html #gallery #actions .blue {background:url(../images/line_blue.gif) no-repeat;}
+.button_replay div.button_replay_left{margin-left:12px;}
+#gallery .widgets_list div.widget_panel {background:url(../images/widget_panel.gif) no-repeat;}
+* html .staus_profile_page {margin-top:-17px;}
+
+* html #menu_more {background: url(../images/menu_more_shadow.png) no-repeat;}
+* html #menu_more li a  {background: url(../images/menu_more_left_bg.png) 0 0 no-repeat; }
+* html #menu_more li a span.out {background: url(../images/menu_more_right_bg.png) top right no-repeat;}
+* html #menu_more li a span.in{background: url(../images/menu_more_bg.png) repeat-x;}
+* html #menu_more li a:hover{background: url(../images/menu_more_active_left_bg.png) 0 0 no-repeat;}
+* html #menu_more li a:hover span{background: url(../images/menu_more_active_right_bg.png) top right no-repeat;}
+* html #menu_more li a:hover span span{background: url(../images/menu_more_active_bg.png) repeat-x;}
+* html #menu_more li.last a  {background: url(../images/menu_more_last_left_bg.png) 0 0 no-repeat;}
+* html #menu_more li.last a span.out{background: url(../images/menu_more_last_right_bg.png) top right no-repeat;}
+* html #menu_more li.last a span.in{background: url(../images/menu_more_last_bg.png) repeat-x;}
+* html #menu_more li.last a:hover{background: url(../images/menu_more_last_active_left_bg.png) 0 0 no-repeat;}
+* html #menu_more li.last a:hover span.out{background: url(../images/menu_more_last_active_right_bg.png) top right no-repeat;}
+* html #menu_more li.last a:hover span.in {background: url(../images/menu_more_last_active_bg.png) repeat-x;}

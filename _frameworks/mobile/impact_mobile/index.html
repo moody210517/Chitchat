@@ -1,0 +1,77 @@
+{header}
+<script id="script_replace_page">
+    urlPageHistory='{url_page_index}';
+</script>
+<div class="page_content_inner page_index txt_shadow">
+    <script>
+    var clIndex = new CIndex();
+    clIndex.init('.page_index');
+    </script>
+    <div class="bl_frm large_field">
+        <form id="form_login" class="form_login frm frm_center" method="post" action="{url_main}join.php">
+            <input type="hidden" name="cmd" value="login" />
+            <input type="hidden" name="ajax" class="ajax" value="1" />
+            <div class="bl">
+                <label>{l_email_name}</label>
+                <input id="form_login_user" name="user" type="text" value=""/>
+            </div>
+            <div class="bl">
+                <label>{l_password}</label>
+                <input id="form_login_pass" name="password" type="password"/>
+                <div id="icon_field_hint" class="icon_field_vis"></div>
+            </div>
+            <div class="bl remember_bl">
+                <div class="label_checkbox fl_left custom_checkbox">
+                    <input id="remember" name="remember" value="1" type="checkbox" checked="checked" />
+                    <label for="remember"><span></span> {l_remember_me}</label>
+                </div>
+                <div class="info_txt fl_right">
+                    <a href="{url_main}{url_page_forgot_password}" data-cl-loader="loader_link_forgot" class="go_to_page no_color_t">{l_forgot_password}</a>
+                </div>
+                <div class="cl"></div>
+            </div>
+            <!-- begin_login_frm_terms_for_ios -->
+            <div class="bl custom_checkbox no_hide">
+                <input id="terms" type="checkbox" checked="checked"/>
+                <label for="terms" class="bl terms"><span></span>
+                    {l_i_agree_to_the}
+                    <a class="go_to_page link_info" data-cl-loader="loader_link_info" href="{url_main}{url_page_terms}">{l_terms}</a>
+                </label>
+            </div>
+            <!-- end_login_frm_terms_for_ios -->
+        </form>
+    </div>
+    <div class="frm_btn">
+        <button id="form_log_in_submit" class="btn large pink">{l_sign_in}</button>
+
+        <div class="double">
+            <span>
+                <a href="{url_main}{url_page_join}" class="go_to_page btn large white_frame">{l_join_us}</a>
+            </span>
+        </div>
+
+        <!-- begin_social_login -->
+        <ul class="bl_social_buttons">
+            <!-- begin_social_login_item -->
+            <li class="login_{social_login_item_type}"><a onclick="clIndex.goToSocialLogin($(this),'{social_login_item_url}'); return false;" href="{social_login_item_url}"><span>&nbsp;</span></a></li>
+            <!-- end_social_login_item -->
+        </ul>
+        <!-- end_social_login -->
+
+        <!-- begin_btn_download_app -->
+        <div class="double">
+            <span>
+                <a target="_blank" title="{btn_download_app_title}" href="{btn_download_app_url}" class="btn large white_frame">
+                    <span class="txt"><span class="icon_{btn_download_app_icon}_app">&nbsp;</span>{btn_download_app_title}</span>
+                </a>
+            </span>
+        </div>
+        <!-- end_btn_download_app -->
+    </div>
+    <!-- begin_banner_footer_mobile_content -->
+    <div class="banner_content_visitor {banner_footer_mobile_content_class}">
+        {banner_footer_mobile_content}
+    </div>
+    <!-- end_banner_footer_mobile_content -->
+</div>
+{footer}

@@ -1,0 +1,94 @@
+<!-- new_mods_decor -->
+<div class="music_new_decor_violet">
+
+<script type="text/javascript">
+var active = 0;
+var shift = 0;
+$(document).ready(function() {
+    initLightboxOldTemplateNewAge($('.image_gallery a'));
+});
+
+function set_main_image(thumbnail, image, n)
+{
+    $('.image_gallery a').attr('href', image);
+    $('.image_gallery a img').attr('src', thumbnail);
+    $('#image_list li').attr('class','');
+    $('#image_list li:eq('+n+')').attr('class','active');
+    active = n+shift;
+}
+
+$(function(){
+    $('.auto-submit-star').rating({
+        callback: function(value, link){
+            $('#load_animation_rating').css('visibility', 'visible');
+            $.get('{url_main}music_song_vote_do.php?song_id={song_id}&rating=' + value,
+                function(data) {
+                    $('#load_animation_rating').css('visibility', 'hidden');
+					redirectRequiresAuth(data);
+                });
+        }
+    });
+});
+
+</script>
+    <div class="pl_top">
+
+          <h1 class="green" title="{song_title_full}">{song_title}</h1>
+
+          <div class="fl_left">
+              <div class="image_gallery music_new_img_green music_new_margin0">
+                  <!-- begin_image --><a href="{image_file}"><img src="{image_thumbnail_b}" width="160" height="120" title="{song_name_full}" alt="{song_name_full}"/></a><!-- end_image -->
+                  <!-- begin_no_image --><img src="{url_tmpl_main}images/music/foto_02_l.jpg" width="160" height="120" alt=""/><!-- end_no_image -->
+              </div>
+
+              <!-- carusel -->
+              <div id="music_song_image_list">
+              {music_song_image_list}
+              </div>
+              <!-- /carusel -->
+
+			  <!-- begin_song_functions -->
+              <div class="music_new_img_txt">
+                  <span class="black"><a href="{url_main}music_song_add_photos.php?song_id={song_id}">{l_music_add_images}</a><!-- begin_song_edit --> | <a href="{url_main}music_song_edit.php?song_id={song_id}">{l_music_edit_song}</a> | <a class="areyousure" href="{url_main}music_song_edit.php?song_id={song_id}&cmd=delete">{l_delete}</a><!-- end_song_edit --></span>
+              </div>
+			  <!-- end_song_functions -->
+          </div>
+
+          <div class="music_new_bl_green">
+
+              <div class="music_new_play_b fl_right">{song_player}</div>
+
+
+
+              <div class="music_new_bl_star">
+                    <img style="visibility:hidden;" id="load_animation_rating" src="{url_tmpl_main}images/load_animation.gif">
+                    {l_music_rate_it}:
+                    <span class="fl_right">
+						<input name="music_song_rating" type="radio" value="1" title="{l_music_song_rating_1}" {music_song_rating_1_checked} class="song_rating auto-submit-star {split:2, required:true{music_song_rating_caps}}"/>
+						<input name="music_song_rating" type="radio" value="2" title="{l_music_song_rating_2}" {music_song_rating_2_checked} class="song_rating auto-submit-star {split:2, required:true{music_song_rating_caps}}"/>
+						<input name="music_song_rating" type="radio" value="3" title="{l_music_song_rating_3}" {music_song_rating_3_checked} class="song_rating auto-submit-star {split:2, required:true{music_song_rating_caps}}"/>
+						<input name="music_song_rating" type="radio" value="4" title="{l_music_song_rating_4}" {music_song_rating_4_checked} class="song_rating auto-submit-star {split:2, required:true{music_song_rating_caps}}"/>
+						<input name="music_song_rating" type="radio" value="5" title="{l_music_song_rating_5}" {music_song_rating_5_checked} class="song_rating auto-submit-star {split:2, required:true{music_song_rating_caps}}"/>
+						<input name="music_song_rating" type="radio" value="6" title="{l_music_song_rating_6}" {music_song_rating_6_checked} class="song_rating auto-submit-star {split:2, required:true{music_song_rating_caps}}"/>
+						<input name="music_song_rating" type="radio" value="7" title="{l_music_song_rating_7}" {music_song_rating_7_checked} class="song_rating auto-submit-star {split:2, required:true{music_song_rating_caps}}"/>
+						<input name="music_song_rating" type="radio" value="8" title="{l_music_song_rating_8}" {music_song_rating_8_checked} class="song_rating auto-submit-star {split:2, required:true{music_song_rating_caps}}"/>
+						<input name="music_song_rating" type="radio" value="9" title="{l_music_song_rating_9}" {music_song_rating_9_checked} class="song_rating auto-submit-star {split:2, required:true{music_song_rating_caps}}"/>
+						<input name="music_song_rating" type="radio" value="10" title="{l_music_song_rating_10}" {music_song_rating_10_checked} class="song_rating auto-submit-star {split:2, required:true{music_song_rating_caps}}"/>
+                    </span>
+              </div>
+
+              <ul class="list_bg">
+                  <li><strong>{l_music_musician}:</strong> <a href="{url_main}music_musician_show.php?musician_id={musician_id}">{musician_name}</a> <strong>{l_uploaded}:</strong> <a href="{url_main}search_results.php?display=profile&name={uploaded_name}">{uploaded_name}</a> </li>
+                  <li><strong>{l_music_year}:</strong> <a href="{url_main}music_search.php?song_year={song_year}">{song_year}</a></li>
+              </ul>
+
+			  <div class="cl"></div>
+              <p title="{song_about_full}">
+                  {song_about}
+              </p>
+
+          </div>
+
+    </div>
+</div>
+<!-- /new_mods_decor -->

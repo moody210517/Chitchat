@@ -1,0 +1,46 @@
+{header}
+
+<table class="cnt photos" cellspacing="0" cellpadding="0"><tr><td>
+
+<table cellspacing="0" cellpadding="0" class="tab">
+<thead>
+	<tr>
+		<td colspan="2"><a href="{url_main}profile_view.php?user_id={profile_user_id}">{name}</a>{l_user_photos}</td>
+	</tr>
+</thead>
+
+<tbody>
+	<tr>
+		<td class="content" colspan="2">
+			<table cellspacing="0" cellpadding="0" class="photostab">		 			
+			<!-- begin_photo_item-->
+				<!-- begin_photo_odd-->
+				<tr class="row{row}">
+				<!-- end_photo_odd-->				
+				<td style="background-image:url('{url_files}{photo}');"><a href="{url_files}{photo_b}" target='_blank'></a></td>			
+				<th>{photo_index}</th>										
+				<!-- begin_photo_even-->
+				</tr>
+				<!-- end_photo_even-->
+			<!-- end_photo_item-->			
+			
+			<!-- begin_nophoto_item-->
+				<!-- begin_nophoto_odd-->
+				<tr class="row{row}">
+				<!-- end_nophoto_odd-->
+				<td></td>
+				<th>{photo_index}</th>
+				<!-- begin_nophoto_even-->
+				</tr>
+				<!-- end_nophoto_even-->
+			<!-- end_nophoto_item-->
+			</table>
+		</td>
+	</tr>
+</tbody>
+</table>
+
+</td></tr></table>
+
+{user_menu}
+{footer}

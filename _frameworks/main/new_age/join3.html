@@ -1,0 +1,219 @@
+{header}
+<div id="main2">
+	<div id="main-in2">
+		<div id="main-out2">
+<div class="wrapper-wide">
+<div class="userinfo-c-wide">
+	<div class="userinfo smallphoto clearfix">
+		<div id="Reg">
+<script Language="JavaScript" type="text/javascript">
+    var captcha = '';
+    <!-- begin_re_captcha_js -->
+    var verifyCallback = function(response) {
+        captcha = grecaptcha.getResponse(recaptchaWd);
+    };
+    var onloadCallback = function() {
+        recaptchaWd = grecaptcha.render('recaptcha', {
+            'sitekey' : '{re_captcha_sitekey}',
+            'callback' : verifyCallback,
+            'theme' : '{re_captcha_theme}'
+        });
+    };
+    <!-- end_re_captcha_js -->
+
+
+    function skipPhotoUpload(){
+        var form = document.forms['UploadPhotoForm'];
+        <!-- begin_default_captcha_js -->
+        captcha = form['captcha'].value;
+        <!-- end_default_captcha_js -->
+        if ($.trim(captcha)=='') {
+            alert('{l_incorrect_captcha}');
+            $('#captcha_input').focus();
+            return false;
+        }
+        xajax_check_captcha_mod(captcha,"{l_incorrect_captcha}",true);
+        return false;
+    }
+
+    function onValidateUploadPhotoForm() {
+        var form = document.forms['UploadPhotoForm'];
+        if (!(validateRequiredField(form['photo_file'], '{l_file_location}'))) {
+            return false;
+        }
+
+        if (!(validateMaxLength(form['description'], '{l_photo_description}','{profile_photo_description_length}'))) {
+            return false;
+        }
+
+        <!-- begin_default_captcha_js -->
+        captcha = form['captcha'].value;
+        <!-- end_default_captcha_js -->
+        if ($.trim(captcha)=='') {
+            alert('{l_incorrect_captcha}');
+            $('#captcha_input').focus();
+            return false;
+        }
+        xajax_check_captcha_mod(captcha,"{l_incorrect_captcha}");
+
+        return false;
+    }
+
+  function validateUploadPhotoForm() {
+    blockSubmission = true;
+     if (typeof beforeUploadPhotoFormValidation != 'undefined') {
+       beforeUploadPhotoFormValidation();
+    }
+    var validated = onValidateUploadPhotoForm();
+    if (validated && (typeof uponSuccessfulUploadPhotoFormValidation != 'undefined')) {
+      validated = uponSuccessfulUploadPhotoFormValidation();
+    }
+    else if (!validated && (typeof uponUnsuccessfulUploadPhotoFormValidation != 'undefined')) {
+      uponUnsuccessfulUploadPhotoFormValidation();
+    }
+    return validated;
+  }
+  function submitUploadPhotoForm() {
+   if (validateUploadPhotoForm()) {
+		document.UploadPhotoForm.submit();
+	}
+    }
+</script>
+
+	<h2>{join_message}</h2>
+
+<form  name="UploadPhotoForm" method="POST" enctype="multipart/form-data" action="{url_main}join3.php?cmd=photo" onSubmit="return validateUploadPhotoForm(); " style="padding: 0px; margin: 0px;">
+
+<input type="hidden" name="captcha_correct" id="captcha_correct" value="0" >
+
+<script language="JavaScript" type="text/javascript">
+addOnload(setPostAlertFocus);
+function setPostAlertFocus()
+{
+setFocus('UploadPhotoForm','photo_file');
+}
+</script>
+			<div align="center"  style="padding-top:20px;">
+				<div align="left" style="width: 631px;">
+					<div style="padding-left:22px; padding-bottom: 10px;">
+						<table cellpadding=0 cellspacing=0 border=0><tr>
+							<td width=100% valign=top>
+								<div class="header_big" style="padding-top: 10px; padding-bottom: 10px;">{l_people_with_pictures}</div>
+								<div style="padding-bottom: 15px;">
+									<table cellpadding=0 cellspacing=0 border=0>
+                                    <tr>
+										<td class="body_text" style="padding-bottom: 8px;">{l_you_listen_on_top}</td>
+									</tr>
+                                    <tr>
+										<td class="body_text">{l_recieve_10x}</td>
+									</tr></table>
+								</div>
+
+							</td>
+							<td></td>
+						</tr></table>
+					</div>
+                    <div class="toper1"><table width="590"><tr><td width="14"><img src="{url_tmpl_main}images/join-top_left.png" /></td><td width="1"><div class="header_small">{l_upload_photo}</div></td><td width="561"><i>&nbsp;</i></td><td width="14"><img src="{url_tmpl_main}images/join-top_right.png" /></td></tr></table></div>
+<div class="join_e1">
+
+								<div style="margin-top:15px; padding-left:2px;">{l_click_browse}</div>
+
+					<div style="padding: 4px;">
+						<div>
+							<table cellpadding=0 cellspacing=0 border=0 width="100%">
+                                <tr>
+                                    <td rowspan=6 style="padding: 12px 12px 12px 0;" width="126"><img src="{url_files}nophoto_m.jpg" border=0 class="img_lrg_border"></td>
+                                    <td class="body_text" align=left>
+										<b>{l_file_location}:</b>
+									</td>
+                                    <td valign="top" style="height:20px;">
+										<input type="file" name="photo_file" size="24" accept="image/gif,image/jpeg,image/png,image/jpg">
+									</td>
+                                </tr>
+                                <tr>
+                                    <td colspan=2 class="body_little" valign=top style="padding:10px 0px 5px 0px;"><small>{l_gif_jpg_jpeg_png}</small></td>
+                                </tr>
+                                <tr>
+                                    <td align="right" colspan="3" style="padding-right:15px;"><small>({l_max_100})</small></td>
+                                </tr>
+                                <tr>
+                                    <td class="body_text" align=left valign=top style="padding-top: 2px;"><b>{l_photo_description}:</b></td>
+                                    <td valign=top style="padding-left:3px;"><input type="text" name="description" style="width:302px;"></td>
+                                </tr>
+                            </table>
+						</div>
+					</div>
+
+
+
+					<div align="right" style="padding-top: 15px;">
+						<table cellpadding="0" cellspacing="0" border="0" width="100%">
+                            <tr>
+                                <td class="body_little" width="314" align="left" style="padding-left: 5px;">
+                                    <a href="javascript:winpop('{url_main}info.php?page=photo_tips&lang={lang_loaded}','800','600','yes');" class="pri_little">{l_photo_dos}</a>
+                                </td>
+                            </tr>
+                        </table>
+					</div>
+                    </div>
+<i class="topir1"></i>
+				</div>
+			</div>
+<table width="624">
+    <tr>
+        <td>
+            <div class="captcha">
+                <table>
+                    <tr>
+                        <!-- begin_default_captcha -->
+                        <td class="lt"></td>
+                        <td class="cr">
+                            <table>
+                                <tr>
+                                    <td style="padding-right:10px;">
+                                        <img id="captcha" src="_server/securimage/securimage_show_custom.php?sid={sid}" />
+                                    </td>
+                                    <td>
+                                        {l_please_enter_the_text}<br /><br />
+                                        <input id="captcha_input" type="text" name="captcha" style="width:100px;" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <a id="captcha_reload" href="#" onclick="document.getElementById('captcha').src = '_server/securimage/securimage_show_custom.php?sid=' + Math.random(); return false">{l_reload}</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class="rt"></td>
+                        <!-- end_default_captcha -->
+                        <!-- begin_re_captcha -->
+                        <td colspan="3" style="height: 70px;">
+                            <div id="recaptcha" style="transform:scale(.9);"></div>
+                        </td>
+                        <!-- end_re_captcha -->
+                    </tr>
+                </table>
+            </div>
+        </td>
+        <td style="padding-right:7px; text-align:right;">
+            <input type="button" value="{l_upload_photo}" onClick=" submitUploadPhotoForm();" class="button" title="{l_upload_photo}" onMouseOver="window.status='{l_upload_photo}'; return true;" onMouseOut="window.status=''; return true;" />&nbsp;<img id="load_animation" style="visibility:hidden;" src="{url_tmpl_main}images/load_animation.gif">&nbsp;
+            <!-- begin_skip_button -->
+            <input type="button" value="{l_skip_step}" onClick="skipPhotoUpload();" class="button" title="{l_skip_step}" onMouseOver="window.status='{l_skip_step}'; return true;" onMouseOut="window.status=''; return true;" />
+            <!-- end_skip_button -->
+        </td>
+    </tr>
+</table>
+</form>
+
+
+
+</div></div>
+<div class="userinfo-links-wide"></div>
+</div>
+</div>
+<br></div></div></div>
+<!-- begin_re_captcha_script -->
+<script src="//www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit&hl={re_captcha_lang}" async defer></script>
+<!-- end_re_captcha_script -->
+{footer}

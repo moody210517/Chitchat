@@ -1,0 +1,61 @@
+<script>
+    var Encounters = new CEncounters();
+    Encounters.langParts = {
+        everyone : '{j_you_have_rated_everyone}',
+        said_main : '{j_mutual_attractions_said_main}',
+        user_said_m : '{j_mutual_attractions_user_said_m}',
+        user_said_f : '{j_mutual_attractions_user_said_f}',
+        said_y : '{j_mutual_attractions_said_y}',
+        said_m : '{j_mutual_attractions_said_m}'
+    };
+    $(function(){
+        Encounters.setVars('{url_files}{my_photo_default}');
+    })
+    Encounters.setParam('{param_uid}');
+</script>
+<div class="column_main grey list_user">
+    <div class="column_main_head">
+        <div class="title">
+            <h1 class="find_new_friends_in_city_now">{l_header_menu_encounters}</h1>
+            {users_filter_head}
+            <div class="cl"></div>
+        </div>
+    </div>
+    <div class="column_main_cont">
+    <div class="bl_browse">
+        {users_filter}
+        <div class="bl_encounter">
+            <div id="encounter_box" <!-- begin_encounters -->style="display:block;"<!-- end_encounters -->>
+            <h2 id="enc_page_info" class="encounters_info">{question_encounters}</h2>
+            <div class="pl_btn encounters_info" style="position:relative;">
+                <img id="loader_btn" src="{url_tmpl_main}images/loader_m_clear.gif" class="encounters_loader">
+                <img onclick="Encounters.undoLike(); return false;" id="encounters_undo" class="encounters_undo" src="{url_tmpl_main}images/undo.png" alt="" />
+                <input onclick="Encounters.likeToMeet('N'); return false;" type="button" class="btn red btn_encounters" value="{a_encounters_no}" />
+                <input onclick="Encounters.likeToMeet('M'); return false;" type="button" class="btn yellow btn_encounters" value="{a_encounters_maybe}" />
+                <input onclick="Encounters.likeToMeet('Y'); return false;" type="button" class="btn lgreen btn_encounters" value="{a_encounters_yes}" />
+            </div>
+            <div class="cl"></div>
+            <div id="enc_page_photo" class="encounters_info">
+                {photo}
+            </div>
+            <div class="cl"></div>
+            <div id="enc_page_carousel" class="encounters_info">
+                {carousel}
+            </div>
+            </div>
+
+            <div class="no_one_here_yet encounters_no_one_here" <!-- begin_users_list_noitems -->style="display:block;"<!-- end_users_list_noitems -->>
+                <div class="bl_no_one">
+                    <div class="people">{l_no_one_found_please_edit_the_filter_above}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cl"></div>
+    </div>
+    <div class="cl"></div>
+</div>
+
+<div class="column_narrow">
+    {profile_column_narrow}
+</div>

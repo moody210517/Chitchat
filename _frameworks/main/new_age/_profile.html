@@ -1,0 +1,331 @@
+<script>
+//var vdrag = false;
+</script>
+
+<script language="javascript" type="text/javascript">
+$('body').on('click', '[id ^= close_]', function(e){
+    var wnd = $(this).attr('id').replace('close_', '');
+    $('#xajax_' + wnd).remove();
+})
+<!-- begin_profile_status_edit -->
+$(function(){
+   $('#profile_status_{user_id}').editable({lAdd: '{l_your_status_here}',
+                                 lEdit: '{l_edit_your_status}',
+                                 lSave: '{l_saving}',
+                                 classInput: 'profile_editable_input',
+                                 inputLength: 25,
+                                 empty: true,
+                                 type: 'status'
+   });
+});
+<!-- end_profile_status_edit -->
+</script>
+
+<style type="text/css">
+.nav_title, .header_big {
+	//display: none;
+}
+</style>
+<!-- <div style="height: 20px;"></div>
+ --><div  class="contentpad content_bgrnd">
+
+<!-- begin_users_list_item -->
+	<div class="fullprof">
+		<table width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+			<td width="128" valign="top">
+
+   <!-- begin_recorder -->
+    <div style="position:absolute; z-index: 1; width:auto; left:148px; margin-top:5px; height:24px;_left:123px;">
+     <a href="#" onclick="showRecorder(); return false;"><img src="{url_tmpl_main}images/hi_label.png" width="29" height="24" class="png"/></a>
+    </div>
+   <!-- end_recorder -->
+
+
+				<div class="img_med_border frame_profile">
+                    <a href="{url_main}{url_page}?offset={offset}&display=photo{params}"><img border="0" alt="{name}, {city}, {country}" src="{url_files}{photo}" width="126" height="140" ></a>
+                    <a class="icon_photo" href="{url_main}{url_page}?offset={offset}&display=photo{params}"></a>
+                </div>
+
+
+	<!-- begin_profile_status -->
+		<div class="staus_profile_page">
+            <div id="profile_status_{user_id}" class="profile_editable"><a href="{url_main}{url_page}?offset={offset}&display=photo{params}">{profile_status}</a></div>
+		</div>
+	<!-- end_profile_status -->
+
+			</td>
+			<td align="left" style="padding-left:10px; padding-top:0px; margin-top:0px;" valign="top">
+
+			<!-- begin_recorder_swf -->
+            <div id="rec"  class="rec_profile" style="margin-top: -6px;">
+                <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"
+				codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0"
+				width="220" height="140" id="myListen" align="middle">
+				<param name="allowScriptAccess" value="sameDomain" />
+				<param name="movie" value="{url_main}_server/recorder/myListen.swf?login={name}&unique={unique}&l_recorder_title={l_listener_title}&texter={l_listener_end}" />
+				<param name="quality" value="high" />
+				<param name="wmode" value="transparent" />
+				<param name="bgcolor" value="#7ea6b6" />
+
+				<embed src="{url_main}_server/recorder/myListen.swf?login={name}&unique={unique}&l_recorder_title={l_listener_title}&texter={l_listener_end}" wmode="transparent"
+				quality="high" bgcolor="#7ea6b6" width="220" height="140" name="myListen" align="middle"
+				allowScriptAccess="sameDomain" type="application/x-shockwave-flash"
+				pluginspage="http://www.macromedia.com/go/getflashplayer" />
+				</object>
+			</div>
+			<!-- end_recorder_swf -->
+
+				<div class="user_name" >
+					<div style="float:left">{name}<!-- begin_couple --> +  <a style='color: #b0c4cb' href="{url_main}search_results.php?display=profile_info&name={couple_name}">{couple_name}</a><!-- end_couple -->
+
+                                            <!-- begin_action_button -->
+                                             <!-- begin_friend_add -->
+                                               <a {cannot_self_1} href="{url_main}friends_add.php?uid={user_id}"><img src="{url_tmpl_main}images/add_fr.png" width="22" height="20"  class="png" border="0" /></a>
+                                                <!-- end_friend_add -->
+                                                <!-- begin_love_calculator -->
+                                                    <a {cannot_self_2} href="{url_main}love_calculator.php?id={user_id}"><img border="0" width="22" height="20" src="{url_tmpl_main}images/calc.gif" /></a>
+                                                <!-- end_love_calculator -->
+                                                <!-- begin_bookmark_add -->
+                                                    <a {cannot_self_3} href="{url_main}bookmark_friends.php?action=add&id={user_id}"><img border="0" width="22" height="20" src="{url_tmpl_main}images/bookmark.png" class="png" /></a>
+                                                <!-- end_bookmark_add -->
+                                                <!-- begin_contact_blocking -->
+                                                    <a {cannot_self_2} href="{url_main}user_block_edit.php?uid={user_id}"><img border="0" width="22" height="20" src="{url_tmpl_main}images/block_user.png" class="png" /></a>
+                                                <!-- end_contact_blocking -->
+                                             <!-- end_action_button -->
+                                        </div>
+
+					<!-- begin_back_to_results -->
+						<div class="photos_deleted" style="float:right; padding:5px 10px 0px 0px;"><i class="left"></i><span>
+						<a href='{url_main}{url_page}?offset={offset}{params}'>{l_back_to_results}</a></span><i class="right"></i></div>
+					<!-- end_back_to_results -->
+				</div>
+
+				<div class="body_text font_12px">
+                <!-- begin_orientation -->
+                {l_i_am}: <b>{i_am}</b><br>
+                <!-- end_orientation -->
+                {l_age}: <b>{age}</b>
+				<!-- begin_biorythm -->
+				|<span>&nbsp;<a href="{url_main}biorythm.php?id={user_id}" class="pri_little">{l_view_biorythm}</a></span>
+				<!-- end_biorythm -->
+				<br>{l_location}: <b>{city}{state}{country}</b>
+                                <!-- begin_relationship -->
+                                <br>{l_relationship}: <b>{relation}</b>
+                                <!-- end_relationship -->
+                                </div>
+				<div class="body_text font_12px">
+					{l_last_activity}: <span class="pri_text_bold"><b>{last_visit}</b></span>
+    				<!-- begin_blog -->
+					|<span>&nbsp;<a href="{url_main}blogs_blog.php?id={user_id}" class="pri_little">{l_view_blog}</a></span>
+					<!-- end_blog -->
+
+
+
+					<!-- begin_friends -->
+					<br>{l_friends}:
+					<!-- begin_friend --><!-- begin_friend_separator -->, <!-- end_friend_separator --><a href="{url_main}search_results.php?name={fr_name}&display=profile"><b>{fr_name}</b></a><!-- end_friend --><!-- begin_friends_more -->{l_friends_more_and} <a href="search_results.php?display=friends&name={name}&uid={user_id}">{friends_more_view}</a>
+					<!-- end_friends_more -->
+					<!-- end_friends -->
+
+				</div>
+                    <!-- begin_interactive_options -->
+				<div class="bl_profile_list">
+                    <ul>
+                        <li>
+                            <!-- begin_favorite_add -->
+                            <img src="{url_tmpl_main}images/keditbookmarks.png" class="png" border="0"> <a {cannot_self_2} href="{url_main}mail_favorite_add.php?id={user_id}" class="pri_tiny" >{l_add_to_favorites}</a>
+                            <!-- end_favorite_add -->
+                        </li>
+                        <!-- begin_mobile_off -->
+                        <li>
+                            <!-- begin_games -->
+                                <img src="{url_tmpl_main}images/games.png" class="png" border="0"> <a href="{url_main}games.php?id={user_id}" class="pri_tiny" >{l_play_games}</a>
+                            <!-- end_games -->
+                        </li>
+                        <li>
+                            <!-- begin_videochat -->
+                                <img src="{url_tmpl_main}images/cam.png" class="png" border="0"> <a href="#" onclick="xajax_video_invite({user_id});" class="pri_tiny" >{l_have_videochat}</a>
+                            <!-- end_videochat -->
+                        </li>
+                        <li>
+                            <!-- begin_audiochat -->
+                                <img src="{url_tmpl_main}images/linphone.png" class="png" border="0"> <a href="#" onclick="xajax_audio_invite({user_id});" class="pri_tiny" >{l_have_audiochat}</a>
+                            <!-- end_audiochat -->
+                        </li>
+                         <!-- end_mobile_off -->
+                    </ul>
+				</div>
+                    <!-- end_interactive_options -->
+			</td>
+		</tr></table>
+	</div>
+
+
+	<br>
+
+	<div class="profile_wrapper" align="left">
+	<ul class="profile_menu" style="margin: 0 0 15px;">
+                <!-- begin_is_not_me -->
+		<li class="pm_mail"><a {cannot_self_2} href="{url_main}mail_compose.php?id={user_id}" title="{l_send_mail}">{l_send_mail_profile}</a></li>
+		        <!-- begin_wink_on -->
+                    <li class="pm_wink"><a {cannot_self_2} href="{url_main}show_interest.php?offset={offset}&cmd=interest&id={user_id}&display=profile{params}" title="{l_show_interest}">{l_show_interest_profile}</a></li>
+                <!-- end_wink_on -->
+		<!-- begin_postcard_module -->
+		<li class="pm_postcard"><a {cannot_self_2} href="{url_main}postcard.php?user_id={user_id}" title="{l_send_postcard}">{l_send_postcard}</a></li>
+		<!-- end_postcard_module -->
+
+                <!-- begin_im -->
+                <li class="pm_im">
+                    <a id="im_link_top" href="#" onclick="xajax_im_open({user_id}, event); return false;" title="{l_send_im}">{l_send_im_profile}</a>
+                </li>
+                <!-- end_im -->
+                <!-- begin_im_off -->
+                <li class="pm_im pm_inactive">{l_send_im_profile}</li>
+                <!-- end_im_off -->
+                <!-- end_is_not_me -->
+
+		<li class="pm_photos"><a href="{url_page}?offset={offset}&display=photo{params}" title="{l_profile_pics} ({num_photo})">{l_profile_pics}</a></li>
+		<!-- begin_gallery -->
+			<li class="pm_gallery"><a href="{url_main}gallery_albums_user.php?user_id={user_id}" title="{l_photos}">{l_photos}</a></li>
+		<!-- end_gallery -->
+		<!-- begin_yes_audio -->
+			<li class="pm_music"><a href="{url_main}music_search.php?list_type=by_user&user_id={user_id}" title="{l_music}">{l_music}</a></li>
+	    <!-- end_yes_audio -->
+		<!-- begin_yes_vids -->
+			<li class="pm_vids"><a href="{url_main}videogallery_watch_view.php?id={last_vid}" title="{l_vids}">{l_vids}</a></li>
+	    <!-- end_yes_vids -->
+		<!-- begin_wall -->
+			<li class="pm_wall"><a  href="{url_page}?offset={offset}&display={display_wall}{params}" title="{l_news_feed}">{l_news_feed}</a></li>
+		<!-- end_wall -->
+	</ul>
+	<div class="cl"></div>
+	<script type="text/javascript" src="_server/editor/swfobject.js{cache_version_param}"></script>
+	<div id="flashcontent" style="margin-left:-18px; margin-right:-20px;"></div>
+<style type="text/css">
+#complite {
+width:185px!important;
+}
+
+#searchn {
+width:185px!important;
+}
+
+.box .bbbr {
+padding:15px!important;
+}
+
+#profile {
+width:610px!important;
+}
+</style>
+    <!-- begin_flash_profile -->
+    {flash_profile}
+    <!-- end_flash_profile -->
+    <!-- begin_profile_html -->
+    <div style="float:left; width:100%;">
+        <!-- begin_fields_text -->
+        <!-- begin_text -->
+        <div class="profcontent pri_med_bold" style="border-color:#D9F4FC">{field}</div>
+        <div class="profcontent body light txt_field">
+                {value}
+        </div>
+        <!-- end_text -->
+        <!-- begin_textarea -->
+        <div class="profcontent pri_med_bold" style="border-color:#D9F4FC">{field}</div>
+        <div class="profcontent body light txt_field">
+                {value}
+        </div>
+        <!-- end_textarea -->
+        <!-- end_fields_text -->
+        <div class="fullprof_bot_border">
+                <!-- begin_fields_about -->
+                <div class="pri_med_bold profcontent" style="border-color:#D9F4FC">{l_about} {user_name}</div>
+                <div class="profcontent light">
+                        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                            <!-- begin_fields_about_1 -->
+                            <!-- begin_int_1 -->
+                            <tr>
+                                <td width="250" align="right" valign="top" class="body_text" style="padding-right: 4px;">{field}:</td>
+                                <td align="left" valign="top" class="body_text"><b>{value}</b></td>
+                            </tr>
+                            <!-- end_int_1 -->
+                            <!-- end_fields_about_1 -->
+                            <!-- begin_fields_about_2 -->
+                            <!-- begin_int_2 -->
+                            <tr>
+                                <td width="250" align="right" valign="top" class="body_text" style="padding-right: 4px;">{field}:</td>
+                                <td align="left" valign="top" class="body_text"><b>{value}</b></td>
+                            </tr>
+                            <!-- end_int_2 -->
+                            <!-- end_fields_about_2 -->
+                       </table>
+                </div>
+                <!-- end_fields_about -->
+                <!-- begin_fields_other -->
+                <div class="pri_med_bold profcontent" style="border-color:#D9F4FC">{l_other_information}</div>
+                <div class="profcontent light">
+                        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                            <!-- begin_fields_other_3 -->
+                            <!-- begin_int_3 -->
+                            <tr>
+                                <td width="250" align="right" valign="top" class="body_text" style="padding-right: 4px;">{field}:</td>
+                                <td align="left" valign="top" class="body_text"><b>{value}</b></td>
+                            </tr>
+                            <!-- end_int_3 -->
+                            <!-- end_fields_other_3 -->
+                        </table>
+                </div>
+                <!-- end_fields_other -->
+        </div>
+    </div>
+    <!-- end_profile_html -->
+<br />
+	  <ul class="profile_menu" style="margin: 15px 0 0;">
+                <!-- begin_is_not_me -->
+                <!-- begin_mail_on -->
+                <li class="pm_mail"><a {cannot_self_2} href="{url_main}mail_compose.php?id={user_id}" title="{l_send_mail}">{l_send_mail_profile}</a></li>
+                <!-- end_mail_on -->
+                <!-- begin_wink_on -->
+                    <li class="pm_wink"><a {cannot_self_2} href="{url_main}show_interest.php?offset={offset}&cmd=interest&id={user_id}&display=profile{params}" title="{l_show_interest}">{l_show_interest_profile}</a></li>
+                <!-- end_wink_on -->
+       <!-- begin_postcard_module -->
+		<li class="pm_postcard"><a {cannot_self_2} href="{url_main}postcard.php?user_id={user_id}" title="{l_send_postcard}">{l_send_postcard}</a></li>
+		<!-- end_postcard_module -->
+		<!-- begin_im -->
+			<li class="pm_im">
+				<a id="im_link_bottom" href="#" onclick="xajax_im_open({user_id}, event); return false;" title="{l_send_im}">{l_send_im_profile}</a>
+			</li>
+		<!-- end_im -->
+	    <!-- begin_im_off -->
+			<li class="pm_im pm_inactive">{l_send_im_profile}</li>
+		<!-- end_im_off -->
+                <!-- end_is_not_me -->
+		<li class="pm_photos"><a href="{url_page}?offset={offset}&display=photo{params}" title="{l_profile_pics} ({num_photo})">{l_profile_pics}</a></li>
+		<!-- begin_gallery -->
+			<li class="pm_gallery"><a href="{url_main}gallery_albums_user.php?user_id={user_id}" title="{l_photos}">{l_photos}</a></li>
+		<!-- end_gallery -->
+		<!-- begin_yes_audio -->
+			<li class="pm_music"><a href="{url_main}music_search.php?list_type=by_user&user_id={user_id}" title="{l_music}">{l_music}</a></li>
+	    <!-- end_yes_audio -->
+		<!-- begin_yes_vids -->
+			<li class="pm_vids"><a href="{url_main}videogallery_watch_view.php?id={last_vid}" title="{l_vids}">{l_vids}</a></li>
+	    <!-- end_yes_vids -->
+		<!-- begin_wall -->
+			<li class="pm_wall"><a href="search_results.php?display={display_wall}&name={name}" title="{l_news_feed}">{l_news_feed}</a></li>
+		<!-- end_wall -->
+	</ul>
+	<div style="clear:both;"></div>
+	</div>
+<!-- end_users_list_item -->
+
+	<div align="right" class="fullprof body_little" style="padding-bottom: 11px; padding-top: 6px;">
+
+    </div>
+</div>
+<!-- begin_mail_sent -->
+<script language="javascript" type="text/javascript">
+$(function(){
+    alert('{l_sent_mail_alert}');
+})
+</script>
+<!-- end_mail_sent -->

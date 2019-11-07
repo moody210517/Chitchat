@@ -1,0 +1,66 @@
+{header}
+<style>
+    .tab{height: auto;}
+</style>
+<form class="one" name="PhotoForm" method="post" enctype="multipart/form-data" action="{url_main}profile_photo_edit.php?cmd=submit&id={photo_id}">
+
+{profile_menu}
+
+<tfoot>
+	<tr>
+		<td align="right">
+			<a href="#" onclick="document.forms['PhotoForm'].submit();"  class="orange_btn btn">{l_save_changes}</a>
+		</td>
+	</tr>
+</tfoot>
+
+<tbody>
+	<tr>
+		<td class="content">
+			<table class="edit" cellspacing="0" cellpadding="0">
+			<tr class="first">
+				<!-- begin_new_photo_item --><th class="add" style="text-align: right;"><div>{l_photo_n}{photo_n}</div></th><!-- end_new_photo_item -->
+				<!-- begin_photo_item --><th style="text-align: center;"><a href="{url_files}{user_id}_{photo_id}_b.jpg" target="_blank"><div style="background-image:url('{url_files}{user_id}_{photo_id}_s.jpg');width: 90px;"></div></a></th><!-- end_photo_item -->
+				<td style="width: 85%;">
+                    <textarea style="height:97px; margin-top: 6px; margin-left: 7px; resize:vertical;" name="description" onfocus="if(this.value=='{l_description}'){this.value='';};" onblur="if(this.value==''){this.value='{l_description}';};">{description}</textarea>
+				</td>
+			</tr>
+            <!-- begin_file_upload_fields -->
+			<tr>
+				<!-- begin_new_upload_name --><th colspan="2">{l_choose_a_way}</th><!-- end_new_upload_name -->
+				<!-- begin_upload_name --><th colspan="2">{l_replace_file}{photo_n}:</th><!-- end_upload_name -->
+			</tr>
+			<!-- begin_upload_from_file -->
+			<tr class="second" id="notsafari">
+				<td colspan="2">
+					<input name="photo_file" class="file" type="file" style="background:black;"/>
+				</td>
+			</tr>
+			<!-- end_upload_from_file -->
+			<tr class="second">
+				<td colspan="2">
+					<input name="photo_url" id="URLtext" class="txt" type="text" value="{photo_url}" onfocus="if(this.value=='{l_file_url}'){this.value='';};" onblur="if(this.value==''){this.value='{l_file_url}';};"/>
+					<label>{max_size}</label>
+				</td>
+			</tr>
+            <!-- end_file_upload_fields -->
+			</table>
+		</td>
+	</tr>
+</tbody>
+
+</table>
+
+</td></tr></table>
+
+</form>
+
+{user_menu}
+
+<!-- begin_photo_error -->
+<script type="text/javascript"><!--
+alert('{photo_error_message}');
+//--></script>
+<!-- end_photo_error -->
+
+{footer}

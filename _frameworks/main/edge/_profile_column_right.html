@@ -1,0 +1,270 @@
+<div class="column right">
+    <!-- begin_right_column -->
+    <!-- begin_right_column_item -->
+
+    <!-- begin_right_column_friend -->
+    <div id="right_column_friend_bl" data-uid="{profile_column_user_id}" class="bl <!-- begin_right_column_friend_show -->to_show<!-- end_right_column_friend_show -->">
+        <div class="title"><a href="{url_main}{url_page_user_friends_list}">{right_column_friend_title}</a></div>
+        <div class="wrap_width">
+            <ul class="list_photo">
+                <!-- begin_right_column_friend_item -->
+                <li id="right_column_friend_item_{right_column_friend_item_user_id}" class="right_column_friend_item">
+                    <!-- begin_right_column_friend_item_link_im -->
+                    <i onclick="sendMessages('{right_column_friend_item_user_id}');" class="fa fa-commenting open_im_user" aria-hidden="true"></i>
+                    <!-- end_right_column_friend_item_link_im -->
+                    <a class="profile_photo_s_{right_column_friend_item_user_id} to_hide" href="{url_main}{right_column_friend_item_url}" title="{right_column_friend_item_name}" >
+                        <img onload="onLoadProfilePhoto('.profile_photo_s_{right_column_friend_item_user_id}')" src="{right_column_friend_item_photo}" alt=""/>
+                    </a>
+                </li>
+                <!-- end_right_column_friend_item -->
+            </ul>
+        </div>
+    </div>
+    <!-- end_right_column_friend -->
+
+    <!-- begin_right_column_friend_online -->
+    <div id="right_column_friend_online_bl" class="bl <!-- begin_right_column_friend_online_show -->to_show<!-- end_right_column_friend_online_show -->">
+        <div class="title"><a href="{url_main}{url_page_my_friends_online}">{right_column_friend_online_title}</span></a></div>
+        <div class="wrap_width">
+            <ul class="list_photo">
+                <!-- begin_right_column_friend_online_item -->
+                <li id="right_column_friend_online_item_{right_column_friend_online_item_user_id}" class="right_column_friend_item">
+                    <i onclick="sendMessages('{right_column_friend_online_item_user_id}');" class="fa fa-commenting open_im_user" aria-hidden="true"></i>
+                    <a class="profile_photo_s_{right_column_friend_online_item_user_id} to_hide" href="{url_main}{right_column_friend_online_item_url}" title="{right_column_friend_online_item_name}" >
+                        <img onload="onLoadProfilePhoto('.profile_photo_s_{right_column_friend_online_item_user_id}')" src="{right_column_friend_online_item_photo}" alt=""/>
+                    </a>
+                </li>
+                <!-- end_right_column_friend_online_item -->
+                <li class="more">
+                    <a class="dots <!-- begin_right_column_friend_online_more_hide -->to_hide_bl<!-- end_right_column_friend_online_more_hide -->" href="{url_main}{url_page_my_friends_online}" title="{l_show_more}">
+                        <div>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- end_right_column_friend_online -->
+
+    <!-- begin_right_column_profile_info -->
+    <div class="bl">
+        <div class="title">{l_profile_about_title}</div>
+        <div class="wrap_width">
+            <ul class="list_info">
+                <!-- begin_right_column_profile_info_location -->
+                <li <!-- begin_right_column_profile_info_location_hide -->class="hide"<!-- end_right_column_profile_info_location_hide -->>
+                    <span class="icon city">
+                        <i class="fa fa-home" aria-hidden="true"></i>
+                    </span>
+                    <strong>{l_city}:</strong> <span id="right_column_city">{right_column_profile_info_city}</span>
+                </li>
+                <!-- end_right_column_profile_info_location -->
+                <li>
+                    <span class="icon">
+                        <i class="fa fa-birthday-cake" aria-hidden="true"></i>
+                    </span>
+                    <strong>{right_column_profile_info_birth_title}:</strong> <span id="right_column_birth">{right_column_profile_info_birth}</span>
+                </li>
+                <!-- begin_right_column_profile_info_gender -->
+                <li>
+                    <!-- begin_right_column_profile_info_gender_f -->
+                    <span class="icon gender">
+                        <i class="fa fa-female" aria-hidden="true"></i>
+                    </span>
+                    <strong>{l_gender}:</strong> <span id="right_column_gender">{l_female}</span>
+                    <!-- end_right_column_profile_info_gender_f -->
+                    <!-- begin_right_column_profile_info_gender_m -->
+                    <span class="icon gender">
+                        <i class="fa fa-male" aria-hidden="true"></i>
+                    </span>
+                    <strong>{l_gender}:</strong> <span id="right_column_gender">{l_male}</span>
+                    <!-- end_right_column_profile_info_gender_m -->
+                </li>
+                <!-- end_right_column_profile_info_gender -->
+                <li id="right_column_about_me_bl" class="right_column_about_me_bl <!-- begin_right_column_profile_info_about_me_show-->to_show<!-- end_right_column_profile_info_about_me_show-->">
+                    <span class="icon">
+                        <i class="fa fa-id-card-o" aria-hidden="true"></i>
+                    </span>
+                    <span id="right_column_about_me">{right_column_profile_info_about_me}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- end_right_column_profile_info -->
+
+    <!-- begin_right_column_send_message -->
+    <div class="bl">
+        <div class="wrap wrap_width">
+            <button onclick="sendMessages('{profile_column_user_id}');" class="btn btn-block btn-info btn_send_message">
+                <span class="icon message"></span>
+                <span>{l_send_a_message}</span>
+            </button>
+        </div>
+    </div>
+    <!-- end_right_column_send_message -->
+
+    <!-- begin_right_column_friend_add -->
+    <div class="bl bl_column_friend_add <!-- begin_right_column_friend_add_hide -->to_hide_btn<!-- end_right_column_friend_add_hide -->">
+        <div class="wrap wrap_width">
+            <button data-param="{right_column_friend_add_param}" data-uid="{right_column_friend_add_user_id}" data-user-name="{right_column_friend_add_user_name}" data-cmd="{right_column_friend_add_cmd}" class="btn btn-block btn-success btn_friend_add menu_friends_add_edge">
+                <span class="icon_fa"><i class="fa {right_column_friend_add_icon}" aria-hidden="true"></i></span>
+                <span class="btn_title">{right_column_friend_add_title}</span>
+            </button>
+        </div>
+    </div>
+    <!-- end_right_column_friend_add -->
+
+    <!-- begin_right_column_user_menu -->
+    <div class="bl">
+        <div class="wrap wrap_width">
+            <div class="more">
+                <span data-target="#profile_user_more_menu_bl" class="dropdown-toggle link" data-toggle="collapse" role="button" aria-haspopup="true">
+                    {l_profile_menu_more_options}<span class="caret"></span>
+                </span>
+                <ul id="profile_user_more_menu_bl" class="profile_user_more_menu_bl more_menu_collapse menu_collapse collapse">
+                    <!-- begin_right_column_user_menu_item -->
+                    <li class="<!-- begin_right_column_user_menu_item_active -->active<!-- end_right_column_user_menu_item_active -->">
+                        <a data-param="{right_column_user_menu_item_param}" data-uid="{profile_column_user_id}" data-user-name="{profile_column_user_name}" data-cmd="{right_column_user_menu_item_cmd}" class="{right_column_user_menu_item_key}">
+                            <span>
+                                <span data-cl-loader="more_menu_loader" class="icon_fa"><i class="fa {right_column_user_menu_item_icon}" aria-hidden="true"></i></span>
+                                <span class="btn_title">{right_column_user_menu_item_title}</span>
+                            </span>
+                        </a>
+                    </li>
+                    <!-- end_right_column_user_menu_item -->
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- end_right_column_user_menu -->
+
+    <!-- begin_right_menu -->
+    <!-- begin_right_column_menu -->
+    <div class="bl">
+        <ul class="custom_menu">
+            <!-- begin_right_column_menu_item -->
+            <li><a href="{url_main}{right_column_menu_item_url}">{right_column_menu_item_title}</a></li>
+            <!-- end_right_column_menu_item -->
+        </ul>
+    </div>
+    <!-- end_right_column_menu -->
+    <!-- end_right_menu -->
+
+    <!-- begin_right_banner -->
+    <!-- begin_banner_right_column_list -->
+    <div class="bl bl_banner_r">
+        <div class="bl_ads" <!-- begin_banner_right_column_list_hide -->style="display:none;"<!-- end_banner_right_column_list_hide -->>
+            <!-- begin_banner_right_column -->
+            {banner_right_column}
+            <!-- end_banner_right_column -->
+        </div>
+        <div class="link">
+            <!-- begin_banner_right_column_list_action1 -->
+            <a class="link_show_banner <!-- begin_banner_right_column_show -->action_show<!-- end_banner_right_column_show -->" href="" onclick="return false;">{banner_right_column_title}</a>
+            <!-- end_banner_right_column_list_action1 -->
+        </div>
+    </div>
+    <!-- end_banner_right_column_list -->
+    <!-- end_right_banner -->
+
+    <!-- begin_right_column_videos_list_1 -->
+    <div class="bl">
+        <div class="title">
+            <a id="right_column_videos_list_1_count" href="{url_main}{url_page_user_vids_list}" onclick="clPages.setOrder('{right_column_videos_list_1_type_order}', '{right_column_videos_list_1_title}'); return false;">{right_column_videos_list_1_title}</a>
+            <!--{right_column_videos_list_1_title}-->
+        </div>
+        <div class="wrap_width">
+            <ul class="list_photo">
+                <!-- begin_right_column_videos_list_1_item -->
+                <li class="column_videos_item_{right_column_videos_list_1_item_id}">
+                    <a class="column_video_{right_column_videos_list_1_item_id} to_hide" href="#null" title="{right_column_videos_list_1_item_desc}" onclick="openGallery(false, 'v_{right_column_videos_list_1_item_id}', true, '{right_column_videos_list_1_item_user_id}'); return false;">
+                        <img src="{right_column_videos_list_1_item_url}" alt=""/>
+                    </a>
+                    <script>
+                        onLoadImgFromList($('.column_video_{right_column_videos_list_1_item_id}.to_hide'), '{right_column_videos_list_1_item_url}');
+                        clProfilePhoto.setVisibleMediaData('v_{right_column_videos_list_1_item_id}', {right_column_videos_list_1_item_info});
+                    </script>
+                </li>
+                <!-- end_right_column_videos_list_1_item -->
+            </ul>
+        </div>
+    </div>
+    <!-- end_right_column_videos_list_1 -->
+    <!-- begin_right_column_videos_list_2 -->
+    <div class="bl">
+        <div class="title">
+            <a id="right_column_videos_list_2_count" href="{url_main}{url_page_user_vids_list}" onclick="clPages.setOrder('{right_column_videos_list_2_type_order}','{right_column_videos_list_2_title}'); return false;">{right_column_videos_list_2_title}</a>
+            <!--{right_column_videos_list_2_title}-->
+        </div>
+        <div class="wrap_width">
+            <ul class="list_photo">
+                <!-- begin_right_column_videos_list_2_item -->
+                <li class="column_videos_item_{right_column_videos_list_2_item_id}">
+                    <a class="column_video_{right_column_videos_list_2_item_id} to_hide" href="#null" title="{right_column_videos_list_2_item_desc}" onclick="openGallery(false, 'v_{right_column_videos_list_2_item_id}', true, '{right_column_videos_list_2_item_user_id}'); return false;">
+                        <img src="{right_column_videos_list_2_item_url}" alt=""/>
+                    </a>
+                    <script>
+                        onLoadImgFromList($('.column_video_{right_column_videos_list_2_item_id}.to_hide'), '{right_column_videos_list_2_item_url}');
+                        clProfilePhoto.setVisibleMediaData('v_{right_column_videos_list_2_item_id}', {right_column_videos_list_2_item_info});
+                    </script>
+                </li>
+                <!-- end_right_column_videos_list_2_item -->
+            </ul>
+        </div>
+    </div>
+    <!-- end_right_column_videos_list_2 -->
+
+    <!-- begin_right_column_photos_list_1 -->
+    <div class="bl">
+        <div class="title">
+            <a id="right_column_photos_list_1_count" href="{url_main}{url_page_user_vids_list}" onclick="clPages.setOrder('{right_column_photos_list_1_type_order}','{right_column_photos_list_1_title}'); return false;">{right_column_photos_list_1_title}</a>
+            <!--{right_column_photos_list_1_title}-->
+        </div>
+        <div class="wrap_width">
+            <ul class="list_photo">
+                <!-- begin_right_column_photos_list_1_item -->
+                <li class="column_photos_item_{right_column_photos_list_1_item_id}">
+                    <a onclick="openGallery(event,'{right_column_photos_list_1_item_id}'); return false;" class="column_photo_{right_column_photos_list_1_item_id} to_hide" href="#null" title="{right_column_photos_list_1_item_desc}">
+                        <img src="{right_column_photos_list_1_item_url}" alt=""/>
+                    </a>
+                    <script>
+                        onLoadImgFromList($('.column_photo_{right_column_photos_list_1_item_id}.to_hide'), '{right_column_photos_list_1_item_url}');
+                        clProfilePhoto.setVisibleMediaData('{right_column_photos_list_1_item_id}', {right_column_photos_list_1_item_info});
+                    </script>
+                </li>
+                <!-- end_right_column_photos_list_1_item -->
+            </ul>
+        </div>
+    </div>
+    <!-- end_right_column_photos_list_1 -->
+    <!-- begin_right_column_photos_list_2 -->
+    <div class="bl">
+        <div class="title">
+            <a id="right_column_photos_list_2_count" href="{url_main}{url_page_user_vids_list}" onclick="clPages.setOrder('{right_column_photos_list_2_type_order}','{right_column_photos_list_2_title}'); return false;">{right_column_photos_list_2_title}</a>
+            <!--{right_column_photos_list_2_title}-->
+        </div>
+        <div class="wrap_width">
+            <ul class="list_photo">
+                <!-- begin_right_column_photos_list_2_item -->
+                <li class="column_photos_item_{right_column_photos_list_2_item_id}">
+                    <a onclick="openGallery(event,'{right_column_photos_list_2_item_id}'); return false;" class="column_photo_{right_column_photos_list_2_item_id} to_hide" href="#null" title="{right_column_photos_list_2_item_desc}">
+                        <img src="{right_column_photos_list_2_item_url}" alt=""/>
+                    </a>
+                    <script>
+                        onLoadImgFromList($('.column_photo_{right_column_photos_list_2_item_id}.to_hide'), '{right_column_photos_list_2_item_url}');
+                        clProfilePhoto.setVisibleMediaData('{right_column_photos_list_2_item_id}', {right_column_photos_list_2_item_info});
+                    </script>
+                </li>
+                <!-- end_right_column_photos_list_2_item -->
+            </ul>
+        </div>
+    </div>
+    <!-- end_right_column_photos_list_2 -->
+
+
+    <!-- end_right_column_item -->
+    <!-- end_right_column -->
+</div>

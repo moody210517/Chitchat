@@ -1,0 +1,96 @@
+{header}
+
+<script type="text/javascript">
+	function IsEmpty(aTextField) {
+	   if ((aTextField.value.length==0) ||
+	   (aTextField.value==null)) {
+	      return true;
+	   }
+	   else { return false; }
+	}
+	function ValidateForm(form)
+	{
+	   if(IsEmpty(form.query)) 
+	   { 
+	      alert("Please enter something to search!") 
+	      form.query.focus(); 
+	      return false; 
+	   } 
+	 
+	   return true;
+	} 
+	function ValidateAddForm()
+	{
+	   if($("#rad3").length && document.getElementById('rad3').checked) 
+	   { 
+	      if(!confirm("{l_are_you_sure_you_want_to_delete_your_profile}")) {
+			return false;
+		  } 
+	   } 
+	 
+	   document.forms['account'].submit();
+
+	} 
+</script>
+
+<form name="account" action="" method="post" onsubmit="return ValidateAddForm();">
+<table class="cnt" cellspacing="0" cellpadding="0"><tr><td>
+
+<table cellspacing="0" cellpadding="0" class="tab">
+<tbody>
+	<tr>
+		<td class="content">
+			<table class="list" cellpadding="0" cellspacing="0">
+			<tr>
+				<th colspan="2">{l_change_password}</th>
+			</tr>
+			<tr>
+				<td class="left"><label>{l_new_password}:</label></td>
+				<td class="right"><input name="new_password" class="txt" type="password"/></td>
+			</tr>
+			<tr>
+				<td class="left"><label>{l_confirm}:</label></td>
+				<td class="right"><input name="new_password_confirmation" class="txt" type="password"/></td>
+			</tr>
+			<!-- begin_profile_status -->
+			<tr>
+				<th colspan="2">{l_account_status}</th>
+			</tr>
+			<tr>
+				<td class="rads" colspan="2">
+                    <!-- begin_hide_profile-->
+					<input id="rad1" name="account_status" value="active" class="radio" type="radio" {account_status_active_checked}/><label for="rad1">{l_active}</label>
+					<input id="rad2" name="account_status" value="hidden" class="radio" type="radio" {account_status_hidden_checked}/><label for="rad2">{l_hidden}</label>
+                    <!-- end_hide_profile-->
+                    <!-- begin_delete_profile-->
+                    <input id="rad3" name="account_status" value="delete" class="radio" type="radio"/><label for="rad3">{l_delete_account}</label>
+                    <!-- end_delete_profile-->
+                 </td>
+			</tr>
+            <!-- end_profile_status -->
+			<tr>
+				<td class="save" colspan="2">
+					<p>
+						<a href="#" onclick="ValidateAddForm();"  class="orange_btn btn">{l_save_changes}</a>
+						<label>{l_press_if_you_made_changes}</label>
+					</p>
+				</td>
+			</tr>
+			</table>
+		</td>
+	</tr>
+</tbody>
+</table>
+
+</td></tr></table>
+</form>
+
+{user_menu}
+
+<!-- begin_error -->
+<script type="text/javascript"><!--
+alert("{error_message}"); 
+//--></script>
+<!-- end_error -->
+
+{footer}

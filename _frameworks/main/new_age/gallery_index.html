@@ -1,0 +1,78 @@
+
+
+{header}
+<div class="wrapper-wide">
+<div class="userinfo-c-wide">
+	<div class="userinfo" style="text-align:center;">
+		
+
+        <div id="gallery">
+        
+            <div class="gallery_top ltc">
+                <div class="rtc">
+                    <div class="buck">
+                        <div class="my_pic">
+                            <a style="background: none; font-weight: bold; padding-right:10px; margin-top: 0px; text-decoration: underline;" href="{url_main}gallery_admin_upload.php" style="font-weight: normal">{l_add_photos}</a>
+                            <i class="l"></i><span><a href="{url_main}gallery_admin.php" style="font-weight: normal">{l_your_gallery}</a></span><i class="r"></i>
+                        </div>
+							<a href="gallery_albums_all.php?sort=views"><h2>{l_popular_albums}</h2></a>
+                    </div>
+                </div>
+            </div>
+            
+            <ul class="alb">
+            <!-- begin_albums_popular -->
+                <li>
+                    <div class="trans">
+                    <a href="gallery_album.php?album_id={album_id}" class="name">{album_name}</a>
+                    (<a target="_blank" href="search_results.php?display=profile&name={user_name}">{user_name}</a>)
+                    </div>
+                    <a href="gallery_album.php?album_id={album_id}"><img src="{url_files}{gallery_thumb_path}" width="100" height="100" /></a>                    
+                </li>
+            <!-- end_albums_popular -->
+			<!-- begin_no_albums_popular -->
+			<li>
+                <div class="trans"></div>
+            </li>
+			<!-- end_no_albums_popular -->			
+            </ul>
+            
+            <div class="gallery_pop">
+				<a href="gallery_albums_all.php?sort=date"><h2>{l_new_albums}</h2></a>
+            </div>
+            
+			<ul class="alb">
+            <!-- begin_albums_new -->
+            <li>
+                <div class="trans">
+                <a href="gallery_album.php?album_id={album_id}" class="name">{album_name}</a>
+                (<a target="_blank" href="search_results.php?display=profile&name={user_name}">{user_name}</a>)
+                </div>
+                <a href="gallery_album.php?album_id={album_id}"><img src="{url_files}{gallery_thumb_path}" width="100" height="100" /></a>                
+            </li>
+            <!-- end_albums_new -->
+			<!-- begin_no_albums_new -->
+			<li>
+                <div class="trans"></div>
+            </li>
+			<!-- end_no_albums_new -->
+            </ul>
+			
+            <div class="gallery_bottom lbc">
+                <div class="rbc">
+                    <div class="buck">
+                    
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+				
+            
+            
+            		
+	</div>	
+	<div class="userinfo-links-wide"></div>
+</div>
+</div>
+{footer}

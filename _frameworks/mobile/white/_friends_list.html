@@ -1,0 +1,13 @@
+<div class="block purple">
+	<!-- begin_my_friends -->
+	<p class="title"><b>{l_my_friends}</b><!-- begin_view_all_my --> | <a href="{url_main}profile_view_friends.php?user_id={user_id}">{l_view_all}</a><!-- end_view_all_my --> <!-- begin_friend_requests -->| {l_requests}: <b><a href="{url_main}view_friend_requests.php">{n_friend_requests}</a></b><!-- end_friend_requests --></p>
+	<!-- end_my_friends -->
+	<!-- begin_users_friends -->
+	<p class="title"><b>{name}{l_users_friends}</b><!-- begin_view_all --> | <a href="{url_main}profile_view_friends.php?user_id={user_id}">{l_view_all}</a><!-- end_view_all --> <!-- begin_add_as_friend -->| [+]&nbsp;<a href="{url_main}add_as_friend.php?user_id={user_id}" onclick='return confirm("{l_are_you_sure}")'>{l_add_as_friend}</a><!-- end_add_as_friend --></p>
+	<!-- end_users_friends -->
+	<table class="userlist" cellspacing="0" cellpadding="0"><tr>
+		<!-- begin_friend_photo --><td><div style="background-image:url('{url_files}{photo}');"><a href="{url_main}profile_view.php?user_id={user_id}">{name_first}</a></div></td><!-- end_friend_photo -->
+		<!-- begin_friend_no_photo --><td><div style="background-image:url('{url_tmpl_mobile}img/usr/0.jpg');"><a href="{url_main}profile_view.php?user_id={user_id}">{name_first}</a></div></td><!-- end_friend_no_photo -->
+		<!-- begin_friend_blank --><td><div style="background-image:url('{url_tmpl_mobile}img/usr/0.jpg');"></div></td><!-- end_friend_blank -->
+	</tr></table>
+</div>

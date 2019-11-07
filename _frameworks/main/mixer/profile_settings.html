@@ -1,0 +1,341 @@
+{header}
+{ims}
+
+
+
+<div id="profile" class="box"><div class="bbt"><div class="bbb"><div class="bbl"><div class="bbr"><div class="bbtl"><div class="bbtr"><div class="bbbl"><div class="bbbr">
+
+{profile_menu}
+
+	<div align="center" class="contentpad content_bgrnd" style="width:550px;">
+		<div class="fullprof">
+<script Language="JavaScript" type="text/javascript">
+  var blockSubmission = false;
+  function removeSubmissionBlock() {
+    blockSubmission = false;
+  }
+  function isSubmissionAllowed() {
+    if(blockSubmission){
+       return false;
+    }
+    return;
+   }
+  document.onclick = isSubmissionAllowed;
+  document.onkeydown = isSubmissionAllowed;
+
+  function onValidatePersonalForm() {
+    var form = document.forms['PersonalForm'];
+    return true;
+  }
+  function validatePersonalForm() {
+    blockSubmission = true;
+     if (typeof beforePersonalFormValidation != 'undefined') {
+       beforePersonalFormValidation();
+    }
+    var validated = onValidatePersonalForm();
+    if (validated && (typeof uponSuccessfulPersonalFormValidation != 'undefined')) {
+      validated = uponSuccessfulPersonalFormValidation();
+    }
+    else if (!validated && (typeof uponUnsuccessfulPersonalFormValidation != 'undefined')) {
+      uponUnsuccessfulPersonalFormValidation();
+    }
+    if (!validated) {
+      removeSubmissionBlock();
+    }
+    return validated;
+  }
+  function submitPersonalForm() {
+   if (validatePersonalForm()) document.PersonalForm.submit();
+    }
+</script>
+<form  name="PersonalForm" method="POST" action="{url_main}profile_settings.php?cmd=mail" style="padding: 0px; margin: 0px;">
+			<div align="left"  class=header_big >
+				<img src="{url_tmpl_main}img/pers_set.png" class="png_behavior" align="absmiddle" alt="" width=48 height=48> {l_personal_settings}
+			</div>
+			<div>
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+						                <!-- begin_field -->
+                <!-- begin_field_select -->
+                <tr>
+					<td width="451" class="list_view1" style="height: 32px; padding-right: 10px" align="left">
+						{label}
+					</td>
+                    <td class="list_view1" align="right" colspan=2>
+                        <select name="{name_select}" style="width: 150px;">
+                            <!-- begin_field_select_item -->
+                            <option {selected} value="{value}">{title}</option>
+                            <!-- end_field_select_item -->
+                        </select>
+                    </td>
+                </tr>
+                <!-- end_field_select -->
+
+                <!-- begin_field_radio -->
+                <tr><td width="451"  class="list_view2" style="height: 32px;" align="left">{label}</td><td align="left" colspan="2" class="list_view2">
+                        <table cellpadding="0" cellspacing="0" border="0" height="14"><tr>
+                                <!-- begin_field_radio_item -->
+                                <td width="10"><input type="radio" value={value} name="{name_radio}" id="radio_{name_radio}_{value}" style="margin:0 5px 0 0;"  value="{value}" {checked}>
+                                </td>
+                               <td width="14" style="padding: 0 10px 0 0;" class="body_little">{title}</td>
+                                <!-- end_field_radio_item -->
+                            </tr></table>
+                    </td></tr>
+                <!-- end_field_radio -->
+                <!-- end_field -->
+
+                <!-- begin_timezone -->
+                    <tr>
+                        <td width="451" class="list_view1" style="" align="left">
+                            {l_choose_timezone}
+
+                            <!-- begin_info_timezone -->
+                            <script type="text/javascript">
+                                $('#timezone').change(function(){
+                                    var zone = $(this).val();
+                                    $.post('{url_administration}ajax.php', {cmd: 'timezone', zone: zone}, function(data) {
+                                        $('#info_timezone').html(data);
+                                    });
+                                });
+                            </script>
+                            <div id="info_timezone" style="margin-left: 2px;">{info_timezone}</div>
+                            <!-- end_info_timezone -->
+                        </td>
+                        <td class="list_view1" align="center" colspan=2>
+                            <select id="timezone" class="styler_settings" style="width:150px;" name="timezone">{selectbox_options}</select>
+                        </td>
+                    </tr>
+                <!-- end_timezone -->
+
+
+				</table>
+			</div>
+			<div align="right" style="padding-top: 5px; padding-bottom: 13px;">
+				<table border="0" cellpadding="0" cellspacing="0"><tr><td><div class="button_border_2"><input type="button" value="{l_update_settings}" onClick=" submitPersonalForm();" class="button" style="width: 127px; padding-left: 5px; padding-right: 5px; cursor: pointer; cursor: hand;" title="{l_update_settings}" onMouseOver="window.status='{l_update_settings}'; return true;" onMouseOut="window.status=''; return true;"></div></td></tr></table>
+			</div>
+</form>
+
+            <!-- begin_my_chat -->
+			<div align="left" class=header_big>
+                 <img src="{url_tmpl_main}img/fr.png" class="png_behavior" align="absmiddle" alt="" width=48 height=48>
+				{l_chat_settings}
+
+			</div>
+                <script type="text/javascript">
+				  var cmessage = "{chat_message}";
+				  if (cmessage != "") {
+				  	alert("{chat_message}")
+				  }
+				</script>
+
+				<!-- begin_photo-->
+					<!-- begin_photo_item-->
+						<div style="float:left; width:180px; margin-bottom:20px;">
+							<div class="img_med_border" style="width:127px; height:141px; padding-right:0px; padding-bottom:0px; margin-bottom:15px;">
+								<img border="0" src="{url_main}/_server/chat/avatar/portrait{avatar}.jpg" width=126 height=140 class=img_border_blue>
+							</div>
+                            <!-- begin_photo_item_selected-->
+                            <div id ="setAvatar" style="margin:-83px 27px 0px 0px; height:83px; text-align:right;">
+                                <img border="0" alt="Сheck" src="{url_tmpl_main}/images/check.png">
+                            </div>
+                            <!-- end_photo_item_selected-->
+							<input id ="btnSelect{avatar}" style="width:132px;" type="button" value="{l_choose}" onClick="setAvatar('{avatar}'); return false;" class="button" style="width:60px; padding-left: 5px; padding-right: 5px; cursor: pointer; cursor: hand;" title="{l_choose}" onMouseOver="window.status='{l_choose}'; return true;" onMouseOut="window.status=''; return true;">
+						</div>
+						<!-- begin_photo_after3 --><!-- end_photo_after3 -->
+						<!-- begin_photo_odd-->
+						<!-- end_photo_odd-->
+						<!-- begin_photo_even-->
+						<!-- end_photo_even-->
+					<!-- end_photo_item-->
+					<!-- begin_nophoto_item-->
+						<!-- begin_nophoto_odd-->
+						<!-- end_nophoto_odd-->
+						<!-- begin_nophoto_even-->
+						<!-- end_nophoto_even-->
+					<!-- end_nophoto_item-->
+				<!-- end_photo-->
+			<div style="clear:both;"></div>
+            <!-- end_my_chat -->
+
+			<!--
+			<div class="keyline" style="height: 1px;"><table border="0" cellpadding="0" cellspacing="0"><tr><td></td></tr></table></div>
+
+			<form  name="IMForm" method="POST" action="{url_main}profile_settings.php?cmd=im" style="padding: 0px; margin: 0px;">
+			<div align="left" class="ter_big" style="padding-top: 18px; padding-bottom: 6px;">
+				IM Settings
+			</div>
+			<div align="left">
+				<table cellpadding="0" cellspacing="0" border="0"><tr>
+					<td width="100%" align="left">
+						<div style="padding-top: 10px;">
+							<table cellpadding="0" cellspacing="0" border="0"><tr>
+								<td align="left" class="body_text" style="padding-top: 3px; padding-bottom: 2px;">
+									<b>Show new IM in:</b>
+								</td><td colspan="4" style="padding-top: 3px; padding-bottom: 2px;" align="left">
+									<select name="set_im_popup" style="width: 111px; margin-left: 5px;"><option value="N" {im_popup_off}>Message Center</option><option value="Y" {im_popup_on}>Popup Window</option></select>
+								</td>
+							</tr><tr>
+								<td align="left" class="body_text">
+									<b>Notify of missed IMs by email:</b>
+								</td>
+								<td width="20"><input type="radio" name="set_im_mail" value="Y" {im_mail_on} style="margin-left: 5px;"></td>
+								<td width="24" class="body_little">Yes</td>
+								<td width="20"><input type="radio" name="set_im_mail" value="N" {im_mail_off} style="margin-left: 5px;"></td>
+								<td width="52" class="body_little">No</td>
+							</tr><tr>
+								<td align="left" class="body_text" style="padding-top: 3px; padding-bottom: 2px;">
+								</td><td colspan="4" style="padding-top: 3px; padding-bottom: 2px;" align="left">
+								</td>
+							</tr><tr>
+								<td align="left" class="body_text" style="padding-top: 3px; padding-bottom: 2px;">
+								</td><td colspan="4" style="padding-top: 3px; padding-bottom: 2px;" align="left">
+									<table border="0" cellpadding="0" cellspacing="0"><tr><td><div class="button_border_2"><input type="submit" value="UPDATE SETTINGS" class="button_2" style="width: 127px; padding-left: 5px; padding-right: 5px; cursor: pointer; cursor: hand;" title="UPDATE SETTINGS" onMouseOver="window.status='UPDATE SETTINGS'; return true;" onMouseOut="window.status=''; return true;"></div></td></tr></table>
+									<br>
+								</td>
+							</table>
+						</div>
+					</td>
+				</tr></table>
+			</div>
+			</form>
+
+			<div class="keyline" style="height: 1px;"><table border="0" cellpadding="0" cellspacing="0"><tr><td></td></tr></table></div>
+			-->
+
+
+
+
+
+<script Language="JavaScript" type="text/javascript">
+  function onValidateUpdatePasswordForm() {
+    var form = document.forms['UpdatePasswordForm'];
+    // "new_password" field validation.
+    if (!(validateNotTwoFields(form['new_password'],"{l_password}",form['join_handle'],'Username'))) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "verify_new_password" field validation.
+    if (!(validateTwoFields(form['verify_new_password'],"{l_verify_password}",form['new_password'],"{l_password}"))) {
+      removeSubmissionBlock();
+      return false;
+    }
+    return true;
+  }
+  function validateUpdatePasswordForm() {
+    blockSubmission = true;
+     if (typeof beforeUpdatePasswordFormValidation != 'undefined') {
+       beforeUpdatePasswordFormValidation();
+    }
+    var validated = onValidateUpdatePasswordForm();
+    if (validated && (typeof uponSuccessfulUpdatePasswordFormValidation != 'undefined')) {
+      validated = uponSuccessfulUpdatePasswordFormValidation();
+    }
+    else if (!validated && (typeof uponUnsuccessfulUpdatePasswordFormValidation != 'undefined')) {
+      uponUnsuccessfulUpdatePasswordFormValidation();
+    }
+    if (!validated) {
+      removeSubmissionBlock();
+    }
+    return validated;
+  }
+  function submitUpdatePasswordForm() {
+   if (validateUpdatePasswordForm()) document.UpdatePasswordForm.submit();
+    }
+</script>
+<form  name="UpdatePasswordForm" method="POST" action="{url_main}profile_settings.php?cmd=password" onSubmit="return validateUpdatePasswordForm();" style="padding: 0px; margin: 0px;">
+
+	<input type='hidden' name='join_handle' value='pl72'>
+			<div align="left"  class=header_big >
+            <img src="{url_tmpl_main}img/ch_pass.png" class="png_behavior" align="absmiddle" alt="" width=48 height=48>
+				{l_change_password}
+			</div>
+			<div>
+				<table cellpadding="0" cellspacing="0" border="0"><tr>
+					<td width="312" valign="top" class="body_text" style="padding-right: 10px;" align="left">
+						{l_to_change_password}<br><br>{l_select_password}
+					</td>
+					<td width="224" valign="top" class="body_little" align="left">
+						<div>
+							{l_enter} <b>{l_current}</b> {l_password}
+							<br>
+							<input type="password" name="old_password" style="width: 224px;" size="38">
+						</div>
+						<div style="padding-top: 3px; padding-bottom: 3px;">
+							{l_enter} <b>{l_new}</b> {l_password}
+							<br>
+							<input type="password" name="new_password" style="width: 224px;" size="38">
+						</div>
+						<div>
+							{l_confirm} <b>{l_new}</b> {l_password}
+							<br>
+							<input type="password" name="verify_new_password" style="width: 224px;" size="38">
+						</div>
+						<div class="pri_little_bold">
+							{password_message}
+						</div>
+					</td>
+				</tr></table>
+			</div>
+			<div align="right" style="padding-top: 5px; padding-bottom: 13px;">
+                <table border="0" cellpadding="0" cellspacing="0"><tr><td><div class="button_border_2"><input type="button" value="{l_update_settings}" onClick=" submitUpdatePasswordForm();" class="button" style="width: 127px; padding-left: 5px; padding-right: 5px; cursor: pointer; cursor: hand;" title="{l_update_settings}" onMouseOver="window.status='{l_update_settings}'; return true;" onMouseOut="window.status=''; return true;"></div></td></tr></table>
+			</div>
+</form>
+<!-- begin_profile_status -->
+
+			<div align="left"  class=header_big>
+            <img src="{url_tmpl_main}img/prof_stat.png" class="png_behavior" align="absmiddle" alt="" width=48 height=48>
+				{l_profile_status}
+			</div>
+
+				<table cellpadding="0" cellspacing="0" border="0" width=100%><tr>
+			<!-- begin_hide-->
+					<td width="350" class="body_text" style="padding-top: 15px; padding-bottom: 20px; padding-right: 25px;" align="left">
+						<span class="sec_med_bold">{l_hide_your_profile}</span><br>
+						{l_too_popular} <b>{l_other_members}</b> {l_30_minutes}
+					</td>
+					<td align=right>
+							<div style="width:100%; text-align:right;"><input type="button" value="{l_hide_profile}" onClick=" location.href='{url_main}profile_settings.php?cmd=hide';" class="button" title="{l_hide_profile}" onMouseOver="window.status='{l_hide_profile}'; return true;" onMouseOut="window.status=''; return true;" style="width: 127px;"></div>
+					</td>
+				</tr>
+			<!-- end_hide-->
+			<!-- begin_active-->
+                                <tr>
+					<td width="350" class="body_text" style="padding-top: 15px; padding-bottom: 20px; padding-right: 25px;" align="left">
+						<span class="sec_med_bold">{l_active_your_profile}</span><br>
+						{l_show_yourself}
+					</td>
+					<td align=right>
+							<div style="width:100%; text-align:right;"><input type="button" value="{l_active_profile}" onClick=" location.href='{url_main}profile_settings.php?cmd=active';" class="button" title="{l_active_profile}" onMouseOver="window.status='{l_active_profile}'; return true;" onMouseOut="window.status=''; return true;" style="width: 127px;"></div>
+					</td>
+				</tr>
+                        <!-- end_active-->
+                        <!-- begin_delete_profile -->
+                                <tr>
+					<td width="350" class="body_text" style="padding-top: 20px; padding-bottom: 15px; padding-right: 25px;" align="left">
+						<span class="sec_med_bold">{l_delete_your_profile}</span>
+                                                <br>
+						{l_we_hope}<br><br><b>{l_just_remember}&nbsp;&nbsp;{l_brand_new_profile}</b>
+					</td>
+					<td align=right>
+						<div style="width:100%; text-align:right;"><input type="button" value="{l_delete_profile}" onClick=" location.href='{url_main}profile_delete.php';" class="button" title="{l_delete_profile}" onMouseOver="window.status='{l_delete_profile}'; return true;" onMouseOut="window.status=''; return true;"  style="width: 127px;"></div>
+					</td>
+				</tr>
+                        <!-- end_delete_profile -->
+                                </table>
+                        <!--end_profile_status -->
+
+
+		</div>
+
+
+	</div>
+
+
+
+</div></div></div></div></div></div></div></div></div>
+{complite}
+<!-- begin_save_password -->
+<script>
+alert('{l_save_password}');
+</script>
+<!-- end_save_password -->
+{footer}

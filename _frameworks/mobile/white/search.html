@@ -1,0 +1,65 @@
+{header}
+<script language="javascript" type="text/javascript">
+$(function(){
+   $('#country').location({first_option_state: '{l_select_all_list}', first_option_city: '{l_select_all_list}'});
+   $('#state').location({method: 'cities', first_option_city: '{l_select_all_list}'});
+});
+</script>
+<form name="search" method="GET" action="{url_main}search_results.php">
+<table class="cnt searchpage" cellspacing="0" cellpadding="0"><tr><td>
+
+<table cellspacing="0" cellpadding="0" class="tab">
+
+<tfoot>
+	<tr>
+		
+		<td align="right"><a href="#" onclick="document.forms['search'].submit();"  class="orange_btn btn">{l_search_sign}</a></td>
+	</tr>
+</tfoot>
+
+<tbody>
+	<tr>
+		<td class="content">
+			<table class="searchform" cellspacing="0" cellpadding="0">
+			<tr><td colspan="2" class="title">{l_please_fill_in_at_least_one_field_below_to_start_searching_for_someone}:</td></tr>
+			<tr>
+				<th><label>{l_country}:</label></th>
+				<td>
+                    
+                    <select name="country" id="country">
+                        <option value="0">{l_select_all_list}</option>
+                        {country_options}
+                    </select>
+                </td>
+			</tr>
+            <tr>
+				<th><label>{l_state_province}:</label></th>
+				<td>
+                    <select name="state" id="state">
+						<option value="0">{l_select_all_list}</option>
+ 						{state_options}
+						</select>
+                </td>
+			</tr>
+            <tr>
+				<th><label>{l_city}:</label></th>
+				<td>
+                    <select name="city" id="city">
+						<option value="0">{l_select_all_list}</option>
+ 						{city_options}
+						</select>
+                </td>
+			</tr>
+			<tr><th><label>{l_age}:</label></th><td><input name="p_age_from" type="text" class="txt narrow"/><label class="to">{l_to}</label><input name="p_age_to" type="text" class="txt narrow"/></td></tr>
+			<tr><th><label>{l_keyword}:</label></th><td><input name="keyword" type="text" class="txt"/></td></tr>
+			<tr><th><label>{l_nickname}:</label></th><td><input name="name_key" type="text" class="txt"/></td></tr>
+			</table>
+		</td>
+	</tr>
+</tbody>
+</table>
+
+</td></tr></table>
+
+{user_menu}
+{footer}

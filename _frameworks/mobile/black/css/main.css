@@ -1,0 +1,40 @@
+.login {position:absolute;top:2px;z-index:2;text-align:left; width:100%;}
+.login table {width:96%;height:46px;margin:0 auto;}
+.login th {padding:0 0 1px 0;vertical-align:middle;text-align:left;}
+.login td {width:50%;padding:0 3px 1px 3px;vertical-align:middle;}
+.login .txt {width:90%;margin:0 auto;font-weight:bold;color:#000;background:#fff;}
+.login .btn {width:42px;margin:0 auto;color:#68465f;background:#ddd3db url('../img/btn/purple.gif') repeat-x 0 100%;}
+.one .btn {width:75px;float:right;}
+
+.regblock {padding:6px 0;min-height:120px;text-align:center;}
+.reg {width:312px;height:120px;border-collapse:collapse;margin:0 auto;}
+.reg th {width:80px;padding:0 5px 0 0;font-size:12px;line-height:12px;text-align:right;vertical-align:middle;}
+.reg td {padding:4px 0px 3px 0;vertical-align:middle; text-align:left;}
+.reg th label {display:block;}
+.reg .txt {width:224px;display:block;}
+.reg .captcha {width:170px;}
+.reg select {width:232px;padding:0;float:left;}
+.reg input.checkbox {display:block;float:left;}
+.reg label.checkbox {padding:0;display:block;float:left;color:#fff;font-weight:normal;}
+.reg label.checkbox a {color:#fff;}
+.reg .month {width:110px;margin:0 6px 0 0;}
+.reg .day {width:46px;margin:0 6px 0 0;}
+.reg .year {width:64px;}
+
+.purple .reg th label {color:#fff;}
+.purple .reg .txt,.purple .reg select {color:#fff;background:#741f72;}
+
+.welcome {padding:6px;min-height:120px;line-height:24px;}
+.welcome b {padding:0 0 6px 0;font-size:30px;line-height:30px;font-weight:normal;display:block;}
+
+.alert .alertbg {border:1px solid #8a8a8a;background:#7b7b7b url('../img/block/grey.png') repeat-x 0 0;}
+.alert .btn {color:#eade9b;background:#7b7b7b url('../img/btn/grey.gif') repeat-x 0 100%;}
+
+.terms td {padding:2px 5px;line-height:20px;color:#fff;}
+
+.purple {background:#b577b3 url('../img/block/purple.png') repeat-x 0 0;}
+.purple-main {background:#333;}
+.purple p.title,.purple p.title a {color:#eade9b;}
+.purple .btn {background:#d5cad3 url('../img/btn/purple.gif') repeat-x 0 100%;}
+
+.banner_footer {text-align: center; margin-top: 3px;}

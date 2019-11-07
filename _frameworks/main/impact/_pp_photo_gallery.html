@@ -1,0 +1,367 @@
+<!-- cont_head -->
+    <h2 id="pp_photo_whose_photos" class="fl_left" >{whose_photos} <span id="gallery_photo_position">{position_photo}</span></h2>
+    <!-- carousel_photo -->
+    <div id="pp_photo_carousel" class="carousel">
+
+        <ul id="pp_photo_carousel_list" class="pp_photos_carousel_list_item">
+            <!-- begin_photo_carousel_item -->
+            <li data-photos-carousel-id="{photo_id}" id="pp_photos_carousel_item_{photo_id}" class="pp_photos_carousel_item {photo_carousel_item_status}">
+				<a data-gallery-carousel-item="{photo_id}" id="pp_photos_carousel_link_{photo_id}" class="pp_photos_carousel_link {photo_carousel_item_set}" href="#" style="opacity: 0">
+                    <!-- begin_photo_carousel_item_private -->
+                    <span class="icon_private_photo"></span>
+                    <!-- end_photo_carousel_item_private -->
+
+                    <img id="gallery_carousel_{photo_id}" src="{url_files}{photo_r}" alt="" onload="$(this).closest('a').fadeTo(0,1)"/>
+				</a>
+            </li>
+            <!-- end_photo_carousel_item -->
+            <!-- begin_photo_empty_carousel_item -->
+            <li class="pp_photos_carousel_item_empty"></li>
+            <!-- end_photo_empty_carousel_item -->
+        </ul>
+        <div id="pp_photo_carousel_prev" class="prev"></div>
+		<div id="pp_photo_carousel_next" class="next"></div>
+        <script>
+            var pp_gallery_photos = $('#pp_gallery_photos_content'),
+                pp_gallery_photos_content = $('#pp_gallery_photos_content'),
+                pp_gallery_photos_close = $('#pp_gallery_photos_close'),
+                pp_gallery_photo_one_cont = $('#pp_gallery_photo_one_cont'),
+                pp_gallery_photos_carousel_item = $('.pp_photos_carousel_item', pp_gallery_photos),
+                pp_photos_carousel_link = $('.pp_photos_carousel_link', pp_gallery_photos),
+                pidNew='{photo_main_id}';
+                isOldStatus=Photo.isPublic(pidNew);
+
+            for (var pid in Photo.galleryPhotosInfo) {
+                delete Photo.galleryPhotosInfo[pid];
+            }
+            Photo.galleryPhotosInfo={photos_info};
+            Photo.galleryMediaData[pidNew]=Photo.galleryPhotosInfo[pidNew];
+            //console.log(Photo.galleryPhotosInfo);
+            //Photo.fuid = '{friend_id}';
+
+            Photo.setData({
+               fuid : '{friend_id}'*1,
+               uid : '{user_id}',
+            });
+
+            Photo.counter.private = '{count_private}';
+            Photo.counter.public = '{count_public}';
+            Photo.galleryCurrenPhotoId = pidNew;
+            //Photo.isShowGalleryPhoto = true;  //???
+
+            var updateCarousel = function(carousel) {
+                var firstElement = carousel._first;
+                var lastElement = carousel._last;
+                $('#pp_photo_carousel_list').find('li').each(function(index, el){
+                    if ($(el).offset().left >= firstElement.offset().left && $(el).offset().left <= lastElement.offset().left) {
+                        $(el).find('img').css({visibility: 'visible'});
+                        var a = $(el).find('a');
+                        a.css({visibility: 'visible'});
+                        if (a.hasClass('hidden')) {
+                            a.removeClass('hidden');
+                        }
+                        $(el).css({visibility: 'visible'});
+                    } else {
+                        $(el).find('img').css({visibility: 'hidden'});
+                        var a = $(el).find('a');
+                        a.css({visibility: 'hidden'});
+                        if (a.hasClass('active')) {
+                            a.addClass('hidden');
+                        }
+                        $(el).css({visibility: 'hidden'});
+                    }
+                });
+            };
+
+            var pp_photo_carousel = $('#pp_photo_carousel')
+                .on('jcarousel:createend',function(event, carousel){
+                    $(this).jcarousel('scroll', $('#pp_photos_carousel_item_'+{photo_main_id}), false);
+                    updateCarousel(carousel);
+                }).jcarousel({
+                    vertical: false,
+                    list: '.pp_photos_carousel_list_item',
+                    items: '.pp_photos_carousel_item, .pp_photos_carousel_item_empty',
+                    //wrap: 'last',
+                    transitions: Modernizr.csstransitions ? {
+                                 transforms: Modernizr.csstransforms,
+                                 transforms3d: Modernizr.csstransforms3d,
+                                 easing: 'linear'
+                    }:false,
+                    animation:{duration: 1000}
+                });
+
+
+            $('.prev, .next', pp_photo_carousel).click(function(){
+                pp_photo_carousel.on('jcarousel:fullyvisiblein', 'li', function(event, carousel) {
+                    var elem = $(event.target);
+                    elem.find('img').css({visibility: 'visible'});
+                    var a = elem.find('a');
+                    a.css({visibility: 'visible'});
+                    if (a.hasClass('hidden')) {
+                        a.removeClass('hidden');
+                    }
+                    elem.css({visibility: 'visible'});
+                });
+
+                pp_photo_carousel.on('jcarousel:fullyvisibleout', 'li', function(event, carousel) {
+                    setTimeout(function(){
+                        var elem = $(event.target);
+                        elem.find('img').css({visibility: 'hidden'});
+                        var a = elem.find('a');
+                        a.css({visibility: 'hidden'});
+                        if (a.hasClass('active')) {
+                            a.addClass('hidden');
+                        }
+                        elem.css({visibility: 'hidden'});
+                    }, 1000);
+                });
+
+                pp_photo_carousel.jcarousel('scroll', $(this).is('.prev')?'-=12':'+=12');
+            })
+
+            var photo_carousel_next = $('#pp_photo_carousel_next1');
+            photo_carousel_next.on('mousedown',function(){
+                pp_photo_carousel.jcarousel('scroll', '+=12');
+                if (lv==pp_photo_carousel.jcarousel('items').last()[0]){
+                    photo_carousel_next.stop().animate({marginRight:'-1px',opacity:.5},
+                                                {complete:function(){
+                                                    //setTimeout(function(){
+                                                        photo_carousel_next.delay(10).animate({marginRight:'0px',opacity:1},100);
+                                                        //pp_photo_carousel.jcarousel('scroll', '-=3');
+                                                    //},10);
+                                                 },
+                                                 specialEasing:{marginRight:'easeOutQuint'},
+                                                 duration:500
+                                                })
+                }
+                return false;
+            });
+
+            $('a.pp_photos_carousel_link').hover(
+                function(e){
+                    $(this).closest('ul').css('z-index', 4);
+                },
+                function(e){
+                    $(this).closest('ul').css('z-index', 0);
+                }
+            );
+
+            /*$(window).resize(function(){
+                pp_photo_carousel.jcarousel('scroll','+0',false);
+            });*/
+        </script>
+    </div>
+<!-- /carousel_photo -->
+<!-- /cont_head -->
+
+<!-- cont_photo -->
+    <div class="gallery_photo_action">
+
+
+     <div id="request_access_action" class="request_access" class="txt_bottom">
+        <!-- begin_request_access_action -->
+        <!--<div class="request_access" class="txt_bottom" style="border:1px solid red;">-->
+            <!-- begin_request_private -->
+            <button id="request_private" class="btn pink small <!-- begin_request_private_center -->center<!-- end_request_private_center -->" onclick="Photo.sendRequestPrivateAccess('1','{modeAnimate}'); return false;">{l_request_access}</button>
+            <!-- end_request_private -->
+            <!-- begin_request_private_or -->
+            <span id="or_private">{l_or}</span>
+            <!-- end_request_private_or -->
+            <!-- begin_scip_private -->
+            <a id="scip_private" class="" onclick="Photo.privateScip(); return false;" href="#">{l_skip_private_photos}</a>
+            <!-- end_scip_private -->
+        <!--</div>-->
+        <!-- end_request_access_action -->
+    </div>
+
+        <div id="pp_gallery_photos_rating_average" class="pp_gallery_photos_rating">
+            <p><strong>{l_average_rating}</strong></p>
+            <div class="bl_slider">
+                <div class="slider_bg">
+                    <div class="slider_range" style="width:{rating_average_average}%;">
+                        <div class="count">
+                            <div class="count_decor"></div>
+                            <div class="count_cont">{rating_average_balls}</div>
+                        </div>
+                    </div>
+                </div>
+                <span id="pp_gallery_photos_my_ball" class="txt_rating">
+                    {l_your_rating} <strong>{rating_average_my_ball}</strong>
+                    <a onclick="Photo.confirmDeleteRate(); return false;" class="icon_delete" href="#"><span></span></a>
+                </span>
+            </div>
+        </div>
+
+        <div id="pp_gallery_photos_rating_scale" class="pp_gallery_photos_rating">
+            <p><strong>{l_rate_this_photo}</strong></p>
+            <ul class="list_rate">
+                <li onclick="Photo.setRate(1); return false;"><a href="#">1</a></li>
+                <li onclick="Photo.setRate(2); return false;"><a href="#">2</a></li>
+                <li onclick="Photo.setRate(3); return false;"><a href="#">3</a></li>
+                <li onclick="Photo.setRate(4); return false;"><a href="#">4</a></li>
+                <li onclick="Photo.setRate(5); return false;"><a href="#">5</a></li>
+                <li onclick="Photo.setRate(6); return false;"><a href="#">6</a></li>
+                <li onclick="Photo.setRate(7); return false;"><a href="#">7</a></li>
+                <li onclick="Photo.setRate(8); return false;"><a href="#">8</a></li>
+                <li onclick="Photo.setRate(9); return false;"><a href="#">9</a></li>
+                <li onclick="Photo.setRate(10); return false;"><a href="#">10</a></li>
+            </ul>
+        </div>
+
+        <script>
+            var pp_gallery_photo_one = $('#gallery_photo_one'),
+                pp_gallery_photo_one_img = $('#gallery_photo_one_img'),
+                pp_photo_show_arrows = $('#photo_show_prev, #photo_show_next'),
+                pp_gallery_request_access = $('.request_access',pp_gallery_photos),
+                pp_gallery_photo_rating=$('.pp_gallery_photos_rating'),
+                pp_gallery_photos_rating_scale=$('#pp_gallery_photos_rating_scale'),
+                pp_gallery_photos_rating_scale_li=$('#pp_gallery_photos_rating_scale ul li'),
+                pp_gallery_photos_rating_average=$('#pp_gallery_photos_rating_average'),
+                pp_gallery_photos_my_ball=$('#pp_gallery_photos_my_ball'),
+                loader_rate_photo_gallery=$('#loader_rate_photo_gallery');
+
+            $('#request_private_title').text('{marked_photos_private_set}');
+            //$('#request_access_action').css('opacity',1);
+
+            Photo.initGallery();
+        </script>
+    </div>
+<!-- /cont_photo -->
+
+<!-- cont_footer -->
+    <div class="cont_footer">
+        <div class="photo_funk">
+            <!-- begin_photo_edit_desc -->
+            <a class="link_edit" id="pp_gallery_photos_pen" href="#"></a>
+            <!-- end_photo_edit_desc -->
+            <span id="pp_gallery_photos_desc" class="photo_gallery_desc text-overflow" title="{photo_description}"<!-- begin_photo_desc_color -->style="color:white"<!-- end_photo_desc_color -->>{photo_description}</span>
+            <!-- begin_photo_edit_desc_frm -->
+            <div style="display: none; float: left; margin-top: -6px;" id="pp_frm_gallery_photos_desc" class="frm">
+                  <input style="width: 420px;" id="pp_frm_gallery_photos_desc_inp" onkeyup="if(isKeyPressed(event, 13)){Photo.descPhotoGallerySave(); return false;}" class="inp" type="text" value=""/>
+
+                  <button  onclick="Photo.descPhotoGalleryCancel(true); return false;" class="btn small grey">{l_cancel}</button> <!-- noactive -->
+
+                  <button  onclick="Photo.descPhotoGallerySave(); return false;" class="btn small lgreen">{l_save}</button>
+            </div>
+            <!-- end_photo_edit_desc_frm -->
+            <!--begin_photo_not_checked -->
+            <span id="gallery_photos_photo_not_checked" class="photo_gallery_not_checked" <!--begin_photo_not_checked_hide -->style="display:none;"<!--end_photo_not_checked_hide -->>{l_being_checked_by_moderators}</span>
+            <!--end_photo_not_checked -->
+            <!--begin_make_profile_photo -->
+            <a id="gallery_photos_make_profile" onclick="Photo.setPhotoDefault(); return false;" class="link_make_profile_pic" <!--begin_make_profile_photo_hide -->style="display:none;"<!--end_make_profile_photo_hide --> href="#">{l_make_profile_picture}</a>
+            <!--end_make_profile_photo -->
+        </div>
+
+        <div id="pp_gallery_photos_footer" class="foot">
+            <div id="pp_gallery_photos_frm_comment" <!-- begin_comment_post_frm -->style="display:none;" <!-- end_comment_post_frm -->class="frm_post">
+                <div class="pic">
+                <a href="{comment_current_user_profile_link}">
+
+                <img data-main-photo="{current_user_photo_id}" src="{url_files}{current_user_photo}" alt="" /></a></div>
+                <div class="post">
+                    <textarea id="pp_gallery_photos_comment" class="placeholder" placeholder="{l_write_your_comment}"></textarea>
+                    <button id="pp_gallery_photos_post" onclick="Photo.postComment()" class="btn_post"></button>
+                </div>
+                <div class="cl"></div>
+            </div>
+
+            <div id="pp_gallery_photos_list_comment">
+                <div id="pp_gallery_photos_list_comment_items" class="items" >
+                    <!-- begin_comment -->
+                    <div id="gallery_photos_comment_{comment_id}" class="frm_post <!-- begin_comment_hide -->no_visible<!-- end_comment_hide -->">
+                    <div class="pic">
+                        <!-- begin_old_url -->
+                            <a href="search_results.php?display={comment_display_profile}&uid={comment_user_id}">
+                        <!-- end_old_url -->
+                        <!-- begin_seo_url -->
+                            <a href="{comment_user_profile_link}">
+                        <!-- end_seo_url -->
+                            <img <!-- begin_data_my_photo -->data-main-photo="{comment_user_photo_id}"<!-- end_data_my_photo --> src="{url_files}{comment_user_photo}" alt="" onload="this.style.opacity=1" />
+                        </a>
+                    </div>
+                    <div class="post">
+                        <div class="info">
+                        <!-- begin_old_url -->
+                            <a href="search_results.php?display={comment_display_profile}&uid={comment_user_id}">
+                        <!-- end_old_url -->
+                        <!-- begin_seo_url -->
+                            <a href="{comment_user_profile_link}">
+                        <!-- end_seo_url -->
+                            {comment_user_name}</a> <span class="date">{comment_date}</span>
+                            <!-- begin_comment_delete -->
+                            <a onclick="Photo.confirmDeleteComment('{comment_id}'); return false;" class="icon_delete" href="#"><span></span></a>
+                            <!-- end_comment_delete -->
+                            <p>{comment_text}</p>
+                        </div>
+                    </div>
+                    <div class="cl"></div>
+                    </div>
+                    <!-- end_comment -->
+                </div>
+                <!--begin_load_more_comments -->
+                <a id="gallery_photos_load_comments" onclick="Photo.loadMoreComments(); return false;" class="link_load_comments" href="#">{load_more_comments_count}</a>
+                <div class="cl"></div>
+                <!--end_load_more_comments -->
+            </div>
+        </div>
+        <script>
+            var pp_gallery_photos_pen = $('#pp_gallery_photos_pen'),
+                pp_gallery_photos_desc = $('#pp_gallery_photos_desc'),
+                pp_frm_gallery_photos_desc = $('#pp_frm_gallery_photos_desc'),
+                pp_frm_gallery_photos_desc_inp = $('#pp_frm_gallery_photos_desc_inp'),
+                pp_gallery_photos_frm_comment = $('#pp_gallery_photos_frm_comment'),
+                pp_gallery_photos_footer = $('#pp_gallery_photos_footer'),
+                pp_gallery_photos_make_profile = $('#gallery_photos_make_profile'),
+                pp_gallery_photos_photo_not_checked = $('#gallery_photos_photo_not_checked'),
+                pp_gallery_photos_comment_inp=$('#pp_gallery_photos_comment'),
+                pp_gallery_photos_footer_empty=$('#pp_gallery_photos_footer_empty');
+
+            <!--begin_items_comment_no_border -->
+            $('#pp_gallery_photos_list_comment_items').css('border-bottom','none');
+            <!--end_items_comment_no_border -->
+
+            Photo.showHideFooterGallery();
+            Photo.setWidthDesc();
+            Photo.setControls(pidNew);
+            var isNewStatus=Photo.isPublic(pidNew),
+                isDelete='{is_delete}'*1;
+            if ((isNewStatus!=isOldStatus)||isDelete) {
+                var src=Photo.url_files+Photo.galleryPhotosInfo[pidNew]['src_b'];
+                pp_gallery_photo_one.fadeTo(400,0,function(){
+                    pp_gallery_request_access.hide().css('opacity',1)
+                    pp_gallery_photo_one_img.attr({src:getPlaceholderImage(pidNew,'gallery','lazy_loader_bl.gif'),'data-original':src})
+                                            .lazyload({effect:'fadeIn',
+                                                       container:pp_gallery_photo_one,
+                                                       event:'load',
+                                                       effect_speed:400,
+                                                       skip_invisible:false,
+                                                       failure_limit:1,
+                                                       load:function(){
+                                                            Photo.setPrepareFirstShowing(isNewStatus,pidNew,1);
+                                                            setTimeout(function(){Photo.showActionsWithPhoto(pidNew)},50);
+                                            }});
+                    pp_gallery_photo_one.delay(10).fadeTo(1,1)
+                });
+            }else{
+                Photo.setPrepareFirstShowing(isNewStatus,pidNew);
+                if (Photo.isFirstShowPhotoGallery) {
+                    Photo.showActionsWithPhoto(pidNew);
+                } else {
+                    Photo.firstShowPhoto = pidNew;
+                }
+            }
+
+            <!-- begin_photo_edit_desc_js -->
+            $('#pp_gallery_photos_pen, #pp_gallery_photos_desc').click(function(){
+                Photo.showFrmDescPhotoGallery();
+                return false;
+            })
+            <!-- end_photo_edit_desc_js -->
+            $('#pp_gallery_photos_comment').val('').keydown(doOnEnter(Photo.postComment)).autosize({isSetScrollHeight:false});
+
+        </script>
+    </div>
+<!-- /cont_footer -->
+
+
+

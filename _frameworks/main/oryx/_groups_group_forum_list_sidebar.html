@@ -1,0 +1,46 @@
+<h1 class="txt_lower_header_color">{l_groups_group_forums}</h1>
+
+    <table class="groups_tb_sub groups_tb_sub_r">
+        <col width="7px"/>
+        <col width="230px"/>
+        <tr>
+            <th class="th_t_l nb first">&nbsp;</th>
+            <th class="th_t_c">{l_groups_thread}</th>
+            <th class="th_t_c nb"><span>{l_groups_go}</span></th>
+            <th class="th_t_r nb first">&nbsp;</th>
+        </tr>
+        <!-- begin_forum -->
+        <tr>
+            <td colspan="2"><span><a href="{url_main}groups_group_forum_show.php?forum_id={forum_id}" title="{forum_title_full}">{forum_title}</a></span></td>
+            <td colspan="2" class="nb "><span><a href="{url_main}groups_group_forum_show.php?forum_id={forum_id}&forum_comment_list_page=last"><img  src="{url_tmpl_main}images/groups/play.png" width="13" height="13" alt=""/></a></span></td>
+        </tr>
+        <!-- end_forum -->
+        <!-- begin_no_forums -->
+        <tr>
+            <td class="r nb">&nbsp;</td>
+            <td class="nb" colspan="2">{l_groups_no_forums_yet}</td>
+            <td class="nb">&nbsp;</td>
+        </tr>
+        <!-- end_no_forums -->
+        <tr>
+            <th class="th_b_l nb">&nbsp;</th>
+            <th colspan="2" class="th_b_c nb">&nbsp;</th>
+            <th class="th_b_r nb">&nbsp;</th>
+        </tr>
+
+    </table>
+
+    <div class="groups_pl_violet2 fl_left">
+        <div class="groups_pl_violet_l"></div>
+        <div class="groups_pl_violet_c">
+            <div class="groups_pl_violet_img">
+                <img src="{url_tmpl_main}images/groups/ico_browse.png" width="34" height="34" alt=""/>
+            </div>
+            <ul class="groups_list">
+                <li><a href="{url_main}groups_group_forum_list.php?group_id={group_id}">{l_groups_browse_all}</a></li>
+            </ul>
+        </div>
+        <div class="groups_pl_violet_r"></div>
+    </div>
+
+<div class="cl groups_empty">&nbsp;</div>

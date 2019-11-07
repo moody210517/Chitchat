@@ -1,0 +1,591 @@
+{header}
+
+<!-- begin_partner_page -->
+
+    <div id="main_t">
+
+        <div id="join_r">
+
+            <h3>{l_join_now}</h3>
+
+            <small>{l_start_to_make}</small>
+
+            <big>{l_big_money}</big>
+
+            <p><span>{l_receive} <big>{partner_percent}%</big></span> {l_for_each_member}</p>
+
+        </div>
+
+        <div id="content_r">
+
+            <div id="left_r">
+
+
+  <script Language="JavaScript" type="text/javascript">
+  var blockSubmission = false;
+
+  function removeSubmissionBlock() {
+    blockSubmission = false;
+      }
+
+  function isSubmissionAllowed() {
+    if(blockSubmission){
+       return false;
+    }
+    return;
+   }
+
+//  document.onclick = isSubmissionAllowed;
+//  document.onkeydown = isSubmissionAllowed;
+
+  function onValidateLoginForm() {
+    var form = document.forms['LoginForm'];
+    // "username" field validation.
+    if (!validateRequiredField(form['username'], '{l_username}')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "password" field validation.
+    if (!validateRequiredField(form['password'], '{l_password}')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "password" field validation.
+    if (!validateRequiredField(form['password'], '{l_password}')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    return true;
+  }
+
+  function validateLoginForm() {
+    blockSubmission = true;
+     if (typeof beforeLoginFormValidation != 'undefined') {
+      beforeLoginFormValidation();
+    }
+    var validated = onValidateLoginForm();
+    if (validated && (typeof uponSuccessfulLoginFormValidation != 'undefined')) {
+      validated = uponSuccessfulLoginFormValidation();
+    }
+    else if (!validated && (typeof uponUnsuccessfulLoginFormValidation != 'undefined')) {
+      uponUnsuccessfulLoginFormValidation();
+    }
+    if (!validated) {
+      removeSubmissionBlock();
+    }
+    return validated;
+  }
+
+
+function submitLoginForm() {
+   if (validateLoginForm()){
+        var data = {
+    		cmd: 'login',
+			cmd_ajax: '1',
+			login: $('#lusername').val(),
+			password: $('#lpassword').val()
+		}
+        $.post('index.php',data,
+                function(res){
+                    var $data=$(res),
+                        $error=$data.filter('.error_login');
+                    if($error[0]){
+                        alert('{j_login_incorrect}');
+                    } else if ($data.filter('.redirect_home')) {
+                        redirectUrl('index.php');
+                    }
+        })
+	}
+    return false;
+}
+</script>
+
+<span id="do_join_results"></span>
+
+<span id="do_login_results"></span>
+<div class="form_r">
+<form  name="LoginForm" method="POST" action="{url_main}partner/index.php?cmd=login" onSubmit="return validateLoginForm();" style="padding: 0px; margin: 0px;">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td colspan="2" style="padding: 5px 0px 20px;">
+                <strong>{l_for_members}:</strong> {login_message}
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-top: 6px;">{l_username}:</td>
+            <td>
+                <input style="padding: 3px;" type="text" id = "lusername" name="username" tabindex="1" size="12" class="text" />
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-top: 6px;">{l_password}</td>
+            <td>
+                <input style="padding: 3px;" type="password" id = "lpassword" name="password" tabindex="2" size="12" class="text" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="padding: 5px 0px 5px;">
+                <input type="button" value="{l_go}" onClick="submitLoginForm();" class="button_2" style=" padding-left: 5px; padding-right: 5px;cursor: pointer; cursor: hand;" tabindex="3" title="{l_go}" onMouseOver="window.status='{l_go}'; return true;" onMouseOut="window.status=''; return true;">
+                <a href="{url_main}partner/forget_password.php" class="login" tabindex="5">{l_forgot_password}</a>
+            </td>
+        </tr>
+    </table>
+  </form>
+  </div>
+
+                {left_column}
+
+            </div>
+
+            <div id="right_r">
+
+                {right_text_over_join_form}
+
+                <div class="form_r">
+                    <script Language="JavaScript" type="text/javascript">
+function onChangeCompanyName() {
+  checkPayee.innerHTML = document.JoinForm.name.value;
+}
+function confirmCheckPayee() {
+  message = new String("{l_your_checks} %1. {l_once_set");
+  message = message.replace('%1', document.JoinForm.name.value);
+  if (!confirm(message)) {
+    return false;
+  }
+  return true;
+}
+</script>
+<script Language="JavaScript" type="text/javascript">
+  function onValidateJoinForm() {
+    var form = document.forms['JoinForm'];
+    // "name" field validation.
+    if (!validateRequiredField(form['name'], '{l_company_name}')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "name" field validation.
+    if (!validateMaxLength(form['name'], '{l_name}','100')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "referring_domains" field validation.
+    if (!validateRequiredField(form['referring_domains'], '{l_referring_domains}')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "referring_domains" field validation.
+    if (!validateMaxLength(form['referring_domains'], '{l_referring_domains}','2000')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "referring_domains" field validation.
+    //if (!validateMultipleDomainField(form['referring_domains'], '{l_referring_domains}', '2147483647')) {
+    //  removeSubmissionBlock();
+    //  return false;
+    //}
+    // "contact_name" field validation.
+    if (!validateRequiredField(form['contact_name'], '{l_name}')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "contact_name" field validation.
+    if (!validateMaxLength(form['contact_name'], '{l_name}','200')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "phone" field validation.
+    if (!validateRequiredField(form['phone'], '{l_phone_number}')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "phone" field validation.
+    if (!validateMaxLength(form['phone'], '{l_phone_number}','15')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "phone" field validation.
+    if (!validateNumericWS(form['phone'], '{l_phone_number}')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "email" field validation.
+    if (!validateRequiredField(form['email'], '{l_email_address}')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "email" field validation.
+    if (!validateMaxLength(form['email'], '{l_email_address}','100')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "email" field validation.
+    if (!validateEmailField(form['email'], '{l_email_address}')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "addr1" field validation.
+    if (!validateRequiredField(form['addr1'], '{l_billing_address}')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "addr1" field validation.
+    if (!validateMinLength(form['addr1'], '{l_billing_address}','2')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "addr1" field validation.
+    if (!validateMaxLength(form['addr1'], '{l_billing_address}','50')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "addr1" field validation.
+    if (!validateRequiredField(form['addr1'], '{l_billing_address}')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "country" field validation.
+    if (!validateRequiredSelect(form['country'],'{l_country}','-1')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "country" field validation.
+    if (!validateRequiredField(form['country'], '{l_country}')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "state" field validation.
+    if (!validateRequiredSelect(form['state'],'{l_state_province}','-1')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "state" field validation.
+    if (!validateRequiredField(form['state'], '{l_state_province}')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "city" field validation.
+    if (!validateRequiredSelect(form['city'],'{l_city}','-1')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "city" field validation.
+    if (!validateRequiredField(form['city'], '{l_city}')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "zip" field validation.
+    if (!validateMaxLength(form['zip'], '{l_zip_code}','10')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "zip" field validation.
+    if (!validateZip(form['zip'], '{l_zip_code}', form['country'])) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "tax field validation"
+    if (!validateMaxLength(form['tax'], '{l_tax_id}','10')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "join_username" field validation.
+    if (!validateRequiredField(form['join_username'], '{l_username}')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "join_username" field validation.
+    if (!validateMaxLength(form['join_username'], '{l_username}','20')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "join_username" field validation.
+    if (!validateNotTwoFields(form['join_username'],'User Name',form['join_password'],'{l_password}')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "join_password" field validation.
+    if (!validateRequiredField(form['join_password'], '{l_password}')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "join_password" field validation.
+    if (!validateMinLength(form['join_password'], '{l_password}','4')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "join_password" field validation.
+    if (!validateMaxLength(form['join_password'], '{l_password}','30')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "join_password" field validation.
+    if (!validateAlphaNumeric(form['join_password'], '{l_password}')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "join_password" field validation.
+    if (!validateTwoFields(form['join_password'],'{l_password}',form['verify_password'],'{l_verify_password}')) {
+      removeSubmissionBlock();
+      return false;
+    }
+//if(!confirmCheckPayee()) return false;
+    return true;
+  }
+
+  function validateJoinForm() {
+    blockSubmission = true;
+/*     if (typeof beforeJoinFormValidation != 'undefined') {
+      beforeJoinFormValidation();
+    }*/
+    var validated = onValidateJoinForm();
+/*    if (validated && (typeof uponSuccessfulJoinFormValidation != 'undefined')) {
+      validated = uponSuccessfulJoinFormValidation();
+    }
+    else if (!validated && (typeof uponUnsuccessfulJoinFormValidation != 'undefined')) {
+      uponUnsuccessfulJoinFormValidation();
+    }
+    if (!validated) {
+      removeSubmissionBlock();
+    }*/
+    return validated;
+  }
+
+function submitJoinForm() {
+    if (validateJoinForm()) {
+        var data = {
+    		cmd: 'join',
+            cmd_ajax: '1',
+			name: $('#company_name').val(),
+			referring_domains: $('#referring_domains').val(),
+			contact_name: $('#contact_name').val(),
+			phone: $('#phone').val(),
+			email: $('#email').val(),
+			addr1: $('#addr1').val(),
+			addr2: $('#addr2').val(),
+			country: $('#country').val(),
+			state: $('#state').val(),
+			city: $('#city').val(),
+			zip: $('#zip').val(),
+            tax: $('#tax').val(),
+			join_username: $('#join_username').val(),
+			join_password: $('#join_password').val(),
+			verify_password: $('#verify_password').val()
+		}
+        $.post('index.php',data,
+            function(res){
+                var $data=$(res),
+                    $error=$data.filter('.error_login_join');
+                if($error[0]){
+                    var msg=$error.text();
+                    alert(msg);
+                } else if ($data.filter('.redirect_home')) {
+                    redirectUrl('index.php');
+                }
+        })
+
+    }
+}
+</script>
+
+<form  name="JoinForm" method="POST">
+                    <table>
+                        <tr>
+                            <td>
+                                {l_company_name}:<span class="red_r">*</span>
+                            </td>
+                            <td>
+                                <input type="text" id = "company_name" name="name" value="{name}" tabindex="a" onChange="onChangeCompanyName();" class="text" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                {l_referring_domains}:<span class="red_r">*</span>
+                            </td>
+                            <td>
+                                <input type="text" id="referring_domains" name="referring_domains" value="{referring_domains}" tabindex="a" class="text" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <p>- {l_enter_your_domains}</p>
+
+                <p>- {l_note}</p>
+
+                <div class="form_r">
+                    <table>
+                        <tr>
+                            <td>
+                                {l_name}:<span class="red_r">*</span>
+                            </td>
+                            <td>
+                                <input type="text" id = "contact_name" name="contact_name" value="{contact_name}" tabindex="a" class="text_01" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                {l_phone}:<span class="red_r">*</span>
+                            </td>
+                            <td>
+                                <input type="text" id ="phone" name="phone" value="{phone}" tabindex="a"class="text_01" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                {l_email}:<span class="red_r">*</span>
+                            </td>
+                            <td>
+                                <input type="text" id="email" name="email" value="{email}" tabindex="a" class="text_01" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <h3>{l_payment_information}</h3>
+
+                <p>{l_enter_details}</p>
+
+                <p>{l_pay_to_name}:</p>
+
+                <div class="form_r">
+                    <table>
+                        <tr>
+                            <td>
+                                {l_address1}:<span class="red_r">*</span>
+                            </td>
+                            <td>
+                                <input type="text" id="addr1" name="addr1" value="{addr1}" tabindex="a" class="text_02" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                {l_address2}:
+                            </td>
+                            <td>
+                                <input type="text" id ="addr2" name="addr2" value="{addr2}" tabindex="a" class="text_02" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                {l_country}:<span class="red_r">*</span>
+                            </td>
+                            <td>
+                                <select class="text_02" id="country" name="country" tabindex="a" onChange="submitForm(document.JoinForm, '{url_main}partner/index.php?focusField=state&focusForm=JoinForm')">
+	{country_options}
+	</select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                {l_state_province}:<span class="red_r">*</span>
+                            </td>
+                            <td>
+                                <select id="state" name="state" tabindex="a" onChange="submitForm(document.JoinForm, '{url_main}partner/index.php?focusField=city&focusForm=JoinForm')" class="text_02">
+   {state_options}
+   </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                {l_city}:<span class="red_r">*</span>
+                            </td>
+                            <td>
+                                <select id="city" name="city" tabindex="a" class="text_02">
+    {city_options}
+    </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                {l_zip_postal_code}:
+                            </td>
+                            <td>
+                                <input type="text" name="zip" id="zip" value="{zip}" tabindex="a" class="text_02" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                {l_tax_id}:
+                            </td>
+                            <td>
+                                <input type="text" name="tax" id="tax" value="{tax}" tabindex="a" class="text_02" />
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+
+                <h3>{l_preferred}</h3>
+
+                <p>{l_you_will_use}</p>
+
+                <div class="form_r">
+                    <table>
+                        <tr>
+                            <td>
+                                {l_username}:<span class="red_r">*</span>
+                            </td>
+                            <td>
+                                <input type="text" id="join_username" name="join_username" value="{join_username}" tabindex="a" class="text_02" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <p>{l_password_must_be}</p>
+
+                <div class="form_r">
+                    <table>
+                        <tr>
+                            <td>
+                                {l_password}:<span class="red_r">*</span>
+                            </td>
+                            <td>
+                                <input id="join_password" type="password" name="join_password" value="{join_password}" tabindex="a" class="text" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                {l_confirm_password}<span class="red_r">*</span>
+                            </td>
+                            <td>
+                                <input id="verify_password" type="password" name="verify_password" value="{verify_password}" class="text" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;
+
+                            </td>
+                            <td>
+                                <input onClick="submitJoinForm();" tabindex="a" title="{l_join_now}"  class="button_join" type="button" value="{l_join_now}" />
+<!--                                 <img onClick="submitJoinForm();" tabindex="a" title="{l_join_now}"  src="{url_tmpl_partner}images/button_join.jpg" width="200" class="button" />
+ -->
+                          </td>
+                        </tr>
+                    </table>
+
+                </div>
+            </form>
+
+            </div>
+
+            <div style="clear: both;"></div>
+
+        </div>
+
+    </div>
+<!-- end_partner_page -->
+
+<!-- begin_partner_page_auth -->
+<span class="redirect_home"></span>
+<!-- end_partner_page_auth -->
+
+<!-- begin_partner_page_auth_error -->
+<span class="error_login"></span>
+<!-- end_partner_page_auth_error -->
+
+<!-- begin_partner_page_join_error -->
+<span class="error_login_join">{message}</span>
+<!-- end_partner_page_join_error -->
+
+{footer}

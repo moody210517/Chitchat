@@ -1,0 +1,32 @@
+<script>last_id='{last_id}';</script>
+<!-- begin_mutual_attractions_last_load_item -->
+<script>lastLoadItems=true;</script>
+<!-- end_mutual_attractions_last_load_item -->
+<!-- begin_mutual_attractions_item -->
+
+<div id="mutual_user_{user_id}" class="item mutual_user_list_item <!-- begin_border_top -->item_border_top<!-- end_border_top --><!-- begin_border_none -->item_border_none<!-- end_border_none -->">
+    <div class="pic">
+        <a href="{url_main}{user_profile_link}" style="opacity:0;">
+            <img src="{url_files}{user_photo}" onload="$(this).parent().fadeTo(400,1)">
+        </a>
+    </div>
+    <div class="info">
+        <p><strong><a href="{url_main}{user_profile_link}">{user_name}</a></strong>, {user_age}, {user_city}</p>
+        <!-- begin_user_new -->
+        <div class="pl_new">{l_new}</div>
+        <!-- end_user_new -->
+        <div class="cl"></div>
+        <div class="<!-- begin_green_user-->pl_green<!-- end_green_user--><!-- begin_grey_user-->pl_grey<!-- end_grey_user-->">{said_user}</div>
+    </div>
+
+    <div class="bl_btn" >
+        <p>{question_encounters}</p>
+        <div class="pl_btn">
+            <!-- data-id="{id}" do not -->
+            <input data-user-id="{user_id}" data-id="{id}" data-status="N" type="button" class="btn red want_to_btn" value="{l_encounters_no}" />
+            <input data-user-id="{user_id}" data-id="{id}" data-status="M" type="button" class="btn yellow want_to_btn" value="{l_encounters_maybe}" />
+            <input data-user-id="{user_id}" data-id="{id}" data-status="Y" type="button" class="btn lgreen want_to_btn" value="{l_encounters_yes}" />
+        </div>
+    </div>
+ </div>
+<!-- end_mutual_attractions_item -->

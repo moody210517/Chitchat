@@ -1,0 +1,43 @@
+ <div class="col_center">
+    <div class="head icon_head_browse_matches">{l_browse_matches}</div>
+    <div id="search_cont" class="cont search_cont">
+        <div class="bl_browse">
+            <div class="bl_filter">
+            {users_filter}
+            </div>
+
+            <div class="list_photos_filter module_filter_result">
+            {items}
+            <div id="loader_search_list"  class="frame_loader_search_list to_hide">
+                <div class="css_loader loader_search_list" id="loader_search_list">
+                <div class="spinner center">
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                </div>
+                </div>
+            </div>
+            </div>
+			<div class="paging">
+			{pages}
+			</div>
+        </div>
+        <div class="cl"></div>
+    </div>
+</div>
+<!-- begin_js_show_alert_change_filter -->
+<script>
+$win.on('load', function(){
+	alertCustom('{j_no_one_to_show_please_edit_the_filters_settings}', false, ALERT_HTML_ALERT);
+})
+</script>
+<!-- end_js_show_alert_change_filter -->

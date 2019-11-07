@@ -1,0 +1,28 @@
+<!-- begin_comment -->
+<div data-cid="{comment_id}" id="photo_comment_{comment_id}" class="item">
+    <div class="msg">
+        <div class="pic">
+            <div data-cl-loader="loader_comment_photo_btn" data-type-loader="fade_btn" data-url="{url_page_profile_view}?user_id={comment_user_id}" onclick="clPhoto.toProfileFromCommentsGallery(this,'{comment_user_id}');">
+                <button <!-- begin_comment_plug_private_photos -->class="plug_private_photos"<!-- end_comment_plug_private_photos --> style="background-image: url({url_files}{comment_user_photo});"></button>
+            </div>
+        </div>
+        <div class="info">
+            <p><a data-cl-loader="loader_comment_photo_link" href="{url_page_profile_view}?user_id={comment_user_id}" onclick="clPhoto.toProfileFromCommentsName(this); return false;">{comment_user_name}</a>
+                <span class="data">{comment_date}</span>
+                <!-- begin_comment_delete -->
+                <i onclick="clPhoto.confirmDeleteComment('{comment_id}');" class="fa fa-minus-square" aria-hidden="true"></i>
+                <!-- end_comment_delete -->
+            </p>
+            <p>{comment_text}</p>
+        </div>
+    </div>
+</div>
+<!-- end_comment -->
+<!--begin_load_more_comments -->
+<div onclick="clPhoto.loadMoreComments();" class="message_dots">
+    <i class="fa fa-circle" aria-hidden="true"></i>
+    <i class="fa fa-circle" aria-hidden="true"></i>
+    <i class="fa fa-circle" aria-hidden="true"></i>
+</div>
+<!--end_load_more_comments -->
+<script>clPhoto.curPidComment='{video_id_comments}'*1;</script>

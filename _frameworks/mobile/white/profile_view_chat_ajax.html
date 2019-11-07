@@ -1,0 +1,16 @@
+<!-- begin_chat_status -->{status}<!-- end_chat_status -->
+<!-- begin_chat_items -->
+<!-- begin_chat_item -->
+<b><a href="{url_main}profile_view.php?user_id={user_id}">{user}</a></b>: {msgtext}
+<!-- begin_show_original_message_ico -->
+<a class="show_original_message" href="#" onclick="CChat.showOriginalMsg(this,{id_msg}); return false;" title="{l_the_message_was_autotranslated} {l_show_original_message}"><img src="{url_tmpl}common/images/page_refresh.png" height="12"  style="margin-bottom:-2px;margin-left:2px;"></a>
+<!-- end_show_original_message_ico -->
+<br/>
+<!-- begin_original_message -->
+<div id="tr_{id_msg}" class="original_message" style="display:{display}">{msg_translation}</div>
+<!-- end_original_message -->
+<!-- end_chat_item -->
+<!-- begin_chat_system_item -->
+{msgtext}<br/>
+<!-- end_chat_system_item -->
+<!-- end_chat_items -->

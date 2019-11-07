@@ -1,0 +1,40 @@
+<!-- begin_user_to_info -->
+
+<script>
+    function searchInterests(e){
+        var interestId=$(e).attr('data-interest-id');
+        window.location.href='search_results.php?set_filter=1&interest='+interestId;
+    }
+</script>
+
+<div id="pp_message_user_to_pic_{user_to_id}" <!-- begin_user_pic_hide -->style="display:none;"<!-- end_user_pic_hide --> class="pic pp_message_user_info">
+    <a style="opacity:0;" href="{url_main}{user_to_profile_link}"><img onload="$(this).parent('a').fadeTo(500,1);" src="{url_files}{user_to_photo}" alt="" /></a>
+</div>
+<div id="pp_message_user_to_info_{user_to_id}" <!-- begin_user_info_hide -->style="display:none;"<!-- end_user_info_hide --> class="nik_info pp_message_user_info">
+    <!-- begin_user_info_name -->
+     <div class="title" title="{user_to_name}, {user_to_age}, {user_to_city}">
+        <a href="{url_main}{user_to_profile_link}">{user_to_name} </a>
+        <span>{user_to_age}, {user_to_city}</span>
+        <!-- begin_friend_add -->
+        <span><a id="pp_message_friend_add_{user_to_id}" class="icon_add_msg_user" href="" onclick="Profile.addFriendFromIm('{user_to_id}'); return false;"></a></span>
+        <strong id="pp_message_friend_add_send_{user_to_id}">{l_request_sent}</strong>
+        <!-- end_friend_add -->
+    </div>
+    <!-- end_user_info_name -->
+    <!-- begin_user_info_admin -->
+    <span class="contact_admin">{l_website_administration}</span>
+    <!-- end_user_info_admin -->
+    <!-- begin_list_interest -->
+    <div class="refine">
+        <ul>
+            <!-- begin_interest_item -->
+            <li style="cursor:pointer;" class="<!--begin_main_interest-->interest_item<!--end_main_interest-->" data-interest-id="{int_id}" onclick="searchInterests(this);return false;" ><span class="{interest_class} text-overflow" title="{l_show_users_who_have_this_interest}" style="max-width:94px;">{interest}</span></li>
+            <!-- end_interest_item -->
+        </ul>
+        <a href="{url_main}{user_to_profile_link}" class="dots <!--begin_interest_dots_custom-->interest<!--end_interest_dots_custom-->">...</a>
+        <div class="cl"></div>
+    </div>
+    <!-- end_list_interest -->
+</div>
+
+<!-- end_user_to_info -->

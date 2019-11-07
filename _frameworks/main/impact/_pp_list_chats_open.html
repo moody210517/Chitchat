@@ -1,0 +1,41 @@
+<div style="opacity:0;" id="list_chats_open_users" class="list_chats_item chat_online <!-- begin_list_chats_open_users_show -->to_show<!-- end_list_chats_open_users_show -->">
+    <script>imChats.initListChats('{limit_start}', '{stop_more}', '{limit_load}', '{last_id}', '{im_history_messages}', '{im_history_list_messages}', {open_im_all_new_msg_count});</script>
+    <div class="chat">
+        <div onclick="imChats.showUsersList()" class="head">
+            <a href="" onclick="return false;">
+                <span class="marker"></span>
+                <span id="list_chats_open_count" data-new-msg-count="{list_chats_open_users_count_value}">{list_chats_open_users_count}</span>
+            </a>
+        </div>
+        <div class="cont">
+            <div id="list_chats_open_users_scroll_box" class="scrollbarY">
+            <div class="scrollbar">
+                <div class="track"><div class="thumb animate"></div></div>
+            </div>
+            <div class="viewport">
+                <div class="overview animate">
+                    <div id="list_chats_open_items" class="chat_cont">
+                        {list_chats_item}
+                        <div id="loader_list_chats_open_users" class="css_loader loader_open_chat">
+                            <div class="spinner center">
+                                <div class="spinner-blade"></div>
+                                <div class="spinner-blade"></div>
+                                <div class="spinner-blade"></div>
+                                <div class="spinner-blade"></div>
+                                <div class="spinner-blade"></div>
+                                <div class="spinner-blade"></div>
+                                <div class="spinner-blade"></div>
+                                <div class="spinner-blade"></div>
+                                <div class="spinner-blade"></div>
+                                <div class="spinner-blade"></div>
+                                <div class="spinner-blade"></div>
+                                <div class="spinner-blade"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>

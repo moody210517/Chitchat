@@ -1,0 +1,294 @@
+{header}
+<div class="wrapper-wide">
+<div class="userinfo-c-wide">
+<div class="userinfo">
+
+    <div class="events_new">
+
+		{events_header}
+
+        <table class="tb_events_new">
+            <tr>
+                <!-- td_main -->
+                <td class="td_main">
+
+<script language="JavaScript" type="text/javascript">
+
+$(document).ready(function(){
+    $("#event_date").datepicker({ minDate: new Date(), dateFormat: "{edit_event_date}" });
+    $("#event_time").timeEntry({show24Hours: true, spinnerImage: ''});
+});
+
+function on_form_submit()
+{
+    for(var i = 1; i <= 1; i++)
+    {
+        var ext = $('input[name="image_'+i+'"]').val();
+        if(ext != "")
+        {
+            ext = ext.substring(ext.length-4,ext.length);
+            ext = ext.toLowerCase();
+            if(ext != '.jpg' && ext != '.gif' && ext != '.png' && ext != 'jpeg') {
+                alert('{l_wrong_photo_types}');
+                return false;
+            }
+        }
+    }
+
+    if($('input[name="event_title"]').val() == "{l_event_title}")
+    	$('input[name="event_title"]').val('');
+    if($('textarea[name="event_description"]').val() == "{l_event_description}")
+        $('textarea[name="event_description"]').val('');
+
+    if($('[name="event_title"]').val() &&
+    		$('[name="event_description"]').val() &&
+    		($('[name="city_id"]').val() != '0') &&
+    		$('[name="event_date"]').val() &&
+    		$('[name="event_time"]').val() &&
+    		(!$('[name="category_id"]').size() || $('[name="category_id"]').val()) &&
+            (!$('[name="event_place"]').size() || $('[name="event_place"]').val()))
+    {
+        if($('input[name="image_1"]').val())
+            $('#load_animation_submit').css('visibility', 'visible');
+    }
+    else
+    {
+    	alert('{l_please_fill_in_all_the_fields}');
+    	return false;
+    }
+
+    return true;
+}
+
+</script>
+
+                    <form id="event_edit_form" method="POST" action="{url_main}events_event_edit.php?cmd=save&event_private={event_private}&event_id={event_id}" enctype="multipart/form-data" onsubmit="return on_form_submit()">
+
+                    <div class="events_new_p pl_top">
+                        <!-- begin_create_private_title --><h1>{l_create_entry_to_calendar}</h1><!-- end_create_private_title -->
+                        <!-- begin_edit_private_title --><h1>{l_edit_entry_to_calendar}</h1><!-- end_edit_private_title -->
+                        <!-- begin_create_title --><h1>{l_events_create_new_event}</h1><!-- end_create_title -->
+                        <!-- begin_edit_title --><h1>{l_events_edit_event}</h1><!-- end_edit_title -->
+
+                        <table class="events_new_tb_sub">
+                            <col width="7px"/>
+                            <col width="431px"/>
+                            <tr>
+                                <th class="th_t_l nb first">&nbsp;</th>
+                                <th class="th_t_c nb"><span>{l_events_please_enter_details}</span></th>
+                                <th class="th_t_r nb first">&nbsp;</th>
+                            </tr>
+
+                            <tr>
+                                <td colspan="3" class="nb nobg_img">
+                                <div class="bl_events_new_frm_color">
+                                    <!-- frm -->
+                                    <table class="tb_events_new_frm">
+                                        <col width="100%"/>
+                                        <tr>
+                                            <td ><input style="width:420px;" class="inp_mblack no_abk" type="text" name="event_title" value="{event_title}" onblur="javascript:if(this.value=='')this.value='{l_event_title}'" onFocus="if(this.value=='{l_event_title}') this.value='';"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td ><div class="events_textarea_mblack"><textarea class="textarea_mblack no_abk" name="event_description"  onblur="javascript:if(trim(this.value)=='')this.value='{l_no_description}'" onFocus="if(this.value=='{l_no_description}') this.value='';">{event_description}</textarea></div></td>
+                                        </tr>
+                                        <!-- begin_event_location -->
+                                        <tr>
+                                            <td class="event_select">
+                                                <label>{l_event_country}</label>
+                                                <select style="width:425px;" name="country" id="country" onchange="show_load_animation(1); xajax_states(country.value)">{country_options}</select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="event_select">
+                                                <label>{l_event_state}<img style="visibility:hidden;position:relative;top:3px;" id="load_animation1" src="{url_tmpl_main}images/load_animation.gif"></label>
+                                                <select style="width:425px;" name="state" id="state" onchange="show_load_animation(2); xajax_cities(state.value)"><option value="0">{l_select_all}</option>{state_options}</select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="event_select">
+                                                <label>{l_event_city}<img style="visibility:hidden;position:relative;top:3px" id="load_animation2" src="{url_tmpl_main}images/load_animation.gif"></label>
+                                                <select style="width:425px;" name="city_id" id="city"><option value="0">{l_select_all}</option>{city_options}</select>
+                                            </td>
+                                        </tr>
+                                        <!-- end_event_location -->
+                                        <tr>
+                                            <td>
+                                                <div class="td_w1">
+                                                    <label>{l_event_date}</label>
+                                                    <input class="inp_lblack no_abk" id="event_date" autocomplete=off name="event_date" type="text" value="{event_date}"/>
+                                                </div>
+                                                <div>
+                                                    <label>{l_event_time}</label>
+                                                    <input class="inp_sblack no_abk" id="event_time" autocomplete=off name="event_time" type="text" value="{event_time}"/>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <!-- begin_event_parameters -->
+                                        <tr>
+                                            <td class="event_select">
+                                                <label>{l_event_category}</label>
+                                                <select style="width:425px;" name="category_id">{category_options}</select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="td_w2">
+                                                    <label>{l_event_address}</label>
+                                                    <input class="inp_black2 no_abk" type="text" name="event_address" value="{event_address}"/>
+                                                </div>
+                                                <div>
+                                                    <label>{l_event_place}</label>
+                                                    <input class="inp_black2 no_abk" type="text" name="event_place" value="{event_place}"/>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="td_w2">
+                                                    <label>{l_event_site}</label>
+                                                    <input class="inp_black2 no_abk" type="text" name="event_site" value="{event_site}"/>
+                                                </div>
+                                                <div>
+                                                    <label>{l_event_phone}</label>
+                                                    <input class="inp_black2 no_abk" type="text" name="event_phone" value="{event_phone}"/>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <!-- end_event_parameters -->
+
+                                        <tr>
+                                            <td>
+                                                <label>{l_event_image}</label>
+												<div class="event_inp_file">
+                                                <input name="image_1" size="3" type="file"/>
+                                                </div><br />
+												<div class="cl events_new_empty"></div>
+                                            </td>
+                                        </tr>
+
+                                    </table>
+                                    <!-- /frm -->
+
+                                    <!-- begin_edit_images -->
+<script type="text/javascript">
+
+$(document).ready(function() {
+    create_gallery()
+});
+
+function create_gallery()
+{
+    initLightboxOldTemplateNewAge($('.edit_image_gallery'));
+}
+
+function edit_delete_image(image_id)
+{
+    if(confirm('{l_are_you_sure}'))
+    {
+        $('#edit_image_' + image_id).fadeOut(400, function() {
+            $('#edit_image_' + image_id).remove();
+            create_gallery();
+            $.ajax({
+                    type: 'POST',
+                    url: '{url_main}events_event_image_delete_ajax.php',
+                    data: {
+                        image_id: image_id
+                        }
+                  });
+            });
+    }
+}
+
+</script>
+
+                                    <div class="line_dashed"></div>
+
+                                    <div>
+
+	                                    <!-- begin_image -->
+	                                    <div id="edit_image_{image_id}" class="events_new_img">
+	                                        <a class="edit_image_gallery" href="{image_file}"><img src="{image_thumbnail}" width="85" height="64" alt=""/></a>
+	                                        <div class="events_new_delete"><a title="{l_events_delete_image}" href="javascript:edit_delete_image({image_id})"><img class="png" src="{url_tmpl_main}images/music/ico_delete.png" width="15" height="17" alt=""/></a></div>
+	                                    </div>
+	                                    <!-- end_image -->
+
+                                    <div class="justify"></div>
+                                    </div>
+                                    <!-- end_edit_images -->
+
+                                    <div class="line_dashed"></div>
+
+                                    <div class="fl_right" style="width: 100%;">
+                                        <!-- begin_edit_private_button --><input class="btn_green_img" type="submit" value="{l_save_entry}"/><!-- end_edit_private_button -->
+                                        <!-- begin_create_private_button -->
+                                        <a style=" float: left; margin-left: 0px;" href="{url_main}events_event_edit.php" >{l_create_event_instead}</a>
+                                        <input class="btn_green_img" style="float:right;" type="submit" value="{l_create_entry}"/>
+                                        <!-- end_create_private_button -->
+
+                                        <!-- begin_edit_button -->
+                                        <a style="margin-left: 0px;" onclick="return confirm('{l_delete_confirm}')" href="{url_main}events_event_delete.php?event_id={event_id}">{l_events_delete}</a>
+                                        <input class="btn_green_img" style="float: right;" type="submit" value="{l_event_save}"/>
+
+                                        <!-- end_edit_button -->
+                                        <!-- begin_create_button -->
+                                        <a href="{url_main}events_event_edit.php?event_private=1" style=" float: left; margin-left: 0px;">{l_create_entry_instead}</a>
+                                        <input class="btn_green_img" style="float: right;" type="submit" value="{l_event_create}"/>
+                                        <!-- end_create_button -->
+                                        <img style="visibility:hidden;margin-top:1px;float:right;" id="load_animation_submit" src="{url_tmpl_main}images/load_animation.gif">
+
+                                    </div>
+
+                                    <div class="cl events_new_empty"></div>
+                                </div>
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+                                <th class="th_b_l nb">&nbsp;</th>
+                                <th class="th_b_c nb">&nbsp;</th>
+                                <th class="th_b_r nb">&nbsp;</th>
+                            </tr>
+
+                        </table>
+
+                    </div>
+                    </form>
+
+                </td>
+                <!-- /td_main -->
+
+                <td class="td_narrow">
+
+				{events_sidebar}
+
+
+            </tr>
+
+        </table>
+
+        <div class="events_new_foot">
+
+            <table>
+                <tr>
+                    <td class="td_l">&nbsp;</td>
+                    <td class="td_c">&nbsp;</td>
+                    <td class="td_r">&nbsp;</td>
+                </tr>
+            </table>
+
+        </div>
+
+
+    <div class="decor_top"></div>
+    </div>
+
+
+
+</div>
+<br>
+<div class="userinfo-links-wide"></div>
+</div>
+</div>
+{footer}

@@ -1,0 +1,471 @@
+{header}
+<div id="bl_page_columns" class="wall_wrapper">
+<script>hideRightColumnWall();</script>
+{profile_column_left}
+{profile_column_right}
+<script type="text/javascript" src="{url_main}_server/jquery/jquery.form.js{cache_version_param}"></script>
+<script>
+    var settingsData = {
+            minMaxLenPass : '{max_min_length_password}',
+            passLenMin : '{password_length_min}'*1,
+            passLenMax : '{password_length_max}'*1
+        };
+
+</script>
+<div class="wall <!--begin_one_column-->one_column<!--end_one_column-->">
+    <script>showRightColumnWall();</script>
+    <div id="bl_forms_settings" class="bl_forms settings">
+
+    <!-- begin_audio_greeting_settings -->
+    <div id="fields_1" class="item">
+        <div class="col-md-12">
+            <h3 class="cham-heading">{l_your_audio_greeting}</h3>
+            <div class="clearfix"></div>
+            <hr>
+        </div>
+
+        <div class="wrap_fields">
+            <div class="section fields">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-11 field height_fix">
+
+                            <!-- begin_audio_greeting_settings_record -->
+                            <button class="btn btn-block btn-success btn_save audio_greeting_record_button" onclick="appIosRecordAudioGreeting(); return false;">
+                                <span>{l_record_greeting}</span>
+                            </button>
+                            <!-- end_audio_greeting_settings_record -->
+
+                            <!-- begin_audio_greeting_settings_delete -->
+                            <a class="{audio_greeting_settings_delete_button_class} delete_audio_greeting" onclick="audioGreetingDelete(); return false;" href="{url_main}profile_settings.php?cmd=delete_audio_greeting">{l_delete}</a>
+                            <!-- end_audio_greeting_settings_delete -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- end_audio_greeting_settings -->
+
+    {profile_edit_main}
+
+    <form id="frm_profile_settings" name="profile_settings" method="POST" action="{url_main}profile_settings.php">
+    <input type="hidden" name="cmd" value="mail"/>
+    <input type="hidden" name="ajax" value="1"/>
+    <input type="hidden" name="get_title" value="1"/>
+    <div id="fields_1" class="item">
+        <div class="col-md-12">
+            <h3 class="cham-heading">{l_profile_settings}</h3>
+            <div class="clearfix"></div>
+            <hr>
+        </div>
+
+        <div class="wrap_fields">
+            <!-- begin_field_1 -->
+            <!-- begin_field_select_1 -->
+            <div class="section fields">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5 text-right field">
+                            <span>{label}</span>
+                        </div>
+                        <div class="col-lg-6 field">
+                            <select name="{name_select}" class="selectpicker show-tick" data-live-search="true">
+                                <!-- begin_field_select_item_1 -->
+                                <option {selected} value="{value}">{title}</option>
+                                <!-- end_field_select_item_1 -->
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end_field_select_1 -->
+            <!-- begin_field_radio_1 -->
+            <div class="section fields rb rb_exception">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5 text-right field">
+                            <span>{label}</span>
+                        </div>
+                        <div class="col-lg-6 field custom_radio">
+                            <!-- begin_field_radio_item_1 -->
+                            <input value={value} name="{name_radio}" id="radio_{name_radio}_{value}" type="radio" {checked}>
+                            <label for="radio_{name_radio}_{value}"><span></span>{title}</label>
+                            <!-- end_field_radio_item_1 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end_field_radio_1 -->
+            <!-- end_field_1 -->
+            <!-- begin_timezone -->
+            <div class="section fields">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5 text-right field">
+                            <span>{l_timezone}</span>
+                        </div>
+                        <div class="col-lg-6 field">
+                            <select id="timezone" name="timezone" class="selectpicker show-tick" data-live-search="true">
+                                {selectbox_options}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end_timezone -->
+            <!-- begin_sp_active -->
+            <!-- end_sp_active -->
+            <div class="section fields">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-11 field height_fix">
+                            <button class="btn btn-block btn-success btn_save" disabled>
+                                <span>{l_save}</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="fields_2" class="item">
+        <div class="col-md-12">
+            <h3 class="cham-heading">{l_notification_settings}</h3>
+            <div class="clearfix"></div>
+            <hr>
+        </div>
+
+        <div class="wrap_fields">
+            <!-- begin_field_2 -->
+            <!-- begin_field_select_2 -->
+            <div class="section fields">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5 text-right field">
+                            <span>{label}</span>
+                        </div>
+                        <div class="col-lg-6 field">
+                            <select name="{name_select}" class="selectpicker show-tick" data-live-search="true">
+                                <!-- begin_field_select_item_2 -->
+                                <option {selected} value="{value}">{title}</option>
+                                <!-- end_field_select_item_2 -->
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end_field_select_2 -->
+            <!-- begin_field_radio_2 -->
+            <div class="section fields rb">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5 text-right field">
+                            <span>{label}</span>
+                        </div>
+                        <div class="col-lg-6 field custom_radio">
+                            <!-- begin_field_radio_item_2 -->
+                            <input value={value} name="{name_radio}" id="radio_{name_radio}_{value}" type="radio" {checked}>
+                            <label for="radio_{name_radio}_{value}"><span></span>{title}</label>
+                            <!-- end_field_radio_item_2 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end_field_radio_2 -->
+            <!-- end_field_2 -->
+            <div class="section fields">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-11 field height_fix">
+                            <button class="btn btn-block btn-success btn_save" disabled>
+                                <span>{l_save}</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- begin_invisible_mode -->
+    <div id="fields_3" class="item">
+        <div class="col-md-12">
+            <h3 class="cham-heading">{l_invisible_mode_impact}</h3>
+            <div class="clearfix"></div>
+            <hr>
+        </div>
+
+        <div class="wrap_fields">
+            <!-- begin_invisible_mode_settings_upgrade -->
+            <div class="section fields">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-11 field">
+                            <div class="info_link">{l_upgrade_your_account}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end_invisible_mode_settings_upgrade -->
+            <!-- begin_invisible_mode_settings -->
+            <!-- begin_field_3 -->
+            <!-- begin_field_select_3 -->
+            <div class="section fields">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5 text-right field">
+                            <span>{label}</span>
+                        </div>
+                        <div class="col-lg-6 field">
+                            <select name="{name_select}" class="selectpicker show-tick" data-live-search="true">
+                                <!-- begin_field_select_item_3 -->
+                                <option {selected} value="{value}">{title}</option>
+                                <!-- end_field_select_item_3 -->
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end_field_select_3 -->
+            <!-- begin_field_radio_3 -->
+            <div class="section fields rb">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5 text-right field">
+                            <span>{label}</span>
+                        </div>
+                        <div class="col-lg-6 field custom_radio">
+                            <!-- begin_field_radio_item_3 -->
+                            <input value={value} name="{name_radio}" id="radio_{name_radio}_{value}" type="radio" {checked}>
+                            <label for="radio_{name_radio}_{value}"><span></span>{title}</label>
+                            <!-- end_field_radio_item_3 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end_field_radio_3 -->
+            <!-- end_field_3 -->
+            <!-- end_invisible_mode_settings -->
+            <!-- begin_invisible_mode_settings_btn -->
+            <div class="section fields">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-11 field height_fix">
+                            <button class="btn btn-block btn-success btn_save" disabled>
+                                <span>{l_save}</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end_invisible_mode_settings_btn -->
+        </div>
+    </div>
+    <!-- end_invisible_mode -->
+
+    <!-- begin_autotranslator_settings -->
+    <div id="fields_8" class="item">
+        <div class="col-md-12">
+            <h3 class="cham-heading">{l_autotranslator_settings}</h3>
+            <div class="clearfix"></div>
+            <hr>
+        </div>
+
+        <div class="wrap_fields">
+            <!-- begin_field_8 -->
+            <!-- begin_field_radio_8 -->
+            <div class="section fields rb">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5 text-right field">
+                            <span>{label}</span>
+                        </div>
+                        <div class="col-lg-6 field custom_radio">
+                            <!-- begin_field_radio_item_8 -->
+                            <input value={value} name="{name_radio}" id="radio_{name_radio}_{value}" type="radio" {checked}>
+                            <label for="radio_{name_radio}_{value}"><span></span>{title}</label>
+                            <!-- end_field_radio_item_8 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end_field_radio_8 -->
+            <!-- end_field_8 -->
+            <div class="section fields">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-11 field height_fix">
+                            <button class="btn btn-block btn-success btn_save" disabled>
+                                <span>{l_save}</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end_autotranslator_settings -->
+    <script>initProfileChangeSettings();</script>
+    </form>
+
+    <div id="fields_5" class="item">
+        <input id="cmd_pass" type="hidden" name="cmd" class="ajax" value="password" />
+        <input id="ajax_pass" type="hidden" name="ajax" class="ajax" value="0" />
+
+        <div class="col-md-12">
+            <h3 class="cham-heading">{l_change_password}</h3>
+            <div class="clearfix"></div>
+            <hr>
+        </div>
+
+        <div class="wrap_fields">
+            <div class="section fields">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5 text-right field">
+                            <span>{l_current_password}</span>
+                        </div>
+                        <div class="col-lg-6 field">
+                            <input id="old_password" maxlength="{password_length_max}" name="old_password" type="password" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section fields">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5 text-right field">
+                            <span>{l_new_password}</span>
+                        </div>
+                        <div class="col-lg-6 field">
+                            <input id="new_password" maxlength="{password_length_max}" type="password" name="new_password" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section fields">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5 text-right field">
+                            <span>{l_retype_new_password}</span>
+                        </div>
+                        <div class="col-lg-6 field">
+                            <input id="verify_new_password" maxlength="{password_length_max}" type="password" name="verify_new_password" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section fields">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-11 field height_fix">
+                            <button class="btn btn-block btn-success btn_save" disabled>
+                                <span>{l_save}</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>initProfileChangePasswordFrm()</script>
+    </div>
+
+
+    <div id="fields_6" class="item">
+        <input id="cmd_email" type="hidden" name="cmd" class="ajax" value="update_email" />
+        <input id="ajax_email" type="hidden" name="ajax" class="ajax" value="0" />
+
+        <div class="col-md-12">
+            <h3 class="cham-heading">{l_change_email_address}</h3>
+            <div class="clearfix"></div>
+            <hr>
+        </div>
+
+        <div class="wrap_fields">
+            <div class="section fields">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5 text-right field">
+                            <span>{l_new_email_address}</span>
+                        </div>
+                        <div class="col-lg-6 field">
+                            <input id="new_email" name="new_email" type="text" class="form-control" >
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section fields">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5 text-right field">
+                            <span>{l_current_password}</span>
+                        </div>
+                        <div class="col-lg-6 field">
+                            <input id="password_email" name="password" maxlength="{password_length_max}" type="password" class="form-control" >
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section fields">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-11 field height_fix">
+                            <button class="btn btn-block btn-success btn_save" disabled>
+                                <span>{l_save}</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>initProfileChangeEmailFrm()</script>
+    </div>
+
+    <!-- begin_delete_profile -->
+    <div id="fields_7" class="item">
+        <input type="hidden" name="cmd" value="check_password" />
+
+        <div class="col-md-12">
+            <h3 class="cham-heading">{l_delete_profile}</h3>
+            <div class="clearfix"></div>
+            <hr>
+        </div>
+
+        <div class="wrap_fields">
+            <div class="section fields">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5 text-right field">
+                            <span>{l_current_password}</span>
+                        </div>
+                        <div class="col-lg-6 field">
+                            <input data-toggle="tooltip" name="password" type="password" class="form-control" >
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section fields">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-11 field height_fix">
+                            <button class="btn btn-block btn-success btn_save" disabled>
+                                <span>{l_delete}</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>initProfileDeleteFrm()</script>
+    </div>
+    <!-- end_delete_profile -->
+    </div>
+</div>
+
+<div class="clearfix"></div>
+</div>
+{footer}

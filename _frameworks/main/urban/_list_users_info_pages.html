@@ -1,0 +1,38 @@
+<!-- begin_pager -->
+<ul class="list_users_info_pages">
+    <!-- begin_pager_prev2 -->
+    <li><a href="{url_main}{url_page}?offset={offset}{params}" data-value="{offset}">{l_prev}</a></li>
+    <!-- end_pager_prev2 -->
+
+    <!-- begin_pager_link -->
+    <!-- begin_pager_link_active -->
+    <li>
+        <div class="selected {class_link_active}">
+            <span>{page_n}</span>
+        </div>
+    </li>
+    <!-- end_pager_link_active -->
+    <!-- begin_pager_link_not_active -->
+    <li><a href="{url_main}{url_page}?offset={offset}{params}" data-value="{offset}">{page_n}</a></li>
+    <!-- end_pager_link_not_active -->
+    <!-- end_pager_link -->
+
+    <!-- begin_pager_next2 -->
+    <li><a href="{url_main}{url_page}?offset={offset}{params}" data-value="{offset}">{l_next}</a></li>
+    <!-- end_pager_next2 -->
+</ul>
+<!-- end_pager -->
+
+<script>
+$(function(){
+	$('.list_users_info_pages a').click(function(){
+        isNavigatingPages = true;
+        var offset=$(this).attr('data-value');
+        if(ajax_login_status && window.history && history.pushState){
+            history.replaceState(history.state, document.title, '{url_main}search_results.php?offset='+offset);
+        }
+		moduleSearchShowResultsByParam('#filter_offset', offset, false);
+		return false;
+	});
+});
+</script>

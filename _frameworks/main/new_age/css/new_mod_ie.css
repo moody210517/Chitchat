@@ -1,0 +1,15 @@
+.new_mods_head_txt {line-height:16px;}
+.new_mods_img{padding: 2px 2px 0;}
+.new_mods_img_thin{ padding: 3px 3px 1px; }
+*html .new_mods_foto ul li.last{ padding: 17px 0 0; }
+*+html .new_mods_foto ul li.last{ padding: 13px 0 0; }
+.new_mods_pl_violet_c, .new_mods_pl_dpink_c, .new_mods_pl_violet_thin_c{ _margin: 0; }
+.new_mods_pl_violet_l, .new_mods_pl_dpink_l, .new_mods_pl_violet_thin_l{ _margin: 0 -3px 0 0; }
+.new_mods_pl_violet_r, .new_mods_pl_dpink_r, .new_mods_pl_violet_thin_r{ _margin: 0 0 0 -3px; }
+.new_mods_pl_dpink{ position: relative; zoom: 1; margin: 0 0 20px; }
+.new_mods_pl_pink{ zoom: 1; margin: 2px 0 0; }
+.new_mods_pl_violet_img img{ _margin: 4px 0 0; }
+.new_mods_pl_violet, .new_mods_foto_thin{ zoom: 1; }
+.new_mods input{ padding: 0 5px; height: 18px; }
+.new_mods_foto_m{ margin: 0 0 15px; zoom: 1; }
+.tb_new_mods_frm th{ padding: 0 0 15px; line-height: 16px; }

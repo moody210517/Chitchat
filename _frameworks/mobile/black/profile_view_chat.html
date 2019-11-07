@@ -1,0 +1,59 @@
+{header}
+<script type="text/javascript" src="../_server/mobile_chat.js{cache_version_param}"></script>
+
+<table class="cnt chat" cellspacing="0" cellpadding="0"><tr><td>
+
+<table cellspacing="0" cellpadding="0" class="tab">
+<thead>
+	<tr>
+		<td colspan="2">{l_instant_chat_with} <a href="{url_main}profile_view.php?user_id={id}">{name}</a></td>
+	</tr>
+</thead>
+
+<tfoot>
+	<tr>
+		<td class="searchform">
+			<form method="post" action="">
+				<table>
+					<tr><td class="t1">
+						<input id="txt_message" name="message" type="text" class="txt" />
+					</td><td class="t2">
+						<a href="#" onclick="CChat.send();" class="orange_btn btn">{l_write}</a>
+				</td></table>
+			</form>
+		</td>
+	</tr>
+</tfoot>
+
+<tbody>
+	<tr>
+		<td class="content" colspan="2">
+			<table cellspacing="0" cellpadding="0" class="list">
+			<tr>
+				<th colspan="2">
+					<table cellpadding="0" cellspacing="0" class="smenu">
+						{profile_view_menu}
+					</table>
+				</th>
+			</tr>
+			<tr>
+				<td id="content">
+				</td>
+			</tr>
+			</table>
+		</td>
+	</tr>
+</tbody>
+</table>
+
+</td></tr></table>
+
+<script>
+mobileNotifyExclude = 'im&uid={id}';
+langParts = {'msg_empty' : '{l_you_have_not_entered_a_message}'};
+var CChat = new CMobileChat('#txt_message', '#content', 'im', langParts, '{id}');
+CChat.updater();
+</script>
+
+{user_menu}
+{footer}

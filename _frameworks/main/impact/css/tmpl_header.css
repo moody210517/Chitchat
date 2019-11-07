@@ -1,0 +1,22 @@
+<!-- begin_scheme_visitor -->
+<!-- begin_scheme_visitor_bg_color -->
+body{background-color: {image_background_color}}
+<!-- end_scheme_visitor_bg_color -->
+<!-- begin_scheme_visitor_bg_image -->
+body{background-color: transparent;}
+<!-- end_scheme_visitor_bg_image -->
+
+.header {background: {main_page_header_background_color};}
+<!-- end_scheme_visitor -->
+
+<!-- begin_scheme_member -->
+.footer_w, .footer .nav li, .footer .nav li a{color: {font_color_text};}
+<!-- end_scheme_member -->
+
+<!-- begin_field_i_am_here_to_normal_style -->
+.field_i_am_here .rb label.{name}  {background: url('{url_tmpl_main}images/{name}.png') 0 1px no-repeat;}
+<!-- end_field_i_am_here_to_normal_style -->
+
+<!-- begin_page_menu_item -->
+.column_main .col ul.nav li a#narrow_menu_link_{page_menu_item_id} span.icon {background: url('{page_menu_item_icon_url}') no-repeat 50% 50%}
+<!-- end_page_menu_item -->

@@ -1,0 +1,46 @@
+<!-- begin_item_block_users -->
+    <script>myFriends.setRank('{rank}');</script>
+    <div data-pending="{is_pending}" id="friend_user_{user_id}" class="profile_visitors_item item {id} <!-- begin_border_top -->item_border_top<!-- end_border_top --><!-- begin_border_none -->item_border_none<!-- end_border_none -->">
+    <div class="pic">
+        <a href="{url_main}{user_profile_link}" style="opacity:0;">
+            <img src="{url_files}{user_photo}" onload="$(this).parent().fadeTo(400,1)">
+        </a>
+    </div>
+    <div class="info">
+        <p <!-- begin_user_friend -->class="one"<!-- end_user_friend -->><strong><a href="{url_main}{user_profile_link}">{user_name}</a></strong>, {age}, {city}</p>
+        <!-- begin_user_pending -->
+        <div class="pl_new">{l_pending_request}</div>
+        <p style="padding-bottom: 4px;">{created_time_ago} |
+        <a class="approve_friend_one" onclick="myFriends.approve('{user_id}',1, $(this)); return false;" href="#">{l_approve_request}</a>
+        </p>
+        <!-- end_user_pending -->
+    </div>
+    <div class="visitors_or">
+        <div class="pl_btn <!-- begin_gifts_disabled1 --><!-- end_gifts_disabled1 -->">
+            <ul class="visitors">
+                <li><a data-user-id="{user_id}" class="chat show_messages" href="#">{l_chat_nowe}</a></li>
+                <!-- begin_gifts_enabled -->
+                <li><a data-user-id="{user_id}" data-is-blocked-me="{var_is_blocked_me}" class="gift send_user_gift" href="#">{l_give_a_gift}</a></li>
+                <!-- end_gifts_enabled -->
+                <li class="visitors_or_menu">
+                    <a class="or" href="#">{l_or}</a>
+                    <div class="visitors_or_item" >
+                        <ul class="pp_small_decor_tl pp_visitors_funk">
+                            <li><a onclick="myFriends.confirmRemoveFriend('{user_id}'); return false;" data-user-id="{user_id}" class="delete" href="#">{action_remove}</a></li>
+                            <!-- begin_user_approve_friend -->
+                            <li class="middle approve_friend">
+                                <a onclick="myFriends.approve('{user_id}'); return false;" class="friend_add" href="#">{l_approve_request}</a>
+                            </li>
+                            <!-- end_user_approve_friend -->
+                            <!-- begin_user_lock -->
+                            <li><a onclick="confirmBlockUser('{user_id}','block_user'); return false;" class="block" href="#">{l_block}</a></li>
+                            <!-- end_user_lock -->
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+ </div>
+<!-- end_item_block_users -->
+<script>myFriends.setParam('{stop}');</script>

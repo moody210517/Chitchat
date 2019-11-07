@@ -1,0 +1,22 @@
+.header ul.nav li a, 
+.header ul.nav li span{
+    unicode-bidi: bidi-override;
+    direction: rtl;
+}
+
+.column_main .col ul.nav li a span.icon, 
+.column_main .col ul.nav li span span.icon{
+    right: 10px;
+    left: initial;
+}
+
+.column_main .col ul.nav li .count{
+    right: initial;
+    left: 15px;
+}
+
+.column_main .col ul.nav li a{
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    text-align: right;
+}

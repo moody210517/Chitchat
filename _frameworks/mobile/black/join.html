@@ -1,0 +1,170 @@
+{header}
+<script language="JavaScript" type="text/javascript">
+    var captcha = '';
+    <!-- begin_re_captcha_js -->
+    var verifyCallback = function(response) {
+        captcha = grecaptcha.getResponse(recaptchaWd);
+        $('#recaptcha_input').val(captcha);
+    };
+    var onloadCallback = function() {
+        recaptchaWd = grecaptcha.render('recaptcha', {
+            'sitekey' : '{re_captcha_sitekey}',
+            'callback' : verifyCallback,
+            'theme' : '{re_captcha_theme}'
+        });
+    };
+    <!-- end_re_captcha_js -->
+  function onValidateJoinForm() {
+    var form = document.forms['JoinForm'];
+    if (!(validateUserName(form['join_handle'], '{l_username}', '{username_length_min}', '{username_length}'))) {
+      return false;
+    }
+    if (!(validateRequiredField(form['join_password'], '{l_password}'))) {
+      return false;
+    }
+    if (!(validateMinLength(form['join_password'], '{l_password}', '{password_length_min}'))) {
+      return false;
+    }
+    if (!(validateMaxLength(form['join_password'], '{l_password}', '{password_length_max}'))) {
+      return false;
+    }
+    if (!(validateAlphaNumeric(form['join_password'], '{l_password}'))) {
+      return false;
+    }
+    if (!(validateRequiredField(form['email'], '{l_email_address}'))) {
+      return false;
+    }
+    if (!(validateMaxLength(form['email'], '{l_email_address}', '{mail_length_max}'))) {
+      return false;
+    }
+    if (!(validateEmailField(form['email'], '{l_email_address}'))) {
+      return false;
+    }
+    <!-- begin_field_orientation_js -->
+    if (!(validateRequiredSelect(form['orientation'],'{l_orientation}','0'))) {
+      return false;
+    }
+    if (!(validateRequiredField(form['orientation'], '{l_orientation}', '0'))) {
+      return false;
+    }
+    <!-- end_field_orientation_js -->
+    if (!(validateRequiredSelect(form['country'],'{l_country}','-1'))) {
+      return false;
+    }
+    if (!(validateRequiredField(form['country'], '{l_country}', '-1'))) {
+      return false;
+    }
+    if (!(validateRequiredField(form['month'], '{l_month}'))) {
+      return false;
+    }
+    if (!(validateRequiredField(form['day'], '{l_day}'))) {
+      return false;
+    }
+    if (!(validateRequiredField(form['year'], '{l_year}'))) {
+      return false;
+    }
+    <!-- begin_default_captcha_js -->
+    captcha = form['captcha'].value;
+    <!-- end_default_captcha_js -->
+    if ($.trim(captcha)=='') {
+        alert('{l_incorrect_captcha}');
+        $('#captcha_input').focus();
+        return false;
+    }
+
+    if (!(validateRequiredCheckbox(form['privacy_policy'],'','{l_agree_privete_policy}'))) {
+      return false;
+    }
+    return true;
+  }
+
+  function validateJoinForm() {
+    blockSubmission = true;
+     if (typeof beforeJoinFormValidation != 'undefined') {
+       beforeJoinFormValidation();
+    }
+    var validated = onValidateJoinForm();
+    if (validated && (typeof uponSuccessfulJoinFormValidation != 'undefined')) {
+      validated = uponSuccessfulJoinFormValidation();
+    }
+    else if (!validated && (typeof uponUnsuccessfulJoinFormValidation != 'undefined')) {
+      uponUnsuccessfulJoinFormValidation();
+    }
+    if (!validated) {
+
+    }
+    return validated;
+  }
+
+  function submitJoinForm() {
+   if (validateJoinForm()) document.JoinForm.submit();
+   else return false;
+  }
+  function refreshCaptcha(){
+    $('#captcha').attr('src', '../_server/securimage/securimage_show_custom.php?sid=' + Math.random());
+    return false;
+  }
+</script>
+
+<!-- begin_join -->
+<form class="one" name="JoinForm" method="post" action="{url_main}join.php" onsubmit="return validateJoinForm();">
+	<input type="hidden" name="cmd" value="register">
+	<div class="block regblock">
+		<table class="cnt reg" cellspacing="0" cellpadding="0">
+		<tr><th><label>{l_username}:</label></th><td><input id="username" name="join_handle" value="{join_handle}" type="text" class="txt"/></td></tr>
+		<tr><th><label>{l_create_password}:</label></th><td><input id="create-password" name="join_password" value="{join_password}" type="password" class="txt"/></td></tr>
+		<tr><th><label>{l_email}:</label></th><td><input name="email" value="{email}" type="text" class="txt"/></td></tr>
+		</table>
+	</div>
+
+	<div class="block regblock purple">
+		<table class="cnt reg" cellspacing="0" cellpadding="0">
+        <!-- begin_field_orientation -->
+		<tr><th><label>{l_i_am}:</label></th><td><select name="orientation" id="iam">{orientation_options}</select></td></tr>
+		<!-- end_field_orientation -->
+        <tr><th><label>{l_from}:</label></th><td><select name="country" id="from"><option value="-1" selected="selected">{l_country_select}</option>{country_options}</select></td></tr>
+		<tr><th><label>{l_born_on}:</label></th><td><select name="month" id="month" onchange="updateDay('month','JoinForm','year','month','day')" class="month">{month_options}</select><select name="day" id="day" class="day">{day_options}</select><select name="year" id="year" onchange="updateDay('year','JoinForm','year','month','day')" class="year">{year_options}</select></td></tr>
+        <tr>
+            <th><label>{l_captcha}:</label></th>
+            <td>
+            <!-- begin_default_captcha -->
+            <img onclick="refreshCaptcha();" style="cursor:pointer;" id="captcha" src="../_server/securimage/securimage_show_custom.php?sid=432" />
+            <input type="text" name="captcha" class="captcha" />
+            <!-- end_default_captcha -->
+            <!-- begin_re_captcha -->
+            <input id="recaptcha_input" type="hidden" name="recaptcha"/>
+            <div id="recaptcha"  style="transform:scale(.77); height: 80px; margin:-7px -55px -3px -38px;"></div>
+            <!-- end_re_captcha -->
+            </td>
+        </tr>
+        <tr><th></th><td><label class="checkbox" for="privacy_policy"><input name="privacy_policy" id="privacy_policy" class="checkbox" type="checkbox"/> {l_i_agree_to_the} <a href="{url_main}info.php?page=term_cond&lang={lang_loaded}" target="_blank">{l_terms}</a> {l_and} <a href="{url_main}info.php?page=priv_policy&lang={lang_loaded}" target="_blank">{l_privacy_policy}</a></label></td></tr>
+
+        </table>
+	</div>
+
+	<div id="ftr">
+		<table class="bg" cellspacing="0" cellpadding="0"><tr><td class="brd"></td><td class="orn"></td><td class="yel"></td><td class="grn"></td><td class="blu"></td><td class="pur"></td></tr></table>
+		<div class="login">
+			<table cellspacing="0" cellpadding="0"><tr>
+				<th>
+					<!-- begin_facebook_register -->
+					<a class="fb_button_join" href="{facebook_login_url}">{l_login_with_facebook}</a>
+					<!-- end_facebook_register -->
+				</th>
+				<th><input type="submit" class="btn" value="{l_start_sign}"/></th>
+			</tr></table>
+		</div>
+	</div>
+</form>
+
+<!-- begin_join_message -->
+<script type="text/javascript"><!--
+alert("{join_message}");
+//--></script>
+<!-- end_join_message -->
+
+<!-- end_join -->
+<!-- begin_re_captcha_script -->
+<script src="//www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit&hl={re_captcha_lang}" async defer></script>
+<!-- end_re_captcha_script -->
+{footer}

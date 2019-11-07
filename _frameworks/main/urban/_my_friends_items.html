@@ -1,0 +1,17 @@
+<!-- begin_item_block_users -->
+    <script>myFriends.setRank('{rank}');</script>
+    <div data-user-id="{user_id}" id="friend_user_{user_id}" class="item <!-- begin_border_top -->item_border_top<!-- end_border_top --><!-- begin_border_none -->item_border_none<!-- end_border_none -->">
+        <div class="pic">
+            <a href="{url_main}{user_profile_link}" style="opacity:0;">
+                <img src="{url_files}{user_photo}" onload="$(this).parent().fadeTo(400,1)">
+            </a>
+        </div>
+        <div class="info">
+            <p><strong><a href="{url_main}{user_profile_link}">{user_name}</a></strong>, {age}, {city}
+        </div>
+        <div class="bl_btn" >
+            <input id="friends_see_private_photo_btn_{user_id}" onclick="myFriends.confirmDisallowPrivatePhoto('{user_id}'); return false;" data-user-id="{user_id}" type="button" class="btn blue fl_right" value="{l_disallow}" />
+        </div>
+    </div>
+<!-- end_item_block_users -->
+<script>myFriends.setParam('{stop}');</script>

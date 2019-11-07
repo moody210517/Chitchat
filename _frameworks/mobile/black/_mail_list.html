@@ -1,0 +1,80 @@
+
+<table class="cnt{folder_style}" cellspacing="0" cellpadding="0"><tr><td>
+
+<table cellspacing="0" cellpadding="0" class="tab">
+
+<tfoot>
+	<tr>
+		<!-- begin_inbox_navigation -->
+		<td class="mailnav"><a href="{url_main}{url_page}?folder=2">{l_trash}</a> | <a href="{url_main}{url_page}?folder=3">{l_sent}</a></td>
+		<!-- end_inbox_navigation -->
+		<!-- begin_trash_navigation -->
+		<td class="mailnav"><a href="{url_main}{url_page}?folder=3">{l_sent}</a> | <a href="{url_main}{url_page}">{l_inbox}</a></td>
+		<!-- end_trash_navigation -->
+		<!-- begin_sent_navigation -->
+		<td class="mailnav"><a href="{url_main}{url_page}?folder=2">{l_trash}</a> | <a href="{url_main}{url_page}">{l_inbox}</a></td>
+		<!-- end_sent_navigation -->
+		<td class="add"><a href="{url_main}mail_compose.php">[+] {l_new_mail_compose}</a></td>
+		<td class="dots"><!-- begin_users_list_next_page --><a href="{url_main}{url_page}?offset={offset}{params}">.&nbsp;.&nbsp;.&nbsp;.</a><!-- end_users_list_next_page --></td>
+	</tr>
+</tfoot>
+
+<tbody>
+<tr>
+	<td colspan="3" class="content" style="padding:0;">
+		<table cellspacing="0" cellpadding="0" class="list">
+		<!-- begin_users_list_items -->
+			<form name="deleteform" action="{url_main}mail.php?cmd=delete{params}" method="post">
+			<tr class="head">
+				<th><!-- begin_to -->{l_to}<!-- end_to --><!-- begin_from -->{l_from}<!-- end_from --></th>
+				<th>{l_subject}</th>
+				<th>{l_date}</th>
+				<th><a href="javascript:document.deleteform.submit();">{l_delete}</a></th>
+			</tr>
+			<!-- begin_users_list_item -->
+			<tr>
+				<td>{bold}
+                    <!-- begin_from_user --><a href="{url_main}profile_view.php?user_id={user_id}">{name_short}</a><!-- end_from_user -->
+                    <!-- begin_from_admin --><span>{l_website_administration_short}</span><!-- end_from_admin-->
+                    {bold_end}
+                 </td>
+				<td>{bold}<a href="{url_main}{url_page}?display=text{params}&offset={offset}">{subject}</a>{bold_end}</td>
+				<td>{bold}{date_sent}{bold_end}</td>
+				<td align="center"><input class="checkbox" type="checkbox" value="{id}" name="id[]"/></td>
+			</tr>
+			<!-- end_users_list_item -->
+			</form>
+		<!-- end_users_list_items -->
+		<!-- begin_users_list_noitems -->
+		<tr>
+			<tr class="head">
+				<th>&nbsp;</th>
+				<th>&nbsp;</th>
+				<th>&nbsp;</th>
+				<th>&nbsp;</th>
+			</tr>
+			<td colspan="4" class="alertspace">
+				<table class="alert"><tr><td class="alertbg">
+					<table cellspacing="0" cellpadding="0">
+						<tr>
+							<td>
+								<h2>{l_no_letters_yet}</h2>
+								<p>{l_you_can_write_a_letter_to_someone_to_start_corresponding}</p>
+							</td>
+						</tr>
+						<tr>
+							<td align="center">
+								<form method="get" action="{url_main}mail_compose.php"><p><input style="width:110px;" type="submit" class="orange_btn btn" value="{l_write_a_letter}"/></p></form>
+							</td>
+						</tr>
+					</table>
+				</td></tr></table>
+			</td>
+		</tr>
+		<!-- end_users_list_noitems -->
+		</table>
+	</td>
+</tr>
+</tbody>
+</table>
+</td></tr></table>

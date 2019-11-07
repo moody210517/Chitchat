@@ -1,0 +1,55 @@
+{header}
+<script type='text/javascript' src='{url_tmpl_main}js/general_chat.js{cache_version_param}'></script>
+<script>
+    GeneralChat = new CGeneralChat('{user_id}', '{current_room}', '{home_page}');
+    GeneralChat.langParts = {ooops:'{j_ooops}',
+                             user_ban:'{j_you_have_been_banned_by_the_admin_please_try_later}'}
+</script>
+
+<div class="column_main">
+    <div class="column_main_head">
+        <div class="decor">
+            <h1>{l_column_narrow_general_chat}</h1>
+            <!-- begin_rooms -->
+            <div id="rooms" class="module_search_show show" >
+                <strong>{l_chat_rooms}</strong> <span class="arrow" id="rooms_item_show">{room_name_selected}</span>
+                <div class="pp_small_decor_r_search" id="rooms_item">
+                    <ul class="pp_small_decor_r_show">
+                        <!-- begin_room -->
+                        <li><a class="room_item <!-- begin_room_selected -->selected<!-- end_room_selected -->" href="" onclick="GeneralChat.changeRoom($(this), {room_id}); return false;"><span>{room_name}</span></a></li>
+                        <!-- end_room -->
+    				</ul>
+                </div>
+            </div>
+            <!-- end_rooms -->
+            <div class="cl"></div>
+        </div>
+    </div>
+    <div class="column_main_cont general_chat_color">
+        <div class="general_chat" style="opacity: 0;">
+            <div class="general_chat_message">
+                <div class="cont">
+                    <div class="name_chat">
+                        <div id="general_chat_dialog_loader" class="dialog_loader"></div>
+                        {list_messages}
+                        {list_users}
+                        <div id="frm_general_chat" class="frm_general_chat">
+                            <textarea id="msg_text" class="inp placeholder" name="msg"></textarea>
+                            <button onclick="GeneralChat.sendMsg();" class="btn dblue">{l_send}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- begin_message_tmpl -->
+            <div id="tmpl_message" style="display:none;">
+                {message}
+            </div>
+            <!-- end_message_tmpl -->
+            <div id="general_chat_ajax" style="display:none;"></div>
+        </div>
+    </div>
+</div>
+<div class="column_narrow">
+    {profile_column_narrow}
+</div>
+{footer}

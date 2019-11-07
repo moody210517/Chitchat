@@ -1,0 +1,171 @@
+{header}
+<style type="text/css">
+.header{z-index: 110;}
+/*.main{overflow-y: auto;  }
+.footer.fixed {position: relative;}
+.bl_settings {height:470px;}*/
+</style>
+<script type="text/javascript" src="{url_tmpl_mobile}js/register.js{cache_version_param}"></script>
+<script>
+    preloadImages(
+            url_tmpl_mobile_images+'undo.png'
+    );
+    var isIos = '{is_ios}'*1,
+        isRecaptcha = false,
+        isOrientation = false;
+        minCahrPass = '{password_length_min}'*1,
+        maxCahrPass = '{password_length_max}'*1,
+        minCahrName = '{username_length_min}'*1,
+        maxCahrName = '{username_length}'*1,
+        minAge = {users_age};
+
+    var langParts = {'select_all' : '{j_please_choose}',
+                     'incorrect_email' : '{j_incorrect_email}',
+                     'incorrect_date' : '{j_incorrect_date}',
+                     'max_min_length_password' : '{max_min_length_password}',
+                     'invalid_password_contain' : '{j_invalid_password_contain}',
+                     'incorrect_captcha' : '{j_incorrect_captcha}',
+                     'invalid_username' : '{j_invalid_username}',
+                     'max_min_length_username' : '{max_min_length_username}',
+                     'state_is_required' : '{j_state_is_required}',
+                     'city_is_required' : '{j_city_is_required}',
+                     'orientation_is_required' : '{j_orientation_is_required}',
+                     'incorrect_captcha' : '{j_incorrect_captcha}',
+                     'register' : '{j_register}',
+                     'no_confirmation_account' : '{j_no_confirmation_account}',
+                     'please_agree_to_the_terms' : '{j_please_agree_to_the_terms}',
+                     'choose_a_city' : '{j_choose_a_city}',
+                     'choose_a_state' : '{j_choose_a_state}',
+                     'please_choose_empty' : '{j_please_choose_empty}'
+        };
+
+    <!-- begin_re_captcha_js -->
+    isRecaptcha=true;
+    var recaptchaWd,verifyCallback = function(response) {
+            resetTipTopError($('#recaptcha'));
+        };
+    var onloadCallback = function() {
+        recaptchaWd = grecaptcha.render('recaptcha', {
+            'sitekey' : '{re_captcha_sitekey}',
+            'callback' : verifyCallback,
+            'theme' : '{re_captcha_theme}'
+        });
+    };
+    <!-- end_re_captcha_js -->
+
+</script>
+<div class="head empty">&nbsp;</div>
+
+<div class="bl_settings">
+    <div id="form_box" class="frm var_sel">
+        <input type="hidden" name="cmd" class="ajax" value="register" />
+        <input type="hidden" name="ajax" class="ajax" value="1" />
+
+        <div class="bl">
+            <label>{l_email}{required_field_sign}:</label>
+            <input id="email" name="email" class="inp register mail" type="text" value="{email}"/>
+        </div>
+        <div class="bl">
+            <label>{l_password}{required_field_sign}:</label>
+            <input id="password" name="join_password" class="inp register" type="password" value="{join_password}"/>
+        </div>
+        <div class="bl">
+            <label>{l_username}{required_field_sign}:</label>
+            <input id="user_name" maxlength="{username_length}" name="join_handle" maxlength="{username_length}" class="inp register" type="text" value="{join_handle}"/>
+        </div>
+
+        <form name="frm_date" action="" autocomplete="off" class="form_birthday">
+        <div class="bl">
+            <label>{l_birthday}:</label>
+            <select style="width: 45px;" name="day" id="day" class="birthday">
+            {day_options}
+            </select>
+
+            <select style="width: 62px;" name="month" id="month" class="birthday">
+            {month_options}
+            </select>
+
+            <select style="width: 60px;" name="year" id="year" class="birthday">
+            {year_options}
+            </select>
+        </div>
+
+<!--         <div class="bl">
+            <label>&nbsp;</label>
+            <select name="month" id="month" class="birthday">
+            {month_options}
+            </select>
+        </div>
+        <div class="bl">
+            <label>&nbsp;</label>
+            <select name="year" id="year" class="birthday">
+            {year_options}
+            </select>
+        </div> -->
+        </form>
+
+        <!-- begin_field_orientation -->
+        <div class="bl orientation">
+            <label>{l_i_am}:</label>
+            <select name="orientation" id="orientation">
+                {orientation_options}
+            </select>
+        </div>
+        <!-- end_field_orientation -->
+
+        <div id="country_box" class="bl">
+            <label>{l_i_am_from}:</label>
+            <select name="country" id="country" data-location="states" class="location">
+            {country_options}
+            </select>
+        </div>
+        <div class="bl">
+            <label>&nbsp;</label>
+            <select name="state" id="state" data-location="cities" class="location">
+            {state_options}
+            </select>
+        </div>
+        <div class="bl">
+            <label>&nbsp;</label>
+            <select name="city" id="city" class="location">
+            {city_options}
+            </select>
+        </div>
+
+        <!-- begin_default_captcha -->
+        <div class="bl">
+            <label>{l_enter_code}{required_field_sign}:</label>
+            <img title="{l_refresh}" class="img_captcha" id="img_join_captcha" onclick="refreshCaptcha();" src="../_server/securimage/securimage_show_custom.php?sid={sid}&tmpl={tmpl_set_captcha}{width_captcha}{height_captcha}">
+            <img title="{l_refresh}" onclick="refreshCaptcha();" src="{url_tmpl_mobile}images/undo.png">
+        </div>
+        <div class="bl">
+            <label>&nbsp;</label>
+            <input id="captcha" name="captcha" class="inp register" type="text" value=""/>
+        </div>
+        <!-- end_default_captcha -->
+
+        <!-- begin_re_captcha -->
+        <div class="bl">
+            <label>{l_enter_code}{required_field_sign}:</label>
+            <div style=" height: 40px; width:150px; float:right;">
+                <div id="recaptcha" style="transform:scale(.58);  margin-left: -92px;  margin-top:-18px;"></div>
+            </div>
+            <div class="cl"></div>
+        </div>
+        <!-- end_re_captcha -->
+
+        <div class="bl agree">
+            <label>&nbsp;</label>
+            <div class="bl_ch">
+                <input id="agree" type="checkbox" />
+                <label for="agree">
+                    {l_i_agree_to_the} <a target="_blank" href="{url_main}info.php?page=term_cond&lang={lang_loaded}">{l_terms}</a> {l_and} <a target="_blank" href="{url_main}info.php?page=priv_policy&lang={lang_loaded}">{l_privacy_policy}</a>
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- begin_re_captcha_script -->
+<script src="//www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit&hl={re_captcha_lang}" async defer></script>
+<!-- end_re_captcha_script -->
+{footer}

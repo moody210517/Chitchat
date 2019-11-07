@@ -1,0 +1,91 @@
+<div id="pp_profile_private_note" class="pp_popup_editor visible">
+<div class="bl arrow">
+    <div class="title">{l_private_note}
+    <div class="cl"></div>
+    </div>
+</div>
+<div class="bl_frm">
+    <div class="bl">
+        <div class="field">
+            <textarea id="pp_3_editor_private_note" maxlength="1000">{value}</textarea>
+        </div>
+    </div>
+</div>
+<div class="frm_btn frm_edit">
+    <div class="double">
+        <span class="l">
+            <button id="pp_3_cancel_private_note" class="btn small white_frame frm_editor_cancel">{l_cancel}</button>
+        </span>
+        <span class="r">
+            <button id="pp_3_save_private_note" class="btn small pink frm_editor_save" disabled>{l_save}</button>
+        </span>
+    </div>
+</div>
+<script>
+    var pp_3_private_note = $('#pp_3_private_note'),
+        pp_3_editor_private_note = $('#pp_3_editor_private_note').autosize().css('opacity',1),
+        pp_3_save_private_note = $('#pp_3_save_private_note'),
+        pp_3_cancel_private_note = $('#pp_3_cancel_private_note'),
+        info_private_note = pp_3_editor_private_note.val(),
+        btnCancel_private_note=$('#pp_3_cancel_private_note'),
+        pp_3_ajax_private_note = 1;
+
+    $('#pp_3_cancel_private_note').click(function (){
+        if(pp_3_editor_private_note.val()==info_private_note){
+            clProfile.loadTabs('#tabs-1',reset_info_private_note);
+        }else{
+            reset_info_private_note()
+        }
+        return false;
+    })
+    $('#pp_3_editor_private_note').on('change propertychange input', function(){
+        setDisabledSave_private_note();
+    })
+    $('#pp_3_save_private_note').click(function(){
+        if (pp_3_ajax_private_note) {
+            var val = pp_3_editor_private_note.val();
+            if (info_private_note != val) {
+                pp_3_ajax_private_note = 0;
+                pp_3_cancel_private_note.prop('disabled',true);
+                pp_3_save_private_note.prop('disabled',true).addLoader();
+                $.post(url_ajax+'?cmd=update_private_note&view=mobile', {uid:'{user_id}', comment: val}, update_private_note);
+            }
+        }
+        return false;
+    })
+    function reset_info_private_note(){
+        pp_3_save_private_note.prop('disabled',true).removeLoader();
+        btnCancel_private_note.text('{j_cancel}').prop('disabled',false);
+        pp_3_editor_private_note.val(info_private_note).autosize();
+    }
+    function update_private_note(res){
+        pp_3_ajax_private_note=1;
+        var data=checkDataAjax(res);
+        if(data!==false){
+            $('#private_note').html(data);
+            info_private_note=pp_3_editor_private_note.val();
+            if($('#pp_profile_private_note').is(':visible')){
+                showConfirm(l('changes_saved'), function(){
+                    clProfile.loadTabs('#tabs-1',reset_info_private_note);
+                }, false, false, false, true, false, true, 'fa-thumbs-up')
+            }else{
+                reset_info_private_note();
+            }
+        } else {
+            if($('#pp_profile_private_note').is(':visible')){
+                serverError();
+            }
+            reset_info_private_note();
+        }
+    }
+    function setDisabledSave_private_note(){
+        if (info_private_note != pp_3_editor_private_note.val()){
+            pp_3_save_private_note.removeAttr('disabled');
+            btnCancel_private_note.text('{j_reset}');
+        } else {
+            pp_3_save_private_note.attr('disabled', '');
+            btnCancel_private_note.text('{j_cancel}');
+        }
+    }
+</script>
+</div>

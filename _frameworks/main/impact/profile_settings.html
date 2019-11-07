@@ -1,0 +1,279 @@
+<div id="box_profile_settings" class="bl_settings">
+    <!--- UPDATE SETTINGS --->
+    <form id="frm_profile_settings" name="profile_settings" method="POST" action="{url_main}profile_settings.php">
+        <input type="hidden" name="cmd" value="mail"/>
+        <input type="hidden" name="ajax" class="ajax" value="0" />
+        <div id="fields_1" class="list_settings_cont select_var2 fields">
+            <div class="cont">
+                <div class="bl_frm">
+                    <table class="tb_frm">
+                    <!-- begin_field_1 -->
+                    <!-- begin_field_select_1 -->
+                    <tr><th><label class="name">{label}</label></th>
+                        <td><div class="field">
+                        <select name="{name_select}" class="styler_settings">
+                            <!-- begin_field_select_item_1 -->
+                            <option {selected} value="{value}">{title}</option>
+                            <!-- end_field_select_item_1 -->
+                        </select>
+                    </div></td></tr>
+                    <!-- end_field_select_1 -->
+                    <!-- begin_field_radio_1 -->
+                    <tr><th class="th_label_vt"><label class="name">{label}</label></th>
+                    <td><div class="field">
+                        <!-- begin_field_radio_item_1 -->
+                        <input class="rb styler_settings" value={value} name="{name_radio}" id="radio_{name_radio}_{value}" type="radio" {checked}/>
+                        <label for="radio_{name_radio}_{value}" class="label_radio">{title}</label>
+                        <!-- end_field_radio_item_1 -->
+                    </div></td></tr>
+                    <!-- end_field_radio_1 -->
+                    <!-- end_field_1 -->
+                    <!-- begin_timezone -->
+                    <tr><th><label class="name">{l_timezone}</label></th>
+                    <td><div class="field">
+                        <select id="timezone" class="styler_settings" name="timezone">{selectbox_options}</select>
+                        <!-- begin_info_timezone -->
+                        <script type="text/javascript">
+                            $('#timezone').change(function(){
+                                var zone = $(this).val();
+                                $.post('{url_administration}ajax.php', {cmd: 'timezone', zone: zone}, function(data) {
+                                    $('#info_timezone').html(data);
+                                })
+                            })
+                        </script>
+                        <div id="info_timezone" style="margin-left: 2px;">{info_timezone}</div>
+                        <!-- end_info_timezone -->
+                    </div></td></tr>
+                    <!-- end_timezone -->
+                    <!-- begin_sp_active -->
+                    <tr><th class="th_label_vt"><label class="name">{l_premium_account}</label></th>
+                    <td><div class="field date">
+                        <span class="active_date">{sp_active_till}</span>
+                    </div></td></tr>
+                    <!-- end_sp_active -->
+                    </table>
+                </div>
+            </div>
+            <div class="foot">
+                <div class="fl_right bl_btn">
+                    <button type="submit" class="btn small turquoise save_profile_settings save_settings" disabled>{l_save}</button>
+                </div>
+                <div class="cl"></div>
+            </div>
+        </div>
+
+        <div id="fields_2" class="list_settings_cont select_var2 fields">
+            <div class="cont">
+                <div class="bl_frm">
+                    <div class="head head_title">{l_notification_settings}</div>
+                    <table class="tb_frm">
+                        <!-- begin_field_2 -->
+                        <!-- begin_field_select_2 -->
+                        <tr><th><label class="name">{label}</label></th>
+                        <td><div class="field">
+                            <select name="{name_select}" class="styler_settings">
+                                <!-- begin_field_select_item_2 -->
+                                <option {selected} value="{value}">{title}</option>
+                                <!-- end_field_select_item_2 -->
+                            </select>
+                        </div></td></tr>
+                        <!-- end_field_select_2 -->
+                        <!-- begin_field_radio_2 -->
+                        <tr><th class="th_label_vt"><label class="name">{label}</label></th>
+                        <td><div class="field">
+                            <!-- begin_field_radio_item_2 -->
+                            <input class="rb styler_settings" value={value} name="{name_radio}" id="radio_{name_radio}_{value}" type="radio" {checked}/>
+                            <label for="radio_{name_radio}_{value}" class="label_radio">{title}</label>
+                            <!-- end_field_radio_item_2 -->
+                        </div></td></tr>
+                        <!-- end_field_radio_2 -->
+                        <!-- end_field_2 -->
+                    </table>
+                </div>
+            </div>
+            <div class="foot">
+                <div class="fl_right bl_btn">
+                    <button type="submit" class="btn small turquoise save_profile_settings save_settings" disabled>{l_save}</button>
+                </div>
+                <div class="cl"></div>
+            </div>
+        </div>
+        <!-- begin_invisible_mode -->
+        <div id="fields_3" class="list_settings_cont select_var2 fields">
+            <div class="cont">
+                <div class="bl_frm">
+                    <div class="head head_title">{l_invisible_mode_impact}</div>
+                    <!-- begin_invisible_mode_settings_upgrade -->
+                    <div class="info_link">{l_upgrade_your_account}</div>
+                    <!-- end_invisible_mode_settings_upgrade -->
+                    <!-- begin_invisible_mode_settings -->
+                    <table class="tb_frm">
+                        <!-- begin_field_3 -->
+                        <!-- begin_field_select_3 -->
+                        <tr><th><label class="name">{label}</label></th>
+                        <td><div class="field">
+                            <select name="{name_select}" class="styler_settings">
+                                <!-- begin_field_select_item_3 -->
+                                <option {selected} value="{value}">{title}</option>
+                                <!-- end_field_select_item_3 -->
+                            </select>
+                        </div></td></tr>
+                        <!-- end_field_select_3 -->
+                        <!-- begin_field_radio_3 -->
+                        <tr><th class="th_label_vt"><label class="name">{label}</label></th>
+                        <td><div class="field">
+                            <!-- begin_field_radio_item_3 -->
+                            <input class="rb styler_settings" value={value} name="{name_radio}" id="radio_{name_radio}_{value}" type="radio" {checked}/>
+                            <label for="radio_{name_radio}_{value}" class="label_radio">{title}</label>
+                            <!-- end_field_radio_item_3 -->
+                        </div></td></tr>
+                        <!-- end_field_radio_3 -->
+                        <!-- end_field_3 -->
+                    </table>
+                    <!-- end_invisible_mode_settings -->
+                </div>
+            </div>
+            <!-- begin_invisible_mode_settings_btn -->
+            <div class="foot">
+                <div class="fl_right bl_btn">
+                    <button type="submit" class="btn small turquoise save_profile_settings save_settings" disabled>{l_save}</button>
+                </div>
+                <div class="cl"></div>
+            </div>
+            <!-- end_invisible_mode_settings_btn -->
+        </div>
+        <!-- end_invisible_mode -->
+        <!-- begin_autotranslator_settings -->
+        <div id="fields_8" class="list_settings_cont select_var2 fields">
+            <div class="cont">
+                <div class="bl_frm">
+                    <div class="head head_title">{l_autotranslator_settings}</div>
+                    <table class="tb_frm">
+                        <!-- begin_field_8 -->
+                        <!-- begin_field_radio_8 -->
+                        <tr><th class="th_label_vt"><label class="name">{label}</label></th>
+                        <td><div class="field">
+                            <!-- begin_field_radio_item_8 -->
+                            <input class="rb styler_settings" value={value} name="{name_radio}" id="radio_{name_radio}_{value}" type="radio" {checked}/>
+                            <label for="radio_{name_radio}_{value}" class="label_radio">{title}</label>
+                            <!-- end_field_radio_item_8 -->
+                        </div></td></tr>
+                        <!-- end_field_radio_8 -->
+                        <!-- end_field_8 -->
+                    </table>
+                </div>
+            </div>
+            <div class="foot">
+                <div class="fl_right bl_btn">
+                    <button type="submit" class="btn small turquoise save_profile_settings save_settings" disabled>{l_save}</button>
+                </div>
+                <div class="cl"></div>
+            </div>
+        </div>
+        <!-- end_autotranslator_settings -->
+    </form>
+    <!--- UPDATE SETTINGS --->
+    <!--- UPDATE PASS --->
+    <div id="fields_5" class="list_settings_cont fields">
+            <input id="cmd_pass" type="hidden" name="cmd" class="ajax" value="password" />
+            <input id="ajax_pass" type="hidden" name="ajax" class="ajax" value="0" />
+            <div class="cont">
+                <div class="bl_frm">
+                    <div class="head head_title">{l_change_password}</div>
+                    <table class="tb_frm">
+                        <tr><th><label class="name">{l_current_password}</label></th>
+                        <td><div class="field">
+                            <input id="old_password" maxlength="{password_length_max}" class="inp password" type="password" name="old_password" />
+                            <div class="error_frm"></div>
+                        </div></td></tr>
+                        <tr><th><label class="name">{l_new_password}</label></th>
+                        <td><div class="field">
+                            <input id="new_password" maxlength="{password_length_max}" class="inp password" type="password" name="new_password" />
+                            <div class="error_frm"></div>
+                        </div></td></tr>
+                        <tr><th><label class="name">{l_retype_new_password}</label></th>
+                        <td><div class="field">
+                            <input id="verify_new_password" maxlength="{password_length_max}" class="inp password" type="password" name="verify_new_password"/>
+                            <div class="error_frm"></div>
+                        </div></td></tr>
+                    </table>
+                </div>
+            </div>
+            <div class="foot">
+                <div class="fl_right bl_btn">
+                    <button id="save_password" class="btn small turquoise save_settings" disabled>{l_save}</button>
+                </div>
+                <div class="cl"></div>
+            </div>
+    </div>
+    <!--- UPDATE PASS --->
+    <!--- UPDATE MAIL --->
+    <div id="fields_6" class="list_settings_cont fields">
+            <input id="cmd_email" type="hidden" name="cmd" class="ajax" value="update_email" />
+            <input id="ajax_email" type="hidden" name="ajax" class="ajax" value="0" />
+            <div class="cont">
+                <div class="bl_frm">
+                    <div class="head head_title">{l_change_email_address}</div>
+                    <table class="tb_frm">
+                        <tr><th><label class="name">{l_new_email_address}</label></th>
+                        <td><div class="field">
+                            <input id="new_email" name="new_email" class="inp mail" type="text" />
+                            <div class="error_frm"></div>
+                        </div></td></tr>
+                        <tr><th><label class="name">{l_current_password}</label></th>
+                        <td><div class="field">
+                            <input id="password_email" name="password" maxlength="{password_length_max}"  class="inp" type="password" />
+                            <div class="error_frm"></div>
+                        </div></td></tr>
+                    </table>
+                </div>
+            </div>
+            <div class="foot">
+                <div class="fl_right bl_btn">
+                    <button id="btn_update_mail" class="btn small turquoise save_settings" disabled>{l_save}</button>
+                </div>
+                <div class="cl"></div>
+            </div>
+    </div>
+    <!--- UPDATE MAIL --->
+    <!--- DELETE PROFILE --->
+    <!-- begin_delete_profile -->
+    <div id="fields_7" class="list_settings_cont fields">
+        <input id="cmd_profile_delete" type="hidden" name="cmd" value="check_password" />
+            <div class="cont">
+                    <div class="bl_frm">
+                        <div class="head head_title">{l_delete_profile}</div>
+                        <table class="tb_frm">
+                            <tr><th><label class="name">{l_current_password}</label></th>
+                            <td><div class="field">
+                                <input id="password_delete" class="inp" name="password" type="password" />
+                                <div class="error_frm"></div>
+                            </div></td></tr>
+                        </table>
+                    </div>
+            </div>
+            <div class="foot">
+                <div class="fl_right bl_btn">
+                    <button id="btn_profile_delete" class="btn small turquoise save_settings" disabled>{l_delete}</button>
+                </div>
+                <div class="cl"></div>
+            </div>
+    </div>
+    <!-- end_delete_profile -->
+    <!--- DELETE PROFILE --->
+</div>
+<script>
+    var stPassLenMin='{password_length_min}'*1,
+        stPassLenMax='{password_length_max}'*1;
+    var siteLangPartsSettings = {
+            minMaxLenPass : '{max_min_length_password}',
+			incorrectEmail : '{j_incorrect_email}',
+            invalidPassContain : '{j_invalid_password_contain}',
+            changesSaved : '{j_changes_saved}',
+            save : '{j_save}',
+            passwordsNotSame : '{j_passwords_not_same}',
+            oldPasswordsNotSame : '{j_old_and_new_passwords_are_the_same}',
+            profileWillDeletedForever : '{j_the_profile_will_be_deleted_forever}'
+        };
+</script>
+<script type="text/javascript" src="{url_tmpl_main}js/settings.js{cache_version_param}"></script>

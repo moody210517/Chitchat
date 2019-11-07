@@ -1,0 +1,21 @@
+<!-- begin_block_list_item -->
+    <div id="block_list_item_{user_id}" class="item <!-- begin_border_top -->item_border_top<!-- end_border_top --><!-- begin_border_none -->item_border_none<!-- end_border_none -->">
+        <script>last_id='{last_id}';</script>
+        <div class="pic">
+            <img class="black_white_photo" src="{url_files}{user_photo}" style="opacity:0;" onload="$(this).fadeTo(400,1)">
+        </div>
+        <div class="info">
+            <span>{user_name}</span>, {user_age}, {user_city}
+        </div>
+        <div class="bl_btn" >
+            <input id="user_block_item_{user_id}" data-user-block-id="{user_id}" onclick="confirmUnblock('{user_id}'); return false;" type="button" class="btn blue fl_right" value="{l_unblock}" />
+        </div>
+    </div>
+<!-- end_block_list_item -->
+
+<script>offset='no';</script>
+<!-- begin_block_list_pages -->
+<!-- begin_block_list_next_page -->
+<script>offset='{offset}';</script>
+<!-- end_block_list_next_page -->
+<!-- end_block_list_pages -->

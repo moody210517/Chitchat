@@ -1,0 +1,119 @@
+<script type="text/javascript" src="{url_main}_server/wall_edge.js{cache_version_param}"></script>
+<script>
+    isPageMyWall = '{guid}' == '{wall_user_id}';
+    var clWall = new CWall();
+    clWall.setData({
+        guid : '{guid}',
+        guidName : '{name_guid}',
+        guidUrl : '{url_guid}',
+        guidPhoto : '{photo_guid}',
+        uid : '{wall_user_id}',
+        onlySeeFriends : '{is_only_friends_wall}',
+        isOnlyFriendsWallPosts : '{is_only_friends_wall_posts}'*1,
+        isFriend : '{is_friend}'*1,
+        lastPostId : '{wall_last_post_id}',
+        isProfileWall : '{is_profile_wall}'*1,
+        maxFileSize : '{photo_file_size_limit}',
+        lMaxFileSize : '{max_photo_file_size_limit}',
+        numberCommentsFrmShow : '{number_comments_frm_show}'*1
+    });
+
+    clWall.initScrollToNotifComment('{wall_notif_cid}', '{wall_notif_pcid}');
+
+    <!-- begin_wall_updater -->
+    clWall.updaterInit();
+    <!-- end_wall_updater -->
+</script>
+<div style="display:none;">
+    <style id="wall_custom_style"></style>
+</div>
+
+<div id="pp_wall_one_post" class="wrap_one_item pp_wall_one_post cham-blog-style-1 modal fade" role="dialog" data-backdrop="false">
+    <div class="pp_gallery_overflow">
+        <div class="container pp_wall_post_item">
+            <div class="row">
+                <div class="cham-post photo_one">
+                    <div class="icon_close hidden-lg hidden-md hidden-sm" onclick="clWall.closePpOnePostPopup();">
+                        <span></span>
+                    </div>
+                    <div class="one_item">
+                        <div id="pp_wall_one_post_photo_one_bl" oncontextmenu="return false;" class="cham-post-image photo_one_bl">
+                            <div class="photo_one_cont none_select bl_img change_photo"></div>
+                            <div class="css_loader pp_gallery_loader">
+                                <div class="spinner spinnerw center">
+                                    <div class="spinner-blade"></div>
+                                    <div class="spinner-blade"></div>
+                                    <div class="spinner-blade"></div>
+                                    <div class="spinner-blade"></div>
+                                    <div class="spinner-blade"></div>
+                                    <div class="spinner-blade"></div>
+                                    <div class="spinner-blade"></div>
+                                    <div class="spinner-blade"></div>
+                                    <div class="spinner-blade"></div>
+                                    <div class="spinner-blade"></div>
+                                    <div class="spinner-blade"></div>
+                                <div class="spinner-blade"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cham-post-text to_show">
+                            <div class="title">
+                                <span class="text_overflow_page pp_wall_one_post_desc"></span>
+                            </div>
+                            <div class="upload_user">
+                                <div class="wrap_upload_user">
+                                    <a href="" class="name pp_wall_one_post_user_name"></a>
+                                    <span class="date pp_wall_one_post_date"></span>
+                                    <div class="photo pp_wall_one_post_user_photo"></div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+
+                        <div class="cham-post-meta to_show">
+                            <span class="time" style="display:none;">
+                                <i class="fa fa-comments" aria-hidden="true"></i>
+                                <span class="pp_wall_one_post_comments_count"></span>
+                            </span>
+                            <span class="time">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                <span class="pp_wall_one_post_time_ago"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="photo_one_comments">
+                <div class="photo_and_field_comment" style="display:block;">
+                    <div class="photo"></div>
+                    <div class="field_comment">
+                        <textarea placeholder="{a_write_your_comment}" class="form-control placeholder"></textarea>
+                        <button onclick="clWall.commentAdd(this); return false;" class="gallery_comment_send">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M21.5,11.1l-17.9-9C2.7,1.7,1.7,2.5,2.1,3.4l2.5,6.7L16,12L4.6,13.9l-2.5,6.7c-0.3,0.9,0.6,1.7,1.5,1.2l17.9-9   C22.2,12.5,22.2,11.5,21.5,11.1z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="gallery_comments">
+                    <div class="pp_wall_one_post_comments"></div>
+                </div>
+
+                <div class="photo_and_field_comment">
+                    <div class="photo"></div>
+                    <div class="field_comment">
+                        <textarea placeholder="{a_write_your_comment}" class="form-control placeholder"></textarea>
+                        <button onclick="clWall.commentAdd(this); return false;" class="gallery_comment_send">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M21.5,11.1l-17.9-9C2.7,1.7,1.7,2.5,2.1,3.4l2.5,6.7L16,12L4.6,13.9l-2.5,6.7c-0.3,0.9,0.6,1.7,1.5,1.2l17.9-9   C22.2,12.5,22.2,11.5,21.5,11.1z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

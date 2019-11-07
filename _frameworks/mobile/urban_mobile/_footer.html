@@ -1,0 +1,284 @@
+    <!-- begin_footer_mobile_visitor -->
+    <!-- begin_banner_footer_mobile -->
+    <div class="banner_footer {banner_footer_mobile_class}">
+        {banner_footer_mobile}
+    </div>
+    <!-- end_banner_footer_mobile -->
+    </div>
+        <!-- /content -->
+    </div>
+    <!-- /wrapper -->
+
+	<!-- begin_footer_mobile_visitor_index -->
+    <div class="footer">
+        <div id="block_btn_index" <!-- begin_social_login_no_class -->class="no_fb_login"<!-- end_social_login_no_class --> style="opacity: 0;">
+
+            <!-- begin_social_login -->
+            <ul class="bl_social_buttons">
+                <!-- begin_social_login_item -->
+                    <li class="login_{social_login_item_type}"><a href="{social_login_item_url}"><span>&nbsp;</span></a></li>
+                <!-- end_social_login_item -->
+            </ul>
+            <!-- end_social_login -->
+
+
+            <a class="btn grey btn_index" href="{url_main}join.php?cmd=please_login">{l_log_in}</a>
+            <!-- <div class="btn_cl"></div> -->
+            <a class="btn grey btn_index" href="{url_main}join.php">{l_register}</a>
+        </div>
+    </div>
+    <!-- end_footer_mobile_visitor_index -->
+	<!-- begin_footer_mobile_visitor_page -->
+    <div class="footer fixed">
+        <div class="bl"><a id="form_{footer_mobile_visitor_page_id}_submit" class="btn grey" href="">{footer_mobile_visitor_page_name}</a></div>
+    </div>
+	<!-- end_footer_mobile_visitor_page -->
+
+    </div>
+    <!-- /main -->
+    <!-- end_footer_mobile_visitor -->
+
+    <!-- begin_footer_mobile_user -->
+    <!-- begin_banner_footer_mobile_user -->
+    <div class="banner_footer_mobile_user {banner_footer_mobile_user_class}">
+        {banner_footer_mobile_user}
+    </div>
+    </div>
+        <!-- /content -->
+    </div>
+    <!-- /wrapper -->
+    <!-- end_banner_footer_mobile_user -->
+    <!-- begin_footer_mobile_user_start -->
+    </div>
+        <!-- /content -->
+    </div>
+    <!-- /wrapper -->
+    <!-- end_footer_mobile_user_start -->
+
+
+    <div class="footer">
+    <!-- begin_footer_mobile_user_action -->
+    <div class="bl"><a id="perform_action_{action}" class="btn grey" href="#">{btn_perform_action}</a></div>
+    <!-- end_footer_mobile_user_action -->
+
+    <!-- begin_footer_mobile_user_videochat -->
+    <div class="bl chat_action">
+        <button data-no-fade-in="true" id="make-call" data-action="disabled" class="btn grey btn_videochat" disabled>
+            <span class="btn_name">{l_connect}</span>
+        </button>
+        <script>mcShowLoaderTemplate($('#make-call'));</script>
+    </div>
+    <!-- end_footer_mobile_user_videochat -->
+
+    <!-- begin_footer_mobile_user_frm_message -->
+    <div class="bl_message_one_frm">
+        <div id="frm_message_media" class="bl">
+            <!-- begin_frm_message_media_js -->
+            <script>
+            $(function () {
+                if(!checkWebrtc())$('.btn_rtc').remove();
+                var $frm=$('#frm_message_media'), $btn=$('.btn_invite_chat'),
+                    numBtn=$btn.length,cl;
+                if(numBtn==''){
+                    cl='';
+                }else if(numBtn==1){
+                    cl='media';
+                }else if(numBtn==2){
+                    cl='both_media media';
+                }else if(numBtn==3){
+                    cl='three_media media';
+                }
+                $frm.addClass(cl).css({opacity:1});
+            })
+            </script>
+            <!-- end_frm_message_media_js -->
+            <textarea id="message_text"></textarea>
+            <div>
+                <!-- begin_btn_invite_videochat -->
+                <a id="invite_videochat" onclick="videoChat.checkInvite(); return false;" class="btn grey chat btn_invite_chat btn_rtc" href=""><img src="{url_tmpl_mobile}images/icon_videochat_send.png" width="23" height="15" alt=""></a>
+                <!-- end_btn_invite_videochat -->
+                <!-- begin_btn_invite_audiochat -->
+                <a id="invite_audiochat" onclick="audioChat.checkInvite(); return false;" class="btn grey chat btn_invite_chat btn_rtc" href=""><img src="{url_tmpl_mobile}images/icon_audio_chat.png" width="17" height="23" alt=""></a>
+                <!-- end_btn_invite_audiochat -->
+                <!-- begin_btn_invite_streetchat -->
+                <a id="invite_streetchat" onclick="cityStreetChat.invite();return false;" class="btn grey chat btn_invite_chat" href=""><img src="{url_tmpl_mobile}images/icon_street_chat.png" width="16" height="23" alt=""></a>
+                <!-- end_btn_invite_streetchat -->
+                <a id="message_send" onclick="messages.send(); return false;" class="btn grey messages" href=""><img src="{url_tmpl_mobile}images/icon_btn_msg.png" width="21" height="20" alt="">{l_btn_perform_action}</a>
+            </div>
+        </div>
+    </div>
+    <!-- end_footer_mobile_user_frm_message -->
+
+    <!-- begin_footer_mobile_user_frm_gift -->
+    <div class="bl_message_one_frm {is_gift_credits_class}">
+        <div class="bl">
+            <textarea id="gift_text" class="placeholder" maxlength="58" placeholder="{a_you_can_add_a_message_here}"></textarea>
+            <!-- begin_footer_mobile_user_frm_gift_credits -->
+            <input  type="number" id="gift_credits" class="gifts_credits placeholder" maxlength="58" placeholder="{a_give_some_of_my_credits}">
+            <!-- end_footer_mobile_user_frm_gift_credits -->
+            <a id="gift_send" onclick="cprofile.sendGift(); return false;" class="btn grey" href=""><img src="{url_tmpl_mobile}images/icon_btn_msg.png" width="21" height="20" alt="">{l_btn_perform_action}</a>
+        </div>
+    </div>
+    <!-- end_footer_mobile_user_frm_gift -->
+
+    </div>
+    </div><!-- /main -->
+
+    </div><!-- /st-content-inner -->
+    <div id="page_shadow_empty" class="page_shadow_empty"></div>
+    </div><!-- /st-content -->
+    </div><!-- /st-pusher -->
+    </div><!-- /st-container -->
+    <!-- end_footer_mobile_user -->
+
+    <div class="loader loader_image" style="display:none;">
+        <div id="loader_redirect">
+        <div class="spinner spinnerw center">
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        </div>
+        </div>
+    </div>
+    <div style="display:none;" id="update_server"></div>
+    <script>
+    try {initServer();}
+    catch(e){};
+
+    {footer_custom_js}
+
+	function modJsLogger(msg)
+	{
+		return false;
+		if($('#modJsLogger').length == 0) {
+			$('.header.abs').append('<textarea style="height: 500px; width: 100%" id="modJsLogger"></textarea>');
+		}
+		$('#modJsLogger').append(msg + "\n");
+	}
+
+    function appPreloaderShow()
+    {
+        $('.page-preloader').show();
+        // logo to center of page
+        $('.header-loader-logo').css('margin-left', '-' + ($('.header-loader-logo').width() / 2) + 'px');
+        $('.header-loader-logo').css('margin-top', '-' + (100 + $('.header-loader-logo').height()) + 'px');
+        $('.st-container').hide();
+    }
+
+    </script>
+
+<!-- begin_mobile_app -->
+<style>
+.page-preloader {
+    display: none;
+}
+
+.page-preloader .header-loader {
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+
+.page-preloader .loader_page {
+    margin-left: -15px;
+    margin-top: -15px;
+}
+</style>
+
+<div class="main page-preloader">
+    <div class="wrapper">
+        <div class="content">
+            <div class="block_map_index">
+                <div class="header-loader" style="opacity: 1; transition: 0.7s linear; -webkit-transition: 0.7s linear;">
+                    <img class="header-loader-logo" src="{header_url_logo_mobile}" alt="{title}" title="{title}">
+                </div>
+                <div id="loader_page" class="loader_page" style="display: block; transition: 0.2s linear; -webkit-transition: 0.2s linear;">
+                    <div class="spinner spinnerw center">
+                        <div class="spinner-blade"></div>
+                        <div class="spinner-blade"></div>
+                        <div class="spinner-blade"></div>
+                        <div class="spinner-blade"></div>
+                        <div class="spinner-blade"></div>
+                        <div class="spinner-blade"></div>
+                        <div class="spinner-blade"></div>
+                        <div class="spinner-blade"></div>
+                        <div class="spinner-blade"></div>
+                        <div class="spinner-blade"></div>
+                        <div class="spinner-blade"></div>
+                        <div class="spinner-blade"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+appCityLastMsgId = '{city_last_msg_id}';
+mobileAppLoaded = '{mobile_app_push_notifications}'*1;
+
+$(function(){
+    document.addEventListener("deviceready", function(){
+        var adMobBannerConfig = false;
+        <!-- begin_banner_admob_top -->
+        adMobBannerConfig = {
+            id: '{banner_admob_top}',
+            bannerAtTop: true,
+        };
+        <!-- end_banner_admob_top -->
+        <!-- begin_banner_admob_bottom -->
+        adMobBannerConfig = {
+            id: '{banner_admob_bottom}',
+            bannerAtTop: false,
+        };
+        <!-- end_banner_admob_bottom -->
+        showAdmobBanner(adMobBannerConfig);
+    });
+});
+</script>
+<!-- end_mobile_app -->
+
+<!-- begin_mobile_app_android -->
+<script>
+    $(function(){
+        document.addEventListener("deviceready", function(){navigator.splashscreen.hide()}, false);
+    });
+</script>
+<script src="{url_tmpl_common_apps}android/cordova.js{cache_version_param}"></script>
+<script src="{url_tmpl_common_apps}android/js/core.js{cache_version_param}"></script>
+<!-- end_mobile_app_android -->
+
+<!-- begin_mobile_app_ios -->
+<script src="{url_tmpl_common_apps}ios/cordova.js{cache_version_param}"></script>
+<script src="{url_tmpl_common_apps}ios/js/core.js{cache_version_param}"></script>
+<!-- end_mobile_app_ios -->
+
+<!-- begin_gdpr_cookie_popup -->
+<script>
+    $(function(){
+        //document.cookie = 'cookiesAccepted=; path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        var options = {
+            title: '{j_cookies_accept_title}',
+            text: '{cookies_accept_text}',
+            acceptButtonText: '{j_cookies_accept_accept_button_text}',
+            theme: 'dark',
+            learnMore: false,
+            position: 'bottom'
+        };
+        $.acceptCookies(options);
+    })
+</script>
+<!-- end_gdpr_cookie_popup -->
+
+</body>
+</html>

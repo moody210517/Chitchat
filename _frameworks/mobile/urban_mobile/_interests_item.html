@@ -1,0 +1,17 @@
+<!-- begin_interests_custom_item_list -->
+<!-- begin_interests_custom_item -->
+<li class="add_new_interest"><a onclick="interests.addInterestCustom($(this).text(),'{cat_id}', $(this)); return false;" class="add_new_interest" data-cat-id="{cat_id}" data-int-id="{int_id}" href="">{interest}</a></li>
+<!-- end_interests_custom_item -->
+<script>if({end_step})interests.step[{cat_id_js}]=0;</script>
+<!-- end_interests_custom_item_list -->
+<!-- begin_new_interests -->
+<li id="user_iterest_{int_id}"><div class="item {interest_class}"><a onclick="interests.confirmDeleteOneInterest('{int_id}'); return false;" class="icon_edit_delete" href=""></a><span class="interest_title">{interest}</span></div></li>
+<!-- end_new_interests -->
+
+
+<!-- begin_interests_search -->
+<!-- begin_interests_search_item -->
+<li><a onclick="interests.addInterestCustom($(this).text(),'{cat_id}',$(this),1); return false;" href=""><span class="{interest_class}"></span>{interest}</a></li>
+<!-- end_interests_search_item -->
+<li class="add_new"><a class="show_cats_interests" href="">{interest_search}</a></li>
+<!-- end_interests_search -->

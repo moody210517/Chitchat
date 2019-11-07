@@ -1,0 +1,76 @@
+.tab {border-top:4px solid #000;background:#222222;}
+.tab thead td {font-size:14px;line-height:16px;color:#fff;background:#921b91;}
+.tab thead th {height:26px;padding:0 4px;vertical-align:middle;font-size:14px;line-height:16px;color:#ffffff;background:#333333;text-align:left;white-space:nowrap;}
+.tab thead th.small {text-align:right;font-size:12px;font-weight:normal;text-align:right;}
+.tab thead th a {color:#ffffff;}
+.tab tfoot td {background:#333333;}
+.tab thead td a {color:#fff;}
+
+.tab tfoot td.add {width:40%;font-size:12px;font-weight:bold;}
+.tab tfoot td.mailnav {width:46%;font-size:12px;font-weight:bold;color:#ffffff;}
+.tab tfoot td.mailnav a {color:#ffffff;}
+.tab tfoot td.dots {width:50px;text-align:left;}
+
+.tab .content {padding:0 4px;color:#EADE9B;line-height:27px;}
+.tab .txt,.tab textarea {border:1px solid #d6b0d1;background:#713e64;}
+.tab .btn {text-align:center;}
+
+.list {width:100%;line-height:18px;}
+.list th {padding:6px 4px 7px 4px;border-bottom:1px solid #b988b8;color:#bc61bb;font-weight:bold;font-size:12px;line-height:14px;text-align:left; }
+.list th a {color:#b988b8;}
+.list td {padding:6px 4px 7px 4px;color:#EADE9B;}
+.list td a {color:#EADE9B;}
+.list td b {color:#EADE9B;}
+.list td b a {color:#EADE9B;}
+
+.list tr.head th {height:26px;padding:0 4px;border-bottom:none;color:#ffffff;font-weight:bold;font-size:14px;line-height:16px;text-align:left;vertical-align:middle;background:#333333;}
+.list tr.head th a {color:#ffffff;}
+
+.alertspace {padding:0;height:176px;}
+.alert .alertbg {background:#333;}
+.alert .btn {width:90px; text-align:center; margin-bottom:7px;}
+
+.tab td.message{ padding:8px; }
+.tab td.message span.txt_message{ display: inline-block; white-space: -moz-pre-wrap; /* Mozilla, начиная с 1999 года */ white-space: -pre-wrap; /* Opera 4-6 */ white-space: -o-pre-wrap; /* Opera 7 */ word-wrap: break-word; /* Internet Explorer 5.5+ */
+ }
+
+.trash .tab {border-top:4px solid #000;background:#222;}
+.trash .tab thead td {background:#333;}
+.trash .tab thead th {background:#333;}
+.trash .tab thead th a {}
+.trash .tab tfoot td {background:#333;}
+.trash .tab tfoot td.mailnav,.trash .tab tfoot td.mailnav a {}
+.trash .list tr.head th {background:#333;}
+.trash .list tr.head th a {}
+.trash .tab td .alert .alertbg {background:#333;}
+.trash .tab td .alert .btn {width:90px; text-align:center; margin-bottom:7px;}
+
+
+.sent .tab {border-top:4px solid #000;background:#222;}
+.sent .tab thead td {background:#333;}
+.sent .tab thead th {background:#333;}
+.sent .tab thead th a {}
+.sent .tab tfoot td {background:#333;}
+.sent .tab tfoot td.mailnav,.sent .tab tfoot td.mailnav a {}
+.sent .list tr.head th {background:#333;}
+.sent .list tr.head th a {color:#fff;}
+.sent .tab td .alert .alertbg {background:#333;}
+.sent .tab td .alert .btn {width:90px; text-align:center; margin-bottom:7px;}
+
+.newmessage {background:#222222;}
+.newmessage .tab {height:auto;}
+.newmessage .tab th {width:40px;padding:6px 5px;text-align:right;color:#fff;}
+.newmessage .tab td {padding:6px 5px;}
+.newmessage .tab .red th {border-bottom:4px solid #000;background:#333333;}
+.newmessage .tab .red td {border-bottom:4px solid #000;background:#333333;}
+.newmessage .tab .blue th {border-bottom:4px solid #000;background:#333333;}
+.newmessage .tab .blue td {border-bottom:4px solid #000;background:#333333;}
+.newmessage .txt,.newmessage textarea {width:96%;border:1px solid #fff;display:block;background:#222222;}
+.newmessage textarea {height:136px;margin:0 0 10px 0;}
+.newmessage .btn {margin:35px 15px 30px 0;}
+.newmessage .nofriends label {padding:0;line-height:14px;font-weight:normal;color:#fff;}
+.newmessage .nofriends label a {color:#fff;}
+.newmessage .nofriends .txt {width:50%;margin-right:5px;display:inline;}
+
+.messent .alertspace {height:260px;}
+

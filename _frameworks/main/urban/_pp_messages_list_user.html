@@ -1,0 +1,25 @@
+<!-- begin_list_users -->
+<div id="pp_im_open_user_{list_users_item_user_id}" data-im-user-to-id="{list_users_item_user_id}" class="item pp_im_open_user">
+    <div class="color <!-- begin_selected_user -->first_selected<!-- end_selected_user -->">
+        <div class="status radio hidden"><input id="delete_im_{list_users_item_user_id}" onchange="Messages.set_count_delete();" type="checkbox" class="niceRadio delete_im" /></div>
+        <script>$('#delete_im_{list_users_item_user_id}').prettyCheckable({customClass:'niceRadio'});</script>
+        <div id="pp_im_open_user_online_{list_users_item_user_id}" class="pp_message_status status <!-- begin_status_online -->online<!-- end_status_online --> <!-- begin_status_offline -->offline<!-- end_status_offline -->"></div>
+        <div class="pic">
+            <a href="#"><img src="{url_files}{list_users_item_photo}" alt="" /></a>
+        </div>
+        <div class="nik">
+             <a href="#">{list_users_item_name}</a>
+        </div>
+        <div id="pp_message_count_new_{list_users_item_user_id}" <!-- begin_count_new_hide -->style="display:none;"<!-- end_count_new_hide --> class="count_two">{messages_count_new}</div>
+        <div class="cl"></div>
+    </div>
+    <script>
+        Messages.setUserCacheData('{list_users_item_user_id}',
+        '{status_online}',{
+            first_msg_id:'{first_msg_id}'*1,
+            limit_start:'{limit_start}'*1,
+            ajax_more_msg:0
+        })
+    </script>
+</div>
+<!-- end_list_users -->

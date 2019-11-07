@@ -1,0 +1,226 @@
+{header}
+<style type="text/css">
+select {border-radius: 4px; border: 1px solid #CFCFCF; background-color: #FFF;}
+.custom_tooltip{z-index:20;}
+</style>
+<script type="text/javascript" src="{url_tmpl_mobile}js/profile_personal_edit.js{cache_version_param}"></script>
+<script>
+
+var lSelectAll = '{j_please_choose}',
+    lAlreadyChosenOption = '{j_you_have_already_chosen_this_option}',
+    lIAmFromRequired = '{j_the_i_am_from_required}',
+    lSubmit = '{j_btn_perform_action}',
+    lServerError = '{j_server_error_try_again}';
+    lIncorrectDate = '{j_incorrect_date}';
+    minAge = {users_age},
+    lChooseACity = '{j_choose_a_city}',
+    lChooseAState = '{j_choose_a_state}';
+
+$(function(){
+setTimeout(function(){
+    var goToEl=location.hash;
+    if($(goToEl)[0]){
+        $('.st-content-inner').animate({scrollTop:$(goToEl)[0].offsetTop-50},300);
+    }
+},400);
+
+function editFieldOnStart(name)
+{
+    var theElement = document.getElementById('field_'+name);
+
+    var selectedPosX = 0;
+    var selectedPosY = 0;
+
+    while (theElement != null) {
+        selectedPosX += theElement.offsetLeft;
+        selectedPosY += theElement.offsetTop;
+        theElement = theElement.offsetParent;
+    }
+
+    window.scrollTo(selectedPosX, selectedPosY+1000);
+}
+
+
+
+   $(window).load(function(){
+
+        <!-- begin_edit_field_on_start -->
+        editFieldOnStart('{name_field_on_start}');
+        <!-- end_edit_field_on_start -->
+
+    })
+})
+
+</script>
+<div class="wrapper">
+<div class="content">
+    <div class="head empty">&nbsp;</div>
+    <div id="fileds_box" class="bl_settings">
+    <form id="frm_personal_fields" name="frm_personal_fields" autocomplete="off" method="post" action="{url_page}">
+    <input type="hidden" name="cmd" value="update" />
+    <input type="hidden" name="ajax" class="ajax" value="1" />
+
+    <div class="frm var_sel">
+        <div class="bl">
+            <label>{l_birthday}:</label>
+            <select style="width: 45px;" name="day" id="day" class="birthday">
+            {day_options}
+            </select>
+
+            <select style="width: 62px;" name="month" id="month" class="birthday">
+            {month_options}
+            </select>
+
+            <select style="width: 60px;" name="year" id="year" class="birthday">
+            {year_options}
+            </select>
+        </div>
+        <!-- begin_field_orientation_edit_on -->
+        <div class="bl">
+            <label>{l_i_am}:</label>
+            <select name="orientation" id="orientation">
+                {orientation_options}
+            </select>
+        </div>
+        <!-- end_field_orientation_edit_on -->
+        <!-- begin_field_orientation_edit_off -->
+        <div class="bl">
+            <label>{l_i_am}:</label>
+            <b class="orientation">{field_orientation_value}</b>
+        </div>
+        <!-- end_field_orientation_edit_off -->
+    </div>
+    <!-- begin_looking_fields -->
+    <div class="frm var_sel">
+        <!-- begin_i_am_here_to -->
+        <div class="bl">
+        <label>{field}</label>
+            <select id="personal_{name}" name="{name}">
+                {options}
+            </select>
+        </div>
+        <!-- end_i_am_here_to -->
+
+        <!-- begin_p_orientations -->
+		<div class="bl">
+            <!-- begin_p_orientation -->
+            <!-- begin_label_field -->
+            <label>{l_looking_for}</label>
+            <!-- end_label_field -->
+            <!-- begin_label_field_empty -->
+            <label>&nbsp;</label>
+            <!-- end_label_field_empty -->
+            <input id="orientation_{id}" name="{name}[]" value="{id}" type="checkbox" {checked} />
+            <label for="orientation_{id}" style="width:auto;">{title}</label>
+            <div class="cl"></div>
+            <!-- end_p_orientation -->
+        </div>
+        <!-- end_p_orientations -->
+        <!-- begin_looking_your_orientation -->
+        <div class="bl">
+            <label>{l_looking_for}</label>
+            <div style="display:inline-block; font-weight: bold; position: relative; top:5px;">{name}</div>
+            <div class="cl"></div>
+        </div>
+        <!-- end_looking_your_orientation -->
+
+        <!-- begin_age_range -->
+        <div class="bl from">
+            <label>{l_age_range}</label>
+            <div class="partl">
+                <select id="p_age_from" name="p_age_from">
+                {p_age_from_options}
+                </select>
+            </div>
+            <div class="partr">
+                <select id="p_age_to" name="p_age_to">
+                    {p_age_to_options}
+                </select>
+            </div>
+        </div>
+        <!-- end_age_range -->
+    </div>
+    <!-- end_looking_fields -->
+
+    <div class="frm var_sel">
+        <div id="country_box" class="bl">
+            <label>{l_i_am_from}</label>
+            <select name="country" id="country" data-location="states" class="location">
+                {country_options}
+            </select>
+        </div>
+        <div class="bl">
+            <label>&nbsp;</label>
+            <select name="state" id="state" data-location="cities" class="location">
+                {state_options}
+            </select>
+        </div>
+        <div class="bl">
+            <label>&nbsp;</label>
+            <select name="city" id="city" class="location">
+ 				{city_options}
+            </select>
+        </div>
+    </div>
+
+    <!-- begin_personal_fields -->
+    <div class="frm var_sel">
+        <!-- begin_fields_text -->
+        <!-- begin_basic_text -->
+        <div  id='field_{name}' class="bl">
+            <label>{field}</label>
+            <input type="text" name="{name}" id="basic_{name}" maxlength="{maxlen}" value="{value}" />
+        </div>
+        <!-- end_basic_text -->
+        <!-- begin_textarea -->
+        <div id='field_{name}' class="bl">
+            <label>{field}</label>
+            <textarea name="{name}" id="basic_{name}" maxlength="{maxlen}">{value}</textarea>
+        </div>
+        <!-- end_textarea -->
+        <!-- end_fields_text -->
+
+        <!-- begin_field -->
+        <!-- begin_field_item -->
+        <!-- begin_field_item_group_decor_start -->
+        <div class="edit_line_item"></div>
+        <!-- end_field_item_group_decor_start -->
+            <!-- begin_int -->
+            <div id='field_{name}' class="bl">
+                <label>{field}</label>
+                <select id="personal_{name}" name="{name}">
+                    <option selected value="0">{l_please_choose}</option>
+                    {options}
+                </select>
+            </div>
+            <!-- end_int -->
+            <!-- begin_text -->
+            <div id='field_{name}' class="bl">
+                <label>{field}</label>
+                <input id="personal_{name}" maxlength="{maxlen}" type="text" name="{name}" value="{value}" />
+            </div>
+            <!-- end_text -->
+            <!-- begin_checkbox -->
+            <!-- begin_checkbox_item -->
+            <div id='field_{name}' class="bl">
+                <label>{field}</label>
+                <select id="personal_{name}_{num}" data-checkbox="{name}" name="{name}[]">
+                    <option selected value="0">{l_please_choose}</option>
+                    {options}
+                </select>
+            </div>
+            <!-- end_checkbox_item -->
+            <div id='field_{name}' class="bl_add">
+                <a id="link_add_{name}" data-type-add="{name}" class="link_add" href="#null">+ {l_add_value_field}</a>
+            </div>
+            <!-- end_checkbox -->
+        <!-- begin_field_item_group_decor_end -->
+        <div class="edit_line_item"></div>
+        <!-- end_field_item_group_decor_end -->
+        <!-- end_field_item -->
+        <!-- end_field -->
+    </div>
+    <!-- end_personal_fields -->
+    </form>
+    </div>
+{footer}

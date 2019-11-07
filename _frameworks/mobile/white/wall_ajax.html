@@ -1,0 +1,105 @@
+<!-- begin_wall_item_like -->
+<div class="wall_like_module_{id}">
+<!-- begin_link_unlike --><a href="#" onclick="Wall.likeDelete({id}); return false;" title="{l_unlike}"><img title="{l_unlike}" alt="{l_unlike}" class="wall-like-symbol wall-like-symbol-link" src="{url_tmpl_mobile}images/wall/feed_ico_hand.png"></a><!-- end_link_unlike --><!-- begin_icon_like --><a href="#" title="{l_like}" alt="{l_like}" onclick="Wall.likeAdd({id}); return false;"><img class="wall-like-symbol" src="{url_tmpl_mobile}images/wall/feed_ico_hand.png"></a><!-- end_icon_like --><div>
+	<!-- begin_wall_like_one -->{wall_like_one}<!-- end_wall_like_one -->
+	<!-- begin_wall_like_you -->{l_wall_you}<!-- end_wall_like_you --><!-- begin_wall_like_user -->{wall_like_delimiter}<a href="{url_main}search_results.php?display={wall_like_display_profile}&name={wall_like_name}">{wall_like_name}</a><!-- end_wall_like_user -->
+	<!-- begin_wall_like_more -->{wall_and_more_people_like_this}<!-- end_wall_like_more -->
+	<!-- begin_wall_like_names -->{l_wall_several_people_like_this}<!-- end_wall_like_names -->
+</div>
+</div>
+<script>	
+	$('#feed_like_result_{id}').html($('.wall_like_module_{id}').html())
+	Wall.likeShowHide({id});
+	
+	$('.wall_like_module_{id}').remove();
+	Wall.itemInfoSet('{id}', '{wall_last_action_like}', '{wall_last_action_comment}', '{wall_comments_count}');
+</script>
+<!-- end_wall_item_like -->
+
+<!-- begin_wall_item_like_hide -->
+<script>	
+	Wall.likeShowHide({id}, 1);
+
+	Wall.itemInfoSet('{id}', '{wall_last_action_like}', '{wall_last_action_comment}', '{wall_comments_count}');
+</script>
+<!-- end_wall_item_like_hide -->
+
+<!-- begin_wall_items_delete_script -->
+<script>
+<!-- begin_wall_item_delete_script -->
+Wall.itemExists({wall_item_id_delete}, 'not exists');
+<!-- end_wall_item_delete_script -->
+</script>
+<!-- end_wall_items_delete_script -->
+
+<!-- begin_wall_item_comments_delete_script -->
+<script>
+<!-- begin_wall_item_comment_delete_script -->
+Wall.commentDeleteFromPage({id}, {wall_item_comment_id_delete});
+Wall.itemInfoSet('{id}', '{wall_last_action_like}', '{wall_last_action_comment}', '{wall_comments_count}');
+<!-- end_wall_item_comment_delete_script -->
+</script>
+<!-- end_wall_item_comments_delete_script -->
+
+<!-- begin_wall_item_comment_attach_start -->
+<div style="display:none;" class="wall_item_comment_attach_{id}">
+<!-- end_wall_item_comment_attach_start -->
+<!-- begin_wall_item_comment -->
+<div id="wall_item_comment_{wall_item_comment_id}" class="feed_bl_chat{wall_item_comment_index} wall_item_comment_{wall_item_comment_id}">
+	<div class="feed_bl_chat{wall_item_comment_index}_t">&nbsp;</div>
+	<div class="feed_bl_chat{wall_item_comment_index}_c">
+		<!-- begin_wall_comment_delete -->
+		<a href="#" onclick="if(confirm('{l_are_you_sure}')) { Wall.commentDelete({id}, {wall_item_comment_id}); } return false;" class="comment_del"><img src="{url_tmpl_mobile}images/wall/feed_delete.gif" width="10" height="10" align="bottom"></a>
+		<!-- end_wall_comment_delete -->
+		<a class="feed_link_photo" href="{url_main}search_results.php?display={wall_item_comment_display_profile}&name={wall_item_comment_name}"><img class="frame" src="{url_files}{wall_item_comment_photo}" width="21" height="24" alt=""/></a>
+		<p>
+			<strong><a href="{url_main}search_results.php?display={wall_item_comment_display_profile}&name={wall_item_comment_name}">{wall_item_comment_name}</a><span class="feed_time">{wall_item_comment_time}</span></strong>
+
+
+			<span class="feed_title_cmt" >{wall_item_comment_text}</span>
+
+
+
+		</p>
+
+		<div class="justify"></div>
+	</div>
+	<div class="feed_bl_chat{wall_item_comment_index}_b">&nbsp;</div>
+</div>							
+<script>
+
+Wall.commentsCacheAdd('{id}', '{wall_item_comment_id}');
+
+
+
+
+
+
+
+
+Wall.commentsRemoveDoubles({wall_item_comment_id});
+Wall.itemInfoSet('{id}', '{wall_last_action_like}', '{wall_last_action_comment}', '{wall_comments_count}', '{wall_item_comment_is_viewed}');
+</script>
+<!-- end_wall_item_comment -->
+<!-- begin_wall_item_comment_attach_end -->
+</div>
+<script>
+Wall.commentsAttach('{id}');
+</script>
+<!-- end_wall_item_comment_attach_end -->
+
+<!-- begin_wall_load_more_comments -->
+<script>
+	Wall.itemCommentsSet('{id}', '{wall_item_comment_id}');
+</script>				
+<!-- end_wall_load_more_comments  -->
+
+
+<!-- begin_wall_item_info_script -->
+<script>
+<!-- begin_wall_item_info -->
+Wall.itemInfoSet('{id}', '{wall_last_action_like}', '{wall_last_action_comment}', '{wall_comments_count}', '{wall_item_comment_is_viewed}');
+<!-- end_wall_item_info -->
+</script>
+<!-- end_wall_item_info_script -->
+{wall_js}

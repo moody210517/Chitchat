@@ -1,0 +1,113 @@
+{header}
+<script language="javascript" type="text/javascript">
+$(function(){
+   <!-- begin_forum_edit_js -->
+   $('#forumtitle_{forum_id}').editable({lAdd: '{l_add_desc}',
+                                 lEdit: '{l_edit_desc}',
+                                 lSave: '{l_saving}',
+                                 type: 'groups_forum',
+                                 typeData: 'forum_title',
+                                 classInput: 'forum_title_editable',
+                                 classHover: 'forum_title_editable_hov',
+                                 inputLength: 20});
+
+   $('#forumdesc_{forum_id}').editable({lAdd: '{l_add_desc}',
+                                 lEdit: '{l_edit_desc}',
+                                 lSave: '{l_saving}',
+                                 type: 'groups_forum',
+                                 typeData: 'forum_description',
+                                 classInput: 'forum_desc_editable',
+                                 classHover: 'forum_desc_editable_hov',
+                                 inputLength: 300});
+
+   <!-- end_forum_edit_js -->
+});
+</script>
+<div class="wrapper-wide">
+<div class="userinfo-c-wide">
+<div class="userinfo">
+
+    <div class="groups">
+
+		{groups_header}
+
+        <table class="tb_groups">
+            <tr>
+                <!-- td_main -->
+                <td class="td_main">
+
+                    {groups_group_show}
+
+                    <div class="groups_shadow groups_shadow_bg ">&nbsp;</div>
+
+                    <div class="groups_p pl_top_m">
+
+                        <div class="groups_title">
+                            <div class="txt_lower_header_color fl_left" style="font-size: 24px;">
+                                <!-- begin_forum_title_edit_no -->
+                                {forum_title}
+                                <!-- end_forum_title_edit_no -->
+                                <!-- begin_forum_title_edit -->
+                                <div style="display:inline-block" title="{forum_title_full}" id="forumtitle_{forum_id}" >{forum_title}</div>
+                                <!-- end_forum_title_edit -->
+                            </div>
+                            <a class="fl_right groups_go_forums" href="{url_main}groups_group_show.php?group_id={group_id}">{l_groups_go_to_wall}</a>
+
+                        </div>
+						<div class="cl"></div>
+                        <!-- begin_forum_desc_edit_no -->
+                        <p class="group-forum-desc">{forum_description}</p>
+                        <!-- end_forum_desc_edit_no -->
+                        <!-- begin_forum_desc_edit -->
+                        <div style="padding: 0 0 10px;" class="group-forum-desc" id="forumdesc_{forum_id}" >{forum_description}</div>
+                        <!-- end_forum_desc_edit -->
+
+                        {groups_forum_comment_list}
+
+                    </div>
+                    <!-- begin_forum_delete -->
+                    <div style="margin-left:10px;">
+                    <a class="fl_left groups_go_forums" onclick="if (!confirm('{l_are_you_sure}')) {return false}" href="{url_main}groups_group_forum_show.php?cmd=delete&forum_id={forum_id}">
+                    {l_delete_forum}
+                    </a>
+                    </div>
+                    <!-- end_forum_delete -->
+                    <div class="groups_empty"></div>
+                </td>
+                <!-- /td_main -->
+
+                <td class="td_narrow">
+
+					{groups_group_member_list}
+					{groups_group_comment_list_sidebar}
+
+				</td>
+
+            </tr>
+
+        </table>
+
+        <div class="groups_foot">
+
+            <table>
+                <tr>
+                    <td class="td_l">&nbsp;</td>
+                    <td class="td_c">&nbsp;</td>
+                    <td class="td_r">&nbsp;</td>
+                </tr>
+            </table>
+
+        </div>
+
+
+    <div class="decor_top"></div>
+    </div>
+
+
+
+</div>
+<br>
+<div class="userinfo-links-wide"></div>
+</div>
+</div>
+{footer}

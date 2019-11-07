@@ -1,0 +1,89 @@
+*::-moz-focus-inner { border: none; padding: 0; margin: 0}
+@-webkit-keyframes circular {
+	from {-webkit-transform:rotate(0deg)}
+	to   {-webkit-transform:rotate(360deg)}
+}
+@keyframes circular {
+	from {transform:rotate(0deg)}
+	to   {transform:rotate(360deg)}
+}
+
+#wall_items_table {empty-cells:show}
+#wall_items_table>tbody>tr>* {
+	webkit-transition: border .5s, padding .5s;
+	transition: border .5s, padding .5s;
+}
+#wall_items_table>thead>tr>* {
+	border:none; padding:0
+}
+#wall_items_table p { 1word-wrap: break-word;
+
+ }
+#wall_items_table p span.feed_title_cmt{
+display: inline-block; 1white-space: pre-wrap; /* css-3 */ white-space: -moz-pre-wrap; /* Mozilla, начиная с 1999 года */ white-space: -pre-wrap; /* Opera 4-6 */ white-space: -o-pre-wrap; /* Opera 7 */ word-wrap: break-word; /* Internet Explorer 5.5+ */
+
+}
+div.wr_in0 {min-height:100%}
+textarea {-webkit-transition: height 150ms; transition: height 150ms; resize:none }
+
+.feed_bl button, .feed_txt_comment{
+    padding: 2px 0 3px;
+    float:left; margin:0 6px 0 0;
+    line-height: normal; height:auto !important; /*height нужно для красивого "схлопывания" [like]*/
+    font-family:inherit; font-size:9px;
+}
+.feed_bl button {
+    1padding:0 6px 1px;
+    padding: 3px 6px 2px; /*mob*/
+    1padding: 2px 6px 3px;
+    color:#fff; background:#c5d; cursor:pointer; position:relative;
+    border: none;
+    border-radius:10px;
+    /*box-sizing:content-box; -moz-box-sizing:content-box;*/
+}
+@-moz-document url-prefix() {
+    .feed_bl button{
+        padding: 1px 6px 3px;
+    }
+}
+.wall_load_more_comments {display:none}
+
+.feed_bl button:after, .feed_bl a:after /*, a.comment_del:after, a.feed_del:after*/ {
+    content:''; position:absolute;
+border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; -moz-border-radius: 10px;
+    opacity:0; visibility:hidden;
+    top:0; left:0; bottom:0; right:0; width:auto; height:auto;
+    background: url(../images/loading.gif); background-size: auto 100%;
+    transition: all .3s
+}
+a.comment_del, a.feed_del, .feed_bl a {position:relative}
+.feed_bl a span {
+    float:right; clear:right;
+    min-width: 1.8em; display:none;
+    text-align:right; text-decoration:inherit; text-indent: .1em;
+}
+/*a.comment_del:after, a.feed_del:after {
+    border-radius:3px; margin:0;
+    background-color: #000; top:auto; height:10px
+}*/
+.feed_bl a:after {margin:0 -10px; height:18px; background-color:grey; background-size:cover;}
+.feed_bl .loading:after {opacity:0.5; visibility:visible}
+.loading a.comment_del, .loading a.feed_del {
+    -webkit-animation: circular .4s linear infinite;
+    animation: circular .4s linear infinite
+}
+div.loading, td.loading, th.loading {opacity: 0.6; transition:opacity .3s}
+
+.feed_bl0 button:active:focus {outline:none}
+.feed_btn_share:before {
+    content:'\2714'; float:left; font-size:9px; text-align:left;
+    width:0; height: 10px; overflow:hidden; transition: all .4s
+
+}
+.feed_btn_share.shared:before {width: 9px; font-size:9px;}
+
+.feed_blue_bl_c a img{vertical-align:top; margin-bottom:-20px}
+
+.hide {display: none;}
+
+.feed_bl .feed_btn_like {white-space: nowrap;}

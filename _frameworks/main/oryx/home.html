@@ -1,0 +1,246 @@
+{header}
+{ims}
+{search}
+<script language="javascript" type="text/javascript">
+function equalHeight(group) {
+    tallest = 0;
+    group.each(function() {
+        thisHeight = $(this).height();
+        if(thisHeight > tallest) {
+        tallest = thisHeight;
+        }
+    });
+    group.height(tallest);
+}
+$(function(){
+   $('#profile_status_{user_id}').editable({lAdd: '{l_your_status_here}',
+                                 lEdit: '{l_edit_your_status}',
+                                 lSave: '{l_saving}',
+                                 classInput: 'home_editable_input',
+                                 inputLength: 25,
+                                 empty: true,
+                                 type: 'status'
+   });
+   if($('#banner').length) {
+        var left_block_h = $('#banner').height() + $('#profile').height(),
+            search_h = $('#searchn').height();
+        if (left_block_h > search_h) {
+            $('#searchn').height(left_block_h + 13);
+        }
+   } else {
+        equalHeight($('#profile, #searchn'));
+   }
+});
+</script>
+<!-- begin_myrecorder -->
+													<div style="position:absolute; left:105px; margin-top:177px; z-index:1;">
+	    												<a href="#" onfocus="this.blur();" onclick="showRecorder(); return false;"><img class="png_behavior" src="{url_tmpl_main}img/rec_audio.png" alt="REC"></a>
+													</div>
+													<!-- end_myrecorder -->
+													<!-- begin_myrecorder_swf -->
+													    <div id="rec" class="rec_home">
+													        <object onfocus="this.blur();" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"
+													        codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0"
+													        width="220" height="140" id="myRecorder" align="middle">
+													        <param name="allowScriptAccess" value="sameDomain" />
+													        <param name="movie" value="{url_main}_server/recorder/myRecorder.swf?login={myname}&unique={unique}&l_recorder_title={l_recorder_title}" />
+													        <param name="quality" value="high" />
+													        <param name="wmode" value="transparent" />
+													        <param name="bgcolor" value="#7ea6b6" />
+
+													        <embed src="{url_main}_server/recorder/myRecorder.swf?login={myname}&unique={unique}&l_recorder_title={l_recorder_title}" wmode="transparent"
+													        quality="high" bgcolor="#7ea6b6" width="220" height="140" name="myRecorder" align="middle"
+													        allowScriptAccess="sameDomain" type="application/x-shockwave-flash"
+													        pluginspage="http://www.macromedia.com/go/getflashplayer" />
+													        </object>
+													    </div>
+													<!-- end_myrecorder_swf -->
+				<div id="profile" class="column_main frame_content" style="padding-bottom: 10px;">
+
+													<h2>{l_your_profile}</h2>
+													<dl>
+														<dt style="position:relative;"><a href="{url_main}profile_view.php"><img src="{url_files}{photo}" width="126" height="140" alt="{Name}" /></a>
+														<!--<a href="{url_main}profile.php"><span></span></a>-->
+                                                        <!-- begin_profile_status -->
+														<div class="status_home_page profile_editable_top"><div class="profile_editable" id="profile_status_{user_id}">{profile_status}</div></div>
+														<!-- end_profile_status -->
+                                                                                                                </dt>
+														<dd class="name txt_upper_header_color">{name} <!-- <a href="{url_main}profile_view.php"><img src='{url_tmpl_main}img/home_with_button_profile.gif' /></a> --></dd>
+														<dd><strong>{l_age}:</strong> {age}</dd>
+														<dd><strong>{l_city}:</strong> {city_title}</dd>
+														<dd><strong>{l_state}:</strong> {state_title}</dd>
+														<dd><strong>{l_country}:</strong> {country_title}</dd>
+                                                         {complite}
+													</dl>
+
+
+
+													<ul id="personal-stat">
+                                                        <!-- begin_mail_on -->
+														<li><img width="16" height="15" src="{url_tmpl_main}img/icon-mail.gif" alt="" /> {l_new_mail}: <a href="{url_main}mail.php">{new_mails}</a></li>
+														<!-- end_mail_on -->
+                                                        <!-- begin_wink_on -->
+                                                        <li><img width="16" height="15" src="{url_tmpl_main}img/icon-interests.gif" alt="" /> {l_new_interests}: <a href="{url_main}mail_whos_interest.php">{new_interest}</a></li>
+                                                        <!-- end_wink_on -->
+                                                        <li><img width="16" height="15" src="{url_tmpl_main}img/icon-newmem.gif" alt="" /> {l_new_members}: <a href="{url_main}users_new.php">{users_new}</a></li>
+														<!-- begin_new_near -->
+														<li><img width="16" height="15" src="{url_tmpl_main}img/icon-newmemny.gif" alt="" /> {l_new_members_near}: <a href="{url_main}search_results.php?<!-- begin_p_orientation -->p_orientation%5B%5D={p_orientation}&<!-- end_p_orientation -->&country={country}&state={state}&city={city}&status=new">{users_new_near}</a></li>
+														<!-- end_new_near -->
+                                                        <!-- begin_viewed_me -->
+														<li><img width="16" height="15" src="{url_tmpl_main}img/icon-views.gif" alt="" /> {l_new_views}: <a href="{url_main}users_viewed_me.php">{users_view_new}</a></li>
+														<li><img width="16" height="15" src="{url_tmpl_main}img/icon-totalviews.gif" alt="" /> {l_total_views}: <a href="{url_main}users_viewed_me.php">{users_view_total}</a></li>
+														<!-- end_viewed_me -->
+                                                        <!-- begin_biorythm -->
+														<li><img width="16" height="16" src="{url_tmpl_main}img/agt_runit.png" class="png_behavior" alt=""> <a href="{url_main}biorythm.php?id={user_id}">{l_my_biorythm}</a></li>
+														<!-- end_biorythm -->
+													</ul>
+													<div class="links">
+														<ul>
+															<!-- begin_my_nogold -->
+															<li class="gold"><a href="{url_main}upgrade.php" class="txt_upper_header_color">{l_upgrade}</a></li>
+															<!-- end_my_nogold -->
+															<li><a href="{url_main}profile.php">{l_edit_profile}</a></li>
+															<li><a href="{url_main}profile_photo.php">{l_profile_pics}</a></li>
+															<!-- begin_hide-->
+															<li><a href="{url_main}home.php?cmd=hide">{l_hide}</a></li>
+															<!-- end_hide-->
+															<!-- begin_active-->
+															<li><a href="{url_main}home.php?cmd=active">{l_activate}</a></li>
+															<!-- end_active-->
+														</ul>
+													</div>
+
+				</div><!-- profile end -->
+				<!-- begin_banner_home -->
+				<div class='banner_home' id="banner">
+					{banner_home}
+				</div>
+				<!-- end_banner_home -->
+<!-- begin_users_new --><!-- end_users_new -->
+    <script type="text/javascript">
+
+		function show_face_jq(popup_usr, e) {
+            var e = e || window.event;
+            if (typeof e != 'undefined') {
+                top_popup = e.clientY - 115,
+                left_popup = e.clientX - 20;
+            }
+            $('#'+popup_usr).css({'visibility':'visible', 'left':left_popup + 'px', 'top': top_popup  + 'px'})
+		}
+
+        function hide_face_jq(popup_usr)
+		{
+            $('#'+popup_usr).css('visibility', 'hidden');
+		}
+
+		/*var cursor = {x:0, y:0};
+		if (navigator.appName=="Netscape")
+		{
+			document.captureEvents( Event.MOUSEMOVE );
+			document.onmousemove = getCoord;
+		}
+
+		function getCoord( event )
+		{
+			cursor.x = event.pageX;
+			cursor.y = event.pageY;
+		}
+
+		function show_face(e,d) {
+
+			var obj = document.getElementById(d).style,
+                left = document.getElementById("wrapper").offsetLeft,
+                offsetLeft = document.getElementById("wrapper").offsetLeft;
+                //offsetTop = document.getElementById("content").offsetTop;
+
+		    if (navigator.appName=="Netscape")
+				{
+					cursor.x -= 20 + left;
+					cursor.y -= 115;
+				}
+			else
+				{
+		        	var de = document.documentElement;
+		        	var b = document.body;
+		        	cursor.x = event.clientX + (de.scrollLeft || b.scrollLeft) - (de.clientLeft || 0) - 20 - left;
+		        	cursor.y = event.clientY + (de.scrollTop || b.scrollTop) - (de.clientTop || 0) - 110;
+				}
+			obj.visibility = 'visible';
+			obj.left =  cursor.x + offsetLeft + 'px';
+			obj.top =  cursor.y  + 'px';
+		}*/
+
+/*function show_face(e,d) {
+			var obj = document.getElementById(d).style;
+			var left= document.getElementById("wrapper").offsetLeft;
+		    if (navigator.appName=="Netscape")
+				{
+					cursor.x -= 20 + left;
+					cursor.y -= 115;
+				}
+			else
+				{
+		        	var de = document.documentElement;
+		        	var b = document.body;
+		        	cursor.x = event.clientX + (de.scrollLeft || b.scrollLeft) - (de.clientLeft || 0) - 20 - left;
+		        	cursor.y = event.clientY + (de.scrollTop || b.scrollTop) - (de.clientTop || 0) - 110;
+				}
+			obj.visibility = 'visible';
+			obj.left = cursor.x + 'px';
+			obj.top = cursor.y + 'px';
+		}*/
+		function hide_face(d)
+		{
+			var obj = document.getElementById(d).style;
+			obj.visibility = 'hidden';
+		}
+	</script>
+				<div class="usr frame_content">
+<!-- 					<div class="bbt">
+						<div class="bbb">
+							<div class="bbl">
+								<div class="bbr">
+									<div class="bbtl">
+										<div class="bbtr">
+											<div class="bbbl">
+												<div class="bbbr"> -->
+													<h2><!-- begin_members_new -->{l_new_members_frame}<!-- end_members_new --><!-- begin_members_online -->{l_online_members_frame}<!-- end_members_online --></h2>
+													<ul id="users_list">
+													<!-- begin_users_new_item -->
+														<li id="popup_{members_num}"><a href="{url_main}{members_link}?display=profile&uid={members_user_id}" onmousemove="show_face_jq('usr0{members_num}', event)" onmouseout="hide_face_jq('usr0{members_num}')">
+
+															<!-- begin_user_status -->
+															<div class="newm_status status{members_status_style}">{members_status}</div>
+															<!-- end_user_status -->
+
+
+														<img id="pic{members_num}" src="{url_files}{members_photo}" width="90" height="100" alt="{members_name}" />
+
+														<span class="a">{members_name}</span></a>
+														<!--<span class="b"></span></a>-->
+														</li>
+													<!-- end_users_new_item -->
+														<li style="width:37px;"><a href="{url_main}{members_link}"><img src="{url_tmpl_main}img/usr-more.png" width="47" height="99" alt="" /></a></li>
+													</ul>
+<!-- 												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div> -->
+                <!-- begin_banner_footer_additional -->
+                <div class="banner_footer_additional">{banner_footer_additional}</div>
+                <!-- end_banner_footer_additional -->
+				</div>
+    <!-- begin_users_new_item2 -->
+<span class="popup-info" id="usr0{members_num}">
+    <span class="dx">{l_nick}: <strong>{members_name}</strong>
+    <br>{l_age}: <strong>{members_age}</strong>
+    <br>{l_from}: <strong>{members_country_title}</strong></span>
+</span>
+    <!-- end_users_new_item2 -->
+
+
+{footer}

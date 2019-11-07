@@ -1,0 +1,45 @@
+<script type="text/javascript">
+$(function(){
+    setWidthOverWrap('.tab', '#hdr', '0');
+    setWidthOverWrap('.txt_message', '#hdr', 15);
+    $(window).resize(function(e){
+        setWidthOverWrap('.tab', '#hdr', '0');
+        setWidthOverWrap('.txt_message', '#hdr', 15);
+    });
+})
+</script>
+<table class="cnt{folder_style}" cellspacing="0" cellpadding="0"><tr><td>
+<table cellspacing="0" cellpadding="0" class="tab">
+<thead>
+	<tr>
+		<th>{subject}</th>
+		<th class="small">[
+            <!-- begin_from -->
+            <a href="{url_main}profile_view.php?user_id={user_id}">{user_from}</a>
+            <!-- end_from -->
+            <!-- begin_from_admin -->
+            <span>{l_website_administration_short}</span>
+            <!-- end_from_admin -->
+            {l_mail_to}
+            <a href="{url_main}profile_view.php?user_id={user_to_id}">{user_to}</a>
+        ]</th>
+    </tr>
+</thead>
+
+<tfoot>
+	<tr>
+		<td class="mailnav"><a href="javascript:history.back()">{l_back}</a></td>
+		<td class="add"><!-- begin_reply_button --><a href="{url_main}mail_compose.php?cmd=reply&user_id={user_id}&msg={id}">{l_reply}</a><!-- end_reply_button -->&nbsp;</td>
+	</tr>
+</tfoot>
+
+<tbody>
+	<tr>
+		<td id="text_message" colspan="2" class="content message">
+			<span class="txt_message">{text}</span>
+		</td>
+	</tr>
+</tbody>
+</table>
+
+</td></tr></table>

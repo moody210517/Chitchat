@@ -1,0 +1,253 @@
+<!-- begin_container_header -->
+<script type="text/javascript">
+
+var current_page_n = {page};
+
+function forum_comment_list_load_page(page_n,jump)
+{
+    $('#forum_comment_list_load_animation').css('visibility', 'visible');
+
+    $('#forum_comment_list_container').load(
+            '{url_main}groups_group_forum_comment_list_ajax.php?forum_id={forum_id}&forum_comment_list_page=' + page_n,
+            null,
+            function(responseText, textStatus, XMLHttpRequest) {
+                current_page_n = page_n;
+
+	// UPDATE lightBox images
+    initLightboxOldTemplateNewAge();
+
+	// go to anchor of comment
+	if(jump==1) document.location.href="#forum_comment_"+posted_comment_id;
+
+            });
+}
+
+function forum_comment_delete(comment_id)
+{
+    if(confirm('{l_are_you_sure}'))
+    {
+	    $('#forum_comment_' + comment_id).fadeOut(400, function() {
+		        $.ajax({
+		            type: 'POST',
+		            url: '{url_main}groups_group_forum_comment_delete_ajax.php',
+		            data: {
+		                comment_id: comment_id
+		                },
+		            success: function (data, textStatus, XMLHttpRequest)
+		                {
+		                    forum_comment_list_load_page(current_page_n);
+		                }
+		          });
+	        });
+    }
+}
+
+function on_forum_comment_post()
+{
+	if($('#forum_comment_text').val() == '{l_groups_add_a_post}')
+		$('#forum_comment_text').val('');
+
+    comment_text = $('#forum_comment_text').val();
+    if(comment_text === "")
+    {
+        alert('{l_please_enter_text}');
+        return false;
+    }
+
+    $('#forum_comment_post_button').attr('disabled', true);
+    $('#forum_comment_post_animation').css('visibility', 'visible');
+
+    $.ajax({
+          type: 'POST',
+          url: '{url_main}groups_group_forum_comment_create_ajax.php',
+          data: {
+              forum_id: {forum_id},
+              comment_text: comment_text
+              },
+          success: function (data, textStatus, XMLHttpRequest)
+              {
+                  $('#forum_comment_post_animation').css('visibility', 'hidden');
+                  $('#forum_comment_text').val('');
+                  $('#forum_comment_post_button').attr('disabled', false);
+                  forum_comment_list_load_page('last',1);
+              }
+        });
+
+    return false;
+}
+
+function forum_comment_comment_delete(comment_id)
+{
+    if(confirm('{l_are_you_sure}'))
+    {
+        $('#forum_comment_comment_' + comment_id).fadeOut(400, function() {
+                $.ajax({
+                    type: 'POST',
+                    url: '{url_main}groups_group_forum_comment_comment_delete_ajax.php',
+                    data: {
+                        comment_id: comment_id
+                        },
+                    success: function (data, textStatus, XMLHttpRequest)
+                        {
+                            forum_comment_list_load_page(current_page_n);
+                        }
+                  });
+            });
+    }
+}
+
+function on_forum_comment_comment_post(comment_id)
+{
+	if(!{allow_comments})
+	{
+	    alert('{l_groups_please_join_this_group_first}');
+	    return false;
+	}
+
+    if($('#forum_comment_comment_text_' + comment_id).val() == '{l_groups_write_a_comment}')
+        $('#forum_comment_comment_text_' + comment_id).val('');
+
+    comment_comment_text = $('#forum_comment_comment_text_' + comment_id).val();
+    if(comment_comment_text === "")
+    {
+        alert('{l_please_enter_text}');
+        return false;
+    }
+
+    //$('#forum_comment_comment_post_button_' + comment_id).hide();
+    //$('#forum_comment_comment_post_animation_' + comment_id).css('display', 'inline');
+
+    $.ajax({
+          type: 'POST',
+          url: '{url_main}groups_group_forum_comment_comment_create_ajax.php',
+          data: {
+              comment_id: comment_id,
+              comment_text: comment_comment_text
+              },
+          success: function (data, textStatus, XMLHttpRequest)
+              {
+                  //$('#forum_comment_comment_post_animation_' + comment_id).css('visibility', 'hidden');
+                  $('#forum_comment_comment_text_' + comment_id).val('');
+                  //$('#forum_comment_comment_post_button_' + comment_id).attr('disabled', false);
+                  forum_comment_list_load_page(current_page_n);
+              }
+        });
+
+    return false;
+}
+
+</script>
+<div id="forum_comment_list_container">
+<!-- end_container_header -->
+
+
+<table class="groups_tb_sub">
+<script type="text/javascript">
+var posted_comment_id = '{posted_comment_id}';
+</script>
+    <col width="7px"/>
+    <col width="30px"/>
+    <tr>
+        <th class="th_t_l nb first">&nbsp;</th>
+        <th class="th_t_c">{l_groups_photo}</th>
+        <th class="th_t_c nb"><span>{l_groups_message} &amp; {l_groups_comments}</span>
+
+
+<a href="{url_main}groups_group_forum_list.php?group_id={group_id}" style="color:#5A254B;position:relative;left:213px;">{l_groups_browse_forums}</a>
+
+
+		</th>
+        <th class="th_t_r nb first">&nbsp;</th>
+    </tr>
+
+<!-- begin_comment -->
+	<tr id="forum_comment_{comment_id}">
+	    <td colspan="2" class="border_b first">
+	    <a href="{url_main}search_results.php?display=profile&name={comment_user_name_full}" title="{comment_user_name_full}"><img src="{comment_user_photo}" width="37" height="41" alt="{comment_user_name_full}"/></a>
+        <!-- begin_delete_button --><div style="position:relative;">
+         <div class="groups_bl_dpink_delete_foto"><a href="javascript:forum_comment_delete({comment_id});"><img  src="{url_tmpl_main}images/groups/ico_delete_yellow.png" width="13" height="14" alt=""/></a></div>
+        </div><!-- end_delete_button -->
+		</td>
+	    <td colspan="2" class="nb border_b">
+
+	        <div class="groups_tb_bl_dpink">
+
+	        <div class="section_comment"><a href="{url_main}search_results.php?display=profile&name={comment_user_name_full}" title="{comment_user_name_full}">{comment_user_name}</a> {comment_text}</div>
+
+	        <ul class="groups_data">
+	            <li class="decor">{comment_created_at_date}</li>
+	        </ul>
+
+
+	        <div class="cl"></div>
+
+            <!-- begin_comment_comment -->
+	        <div class="groups_bl_dpink" id="forum_comment_comment_{comment_comment_id}">
+	            <div class="groups_bl_dpink_top"></div>
+	            <div class="groups_bl_dpink_c">
+	                <a href="{url_main}search_results.php?display=profile&name={user_name_full}"><img class="fl_left" src="{user_photo}" height="23" alt=""/></a>
+	                <div class="groups_bl_dpink_txt" >
+	                    <a href="{url_main}search_results.php?display=profile&name={user_name_full}" title="{user_name_full}">{user_name}</a> {comment_comment_text}<br />
+	                    <span>{comment_comment_created_at_date}</span>
+	                </div>
+	            </div>
+	            <div class="groups_bl_dpink_bot"></div>
+
+	            <!-- begin_comment_delete_button -->
+	            <div class="groups_bl_dpink_delete" ><a href="javascript:forum_comment_comment_delete({comment_comment_id});"><img src="{url_tmpl_main}images/groups/ico_delete_yellow.png" width="13" height="14" alt=""/></a></div>
+                <!-- end_comment_delete_button -->
+	        </div>
+            <!-- end_comment_comment -->
+
+	        <form action="#" onsubmit="return on_forum_comment_comment_post({comment_id});">
+		        <input id="forum_comment_comment_text_{comment_id}" style="visibility:visible;" class="inp_violet_save no_abk" type="text" value="{l_groups_write_a_comment}"  onblur="javascript:if(this.value=='')this.value='{l_groups_write_a_comment}'"     onFocus="this.value=''"/>
+		        <img style="display:none;" id="forum_comment_comment_post_animation_{comment_id}" src="{url_tmpl_main}images/load_animation.gif"><input id="forum_comment_comment_post_button_{comment_id}" class="btn_dviolet" type="submit" value="{l_groups_save}" />
+	        </form>
+
+	        <div class="groups_line"></div>
+
+	        <!-- -->
+	        </div>
+	    </td>
+	</tr>
+<!-- end_comment -->
+
+<!-- begin_new_comment_form -->
+	<tr>
+	    <td colspan="2" class="border_b first"></td>
+	    <td colspan="2" class="nb border_b">
+
+	        <div class="groups_tb_bl_dpink">
+<div class="forum_comment_text_textarea"	>
+	        <textarea id="forum_comment_text" class="textarea_lviolet"   onblur="javascript:if(this.value=='')this.value='{l_groups_add_a_post}'"   onFocus="if(this.value=='{l_groups_add_a_post}') this.value='';">{l_groups_add_a_post}</textarea></div>
+	        <img style="visibility:hidden;" id="forum_comment_post_animation" src="{url_tmpl_main}images/load_animation.gif"><input id="forum_comment_post_button" class="btn_yellow fl_right" type="button" onclick="return on_forum_comment_post(); return false;" value="{l_groups_write}" />
+
+	        <div class="groups_line"></div>
+	        <div class="cl groups_empty"></div>
+
+	        </div>
+	    </td>
+	</tr>
+<!-- end_new_comment_form -->
+
+    <tr>
+        <th class="th_b_l nb">&nbsp;</th>
+        <th colspan="2" class="th_b_c nb">&nbsp;</th>
+        <th class="th_b_r nb">&nbsp;</th>
+    </tr>
+
+</table>
+
+<!-- begin_pager -->
+<div class="fl_right"><ul class="groups_paging">
+    <li><img style="visibility:hidden;" id="forum_comment_list_load_animation" src="{url_tmpl_main}images/load_animation.gif"></li>
+    <!-- begin_pager_prev --><li><a href="javascript:forum_comment_list_load_page({page_n});">{l_pager_prev}</a></li>
+    <li>|&nbsp;&nbsp;</li><!-- end_pager_prev -->
+    <!-- begin_pager_link --><!-- begin_pager_link_active --><li class="active">{page_n}</li><!-- end_pager_link_active --><!-- begin_pager_link_not_active --><li><a href="javascript:forum_comment_list_load_page({page_n});">{page_n}</a></li><!-- end_pager_link_not_active --><!-- end_pager_link -->
+    <!-- begin_pager_next --><li>&nbsp;&nbsp;|</li>
+    <li><a href="javascript:forum_comment_list_load_page({page_n});">{l_pager_next}</a></li><!-- end_pager_next -->
+</ul></div><!-- end_pager -->
+
+<!-- begin_container_footer -->
+</div>
+<!-- end_container_footer -->

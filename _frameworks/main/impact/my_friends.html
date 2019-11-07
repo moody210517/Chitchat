@@ -1,0 +1,40 @@
+{header}
+<script type="text/javascript" src="{url_tmpl_main}js/my_friends.js{cache_version_param}"></script>
+<script>
+var myFriends = new CMyFriends('{on_page}', '{show}');
+var titleDisallow='{j_disallow}';
+</script>
+<div class="col_center">
+    <div class="head icon_head_access_my_private_photos">{l_column_narrow_can_see_your_private_photos_impact}</div>
+    <div class="cont">
+        <div id="page_list_users" class="block_statistics access_my_private_photos">
+            {items}
+            {pages}
+        </div>
+        <div id="loader_base_page" class="css_loader loader_base_page hidden">
+            <div class="spinner center">
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+            </div>
+        </div>
+        <!-- begin_no_one_here_yet -->
+        <div class="bl_no_one">
+            <div class="icon"></div>
+            <div class="txt">{l_no_one_here_yet}</div>
+        </div>
+        <!-- end_no_one_here_yet -->
+        <div class="cl"></div>
+
+    </div>
+</div>
+{footer}

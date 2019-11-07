@@ -1,0 +1,13 @@
+<div class="block yellow">
+<p class="title"><b>{l_friend_request_received}</b></p>
+<table class="request" cellspacing="0" cellpadding="0"><tr>
+	<td class="pic"><div style="background-image:url('{url_files}{photo}');"><a href="{url_main}profile_view.php?user_id={friend_user_id}"><!-- begin_online -->{l_profile_online}<!-- end_online --></a></div></td>
+	<td class="text"><b>
+		<a href="{url_main}profile_view.php?user_id={friend_user_id}">{friend_name}</a></b> {l_wants_to_be_your_friend}
+		<div class="buttons">
+			<form action="{url_main}view_friend_requests.php?cmd=reject&user_id={friend_user_id}" method="POST"><input type="submit" class="btn orange_btn" value="{l_reject}"/></form>
+			<form action="{url_main}view_friend_requests.php?cmd=accept&user_id={friend_user_id}" method="POST"><p><input type="submit" class="btn green_btn" value="{l_ok_sign}"/></p></form>
+		</div>
+	</td>
+</tr></table>
+</div>

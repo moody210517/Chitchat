@@ -1,0 +1,39 @@
+<!-- begin_users_list_items -->
+<!-- begin_users_list_item -->
+<div id="encounters_user_info_{user_id}" class="encounters_user" <!-- begin_users_list_item_hide -->style="display:none;"<!-- end_users_list_item_hide -->>
+<div class="bl_info_photo_top user_info encounters_user_info">
+    <div class="name">
+        <!-- begin_status_online -->
+        <div class="status online"></div>
+        <!-- end_status_online -->
+        {name}, {age}
+        <a href="{url_city}index.php?view=mobile&from={user_id}" class="status_3dcity <!-- begin_status_3dcity_profile -->to_show<!-- end_status_3dcity_profile -->"></a>
+    </div>
+</div>
+<div class="bl_tinder">
+    <div class="title">{l_its_a_match}</div>
+    <div class="bl_relation">
+        <div class="frame fl_left">
+            <a class="go_to_page" data-cl-loader="loader_encounters_to_profile" href="{url_main}{url_page_profile_view}">
+                <img class="no_color_t" src="{url_files}{guid_photo_m}" alt="">
+            </a>
+        </div>
+        <div class="frame fl_right">
+            <a class="go_to_page" data-cl-loader="loader_encounters_to_profile" href="{url_main}{url_page_profile_view}?user_id={user_id}&from=encounters">
+                <img class="no_color_t" src="{url_files}{photo_m}" alt="">
+            </a>
+        </div>
+        <div class="icon_relation_heart"></div>
+        <div class="cl"></div>
+    </div>
+    <div class="bl_relation_info">
+        <a class="icon_relation_chat go_to_page" data-cl-loader="loader_encounters_to_page" href="{url_main}{url_page_messages}?display=one_chat&user_id={user_id}"></a>
+        <a class="icon_relation_user go_to_page" data-cl-loader="loader_encounters_to_page" href="{url_main}{url_page_profile_view}?user_id={user_id}&from=encounters"></a>
+    </div>
+</div>
+<script>
+    clPhoto.setEncountersDataUsers('{user_id}','{photo_cur_id}',{photos_info},'{is_mutual_attraction_encounters}', '{is_attraction_from}', '{users_list_item_num}', '{request_ajax}');
+</script>
+</div>
+<!-- end_users_list_item -->
+<!-- end_users_list_items -->

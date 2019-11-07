@@ -1,0 +1,81 @@
+<!-- begin_message_list -->
+<!-- begin_message_list_start -->
+<div <!-- begin_message_list_hide -->style="display:none;"<!-- end_message_list_hide --> onscroll="if(!$(this).scrollTop())Messages.uploadingMsg($(this));" id="pp_message_list_message_{user_to_id}" data-im-list-msg="{user_to_id}" class="dialog list_msg_with_user pp_message_user_info">
+<!-- end_message_list_start -->
+    <!-- begin_message -->
+        <div data-msg-uid="{message_user_id}" data-msg-id="{message_id}" id="pp_message_msg_{message_id}" class="item pp_message_msg_user_{message_user_id}">
+            <div class="tit {tit_class}">
+                <!-- begin_message_info -->
+                <a href="{url_main}{message_user_profile_link}">{message_user_name}</a> — <span class="data">{message_date}</span>
+                <img id="pp_message_msg_check_{message_id}" data-msg-uid="{message_user_id}" data-mid="{message_id}" class="msg_check" <!-- begin_read -->style="display:none;"<!-- end_read --> src="{url_tmpl_main}images/msg_check.png" width="10" height="7" alt="" />
+                <!-- end_message_info -->
+            </div>
+            <!-- begin_message_text -->
+            <p class="pp_message_node">
+                {message}
+                <!-- begin_message_block -->
+                <span style="color:red;">{l_you_are_in_block_list}</span>
+                <!-- end_message_block -->
+            </p>
+                <!-- begin_message_original_text -->
+                <div class="pp_message_original_title">{l_the_message_was_autotranslated} <a href="#" onclick="Messages.showOriginalMessage(this);return false;">{l_show_original_message}</a></div>
+                <div class="pp_message_original_text">
+                    {message_original}
+                </div>
+                <!-- end_message_original_text -->
+            <!-- end_message_text -->
+
+            <!-- begin_message_gift -->
+            <div class="frame_gift"><a style="cursor:default;" onclick="return false;" href="#"><img src="{gift_img_url}" alt="" /></a></div>
+            <!-- begin_message_gift_text -->
+            <div class="gift_msg_decor">
+                <div class="gift_msg_decor_txt"><span>{gift_text}</span></div>
+            </div>
+            <!-- end_message_gift_text -->
+            <!-- end_message_gift -->
+            <div class="cl"></div>
+            <script>Messages.messagesCacheAdd('{message_to_user_id}', '{message_id}')</script>
+        </div>
+    <!-- begin_message_ajax -->
+    <script>Messages.show_message('{message_to_user_id}', '{message_id}', '{message_update}', '{message_user_id}', '{message_user_special_delivery}');</script>
+    <!-- end_message_ajax -->
+    <!-- end_message -->
+<!-- begin_message_list_end -->
+</div>
+<!-- end_message_list_end -->
+<!-- end_message_list -->
+<div id="im_list_msg_empty" class="dialog empty_msg pp_message_user_info"></div>
+<!-- begin_message_list_empty -->
+<div <!-- begin_message_list_empty_hide -->style="display:none;"<!-- end_message_list_empty_hide --> id="im_list_msg_empty_info" class="dialog pp_message_user_info">
+    <div class="bl_txt_msg_empty">{l_you_have_no_messages_yet}</div>
+</div>
+<!-- end_message_list_empty -->
+<!-- begin_update_messages -->
+<script>
+<!-- begin_sound -->
+Messages.playSound();
+<!-- end_sound -->
+<!-- begin_show_read_marks -->
+Messages.is_read_msg('{show_read_marks}'*1);
+<!-- end_show_read_marks -->
+</script>
+<!-- end_update_messages -->
+<script>
+<!-- begin_update_users_status -->
+Messages.updateOnlineUsers({update_users_status});
+<!-- end_update_users_status -->
+<!-- begin_update_writing_users -->
+Messages.updateWritingUsers({update_writing_users});
+<!-- end_update_writing_users -->
+<!-- begin_delete_writing_users -->
+Messages.deleteWritingUsers({delete_writing_users});
+<!-- end_delete_writing_users -->
+
+<!-- begin_messages_existing_ajax_DISABLED -->
+Messages.checkExistenceMessages('{existing_messages_DISABLED}');
+<!-- end_messages_existing_ajax_DISABLED -->
+
+<!-- begin_message_set_credits -->
+Profile.setBalansCredit('{credits}');
+<!-- end_message_set_credits -->
+</script>

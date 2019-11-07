@@ -1,0 +1,122 @@
+<!-- begin_container_header -->
+<script type="text/javascript">
+
+function groups_group_list_{upcoming}_load_page(page_n)
+{
+	$('#groups_group_list_{upcoming}_load_animation').css('visibility', 'visible');
+
+	$('#groups_group_list_{upcoming}_container').load(
+			'{url_main}groups_group_list_ajax.php?n_results_per_page={n_results_per_page}&group_where_when={group_where_when}&user_id={user_id}&list_type={list_type}&country_id={country_id}&category_id={category_id}&group_datetime={group_datetime}&query={query}&upcoming={upcoming}&group_place={group_place}&groups_group_list_page=' + page_n);
+}
+
+function groups_group_list_{upcoming}_delete_group(group_id, page_n)
+{
+    if(confirm('{l_are_you_sure}'))
+    {
+        $('#group_list_group_' + group_id).fadeOut(400, function() {
+            $.ajax({
+                    type: 'POST',
+                    url: '{url_main}groups_group_delete_ajax.php',
+                    data: {
+                        group_id: group_id
+                        },
+                    success: function (data, textStatus, XMLHttpRequest)
+                        {
+                        	groups_group_list_{upcoming}_load_page(page_n);
+                        }
+                  });
+            });
+    }
+}
+
+</script>
+<div id="groups_group_list_{upcoming}_container">
+<!-- end_container_header -->
+
+<!-- begin_groups -->
+<table class="groups_tb_sub">
+    <!-- begin_groups_where_when_title -->
+    <col width="7px"/>
+    <col width="120px"/>
+    <col width="74px"/>
+    <col width="50px"/>
+    <col width="84px"/>
+    <col width="83px"/>
+    <tr>
+        <th class="th_t_l nb first">&nbsp;</th>
+        <th class="th_t_c">{l_groups_groups}</th>
+        <th class="th_t_c"><span>{l_groups_founded} </span></th>
+        <th class="th_t_c"><span>{l_groups_members}</span></th>
+        <th class="th_t_c nb"><span>{l_groups_forum_posts}</span></th>
+        <th class="th_t_c nb"><span>{l_groups_wall_posts}</span></th>
+        <th class="th_t_c nb"><span>{l_groups_go}</span></th>
+        <th class="th_t_r nb first">&nbsp;</th>
+    </tr>
+    <!-- end_groups_where_when_title -->
+    <!-- begin_groups_when_guests_comments_title -->
+    <col width="7px"/>
+    <col width="100px"/>
+    <col width="84px"/>
+    <col width="60px"/>
+    <col width="84px"/>
+    <col width="83px"/>
+    <tr>
+        <th class="th_t_l nb first">&nbsp;</th>
+        <th class="th_t_c">{l_groups_groups}</th>
+        <th class="th_t_c"><span>{l_groups_founded} </span></th>
+        <th class="th_t_c"><span>{l_groups_members}</span></th>
+        <th class="th_t_c nb"><span>{l_groups_forum_posts}</span></th>
+        <th class="th_t_c nb"><span>{l_groups_wall_posts}</span></th>
+        <th class="th_t_c nb"><span>{l_groups_go}</span></th>
+        <th class="th_t_r nb first">&nbsp;</th>
+    </tr>
+    <!-- end_groups_when_guests_comments_title -->
+
+    <!-- begin_group -->
+    <tr id="group_list_group_{group_id}">
+        <td class="first" colspan="2"><div class="bl_hide"><span class="dots"><a class="yellow" <!-- begin_group_link --> href="{url_main}groups_group_show.php?group_id={group_id}"<!-- end_group_link --> <!-- begin_private_group_alert --> style = "cursor:pointer;" onClick="alert('{l_events_private_group_alert}')" <!-- end_private_group_alert --> title="{group_title_full}">{group_title_full}</a></span></div></td>
+        <!-- begin_group_where_when_rows -->
+        <td><span class="dots"><a href="{url_main}search_results.php?display=profile&name={group_user_name_full}" title="{group_user_name_full}">{group_user_name}</a></span></td>
+        <!-- end_group_where_when_rows -->
+        <!-- begin_group_when_guests_comments_rows -->
+        <td><span>{group_created_at}</span></td>
+        <!-- end_group_when_guests_comments_rows -->
+        <td><span>{group_n_members}</span></td>
+        <td><span>{group_n_posts}</span></td>
+        <td><span>{group_n_comments}</span></td>
+        <td class="nb play" colspan="2"><span><a <!-- begin_group_link_button --> href="{url_main}groups_group_show.php?group_id={group_id}" <!-- end_group_link_button --> <!-- begin_private_group_alert --> onClick="alert('{l_events_private_group_alert}')" style = "cursor:pointer;"<!-- end_private_group_alert -->><img  src="{url_tmpl_main}images/groups/play.png" width="13" height="13" alt=""/></a></span></td>
+    </tr>
+    <!-- end_group -->
+
+    <tr>
+        <th class="th_b_l nb">&nbsp;</th>
+    <!-- begin_groups_where_when_footer -->
+        <th colspan="6" class="th_b_c nb">&nbsp;</th>
+    <!-- end_groups_where_when_footer -->
+    <!-- begin_groups_when_guests_comments_footer -->
+        <th colspan="6" class="th_b_c nb">&nbsp;</th>
+    <!-- end_groups_when_guests_comments_footer -->
+        <th class="th_b_r nb">&nbsp;</th>
+    </tr>
+</table>
+
+<!-- begin_pager -->
+<div class="fl_right"><ul class="groups_paging">
+    <li><img style="visibility:hidden;" id="groups_group_list_{upcoming}_load_animation" src="{url_tmpl_main}images/load_animation.gif"></li>
+    <!-- begin_pager_prev --><li><a href="javascript:groups_group_list_{upcoming}_load_page({page_n});">{l_pager_prev}</a></li>
+    <li>|&nbsp;&nbsp;</li><!-- end_pager_prev -->
+    <!-- begin_pager_link --><!-- begin_pager_link_active --><li class="active">{page_n}</li><!-- end_pager_link_active --><!-- begin_pager_link_not_active --><li><a href="javascript:groups_group_list_{upcoming}_load_page({page_n});">{page_n}</a></li><!-- end_pager_link_not_active --><!-- end_pager_link -->
+    <!-- begin_pager_next --><li>&nbsp;&nbsp;|</li>
+    <li><a href="javascript:groups_group_list_{upcoming}_load_page({page_n});">{l_pager_next}</a></li><!-- end_pager_next -->
+</ul></div><!-- end_pager -->
+<!-- end_groups -->
+
+<!-- begin_no_groups -->
+<div class="groups_comments">
+    <!-- begin_no_groups_message --><center>{l_groups_no_groups}</center><!-- end_no_groups_message -->
+</div>
+<!-- end_no_groups -->
+
+<!-- begin_container_footer -->
+</div>
+<!-- end_container_footer -->

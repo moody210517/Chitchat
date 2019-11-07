@@ -1,0 +1,433 @@
+<!-- File uplod -->
+<div id="pp_video_upload" data-type="video" class="pp_file_upload pp_video_upload modal fade" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="scrollbarY">
+                    <div class="scrollbar">
+                        <div class="track">
+                            <div class="thumb"><div class="end"></div></div>
+                        </div>
+                    </div>
+                    <div class="viewport">
+                        <div class="overview">
+                            <form id="pp_video_upload_frm" action="{url_main}ajax.php?cmd=photo_add_upload&type=video&one=1" class="dropzone"></form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="double">
+                    <button type="button" class="btn btn-secondary btn_close"><span>{l_close_window}</span></button>
+                    <button type="button" class="btn btn-primary btn_publish" disabled><span>{l_add_photo_publish}</span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+div.scrollmenu{
+    overflow: auto;
+    white-space: nowrap;
+    flex:1;
+    background-color: #333;
+    align-items: center;
+    margin-right: 30px;
+    margin-left: 30px;
+}
+div.scrollmenu a{
+    display: inline-block;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 8px;
+}
+.left_icon{
+    width:35px;height:42px;margin-left: 20px;
+}
+.right_icon{
+    width:35px;height:38px;margin-right: 20px;
+}
+@media only  screen and (max-width:600px){
+    div.scrollmenu{
+        margin-right: 15px;
+        margin-left: 15px;
+    }
+    div.scrollmenu a{
+        padding-left: 15px;
+        padding-right: 15px;
+        font-size: 14px;
+    }
+    .left_icon{
+        margin-left: 10px;
+    }
+    .right_icon{
+        margin-right: 10px;
+    }
+
+}
+</style>
+
+<script>
+    function left(){
+        alert("left");
+    }
+</script>
+<div id="pp_photo_upload" data-type="photo" class="pp_file_upload pp_photo_upload modal fade" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="scrollbarY">
+                    <div class="scrollbar">
+                        <div class="track">
+                            <div class="thumb"><div class="end"></div></div>
+                        </div>
+                    </div>
+                    <div class="viewport">
+                        <div class="overview">
+                            <form id="pp_photo_upload_frm" action="{url_main}ajax.php?cmd=photo_add_upload&type=public&one=1&size=mm&file_input=file_photo" class="dropzone">
+                                
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer" style="display: flex;flex-direction: row;">                
+                    <!-- <button type="button" class="btn btn-secondary" style="float:left;"><span> Rotate </span></button> -->
+                    <!-- <img src= "{url_main}/_files/icons/left.png"  /> -->
+                    <input   class="btn_left_rotate left_icon" type="image" src="{url_main}/_files/icons/left.png"  />               
+
+                    <div class="scrollmenu">
+                        <a href="" id="original">{l_original}</a>
+                        <a href=""  id="grey">{l_grey}</a>
+                        <a href="" id="blue">{l_blue}</a>
+                        <a href="" id="red">{l_red}</a>
+                        <a href="" id="yellow">{l_yellow}</a>
+                    </div>
+                    
+                    <input   class="btn_right_rotate right_icon" type="image" src="{url_main}/_files/icons/right.png"  />
+                    <!-- <button type="button" class="btn btn-primary" style="float: right;"><span> Rotate Right </span></button>             -->
+            </div>
+
+            <div class="modal-footer">
+                <div class="double">                    
+                    <button type="button" class="btn btn-secondary btn_close"><span>{l_close_window}</span></button>
+                    <button type="button" class="btn btn-primary btn_publish" disabled><span>{l_add_photo_publish}</span></button>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<!-- Pp gallery -->
+<div id="pp_gallery_photos_content" class="wrap_one_item cham-blog-style-1 modal fade" role="dialog" data-keyboard="false" data-backdrop="false">
+    <div class="pp_gallery_overflow">
+    <div id="pp_gallery_layer_blocked" class="layer_blocked_gallery"></div>
+    <div class="container">
+        <div class="row">
+            <div class="cham-post photo_one">
+                <div class="icon_close hidden-lg hidden-md hidden-sm" onclick="clProfilePhoto.closeGalleryPopup();">
+                    <span></span>
+                </div>
+                <div class="one_item">
+                    <a id="photo_show_prev" onclick="clProfilePhoto.show('right'); return false;" href="#" class="arrows prev_p to_hide"></a>
+                    <div id="pp_gallery_photo_one_bl" oncontextmenu="return false;" class="cham-post-image photo_one_bl">
+                        <div id="pp_gallery_photos_img_box" class="photo_one_cont none_select bl_img change_photo">
+                            <img id="pp_gallery_photo_one_img" class="to_hide" src="" />
+                        </div>
+                        <div class="css_loader pp_gallery_loader">
+                            <div class="spinner spinnerw center">
+                            <div class="spinner-blade"></div>
+                            <div class="spinner-blade"></div>
+                            <div class="spinner-blade"></div>
+                            <div class="spinner-blade"></div>
+                            <div class="spinner-blade"></div>
+                            <div class="spinner-blade"></div>
+                            <div class="spinner-blade"></div>
+                            <div class="spinner-blade"></div>
+                            <div class="spinner-blade"></div>
+                            <div class="spinner-blade"></div>
+                            <div class="spinner-blade"></div>
+                            <div class="spinner-blade"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="pp_gallery_video_one_bl" class="cham-post-image video_one_bl rectangle">
+                        <div class="css_loader pp_gallery_loader">
+                            <div class="spinner spinnerw center">
+                            <div class="spinner-blade"></div>
+                            <div class="spinner-blade"></div>
+                            <div class="spinner-blade"></div>
+                            <div class="spinner-blade"></div>
+                            <div class="spinner-blade"></div>
+                            <div class="spinner-blade"></div>
+                            <div class="spinner-blade"></div>
+                            <div class="spinner-blade"></div>
+                            <div class="spinner-blade"></div>
+                            <div class="spinner-blade"></div>
+                            <div class="spinner-blade"></div>
+                            <div class="spinner-blade"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <a id="photo_show_next" onclick="clProfilePhoto.show('left'); return false;" href="#" class="arrows next_p to_hide"></a>
+
+                    <div id="pp_gallery_info" class="cham-post-text">
+                        <div id="media_buffer_test" style="display: none;">
+                            <div id="video_progress" style="width: 0px; height: 7px; background-color: #595; margin-bottom: 2px;"></div>
+                            <div id="video_buffer" style="width: 0px; height: 7px; background-color: red; margin-bottom: 5px;"></div>
+                        </div>
+                        <div id="pp_gallery_desc_wrap" class="title">
+                            <div id="pp_gallery_desc">
+                                <span class="pen" onclick="clProfilePhoto.openEditDesc(); return false;"><i class="fa fa-pencil-square" aria-hidden="true"></i></span>
+                                <span class="text_overflow_page" onclick="clProfilePhoto.openEditDesc(); return false;">&nbsp;</span>
+                            </div>
+                            <div id="pp_gallery_desc_bl_edit" class="pp_gallery_desc_edit">
+                                <input type="text" class="form-control">
+                                <button onclick="clProfilePhoto.cancelEditDesc(); return false;" type="button" class="btn btn-secondary">
+                                    <span class="icon remove"></span>
+                                </button>
+                                <button onclick="clProfilePhoto.saveEditDesc(); return false;" type="button" class="btn btn-success">
+                                    <span class="icon check"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="upload_user">
+                            <div class="wrap_upload_user">
+                                <a id="pp_gallery_desc_user_name" href="" class="name"></a>
+                                <span id="pp_gallery_date" class="date"></span>
+
+                                <div class="photo">
+                                    <a id="pp_gallery_desc_user_photo" href="" class="pic"></a>
+                                </div>
+                            </div>
+
+                            <div id="pp_gallery_more_menu"  class="wrap_upload_menu">
+                                <span class="upload_menu_link dropdown-toggle" data-toggle="collapse" data-target="#pp_gallery_more_options">
+                                    {l_options} <span class="caret caret-reversed"></span>
+                                </span>
+                                <ul id="pp_gallery_more_options" class="more_menu_collapse collapse" >
+                                    <li>
+                                        <a id="pp_gallery_make_profile_picture" onclick="clProfilePhoto.setPhotoDefault(); return false;" href="">
+                                            <span class="icon_fa" data-no-fade-in="true" data-cl-loader="icon_list_media_menu_loader">
+                                                <i class="fa fa-user" aria-hidden="true"></i>
+                                            </span>
+                                            <span>{l_make_profile_picture}</span>
+                                        </a>
+                                        <a id="pp_gallery_hide_header_picture" onclick="clProfilePhoto.hideHeaderPicture(); return false;" href="">
+                                            <span class="icon_fa" data-no-fade-in="true" data-cl-loader="icon_list_media_menu_loader">
+                                                <i class="fa fa-plus-square" aria-hidden="true"></i>
+                                            </span>
+                                            <span class="hide_header_picture_title">{l_remove_from_header}</span>
+                                        </a>
+                                        <!-- begin_app_ios_image_editor -->
+                                        <a id="pp_gallery_edit_picture" onclick="runAppIosPhotoEditor(clProfilePhoto.curPid); return false;" class="app_ios_image_editor_link" href="">
+                                            <span class="icon_fa" data-no-fade-in="true" data-cl-loader="icon_list_media_menu_loader">
+                                                <i class="fa fa-magic" aria-hidden="true"></i>
+                                            </span>
+                                            <span>{l_edit_photo}</span>
+                                        </a>
+                                        <a id="pp_gallery_crop_picture" onclick="runAppIosPhotoCrop(clProfilePhoto.curPid); return false;" class="app_ios_image_crop_link" href="">
+                                            <span class="icon_fa" data-no-fade-in="true" data-cl-loader="icon_list_media_menu_loader">
+                                                <i class="fa fa-crop" aria-hidden="true"></i>
+                                            </span>
+                                            <span>{l_crop_photo}</span>
+                                        </a>
+                                        <!--end_app_ios_image_editor -->
+                                        <!-- begin_app_ios_video_editor -->
+                                        <a id="pp_gallery_edit_video" onclick="runAppIosVideoEditor(clProfilePhoto.curPid); return false;" class="app_ios_video_editor_link" href="">
+                                            <span class="icon_fa" data-no-fade-in="true" data-cl-loader="icon_list_media_menu_loader">
+                                                <i class="fa fa-magic" aria-hidden="true"></i>
+                                            </span>
+                                            <span>{l_edit_video}</span>
+                                        </a>
+                                        <!--end_app_ios_video_editor -->
+                                        <a id="pp_gallery_delete_picture" onclick="clProfilePhoto.confirmPhotoDelete(); return false;" href="">
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                            <span>{l_delete}</span>
+                                        </a>
+                                        <a id="pp_gallery_report" onclick="clProfilePhoto.openReport(); return false;" href="">
+                                            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                                            <span></span>
+                                        </a>
+                                        <a id="pp_gallery_direct_link" target="_blank" download href="#">
+                                            <i class="fa fa-external-link" aria-hidden="true"></i>
+                                            <span>{l_gallery_file_download}</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div id="pp_gallery_meta" class="cham-post-meta">
+                        <span id="pp_gallery_comments_count_bl" class="time">
+                            <i class="fa fa-comments" aria-hidden="true"></i>
+                            <span id="pp_gallery_comments_count"></span>
+                        </span>
+                        <span class="time">
+                            <i class="fa fa-clock-o" aria-hidden="true"></i>
+                            <span id="pp_gallery_time_ago"></span>
+                        </span>
+                        <span id="pp_gallery_not_checked" class="time pp_gallery_not_checked">
+                            <i class="fa fa-check-circle"></i>
+                            <span>{l_being_checked_by_moderators}</span>
+                        </span>
+                        <span id="pp_gallery_tags_bl" class="tag hidden-xs pp_gallery_tags">
+                            <span class="pp_gallery_tags overflow">
+                                <span class="pp_gallery_tags_edit_link" onclick="return clProfilePhoto.openEditTags();" title="">
+                                    <i class="fa fa-tags" aria-hidden="true"></i>
+                                    <span data-cl-loader="pp_loader_edit_tags" class="pp_gallery_tags_list"></span>
+                                </span>
+
+                            </span>
+                            <span id="pp_gallery_tags_edit" class="pp_gallery_tags_edit">
+                                <input type="text" class="form-control">
+                                <button onclick="clProfilePhoto.cancelEditTags(); return false;" type="button" class="btn btn-secondary">
+                                    <span class="icon remove"></span>
+                                </button>
+                                <button onclick="clProfilePhoto.saveEditTags(); return false;" type="button" class="btn btn-success">
+                                    <span class="icon check"></span>
+                                </button>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="photo_one_comments">
+            <div class="photo_and_field_comment pp_gallery_field_comment">
+                <div class="photo">
+                    <a href="{comment_current_user_url}" title="{comment_current_user_name}" class="pic profile_photo_r_{comment_current_user_id}" style="background-image:url({url_files}{comment_current_user_photo});"></a>
+                    <script>onLoadImgFromList($('.profile_photo_r_{comment_current_user_id}.to_hide'), '{url_files}{comment_current_user_photo}');</script>
+                </div>
+                <div class="field_comment">
+                    <textarea placeholder="{a_write_your_comment}" class="form-control placeholder pp_gallery_comment_text"></textarea>
+                    <button onclick="clProfilePhoto.commentAdd(this); return false;" class="gallery_comment_send">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M21.5,11.1l-17.9-9C2.7,1.7,1.7,2.5,2.1,3.4l2.5,6.7L16,12L4.6,13.9l-2.5,6.7c-0.3,0.9,0.6,1.7,1.5,1.2l17.9-9   C22.2,12.5,22.2,11.5,21.5,11.1z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div id="pp_gallery_comments_bl" class="gallery_comments">
+                <div id="pp_gallery_comments_hidden" class="pp_gallery_comments_hidden">
+                    <i class="fa fa-eye-slash" aria-hidden="true"></i>{l_comments_hidden}
+                </div>
+                <div id="pp_gallery_comments"></div>
+            </div>
+
+            <div class="photo_and_field_comment pp_gallery_field_comment_bottom">
+                <div class="photo">
+                    <a href="{comment_current_user_url}" title="{comment_current_user_name}" class="pic profile_photo_r_{comment_current_user_id}" style="background-image:url({url_files}{comment_current_user_photo});"></a>
+                    <script>onLoadImgFromList($('.profile_photo_r_{comment_current_user_id}.to_hide'), '{url_files}{comment_current_user_photo}');</script>
+                </div>
+                <div class="field_comment">
+                    <textarea placeholder="{a_write_your_comment}" class="form-control placeholder pp_gallery_comment_text"></textarea>
+                    <button onclick="clProfilePhoto.commentAdd(this); return false;" class="gallery_comment_send">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M21.5,11.1l-17.9-9C2.7,1.7,1.7,2.5,2.1,3.4l2.5,6.7L16,12L4.6,13.9l-2.5,6.7c-0.3,0.9,0.6,1.7,1.5,1.2l17.9-9   C22.2,12.5,22.2,11.5,21.5,11.1z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+<!-- Pp gallery --->
+
+<!-- Report -->
+<div id="pp_user_report" class="modal fade bs-example-modal-sm custom_modal forms_field forms_field_report" tabindex="-1" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h3 class="modal-title"></h3>
+        </div>
+        <div class="modal-body">
+            <div class="bl_forms">
+                <div class="section fields">
+                    <div class="col-lg-12 col-md-12 field_textarea">
+                         <textarea id="pp_user_report_msg" name="comment" class="form-control placeholder"></textarea>
+                    </div>
+                </div>
+            </div>
+        <div class="clearfix"></div>
+        </div>
+        <div class="modal-footer">
+            <div class="double col-lg-12 col-md-12">
+                <button id="pp_user_report_cancel" onclick="clProfile.cancelReport(); return false;" class="btn btn-secondary">
+                    <span class="icon remove"></span><span id="pp_user_report_cancel_title">{l_cancel}</span>
+                </button>
+                <button id="pp_user_report_send" onclick="clProfile.sendReport(); return false;" class="btn btn-success" disabled>
+                    <span class="icon message"></span><span>{l_send}</span>
+                </button>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+<!-- Report -->
+
+<div style="display:none;">
+    <div id="placeholder_post" class="wall_post_item">
+        <div class="timeline-wrapper">
+            <div class="timeline-item">
+                <div class="animated-background">
+                    <div class="wrap-background-circle">
+                        <div class="animated-background background-circle"></div>
+                    </div>
+                    <div class="background-masker header-top"></div>
+                    <div class="background-masker header-left"></div>
+                    <div class="background-masker header-right"></div>
+                    <div class="background-masker header-bottom"></div>
+                    <div class="background-masker subheader-left"></div>
+                    <div class="background-masker subheader-right"></div>
+                    <div class="background-masker subheader-bottom"></div>
+                    <div class="background-masker content-top"></div>
+                    <div class="background-masker content-first-end"></div>
+                    <div class="background-masker content-second-line"></div>
+                    <div class="background-masker content-second-end"></div>
+                    <div class="background-masker content-third-line"></div>
+                    <!-- <div class="background-masker content-third-end"></div> -->
+                    <div class="background-masker content-full-line"></div>
+                    <div class="background-masker content-full-line second"></div>
+                    <div class="background-masker content-full-line third"></div>
+                    <div class="background-masker content-full-line fourth"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="placeholder_comment" class="timeline-wrapper timeline-comment">
+            <div class="timeline-item">
+                <div class="animated-background">
+                    <div class="wrap-background-circle">
+                        <div class="animated-background background-circle"></div>
+                    </div>
+                    <div class="background-masker header-top"></div>
+                    <div class="background-masker header-left"></div>
+                    <div class="background-masker header-right"></div>
+                    <div class="background-masker header-bottom"></div>
+                    <div class="background-masker subheader-left"></div>
+                    <div class="background-masker subheader-right"></div>
+                    <div class="background-masker subheader-bottom"></div>
+                    <!-- <div class="background-masker content-top"></div>
+                    <div class="background-masker content-first-end"></div>
+                    <div class="background-masker content-second-line"></div>
+                    <div class="background-masker content-second-end"></div>
+                    <div class="background-masker content-third-line"></div>
+                    <div class="background-masker content-third-end"></div> -->
+                </div>
+            </div>
+    </div>
+</div>

@@ -1,0 +1,205 @@
+{header}
+<script type="text/javascript" src="_server/jquery/jquery.autosize.js{cache_version_param}"></script>
+<script>
+$(function(){
+    var goTop = $('#goTop'),
+        bottom;
+    $(window).scroll(function() {
+        if($(this).scrollTop() > 150){bottom = 243;}else{bottom = -100;}
+        goTop.stop().animate({bottom: bottom+'px'}, 500);
+    });
+    goTop.click(function() {
+        $('html, body').stop().animate({
+           scrollTop: 0
+        }, 500, function() {
+           goTop.stop().animate({bottom: '-100px'}, 500);
+        });
+    });
+});
+window.FileAPI = {
+        debug: false // debug mode
+        , staticPath: '{url_main}_server/js/fileapi/'
+};
+</script>
+
+<script type="text/javascript" src="{url_main}_server/js/fileapi/FileAPI.min.js{cache_version_param}"></script>
+<script type="text/javascript" src="{url_main}_server/js/fileapi/plugins/FileAPI.exif.js{cache_version_param}"></script>
+<script type="text/javascript" src="{url_main}_server/js/fileapi/jquery.fileapi.js{cache_version_param}"></script>
+
+<div class="wall-info-load-module"></div>
+<div id="goTop" class="wall_up"></div>
+		<div class="feed">
+
+			<div class="feed_head">
+				<table width="100%">
+					<tr>
+						<td class="td_l">&nbsp;</td>
+						<td class="td_c">
+							<div class="feed_head_txt">
+								<strong><a href="{url_main}wall.php?uid={wall_user_id}"><!-- begin_wall_title_my -->{l_wall_friends_news_feed}<!-- end_wall_title_my --><!-- begin_wall_title_other -->{wall_name_news_feed}<!-- end_wall_title_other --></a> ::</strong> {l_wall_see_whats_going_on}
+							</div>
+							<div class="feed_head_pad fl_right">
+								<input onclick="location.href='{url_main}{url_profile}'" class="btn_feed_img" type="button" value="<!-- begin_wall_my -->{l_wall_my_profile}<!-- end_wall_my --><!-- begin_wall_other -->{l_wall_view_profile}<!-- end_wall_other -->"/>
+							</div>
+						</td>
+						<td class="td_r">&nbsp;</td>
+					</tr>
+				</table>
+
+				<div class="feed_menu_bg">
+					<ul class="feed_menu fl_left">
+						<li><a href="{url_main}<!-- begin_wall_friends_my -->my_friends.php<!-- end_wall_friends_my --><!-- begin_wall_friends_other -->search_results.php?display=friends&name={name}<!-- end_wall_friends_other -->">{l_friends}</a></li>
+						<!-- begin_invite_on -->
+                        <li class="{invite_friends_class}"><a href="{url_main}invite.php">{l_wall_invite_friends}</a></li>
+                        <!-- end_invite_on -->
+
+						<!-- begin_recorder_button -->
+						<li class="last"><a href="#" onclick="showRecorder(); return false;">{l_record_greeting}</a></li>
+						<!-- end_recorder_button -->
+					</ul>
+
+					<ul class="feed_menu fl_right">
+                        <!-- begin_wall_add_friend -->
+                        <li <!-- begin_im_delimiter_add_friend -->class="last"<!-- end_im_delimiter_add_friend -->>+ <a href="{url_main}friends_add.php?uid={wall_user_id}">{l_add_to_friends}</a></li>
+                        <!-- end_wall_add_friend -->
+                        <!-- begin_wall_im -->
+						<li class="last"><a href="#" onclick="xajax_im_open({wall_user_id}, event); return false;" title="{l_im_chat_now}">{l_im_chat_now}</a></li>
+						<!-- end_wall_im -->
+                        <!-- begin_wall_unfriend -->
+                        <li class="last">
+                            <div class="bl_post_popup" style="margin-top: -1px;" onclick="return false;">
+                                <a href="" class="feed_del"><img src="{url_tmpl_main}images/wall/icon_post_popup.png" width="15" height="14" align="bottom"></a>
+                                <div class="post_popup" style="display: none;">
+                                <ul>
+                                    <li class="last"><a href="" onclick="if(confirm('{l_are_you_sure}')) { Wall.unfriend({wall_user_id});} return false;"><img src="{url_tmpl_main}images/wall/icon_post_list_unfriend.png" width="15" height="14" alt="" />{l_wall_unfriend}</a></li>
+                                </ul>
+                                </div>
+                            </div>
+                        </li>
+							<!--<a onclick="return confirm('{l_are_you_sure}');" href="{url_main}friends_requests.php?action=remove&user_id={wall_user_id}">{l_unfriend}</a>-->
+                        <!-- end_wall_unfriend -->
+					</ul>
+
+<!-- begin_myrecorder_swf -->
+<div id="rec" class="rec_wall">
+	<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"
+	codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0"
+	width="220" height="140" id="myRecorder" align="middle">
+	<param name="allowScriptAccess" value="sameDomain" />
+	<param name="movie" value="{url_main}_server/recorder/myRecorder.swf?login={myname}&unique={unique}&l_recorder_title={l_recorder_title}" />
+	<param name="quality" value="high" />
+	<param name="wmode" value="transparent" />
+	<param name="bgcolor" value="#7ea6b6" />
+	<embed src="{url_main}_server/recorder/myRecorder.swf?login={myname}&unique={unique}&l_recorder_title={l_recorder_title}" wmode="transparent" quality="high" bgcolor="#7ea6b6" width="220" height="140" name="myRecorder" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+	</object>
+</div>
+<!-- end_myrecorder_swf -->
+
+				<div class="justify"></div>
+				</div>
+<!-- begin_wall_gallery -->
+<!-- begin_wall_gallery_images -->
+<div class="wall_gallery_images_header">
+<!-- begin_wall_gallery_image --><a href="{url_main}gallery_image.php?img_id={wall_gallery_image_id}"><img src="{url_files}{wall_gallery_image_url}"></a><!-- end_wall_gallery_image -->
+</div>
+<!-- end_wall_gallery_images -->
+<!-- end_wall_gallery -->
+			</div>
+<!-- begin_only_friends_posts_one -->
+			<table class="tb_feed" width="100%">
+				<tr>
+					<!-- td_main -->
+					<td class="td_main">
+
+						<div class="feed_tb_cont">
+<!-- end_only_friends_posts_one -->
+<!-- begin_wall_add_comment -->
+<div class="bl_wall_item_add">
+<textarea id="wall_item_add" placeholder="{l_wall_whats_on_your_mind} {wall_add_other}"></textarea>
+    <!-- begin_wall_add_comment_image -->
+    <div id="wall_upload_image">
+        <span class="icon_photo_wall"><input class="wall_input_file" type="file" name="filedata"></span>
+        <span class="icon_photo_upload_wall" title="{l_delete_image}" style="display: none;"></span>
+        <div class="loader" style="display: none;">
+            <img width="16" height="16" alt="" src="{url_tmpl_main}images/svg/loading-spokes-black.svg">
+        </div>
+        <div class="preloader_css" style="display:none;">
+            <div class="blockG" id="rotateG_01"></div>
+            <div class="blockG" id="rotateG_02"></div>
+            <div class="blockG" id="rotateG_03"></div>
+            <div class="blockG" id="rotateG_04"></div>
+            <div class="blockG" id="rotateG_05"></div>
+            <div class="blockG" id="rotateG_06"></div>
+            <div class="blockG" id="rotateG_07"></div>
+            <div class="blockG" id="rotateG_08"></div>
+        </div>
+    </div>
+    <!-- end_wall_add_comment_image -->
+</div>
+
+<!-- end_wall_add_comment -->
+<script>
+// language items to class via constructor
+wallLangParts = {
+	'share' : "{l_share_this_on_your_wall}",
+	'shared' : "{l_the_post_successfully_shared_on_your_wall}",
+    'file_exceeds_the_allowable_size' : "{l_file_exceeds_the_allowable_size}",
+    'error_loading_file' : '{l_error_loading_file}',
+    'are_you_sure' : '{l_really_delete_this_image}'
+};
+
+var Wall = new CWall('{wall_user_id}', '{wall_last_post_id}', 500, {wall_comments_preload_count}, wallLangParts);
+Wall.OnlySeeFriends = '{only_see}';
+Wall.loadMoreComments = '{l_load_more_comments}';
+Wall.loadMoreCommentOne = '{l_load_more_comment_one}';
+<!-- begin_wall_updater -->
+Wall.updaterInit();
+<!-- end_wall_updater -->
+Wall.maxFileSizeImageUpload = {max_filesize};
+Wall.isImageUpload = true;
+</script>
+<!-- begin_only_friends_posts_two -->
+							<table id="wall_items_table">
+								<!--thead><tr><th></th><td></td></tr></thead-->
+								<tbody>
+
+								{wall_items}
+
+								</tbody>
+							</table>
+
+<!-- begin_wall_load_old_items -->
+<script>
+Wall.oldItemsExists = true;
+</script>
+							<div class="wall_load_old_items">
+								<img src="{url_tmpl_main}images/load_animation_wall.gif" id="load_animation">
+							</div>
+<!-- end_wall_load_old_items -->
+
+							<div class="feed_empty"></div>
+						</div>
+					</td>
+				</tr>
+			</table>
+<!-- end_only_friends_posts_two -->
+			<div class="feed_foot">
+
+				<table width="100%">
+					<tr>
+						<td class="td_l">&nbsp;</td>
+						<td class="td_c">
+						</td>
+						<td class="td_r">&nbsp;</td>
+					</tr>
+				</table>
+
+			</div>
+
+		</div>
+<!-- begin_wall_history -->
+<script>
+Wall.itemsHistoryLoader();
+</script>
+<!-- end_wall_history -->
+{footer}

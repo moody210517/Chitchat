@@ -1,0 +1,136 @@
+<div class="sidepanel">
+    <div class="search">
+        <label for="pp_messages_search"><i class="fa fa-search" aria-hidden="true"></i></label>
+        <input id="pp_messages_search" class="placeholder" type="text" placeholder="{a_message_search_user}" disabled/>
+    </div>
+    <div id="pp_messages_contacts_bl" class="contacts">
+        <ul id="pp_messages_contacts">
+            {user_list}
+        </ul>
+    </div>
+    <div class="hidden-xs bottom-bar">
+        <button onclick="clMessages.showOnlyOnline(false);" id="pp_messages_show_all" class="active">
+            <span class="glyphicon glyphicon-user"></span>
+            <span>{l_message_all}</span>
+        </button>
+        <button onclick="clMessages.showOnlyOnline(true);" id="pp_messages_show_online">
+            <span class="glyphicon glyphicon-globe"></span>
+            <span>{l_message_on_line}</span>
+        </button>
+    </div>
+</div>
+
+<div class="content">
+    <div id="pp_messages_user_content" class="user_content">
+        <div id="pp_message_chat_info" class="contact-profile">
+            <div id="pp_message_user_title_info">
+                {message_list_title}
+            </div>
+            <div id="pp_messages_user_menu" class="choose-chat">
+                <ul class="list_icons">
+                    <!-- begin_user_invite_streetchat -->
+                    <li class="icon">
+                        <a href="#" data-cl-loader="im_menu_loader" onclick="clMessages.inviteStreetChat($(this)); return false;">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <!-- end_user_invite_streetchat -->
+                    <!-- begin_user_invite_audiochat -->
+                    <li class="icon">
+                        <a href="#" data-cl-loader="im_menu_loader" onclick="clMessages.inviteAudioChat($(this)); return false;">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <!-- end_user_invite_audiochat -->
+                    <!-- begin_user_invite_videochat -->
+                    <li class="icon">
+                        <a href="#" data-cl-loader="im_menu_loader" onclick="clMessages.inviteVideoChat($(this)); return false;">
+                            <i class="fa fa-video-camera" aria-hidden="true"></i>
+                        </a>
+                    </li>					
+                    <!-- end_user_invite_videochat -->
+                    <li id="pp_user_more_menu_li" class="more">
+                        <span id="pp_user_more_menu" class="dots" role="button" aria-haspopup="true">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                        <ul id="pp_user_more_menu_bl" class="more_menu_collapse collapse">
+                            <li id="pp_user_more_menu_close_chat">
+                                <a href="#" onclick="clMessages.confirmCloseChat(); return false;">
+                                    <i class="fa fa-times" aria-hidden="true"></i> {l_message_action_close}
+                                </a>
+                            </li>
+                            <li id="pp_user_more_menu_clear_chat">
+                                <a href="#" onclick="clMessages.confirmClearChat(); return false;">
+                                    <i class="fa fa-trash" aria-hidden="true"></i> {l_message_action_clear}
+                                </a>
+                            </li>
+                            <!-- begin_user_blocking -->
+                            <li>
+                                <a href="#" onclick="clMessages.confirmBlockUser(); return false;">
+                                    <i class="fa fa-ban" aria-hidden="true"></i> {l_message_action_block}
+                                </a>
+                            </li>
+                            <!-- end_user_blocking -->
+                        </ul>
+                    </li>
+					<li class="icon">
+                        <a href="general_chat.php" data-cl-loader="im_menu_loader">
+                            <!--<i class="fa fa-comment" aria-hidden="true"></i>-->
+							Chat Rooms
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="pp_message_list_message" class="messages">
+            {message_list}
+        </div>
+    </div>
+    <div class="social-media">
+        <i onclick="clMessages.closePopup();" class="fa fa-times-circle" aria-hidden="true"></i>
+    </div>
+    <div class="message-input">
+        <div class="wrap">
+            <textarea id="pp_messages_msg" placeholder="{a_write_your_message}" class="placeholder" disabled></textarea>
+            <button id="pp_messages_send" class="submit messages_send" disabled><!--i class="fa fa-paper-plane" aria-hidden="true"></i--></button>
+        </div>
+    </div>
+    <div id="pp_messages_splash_no_chats" class="pp_messages_splash_no_chats">
+        <i class="fa fa-weixin" aria-hidden="true">
+            <span>{l_you_have_no_messages_yet}</span>
+        </i>
+    </div>
+    <script>
+        last_id={last_id};
+        clMessages.setData({
+            isInitLoad:false,
+            isShowOnlyOnline:false,
+            valSearch:false,
+            userTo:{current_user_to_id},
+            $ppSearch:$('#pp_messages_search'),
+            $ppShowAll:$('#pp_messages_show_all'),
+            $ppShowOnline:$('#pp_messages_show_online'),
+            $ppListContactBl:$('#pp_messages_contacts_bl'),
+            $ppListContact:$('#pp_messages_contacts'),
+            $ppUserChatContent:$('#pp_messages_content'),
+            $ppUserChatInfo:$('#pp_message_chat_info'),
+            $ppMsg:$('#pp_messages_msg'),
+            $ppSend:$('#pp_messages_send'),
+            $ppContentUser:$('#pp_messages_user_content'),
+            $ppUserTitleInfo:$('#pp_message_user_title_info'),
+            $ppListMsg:$('#pp_message_list_message'),
+            $ppUserMenu:$('#pp_messages_user_menu'),
+            $ppSplashNoChats:$('#pp_messages_splash_no_chats'),
+            $ppUserMoreMenu:$('#pp_user_more_menu'),
+            $ppUserMoreMenuBl:$('#pp_user_more_menu_bl'),
+            $ppUserMoreMenuOneLink:$('li','#pp_user_more_menu_bl')[1],
+            $ppUserMoreMenuLi:$('#pp_user_more_menu_li'),
+            $ppBtnOnline:$('#pp_messages_show_all, #pp_messages_show_online'),
+            $ppLinkClearChat:$('#pp_user_more_menu_clear_chat')
+        })
+        clMessages.initLoad();
+    </script>
+</div>

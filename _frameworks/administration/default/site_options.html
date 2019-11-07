@@ -1,0 +1,28 @@
+{header}
+<div class="block_narrow">
+{menu_page}
+</div>
+<div class="block_main">
+
+    {l_changes_save}
+
+    <div class="bl_form">
+        <form action="{url_page}" enctype="multipart/form-data" method="POST">
+        <input type="hidden" name="cmd" value="update">
+
+		{config_fields}
+
+        <div class="btn fl_right"><a href="#" class="submit">{l_save}</a>
+					<input type="submit" style="visibility:hidden;position:absolute;">
+		</div>
+        </form>
+    </div>
+
+    <div class="empty"></div>
+</div>
+<!-- begin_upload_error -->
+<script language="javascript" type="text/javascript">
+    alert('{error}');
+</script>
+<!-- end_upload_error -->
+{footer}

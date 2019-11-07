@@ -1,0 +1,30 @@
+{header}
+{gallery_menu}
+	<h1 class="header_big">{l_edit_comment}</h1>
+	
+
+	<form action="gallery_admin_editcomment.php?action=savecomment" method="post" style="margin-bottom:30px;">
+        <input type="hidden" name="id" value="{comment_id}" />
+        <table width="100%">  
+			<tr>
+				<th valign="top" align=left>{l_comment}:</th>
+			</tr>
+			<tr>
+				<td><textarea style="width:100%;" rows=8 name="comment" />{comment_text}</textarea></td>
+			</tr>
+			<tr>			
+				<td align="left" style="padding-top:5px;">
+				<input type="submit" value="{l_save}" class="button" style="width:60px;" /> 
+				<input type="button" class="button" value="{l_cancel}" onclick="window.location = 'gallery_admin_comments.php';" style="width:60px;"/>
+				  <!--<input type="button" value="{l_back}" class="button" onclick="location='javascript:history.back()';" title="{l_back}">-->
+				</td>
+			</tr>
+        </table>
+    </form>
+
+	</div>
+	<div class="userinfo-links-wide"></div>
+</div>
+</div>
+
+{footer}

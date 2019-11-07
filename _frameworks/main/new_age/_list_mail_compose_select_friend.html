@@ -1,0 +1,48 @@
+<div>
+<div style="font-size:12px; font-weight:bold; padding:10px 0px 4px 0px;">{l_mail_select_title}</div>
+    <table cellspacing="0" cellpadding="0" style="width: 100%;">
+        <tr>
+            <!-- begin_users_list_item -->
+            <td style="padding: 5px 0px;"><a href="{url_main}mail_compose.php?name={name}">{name}</a> <small>{last_visit}</small></td>
+            {row_break_}
+            <!-- end_users_list_item -->
+        </tr>
+	</table>
+</div>
+<!-- begin_users_list_pages -->
+<div style="text-align: center; padding: 10px 0px;">
+				<!-- begin_users_list_prev_page -->
+				<span style="background:#4b7688; color:#d9f4fc; padding:1px 3px 3px;"><img src="{url_tmpl_main}images/arrow_list.gif" style="position:relative; top:-1px;" /> <a href="./{url_page}?offset={offset}{params}">{l_prev}</a></span>&nbsp; | &nbsp;
+				<!-- end_users_list_prev_page -->
+				<!-- begin_users_list_prev_page_off -->
+				<b style="background:#4b7688; color:#d9f4fc; padding:1px 3px 3px; font-weight:normal;"><img src="{url_tmpl_main}images/arrow_list.gif" style="position:relative; top:-1px;" /> {l_prev}</b>&nbsp; | &nbsp;
+				<!-- end_users_list_prev_page_off -->
+				<!-- begin_users_list_first_page -->
+				<a href="./{url_page}?offset={offset}{params}">{l_page_1}</a>&nbsp;
+				<!-- end_users_list_first_page -->
+				<!-- begin_users_list_prev_pages -->
+				<a href="./{url_page}?offset={offset}{params}">&lt;&lt;</a>&nbsp;
+				<!-- end_users_list_prev_pages -->
+    			<!-- begin_users_list_page -->
+				<!-- begin_users_list_link_page -->
+				<a href="./{url_page}?offset={offset}{params}">{page}</a>&nbsp;
+				<!-- end_users_list_link_page -->
+				<!-- begin_users_list_this_page -->
+				<b style="background:#daa3ae; color:#386273; padding:0 3px 2px;">{page}</b>
+				<!-- end_users_list_this_page -->
+				<!-- end_users_list_page -->
+				<!-- begin_users_list_next_pages -->
+				<a href="./{url_page}?offset={offset}{params}">&gt;&gt;</a>&nbsp;
+				<!-- end_users_list_next_pages -->
+				<!-- begin_users_list_last_page -->
+				<b>{l_of}</b> <a href="./{url_page}?offset={offset}{params}">{num_pages}</a>&nbsp;
+				<!-- end_users_list_last_page -->
+				<!-- begin_users_list_next_page -->
+				&nbsp; | &nbsp;<span style="background:#4b7688; color:#d9f4fc; padding:1px 3px 3px; text-decoration:none;"><a href="./{url_page}?offset={offset}{params}">{l_next}</a> <img src="{url_tmpl_main}images/arrow_lis.gif" style="position:relative; top:-1px;" /></span>
+				<!-- end_users_list_next_page -->
+				<!-- begin_users_list_next_page_off -->
+				&nbsp; | &nbsp;<b style="background:#4b7688; color:#d9f4fc; padding:1px 3px 3px; font-weight:normal;">{l_next} <img src="{url_tmpl_main}images/arrow_lis.gif" style="position:relative; top:-1px;" /></b>
+				<!-- end_users_list_next_page_off -->
+                </div>
+                <!-- end_users_list_pages -->
+

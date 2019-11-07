@@ -1,0 +1,71 @@
+<div>
+    <div class="bl_one_photo">
+        <div id="photo_gallery_img_box" class="bl bl_img bl_img_one"></div>
+        <a id="photo_gallery_back" onclick="clPhoto.galleryBack(); return false;" href="#albums" class="arrow-back photo_gallery_photo_info"><span></span><!-- <i class="fa fa-arrow-left" aria-hidden="true"></i> --></a>
+
+        <!-- begin_set_profile_photo_report -->
+        <div id="photo_gallery_report" onclick="clPhoto.openMoreMenuGallery(event);" class="icon_report photo_gallery_photo_info">
+            <!-- <i class="fa fa-ellipsis-h" aria-hidden="true"></i> -->
+            <span class="dots">
+                <span></span><span></span><span></span>
+            </span>
+            <!--  -->
+            <div class="bl_options">
+                <span class="pp_info_bl">
+                    <span id="photo_gallery_more_menu_popup" class="pp_info to_hide">
+                        <ul onclick="clPhoto.openReport(true)" class="list">
+                            <li>
+                                <span><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>{l_tip_report_photo}</span>
+                            </li>
+                        </ul>
+                    </span>
+                </span>
+            </div>
+            <!-- / -->
+        </div>
+        <!-- end_set_profile_photo_report -->
+        <!-- begin_set_profile_photo_default -->
+        <div id="photo_gallery_set_default" data-type-loader="fade_btn" data-cl-loader="loader_set_photo_default" onclick="clPhoto.setPhotoDefault($(this))" class="icon_profile photo_gallery_photo_info no_color_t">
+            <div class="bl_icon"></div>
+        </div>
+        <!-- end_set_profile_photo_default -->
+        <div id="photo_gallery_description" class="signature photo_gallery_photo_info"></div>
+        <div id="photo_gallery_private_box" class="bl_private_photo hidden">
+            <div class="count"></div>
+            <i class="fa fa-lock icon_status" aria-hidden="true"></i>
+            <div id="access_requested" class="txt <!-- begin_no_request_friends_hide -->hide<!-- end_no_request_friends_hide -->">{l_access_requested}</div>
+
+            <div id="request_access" class="txt <!-- begin_is_request_friends_hide -->hide<!-- end_is_request_friends_hide -->">
+                <button id="request_access_btn" onclick="clPhoto.sendRequestPrivateAccess(); return false;" class="btn small pink">{l_request_access}</button>
+            </div>
+        <div class="cl"></div>
+        </div>
+    </div>
+    <div id="photo_gallery_comments_bl" class="bl_one_photo_cmt accel <!-- begin_frm_comments_hide -->private<!-- end_frm_comments_hide -->">
+        <div id="photo_gallery_frm_post_comment" class="message_field_chat">
+            <textarea id="photo_gallery_frm_post_comment_text" class="placeholder" placeholder="{l_write_your_comment}"></textarea>
+            <button data-cl-loader="loader_post_comment_photo" id="photo_gallery_frm_post_comment_send" onclick="clPhoto.postComment();" class="btn large pink" disabled>
+                <!-- <span class="icon"></span> -->
+            </button>
+        </div>
+        <div id="photo_gallery_comments" class="message_cont accel">
+            {comments}
+        </div>
+        <div id="photo_gallery_comments_hidden" class="comments_hidden">
+            <div class="comments_hidden_txt">
+                <i class="fa fa-eye-slash" aria-hidden="true"></i>
+                {l_comments_hidden}
+            </div>
+        </div>
+    </div>
+    <script>
+        clPhoto.setData({
+            display:'profile',
+            actualPhotosData:{photos_info},
+            photosNumber:'{photo_number}'*1,
+            photosNumberPrivate:'{photo_number_private}'*1,
+            curPid:'{photo_cur_id}'*1
+        });
+        clPhoto.prepareGallery();
+    </script>
+</div>

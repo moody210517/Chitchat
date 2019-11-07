@@ -1,0 +1,29 @@
+{header}
+{ims}
+<script type="text/javascript">
+function equalHeight(group) {
+    tallest = 0;
+    group.each(function() {
+        thisHeight = $(this).height();
+        if(thisHeight > tallest) {
+        tallest = thisHeight;
+        }
+    });
+    group.height(tallest);
+}
+$(document).ready(function() {
+    equalHeight($(".in,.userinfo-c"));
+});
+</script>
+{search}
+<div class="wrapper">
+	<div class="userinfo-c">
+	<div class="userinfo smallphoto clearfix">						
+		{users_list_header_buttons}
+		
+		{users_list}
+	</div>						
+	
+</div>
+</div>
+{footer}

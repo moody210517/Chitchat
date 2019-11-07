@@ -1,0 +1,63 @@
+{header}
+
+<table class="cnt newmessage" cellspacing="0" cellpadding="0"><tr><td>
+
+<table cellspacing="0" cellpadding="0" class="tab">
+<thead>
+	<tr>
+		<td class="mailicon">{l_write_email_to}<a href="{url_main}profile_view.php?user_id={recipient_id}">{name}</a></td>
+	</tr>
+</thead>
+
+<tbody>
+	<tr>
+		<td class="content">
+			<table cellspacing="0" cellpadding="0" class="list">
+			<tr class="smallnav">
+				<th colspan="2">
+					<table cellpadding="0" cellspacing="0" class="smenu">
+						{profile_view_menu}
+					</table>
+				</th>
+			</tr>
+			<tr>
+				<td class="alertspace">
+					<table class="alert"><tr><td class="alertbg">
+						<table cellspacing="0" cellpadding="0">
+						<tr>
+							<td>
+								<h2>{l_message_sent}</h2>
+								<p>{l_your_message_has_been_sent_successfully}</p>
+							</td>
+						</tr>
+						<tr>
+							<td align="center">
+                                <!--<form action="{url_main}<!--begin_back_profile--><!--profile_view.php?user_id={recipient_id}<!--end_back_profile--><!--begin_back_inbox--><!--mail.php<!--end_back_inbox--><!--" method="post">
+									<p><input style="width:120px;" type="submit" class="btn orange_btn" value="<!--begin_profile--><!--{l_back_to_profile}<!--end_profile--><!--begin_inbox--><!--{l_back_to_inbox}<!--end_inbox--><!--"/></p>
+								<!--</form>-->
+                                <a class="orange_btn btn" style="padding: 2px 4px 4px;" href="{url_main}<!--begin_back_profile-->profile_view.php?user_id={recipient_id}<!--end_back_profile--><!--begin_back_inbox-->mail.php<!--end_back_inbox-->">
+                                    <!--begin_profile-->{l_back_to_profile}<!--end_profile--><!--begin_inbox-->{l_back_to_inbox}<!--end_inbox-->
+                                </a>
+							</td>
+						</tr>
+						</table>
+					</td></tr></table>
+				</td>
+			</tr>
+			</table>
+		</td>
+	</tr>
+</tbody>
+</table>
+
+</td></tr></table>
+
+{user_menu}
+
+<!-- begin_error -->
+<script type="text/javascript"><!--
+alert('{error_message}');
+//--></script>
+<!-- end_error -->
+
+{footer}

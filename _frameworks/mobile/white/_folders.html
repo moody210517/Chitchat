@@ -1,0 +1,79 @@
+<script type="text/javascript">
+function emptyTrash()
+{
+	if (confirm("{l_to_trash}")) {
+		document.location = "{url_main}mail.php?cmd=empty_trash";
+	}
+	
+}
+</script>
+
+				<div id="complite" class="box">
+					<div class="bbt">
+						<div class="bbb">
+							<div class="bbl">
+								<div class="bbr">
+									<div class="bbtl">
+										<div class="bbtr">
+											<div class="bbbl">
+												<div class="bbbr">
+													<div class="in">
+													
+		<fieldset>
+		<h2>{l_message_folders}</h2>
+
+			<div  style="padding:10px;">
+			<p class="bold">{l_folders}</p>
+			<img src="{url_tmpl_mobile}img/ark2.png" class="png_behavior" border="0">
+			&nbsp;<a href="{url_main}mail.php" class="mail">{l_inbox}</a><br>
+			<img src="{url_tmpl_mobile}img/ark.png" class="png_behavior" border="0">
+			&nbsp;<a href="{url_main}mail.php?folder=2" class="mail">{l_trash}</a> [<a href="#" onclick="emptyTrash(); return false;" class="sec_little">{l_empty}</a>]<br>
+			<img src="{url_tmpl_mobile}img/xfmail.png" class="png_behavior" border="0">
+			&nbsp;<a href="{url_main}mail.php?folder=3" class="mail">{l_sent_mail}</a><br>
+			</div>
+
+			<div  style="padding:10px;">
+			<p class="bold">{l_my_folders}</p>
+
+				<ul id="bullet">
+					<!-- begin_myfolder -->
+					<li><a href="{url_main}mail.php?folder={id}" class="mail">{name}</a></li>
+					<!-- end_myfolder -->
+					<!-- begin_addfolder -->
+					<li><a href="{url_main}mail_folder_add.php" class="mail">{l_add_folder}</a></li>
+					<!-- end_addfolder -->
+				</ul>
+
+			</div>
+
+
+			<div class="profile-right">
+				<div><b>{l_your_mailbox_is} {mc}% {l_full}:</b></div>
+				<ul>
+					<li class="gr">
+						<div>
+							<table>
+								<tr>
+									<td width="{mc}%">&nbsp;<!--  --></td>
+									<td width="{me}%" class="graph">&nbsp;<!--  --></td>
+								</tr>
+							</table>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<br><br>
+<div  style="padding:10px;"><a href="{url_main}mail_folder.php" class="pri_little">{l_edit_folders}</a> &nbsp;<b>&middot;</b>&nbsp; <a href="{url_main}profile_settings.php" class="pri_little">{l_mail_settings}</a></div>
+
+
+		</fieldset>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>

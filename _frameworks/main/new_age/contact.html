@@ -1,0 +1,166 @@
+{header}
+<div class="wrapper-wide">
+<div class="userinfo-c-wide">
+	<div class="userinfo smallphoto clearfix">
+{menu_help}
+<script Language="JavaScript" type="text/javascript">
+    var captcha = '';
+    <!-- begin_re_captcha_js -->
+    var verifyCallback = function(response) {
+        captcha = grecaptcha.getResponse(recaptchaWd);
+    };
+    var onloadCallback = function() {
+        recaptchaWd = grecaptcha.render('recaptcha', {
+            'sitekey' : '{re_captcha_sitekey}',
+            'callback' : verifyCallback,
+            'theme' : '{re_captcha_theme}'
+        });
+    };
+    <!-- end_re_captcha_js -->  
+    
+    function onValidateNMContactUsForm() {
+        if (onValidateNMContactUsFormField()) {
+            <!-- begin_default_captcha_js -->
+            var form = document.forms['NMContactUsForm'];
+            captcha = form['captcha'].value;
+            <!-- end_default_captcha_js -->
+            if ($.trim(captcha)=='') {
+                alert('{l_incorrect_captcha}');
+                $('#captcha_input').focus();
+                return false;
+            }
+            xajax_check_captcha_mod(captcha,'{l_incorrect_captcha}',0,1,'NMContactUsForm');            
+        }
+        return false;
+    }
+    
+    
+    function onValidateNMContactUsFormField() {
+    var form = document.forms['NMContactUsForm'];    
+    
+    // "contact_name" field validation.
+    // "email" field validation.
+    if (!validateRequiredField(form['email'], 'Email Address')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "email" field validation.
+    if (!validateMaxLength(form['email'], 'Email Address','100')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "email" field validation.
+    if (!validateEmailField(form['email'], 'Email Address')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "email" field validation.
+    if (!validateRequiredField(form['email'], 'Email Address')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "comments" field validation.
+    if (!validateRequiredField(form['comment'], 'Comments')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    return true;
+  }
+
+  function validateNMContactUsForm() {
+    blockSubmission = true;
+     if (typeof beforeNMContactUsFormValidation != 'undefined') {
+      beforeNMContactUsFormValidation();
+    }
+    var validated = onValidateNMContactUsForm();
+    if (validated && (typeof uponSuccessfulNMContactUsFormValidation != 'undefined')) {
+      validated = uponSuccessfulNMContactUsFormValidation();
+    }
+    else if (!validated && (typeof uponUnsuccessfulNMContactUsFormValidation != 'undefined')) {
+      uponUnsuccessfulNMContactUsFormValidation();
+    }
+    if (!validated) {
+      removeSubmissionBlock();
+    }
+    return validated;
+  }
+
+  function submitNMContactUsForm() {
+      validateNMContactUsForm();
+      //if (validateNMContactUsForm()) document.NMContactUsForm.submit();
+  }
+</script>
+<form  name="NMContactUsForm" method="POST" action="{url_main}contact.php" onSubmit="return validateNMContactUsForm();" style="padding: 0px; margin: 0px;">
+<input type="hidden" name="cmd" value="send">
+
+  <div class="header_big" style="margin-top:10px; margin-bottom:20px;">{l_contact_us}</div>
+  <div style="height: 10px; padding-bottom: 15px;"><span><strong>{contact_message}</strong></span></div>
+  <div>{l_enter_inform}</div>
+  <div style="margin: 0 0 20px;">{l_fields} ( <span class="red">*</span> ) {l_are_required}</div>
+
+  <div>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" align="center">
+      <td align="right"  valign="middle" width="140" style="padding-right:5px;">{l_email}<span style="color: red;">*</span>:</td>
+      <td align="left" valign="middle" width="410"><input type="text" name="email" style="width:390px;" tabindex="9"></td><td align="left"></td>
+    </tr><tr class="advsview2" style="height:30px;">
+      <td align="right" valign="middle" width="140" style="padding-right:5px;">{l_username}:</td>
+      <td align="left" valign="middle" width="410"><input type="text" name="username" value="{username}" style="width:390px;" tabindex="10"></td><td></td>
+    </tr>
+    <tr class="advsview1" style="height: 100px;">
+      <td align="right" valign="top" width="140" style="padding-right:5px;">{l_comments}<span style="color: red;">*</span>:</td>
+      <td align="left" valign="top" width="410">
+	  <div style="width:404px;">
+        <textarea  name="comment"  style="width:400px; height: 100px; vertical-align: top;" tabindex="11" rows="5"></textarea></td><td align="left">
+	  </div>
+      </td>
+    </tr>
+    <tr>
+        <!-- begin_default_captcha -->
+        <td align="right" valign="top" width="140" style="padding-right:5px; padding-top: 5px;">{l_captcha}<span style="color: red;">*</span>:</td>
+        <td style="padding-top: 7px;">
+            <table>
+                <tr>
+                    <td style="padding-right:10px;">
+                        <img id="captcha" src="_server/securimage/securimage_show_custom.php?sid={sid}" />
+                    </td>
+                    <td>
+                        {l_please_enter_the_text}<br /><br />
+                        <input id="captcha_input" type="text" name="captcha" style="width:100px;" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <a id="captcha_reload" href="#" onclick="document.getElementById('captcha').src = '_server/securimage/securimage_show_custom.php?sid=' + Math.random(); return false">{l_reload}</a>
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <td class="left"></td>
+        <!-- end_default_captcha -->
+        <!-- begin_re_captcha -->
+        <td align="right" valign="top" width="140" style="padding-right:5px; padding-top: 5px;">{l_captcha}<span style="color: red;">*</span>:</td>
+        <td>
+            <div id="recaptcha" style="height: 65px;margin-left: -20px; margin-top: 3px; transform:scale(.9);"></div>
+        </td>
+        <td class="left"></td>
+        <!-- end_re_captcha -->
+    </tr>
+    <tr>
+		<td></td>
+    	<td>
+            <br/><input type="button" value="{l_submit}" onClick="submitNMContactUsForm();" class="button" style=" padding-left: 5px; padding-right: 5px;cursor: pointer; cursor: hand;" tabindex="13" title="{l_submit}" onMouseOver="window.status='{l_submit}'; return true;" onMouseOut="window.status=''; return true;">
+		</td>
+	</tr>
+    </table>
+  </div>
+
+</form>
+
+</div>
+<div class="userinfo-links-wide"></div>
+</div>
+</div>
+<!-- begin_re_captcha_script -->
+<script src="//www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit&hl={re_captcha_lang}" async defer></script>
+<!-- end_re_captcha_script -->
+{footer}

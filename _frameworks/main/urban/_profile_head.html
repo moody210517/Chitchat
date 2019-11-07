@@ -1,0 +1,133 @@
+<div class="decor">
+    <!-- begin_profile_edit_main -->
+    <div class="title_edit">
+        <h1 id="profile_edit_main_title"><a class="edit_main_title" id="name_profile" href="{url_main}{url_page_profile_view}">{name}</a>, <span id = "age_profile">{age}</span></h1>
+        <a id="profile_edit_main" class="icon_edit" href="#"></a>
+        <div class="cl"></div>
+    </div>
+    <!-- end_profile_edit_main -->
+
+    <!-- begin_profile_visitor_title -->
+    <!-- begin_profile_visitor_title_back -->
+    <a class="icon_circle_arrow_back" title="{l_go_back}" onclick="goLink('{url_main}{url_back}','{url_back_params}'); return false;" href="{url_main}{url_back}"></a>
+    <!-- end_profile_visitor_title_back -->
+    <h1><a class="edit_main_title" href="{url_main}{profile_visitor_link}">{name}</a>, {age}</h1>
+    <div class="status <!-- begin_status_online -->online<!-- end_status_online --> <!-- begin_status_offline -->offline<!-- end_status_offline -->">{last_visit_urban}</div>
+    <div class="cl"></div>
+    <!-- begin_profile_visitor_title_menu -->
+        <!-- begin_visitor_menu_container -->
+        <div class="bl_visitors">
+            <ul class="visitors">
+                <!-- begin_visitor_menu -->
+
+
+                <!-- end_visitor_menu -->
+
+                    <!-- begin_visitor_menu_more_container -->
+                    <li id="profile_visitor_menu_{user_id}" class="visitor_title_menu_or" <!-- begin_menu_additional_hide -->style="width:0px; display:none;"<!-- end_menu_additional_hide -->>
+                        <a class="or" href="#">{l_or}<img src="{url_tmpl_main}images/icon_or_marker.png" width="14" height="14" alt="" /></a>
+                        <div class="visitors_or_item">
+                            <ul class="pp_small_decor_tl profile_head">
+                                <!-- begin_visitor_menu_more -->
+
+                                <!-- end_visitor_menu_more -->
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- end_visitor_menu_more_container -->
+
+
+            </ul>
+        </div>
+        <!-- end_visitor_menu_container -->
+
+
+            <!-- begin_visitor_menu_chat_nowe_item -->
+                <li><a data-user-id="{user_id}" class="chat show_messages" href="#" >{l_chat_nowe}</a></li>
+            <!-- end_visitor_menu_chat_nowe_item -->
+
+            <!-- begin_visitor_menu_meet_her_f_item -->
+                <!-- begin_profile_visitor_title_menu_meet -->
+                <li><a class="meet" href="search_results.php?display=encounters&uid={user_id}">{meet_her}</a></li>
+                <!-- end_profile_visitor_title_menu_meet -->
+            <!-- end_visitor_menu_meet_her_f_item -->
+
+            <!-- begin_visitor_menu_profile_menu_video_chat_item -->
+                <!-- begin_profile_visitor_title_menu_video_chat -->
+                <li><a onclick="videoChatInvite('{user_id}','{name}'); return false;" class="video_chat" href="#">{l_profile_menu_video_chat}</a></li>
+                <!-- end_profile_visitor_title_menu_video_chat -->
+            <!-- end_visitor_menu_profile_menu_video_chat_item -->
+
+            <!-- begin_visitor_menu_profile_menu_audio_chat_item -->
+                            <!-- begin_menu_additional_audio_chat -->
+                            <li <!-- begin_menu_additional_audio_chat_first -->class="first1"<!-- end_menu_additional_audio_chat_first --> ><a onclick="audioChatInvite('{user_id}', '{name}'); return false;" class="call" href="#">{l_profile_menu_audio_chat}</a></li>
+                            <!-- end_menu_additional_audio_chat -->
+            <!-- end_visitor_menu_profile_menu_audio_chat_item -->
+
+
+
+
+
+            <!-- begin_visitor_menu_profile_menu_street_chat_item -->
+                            <!-- begin_menu_additional_street_chat -->
+                            <li <!-- begin_menu_additional_street_chat_first -->class="first1"<!-- end_menu_additional_street_chat_first --> ><a onclick="cityStreetChat.invite('{user_id}'); return false;" class="street_chat" href="#">{l_profile_menu_street_chat}</a></li>
+                            <!-- end_menu_additional_street_chat -->
+            <!-- end_visitor_menu_profile_menu_street_chat_item -->
+
+
+
+
+
+            <!-- begin_visitor_menu_gift_item -->
+                            <!-- begin_menu_additional_gifts -->
+                            <li <!-- begin_menu_additional_gifts_first -->class="first1"<!-- end_menu_additional_gifts_first -->><a data-user-id="{user_id}" data-is-blocked-me="{var_is_blocked_me}" class="gift send_user_gift" href="#">{l_gift}</a></li>
+                            <!-- end_menu_additional_gifts -->
+            <!-- end_visitor_menu_gift_item -->
+
+            <!-- begin_visitor_menu_wink_item -->
+                            <!-- begin_menu_additional_wink -->
+                            <li <!-- begin_menu_additional_wink_first -->class="first1"<!-- end_menu_additional_wink_first -->><a onclick="sendWinkFromAdditionalMenu('{user_id}'); return false;" class="wink" href="#">{l_wink}</a></li>
+                            <!-- end_menu_additional_wink -->
+            <!-- end_visitor_menu_wink_item -->
+
+            <!-- begin_visitor_menu_friends_item -->
+                            <li id="li_friend_add_{user_id}" class="<!-- begin_menu_additional_friend_first -->first1<!-- end_menu_additional_friend_first --> middle1 approve_friend <!-- begin_menu_additional_no_friend_add -->not_visible<!-- end_menu_additional_no_friend_add -->"><a data-action="{friend_action}" onclick="Profile.addFriend('{user_id}',$(this)); return false;" class="{friend_action_class}" href="#">{friend_action_title}</a></li>
+            <!-- end_visitor_menu_friends_item -->
+
+            <!-- begin_visitor_menu_block_item -->
+                            <!-- begin_menu_additional_contact_blocking -->
+                            <li <!-- begin_menu_additional_contact_first -->class="first1"<!-- end_menu_additional_contact_first -->><a class="block" onclick="confirmBlockUserForVisitors('{user_id}','block_user','1');return false;" href="#">{l_block}</a></li>
+                            <!-- end_menu_additional_contact_blocking -->
+            <!-- end_visitor_menu_block_item -->
+
+            <!-- begin_visitor_menu_profile_menu_report_item -->
+                            <!-- begin_menu_additional_report -->
+                            <li id="menu_additional_report_{user_id}" <!-- begin_menu_additional_report_first -->class="first1"<!-- end_menu_additional_report_first -->><a onclick="Profile.openReport('{user_id}'); return false;" class="report" href="#">{l_profile_menu_report}</a></li>
+                            <!-- end_menu_additional_report -->
+            <!-- end_visitor_menu_profile_menu_report_item -->
+
+
+
+        <!-- end_profile_visitor_title_menu -->
+        <!-- begin_profile_visitor_title_funk -->
+        <div class="list_icons">
+            <ul>
+                <!-- begin_profile_visitor_title_funk_sp_not_active -->
+                <li title="{l_super_powers}" class="item1"><a href="{url_main}upgrade.php"><img src="{url_tmpl_main}images/icon_list_star.png" alt="" /></a></li>
+                <!-- end_profile_visitor_title_funk_sp_not_active -->
+                <!-- begin_profile_visitor_title_funk_sp_active -->
+                <li title="{l_super_powers}" class="item1"><span><img src="{url_tmpl_main}images/icon_list_star.png" alt="" /></span></li>
+                <!-- end_profile_visitor_title_funk_sp_active -->
+                <!-- begin_profile_visitor_title_funk_raised_search -->
+                <li title="{raised_time_ago}" class="item2"><a href="{url_main}{url_page_increase_popularity}"><img src="{url_tmpl_main}images/icon_list_download.png" alt="" /></a></li>
+                <!-- end_profile_visitor_title_funk_raised_search -->
+                <!-- begin_profile_visitor_title_funk_popular -->
+                <li title="{l_the_user_is_extremely_popular_today}" class="item3"><a id="visitors_funk" href="{url_main}{url_page_increase_popularity}"><img src="{url_tmpl_main}images/icon_list_fire.png" alt="" /></a></li>
+                <!-- end_profile_visitor_title_funk_popular -->
+            </ul>
+        </div>
+        <!-- end_profile_visitor_title_funk -->
+    <!-- end_profile_visitor_title -->
+    <div class="cl"></div>
+</div>
+<div class="cl"></div>

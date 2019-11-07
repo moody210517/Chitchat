@@ -1,0 +1,259 @@
+{header}
+{ims}
+
+<div id="profile" class="box"><div class="bbt"><div class="bbb"><div class="bbl"><div class="bbr"><div class="bbtl"><div class="bbtr"><div class="bbbl"><div class="bbbr">
+
+{mail_menu}
+
+<div style="height: 20px;"></div>
+
+<script Language="JavaScript" type="text/javascript">
+  var blockSubmission = false,
+      isPost = false;
+  function removeSubmissionBlock() {
+    blockSubmission = false;
+  }
+  function isSubmissionAllowed() {
+    if(blockSubmission){
+       return false;
+    }
+    return;
+   }
+  document.onclick = isSubmissionAllowed;
+  document.onkeydown = isSubmissionAllowed;
+
+  function onValidateAddContactForm() {
+    var form = document.forms['AddContactForm'];
+    // "otherhandle" field validation.
+    if (!(validateRequiredField(form['name'], '{l_username}'))) {
+      removeSubmissionBlock();
+      return false;
+    }
+    return true;
+  }
+  function validateAddContactForm() {
+    blockSubmission = true;
+     if (typeof beforeAddContactFormValidation != 'undefined') {
+       beforeAddContactFormValidation();
+    }
+    var validated = onValidateAddContactForm();
+    if (validated && (typeof uponSuccessfulAddContactFormValidation != 'undefined')) {
+      validated = uponSuccessfulAddContactFormValidation();
+    }
+    else if (!validated && (typeof uponUnsuccessfulAddContactFormValidation != 'undefined')) {
+      uponUnsuccessfulAddContactFormValidation();
+    }
+    if (!validated) {
+      removeSubmissionBlock();
+    }
+    return validated;
+  }
+  function submitAddContactForm() {
+   if (validateAddContactForm()) {
+       isPost = true;
+       document.AddContactForm.submit();
+   }
+  }
+
+function setname(name)
+{
+	document.AddContactForm.name.value = name;
+}
+
+function switchdiv(div1_id, div2_id, form)
+{
+	if (document.getElementById)	{
+	    if(!document.getElementById(div1_id)) return ;
+	    if(!(document.getElementById(div1_id).style)) return ;
+	    if(!(document.getElementById(div1_id).style.display)) return ;
+
+		var state1 = document.getElementById(div1_id).style.display;
+		if(state1=="none") {
+        		document.getElementById(div1_id).style.display="block";
+        		document.getElementById(div2_id).style.display="none";
+
+                if (form != null)
+                {
+                   form[div1_id].value='true';
+                   form[div2_id].value='false';
+                 }
+	     }
+	    if(state1=="block") {
+        		document.getElementById(div2_id).style.display="block";
+        		document.getElementById(div1_id).style.display="none";
+
+                if (form != null)
+                {
+                   form[div1_id].value='false';
+                   form[div2_id].value='true';
+                 }
+	     }
+	}
+	else if (document.all)	{
+	    if(!document.all[div1_id]) return ;
+	    if(!(document.all[div1_id].style)) return ;
+	    if(!(document.all[div1_id].style.display)) return ;
+
+		var state1 = document.all[div1_id].style.display;
+		if(state1=="none") {
+		        document.all[div1_id].style.display = "block";
+		        document.all[div2_id].style.display = "none";
+                if (form != null)
+                {
+                   form[div1_id].value='true';
+                   form[div2_id].value='false';
+                 }
+		}
+		if(state1=="block") {
+        		document.getElementById(div1_id).style.display="none";
+        		document.getElementById(div2_id).style.display="block";
+                if (form != null)
+                {
+                   form[div1_id].value='false';
+                   form[div2_id].value='true';
+                 }
+	     }
+    }
+}
+<!-- begin_reply_js -->
+$(function () {
+    reply_text = $.trim($('#text').val());
+})
+<!-- end_reply_js -->
+window.onbeforeunload = function (evt) {
+    var text = $.trim($('#text').val());
+    if (text != '' && isPost == false <!-- begin_reply_compare_js -->&& text != reply_text<!-- end_reply_compare_js -->) {
+        var message = '{l_leave_this_page}';
+        if (typeof evt == "undefined") {
+            evt = window.event;
+        }
+        if (evt) {
+            evt.returnValue = message;
+        }
+        return message;
+    }
+}
+</script>
+
+<form  name="AddContactForm" method="POST" action="{url_main}mail_compose.php?cmd=sent" onSubmit="return validateAddContactForm();" >
+<input type="hidden" name="page_from" value="{page_from}">
+
+                            <div id="favorite-off" style="display:block; height: 30px; width: 350px; margin: 0 0 0 120px; text-align: left;">
+                                <img src="{url_tmpl_main}img/icon_arrow_closed.gif" border=0>
+                                <span class="ter_text_bold">{l_friends_list}</span> -
+                                <a onclick="switchdiv('favorite-off','favorite-on'); return false;" href="" class="body_little">{l_show_friends}</a>
+                            </div>
+                            <div id="favorite-on" style="display:none; width: 350px; margin: 0 0 0 120px; text-align: left;">
+                                <img src="{url_tmpl_main}img/icon_arrow_open.gif" border=0>
+                                <span class="ter_text_bold">{l_friends_list}</span> -
+                                <a onclick="switchdiv('favorite-on','favorite-off'); return false;" href="" class="body_little">{l_hide_friends}</a>
+                                <br><br>
+
+
+
+
+
+                                <table style="width: 348px;">
+                                    <tr>
+                                        <td width="33%" align="left" valign="top">
+                                            <!-- begin_favorite -->
+                                            <a href="#" onClick="setname('{fname_set}'); return false;">{fname}</a>&nbsp;({count})<br>
+                                            <!-- begin_favorite_column -->
+                                        </td><td width="33%" align="left" valign="top">
+                                            <!-- end_favorite_column -->
+                                            <!-- end_favorite -->
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                <!-- frm_mail -->
+                <div class="frm_mail">
+                    <table>
+                    <col width="50px" />
+                    <col width="100%" />
+<!--                         <tr>
+                            <th>&nbsp;</th>
+                        </tr> -->
+                           <!-- begin_add_id -->
+
+                        <tr>
+                          <th>{l_username}:</th>
+                            <td>
+                                <input type="hidden" name="name" value="{name}">
+                                <div align="left" style="line-height: 20px;" >
+                                    &nbsp;&nbsp;{name}</div>
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                        <!-- end_add_id -->
+                        <!-- begin_add_name -->
+                        <tr>
+                        <td>
+
+                            <div align="left"><b>{message}</b></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>{l_username}:</th>
+                        <td><input type="text" class="inp" name="name" value="{name}" tabindex="1"></td>
+                    </tr>
+                    <!-- end_add_name -->
+                        <tr>
+                            <th>{l_subject}:</th>
+                            <td>
+                                <input type="text" class="inp" name="subject" value="{subject}" tabindex="2">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>{l_text_mail}:</th>
+                            <td>
+                                <textarea id="text" name="text">{text}</textarea>
+                            </td>
+                        </tr>
+<!--
+                        <tr>
+                            <th>{l_postcard_forward}</th>
+                            <td>
+                                <input type="hidden" name="text" value="{text}" />
+                                <input type="hidden" name="type" value="postcard" />
+                            </td>
+                        </tr>
+ -->
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>
+                                <input type="checkbox" name="save" class="ch" id="save" value="1" checked="checked">
+                                <label class="dash" for="save">{l_save_mail}</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>
+                                <input type="button" value="{l_sent_message}" onClick=" submitAddContactForm();" class="button" tabindex="3" title="{l_sent_message}" onMouseOver="window.status='{l_sent_message}'; return true;" onMouseOut="window.status=''; return true;">
+                            </td>
+                        </tr>
+
+                    </table>
+
+                </div>
+                <!-- /frm_mail -->
+
+
+                <script type="text/javascript">
+                    function TextFocus() {
+                    document.forms['AddContactForm']['text'].focus();
+                    }
+		    TextFocus();
+                </script>
+
+</form>
+
+
+</div></div></div></div></div></div></div></div></div>
+{folders}
+{footer}
+

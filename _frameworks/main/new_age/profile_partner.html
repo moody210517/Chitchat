@@ -1,0 +1,278 @@
+{header}
+{ims}
+<script type="text/javascript">
+function equalHeight(group) {
+    tallest = 0;
+    group.each(function() {
+        thisHeight = $(this).height();
+        if(thisHeight > tallest) {
+        tallest = thisHeight;
+        }
+    });
+    group.height(tallest);
+}
+$(document).ready(function() {
+    equalHeight($(".in,.userinfo-c"));
+});
+</script>
+{complite}
+<div class="wrapper">
+    <div class="userinfo-c">
+        <div class="userinfo smallphoto clearfix">
+{profile_menu}
+<div class="nav_title">
+
+        <a href="{url_main}profile.php"><b>{l_basic}</b></a>
+    <!-- begin_yes_personal -->
+        &nbsp;&nbsp;<a href="{url_main}profile_personal.php"><b>{l_personal}</b></a>
+    <!-- end_yes_personal -->
+        &nbsp;&nbsp;<b>{l_partner}</b>
+</div>
+
+<script Language="JavaScript" type="text/javascript">
+  var blockSubmission = false;
+  function removeSubmissionBlock() {
+    blockSubmission = false;
+  }
+  function isSubmissionAllowed() {
+    if(blockSubmission){
+       return false;
+    }
+    return;
+   }
+  document.onclick = isSubmissionAllowed;
+  document.onkeydown = isSubmissionAllowed;
+
+
+  function validateEditProfilePartnerForm() {
+
+    return true;
+  }
+
+  function submitEditProfilePartnerForm() {
+   if (validateEditProfilePartnerForm()) document.EditProfilePartnerForm.submit();
+    }
+  function exitConfirm() {
+    var form = document.forms['EditProfilePartnerForm'];
+    if(isFormModified(form, null, null)){
+      return(confirm('{l_leave_page}'));    };
+  return true;
+  } </script>
+<form class="checkbox_fields_area" name="EditProfilePartnerForm" method="POST" action="{url_main}profile_partner.php?cmd=update" onSubmit="return validateEditProfilePartnerForm();" style="padding: 0px; margin: 0px;">
+
+		<div class="header_big"><img src="{url_tmpl_main}images/fr.png" class="png" align="absmiddle" alt="" width=48 height=48> {l_partner_information}</div>
+		<div align="left"><br><b>{update_message}</b></div>
+          <!-- begin_age_range -->
+          <div style="text-align:left;">
+              <table  border="0" cellpadding="0" cellspacing="0" class="body_little" style="width: 100%">
+					<tr>
+						<td class="body_text line_ch" align="left" style="padding:12px; width: 60px;">
+							{l_age_range}:
+						</td>
+						<td class="line_ch" style="padding:12px;">
+							<table>
+                                <tr>
+                                    <td height="22">
+                                        <select style="width:46px;" name="p_age_from">
+                                        {p_age_from_options}
+                                        </select>
+                                    </td>
+                                    <td style="padding:0 5px;">
+                                        <span class="body_little"><label for="PARTNER_AGE_TO">{l_to}</label></span>
+                                    </td>
+                                    <td>
+                                        <select style="width:46px;" name="p_age_to">
+                                        {p_age_to_options}
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+						</td>
+						<td class="line_ch" style="padding:12px;">&nbsp;</td>
+					</tr>
+                    <tr><td colspan="3" height="12">&nbsp;</td></tr>
+					</table>
+            </div>
+            <!-- end_age_range -->
+                <!-- begin_partner_fields_1 -->
+                <div style="padding-top: 15px; margin-bottom: 15px; font-weight:bold;">{l_personal_details}</div>
+				<div style="padding-bottom: 16px;">
+					<table  border="0" cellpadding="0" cellspacing="0" class="body_little" width="100%">
+                    <!-- begin_fields_checks_1 -->
+                     <!-- begin_p_from_to_1 -->
+					 <tr>
+						<td class="body_text line_ch" align="left" style="padding:12px;">
+							{field}
+						</td>
+						<td style="padding:12px 12px 0;" class="body_little line_ch" colspan="2" align="left">
+							<table class="sepok">
+                            <tr>
+                            <td><span class="body_little line_ch">{l_from}</span></td>
+                            <td><select style="width:150px;" name="{name_from}" onChange="if (this.options[this.selectedIndex].value == '0') { document.forms['EditProfilePartnerForm'].{name_to}.disabled = true; } else { document.forms['EditProfilePartnerForm'].{name_to}.disabled = false; }">
+							<option selected value="0">{l_doesnt_matter}</option>
+							{from_options}
+							</select></td>
+                            <td><span class="body_little line_ch">{l_to}</span></td>
+                            <td><select style="width:150px;" name="{name_to}">
+                                    <option selected value="0">{l_doesnt_matter}</option>
+							{to_options}
+							</select></td>
+                            </tr>
+                            </table>
+							<script type="text/javascript">	if (document.EditProfilePartnerForm.{name_from}.options[document.EditProfilePartnerForm.{name_from}.selectedIndex].value == '0') { document.EditProfilePartnerForm.{name_to}.disabled = true; }</script>
+						</td>
+					</tr>
+					<!-- end_p_from_to_1 -->
+					<!-- begin_checks_1 -->
+					<tr>
+						<td valign="top" class="body_text line_ch" align="left" style="padding:12px;">
+							{field}
+						</td>
+						<td valign="top" style="padding:12px;" class="body_little line_ch">
+							<!-- begin_check_1 -->
+							<input name="{name}[]" id="{name}{id}" class="ch" {checked} type="checkbox" value="{id}"> <label for="{name}{id}" class="profile_label">{title}</label><br>
+							<!-- begin_check_column_1 -->
+							</td><td valign="top" style="padding:12px;" class="body_little line_ch">
+							<!-- end_check_column_1 -->
+							<!-- end_check_1 -->
+							<input name="{name}[]" id="{name}[]_0" class="ch" {nm_check} type="checkbox" value="0"> <label for="{name}[]_0" class="profile_label">{l_doesnt_matter}</label><br>
+						</td>
+					</tr>
+					<!-- end_checks_1 -->
+                    <!-- end_fields_checks_1 -->
+					</table>
+				</div>
+                <!-- end_partner_fields_1 -->
+                <!-- begin_btn_group_1 -->
+				<div class="content_bgrnd_2" style="padding-top: 6px; padding-bottom: 6px; padding-left: 10px; padding-right: 10px; margin-bottom: 6px;">
+                    <table border="0" cellpadding="0" cellspacing="0"><tr>
+                            <td class="body_little" style="padding-right: 14px;">{l_press} <b>"{l_update_profile}"</b> {l_button_after}</td>
+                            <td><table border="0" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td><div class="button_border_1"><input type="button" value="{l_update_my_profile}" onClick=" submitEditProfilePartnerForm();" class="button" style=" padding-left: 5px; padding-right: 5px; cursor: pointer; cursor: hand;" title="{l_update_my_profile}" onMouseOver="window.status='{l_update_my_profile}'; return true;" onMouseOut="window.status=''; return true;">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- end_btn_group_1 -->
+                <!-- begin_partner_fields_2 -->
+                <div style="padding-top: 15px; margin-bottom: 15px; font-weight:bold;">{l_physical_details}</div>
+				<div style="padding-bottom: 16px;">
+					<table border="0" cellpadding="0" cellspacing="0" class="body_little" width="100%">
+                    <!-- begin_fields_checks_2 -->
+                     <!-- begin_p_from_to_2 -->
+					 <tr>
+						<td class="body_text line_ch" align="left" style="padding:12px;">
+							{field}
+						</td>
+						<td style="padding:12px 12px 0;" class="body_little line_ch" colspan="2" align="left">
+							<table class="sepok">
+                            <tr>
+                            <td><span class="body_little line_ch">{l_from}</span></td>
+                            <td><select style="width:150px;" name="{name_from}" onChange="if (this.options[this.selectedIndex].value == '0') { document.forms['EditProfilePartnerForm'].{name_to}.disabled = true; } else { document.forms['EditProfilePartnerForm'].{name_to}.disabled = false; }">
+                                    <option selected value="0">{l_doesnt_matter}</option>
+                                    {from_options}
+							</select></td>
+                            <td><span class="body_little line_ch">{l_to}</span></td>
+                            <td><select style="width:150px;" name="{name_to}">
+                                    <option selected value="0">{l_doesnt_matter}</option>
+                                    {to_options}
+							</select></td>
+                            </tr>
+                            </table>
+							<script type="text/javascript">	if (document.EditProfilePartnerForm.{name_from}.options[document.EditProfilePartnerForm.{name_from}.selectedIndex].value == '0') { document.EditProfilePartnerForm.{name_to}.disabled = true; }</script>
+						</td>
+					</tr>
+					<!-- end_p_from_to_2 -->
+					<!-- begin_checks_2 -->
+					<tr>
+						<td valign="top" class="body_text line_ch" align="left" style="padding:12px;">
+							{field}
+						</td>
+						<td valign="top" style="padding:12px;" class="body_little line_ch">
+							<!-- begin_check_2 -->
+							<input name="{name}[]" id="{name}{id}" class="ch" {checked} type="checkbox" value="{id}"> <label for="{name}{id}" class="profile_label">{title}</label><br>
+							<!-- begin_check_column_2 -->
+							</td><td valign="top" style="padding:12px;" class="body_little line_ch">
+							<!-- end_check_column_2 -->
+							<!-- end_check_2 -->
+							<input name="{name}[]" id="{name}[]_0" class="ch" {nm_check} type="checkbox" value="0"> <label for="{name}[]_0" class="profile_label">{l_doesnt_matter}</label><br>
+						</td>
+					</tr>
+					<!-- end_checks_2-->
+                    <!-- end_fields_checks_2 -->
+					</table>
+				</div>
+				<div class="content_bgrnd_2" style="padding-top: 6px; padding-bottom: 6px; padding-left: 10px; padding-right: 10px; margin-bottom: 6px;"><table border="0" cellpadding="0" cellspacing="0"><tr><td class="body_little" style="padding-right: 14px;">{l_press} <b>"{l_update_profile}"</b> {l_button_after}</td><td><table border="0" cellpadding="0" cellspacing="0"><tr><td><div class="button_border_1"><input type="button" value="{l_update_my_profile}" onClick=" submitEditProfilePartnerForm();" class="button" style=" padding-left: 5px; padding-right: 5px; cursor: pointer; cursor: hand;" title="{l_update_my_profile}" onMouseOver="window.status='{l_update_my_profile}'; return true;" onMouseOut="window.status=''; return true;"></div></td></tr></table></td></tr></table></div>
+                <!-- end_partner_fields_2 -->
+                <!-- begin_partner_fields_3 -->
+                <div style="padding-top: 15px; margin-bottom: 15px; font-weight:bold;">{l_other_details}</div>
+				<div style="padding-bottom: 16px;">
+					<table border="0" cellpadding="0" cellspacing="0" class="body_little" width="100%">
+                    <!-- begin_fields_checks_3 -->
+                     <!-- begin_p_from_to_3 -->
+					 <tr>
+						<td class="body_text line_ch" align="left" style="padding:12px;">
+							{field}
+						</td>
+						<td style="padding:12px 12px 0;" class="body_little line_ch" colspan="2" align="left">
+							<table class="sepok">
+                            <tr>
+                            <td><span class="body_little line_ch">{l_from}</span></td>
+                            <td><select style="width:150px;" name="{name_from}" onChange="if (this.options[this.selectedIndex].value == '0') { document.forms['EditProfilePartnerForm'].{name_to}.disabled = true; } else { document.forms['EditProfilePartnerForm'].{name_to}.disabled = false; }">
+                                    <option selected value="0">{l_doesnt_matter}</option>
+                                    {from_options}
+							</select></td>
+                            <td><span class="body_little line_ch">{l_to}</span></td>
+                            <td><select style="width:150px;" name="{name_to}">
+                                    <option selected value="0">{l_doesnt_matter}</option>
+                                    {to_options}
+							</select></td>
+                            </tr>
+                            </table>
+							<script type="text/javascript">	if (document.EditProfilePartnerForm.{name_from}.options[document.EditProfilePartnerForm.{name_from}.selectedIndex].value == '0') { document.EditProfilePartnerForm.{name_to}.disabled = true; }</script>
+						</td>
+					</tr>
+					<!-- end_p_from_to_3 -->
+					<!-- begin_checks_3 -->
+					<tr>
+						<td valign="top" class="body_text line_ch" align="left" style="padding:12px;">
+							{field}
+						</td>
+						<td valign="top" style="padding:12px;" class="body_little line_ch">
+							<!-- begin_check_3 -->
+							<input name="{name}[]" id="{name}{id}" class="ch" {checked} type="checkbox" value="{id}"> <label for="{name}{id}" class="profile_label">{title}</label><br>
+							<!-- begin_check_column_3 -->
+							</td><td valign="top" style="padding:12px;" class="body_little line_ch">
+							<!-- end_check_column_3 -->
+							<!-- end_check_3 -->
+							<input name="{name}[]" id="{name}[]_0" class="ch" {nm_check} type="checkbox" value="0"> <label for="{name}[]_0" class="profile_label">{l_doesnt_matter}</label><br>
+						</td>
+					</tr>
+					<!-- end_checks_3 -->
+                    <!-- end_fields_checks_3 -->
+					</table>
+				</div>
+				<div class="content_bgrnd_2" style="padding-top: 6px; padding-bottom: 6px; padding-left: 10px; padding-right: 10px; margin-bottom: 6px;"><table border="0" cellpadding="0" cellspacing="0"><tr><td class="body_little" style="padding-right: 14px;">{l_press} <b>"{l_update_profile}"</b> {l_button_after}</td><td><table border="0" cellpadding="0" cellspacing="0"><tr><td><div class="button_border_1"><input type="button" value="{l_update_my_profile}" onClick=" submitEditProfilePartnerForm();" class="button" style=" padding-left: 5px; padding-right: 5px; cursor: pointer; cursor: hand;" title="{l_update_my_profile}" onMouseOver="window.status='{l_update_my_profile}'; return true;" onMouseOut="window.status=''; return true;"></div></td></tr></table></td></tr></table></div>
+                <!-- end_partner_fields_3 -->
+</form>
+<div class="nav_title">
+
+        <a href="{url_main}profile.php"><b>{l_basic}</b></a>
+    <!-- begin_yes_personal -->
+        &nbsp;&nbsp;<a href="{url_main}profile_personal.php"><b>{l_personal}</b></a>
+    <!-- end_yes_personal -->
+        &nbsp;&nbsp;<b>{l_partner}</b>
+</div>
+</div>
+</div>
+<div class="userinfo-links"></div>
+</div>
+{footer}
+
+
+

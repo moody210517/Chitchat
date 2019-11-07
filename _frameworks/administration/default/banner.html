@@ -1,0 +1,56 @@
+{header}
+<div class="block_narrow">
+    <ul class="lmenu_lgreen">
+        <li class="active"><a href="{url_main}administration/banner.php">{l_menu_banners}</a></li>
+        <li><a href="{url_main}administration/banner_add.php">{l_menu_add_banner}</a></li>
+    </ul>
+</div>
+<div class="block_main">
+
+    <h2>{l_title_current}</h2>
+
+	<!-- begin_no_banners -->
+	{l_no_banners}
+	<!-- end_no_banners -->
+
+    <!--begin_banner-->
+    <div class="block_banner">
+    <!--begin_place-->
+	<label><h3>{l_place}: {place}</h3></label>
+	<!--end_place-->
+    <h4>{banner_filename}</h4>
+	<!--begin_img-->
+	<div class="banner">
+        <a <!-- begin_banner_url --> target="_blank" href="{banner_url}" <!-- end_banner_url -->><img src="{banner_path}" alt="{banner_alt}"/></a>
+	</div>
+	<!--end_img-->
+
+	<!--begin_flh-->
+	<div class="banner">
+        <!--<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="573" height="101" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" title="{banner_alt}">
+					<param name="movie" value="{banners_path}{banner_filename}" />
+					<embed width="573" height="101" src="{banners_path}{banner_filename}" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash"></embed>
+		</object>-->
+        {flash_code}
+    </div>
+	<!--end_flh-->
+
+	<!--begin_code-->
+	<div class="banner">
+	  {banner_code}
+	</div>
+	<!--end_code-->
+	<div class="link fl_right" style = "">
+        <a href="{url_main}administration/banner.php?act=banners_{switch}&id={banner_id}" >{wswitch}</a> |
+        <a href="{url_main}administration/banner_edit.php?id={banner_id}">{l_edit}</a> |
+        <a href="{url_page}?delete={banner_id}" onClick="if (confirm('{l_are_you_sure}')) return true; else return false;">{l_delete}</a>
+        <!-- begin_show -->
+        | <a href="" onclick="winpop('{url_main}administration/banner_pop.php?id={banner_id}', 500, 500, 1); return false;" target="_parent">{l_show}</a>
+        <!-- end_show -->
+    </div>
+	<div style="height:50px"></div>
+    </div>
+    <!--end_banner-->
+</div>
+
+{footer}

@@ -1,0 +1,146 @@
+{header}
+<style>
+html > body .box .bbbr {
+overflow:visible;
+}
+
+#content {
+overflow:visible;
+}
+</style>
+
+
+<div class="frame_content">
+			<script language="JavaScript" type="text/javascript">
+			  function onValidateJoinForm() {
+			    var form = document.forms['JoinForm'];
+
+                if (!(validateUserName(form['join_handle'], '{l_username}', '{username_length_min}', '{username_length}'))) {
+			      return false;
+			    }
+
+			    if (!(validateRequiredField(form['join_password'], '{l_password}'))) {
+			      return false;
+			    }
+			    if (!(validateMinLength(form['join_password'], '{l_password}','{password_length_min}'))) {
+			      return false;
+			    }
+			    if (!(validateMaxLength(form['join_password'], '{l_password}','{password_length_max}'))) {
+			      return false;
+			    }
+			    if (!(validateAlphaNumeric(form['join_password'], '{l_password}'))) {
+			      return false;
+			    }
+
+			    if (!(validateRequiredField(form['email'], '{l_email_address}'))) {
+			      return false;
+			    }
+			    if (!(validateMaxLength(form['email'], '{l_email_address}','{mail_length_max}'))) {
+			      return false;
+			    }
+			    if (!(validateEmailField(form['email'], '{l_email_address}'))) {
+			      return false;
+			    }
+                <!-- begin_field_orientation_js -->
+			    if (!(validateRequiredSelect(form['orientation'],'{l_orientation}','00'))) {
+			      return false;
+			    }
+			    if (!(validateRequiredField(form['orientation'], '{l_orientation}', '00'))) {
+			      return false;
+			    }
+                <!-- end_field_orientation_js -->
+			    if (!(validateRequiredSelect(form['country'],'{l_country}','-1'))) {
+			      return false;
+			    }
+			    if (!(validateRequiredField(form['country'], '{l_country}', '-1'))) {
+			      return false;
+			    }
+			    if (!(validateRequiredField(form['month'], '{l_month}'))) {
+			      return false;
+			    }
+			    if (!(validateRequiredField(form['day'], '{l_day}'))) {
+			      return false;
+			    }
+			    if (!(validateRequiredField(form['year'], '{l_year}'))) {
+			      return false;
+			    }
+			    if (!(validateRequiredCheckbox(form['privacy_policy'],'','{l_agree_privete_policy}'))) {
+			      return false;
+			    }
+			    return true;
+			  }
+
+			  function validateJoinForm() {
+			    blockSubmission = true;
+			     if (typeof beforeJoinFormValidation != 'undefined') {
+			       beforeJoinFormValidation();
+			    }
+			    var validated = onValidateJoinForm();
+			    if (validated && (typeof uponSuccessfulJoinFormValidation != 'undefined')) {
+			      validated = uponSuccessfulJoinFormValidation();
+			    }
+			    else if (!validated && (typeof uponUnsuccessfulJoinFormValidation != 'undefined')) {
+			      uponUnsuccessfulJoinFormValidation();
+			    }
+			    if (!validated) {
+
+			    }
+			    return validated;
+			  }
+
+			  function submitJoinForm() {
+			   if (validateJoinForm()) document.JoinForm.submit();
+			   else return false;
+			  }
+			</script>
+
+            <table  style="margin: 0 185px;"><tr><td align="right" valign="top" style="padding-right:20px;">
+                    <!-- begin_join -->
+  					<form class=" joinForm" name="JoinForm" method="post" action="{url_main}join.php?cmd=register" onsubmit="return validateJoinForm();">
+
+                        <div class="header_big" style="padding-bottom: 10px; padding-top: 20px; text-align: right;"><h2 class="txt_upper_header_color">{l_join_this}</h2></div>
+                        <div id="join" style="width:330px;">
+                        {join_message}<br />
+						<label for="username" style="float:left;">{l_username}:</label>
+							<input class="no_abk join-field" type="text" id="username" name="join_handle" value="{join_handle}" /><br />
+						<label for="create-password" style="float:left;">{l_create_password}:</label>
+							<input class="no_abk join-field" type="password" id="create-password" name="join_password" value="{join_password}" /><br />
+						<label for="email" style="float:left;">{l_email}:</label>
+							<input class="no_abk join-field" type="text" name="email" value="{email}" /><br />
+                        <!-- begin_field_orientation -->
+						<label for="iam" style="float:left;">{l_i_am}:</label>
+							<select name="orientation" class="no_abk" id="iam" style="width:210px; float: right;">
+								 {orientation_options}
+							</select>
+						<div class="cl"></div>
+                        <!-- end_field_orientation -->
+						<label for="from" style="float:left;">{l_from}:</label>
+							<select name="country" id="from" class="no_abk" style="width:210px; float: right;">
+								 <option value="-1" selected="selected">{l_country_select}</option>
+								 {country_options}
+							</select>
+						<div class="cl"></div>
+						<label for="month" style="float:left;">{l_born_on}:</label>
+						<div style="float:right;width:210px;">
+						<div style="float:left;margin-right:6px;"><select name="month" id="month" class="no_abk" onchange="updateDay('month','JoinForm','year','month','day')" style="width:82px;">
+								{month_options}
+							</select></div>
+							<div style="float:left;margin-right:6px;"><select class="no_abk" name="day" id="select_day" style="width:53px;">
+								{day_options}
+							</select></div>
+							<div style="float:left;"><select class="no_abk" name="year" id="year" onchange="updateDay('year','JoinForm','year','month','day')" style="width:62px;">
+								{year_options}
+							</select></div></div>
+							<br />
+                        </div>
+                        <br />
+						<input class="btn lower_header_color big" type="button" value="{l_join_now}" onclick="submitJoinForm();"  />
+						<br/>
+						<br/>
+						<div id="terms"><input name="privacy_policy" style="vertical-align: top; margin: 1px 0 0;" type="checkbox" value="true" id="agree" /> <label for="agree"> {l_i_agree} <a href="#" onclick="javascript:OpenWindow('{url_main}info.php?page=term_cond&lang={lang_loaded}','650','400');">{l_terms_and_conditions}</a> {l_and} <a href="#" onclick="javascript:OpenWindow('{url_main}info.php?page=priv_policy&lang={lang_loaded}','650','400','yes');">{l_privacy_policy}</a></label></div>
+					</form>
+                    <!-- end_join -->
+            </td></tr></table>
+</div>
+
+{footer}

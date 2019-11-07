@@ -1,0 +1,330 @@
+{header}
+
+
+    <div id="main_r">
+
+
+
+<div class="main_bgrnd_padding">
+<div id="columns" align="left" style="position: relative;">
+
+<!-- begin_home_edit -->
+<div class="content_bgrnd" align="left" style="padding: 20px; padding-right: 30px;">
+<span><b>{l_welcome} {name}!</b></span><br><br>
+<a href="{url_main}partner/home.php" class="sec_little_bold">{l_affiliaters_center}</a>
+&nbsp;<b>&middot;</b>&nbsp; <span class="ter_big">{l_edit_information}</span>
+&nbsp;<b>&middot;</b>&nbsp; <a href="{url_main}partner/home_bank.php" class="sec_little_bold">{l_edit_payment_information}</a>
+&nbsp;<b>&middot;</b>&nbsp; <a href="{url_main}partner/home_banners.php" class="sec_little_bold">{l_banners}</a>
+&nbsp;<b>&middot;</b>&nbsp; <a href="{url_main}partner/index.php?cmd=logout" class="sec_little_bold">{l_logout}</a>
+
+<div style="height: 20px;"><span></span></div>
+<div class="sec_med_bold">{l_partner_information}</div>
+<div class="content_bgrnd" style="padding: 20px;" align="justify">
+<script Language="JavaScript" type="text/javascript">
+function onChangeCompanyName() {
+  checkPayee.innerHTML = document.JoinForm.name.value;
+}
+</script>
+<script Language="JavaScript" type="text/javascript">
+  function onValidateJoinForm() {
+    var form = document.forms['JoinForm'];
+    // "name" field validation.
+    if (!validateRequiredField(form['name'], '{l_name}')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "name" field validation.
+    if (!validateMaxLength(form['name'], '{l_name}','100')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "referring_domains" field validation.
+    if (!validateRequiredField(form['referring_domains'], '{l_referring_domains}')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "referring_domains" field validation.
+    if (!validateMaxLength(form['referring_domains'], '{l_referring_domains}','2000')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "referring_domains" field validation.
+    if (!validateMultipleDomainField(form['referring_domains'], '{l_referring_domains}', '2147483647')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "contact_name" field validation.
+    if (!validateRequiredField(form['contact_name'], '{l_name}')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "contact_name" field validation.
+    if (!validateMaxLength(form['contact_name'], '{l_name}','200')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "phone" field validation.
+    if (!validateRequiredField(form['phone'], '{l_phone_number}')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "phone" field validation.
+    if (!validateMaxLength(form['phone'], '{l_phone_number}','15')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "phone" field validation.
+    if (!validateNumericWS(form['phone'], '{l_phone_number}')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "email" field validation.
+    if (!validateRequiredField(form['email'], '{l_email_address}')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "email" field validation.
+    if (!validateMaxLength(form['email'], '{l_email_address}','100')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "email" field validation.
+    if (!validateEmailField(form['email'], '{l_email_address}')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "addr1" field validation.
+    if (!validateRequiredField(form['addr1'], '{l_billing_address}')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "addr1" field validation.
+    if (!validateMinLength(form['addr1'], '{l_billing_address}','2')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "addr1" field validation.
+    if (!validateMaxLength(form['addr1'], '{l_billing_address}','50')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "addr1" field validation.
+    if (!validateRequiredField(form['addr1'], '{l_billing_address}')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "country" field validation.
+    if (!validateRequiredSelect(form['country'],'{l_country}','-1')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "country" field validation.
+    if (!validateRequiredField(form['country'], '{l_country}')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "state" field validation.
+    if (!validateRequiredSelect(form['state'],'{l_state_province}','-1')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "state" field validation.
+    if (!validateRequiredField(form['state'], '{l_state_province}')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "city" field validation.
+    if (!validateRequiredSelect(form['city'],'{l_city}','-1')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "city" field validation.
+    if (!validateRequiredField(form['city'], '{l_city}')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "zip" field validation.
+    if (!validateMaxLength(form['zip'], '{l_zip_code}','10')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "zip" field validation.
+    if (!validateZip(form['zip'], '{l_zip_code}', form['country'])) {
+      removeSubmissionBlock();
+      return false;
+    }
+
+    // "tax field validation"
+    if (!validateMaxLength(form['tax'], '{l_tax_id}','10')) {
+      removeSubmissionBlock();
+      return false;
+    }
+
+    // "join_password" field validation.
+    if (!validateRequiredField(form['join_password'], '{l_password}')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "join_password" field validation.
+    if (!validateMinLength(form['join_password'], '{l_password}','4')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "join_password" field validation.
+    if (!validateMaxLength(form['join_password'], '{l_password}','30')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "join_password" field validation.
+    if (!validateAlphaNumeric(form['join_password'], '{l_password}')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    // "join_password" field validation.
+    if (!validateTwoFields(form['join_password'],'{l_password}',form['verify_password'],'{l_verify_password}')) {
+      removeSubmissionBlock();
+      return false;
+    }
+    return true;
+  }
+
+  function validateJoinForm() {
+    blockSubmission = true;
+     if (typeof beforeJoinFormValidation != 'undefined') {
+      beforeJoinFormValidation();
+    }
+    var validated = onValidateJoinForm();
+    if (validated && (typeof uponSuccessfulJoinFormValidation != 'undefined')) {
+      validated = uponSuccessfulJoinFormValidation();
+    }
+    else if (!validated && (typeof uponUnsuccessfulJoinFormValidation != 'undefined')) {
+      uponUnsuccessfulJoinFormValidation();
+    }
+    if (!validated) {
+      removeSubmissionBlock();
+    }
+    return validated;
+  }
+
+  function submitJoinForm() {
+   if (validateJoinForm()) document.JoinForm.submit();
+    }
+</script>
+<form  name="JoinForm" method="POST" action="{url_main}partner/home_edit.php?cmd=edit" onSubmit="return validateJoinForm();" style="padding: 0px; margin: 0px;">
+<div align="justify" class="ter_text_bold">{l_primary_contact_infomayion}</div>
+<div align="justify" class="body_text">-&nbsp;{l_feilds_with} ( <span class="red">*</span> ) {l_are_required}</div>
+<div align="justify" class="body_text">-&nbsp;{l_zip_code_is}</div>
+<div align="justify" class="body_text">-&nbsp;{l_all_checks_will}</div>
+<br>
+
+<div align="justify">
+  <table border="0" cellpadding="0" cellspacing="0" width="100%"><tr>
+    <td>{l_company_name}:&nbsp;&nbsp;</td>
+    <td align="right"><input type="text" name="name" value="{company}" style="width: 155px;" tabindex="a" onChange="onChangeCompanyName();"></td>
+    <td align="right"><span class="red">*</span></td>
+  </tr><tr>
+    <td>{l_referring_domains}:</td>
+    <td align="right"><input type="text" name="referring_domains" value="{domain}" style="width: 155px;" tabindex="a"></td>
+    <td align="right"><span class="red">*</span></td>
+  </tr><tr>
+    <td colspan="3" class="body_text">
+      - {l_enter_your_domains}<br>
+      - {l_note}<div style="height: 5px;"></div>
+    </td>
+  </tr><tr>
+    <td colspan="3" class="body_text">
+      <b>{join_message}</b>
+    </td>
+  </tr><tr>
+    <td>{l_name}:&nbsp;&nbsp;</td>
+    <td align="right"><input type="text" name="contact_name" value="{real_name}" style="width: 155px;" tabindex="a"></td>
+    <td align="right"><span class="red">*</span></td>
+  </tr><tr>
+    <td>{l_phone}:&nbsp;&nbsp;</td>
+    <td align="right"><input type="text" name="phone" value="{phone}" style="width: 155px;" tabindex="a"></td>
+    <td align="right"><span class="red">*</span></td>
+  </tr><tr>
+    <td>{l_email}:&nbsp;&nbsp;</td>
+    <td align="right"><input type="text" name="email" value="{mail}" style="width: 155px;" tabindex="a"></td>
+    <td align="right"><span class="red">*</span></td>
+  </tr></table>
+</div><br>
+<div align="justify" class="ter_text_bold">{l_payment_information}</div>
+<div align="justify" class="body_text">{l_enter_details}</div><br>
+<div align="justify">
+  <table border="0" cellpadding="0" cellspacing="0" width="100%"><tr>
+    <td>{l_address1}:&nbsp;&nbsp;</td>
+    <td align="right"><input type="text" name="addr1" value="{adress}" style="width: 155px;" tabindex="a"></td>
+    <td align="right"><span class="red">*</span></td>
+  </tr><tr>
+    <td>{l_address2}:&nbsp;&nbsp;</td>
+    <td align="right"><input type="text" name="addr2" value="{adress2}" style="width: 155px;" tabindex="a"></td>
+    <td align="right"></td>
+  </tr><tr>
+    <td>{l_country}:&nbsp;&nbsp;</td>
+    <td align="right"><select style="width: 159px;" name="country" tabindex="a" onChange="submitForm(document.JoinForm, '{url_main}partner/home_edit.php?focusField=state&focusForm=JoinForm')">
+	{country_options}
+	</select>
+	</td>
+    <td align="right"><span class="red">*</span></td>
+  </tr><tr>
+    <td>{l_state_province}:&nbsp;&nbsp;</td>
+    <td align="right"><select name="state" tabindex="a" onChange="submitForm(document.JoinForm, '{url_main}partner/home_edit.php?focusField=city&focusForm=JoinForm')" style="width: 159px;">
+    {state_options}
+   </select></td>
+    <td align="right"><span class="red">*</span></td>
+  </tr><tr>
+    <td>{l_city}:&nbsp;&nbsp;</td>
+    <td align="right"><select name="city" tabindex="a" style="width: 159px;">
+    {city_options}
+    </select></td>
+    <td align="right"><span class="red">*</span></td>
+  </tr><tr>
+	<td>{l_zip_postal_code}:&nbsp;&nbsp;</td>
+	<td align="right"><input type="text" name="zip" value="{zip}" style="width: 155px;" tabindex="a"></td>
+	<td align="right"></td>
+  </tr>
+  <tr>
+	<td>{l_tax_id}:&nbsp;&nbsp;</td>
+	<td align="right"><input type="text" name="tax" value="{tax}" style="width: 155px;" tabindex="a"></td>
+	<td align="right"></td>
+  </tr></table>
+</div><br>
+<div align="justify" class="ter_text_bold">{l_preferred}</div>
+<div align="justify" class="body_text">{l_you_will_use}</div><br>
+<div align="justify">
+  <table border="0" cellpadding="0" cellspacing="0" width="100%"><tr>
+    <td colspan="3" class="body_text"><div style="height: 10px;"><span></span></div>{l_password_must_be}<div style="height: 5px;"><span></span></div></td>
+  </tr><tr>
+    <td>{l_password}:&nbsp;&nbsp;</td>
+    <td align="right"><input type="password" name="join_password" value="{password}" style="width: 155px;" tabindex="a"></td>
+    <td align="right"><span class="red">*</span></td>
+  </tr><tr>
+    <td>{l_confirm_password}:&nbsp;&nbsp;</td>
+    <td align="right"><input type="password" name="verify_password" value="{password}" style="width: 155px;"></td>
+    <td align="right"><span class="red">*</span></td>
+  </tr><tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr><tr>
+    <td style="padding-right: 10px;" align="left"></td>
+    <td align="right"><table border="0" cellpadding="0" cellspacing="0"><tr><td><div class="button_border_1"><input type="button" value="{l_edit_information}" onClick=" submitJoinForm();" class="button_1" style="width: 157px; padding-left: 5px; padding-right: 5px;cursor: pointer; cursor: hand;" tabindex="a" title="{l_edit_information}" onMouseOver="window.status='{l_edit_information}'; return true;" onMouseOut="window.status=''; return true;"></div></td></tr></table></td>
+    <td></td>
+  </tr></table>
+</div>
+</form>
+</div>
+<!-- end_home_edit -->
+
+
+
+</div>
+</div>
+
+    </div>
+
+
+</div>
+
+{footer}

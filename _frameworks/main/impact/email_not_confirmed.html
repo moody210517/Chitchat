@@ -1,0 +1,41 @@
+{header}
+<div class="col_center email_page">
+    <div class="head"><!-- begin_email_sent_title -->{l_email_sent}<!-- end_email_sent_title --><!-- begin_default_title -->{l_please_confirm}<!-- end_default_title --></div>
+    <div class="cont">
+        <div class="bl_txt">
+            {l_account_blocked}
+        </div>
+        <div class="cl"></div>
+        <div class="email_bl_field">
+            <form action="{url_main}email_not_confirmed.php" method="POST" name="Forget">
+                <div class="email_field_name">{l_your_email}:</div>
+                <div class="email_field">
+                    <input id="email" type="text" name="email" maxlength="100" style="width: 317px;" />
+                    <div id="email_error" class="error" style="">{message}</div>
+                </div>
+                <div class="bl_btn">
+                    <button id="email_submit" type="submit" class="btn lblue" disabled>{l_submit}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+$(function(){
+    if('{message}'!=''){
+        $jq('#email_error').addClass('to_show');
+    }
+    $jq('#email').on('change propertychange input',validateEmail);
+    function validateEmail(){
+        var val=trim($jq('#email').val());
+        if(!checkEmail(val)){$jq('#email_error').addClass('to_show')
+            $jq('#email_error').text('{j_incorrect_email}').addClass('to_show');
+            $jq('#email_submit').prop('disabled', true);
+		} else {
+            $jq('#email_error').removeClass('to_show');
+            $jq('#email_submit').prop('disabled', false);
+        }
+    }
+})
+</script>
+{footer}

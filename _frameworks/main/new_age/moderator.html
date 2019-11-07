@@ -1,0 +1,253 @@
+{header}
+
+<div class="wrapper-wide">
+    <div class="userinfo-c-wide">
+        <div class="userinfo smallphoto clearfix">
+            <div class="header_big" style="margin-top:10px; margin-bottom:20px;">{l_top_moderator}</div>
+            <style>
+                .button {width:110px!important;}
+                .tbl_friend td {vertical-align: top!important; padding: 5px;}
+                .tbl_friend .tbl-header td {font-weight: bold;}
+            </style>
+
+            <!-- begin_button -->
+            <input class="button {active_button}" type="button"  title="{button_title}" onclick="location = '{url_main}moderator.php?section={section}';"  value="{button_title}">
+            <!-- end_button -->
+
+            <br><br>
+
+            <!-- begin_group_list -->
+            <form method="post" action="{url_page}" >
+                <input type="hidden" name="action" value="save">
+                <input type="hidden" name="section" value="{cmd}">
+
+                <!-- begin_sections -->
+
+                <!-- begin_photos -->
+                <div class="bl_form">
+                    <div style="padding: 0px; overflow: hidden; width: 100%;">
+                        <!-- begin_photo -->
+                        <div class="approve_photo" style="float:left; padding: 0 0px 0px 0; width: 200px;">
+                            <b><a href='{url_main}{url_main}search_results.php?display=profile&uid={user_id}' target="_blank">{user_name}</a></b><br />
+                            {l_status}: <b>{private}</b><br />
+                            {description}
+                            <br />
+                            <img src="{url_files}photo/{photo_file}_m.jpg">
+                            <div style = "padding: 10px 20px;">
+                                <input type="radio" class = "radio" name="do[{photo_id}]" checked value="add">{l_add}
+                                <input type="radio" class = "radio" name="do[{photo_id}]" value="del">{l_delete}</div>
+                        </div>
+                        <!-- end_photo -->
+                    </div>
+                </div>
+                <!-- end_photos -->
+
+                <!-- begin_text_section -->
+
+                <!-- begin_texts -->
+                <div class="bl_form">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%" align="center">
+                        <tr>
+                            <td >
+                                <h4 style="padding-bottom: 10px;"><a href='{url_main}search_results.php?display=profile&uid={user_id}' target="_blank">{user_name}</a></h4>
+                            </td>
+                        </tr>
+                        <!-- begin_text -->
+                        <tr>
+                            <td>
+                                <label ><b>{field_title}:</b></label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input style="padding: 2px; width: 97%; " type="text" name="{name_input}[{id}]" value="{value}">
+                            </td>
+                        </tr>
+                        <!-- end_text -->
+                        <!-- begin_textarea -->
+                        <tr>
+                            <td>
+                                <label><b>{field_title}:</b></label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea style="padding: 2px;resize: none; width: 97%; height: 180px; " class="textarea" name="{name_input}[{id}]">{value}</textarea>
+                            </td>
+                        </tr>
+                        <!-- end_textarea -->
+                        <tr>
+                            <td>
+                                <input type="hidden" name="user_id[{id}]" value="{user_id}">
+                                <div style="padding:10px;">
+                                    <input type="radio" name="do[{id}]" value="add" class="check" checked="checked"> {l_add}
+                                    <input type="radio" name="do[{id}]" value="del" class="check"> {l_delete}
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- end_texts -->
+
+                <!-- end_text_section -->
+                            <!--begin_vids_video-->
+                                <div class="bl_form">
+                                  <div style="padding: 0px; overflow: hidden; width: 100%;">
+                                    <!-- begin_video -->
+                                    <div class="approve_photo" style="/*float:left;*/ padding: 0 0px 0px 0; width: 140px;">
+                                    <b><a href='{url_main}{url_main}search_results.php?display=profile&uid={user_id}' target="_blank">{user_name}</a></b><br />
+                                    <b>{private}</b><br />
+                                    {description}
+                                    <br />
+                                    {video_html_code}
+                                    <div style = "padding: 10px 20px;"><input type="radio" class = "radio" name="do[{video_id}]" checked value="add">{l_add}
+                                    <input type="radio" class = "radio" name="do[{video_id}]" value="del">{l_delete}</div>
+                                    </div>
+                                    <br>
+                                    <!-- end_video -->
+                                    </div>
+
+                                </div>
+                            <!--end_vids_video-->
+
+                <!-- end_sections -->
+
+<!--begin_profiles-->
+<style>
+	#btn_save{display:none;}
+	tr.color{background-color:#cfcfcf;}
+
+    .table-moderator {
+        margin-bottom:15px;
+    }
+
+    .table-moderator tr.table-moderator-header {
+        background-color: #537f8e;
+        height: 30px;
+    }
+
+    .table-moderator tr.table-moderator-header th {
+        padding-left: 4px;
+        vertical-align: middle;
+        color: #FFF;
+    }
+
+    .table-moderator tr.table-moderator-header th a {
+        color: #FFF;
+    }
+
+    tr.row1 {
+        background-color: #fff;
+        border-bottom: 1px solid #c0c0c0;
+        border-top: 1px solid #c0c0c0;
+        margin-top: 2px;
+    }
+
+    .table-moderator td {
+        padding: 8px 0 8px 4px;
+    }
+
+    .moderator_button_save {
+        display: none;
+    }
+
+</style>
+
+
+	<!-- begin_group_list_pages -->
+    <div>{num_total} {l_count_users}</div>
+    <div  style="position: relative; padding: 0px 0px; top: -14px; left: 300px; width: 400px; ">
+    <!-- begin_group_list_prev_page --><a href="{url_page_moderator}?offset={offset}{params}">{l_prev}</a> | <!-- end_group_list_prev_page -->
+    <!-- begin_group_list_prev_page_off --><b>{l_prev}</b> | <!-- end_group_list_prev_page_off -->
+    <!-- begin_group_list_first_page --><a href="{url_page_moderator}?offset={offset}{params}">{l_page_1}</a><!-- end_group_list_first_page -->
+    <!-- begin_group_list_prev_pages --><a href="{url_page_moderator}?offset={offset}{params}">&lt;&lt;</a><!-- end_group_list_prev_pages -->
+    <!-- begin_group_list_page -->
+    <!-- begin_group_list_link_page --><a href="{url_page_moderator}?offset={offset}{params}">{page}</a><!-- end_group_list_link_page -->
+    <!-- begin_group_list_this_page --><b>{page}</b><!-- end_group_list_this_page -->
+    <!-- end_group_list_page -->
+    <!-- begin_group_list_next_pages --><a href="{url_page_moderator}?offset={offset}{params}">&gt;&gt;</a><!-- end_group_list_next_pages -->
+    <!-- begin_group_list_last_page --><b>{l_of}</b> <a href="{url_page}?offset={offset}{params}">{num_pages}</a><!-- end_group_list_last_page -->
+    <!-- begin_group_list_next_page --> | <a href="{url_page_moderator}?offset={offset}{params}">{l_next}</a><!-- end_group_list_next_page -->
+    <!-- begin_group_list_next_page_off --> | <b>{l_next}</b><!-- end_group_list_next_page_off -->
+    </div>
+    <!-- end_group_list_pages -->
+
+
+
+    <!-- begin_group_list_items -->
+  <table cellpadding="0" cellspacing="0" border="0" class="light table-moderator" width="100%">
+  <thead>
+     <tr class="table-moderator-header">
+        <th>{l_action}</th>
+        <th>
+            <!-- begin_params_none_name --><a href="{url_page_moderator}?{params_current}">{l_username}</a><!-- end_params_none_name -->
+            <!-- begin_params_asc_name -->&uarr;<a href="{url_page_moderator}?{params_current}">{l_username}</a><!-- end_params_asc_name -->
+            <!-- begin_params_desc_name -->&darr;<a href="{url_page_moderator}?{params_current}">{l_username}</a><!-- end_params_desc_name -->
+        </th>
+        <th>
+            <!-- begin_params_none_type --><a href="{url_page_moderator}?{params_current}">{l_type}</a><!-- end_params_none_type -->
+            <!-- begin_params_asc_type -->&uarr;<a href="{url_page_moderator}?{params_current}">{l_type}</a><!-- end_params_asc_type -->
+            <!-- begin_params_desc_type -->&darr;<a href="{url_page_moderator}?{params_current}">{l_type}</a><!-- end_params_desc_type -->
+        </th>
+        <th>
+            <!-- begin_params_none_gold_days --><a href="{url_page_moderator}?{params_current}">{l_gold_days}</a><!-- end_params_none_gold_days -->
+            <!-- begin_params_asc_gold_days -->&uarr;<a href="{url_page_moderator}?{params_current}">{l_gold_days}</a><!-- end_params_asc_gold_days -->
+            <!-- begin_params_desc_gold_days -->&darr;<a href="{url_page_moderator}?{params_current}">{l_gold_days}</a><!-- end_params_desc_gold_days -->
+        </th>
+        <th>
+            <!-- begin_params_none_mail --><a href="{url_page_moderator}?{params_current}">{l_email}</a><!-- end_params_none_mail -->
+            <!-- begin_params_asc_mail -->&uarr;<a href="{url_page_moderator}?{params_current}">{l_email}</a><!-- end_params_asc_mail -->
+            <!-- begin_params_desc_mail -->&darr;<a href="{url_page_moderator}?{params_current}">{l_email}</a><!-- end_params_desc_mail -->
+        </th>
+        <th>
+            <!-- begin_params_none_orientation --><a href="{url_page_moderator}?{params_current}">{l_orientation}</a><!-- end_params_none_orientation -->
+            <!-- begin_params_asc_orientation -->&uarr;<a href="{url_page_moderator}?{params_current}">{l_orientation}</a><!-- end_params_asc_orientation -->
+            <!-- begin_params_desc_orientation -->&darr;<a href="{url_page_moderator}?{params_current}">{l_orientation}</a><!-- end_params_desc_orientation -->
+        </th>
+        <th style="width:30px;">
+            <!-- begin_params_none_age --><a href="{url_page_moderator}?{params_current}">{l_age}</a><!-- end_params_none_age -->
+            <!-- begin_params_asc_age -->&uarr;<a href="{url_page_moderator}?{params_current}">{l_age}</a><!-- end_params_asc_age -->
+            <!-- begin_params_desc_age -->&darr;<a href="{url_page_moderator}?{params_current}">{l_age}</a><!-- end_params_desc_age -->
+        </th>
+        <th>
+            <!-- begin_params_none_register --><a href="{url_pregister}?{params_current}">{l_register}</a><!-- end_params_none_register -->
+            <!-- begin_params_asc_register -->&uarr;<a href="{url_pregister}?{params_current}">{l_register}</a><!-- end_params_asc_register -->
+            <!-- begin_params_desc_register -->&darr;<a href="{url_pregister}?{params_current}">{l_register}</a><!-- end_params_desc_register -->
+        </th>
+    </tr>
+
+    <!-- begin_group_list_item -->
+    <tr class="{class} row1">
+        <td style="padding: 0px 5px; vertical-align: middle!important;">
+            <a href="{url_page}?cmd=profiles&user_delete={user_id}{view}" onclick="if (confirm('{l_are_you_sure}')) return true; else return false;">{l_delete}</a>
+            |
+            <a href="{url_page}?cmd=profiles&user_approval={user_id}{view}" onclick="if (confirm('{l_are_you_sure}')) return true; else return false;">{l_approval}</a>
+        </td>
+        <td><a href="{profile_url}">{name}</a></td>
+        <td>{type}</td>
+        <td>{gold_days}</td>
+        <td>{mail}</td>
+        <td>{orientation}</td>
+        <td>{age}</td>
+        <td>{register}</td>
+    </tr>
+    <!-- end_group_list_item -->
+    </table>
+    <!-- end_group_list_items -->
+
+    <!-- begin_group_list_noitems -->
+    <div align="center">{l_no_users}</div>
+    <!-- end_group_list_noitems -->
+    <div class="empty"></div>
+
+<!--end_profiles-->
+
+                <input class="button moderator_button_save" type="submit" value="{l_save}">
+            </form>
+            <!-- end_group_list -->
+
+        </div><div class="userinfo-links-wide"></div>
+    </div>
+</div>
+
+{footer}

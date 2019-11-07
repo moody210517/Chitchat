@@ -1,0 +1,75 @@
+<!-- new_mods_decor -->
+<div class="music_new_decor_l">
+
+<script type="text/javascript">
+var active = 0;
+var shift = 0;
+$(document).ready(function() {
+    initLightboxOldTemplateMixer($('.image_gallery a'))
+});
+
+function set_main_image(thumbnail, image, n)
+{
+    $('.image_gallery a').attr('href', image);
+    $('.image_gallery a img').attr('src', thumbnail);
+    $('#image_list li').attr('class','');
+    $('#image_list li:eq('+n+')').attr('class','active');
+    active = n+shift;
+}
+
+</script>
+
+
+
+    <div class="pl_top">
+          <!-- begin_musician_upload_song_button -->
+          <div class="fl_right">
+		 <a class="music_new_upload" href="{url_main}music_song_edit.php?musician_id={musician_id}#music_uplodad_id">{l_music_upload_song}<a/>
+
+		  </div>
+
+          <!-- end_musician_upload_song_button -->
+          <a href="{url_main}music_musician_show.php?musician_id={musician_id}" style="text-decoration:none;"><h1 class="green" title="{musician_name_full}">{musician_name}</h1></a>
+
+          <div class="fl_left">
+              <div class="image_gallery music_new_img_green music_new_margin0">
+                  <!-- begin_image --><a href="{image_file}"><img src="{image_thumbnail_b}" width="160" height="120" title="{musician_name_full}" alt="{musician_name_full}"/></a><!-- end_image -->
+                  <!-- begin_no_image --><img src="{url_tmpl_main}images/music/foto_02_l.jpg" width="160" height="120" alt=""/><!-- end_no_image -->
+              </div>
+
+              <!-- carusel -->
+              <div id="music_musician_image_list">
+              {music_musician_image_list}
+              </div>
+              <!-- /carusel -->
+
+              <!-- begin_musician_functions -->
+              <div class="music_new_img_txt">
+                  <span class="black"><a href="{url_main}music_musician_add_photos.php?musician_id={musician_id}">{l_music_add_images}</a><!-- begin_musician_edit --> | <a href="{url_main}music_musician_edit.php?musician_id={musician_id}">{l_music_edit_musician}</a><!-- end_musician_edit --></span>
+              </div>
+              <!-- end_musician_functions -->
+          </div>
+
+          <div class="music_new_bl_green">
+              <div class="list_bg_violet">
+                <!-- begin_musician_info --><ul class="list_bg">
+                    <li><strong>{l_music_country}:</strong> <a title="{country_title_full}" href="{url_main}music_search.php?country_id={country_id}">{country_title}</a> | <strong>{l_music_genre}:</strong> <a title="{category_title_full}" href="{url_main}music_search.php?category_id={category_id}">{category_title}</a></li>
+                    <li><strong>{l_music_year_founded}:</strong> <a href="{url_main}music_search.php?musician_founded={musician_founded}">{musician_founded}</a></li>
+                    <li><strong>{l_music_leader}:</strong> {musician_leader}</li>
+                </ul><!-- end_musician_info -->
+                <!-- begin_musician_no_info --><ul class="list_bg">
+                    <li><strong>{l_music_country}:</strong> {l_music_add_below} | <strong>{l_music_genre}:</strong> {l_music_add_below}</li>
+                    <li><strong>{l_music_year_founded}:</strong> {l_music_add_below}</li>
+                    <li><strong>{l_music_leader}:</strong> {l_music_add_below}</li>
+                </ul><!-- end_musician_no_info -->
+              </div>
+
+              <p title="{musician_about_full}">
+                  {musician_about}
+              </p>
+
+          </div>
+
+    </div>
+</div>
+<!-- /new_mods_decor -->

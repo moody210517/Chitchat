@@ -1,0 +1,59 @@
+<!-- begin_module_search_with_photo_param -->
+<div class="module_search_with_photo" title="{a_only_with_photos}">
+    <label for="module_search_with_photo" <!--begin_module_search_with_photo_no_check -->style="opacity: 0.6;"<!--end_module_search_with_photo_no_check -->></label>
+    <input id="module_search_with_photo" type="checkbox" <!-- begin_module_search_with_photo -->checked="checked"<!-- end_module_search_with_photo --> />
+</div>
+<!-- end_module_search_with_photo_param -->
+<!-- begin_module_search_with_photo_no_search -->
+<input id="module_search_with_photo" type="hidden" value="{module_search_with_photo_no_search_value}">
+<!-- end_module_search_with_photo_no_search -->
+<div id="module_search_show" class="module_search_show show" >
+    <strong>{l_search_show}</strong> <span class="arrow" id="show">{module_search_status_title}</span>
+    <div class="pp_small_decor_r_search" id="pp_show_item">
+        <ul class="pp_small_decor_r_show" id="pp_show">
+  			<li><a data-value="" <!-- begin_module_search_status_all -->class="selected"<!-- end_module_search_status_all --> href="#null"><span>{l_search_show_all}</span></a></li>
+   			<li><a data-value="new" <!-- begin_module_search_status_new -->class="selected"<!-- end_module_search_status_new --> href="#null"><span>{l_search_show_new}</span></a></li>
+            <li><a data-value="online" <!-- begin_module_search_status_online -->class="selected"<!-- end_module_search_status_online -->  href="#null"><span>{l_search_show_online}</span></a></li>
+   		</ul>
+    </div>
+</div>
+<script>
+$(function(){
+	function moduleSearchShow(dur){
+		var dur=dur||300;
+		$('#pp_show_item').stop().animate({height:'toggle'},dur);
+	}
+
+	$('#module_search_show').hover(
+		function(e){if($(e.target).not('.selected')){moduleSearchShow()}},
+		function(){if ($('#pp_show_item:visible')[0]){moduleSearchShow()}}
+	)
+
+	$('.module_search_show a').click(function(){
+		$('.module_search_show span#show').html($(this).children('span').html());
+		$('.module_search_show a.selected').removeClass('selected');
+		$(this).addClass('selected');
+		moduleSearchShow(1);
+
+        if(typeof clearGlobalSearchByUsernameF=='function'){
+            clearGlobalSearchByUsernameF();
+        }
+
+		searchResultsLoad();
+
+		return false;
+	});
+
+    $('#module_search_with_photo').change(function(){
+        var el=$(this);
+        el.prev('label').css('opacity',el.prop('checked')?1:.6);
+
+        if(typeof clearGlobalSearchByUsernameF=='function'){
+            clearGlobalSearchByUsernameF();
+        }
+
+        searchResultsLoad();
+    })
+
+});
+</script>

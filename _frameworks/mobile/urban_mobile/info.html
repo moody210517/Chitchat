@@ -1,0 +1,20 @@
+{header}
+<script>
+    if (ajax_login_status) {
+        $('body').addClass('body_member');
+    }
+</script>
+<style type="text/css">
+.main{overflow-y: auto;  }
+.content{padding-bottom: 0px;}
+.page_info_bl{
+    padding:10px;
+}
+.body_member .page_info_bl{
+    padding:60px 20px 20px;
+}
+</style>
+<div class="page_info_bl">
+{info_text}
+</div>
+{footer}

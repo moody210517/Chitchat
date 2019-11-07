@@ -1,0 +1,88 @@
+    <div class="head">
+        <strong>{l_private_note}</strong>
+        <a id="pp_3_close_private_note" class="icon_close" href="#close"></a>
+    </div>
+    <div class="cont basic_fields">
+        <div class="edit textarea_loader">
+            <textarea id="pp_3_editor_private_note" maxlength="1000">{value}</textarea>
+        </div>
+    </div>
+    <div class="foot">
+        <input id="pp_3_save_private_note" type="button" class="btn green fl_right" value="{l_save}" disabled/>
+        <a id="pp_3_cancel_private_note" class="link" href="#reset">{l_cancel}</a>
+    </div>
+<script>
+    var pp_3_private_note = $('#pp_3_private_note'),//.modalPopup().open(),
+        pp_3_editor_private_note = $('#pp_3_editor_private_note'),
+        pp_3_save_private_note = $('#pp_3_save_private_note'),
+        pp_3_cancel_private_note = $('#pp_3_cancel_private_note'),
+        info_private_note = pp_3_editor_private_note.val(),
+        btnCancel_private_note=$('#pp_3_cancel_private_note'),
+        pp_3_ajax_private_note = 1,
+        pp_3_ajax_private_note_loader = $('#about_edit_private_note_loader');
+
+    $('.about_edit_private_note').click(function(){
+        pp_3_private_note.open();
+        return false;
+    });
+
+    $('#pp_3_cancel_private_note, #pp_3_close_private_note').click(function (){
+        if (this.hash=='#close'||pp_3_editor_private_note.val()==info_private_note) pp_3_private_note.close();
+        pp_3_save_private_note.attr('disabled', '');
+        btnCancel_private_note.text('{j_cancel}');
+        pp_3_editor_private_note.val(info_private_note);
+        return false;
+    });
+
+    $('#pp_3_editor_private_note').on('change propertychange input', function(){
+        setDisabledSave_private_note();
+    })
+
+    $('#pp_3_save_private_note').click(function(){
+        if (pp_3_ajax_private_note) {
+            var val = pp_3_editor_private_note.val();
+            if (info_private_note != val) {
+                pp_3_ajax_private_note = 0;
+                //pp_3_private_note.fadeTo(300, .5);
+                pp_3_save_private_note.attr('disabled', '');
+                pp_3_ajax_private_note_loader.show();
+                pp_3_private_note.close();
+                $.post(url_main+'ajax.php', {cmd: 'update_private_note', uid:'{user_id}', comment: val}, update_private_note);
+            }
+        }
+        return false;
+    })
+
+    function update_private_note(res){
+        //pp_3_private_note.stop().fadeTo(300, 1);
+        pp_3_ajax_private_note_loader.hide();
+        pp_3_ajax_private_note = 1;
+        var data=checkDataAjax(res);
+        if(data !== false){
+            $('#private_note').html(data);
+            //pp_3_private_note.close();
+            info_private_note = pp_3_editor_private_note.val();
+            btnCancel_private_note.text('{j_cancel}');
+        } else {
+            // Error
+        }
+    }
+
+    function setDisabledSave_private_note(){
+        if (info_private_note != pp_3_editor_private_note.val()){
+            pp_3_save_private_note.removeAttr('disabled');
+            btnCancel_private_note.text('{j_reset}');
+        } else {
+            pp_3_save_private_note.attr('disabled', '');
+            btnCancel_private_note.text('{j_cancel}');
+        }
+    }
+
+    $('.pp_body').on('click', function(e){
+        if(e.target==this
+           &&$('#pp_3_private_note:visible')[0]
+           &&info_private_note==pp_3_editor_private_note.val()){
+           pp_3_private_note.close()
+        }
+    })
+</script>

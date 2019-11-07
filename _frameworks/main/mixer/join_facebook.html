@@ -1,0 +1,134 @@
+{header}
+<div id="wide" class="box"><div class="bbt"><div class="bbb"><div class="bbl"><div class="bbr"><div class="bbtl"><div class="bbtr"><div class="bbbl"><div class="bbbr">
+			<script language="JavaScript" type="text/javascript">
+			  function onValidateJoinForm() {
+			    var form = document.forms['JoinForm'];
+
+                if (!(validateUserName(form['join_handle'], '{l_username}', '{username_length_min}', '{username_length}'))) {
+			      return false;
+			    }
+
+			    if (!(validateRequiredField(form['join_password'], '{l_password}'))) {
+			      return false;
+			    }
+			    if (!(validateMinLength(form['join_password'], '{l_password}','{password_length_min}'))) {
+			      return false;
+			    }
+			    if (!(validateMaxLength(form['join_password'], '{l_password}','{password_length_max}'))) {
+			      return false;
+			    }
+			    if (!(validateAlphaNumeric(form['join_password'], '{l_password}'))) {
+			      return false;
+			    }
+
+			    if (!(validateRequiredField(form['email'], '{l_email_address}'))) {
+			      return false;
+			    }
+			    if (!(validateMaxLength(form['email'], '{l_email_address}','{mail_length_max}'))) {
+			      return false;
+			    }
+			    if (!(validateEmailField(form['email'], '{l_email_address}'))) {
+			      return false;
+			    }
+                <!-- begin_field_orientation_js -->
+			    if (!(validateRequiredSelect(form['orientation'],'{l_orientation}','00'))) {
+			      return false;
+			    }
+			    if (!(validateRequiredField(form['orientation'], '{l_orientation}', '00'))) {
+			      return false;
+			    }
+                <!-- end_field_orientation_js -->
+			    if (!(validateRequiredSelect(form['country'],'{l_country}','-1'))) {
+			      return false;
+			    }
+			    if (!(validateRequiredField(form['country'], '{l_country}', '-1'))) {
+			      return false;
+			    }
+			    if (!(validateRequiredField(form['month'], '{l_month}'))) {
+			      return false;
+			    }
+			    if (!(validateRequiredField(form['day'], '{l_day}'))) {
+			      return false;
+			    }
+			    if (!(validateRequiredField(form['year'], '{l_year}'))) {
+			      return false;
+			    }
+			    if (!(validateRequiredCheckbox(form['privacy_policy'],'','{l_agree_privete_policy}'))) {
+			      return false;
+			    }
+			    return true;
+			  }
+
+			  function validateJoinForm() {
+			    blockSubmission = true;
+			     if (typeof beforeJoinFormValidation != 'undefined') {
+			       beforeJoinFormValidation();
+			    }
+			    var validated = onValidateJoinForm();
+			    if (validated && (typeof uponSuccessfulJoinFormValidation != 'undefined')) {
+			      validated = uponSuccessfulJoinFormValidation();
+			    }
+			    else if (!validated && (typeof uponUnsuccessfulJoinFormValidation != 'undefined')) {
+			      uponUnsuccessfulJoinFormValidation();
+			    }
+			    if (!validated) {
+
+			    }
+			    return validated;
+			  }
+
+			  function submitJoinForm() {
+			   if (validateJoinForm()) document.JoinForm.submit();
+			   else return false;
+			  }
+			</script>
+
+            <table width="50%" style="margin: 0 auto;">
+				<tr>
+					<td align="right" valign="top" style="padding-right:20px;">
+                    <!-- begin_join -->
+  					<form name="JoinForm" method="post" action="{url_main}join.php?cmd=register" onsubmit="return validateJoinForm();">
+
+                        <div  class="header_big" style="padding-bottom: 10px; padding-top: 20px; text-align: right;">{l_join_this}</div>
+                        <div id="join">
+                        {join_message}<br />
+						<label for="username">{l_username}:</label>
+							<input type="text" id="username" name="join_handle" value="{join_handle}" style="width:200px;"/><br />
+						<label for="create-password">{l_create_password}:</label>
+							<input type="password" id="create-password" name="join_password" value="{join_password}" style="width:200px;"/><br />
+                                                <label for="email">{l_email}:</label>
+							<input type="text" name="email" value="{email}" style="width:200px;"/><br />
+                        <!-- begin_field_orientation -->
+						<label for="iam">{l_i_am}:</label>
+                            <select name="orientation" id="iam" style="width:208px;">
+								 {orientation_options}
+							</select>
+						<br />
+                        <!-- end_field_orientation -->
+						<label for="from">{l_from}:</label>
+							<select name="country" id="from" style="width:208px;">
+								 <option value="-1" selected="selected">{l_country_select}</option>
+								 {country_options}
+							</select>
+						<br />
+						<label for="month">{l_born_on}:</label>
+							<select name="month" id="month" onchange="updateDay('month','JoinForm','year','month','day')" style="width:102px;">
+								{month_options}
+							</select>
+							<select name="day" id="day" style="width:40px;">
+								{day_options}
+							</select>
+							<select name="year" id="year" onchange="updateDay('year','JoinForm','year','month','day')" style="width:60px;">
+								{year_options}
+							</select>
+							<br />
+                        </div>
+                        <br />
+						<input type="button" value="{l_join_now}" onclick="submitJoinForm();" class="button" style=" padding-left: 5px; padding-right: 5px; cursor: pointer; cursor: hand;" /><br /><br />
+						<div id="terms"><input name="privacy_policy" type="checkbox" value="true" id="agree" > <label for="agree"> {l_i_agree} <a href="#" onclick="javascript:OpenWindow('{url_main}info.php?page=term_cond&lang={lang_loaded}','650','400');">{l_terms_and_conditions}</a> {l_and} <a href="#" onclick="javascript:OpenWindow('{url_main}info.php?page=priv_policy&lang={lang_loaded}','650','400','yes');">{l_privacy_policy}</a></label></div>
+					</form>
+                    <!-- end_join -->
+            </td></tr></table>
+</div></div></div></div></div></div></div></div></div>
+
+{footer}

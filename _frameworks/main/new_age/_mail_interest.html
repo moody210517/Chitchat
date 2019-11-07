@@ -1,0 +1,212 @@
+
+<script type="text/javascript">
+function submitInterestsForm(action) {
+	var form = document.forms['InterestsForm'];
+	if(action == "add")
+	{
+		if (!isChecked(form['id[]'])) {
+			alert("{l_nothing}");
+			return;
+		}
+		if (!isOneChecked(form['id[]'])) {
+			alert("{l_select_one}");
+			return;
+		}
+		form.action = "{url_main}mail_favorite_add.php";
+		form.submit();
+	}
+	else if(action == "delete")
+	{
+		if (!isChecked(form['id[]'])) {
+			alert("{l_nothing}");
+			return;
+		}
+		if (!confirm("{l_are_sure}")) {
+			return;
+		}
+		form.action = "{url_main}{url_page}";
+		form.cmd.value = "delete";
+		form.submit();
+	}
+}
+</script>
+<div class="nav_title header_big" style="margin-bottom: -23px; margin-top: 10px;"><img src="{url_tmpl_main}images/mail{selected_folder}.png" class="png" align="absmiddle" width="58" height="48" alt="" /> {folder}</div>
+<table border="0" cellpadding="0" cellspacing="0"><tr><td></td></tr></table>
+<br/>
+<div>
+<form name="InterestsForm" method="get" action="{url_main}{url_page}" style="padding: 0px; margin: 0px;">
+<input type="hidden" name="cmd" value="" />
+<div style="padding-top: 18px; padding-bottom: 6px;">	
+		<table width="100%" cellpadding="0" cellspacing="0" border="0" style="padding-top: 8px; padding-bottom: 8px;">
+			<tr>
+				<td>
+					<table border="0" cellpadding="0" cellspacing="0"><tr><td>
+					<div class="button_border_2">
+					<input type="button" value="{l_add_to_favorites}" onclick="submitInterestsForm('add'); return false;" class="button" style=" padding-left: 5px; padding-right: 5px; cursor: pointer; cursor: hand;" title="{l_add_to_favorites}" onmouseover="window.status='{l_add_to_favorites}'; return true;" onmouseout="window.status=''; return true;" />
+					</div>
+					</td></tr></table>
+				</td>
+				<td style="padding-left: 5px;">
+					<table border="0" cellpadding="0" cellspacing="0"><tr><td>
+					<div class="button_border_2">
+					<input type="button" value="{l_delete}" onclick="submitInterestsForm('delete'); return false;" class="button" style=" padding-left: 5px; padding-right: 5px; cursor: pointer; cursor: hand;" title="{l_delete}" onmouseover="window.status='{l_delete}'; return true;" onmouseout="window.status=''; return true;">
+					</div>
+					</td></tr></table>
+				</td>
+				<td align="right" class="body_little" width="100%">
+					<!-- begin_users_list_pages -->
+					<b>
+					<!-- begin_users_list_first_page -->
+					<a href="{url_main}{url_page}?offset={offset}{params}" class="pri_text_bold">{l_first}</a> | 
+					<!-- end_users_list_first_page -->
+					<!-- begin_users_list_prev_page -->
+					<a href="{url_main}{url_page}?offset={offset}{params}" class="pri_text_bold">{l_prev}</a> |
+					<!-- end_users_list_prev_page -->
+					<!-- begin_users_list_prev_page_off -->
+					{l_prev} |
+					<!-- end_users_list_prev_page_off -->
+					<!-- begin_users_list_next_page -->
+					<a href="{url_main}{url_page}?offset={offset}{params}" class="pri_text_bold">{l_next}</a>
+					<!-- end_users_list_next_page -->
+					<!-- begin_users_list_next_page_off -->
+					{l_next}
+					<!-- end_users_list_next_page_off -->
+					<!-- begin_users_list_last_page -->
+					 | <a href="{url_main}{url_page}?offset={offset}{params}" class="pri_text_bold">{l_last}</a>
+					<!-- end_users_list_last_page -->
+					</b>
+					<!-- end_users_list_pages -->
+				</td>
+			</tr>
+		</table>
+	
+</div>
+<div class="list_button display_none">
+  <table cellspacing="0" cellpadding="0" border="0" width="100%">
+    <tr height="25">
+      <td valign="middle" align="center" class="list_button_text" width="25" style="padding-left:10px;">
+        <input type="checkbox" style="{width=20px;}" onclick="
+			if (this.checked)
+		    {
+		    	for(i=0; i<document.InterestsForm.length; i++)
+		    	{
+		        	if (document.InterestsForm.elements[i].type=='checkbox')
+		        	{
+		        	    document.InterestsForm.elements[i].checked = true;
+		        	}
+		    	}
+		    }
+		    else
+		    	{
+		    	for(i=0; i<document.InterestsForm.length; i++)
+		    	{
+		        	if (document.InterestsForm.elements[i].type=='checkbox')
+		        	{
+		        	    document.InterestsForm.elements[i].checked = false;
+		        	}
+		    	}
+		    }
+		">
+      </td></td>
+      <td valign="middle" align="left" width="85">
+     	<!-- begin_params_none_name --><a href="{url_main}{url_page}?offset={offset}{params_current}" class="sec_text_bold"><b>{l_username}</b></a><!-- end_params_none_name -->
+      	<!-- begin_params_asc_name --><img align="absmiddle" src="{url_tmpl_main}images/asc.png" class="png" >&nbsp;&nbsp;<a href="{url_main}{url_page}?offset={offset}{params_current}" class="sec_text_bold"><b>{l_username}</b></a><!-- end_params_asc_name -->
+      	<!-- begin_params_desc_name --><img align="absmiddle" src="{url_tmpl_main}images/desc.png" class="png">&nbsp;&nbsp;<a href="{url_main}{url_page}?offset={offset}{params_current}" class="sec_text_bold"><b>{l_username}</b></a><!-- end_params_desc_name -->
+      </td>
+      <td valign="middle" align="left" width="230">
+     	<!-- begin_params_none_city --><a href="{url_main}{url_page}?offset={offset}{params_current}" class="sec_text_bold"><b>{l_location}</b></a><!-- end_params_none_city -->
+      	<!-- begin_params_asc_city --><img align="absmiddle" src="{url_tmpl_main}images/asc.png" class="png">&nbsp;&nbsp;<a href="{url_main}{url_page}?offset={offset}{params_current}" class="sec_text_bold"><b>{l_location}</b></a><!-- end_params_asc_city -->
+      	<!-- begin_params_desc_city --><img align="absmiddle" src="{url_tmpl_main}images/desc.png" class="png" >&nbsp;&nbsp;<a href="{url_main}{url_page}?offset={offset}{params_current}" class="sec_text_bold"><b>{l_location}</b></a><!-- end_params_desc_city -->
+      </td>
+      <td valign="middle" align="left" width="73">
+     	<!-- begin_params_none_last_visit --><a href="{url_main}{url_page}?offset={offset}{params_current}" class="sec_text_bold"><b>{l_last_activity}</b></a><!-- end_params_none_last_visit -->
+      	<!-- begin_params_asc_last_visit --><img align="absmiddle" src="{url_tmpl_main}images/asc.png" class="png">&nbsp;&nbsp;<a href="{url_main}{url_page}?offset={offset}{params_current}" class="sec_text_bold"><b>{l_last_activity}</b></a><!-- end_params_asc_last_visit -->
+      	<!-- begin_params_desc_last_visit --><img align="absmiddle" src="{url_tmpl_main}images/desc.png" class="png">&nbsp;&nbsp;<a href="{url_main}{url_page}?offset={offset}{params_current}" class="sec_text_bold"><b>{l_last_activity}</b></a><!-- end_params_desc_last_visit -->
+      </td>
+      <td valign="middle" align="left" width="37">
+     	<!-- begin_params_none_age --><a href="{url_main}{url_page}?offset={offset}{params_current}" class="sec_text_bold"><b>{l_age}</b></a><!-- end_params_none_age -->
+      	<!-- begin_params_asc_age --><img align="absmiddle" src="{url_tmpl_main}images/asc.png" class="png" >&nbsp;&nbsp;<a href="{url_main}{url_page}?offset={offset}{params_current}" class="sec_text_bold"><b>{l_age}</b></a><!-- end_params_asc_age -->
+      	<!-- begin_params_desc_age --><img align="absmiddle" src="{url_tmpl_main}images/desc.png" class="png");">&nbsp;&nbsp;<a href="{url_main}{url_page}?offset={offset}{params_current}" class="sec_text_bold"><b>{l_age}</b></a><!-- end_params_desc_age -->
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div>
+  <table cellpadding="0" cellspacing="0" border="0" width="100%">
+  <!-- begin_users_list_item -->
+  <tr id="row"   class="light">
+    <td width="25" height="29" class="body_little" align="center" style="padding-left:10px;">
+    <input name="id[]" type="checkbox"  style="{width=20px;}" value="{user_id}">
+    </td>
+    <td width="85" align="left" class="body_little">
+	    <a href="{url_main}{url_page}?offset={offset}&display=profile{params}" class="body_little" title="{name}">
+	    <span title="{name}">{name}</span>
+	    </a>
+    </td>
+    <td width="230" class="body_little body_little_subject" align="left">
+        <span title="{city}, {state}, {country}">
+            {city}{location_delimiter_one}{state}{location_delimiter_second}{country}
+        </span>
+    </td>
+    <td width="73" class="body_little" align="left"><span title="{last_visit}">{last_visit}</span></td>
+    <td width="37" class="body_little" align="left"><span title="{age}">{age}</span></td>
+  </tr>
+  <!-- end_users_list_item -->
+  
+<!-- begin_users_list_noitems -->
+<style>
+.display_none {display:none;}
+</style>  
+<!-- end_users_list_noitems -->   
+  
+  </table>
+</div>
+	<div style="padding-top: 8px; padding-bottom: 18px;">
+		<table width="100%" cellpadding="0" cellspacing="0" border="0">
+			<tr>
+				<td>
+					<table border="0" cellpadding="0" cellspacing="0"><tr><td>
+					<div class="button_border_2">
+					<input type="button" value="{l_add_to_favorites}" onclick="submitInterestsForm('add'); return false;" class="button" style=" padding-left: 5px; padding-right: 5px; cursor: pointer; cursor: hand;" title="{l_add_to_favorites}" onmouseover="window.status='{l_add_to_favorites}'; return true;" onmouseout="window.status=''; return true;">
+					</div>
+					</td></tr></table>
+				</td>
+				<td style="padding-left: 5px;">
+					<table border="0" cellpadding="0" cellspacing="0"><tr><td>
+					<div class="button_border_2">
+					<input type="button" value="{l_delete}" onclick="submitInterestsForm('delete'); return false;" class="button" style=" padding-left: 5px; padding-right: 5px; cursor: pointer; cursor: hand;" title="{l_delete}" onmouseover="window.status='{l_delete}'; return true;" onmouseout="window.status=''; return true;">
+					</div>
+					</td></tr></table>
+				</td>
+				<td align="right" class="body_little" width="100%">
+					<!-- begin_users_list_pages -->
+					<b>
+					<!-- begin_users_list_first_page -->
+					<a href="{url_main}{url_page}?offset={offset}{params}" class="pri_text_bold">{l_first}</a> | 
+					<!-- end_users_list_first_page -->
+					<!-- begin_users_list_prev_page -->
+					<a href="{url_main}{url_page}?offset={offset}{params}" class="pri_text_bold">{l_prev}</a> |
+					<!-- end_users_list_prev_page -->
+					<!-- begin_users_list_prev_page_off -->
+					{l_prev} |
+					<!-- end_users_list_prev_page_off -->
+					<!-- begin_users_list_next_page -->
+					<a href="{url_main}{url_page}?offset={offset}{params}" class="pri_text_bold">{l_next}</a>
+					<!-- end_users_list_next_page -->
+					<!-- begin_users_list_next_page_off -->
+					{l_next}
+					<!-- end_users_list_next_page_off -->
+					<!-- begin_users_list_last_page -->
+					 | <a href="{url_main}{url_page}?offset={offset}{params}" class="pri_text_bold">{l_last}</a>
+					<!-- end_users_list_last_page -->
+					</b>
+					<!-- end_users_list_pages -->
+				</td>
+			</tr>
+		</table>
+	</div>
+</form>
+</div>
+	</div>
+<div class="userinfo-links">

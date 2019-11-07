@@ -1,0 +1,587 @@
+{header}
+
+<style>
+.padding-right {
+	padding-right: 5px;
+}
+</style>
+
+<div class="wrapper-wide">
+<div class="userinfo-c-wide">
+	<div class="userinfo font_12px" >
+<script Language="JavaScript" type="text/javascript">
+  var blockSubmission = false;
+  function removeSubmissionBlock() {
+    blockSubmission = false;
+  }
+  function isSubmissionAllowed() {
+    if(blockSubmission){
+       return false;
+    }
+    return;
+   }
+  document.onclick = isSubmissionAllowed;
+  document.onkeydown = isSubmissionAllowed;
+  function onValidateadvsearch() {
+    var form = document.forms['advsearch'];
+    // "search_name" field validation.
+    <!-- begin_search_saved_js -->
+    if (!(validateMaxLength(form['search_name'], '{l_search_name}','50'))) {
+      removeSubmissionBlock();
+      return false;
+    }
+    <!-- end_search_saved_js -->
+    return true;
+
+  }
+  function validateadvsearch() {
+    blockSubmission = true;
+     if (typeof beforeadvsearchValidation != 'undefined') {
+       beforeadvsearchValidation();
+    }
+    var validated = onValidateadvsearch();
+    if (validated && (typeof uponSuccessfuladvsearchValidation != 'undefined')) {
+      validated = uponSuccessfuladvsearchValidation();
+    }
+    else if (!validated && (typeof uponUnsuccessfuladvsearchValidation != 'undefined')) {
+      uponUnsuccessfuladvsearchValidation();
+    }
+    if (!validated) {
+      removeSubmissionBlock();
+    }
+    return validated;
+ }
+    function submitadvsearch()
+	{
+        if (validateadvsearch()) {
+            if ($('#save_search').prop('checked')) {
+                $.post('ajax.php', {cmd: 'save_search', name: $('#search_name').val()},
+                        function(response){
+                            if (response > 0) {
+                                if (confirm('{l_have_saved_search}')) {
+                                   document.advsearch.submit();
+                                } else {
+                                   $('#search_name').focus();
+                                }
+                            } else {
+                                document.advsearch.submit();
+                            }
+               });
+               removeSubmissionBlock();
+               return false;
+            } else {
+              document.advsearch.submit();
+            }
+        }
+	}
+	function resetLocation(){
+		document.advsearch.city.disabled = 'true';
+		document.advsearch.state.disabled = 'true';
+		document.advsearch.country.disabled = 'true';
+		document.advsearch.cmd.value = 'location';
+		submitForm(document.advsearch, '');
+	}
+</script>
+<form  name="advsearch" method="GET" action="{url_main}search_results.php" style="padding: 0px; margin: 0px;">
+	<input type="hidden" name="cmd" value="">
+{search}
+
+					<!-- Required Criteria -->
+					<div  class="header_big" style="padding-top:30px; padding-bottom:15px;">
+                    <img src="{url_tmpl_main}images/kdvi.png" class="png" align="absmiddle" alt="">
+                    {l_criteria}</div>
+
+					<div class="advsearch list_view1_alt">
+						<table cellpadding="0" cellspacing="0" border="0"><tr>
+							<td  width="164" class="sec_text_bold" style="padding-left: 12px"><label for="AGE_RANGE"><b>{l_search_registration_date}</b></label></td>
+							<td class="body_text">
+							<table class="register-date">
+                                <tr>
+                                    <td>{l_from}&nbsp;</td>
+                                    <td class="padding-right">
+										<select name="month" id="month" style="width:100px;" onchange="updateDay('month','advsearch','year','month','day')">{month_options}</select></td><td class="padding-right"><select style="width:42px;" name="day" id="day">{day_options}</select></td><td><select style="width:58px;" name="year" id="year" onchange="updateDay('year','advsearch','year','month','day')">{year_options}</select></td>
+                                    <td>&nbsp;{l_to}&nbsp;</td>
+                                    <td class="padding-right">
+										<select name="month_to" id="month_to" style="width:100px;" onchange="updateDay('month_to','advsearch','year_to','month_to','day_to')">{month_options_to}</select></td><td class="padding-right"><select style="width:42px;" name="day_to" id="day_to">{day_options_to}</select></td><td><select style="width:58px;" name="year_to" id="year_to" onchange="updateDay('year_to','advsearch','year_to','month_to','day_to')">{year_options_to}</select></td>
+
+                                </tr>
+                            </table>
+                            </td>
+						</tr></table>
+					</div>
+
+					<div class="advsearch list_view2_alt">
+						<table cellpadding="0" cellspacing="0" border="0"><tr>
+							<td  width="164" class="sec_text_bold" style="padding-left: 12px"><label for="AGE_RANGE"><b>{l_age_range}</b></label></td>
+							<td class="body_text">
+							<table>
+                                <tr>
+                                    <td>{l_from}&nbsp;</td>
+                                    <td><select name="p_age_from" style="width:48px;">{p_age_from_options}</select></td>
+                                    <td>&nbsp;{l_to}&nbsp;</td>
+                                    <td><select name="p_age_to" style="width:48px;">{p_age_to_options}</select></td>
+                                    <td>&nbsp;{l_years_old}</td>
+                                </tr>
+                            </table>
+                            </td>
+						</tr></table>
+					</div>
+                    <!-- begin_p_orientations -->
+					<div class="advsearch list_view1_alt">
+						<table cellpadding="0" cellspacing="0" border="0"><tr>
+						<td  width="164" class="sec_text_bold" style="padding-left: 12px"><b>{l_orientation}</b></td>
+						<td>
+							<table cellpadding="0" cellspacing="0" border="0"><tr>
+							<!-- begin_p_orientation -->
+								<td width=22 class="body_text" style="padding-bottom:5px;"><input style="width:13px; height:13px;"  name="p_orientation[]" id="orien_t{id}" type="checkbox" value="{id}" {checked}></td>
+								<td width="200" class="body_text" style="padding-bottom:5px;"><label class="bot_bor2" for="orien_t{id}">{title}</label></td>
+								<!-- begin_p_orientation_column -->
+								</tr><tr>
+								<!-- end_p_orientation_column -->
+							<!-- end_p_orientation -->
+							</tr></table>
+						</td>
+						</tr></table>
+					</div>
+					<!-- end_p_orientations -->
+
+					<!-- begin_p_relations -->
+					<div class="advsearch list_view2_alt">
+						<table cellpadding="0" cellspacing="0" border="0"><tr>
+						<td  width="164" class="sec_text_bold" style="padding-left: 12px"><b>{l_relationship}</b></td>
+						<!-- begin_p_relation -->
+							<td style="padding-right:5px;" class="body_text"><input name="p_relation[]"  style="width:13px; height:13px;" id="rel_t{id}" type="checkbox" value="{id}" {checked}></td>
+							<td style="padding-right:12px;" class="body_text"><label class="bot_bor2" for="rel_t{id}">{title}</td>
+							<!-- begin_p_relation_column -->
+							<!-- end_p_relation_column -->
+						<!-- end_p_relation -->
+						</tr></table>
+					</div>
+					<!-- end_p_relations -->
+                    <!-- begin_couples -->
+                    <div class="advsearch list_view1_alt">
+						<table cellpadding="0" cellspacing="0" border="0"><tr>
+							<td  width="164" class="sec_text_bold" style="padding-left: 12px;"><b>{l_couples_only}</b></td>
+							<td class="body_text" style="padding-right: 6px;"><input type="checkbox" style="width:13px; height:13px;" name="couple" {couple_checked} id="couple" value="1"></td>
+							<td class="body_text" style="padding-right: 6px;"></td>
+						</tr></table>
+					</div>
+                    <!-- end_couples -->
+
+
+<div class="advsearch list_view1_alt" style="margin-top:-15px;">
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td colspan="2" class='body_text' style="padding-top: 11px; padding-bottom: 5px; padding-right:105px;" align="right">
+	<a href="javascript:resetLocation();" class="pri_little_bold">{l_reset_to_my}</a></td></tr>
+<tr><td width="164" rowspan="3" valign="top" class="body_text" style="padding-left: 12px;">
+	<span class="sec_text_bold"><b>{l_location}</b></span>
+</td><td height="22" style=" vertical-align:top !important;">
+	<select style="width:400px;" name="country" onchange="show_load_animation(1); xajax_states(country.value)">
+	<option value="0">{l_select_all}</option>
+	{country_options}
+	</select>
+</td></tr>
+<tr><td height="22" style=" vertical-align:top !important;">
+	<select name="state" id="state" onchange="show_load_animation(2); xajax_cities(state.value)" style="width:400px;">
+	<option value="0">{l_select_all}</option>
+	{state_options}
+	</select>&nbsp;<img id="load_animation1" style="visibility:hidden;" src="{url_tmpl_main}images/load_animation.gif">
+</td></tr>
+<tr><td height="22" style=" vertical-align:top !important;">
+	<select name="city" id="city" style="width:400px;">
+	<option value="0">{l_select_all}</option>
+	{city_options}
+	</select>&nbsp;<img id="load_animation2" style="visibility:hidden;" src="{url_tmpl_main}images/load_animation.gif">
+</td></tr>
+        <tr>
+            <td width="164" valign="top" class="body_text" style="padding-left: 12px;">
+                <span class="sec_text_bold"><b>{l_radius}</b></span>
+            </td>
+            <td height="22">
+                <select name="radius" id="radius" style="width:400px;">
+                {radius_options}
+                </select>
+            </td>
+        </tr>
+</table>
+
+</div>
+<div class="advsearch list_view2_alt">
+	<table cellpadding="0" cellspacing="0" border="0" width="100%"><tr>
+		<td  width="164" class="sec_text_bold" style="padding-left:12px;"><label for="KEYWORD"><b>{l_keyword}</b></label></td>
+		<td class="body_text" style="padding-right:100px;"><input type="text" name="keyword" value='{keyword}' style="width: 386px;" maxlength="200"></td>
+	</tr></table>
+</div>
+<!-- begin_with_photo -->
+<div class="advsearch list_view1_alt">
+	<table cellpadding="0" cellspacing="0" border="0"><tr>
+		<td  width="164" class="sec_text_bold" style="padding-left: 12px;"><b>{l_with_photo}</b></td>
+		<td class="body_text" style="padding-right: 6px;"><input type="checkbox" id="with_p" style="width:13px; height:13px;" name="photo" {photo_checked} value="1"></td>
+		<td class="body_text" style="padding-right: 6px;"></td>
+	</tr></table>
+</div>
+<!-- end_with_photo -->
+<!-- begin_search_field_user_status_enabled -->
+<div class="advsearch list_view2_alt">
+	<table cellpadding="0" cellspacing="0" border="0" width="100%"><tr>
+		<td  width="164" class="sec_text_bold" style="padding-left:12px; white-space:nowrap;"><label for="MEM_STATUS"><b>{l_member_status}</b></label></td>
+		<td style="padding-right:97px;">
+		<select name="status" style="width:400px;">
+		{status_options}
+		</select></td>
+	</tr></table>
+</div>
+<!-- end_search_field_user_status_enabled -->
+<!-- End Required Criteria -->
+<div style="height: 25px;"></div>
+
+<script type="text/javascript">
+function switchdiv(div1_id, div2_id, form)
+{
+	if (document.getElementById)	{
+	    if(!document.getElementById(div1_id)) return ;
+	    if(!(document.getElementById(div1_id).style)) return ;
+	    if(!(document.getElementById(div1_id).style.display)) return ;
+
+		var state1 = document.getElementById(div1_id).style.display;
+		if(state1=="none") {
+        		document.getElementById(div1_id).style.display="block";
+        		document.getElementById(div2_id).style.display="none";
+                if (form != null)
+                {
+                   form[div1_id].value='true';
+                   form[div2_id].value='false';
+                 }
+	     }
+	    if(state1=="block") {
+        		document.getElementById(div2_id).style.display="block";
+        		document.getElementById(div1_id).style.display="none";
+                if (form != null)
+                {
+                   form[div1_id].value='false';
+                   form[div2_id].value='true';
+                 }
+	     }
+	}
+	else if (document.all)	{
+	    if(!document.all[div1_id]) return ;
+	    if(!(document.all[div1_id].style)) return ;
+	    if(!(document.all[div1_id].style.display)) return ;
+
+		var state1 = document.all[div1_id].style.display;
+		if(state1=="none") {
+		        document.all[div1_id].style.display = "block";
+		        document.all[div2_id].style.display = "none";
+                if (form != null)
+                {
+                   form[div1_id].value='true';
+                   form[div2_id].value='false';
+                 }
+		}
+		if(state1=="block") {
+        		document.getElementById(div1_id).style.display="none";
+        		document.getElementById(div2_id).style.display="block";
+                if (form != null)
+                {
+                   form[div1_id].value='false';
+                   form[div2_id].value='true';
+                 }
+	     }
+    }
+
+}
+$(document).ready(function(){
+$('[id ^= selected_sel]').parent().width('170px');
+});
+
+</script>
+
+<div class="no_border">
+    <!-- begin_fields_criteria -->
+	<div  class="header_big" style="padding-top:30px; padding-bottom:15px;">
+        <img src="{url_tmpl_main}images/kdvi.png" class="png" align="absmiddle" alt="">
+		{l_optional_criteria}
+	</div>
+
+    <!-- begin_fields_checks_1 -->
+    <!-- begin_p_from_to_1 -->
+        <div id="{name_from}-off" class="list_view1" style="display:block; height: 29px; width: 660px; text-align: left;">
+		<table cellpadding="0" cellspacing="0" border="0"><tr>
+			<td  width="7" class="body_little" style="padding-left: 5px; padding-right: 5px;"><img src="{url_tmpl_main}images/icon_arrow_closed.gif" border=0 /></td>
+			<td class="body_little"><span class="ter_text_bold"><label for="PARTNER">{field}</label></span> - <a href="javascript:switchdiv('{name_from}-off','{name_from}-on');" class="body_little"><b>{l_show} {field}</b></a></td>
+		</tr></table>
+	</div>
+	<div id="{name_from}-on" class="list_view2" style="display:none;  width: 660px; text-align: left; padding-bottom: 8px;">
+		<table cellpadding="0" cellspacing="0" border="0">
+                <tr>
+			<td width="3" class="body_little" rowspan="4" valign="top" style="padding-left: 5px; padding-right: 5px; padding-top: 10px;"><img src="{url_tmpl_main}images/icon_arrow_open.gif" border=0 /></td>
+			<td width="15%" valign="top" rowspan="4" style="padding-top: 7px;"><span class="ter_text_bold">{field}</span></td>
+			<td width="24%" class="body_little" style="padding-top: 15px;">&nbsp;</td>
+			<td width="24%" class="body_little" style="padding-top: 15px;">&nbsp;</td>
+			<td width="24%" class="body_little" style="padding-top: 15px;">&nbsp;</td>
+			<td style="padding-right: 10px;" width="10%" rowspan="4" valign="bottom" align="right"><a href="javascript:switchdiv('{name_from}-on','{name_from}-off');" class="body_little" style="white-space:nowrap; position:relative; top:5px;">{l_hide} {field}</a></td>
+		</tr>
+		<tr>
+                <td valign="top"  style="padding-left: 42px;" class="body_text">
+                <table>
+                     <tr>
+                         <td style="padding-right:15px;">{l_from}&nbsp;</td>
+                         <td height="22" style="vertical-align:top !important;">
+                             <select id="sel_from_{name_from}" name="{name_from}" style="width: 160px;>
+                                 <option selected value="0">{l_doesnt_matter}</option>
+                                 {from_options}
+                             </select>
+                         </td>
+                      </tr>
+                 </table>
+		</td>
+                <td valign="top" style=" padding-left: 20px;" class="body_text">
+                 <table>
+                     <tr>
+                         <td style="padding-right:15px;" style="text-align:center">{l_to}</td>
+                         <td style="vertical-align:top !important;">
+                             <select id="sel_to_{name_from}" class="iesearchselect" name="{name_to}" style="width: 160px; margin-left: 10px;">
+                                 <option selected value="0">{l_doesnt_matter}</option>
+                                 {to_options}
+                             </select>
+                         </td>
+                     </tr>
+                 </table>
+		</td>
+		</tr>
+		</table>
+	</div>
+ 	<!-- end_p_from_to_1 -->
+	<!-- begin_checks_1 -->
+	<div id="{name}-off" class="list_view1" style="display:block; height: 29px; width: 660px; text-align: left;">
+		<table cellpadding="0" cellspacing="0" border="0"><tr>
+			<td  width="7" class="body_little" style="padding-left: 5px; padding-right: 5px;"><img src="{url_tmpl_main}images/icon_arrow_closed.gif" border=0 /></td>
+			<td class="body_little"><span class="ter_text_bold"><label for="PARTNER">{field}</label></span> - <a href="javascript:switchdiv('{name}-off','{name}-on');" class="body_little"><b>{l_show} {field}</b></a></td>
+		</tr></table>
+	</div>
+	<div id="{name}-on" class="list_view2" style="display:none;  width: 660px; text-align: left; padding-bottom: 8px;">
+		<table cellpadding="0" cellspacing="0" border="0"><tr>
+			<td width="3" class="body_little" rowspan="4" valign="top" style="padding-left: 5px; padding-right: 5px; padding-top: 10px;"><img src="{url_tmpl_main}images/icon_arrow_open.gif" border=0 /></td>
+			<td width="15%" valign="top" rowspan="4" style="padding-top: 7px;"><span class="ter_text_bold">{field}</span></td>
+			<td width="24%" class="body_little" style="padding-top: 15px;">&nbsp;</td>
+			<td width="24%" class="body_little" style="padding-top: 15px;">&nbsp;</td>
+			<td width="24%" class="body_little" style="padding-top: 15px;">&nbsp;</td>
+			<td style="padding-right: 10px;" width="10%" rowspan="4" valign="bottom" align="right"><a href="javascript:switchdiv('{name}-on','{name}-off');" class="body_little" style="white-space:nowrap; position:relative; top:5px;">{l_hide} {field}</a></td>
+		</tr>
+		<tr>
+		<td valign="top"  style="padding-bottom: 13px;" class="body_little">
+		<!-- begin_check_1 -->
+		<table>
+			<tr>
+			<td><input name="{name}[]" {checked} type="checkbox" id="param_t_{name}_{id}" value="{id}" /></td>
+			<td style="padding-left:5px;"><label for="param_t_{name}_{id}" class="bot_bor3">{title}</label></td>
+			</tr>
+		</table>
+		<!-- begin_check_column_1 -->
+		</td><td valign="top" style="padding-bottom: 13px;" class="body_little">
+		<!-- end_check_column_1 -->
+		<!-- end_check_1 -->
+		</td>
+		</tr>
+		</table>
+	</div>
+	<!-- end_checks_1 -->
+    <!-- end_fields_checks_1 -->
+    <!-- begin_fields_checks_2 -->
+        <!-- begin_p_from_to_2 -->
+        <div id="{name_from}-off" class="list_view1" style="display:block; height: 29px; width: 660px; text-align: left;">
+		<table cellpadding="0" cellspacing="0" border="0"><tr>
+			<td  width="7" class="body_little" style="padding-left: 5px; padding-right: 5px;"><img src="{url_tmpl_main}images/icon_arrow_closed.gif" border=0 /></td>
+			<td class="body_little"><span class="ter_text_bold"><label for="PARTNER">{field}</label></span> - <a href="javascript:switchdiv('{name_from}-off','{name_from}-on');" class="body_little"><b>{l_show} {field}</b></a></td>
+		</tr></table>
+	</div>
+	<div id="{name_from}-on" class="list_view2" style="display:none;  width: 660px; text-align: left; padding-bottom: 8px;">
+		<table cellpadding="0" cellspacing="0" border="0">
+                <tr>
+			<td width="3" class="body_little" rowspan="4" valign="top" style="padding-left: 5px; padding-right: 5px; padding-top: 10px;"><img src="{url_tmpl_main}images/icon_arrow_open.gif" border=0 /></td>
+			<td width="15%" valign="top" rowspan="4" style="padding-top: 7px;"><span class="ter_text_bold">{field}</span></td>
+			<td width="24%" class="body_little" style="padding-top: 15px;">&nbsp;</td>
+			<td width="24%" class="body_little" style="padding-top: 15px;">&nbsp;</td>
+			<td width="24%" class="body_little" style="padding-top: 15px;">&nbsp;</td>
+			<td style="padding-right: 10px;" width="10%" rowspan="4" valign="bottom" align="right"><a href="javascript:switchdiv('{name_from}-on','{name_from}-off');" class="body_little" style="white-space:nowrap; position:relative; top:5px;">{l_hide} {field}</a></td>
+		</tr>
+		<tr>
+                <td valign="top"  style="padding-left: 42px;" class="body_text">
+                <table>
+                     <tr>
+                         <td style="padding-right:15px;">{l_from}&nbsp;</td>
+                         <td height="22" style="vertical-align:top !important;">
+                             <select id="sel_from_{name_from}" name="{name_from}" style="width: 160px;>
+                                 <option selected value="0">{l_doesnt_matter}</option>
+                                 {from_options}
+                             </select>
+                         </td>
+                      </tr>
+                 </table>
+		</td>
+                <td valign="top" style=" padding-left: 20px;" class="body_text">
+                 <table>
+                     <tr>
+                         <td style="padding-right:15px;" style="text-align:center">{l_to}</td>
+                         <td style="vertical-align:top !important;">
+                             <select id="sel_to_{name_from}" class="iesearchselect" name="{name_to}" style="width: 160px; margin-left: 10px;">
+                                 <option selected value="0">{l_doesnt_matter}</option>
+                                 {to_options}
+                             </select>
+                         </td>
+                     </tr>
+                 </table>
+		</td>
+		</tr>
+		</table>
+	</div>
+ 	<!-- end_p_from_to_2 -->
+	<!-- begin_checks_2 -->
+	<div id="{name}-off" class="list_view1" style="display:block; height: 29px; width: 660px; text-align: left;">
+		<table cellpadding="0" cellspacing="0" border="0"><tr>
+			<td  width="7" class="body_little" style="padding-left: 5px; padding-right: 5px;"><img src="{url_tmpl_main}images/icon_arrow_closed.gif" border=0 /></td>
+			<td class="body_little"><span class="ter_text_bold"><label for="PARTNER">{field}</label></span> - <a href="javascript:switchdiv('{name}-off','{name}-on');" class="body_little"><b>{l_show} {field}</b></a></td>
+		</tr></table>
+	</div>
+	<div id="{name}-on" class="list_view2" style="display:none;  width: 660px; text-align: left; padding-bottom: 8px;">
+		<table cellpadding="0" cellspacing="0" border="0"><tr>
+			<td width="3" class="body_little" rowspan="4" valign="top" style="padding-left: 5px; padding-right: 5px; padding-top: 10px;"><img src="{url_tmpl_main}images/icon_arrow_open.gif" border=0 /></td>
+			<td width="15%" valign="top" rowspan="4" style="padding-top: 7px;"><span class="ter_text_bold">{field}</span></td>
+			<td width="24%" class="body_little" style="padding-top: 15px;">&nbsp;</td>
+			<td width="24%" class="body_little" style="padding-top: 15px;">&nbsp;</td>
+			<td width="24%" class="body_little" style="padding-top: 15px;">&nbsp;</td>
+			<td style="padding-right: 10px;" width="10%" rowspan="4" valign="bottom" align="right"><a href="javascript:switchdiv('{name}-on','{name}-off');" class="body_little" style="white-space:nowrap; position:relative; top:5px;">{l_hide} {field}</a></td>
+		</tr>
+		<tr>
+		<td valign="top"  style="padding-bottom: 13px;" class="body_little">
+		<!-- begin_check_2 -->
+		<table>
+			<tr>
+			<td><input name="{name}[]" {checked} type="checkbox" id="param_t_{name}_{id}" value="{id}" /></td>
+			<td style="padding-left:5px;"><label for="param_t_{name}_{id}" class="bot_bor3">{title}</label></td>
+			</tr>
+		</table>
+		<!-- begin_check_column_2 -->
+		</td><td valign="top" style="padding-bottom: 13px;" class="body_little">
+		<!-- end_check_column_2 -->
+		<!-- end_check_2 -->
+		</td>
+		</tr>
+		</table>
+	</div>
+	<!-- end_checks_2 -->
+    <!-- end_fields_checks_2 -->
+    <!-- begin_fields_checks_3 -->
+    <!-- begin_p_from_to_3 -->
+        <div id="{name_from}-off" class="list_view1" style="display:block; height: 29px; width: 660px; text-align: left;">
+		<table cellpadding="0" cellspacing="0" border="0"><tr>
+			<td  width="7" class="body_little" style="padding-left: 5px; padding-right: 5px;"><img src="{url_tmpl_main}images/icon_arrow_closed.gif" border=0 /></td>
+			<td class="body_little"><span class="ter_text_bold"><label for="PARTNER">{field}</label></span> - <a href="javascript:switchdiv('{name_from}-off','{name_from}-on');" class="body_little"><b>{l_show} {field}</b></a></td>
+		</tr></table>
+	</div>
+	<div id="{name_from}-on" class="list_view2" style="display:none;  width: 660px; text-align: left; padding-bottom: 8px;">
+		<table cellpadding="0" cellspacing="0" border="0">
+                <tr>
+			<td width="3" class="body_little" rowspan="4" valign="top" style="padding-left: 5px; padding-right: 5px; padding-top: 10px;"><img src="{url_tmpl_main}images/icon_arrow_open.gif" border=0 /></td>
+			<td width="15%" valign="top" rowspan="4" style="padding-top: 7px;"><span class="ter_text_bold">{field}</span></td>
+			<td width="24%" class="body_little" style="padding-top: 15px;">&nbsp;</td>
+			<td width="24%" class="body_little" style="padding-top: 15px;">&nbsp;</td>
+			<td width="24%" class="body_little" style="padding-top: 15px;">&nbsp;</td>
+			<td style="padding-right: 10px;" width="10%" rowspan="4" valign="bottom" align="right"><a href="javascript:switchdiv('{name_from}-on','{name_from}-off');" class="body_little" style="white-space:nowrap; position:relative; top:5px;">{l_hide} {field}</a></td>
+		</tr>
+		<tr>
+                <td valign="top"  style="padding-left: 42px;" class="body_text">
+                <table>
+                     <tr>
+                         <td style="padding-right:15px;">{l_from}&nbsp;</td>
+                         <td height="22" style="vertical-align:top !important;">
+                             <select id="sel_from_{name_from}" name="{name_from}" style="width: 160px;>
+                                 <option selected value="0">{l_doesnt_matter}</option>
+                                 {from_options}
+                             </select>
+                         </td>
+                      </tr>
+                 </table>
+		</td>
+                <td valign="top" style=" padding-left: 20px;" class="body_text">
+                 <table>
+                     <tr>
+                         <td style="padding-right:15px;" style="text-align:center">{l_to}</td>
+                         <td style="vertical-align:top !important;">
+                             <select id="sel_to_{name_from}" class="iesearchselect" name="{name_to}" style="width: 160px; margin-left: 10px;">
+                                 <option selected value="0">{l_doesnt_matter}</option>
+                                 {to_options}
+                             </select>
+                         </td>
+                     </tr>
+                 </table>
+		</td>
+		</tr>
+		</table>
+	</div>
+ 	<!-- end_p_from_to_3 -->
+	<!-- begin_checks_3 -->
+	<div id="{name}-off" class="list_view1" style="display:block; height: 29px; width: 660px; text-align: left;">
+		<table cellpadding="0" cellspacing="0" border="0"><tr>
+			<td  width="7" class="body_little" style="padding-left: 5px; padding-right: 5px;"><img src="{url_tmpl_main}images/icon_arrow_closed.gif" border=0 /></td>
+			<td class="body_little"><span class="ter_text_bold"><label for="PARTNER">{field}</label></span> - <a href="javascript:switchdiv('{name}-off','{name}-on');" class="body_little"><b>{l_show} {field}</b></a></td>
+		</tr></table>
+	</div>
+	<div id="{name}-on" class="list_view2" style="display:none;  width: 660px; text-align: left; padding-bottom: 8px;">
+		<table cellpadding="0" cellspacing="0" border="0"><tr>
+			<td width="3" class="body_little" rowspan="4" valign="top" style="padding-left: 5px; padding-right: 5px; padding-top: 10px;"><img src="{url_tmpl_main}images/icon_arrow_open.gif" border=0 /></td>
+			<td width="15%" valign="top" rowspan="4" style="padding-top: 7px;"><span class="ter_text_bold">{field}</span></td>
+			<td width="24%" class="body_little" style="padding-top: 15px;">&nbsp;</td>
+			<td width="24%" class="body_little" style="padding-top: 15px;">&nbsp;</td>
+			<td width="24%" class="body_little" style="padding-top: 15px;">&nbsp;</td>
+			<td style="padding-right: 10px;" width="10%" rowspan="4" valign="bottom" align="right"><a href="javascript:switchdiv('{name}-on','{name}-off');" class="body_little" style="white-space:nowrap; position:relative; top:5px;">{l_hide} {field}</a></td>
+		</tr>
+		<tr>
+		<td valign="top"  style="padding-bottom: 13px;" class="body_little">
+		<!-- begin_check_3 -->
+		<table>
+			<tr>
+			<td><input name="{name}[]" {checked} type="checkbox" id="param_t_{name}_{id}" value="{id}" /></td>
+			<td style="padding-left:5px;"><label for="param_t_{name}_{id}" class="bot_bor3">{title}</label></td>
+			</tr>
+		</table>
+		<!-- begin_check_column_3 -->
+		</td><td valign="top" style="padding-bottom: 13px;" class="body_little">
+		<!-- end_check_column_3 -->
+		<!-- end_check_3 -->
+		</td>
+		</tr>
+		</table>
+	</div>
+	<!-- end_checks_3 -->
+    <!-- end_fields_checks_3 -->
+    <!-- end_fields_criteria -->
+<!-- begin_search_saved -->
+	<div style="height: 12px;"></div>
+
+	<div class="advsearch list_view1_alt">
+		<table cellpadding="0" cellspacing="0" border="0"><tr>
+			<td width="164" class="sec_text_bold" style="padding-left: 12px">{l_save_search}</td>
+			<td>
+			<input id="save_search" type="checkbox" value="1" name="save_search" {save_checked} class="body" style="padding-left:3px; padding-right:6px;"></td>
+			<td class="body_text" style="padding:0 5px;">
+			<label for="save_search">{l_save_as}</label>
+            </td>
+            <td><input id="search_name" type="text" name="search_name" placeholder="{l_my_search}" style="width: 160px;" /></td>
+		</tr></table>
+	</div>
+<!-- end_search_saved -->
+    </div>
+	<br />
+	<table border="0" cellpadding="0" cellspacing="0"><tr><td><div class="button_border_1"><input type="button" value="{l_start_search}" onClick=" submitadvsearch(); return false;" class="button" style="width: 189px; padding-left: 5px; padding-right: 5px; cursor: pointer; cursor: hand;" title="{l_start_search}" onMouseOver="window.status='{l_start_search}'; return true;" onMouseOut="window.status=''; return true;"></div></td></tr></table>
+
+
+</form>
+
+</div>
+<div class="userinfo-links-wide"></div>
+</div>
+</div>
+{footer}

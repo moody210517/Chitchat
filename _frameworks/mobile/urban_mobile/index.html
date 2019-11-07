@@ -1,0 +1,64 @@
+{header}
+<script>
+$(function(){
+    /*$('<img src="'+url_tmpl_mobile_images+'btns.png"/>').load(function(){
+        $('#block_btn_index').css({opacity:'1', transition:'1s .2s linear'});
+    })*/
+    var $loader=$('#loader_page').show(),$banner=$('.banner_footer'),$footer=$('.footer'),b=$footer.height()+5;
+    if($banner[0]){
+        b +=3;
+        $('.footer_mobile_index').css('bottom', b+'px');
+    }
+    $('.wrapper').css('margin-bottom', '-'+b+'px');
+
+    $(window).load(function(){
+        $loader.css({opacity:'0', transition:'0.2s linear'}).oneTransEnd(function(){$loader.remove()});
+        $('#map_index, .bl_btn_app, #block_btn_index, .banner_footer').css({opacity:'1', transition:'opacity 1s .2s linear'});
+    });
+})
+</script>
+<div class="block_map_index">
+<div id="map_index" class="map_index">
+<!-- begin_ip_map -->
+    <div class="map">
+        <!-- begin_ip_map_user -->
+        <div id="ip_map_frame_{ip_map_user_id}" class="map_photo pos{ip_map_user_num}">
+            <div class="photo">
+                <div class="frame">
+                    <img src="{url_files}{ip_map_user_photo_needed}" style="z-index:{ip_map_user_num};"/>
+                </div>
+            </div>
+            <div class="map_photo_shadow"></div>
+        </div>
+        <!-- end_ip_map_user -->
+    </div>
+<!-- end_ip_map -->
+<div class="info_main_txt">{l_chat_with_fun_new_people_share_photos_and_interests_even_date}</div>
+</div>
+
+<!-- begin_btn_download_app -->
+<div class="bl_btn_app">
+    <a target="_blank" class="{btn_download_app_class}" href="{btn_download_app_url}" title="{btn_download_app_title}">
+        <img src="{url_tmpl_mobile}images/icon_btn_{btn_download_app_icon}.png" alt="" />&nbsp;{btn_download_app_title}
+    </a>
+</div>
+<!-- end_btn_download_app -->
+
+<div id="loader_page" class="loader_page">
+        <div class="spinner spinnerw center">
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        <div class="spinner-blade"></div>
+        </div>
+    </div>
+</div>
+{footer}

@@ -1,0 +1,115 @@
+{header}
+{user_menu}
+<script type="text/javascript" src="../_server/jquery/jquery.autosize.js{cache_version_param}"></script>
+<script type="text/javascript" src="../_server/wall.js{cache_version_param}"></script>
+
+<link rel="stylesheet" href="{url_tmpl_mobile}css/wall.css{cache_version_param}" type="text/css" media="all"/>
+<link rel="stylesheet" href="{url_tmpl_mobile}css/home.css{cache_version_param}" type="text/css" media="all"/>
+
+<table class="cnt" cellspacing="0" cellpadding="0"><tr><td>
+
+<!-- begin_wall_profile_info -->
+<div class="wall_profile">
+	<table width="100%" class="ptable" cellspacing="0" cellpadding="0">
+		<tr>
+			<td class="photo">
+				<div>
+					<a href="{url_main}{url_profile}">
+						<img width="42" height="50" src="{url_files}{photo}"/>
+					</a>
+				</div>
+			</td>
+			<td class="info">
+				<table width="100%" class="info" cellspacing="0" cellpadding="0">
+					<tr>
+						<td class="col1">
+							<p class="name"><a href="{url_main}{url_profile}"><b>{name}</b></a>
+							<!-- begin_wall_add_friend -->
+							<a href="{url_main}add_as_friend.php?user_id={user_id}" onclick='return confirm("{l_are_you_sure}")'>
+								<img src="{url_tmpl_mobile}images/wall/feed_add_friend.png" width="16" height="15" class="ico" alt="{l_add_as_friend}" />
+							</a>
+							<!-- end_wall_add_friend -->
+
+							<!-- begin_wall_unfriend -->
+							<a onclick="return confirm('{l_unfriend_this_user}');" href="{url_main}profile_view_friends.php?cmd=delete&delete_{wall_user_id}&redirect=back">
+								<img src="{url_tmpl_mobile}images/wall/feed_already_friends.png" width="20" height="14" class="ico" alt="{l_unfriend}" />
+							</a>
+							<!-- end_wall_unfriend -->
+
+							</p>
+							<p>{l_age}: <b>{age}</b></p>
+							{city_title}, {country_title}</p>
+						</td>
+						<td class="col2">
+							<table class="wall-profile-view-menu" width="100%">
+								{profile_view_menu}
+							</table>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</div>
+<!-- end_wall_profile_info -->
+
+<!-- begin_only_friends_posts_one -->
+<div class="wall-info-load-module"></div>
+
+<table class="tb_feed" width="100%">
+	<tr>
+		<!-- td_main -->
+		<td class="td_main">
+			<!-- begin_wall_add_comment -->
+<textarea id="wall_item_add" placeholder="{l_wall_whats_on_your_mind} {wall_add_other}"></textarea>
+			<!-- end_wall_add_comment -->
+			<div class="feed_tb_cont">
+<script>
+// language items to class via constructor
+wallLangParts = {
+'share' : "{l_share_this_on_your_wall}",
+'shared' : "{l_the_post_successfully_shared_on_your_wall}"
+};
+
+var Wall = new CWall('{wall_user_id}', '{wall_last_post_id}', 500, {wall_comments_preload_count}, wallLangParts);
+Wall.OnlySeeFriends = '{only_see}';
+Wall.loadMoreComments = '{l_load_more_comments}';
+Wall.loadMoreCommentOne = '{l_load_more_comment_one}';
+<!-- begin_wall_updater -->
+Wall.updaterInit();
+<!-- end_wall_updater -->
+</script>
+				<table id="wall_items_table">
+					<tbody>
+
+					{wall_items}
+
+					</tbody>
+				</table>
+<!-- end_only_friends_posts_one -->
+<!-- begin_only_friends_posts_two -->
+<!-- begin_wall_load_old_items -->
+<script>
+Wall.oldItemsExists = true;
+</script>
+				<div class="feed_head_pad wall_load_old_items">
+					<img src="{url_tmpl_mobile}images/load_animation_wall.gif" id="load_animation">
+				</div>
+<!-- end_wall_load_old_items -->
+
+				<div class="feed_empty"></div>
+			</div>
+		</td>
+	</tr>
+</table>
+<!-- end_only_friends_posts_two -->
+
+</td></tr></table>
+
+<!-- begin_wall_history -->
+<script>
+Wall.itemsHistoryLoader();
+</script>
+<!-- end_wall_history -->
+{user_menu}
+{footer}

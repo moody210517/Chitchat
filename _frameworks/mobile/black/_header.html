@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<title>{title}</title>
+	<meta name="description" content="{description}">
+    <meta name="keywords" content="{keywords}">
+<meta name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	{header_favicon}
+	<link rel="stylesheet" href="{url_tmpl_mobile}css/_base.css{cache_version_param}" type="text/css" media="all"/>
+	<!--[if IE]><link rel="stylesheet" href="{url_tmpl_mobile}css/_ie.css{cache_version_param}" type="text/css" media="screen"/><![endif]-->
+	<!--[if lte IE 6]><link rel="stylesheet" href="{url_tmpl_mobile}css/_ie6.css{cache_version_param}" type="text/css"/><![endif]-->
+	<script type="text/javascript" src="../_server/jquery/jquery-last.js{cache_version_param}"></script>
+    <script type="text/javascript" src="../_server/jquery/jquery.location.js{cache_version_param}"></script>
+	<script type="text/javascript" src="../_server/lib.js{cache_version_param}"></script>
+	<script type="text/javascript" src="{url_tmpl_mobile}js/main.js{cache_version_param}"></script>
+	{to_head}
+    <script language="javascript" type="text/javascript">
+        var current_template = '{currnet_load_tmpl}';
+    </script>
+    <script type="text/javascript" src="{url_main}js.php{cache_version_param}&set_template_mobile_runtime={tmpl_loaded}&set_language_mobile_runtime={lang_loaded}"></script>
+    <link rel="stylesheet" type="text/css" href="{url_tmpl_mobile}css/cookiepopup.css{cache_version_param}" />
+    <script type="text/javascript" src="{url_tmpl_mobile}js/cookiepopup.js{cache_version_param}"></script>
+
+</head>
+<body>
+
+
+<div id="wrp">
+
+<div id="hdr">
+	<table class="bg" cellspacing="0" cellpadding="0"><tr><td class="brd"></td><td class="orn"></td><td class="yel"></td><td class="grn"></td><td class="blu"></td><td class="pur"></td></tr></table>
+	<table class="blc" cellspacing="0" cellpadding="0"><tr><td align="center"  style="vertical-align: middle; height: 35px;" id="lgo"><!-- begin_logo_index --><img src="{header_url_logo_mobile}" alt="{title}" title="{title}"/><!-- end_logo_index --><!-- begin_logo --><a href="{url_main}index.php"><img src="{header_url_logo_mobile}" alt="{title}" title="{title}"/></a><!-- end_logo --><!-- begin_logo_home --><a href="{url_main}{url_home_page}"><img src="{header_url_logo_mobile}" alt="{title}" title="{title}"/></a><!-- end_logo_home --></td><td><h1><!-- begin_header_title_link --><a href="{header_title_link}" style="color: #000000;">{l_header_title}</a><!-- end_header_title_link --><!-- begin_header_title -->{l_header_title}<!-- end_header_title --></h1></td></tr></table>
+	<!-- begin_loginform -->
+	<div id="act">[+] <a href="{url_main}join.php">{l_join_now}</a></div>
+	<!-- end_loginform -->
+	<!-- begin_auth_info -->
+	<div id="act" class="ichat"><span id="ichat_status" style="display:none;"></span></div>
+
+<script>
+	mobileNotifyUpdater();
+</script>
+
+	<!-- end_auth_info -->
+</div>

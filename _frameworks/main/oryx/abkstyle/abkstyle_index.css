@@ -1,0 +1,86 @@
+select {visibility:hidden;}
+input[type="text"],input[type="password"],input[type="file"] {visibility:hidden;}
+.ABKText { border:none; vertical-align:middle; margin:0; padding:0;  background:none;}
+*+html .ABKText {margin-left:-7px}
+.ABKTextCenter {height:14px; background:url(img_index/input.png) repeat-x 0 0; padding:3px 0; margin:0 7px; line-height:14px; overflow:hidden;_margin:0 4px;}
+.ABKTextLeft, .ABKTextRight {height:21px; vertical-align:middle;}
+.ABKTextLeft {background:url(img_index/input-left.png) no-repeat 0 0;}
+.ABKTextRight {background:url(img_index/input-right.png) no-repeat 100% 0;}
+
+* html .ABKTextCenter {background: url(img_index/input.gif) repeat;}
+* html .ABKTextLeft {background:url(img_index/input-left.gif) no-repeat;}
+* html .ABKTextRight {background:url(img_index/input-right.gif) no-repeat 100% 0; }
+/*Radio*/
+.ABKRadio {cursor:pointer; width:13px; height:13px; border:1px solid transparent; background:url(img_index/radio.png) no-repeat 0 0; z-index:2; display:inline-block; zoom:1;//display:inline;}
+/*Checkbox*/
+.ABKCheck {cursor:pointer; width:12px; height:12px; border:1px solid transparent; background:url(img_index/checkbox.png) no-repeat 0 0; z-index:2;}
+/*Buttons*/
+.ABKButton {width:auto; height:26px; color:#fff; padding:0 2px; background:url(img_index/button.png) repeat-x 0 0; cursor:pointer; border:none; font:10px/26px Tahoma, Arial, Helvetica, sans-serif; font-weight:bold; text-transform:uppercase; letter-spacing:1px; vertical-align:middle;}
+.ABKButtonLeft, .ABKButtonRight {width:6px; height:26px; vertical-align:middle;}
+.ABKButtonLeft {background:url(img_index/button-left.png) no-repeat 0 0;}
+.ABKButtonRight {background:url(img_index/button-right.png) no-repeat 0 0;}
+/*Textareas*/
+.ABKTextarea {border:none; background:none; font:12px/12px Arial, Helvetica, sans-serif; margin:0; width:100%; height:100px;}
+.ABKTextareaMiddle {border-left:1px solid #44626d; border-right:1px solid #44626d; overflow:hidden; padding:0px 3px 3px 3px;}
+.ABKTextareaTop {height:13px; background: url(img_index/textarea_top.png) repeat-x; margin:0 6px;}
+.ABKTextareaTopLeft {background: url(img_index/textarea_top_left.png) top left no-repeat; width:100%;}
+.ABKTextareaTopRight {background: url(img_index/textarea_top_right.png) top right no-repeat;}
+.ABKTextareaBottom {height:5px; border-bottom:1px solid #44626d; margin:0 6px;} 
+.ABKTextareaBottomLeft {height:5px; background: url(img_index/textarea_bottom_left.png) bottom left no-repeat;} 
+.ABKTextareaBottomRight {height:5px; background: url(img_index/textarea_bottom_right.png) bottom right no-repeat;} 
+* html .ABKTextareaTopLeft {background: url(img_index/textarea_top_left.gif) top left no-repeat;}
+* html .ABKTextareaTopRight {background: url(img_index/textarea_top_right.gif) top right no-repeat; }
+* html .ABKTextareaBottomLeft {background: url(img_index/textarea_bottom_left.gif) bottom left no-repeat;} 
+* html .ABKTextareaBottomRight {background: url(img_index/textarea_bottom_right.gif) bottom right no-repeat;} 
+/*Files*/
+.ABKFileButton {cursor:pointer; background:url(img_index/file.png) no-repeat 0 0; width:55px; height:21px; position:absolute; top:0px; right:0px;}
+.ABKFile {position:relative; margin-bottom:5px;}
+.ABKFile input.ABKhidden {position:relative; filter:alpha(opacity=0); opacity:0; z-index:2; cursor:pointer; text-align:left;}
+.ABKFileNew {position:absolute; top:0px; left:0px; z-index:1;}
+/*Selects*/
+.ABKSelect {height:20px; text-align:left;}
+.ABKSelectLeft {float:left; width:6px; height:20px; background:url(img_index/select-left.png) no-repeat 0 0; vertical-align:middle;_behavior: url("./_frameworks/main/oryx/css/iepngfix.htc");}
+
+.ABKSelectRight {height:20px; width:auto; line-height:18px; font-weight:normal; background:url(img_index/select-right.png) no-repeat 100% 0; cursor:pointer;  color:#fff; padding-left:0px; margin-left:6px;}
+.ABKSelectTarget {position:absolute; background:none; margin-left:-13px; margin-top:0px; z-index:30; padding-bottom:13px;}
+.ABKSelectOptions {position:relative; background:#5B5F06; margin-left:16px; margin-top:0; list-style:none; padding:4px 0; color:#fff; font-weight:normal; z-index:40; max-height:200px; overflow-y:auto; overflow-x:hidden; left:0; top:0;}
+.ABKSelectOptions li {padding-bottom:1px;}
+.ABKSelectOptions a {display:block; text-decoration:none; color:#FFF!important; padding:2px 3px; background:none;}
+.ABKSelectOptions a.ABKOptionActive {background:#ffffff; color:#5B5F06 !important;position:relative;}
+.ABKSelectOptions a:hover {background:#ffffff; color:#5B5F06 !important;position:relative;}
+* html .ABKSelectRight {background:url(img_index/select-right.gif) no-repeat 100% 0;} 
+/*Multiple Selects*/
+.ABKMultiSelect {border:0; background:none; margin:0;}
+.ABKMultiSelectTop, .ABKMultiSelectBottom {height:5px; clear:both; float:none; padding-right:10px;}
+.ABKMultiSelectTop {background:url(img_index/textarea-tr.png) no-repeat 100% 0;}
+.ABKMultiSelectBottom {background:url(img_index/textarea-br.png) no-repeat 100% 0; margin-bottom:5px;}
+.ABKMultiSelectTopLeft, .ABKMultiSelectBottomLeft {width:5px; height:5px;}
+.ABKMultiSelectTopLeft {background:#f2f2e6 url(img_index/textarea-tl.png) no-repeat 0 0;}
+.ABKMultiSelectBottomLeft {background:#f2f2e6 url(img_index/textarea-bl.png) no-repeat 0 0;}
+.ABKMultiSelectLeft, .ABKMultiSelectRight, .ABKMultiSelectLeftH, .ABKMultiSelectRightH {float:left; padding-bottom:5px;}
+.ABKMultiSelectLeft, .ABKMultiSelectLeftH {width:5px;}
+.ABKMultiSelectLeft {background:url(img_index/textarea-l-off.png) repeat-y 0 0;}
+.ABKMultiSelectLeftH {background:url(img_index/textarea-l-over.png) repeat-y 0 0;}
+.ABKMultiSelectRight, .ABKMultiSelectRightH {padding-right:5px; padding-bottom:0;}
+.ABKMultiSelectRight {background:url(img_index/textarea-r-off.png) repeat-y 100% 0;}
+.ABKMultiSelectRightH {background:url(img_index/textarea-r-over.png) repeat-y 100% 0;}
+* html .ABKMultiSelectTop {background:url(img_index/textarea-tr.gif) no-repeat 100% 0;}
+* html .ABKMultiSelectBottom {background:url(img_index/textarea-br.gif) no-repeat 100% 0;}
+* html .ABKMultiSelectTopLeft {background:url(img_index/textarea-tl.gif) no-repeat 0 0;}
+* html .ABKMultiSelectBottomLeft {background:url(img_index/textarea-bl.gif) no-repeat 0 0;}
+* html .ABKMultiSelectLeft {background:url(img_index/textarea-l-off.gif) repeat-y 0 0;}
+* html .ABKMultiSelectLeftH {background:url(img_index/textarea-l-over.gif) repeat-y 0 0;}
+* html .ABKMultiSelectRight {background:url(img_index/textarea-r-off.gif) repeat-y 100% 0;}
+* html .ABKMultiSelectRightH {background:url(img_index/textarea-r-over.gif) repeat-y 100% 0;}
+/*Focused*/
+.ABKfocused2 {border:1px dotted #666;}
+/*Hovered*/
+.ABKh2 {background-position:0 100%;}
+.ABKhr2 {background-position:100% 100%;}
+/*Hidden*/
+.ABKhidden {opacity:0; z-index:-1; position:absolute; visibility:hidden;}
+.ABKhidden2 {opacity:0; z-index:10; position:absolute; top:0px; left:0px; width:100%;filter:alpha(opacity: 0);visibility:visible!important;}
+.ABKhidden2IE {opacity:0; z-index:10; position:absolute; top:0px; left:0px; width:100%; filter:alpha(opacity: 0);visibility:visible!important;}
+.ABKhiddenCheck {opacity:0; z-index:-1; position:absolute;visibility:hidden;}
+/*Safari*/
+select, input, textarea, button {outline:none; resize:none;}

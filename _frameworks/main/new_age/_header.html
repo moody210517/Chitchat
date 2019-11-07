@@ -1,0 +1,356 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<!--<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7"/>-->
+<title>{title}</title>
+ <meta name="viewport" content="width=760">
+{header_favicon}
+<meta http-equiv="Content-Type" content="text/html; charset={l_charset}" />
+<meta name="description" content="{description}">
+<meta name="keywords" content="{keywords}">
+<meta http-equiv="Cache-Control" content="no-cache,post-check=0,pre-check=0,no-cache" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="Thu,01Dec199416:00:00GMT" />
+<script language="javascript" type="text/javascript" src="{url_tmpl_main}js/css_browser_selector.js{cache_version_param}"></script>
+<link rel="stylesheet" href="{url_tmpl_main}css/screen.css{cache_version_param}" type="text/css" media="screen">
+<link rel="stylesheet" href="{url_tmpl_main}css/inner.css{cache_version_param}" type="text/css" media="screen">
+<link rel="stylesheet" href="{url_tmpl_main}css/210107.css{cache_version_param}" type="text/css" media="screen">
+<link rel="stylesheet" href="{url_main}_server/games/game.css{cache_version_param}" type="text/css" />
+<link rel="stylesheet" href="{url_main}_server/video/video.css{cache_version_param}" type="text/css" />
+<link rel="stylesheet" href="{url_main}_server/audiochat/audio.css{cache_version_param}" type="text/css" />
+<link rel="stylesheet" href="{url_main}_server/im_new/im.css{cache_version_param}" type="text/css" />
+<link rel="stylesheet" href="{url_tmpl_main}css/places.css{cache_version_param}" type="text/css" media="screen">
+<link rel="stylesheet" type="text/css" media="all" href="{url_tmpl_main}abkstyle/abkstyle.css{cache_version_param}" />
+<link rel="stylesheet" href="{url_main}_server/widgets/css/widget.css{cache_version_param}" type="text/css" />
+<link rel="stylesheet" href="{url_tmpl_main}jquery/trontastic/jquery-ui-1.8.custom.css{cache_version_param}" type="text/css" />
+<!--[if IE]><link rel="stylesheet" href="{url_tmpl_main}css/places_ie.css{cache_version_param}" type="text/css" /><![endif]-->
+<script type="text/javascript" src="{url_main}_server/jquery/jquery-last.js{cache_version_param}"></script>
+<script language="javascript" type="text/javascript" src="{url_main}_server/jquery/jquery-migrate-1.2.1.min.js{cache_version_param}"></script>
+<script type="text/javascript" src="{url_main}_server/jquery/jquery.MetaData.js{cache_version_param}"></script>
+<script type="text/javascript" src="{url_main}_server/jquery/jquery.validate.js{cache_version_param}"></script>
+<script type="text/javascript" src="{url_main}_server/jquery/jquery.rating.pack.js{cache_version_param}"></script>
+<script type="text/javascript" src="{url_main}_server/jquery/jquery.pagination.js{cache_version_param}"></script>
+<script type="text/javascript" src="{url_main}_server/jquery/jquery.tools.min.js{cache_version_param}"></script>
+
+<script type="text/javascript" src="{url_tmpl_main}jquery/jquery.timeentry.pack.js{cache_version_param}"></script>
+<script type="text/javascript" src="{url_main}_server/jquery/jquery-ui.js{cache_version_param}"></script>
+<script type="text/javascript" src="{url_main}_server/swfobject/swfobject.js{cache_version_param}"></script>
+<script type="text/javascript" src="{url_main}_server/jquery/jquery.editable.js{cache_version_param}"></script>
+<script type="text/javascript" src="{url_main}_server/jquery/jquery.editable_input.js{cache_version_param}"></script>
+<script type="text/javascript" src="{url_main}_server/jquery/jquery.winFocus.js{cache_version_param}"></script>
+<script type="text/javascript" src="{url_main}_server/jquery/jquery.lazyload.js{cache_version_param}"></script>
+
+<link rel="stylesheet" href="{url_tmpl}common/lightbox/jquery.lightbox-0.5.css{cache_version_param}" type="text/css" media="screen">
+<script type="text/javascript" src="{url_tmpl}common/lightbox/jquery.lightbox-0.5.min.js{cache_version_param}"></script>
+
+<script type="text/javascript" src="{url_main}_server/lib.js{cache_version_param}"></script>
+<script language="javascript" type="text/javascript">
+    setOptionsSite({site_options});
+ </script>
+<script type="text/javascript" src="{url_main}_server/jquery/jquery.autosize.js{cache_version_param}"></script>
+
+<script type="text/javascript" src="{url_main}js.php{cache_version_param}&set_template_runtime={tmpl_loaded}&set_language_runtime={lang_loaded}"></script>
+
+<link href="{url_main}_server/videojs/video-js.css{cache_version_param}" rel="stylesheet">
+<!-- If you'd like to support IE8 -->
+<script src="{url_main}_server/videojs/ie8/videojs-ie8.min.js{cache_version_param}"></script>
+
+<link href="{url_tmpl_main}css/videojs.css{cache_version_param}" rel="stylesheet">
+<script type="text/javascript" src="{url_main}_server/jquery/jquery.cookie.js{cache_version_param}"></script>
+
+{include_custom_city}
+{include_city}
+
+<link rel="stylesheet" type="text/css" href="{url_tmpl_main}css/cookiepopup.css{cache_version_param}" />
+<script type="text/javascript" src="{url_tmpl_main}js/cookiepopup.js{cache_version_param}"></script>
+
+<script language="javascript" type="text/javascript">
+var imagesPath = "{url_tmpl_main}abkstyle/img/";
+var is_home_widget = "{is_home_widget}";
+var widgets_count = "{widgets_count}";
+var widgets_calendar_long = "{widgets_calendar_long}";
+var xajax_login_status = {xajax_login_status};
+var ajax_login_status = {xajax_login_status};
+var imMsgLayout = '{im_msg_layout}';
+var dirTmplMain = '.'+'{url_tmpl_main}';
+var siteTitle = '{js_title}';
+var url_main='{url_main}';
+var h_chat = 422;
+var w_chat = 374;
+var h_chat_offset = 58;
+var url_tmpl='{url_tmpl}';
+var url_tmpl_main='{url_tmpl_main}';
+</script>
+<script language="javascript" type="text/javascript">
+$(document).ready(function() {
+    lazyLoadImage();
+
+    $('.lazy_user').lazyload({event:'scroll',effect:'fadeIn',skip_invisible:false,effect_speed:400});
+
+    initLightboxOldTemplateNewAge();
+    $('.js_back').click(function() {
+        history.back();
+        return false;
+    });
+    $('.submit').click(function() {
+        $(this).parents('form').submit();
+        return false;
+    });
+    $('.areyousure').on('click', function() {
+        if ($(this).attr('confirm') != '' && $(this).attr('confirm') != undefined) {
+            return confirm($(this).attr('confirm'));
+        } else {
+            return confirm('{l_are_you_sure}');
+        }
+    });
+
+    var $changeLanguage=$('.module_change_language'), notShowLang=false;
+    if ($changeLanguage[0]) {
+        $changeLanguage.find('ul').autocolumnlist({columns: getSiteOption('number_of_columns_in_language_selector'), clickEmpty:function(){
+            notShowLang=true;
+            $('#module_change_language_item').stop().animate({height:'toggle'},300, function(){
+                setTimeout(function(){notShowLang=false},100);
+            })
+        }});
+        $changeLanguage.hover(function(){
+            if(notShowLang)return;
+            var width = $(this).children('.module_change_language_current').width();
+            $('#module_change_language_item').css('left', (width + 13)+'px').stop().animate({height: "toggle"}, 300);
+        })
+    }
+});
+
+preloadImages("{url_tmpl_main}images/menu_more_active_bg.png",
+"{url_tmpl_main}images/menu_more_active_left_bg.png",
+"{url_tmpl_main}images/menu_more_active_right_bg.png",
+"{url_tmpl_main}images/menu_more_last_active_left_bg.png",
+"{url_tmpl_main}images/menu_more_last_active_right_bg.png",
+"{url_tmpl_main}images/menu_more_last_active_bg.png",
+"{url_tmpl_main}images/menu_more_bg.png",
+"{url_tmpl_main}images/menu_more_left_bg.png",
+"{url_tmpl_main}images/menu_more_right_bg.png",
+"{url_tmpl_main}images/menu_more_last_left_bg.png",
+"{url_tmpl_main}images/menu_more_last_right_bg.png",
+"{url_tmpl_main}images/menu_more_last_bg.png",
+"{url_tmpl_main}images/menu_more_shadow.png",
+"{url_main}_server/im_new/images/im_sound_on.png",
+"{url_main}_server/im_new/images/im_sound_off.png"
+);
+preloadImagesWidgets('{url_main}');
+
+abkStyleRun = true;
+
+</script>
+<!--[if lt IE 7]>
+<script language="javascript" type="text/javascript">
+preloadImages("{url_tmpl_main}images/menu_more_active_bg.gif","{url_tmpl_main}images/menu_more_last_active_bg.gif" )
+</script>
+<![endif]-->
+
+
+
+<script language="javascript" type="text/javascript" src="{url_tmpl_main}js/user_info.js{cache_version_param}"></script>
+    <script type="text/javascript"> function stopError() { return true; }; window.onError = stopError; window.status=Date();</script>
+
+	{custom_head}
+    {xajax_js}
+    <script type="text/javascript" src="{url_main}_server/client.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_main}_server/im_new/sounds/sm.js{cache_version_param}"></script>
+    <script type="text/javascript" src="{url_main}_server/js/sound/soundmanager2-nodebug-jsmin.js{cache_version_param}"></script>
+    <script language="javascript" type="text/javascript">
+        var siteTitle = '{js_title}';
+    </script>
+    {to_head}
+    <!--[if lte IE 6]> <script language="javascript" type="text/javascript" src="{url_tmpl_main}js/DD_belatedPNG_0.0.8a-min.js{cache_version_param}"></script><![endif]-->
+			  <!--[if lte IE 6]>
+			  <script>
+			  DD_belatedPNG.fix('.status_home_page,.userinfo,.star-rating a,.ltc,.rtc,#gallery .trans,.profile_menu li,.photo_name,.photo_description,.button_black,#gallery .rainbow .button_black input');
+</script>
+<![endif]-->
+
+<script language="javascript" type="text/javascript" src="{url_tmpl_main}abkstyle/abkstyle.js{cache_version_param}"></script>
+
+<style>
+.chat td.chatcont{width: 345px; background: url({url_main}tmpl_img_loader.php?tmpl={tmpl_loaded}&dirs=images&file=cont-bg.jpg&lang={lang_loaded}); vertical-align: top;}
+.cinput .csubmit{position: absolute; width: 95px; height: 66px;  background: url({url_main}tmpl_img_loader.php?tmpl={tmpl_loaded}&dirs=images&file=btn-send.gif&lang={lang_loaded}); cursor: pointer; cursor: hand; right: -107px; top: -30px}
+table.chat .status_0 {background:url("{url_main}tmpl_img_loader.php?tmpl={tmpl_loaded}&dirs=images&file=im_sound_on.png&lang={lang_loaded}") 0 0;_background:none; _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='{url_main}tmpl_img_loader.php?tmpl={tmpl_loaded}&dirs=images&file=im_sound_on.png&lang={lang_loaded}', sizingMethod='crop'); cursor:pointer;}
+table.chat .status_1 {background:url("{url_main}tmpl_img_loader.php?tmpl={tmpl_loaded}&dirs=images&file=im_sound_off.png&lang={lang_loaded}") 0 0;_background:none; _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='{url_main}tmpl_img_loader.php?tmpl={tmpl_loaded}&dirs=images&file=im_sound_off.png&lang={lang_loaded}', sizingMethod='crop'); cursor:pointer;}
+</style>
+
+</head>
+<body {body_addon}>
+
+<!-- begin_banner_top -->
+<div class='banner_top'>
+{banner_top}
+</div>
+<!-- end_banner_top -->
+	<div id="wrapper">
+		<div id="header_left"><div id="header_right">
+    <div id="header">
+			<h1><div class="logo"><a href="{url_main}{url_home_page}"><img src="{header_url_logo}" class="png" align="absmiddle" alt="{title}"></a></div>
+</h1>
+    <!-- begin_view -->
+    <div class="module_change_language">
+      <a class="module_change_language_current" onclick="return false;" href="">{language_current}</a>
+      <div id="module_change_language_item">
+        <ul>
+            <!-- begin_language -->
+            <li><a href="{url_page}?{url_page_params}set_language={language_value}"><span class="{language_class}">{language_title}</span></a></li>
+            <!-- end_language -->
+        </ul>
+      </div>
+    </div>
+    <!-- end_view -->
+
+			<ul class="top_menu">
+                <!-- begin_news_on -->
+				<li><a href="{url_main}news.php?view=4"><img src="{url_main}tmpl_img_loader.php?tmpl={tmpl_loaded}&dirs=images&file=menu-01.gif&lang={lang_loaded}" height="7" alt="{l_site_tour}"></a></li>
+				<li><a href="{url_main}news.php?cat=2"><img src="{url_main}tmpl_img_loader.php?tmpl={tmpl_loaded}&dirs=images&file=menu-02.gif&lang={lang_loaded}" height="7" alt="{l_success_stories}"></a></li>
+				<li><a href="{url_main}news.php"><img src="{url_main}tmpl_img_loader.php?tmpl={tmpl_loaded}&dirs=images&file=menu-03.gif&lang={lang_loaded}" height="7" alt="{l_date_info}"></a></li>
+                <!-- end_news_on -->
+            </ul>
+
+
+		</div></div></div>
+                <!-- begin_banner_header -->
+                <div class="banner_header">{banner_header}</div>
+                <!-- end_banner_header -->
+		<div id="main">
+			<div id="main-in">
+				<div id="main-out" class="clearfix">
+					<div class="welcome">
+						<div align="right" id="menu_top_right" style="padding: 6px 5px 0px 0px; float:right; position:relative; margin-top:-2px;">
+                                <!-- begin_users_pending -->
+                                <span class="welcome">{l_you_have_friend_request} {num_users_pending} <a style="color:#858C08;" href="my_friends.php?show=requests" >{l_friend_requests_sign}</a></span> |
+                                <!-- end_users_pending -->
+                                <!-- begin_moderator --><a href="{url_main}moderator.php">{l_top_moderator}</a> |<!-- end_moderator -->
+                               <!-- begin_invite_on -->
+                                <a href="{url_main}invite.php">{l_top_invite_friends}</a> |
+                                <!-- end_invite_on -->
+                                <!-- begin_news_on1-->
+                		        <a href="{url_main}news.php">{l_top_menu_date_info}</a> |
+                                <!-- end_news_on1 -->
+								<a href="{url_main}profile_settings.php">{l_your_settings}</a>
+								</div>
+						        <table>
+                                <tr>
+                                <!-- begin_loginform -->
+                                 <td align="left" style="padding:4px 0px 0px 0px; font-size:12px;">
+		                          {l_welcome_to} <strong>{title}</strong>
+                                 <span align="right">
+                                 <a href="{url_main}join.php">{l_to_joinform}</a>
+                                  | 
+                                 <a href="{url_main}join.php">{l_to_loginform}</a>
+                                  </span>
+                                  </td>
+                                  <!-- end_loginform -->
+                                  <!-- begin_auth -->
+                                  <td align="left"  style="padding:4px 0px 0px 0px; font-size:12px;">
+                                  {l_welcome} <strong>{name}</strong>
+                                  [
+                                  <!-- begin_help_on -->
+                                  <a href="{url_main}help.php">{l_support}</a> :
+                                  <!-- end_help_on -->
+                                  <img src="{url_tmpl_main}images/logout.gif" style="position:relative; left:2px;" /> <a href="{url_main}index.php?cmd=logout">{l_logout}</a>]
+                                   </td>
+								  <!-- end_auth -->
+								</tr>
+               </table>
+				</div>
+                <!-- begin_menu_site -->
+                <script language="javascript" type="text/javascript">
+                $(function(){
+                    $('#menu_more_all').hover(function(){
+                        $('#menu_more').stop().animate({height: "toggle"}, 300);
+                    });
+                });
+                </script>
+				<div class="menu">
+					<ul>
+                   <!-- begin_menu_item --><li <!-- begin_menu_item_active -->class="active"<!-- end_menu_item_active -->><a {target} href="{url_main}{menu_item_page}">{menu_item_title}</a></li><!-- end_menu_item -->
+					<!-- begin_menu_more -->
+						<li id="menu_more_all">
+                        <nobr>
+                            <a href="#">{l_menu_more} <img src="{url_tmpl_main}images/down_arrow.gif" width="9" height="5" align="absmiddle" /></a>
+                        </nobr>
+                        <ul id="menu_more">
+							<!-- begin_menu_more_item --><li class="<!-- begin_menu_more_item_active -->active<!-- end_menu_more_item_active --> {class_last}"><a {target} onClick="this.blur();" href="{url_main}{menu_item_page}"><span class="out"><span class="in">{menu_item_title}</span></span></a></li><!-- end_menu_more_item -->
+                        </ul>
+						</li>
+					<!-- end_menu_more -->
+
+					</ul>
+				</div>
+                <!-- end_menu_site -->
+
+
+					<div class="personal-st">
+						<ul>
+                            <!-- begin_auth_info -->
+                            <!-- end_auth_info -->
+                            <!-- begin_submenu -->
+
+                                <!-- begin_mail_on_item -->
+                                    <!-- begin_mail_on -->
+                                    <li order="info_mail"><a id="xajax_new_mail_menu" href="{url_main}mail.php<!-- begin_mail_one_href -->?display=text&mid={mid}<!-- end_mail_one_href -->">{l_info_mail}: <span id="xajax_new_mail">{new_mails}</span></a></li>
+                                    <!-- end_mail_on -->
+                                <!-- end_mail_on_item -->
+
+                               <!-- begin_wink_on_item -->
+                                   <!-- begin_wink_on -->
+                                   <li order="info_interests"><a href="{url_main}mail_whos_interest.php">{l_info_interests}: <span id="xajax_new_wink">{new_interest}</span></a></li>
+                                   <!-- end_wink_on -->
+                               <!-- end_wink_on_item -->
+
+                                <!-- begin_online_tab_header_item -->
+                                    <!-- begin_online_tab_header -->
+                                    <li order="info_online"><a href="{url_main}users_online.php">{l_info_online}: <span id="xajax_online_user">{users_online}</span></a></li>
+                                    <!-- end_online_tab_header -->
+                                <!-- end_online_tab_header_item -->
+
+                                <!--<li>{l_info_viewed}: <a href="{url_main}users_viewed_me.php">{users_view_new}</a></li>-->
+
+                                <!-- begin_profile_pics_header_item -->
+                                <li order="profile_pics"><img src="{url_tmpl_main}images/camera.png" class="png" align="absmiddle" alt=""> <a href="{url_main}profile_photo.php" style="font-weight: normal">{l_profile_pics}</a></li>
+                                <!-- end_profile_pics_header_item -->
+
+                                <!-- begin_header_gallery_item -->
+                                    <!-- begin_header_gallery -->
+                                    <li order="my_photos"><img src="{url_tmpl_main}images/appearance.png"  class="png" align="absmiddle" alt=""> <a href="{url_main}gallery_albums_user.php?user_id={user_id}" style="font-weight: normal">{l_my_photos}</a></li>
+                                    <!-- end_header_gallery -->
+                                <!-- end_header_gallery_item -->
+
+                                <!-- begin_header_music_item -->
+                                    <!-- begin_header_music -->
+                                    <li order="your_audio"><img src="{url_tmpl_main}images/multimedia_1.png"  class="png" align="absmiddle" alt=""> <a href="{url_main}music_my.php" style="font-weight: normal">{l_your_audio}</a></li>
+                                    <!-- end_header_music -->
+                                <!-- end_header_music_item -->
+
+                                <!-- begin_header_videogallery_item -->
+                                    <!-- begin_header_videogallery -->
+                                    <li order="your_vids"><img src="{url_tmpl_main}images/my_vids.png"  class="png" align="absmiddle" alt=""> <a href="{url_main}vids_collect.php?m=my" style="font-weight: normal">{l_your_vids}</a></li>
+                                    <!-- end_header_videogallery -->
+                                <!-- end_header_videogallery_item -->
+
+                                <!-- begin_header_blogs_item -->
+                                    <!-- begin_header_blogs -->
+                                    <li order="your_blog"><img src="{url_tmpl_main}images/txt2.png" class="png" align="absmiddle" alt=""> <a href="{url_main}blogs_blog.php" style="font-weight: normal">{l_your_blog}</a></li>
+                                    <!-- end_header_blogs -->
+                                <!-- end_header_blogs_item -->
+
+
+                                <!-- begin_header_my_account_item -->
+                                    <li order="menu_my_account"><img src="{url_tmpl_main}images/access.png"  class="png"  align="absmiddle" alt=""> <a href="{url_main}profile.php" style="font-weight: normal">{l_menu_my_account}</a></li>
+                                <!-- end_header_my_account_item -->
+
+                                <!-- begin_header_widgets_item -->
+                                    <!-- begin_header_widgets -->
+                                    <li><img src="{url_tmpl_main}images/widgets.png"  class="png" align="absmiddle" alt=""> <a href="{url_main}widgets.php" style="font-weight: normal">{l_menu_widgets}</a></li>
+                                    <!-- end_header_widgets -->
+                                <!-- end_header_widgets_item -->
+
+                            <!-- end_submenu -->
+						</ul>
+				</div>

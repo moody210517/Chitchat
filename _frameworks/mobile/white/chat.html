@@ -1,0 +1,39 @@
+{header}
+<script type="text/javascript" src="../_server/mobile_chat.js{cache_version_param}"></script>
+
+<table class="cnt" cellspacing="0" cellpadding="0"><tr><td>
+
+<table cellspacing="0" cellpadding="0" class="tab">
+<tfoot>
+	<tr>
+		<td class="searchform">
+		<form method="post" action="">
+		<table>
+		<tr><td class="t1">
+		<input id="txt_message" name="message" type="text" class="txt" />
+		</td><td class="t2">
+		<a href="#" onclick="CChat.send();" class="orange_btn btn">{l_write}</a>
+		</td></table>
+		</form>
+		</td>
+	</tr>
+</tfoot>
+
+<tbody>
+	<tr>
+		<td class="content" id="content" colspan="2">
+		</td>
+	</tr>
+</tbody>
+</table>
+
+</td></tr></table>
+
+<script>
+langParts = {'msg_empty' : '{l_you_have_not_entered_a_message}'};
+var CChat = new CMobileChat('#txt_message', '#content', 'chat', langParts);
+CChat.updater();
+</script>
+
+{user_menu}
+{footer}

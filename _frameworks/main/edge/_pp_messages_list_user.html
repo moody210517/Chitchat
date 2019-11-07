@@ -1,0 +1,23 @@
+<!-- begin_list_users -->
+<li id="pp_message_user_{list_users_item_user_id}" data-uid="{list_users_item_user_id}" onclick="clMessages.openIm('{list_users_item_user_id}');" class="contact <!-- begin_selected_user -->active<!-- end_selected_user --> <!-- begin_status_online -->online<!-- end_status_online -->">
+    <div class="wrap">
+        <span id="pp_message_user_online_{list_users_item_user_id}" class="contact-status"></span>
+        <button onclick="return false;" style="background-image: url({url_files}{list_users_item_photo});"></button>
+        <div class="meta">
+            <div class="name pp_message_name">{list_users_item_name}</div>
+            <div id="pp_message_user_preview_msg_{list_users_item_user_id}" class="preview <!-- begin_count_new_show -->to_new<!-- end_count_new_show -->">{list_users_item_last_msg}</div>
+        </div>
+        <script>
+        clMessages.setUserCacheData('{list_users_item_user_id}',
+                                    {online:'{status_online}'*1,
+                                     first_msg_id:'{first_msg_id}'*1,
+                                     limit_start:'{limit_start}'*1,
+                                     ajax_upload_msg:0
+        })
+        </script>
+    </div>
+</li>
+<!-- end_list_users -->
+<script class="update_script_chat">
+    clCounters.updateNewMsg({messages_count_data});
+</script>

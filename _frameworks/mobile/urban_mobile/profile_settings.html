@@ -1,0 +1,175 @@
+{header}
+<!-- begin_hide_btn_submit -->
+<style type="text/css">
+#perform_action_profile_settings{display: none;}
+</style>
+<script>
+$(function(){
+   $(window).load(function(){
+       $('#loader_page').fadeOut(0,200);
+       $('#settings_menu').fadeTo(1,1000);
+   })
+})
+</script>
+<!-- end_hide_btn_submit -->
+
+<script type="text/javascript" src="{url_tmpl_mobile}js/settings.js{cache_version_param}"></script>
+<script type="text/javascript" src="{url_tmpl_mobile}js/checkable.js{cache_version_param}"></script>
+<script>
+    var minCahrPass = '{password_length_min}'*1,
+        maxCahrPass = '{password_length_max}'*1;
+
+    var langParts = {'max_min_length_password' : '{max_min_length_password}',
+                     'incorrect_email' : '{j_incorrect_email}',
+                     'invalid_password_contain' : '{j_invalid_password_contain}',
+                     'changes_saved' : '{j_changes_saved}',
+                     'save' : '{j_save}',
+                     'profile_deleted_forever' : '{j_the_profile_will_be_deleted_forever}',
+                     'cancel' : '{j_cancel}',
+                     'delete' : '{j_delete}',
+                     'passwords_not_same' : '{j_passwords_not_same}',
+                     'old_and_new_passwords_are_same' : '{j_old_and_new_passwords_are_the_same}',
+        };
+</script>
+<div class="wrapper">
+<div class="content">
+    <div id="header_settings" class="head">
+        {header_settings}
+    </div>
+    <div id="settings_box" class="bl_settings">
+        <!-- begin_settings_menu -->
+        <div class="settings_menu_block">
+            <ul id="settings_menu" class="list" style="opacity:0;">
+                <li><a class="choose_settings" href="{url_page}?display=profile">{l_profile_settings}</a></li>
+                <!-- begin_notification_settings -->
+                <li><a class="choose_settings" href="{url_page}?display=notification">{l_notification_settings}</a></li>
+                <!-- end_notification_settings -->
+                <!-- begin_settings_menu_invisible -->
+                <li><a class="choose_settings" href="{url_page}?display=invisible">{l_invisible_mode}</a></li>
+                <!-- end_settings_menu_invisible -->
+                <li><a class="choose_settings" href="{url_page}?display=email">{l_change_email_address}</a></li>
+                <li><a class="choose_settings" href="{url_page}?display=password">{l_change_password}</a></li>
+                <!-- begin_delete_profile-->
+                <li><a class="choose_settings" href="{url_page}?display=delete">{l_delete_profile}</a></li>
+                <!-- end_delete_profile-->
+            </ul>
+            <div id="loader_page" class="loader_page show">
+                <div class="spinner spinnerw center">
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                </div>
+            </div>
+        </div>
+        <!-- end_settings_menu -->
+
+        <!-- begin_settings_profile -->
+        <div data-cmd="update" id="st_profile" class="frm settings">
+            <!-- begin_field_1 -->
+            <!-- begin_field_select_1 -->
+            <div class="bl">
+                <label class="lsetting">{label}:</label>
+                <select id="{name_select}" name="{name_select}">
+                    <!-- begin_field_select_item_1 -->
+                    <option {selected} value="{value}">{title}</option>
+                    <!-- end_field_select_item_1 -->
+                </select>
+            </div>
+            <!-- end_field_select_1 -->
+            <!-- end_field_1 -->
+
+            <!-- begin_timezone -->
+            <div class="bl">
+                <label class="lsetting">{l_timezone}:</label>
+                <select id="timezone" name="timezone">
+                    {selectbox_options}
+                </select>
+            </div>
+            <!-- end_timezone -->
+        </div>
+        <!-- end_settings_profile -->
+
+        <!-- begin_settings_notification -->
+        <div data-cmd="update" id="st_notification" class="frm var_rb" style="opacity:0;">
+            <!-- begin_field_2 -->
+            <!-- begin_field_radio_2 -->
+            <div class="bl">
+                <label class="lsetting">{label}:</label>
+                <div class="rb">
+                    <!-- begin_field_radio_item_2 -->
+                    <input class="niceRadio" data-label="{title}" value={value} name="{name_radio}" id="radio_{name_radio}_{value}" type="radio" {checked}/>
+
+                    <!-- end_field_radio_item_2 -->
+                </div>
+             </div>
+            <!-- end_field_radio_2 -->
+            <!-- end_field_2 -->
+        </div>
+        <!-- end_settings_notification -->
+
+        <!-- begin_settings_invisible -->
+        <div data-cmd="update" id="st_invisible" class="frm var_rb" style="opacity:0;">
+            <!-- begin_field_3 -->
+            <!-- begin_field_radio_3 -->
+            <div class="bl">
+                <label class="lsetting">{label}:</label>
+                <div class="rb">
+                    <!-- begin_field_radio_item_3 -->
+                    <input class="niceRadio" data-label="{title}" value={value} name="{name_radio}" id="radio_{name_radio}_{value}" type="radio" {checked}/>
+                    <!-- end_field_radio_item_3 -->
+                </div>
+             </div>
+            <!-- end_field_radio_3 -->
+            <!-- end_field_3 -->
+        </div>
+        <!-- end_settings_invisible -->
+
+        <!-- begin_settings_email -->
+        <div data-cmd="update_email" id="st_email" class="frm settings">
+            <div class="bl">
+                <label class="lsetting">{l_new_email}:</label>
+                <input id="st_email_new_email" name="new_email" type="text" />
+            </div>
+            <div class="bl">
+                <label class="lsetting">{l_password}:</label>
+                <input id="st_email_pass" maxlength="{password_length_max}" name="password" type="password" />
+            </div>
+        </div>
+        <!-- end_settings_email -->
+
+        <!-- begin_settings_password -->
+        <div data-cmd="update_password" id="st_password" class="frm settings">
+            <div class="bl">
+                <label class="lsetting">{l_current_pswd}:</label>
+                <input id="st_old_password" maxlength="{password_length_max}" type="password" name="old_password" />
+            </div>
+            <div class="bl">
+                <label class="lsetting">{l_new_pswd}:</label>
+                <input id="st_new_password" maxlength="{password_length_max}" type="password" name="new_password" />
+            </div>
+            <div class="bl">
+                <label class="lsetting">{l_retype}:</label>
+                <input id="st_verify_new_password" maxlength="{password_length_max}" type="password" name="verify_new_password"/>
+            </div>
+        </div>
+        <!-- end_settings_password -->
+
+        <!-- begin_settings_delete -->
+        <div data-cmd="check_password" id="st_delete" class="frm settings">
+            <div class="bl">
+                <label class="lsetting">{l_current_pswd}:</label>
+                <input maxlength="{password_length_max}" id="st_delete_pass" type="password" name="password"/>
+            </div>
+        </div>
+        <!-- end_settings_delete -->
+    </div>
+{footer}

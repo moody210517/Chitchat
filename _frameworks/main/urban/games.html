@@ -1,0 +1,27 @@
+{header}
+<div class="column_main">
+    <div class="column_main_head">
+        <div class="decor">
+            <h1>{l_page_title}</h1>
+            <div class="cl"></div>
+        </div>
+    </div>
+    <div class="column_main_cont" style="min-height: auto;">
+        <!-- begin_game -->
+        <script>
+        $('<img>').load(function(){
+            $('#game_{game}').addClass('to_show');
+        })[0].src='{url_tmpl_common}games/game_{game}_bg.jpg';
+        </script>
+        <style>.bl_games .game.{game}{ background: url({url_tmpl_common}games/game_{game}_bg.jpg) 0 0 no-repeat;}</style>
+		<div class="bl_games">
+            <div id="game_{game}" class="game {game}"></div>
+			<a class="bl_link" href="{game_url}"><span class="bl_name"><span class="name">{game_title}</span></span></a>
+		</div>
+        <!-- end_game -->
+    </div>
+</div>
+<div class="column_narrow">
+    {profile_column_narrow}
+</div>
+{footer}

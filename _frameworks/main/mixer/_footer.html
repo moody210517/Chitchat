@@ -1,0 +1,90 @@
+<style>
+#footer {
+  background: url("{url_main}tmpl_img_loader.php?tmpl={tmpl_loaded}&dirs=img&file=theend.gif&lang={lang_loaded}") no-repeat 50% 0;
+}
+</style>
+    <!-- begin_banner_footer_additional -->
+    <div class="banner_footer_additional">{banner_footer_additional}</div>
+    <!-- end_banner_footer_additional -->
+    <div style="clear:both;"></div>
+    <!-- begin_main_menu_table -->
+	<div id="menu"> <!--  -->
+		<div class="decor-t"></div>
+		<div class="in footermenu" style="margin-top:-1px; padding: 1px 0 0 2px; height: 65px;">
+
+                    <table class="tb_menu" style="margin-top: 5px;" >
+                    <!-- begin_menu_item_table_tr -->
+                    <tr>
+                        <!-- begin_menu_item_table_td -->
+                        <!-- begin_menu_item_table -->
+                        <td class="<!-- begin_menu_item_active_table -->active<!-- end_menu_item_active_table -->"><a {target} href="{url_main}{menu_item_page}">{menu_item_title}</a></td>
+                        <!-- end_menu_item_table -->
+                        <!-- begin_menu_item_empty_table -->
+                        <td class="empty"></td>
+                        <!-- end_menu_item_empty_table -->
+                        <!-- end_menu_item_table_td -->
+                    </tr>
+                    <!-- end_menu_item_table_tr -->
+                    </table>
+
+		</div>
+		<div class="decor-b"></div>
+		<div class="decor-l"></div>
+		<div class="decor-r"></div>
+	</div>
+    <!-- end_main_menu_table -->
+
+
+    <div id="footer">
+    <!-- begin_view -->
+    <div class="module_change_language">
+      <a class="module_change_language_current" onclick="return false;" href="">{language_current}</a>
+      <div id="module_change_language_item_footer">
+        <ul>
+            <!-- begin_language -->
+            <li><a href="{url_page}?{url_page_params}set_language={language_value}"><span class="{language_class}">{language_title}</span></a></li>
+            <!-- end_language -->
+        </ul>
+      </div>
+    </div>
+    <!-- end_view -->
+    ©{year_current} {title_orig}. {l_all_right}. <!-- begin_link_partner --><a href="{url_main}partner/" target="_blank" title="{l_affiliates}">{l_affiliates}</a><!-- end_link_partner -->
+    </div>
+    <!-- begin_banner_footer -->
+    <div class="banner_footer">
+        {banner_footer}
+    </div>
+    <!-- end_banner_footer -->
+<div id="apple"><div></div></div>
+<div id="boots"></div>
+<div id="thea"></div>
+<div id="baloon"><div></div></div>
+<div id="star"></div></div>
+<div id="xajax_im"></div>
+
+<script>
+try { initAjax(); }
+catch(e) {};
+{footer_custom_js}
+</script>
+
+<script src="{url_main}_server/videojs/video.js{cache_version_param}"></script>
+
+<!-- begin_gdpr_cookie_popup -->
+<script>
+    $(function(){
+        //document.cookie = 'cookiesAccepted=; path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        var options = {
+            title: '{j_cookies_accept_title}',
+            text: '{cookies_accept_text}',
+            acceptButtonText: '{j_cookies_accept_accept_button_text}',
+            theme: 'dark',
+            learnMore: false,
+            position: 'bottom'
+        };
+        $.acceptCookies(options);
+    })
+</script>
+<!-- end_gdpr_cookie_popup -->
+</body>
+</html>

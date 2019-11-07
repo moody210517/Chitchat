@@ -1,0 +1,182 @@
+<script>setTypeGridPhoto('{type_custom_header}');</script>
+<!-- begin_header_custom_big -->
+<div class="header header_profile">
+
+    <div id="block_grid" class="header_grid">
+        <div id="grid">
+            <!-- begin_header_custom_big_grid_item -->
+            <div onclick="openGallery(event, '{header_custom_big_grid_item_id}', '{header_custom_big_grid_item_video}'*1, '{header_custom_uid}')" title="{header_custom_big_grid_item_description}" class="block grid_item_{header_custom_big_grid_item_id} {header_custom_big_grid_item_class} to_hide photo_description_{header_custom_big_grid_item_id}" style="background-image:url({header_custom_big_grid_item_url});">
+            </div>
+            <script>
+                showGridPhoto('.grid_item_{header_custom_big_grid_item_id}', '{header_custom_big_grid_item_url}');
+                clProfilePhoto.setVisibleMediaData('{header_custom_big_grid_item_id}', {header_custom_big_grid_item_info});
+            </script>
+            <!-- end_header_custom_big_grid_item -->
+        </div>
+    </div>
+
+    <div class="pl_grid_count none_select">
+        <!-- begin_profile_menu_inner_big -->
+
+        <!-- begin_profile_menu_inner_big_left -->
+        <div class="bl_count left">
+            <!-- begin_profile_menu_inner_big_left_item -->
+            <a id="{profile_menu_inner_big_left_item_key}" class="header_navbar_item_menu item {profile_menu_inner_big_left_item_key} <!-- begin_profile_menu_inner_big_left_item_active -->active<!-- end_profile_menu_inner_big_left_item_active -->" href="{profile_menu_inner_big_left_item_url}">
+                <span class="bl<!-- begin_profile_menu_inner_big_left_item_wall_show_post_input --> show_post_input<!-- end_profile_menu_inner_big_left_item_wall_show_post_input -->" data-toggle="tooltip" data-placement="left" title="{profile_menu_inner_big_left_item_tooltip}">
+                    <span class="count">
+                        <span class="num">{profile_menu_inner_big_left_item_count}</span>
+                    </span>
+                    <span class="name">{profile_menu_inner_big_left_item_title}</span>
+                </span>
+            </a>
+            <!-- end_profile_menu_inner_big_left_item -->
+        </div>
+        <!-- end_profile_menu_inner_big_left -->
+        <!-- begin_profile_menu_inner_big_left_item_empty -->
+        <div class="bl_count left"></div>
+        <!-- end_profile_menu_inner_big_left_item_empty -->
+        <div id="header_user_name" class="user_name_inner_big">{header_custom_name}</div>
+        <!-- begin_profile_menu_inner_big_right -->
+        <div class="bl_count right">
+            <!-- begin_profile_menu_inner_big_right_item -->
+            <a id="{profile_menu_inner_big_right_item_key}" class="header_navbar_item_menu item posts <!-- begin_profile_menu_inner_big_right_item_active -->active<!-- end_profile_menu_inner_big_right_item_active -->" href="{profile_menu_inner_big_right_item_url}">
+                <span class="bl <!-- begin_profile_menu_inner_big_right_item_wall_show_post_input --> show_post_input<!-- end_profile_menu_inner_big_right_item_wall_show_post_input -->" data-toggle="tooltip" data-placement="right" title="{profile_menu_inner_big_right_item_tooltip}">
+                    <span class="count">
+                        <span class="num">{profile_menu_inner_big_right_item_count}</span>
+                    </span>
+                    <span class="name">{profile_menu_inner_big_right_item_title}</span>
+                </span>
+            </a>
+            <!-- end_profile_menu_inner_big_right_item -->
+        </div>
+        <!-- end_profile_menu_inner_big_right -->
+        <!-- begin_profile_menu_inner_big_right_empty -->
+        <div class="bl_count right"></div>
+        <!-- end_profile_menu_inner_big_right_empty -->
+        <!-- end_profile_menu_inner_big -->
+    </div>
+
+    <!-- bl_grid_inner_photo_center -->
+    <div class="bl_grid_inner_photo_center">
+
+        <!-- ***Circle menu around photo***  -->
+        <!-- begin_mn_circle -->
+        <!-- begin_mn_circle_left_item -->
+        <a data-uid="{header_custom_uid}" data-user-name="{header_custom_user_name}" data-cmd="{mn_circle_left_item_cmd}"  href="{mn_circle_left_item_url}" class="mn_circle left {mn_circle_left_item_class} {mn_circle_left_item_key} <!-- begin_mn_circle_left_item_message -->new_message_link {mn_circle_left_item_message_disabled}<!-- end_mn_circle_left_item_message -->">
+            <span data-tooltip="true" data-placement="left" title="{mn_circle_left_item_tooltip}" class="icon_fa" data-cl-loader="menu_loader_left_{mn_circle_left_item_class}"><i class="fa {mn_circle_left_item_icon}" aria-hidden="true"></i></span>
+        </a>
+        <!-- end_mn_circle_left_item -->
+
+        <!-- begin_mn_circle_right_item -->
+        <a data-uid="{header_custom_uid}" data-user-name="{header_custom_user_name}" data-cmd="{mn_circle_right_item_cmd}" <!-- begin_mn_circle_right_item_more_link -->data-toggle="collapse" role="button" aria-haspopup="true"<!-- end_mn_circle_right_item_more_link --> href="{mn_circle_right_item_url}" class="mn_circle right {mn_circle_right_item_class} {mn_circle_right_item_key} <!-- begin_mn_circle_right_item_message -->new_message_link {mn_circle_right_item_message_disabled}<!-- end_mn_circle_right_item_message -->">
+            <span data-tooltip="true" data-placement="right" title="{mn_circle_right_item_tooltip}" class="icon_fa" data-cl-loader="menu_loader_right_{mn_circle_right_item_class}"><i class="fa {mn_circle_right_item_icon}" aria-hidden="true"></i></span>
+        </a>
+        <!-- end_mn_circle_right_item -->
+
+        <!-- begin_mn_circle_more -->
+        <ul id="mn_circle_more_list" class="more_menu_collapse collapse mn_circle_more_list menu_collapse">
+            <!-- begin_mn_circle_more_item -->
+            <li <!-- begin_mn_circle_more_item_active -->class="active"<!-- end_mn_circle_more_item_active -->>
+                <a data-uid="{header_custom_uid}" data-user-name="{header_custom_user_name}" data-cmd="{mn_circle_more_item_cmd}"  href="{mn_circle_more_item_url}" class="{mn_circle_more_item_key}">
+                    <span>
+                        <span data-cl-loader="more_menu_loader" class="icon_fa"><i class="fa {mn_circle_more_item_icon}" aria-hidden="true"></i></span>
+                        <span class="btn_title">{mn_circle_more_item_title}</span>
+                    </span>
+                </a>
+            </li>
+            <!-- end_mn_circle_more_item -->
+        </ul>
+        <!-- end_mn_circle_more -->
+
+        <!-- end_mn_circle -->
+        <!-- ***/Circle menu around photo***  -->
+
+        <div onclick="return false;" class="user_pic_frame none_select <!-- begin_header_custom_empty_photo -->photo_upload<!-- end_header_custom_empty_photo -->" <!-- begin_header_custom_empty_photo_title -->title="{l_upload_photo_link}"<!-- end_header_custom_empty_photo_title -->>
+            <div id="profile_status_online" title="{l_on_the_site_now}" class="status online <!-- begin_status_online_profile -->to_show<!-- end_status_online_profile -->"></div>
+            <div class="user_pic_frame_ie">
+                <img data-pid="{header_custom_photo_id}" onclick="openGalleryDataId($(this), event, 0, '{header_custom_uid}')" class="profile_photo_bm_{header_custom_uid} nocontextmenu to_hide" onload="onLoadProfilePhoto('.profile_photo_bm_{header_custom_uid}')" src="{url_files}{header_custom_photo}" alt="">
+            </div>
+            <!-- begin_profile_user_blocked_bl -->
+            <div id="bl_user_blocked" class="user_blocked <!-- begin_profile_user_blocked_bl_show -->to_show<!-- end_profile_user_blocked_bl_show -->">
+                <span data-uid="{header_custom_uid}" data-user-name="{header_custom_user_name}" data-cmd="user_unblock" onclick="confirmBlockUser($(this)); return false;"><span>{l_profile_menu_user_unblock}</span></span>
+            </div>
+            <!-- end_profile_user_blocked_bl -->
+        </div>
+    </div>
+    <!-- /bl_grid_inner_photo_center -->
+</div>
+<!-- end_header_custom_big -->
+
+<!-- begin_header_custom_small -->
+<div class="header">
+
+    <div id="block_grid" class="header_grid inner">
+        <div id="grid">
+            <!-- begin_header_custom_small_grid_item -->
+            <div onclick="openGallery(event,'{header_custom_small_grid_item_id}', '{header_custom_small_grid_item_video}'*1, '{header_custom_uid}')" title="{header_custom_small_grid_item_description}" class="block grid_item_{header_custom_small_grid_item_id} {header_custom_small_grid_item_class} to_hide photo_description_{header_custom_small_grid_item_id}" style="background-image:url({header_custom_small_grid_item_url});">
+            </div>
+            <script>
+                showGridPhoto('.grid_item_{header_custom_small_grid_item_id}', '{header_custom_small_grid_item_url}');
+                clProfilePhoto.setVisibleMediaData('{header_custom_small_grid_item_id}', {header_custom_small_grid_item_info});
+            </script>
+            <!-- end_header_custom_small_grid_item -->
+        </div>
+    </div>
+
+    <div class="wrap_profile_menu_inner_small">
+		<div class="pl_grid_count none_select">
+            <div class="bl_count left">
+                <!-- begin_profile_menu_inner_small -->
+                <!-- begin_profile_menu_inner_small_item -->
+                <div id="{profile_menu_inner_small_item_key}" class="item {profile_menu_inner_small_item_key} header_navbar_item_menu <!-- begin_profile_menu_inner_small_item_active -->active<!-- end_profile_menu_inner_small_item_active -->" data-url="{profile_menu_inner_small_item_url}">
+                    <span class="bl <!-- begin_profile_menu_inner_small_item_wall_show_post_input --> show_post_input<!-- end_profile_menu_inner_small_item_wall_show_post_input -->" data-placement="right" title="{profile_menu_inner_small_item_tooltip}">
+                        <span class="count">
+                            <!-- begin_profile_menu_inner_small_item_user_name -->
+                            <span class="count_p">
+                                <a href="{profile_menu_inner_small_item_url}" class="num">{profile_menu_inner_small_item_count}</a>
+                                <a id="header_user_name" href="{url_main}{header_custom_url}" class="header_small_item_menu_name">
+                                    {header_custom_name}
+                                </a>
+                            </span>
+                            <!-- end_profile_menu_inner_small_item_user_name -->
+                            <!-- begin_profile_menu_inner_small_item_count -->
+                            <a href="{profile_menu_inner_small_item_url}" class="num">{profile_menu_inner_small_item_count}</a>
+                            <!-- end_profile_menu_inner_small_item_count -->
+                        </span>
+                        <a href="{profile_menu_inner_small_item_url}" class="name">{profile_menu_inner_small_item_title}</a>
+                    </span>
+                </div>
+                <!-- end_profile_menu_inner_small_item -->
+                <!-- end_profile_menu_inner_small -->
+            </div>
+        </div>
+    </div>
+
+    <div class="bl_grid_inner_photo">
+        <!-- begin_mn_circle_small -->
+        <div class="circles">
+            <!-- begin_mn_circle_small_item -->
+            <a data-uid="{header_custom_uid}" data-user-name="{header_custom_user_name}" data-cmd="{mn_circle_small_item_cmd}" data-tooltip="true" data-placement="left" data-cl-loader="" title="{mn_circle_small_item_tooltip}" <!-- begin_mn_circle_small_item_more_link -->data-toggle="collapse" role="button" aria-haspopup="true"<!-- end_mn_circle_small_item_more_link --> href="{mn_circle_small_item_url}" class="circle l{mn_circle_small_item_num_order} {mn_circle_small_item_key} <!-- begin_mn_circle_small_item_message -->new_message_link {mn_circle_small_item_message_disabled}<!-- end_mn_circle_small_item_message -->">
+               <span class="icon_fa"><i class="fa {mn_circle_small_item_icon}" aria-hidden="true"></i></span>
+            </a>
+            <!-- end_mn_circle_small_item -->
+
+            <!-- begin_mn_circle_small_more -->
+            <ul id="mn_circle_small_more_list" class="more_menu_collapse collapse mn_circle_more_list mn_circle_small_more_list menu_collapse">
+                <!-- begin_mn_circle_small_more_item -->
+                <li <!-- begin_mn_circle_small_more_item_active -->class="active"<!-- end_mn_circle_small_more_item_active -->>
+                    <a data-uid="{header_custom_uid}" data-user-name="{header_custom_user_name}" data-cmd="{mn_circle_small_more_item_cmd}" href="{mn_circle_small_more_item_url}" class="{mn_circle_small_more_item_key}">
+                        <span>
+                            <span data-cl-loader="more_menu_loader" class="icon_fa"><i class="fa {mn_circle_small_more_item_icon}" aria-hidden="true"></i></span>
+                            <span class="btn_title">{mn_circle_small_more_item_title}</span>
+                        </span>
+                    </a>
+                </li>
+                <!-- end_mn_circle_small_more_item -->
+            </ul>
+            <!-- end_mn_circle_small_more -->
+        </div>
+        <!-- end_mn_circle_small -->
+    </div>
+</div>
+<!-- end_header_custom_small -->

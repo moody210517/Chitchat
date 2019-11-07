@@ -1,0 +1,49 @@
+		  <!--[if lte IE 6]>
+	<script>
+    DD_belatedPNG.fix('.groups input.inp_violet,.groups input.inp_lviolet,.group_select .ABKSelectRight,table.tb_groups_frm .ABKFileLeft,.groups input.inp_violet_save');
+</script>
+<script language="javascript" type="text/javascript" src="{url_tmpl_main}js/iepngfix_tilebg.js{cache_version_param}"></script>
+<![endif]-->
+
+<div class="groups_head">
+
+<script type="text/javascript">
+    function groups_header_search_on_submit()
+    {
+        query = $("#groups_header_search input[name='query']").val();
+
+        if(query != '')
+        {
+            return true;
+        }
+
+        alert('{l_groups_please_enter_what_you_search}');
+
+        return false;
+    }
+</script>
+
+    <table>
+        <tr>
+            <td class="td_l">&nbsp;</td>
+            <td class="td_c">
+                <div class="groups_head_txt">
+                    <strong><a href="{url_main}groups.php" style="text-decoration:none">{l_groups_groups}</a> :: </strong> {total_n_groups} {l_groups_groups_on_site}
+                </div>
+                <div class="groups_head_pad fl_right">
+                    <form action="{url_main}groups_group_edit.php" method="post">
+                        <div class="arrow_right"><input class="btn_pink_img" type="submit" value="{l_groups_create_group}"/></div>
+                    </form>
+                </div>
+            </td>
+            <td class="td_r">&nbsp;</td>
+        </tr>
+    </table>
+
+    <div class="groups_menu_bg">
+        <ul class="groups_menu">
+            <!-- begin_categories_item --><!-- begin_categories_item_active --><li{class_last}>{category_title}</li><!-- end_categories_item_active --><!-- begin_categories_item_not_active --><li{class_last}><a href="{url_main}groups_settings_change.php?category_id={category_id}">{category_title}</a></li><!-- end_categories_item_not_active --><!-- end_categories_item -->
+        </ul>
+    <div class="justify"></div>
+    </div>
+</div>

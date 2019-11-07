@@ -1,0 +1,78 @@
+.tab {border-top:4px solid #fff;background:#e5e5e5;}
+.tab thead td {font-size:14px;line-height:16px;color:#000;background:#921b91;}
+.tab thead th {height:26px;padding:0 4px;vertical-align:middle;font-size:14px;line-height:16px;color:#000;background:#f4f4f4;text-align:left;white-space:nowrap;}
+.tab thead th.small {text-align:right;font-size:12px;font-weight:normal;text-align:right;}
+.tab thead th a {color:#1282c4;}
+.tab tfoot td {background:#f4f4f4;}
+.tab thead td a {color:#000;}
+
+.tab tfoot td.add {width:40%;font-size:12px;font-weight:bold;}
+.tab tfoot td.mailnav {width:46%;font-size:12px;font-weight:bold;color:#000;}
+.tab tfoot td.mailnav a {color:#1282c4;}
+.tab tfoot td.dots {width:50px;text-align:left;}
+
+.tab .content {padding:0 4px;color:#000;line-height:27px;}
+.tab .txt,.tab textarea {border:1px solid #d6b0d1;background:#713e64;}
+.tab .btn {text-align:center;}
+
+.list {width:100%;line-height:18px;}
+.list th {padding:6px 4px 7px 4px;border-bottom:1px solid #b988b8;color:#bc61bb;font-weight:bold;font-size:12px;line-height:14px;text-align:left; }
+.list th a {color:#b988b8;}
+.list td {padding:6px 4px 7px 4px;color:#000;}
+.list td a {color:#000;}
+.list td b {color:#000;}
+.list td b a {color:#000;}
+
+.list tr.head th {height:26px;padding:0 4px;border-bottom:none;color:#000;font-weight:bold;font-size:14px;line-height:16px;text-align:left;vertical-align:middle;background:#f4f4f4;}
+.list tr.head th a {color:#1282c4;}
+
+.alertspace {padding:0;height:176px;}
+.alert .alertbg {background:#f4f4f4;}
+.alert .btn {width:90px; text-align:center; margin-bottom:7px;}
+
+.tab td.message {padding:8px;}
+.tab td.message span.txt_message{ display: inline-block; white-space: -moz-pre-wrap; /* Mozilla, начиная с 1999 года */ white-space: -pre-wrap; /* Opera 4-6 */ white-space: -o-pre-wrap; /* Opera 7 */ word-wrap: break-word; /* Internet Explorer 5.5+ */
+ }
+ 
+.trash .tab {border-top:4px solid #000;background:#e5e5e5;}
+.trash .tab thead td {background:#f4f4f4;}
+.trash .tab thead th {background:#f4f4f4;}
+.trash .tab thead th a {}
+.trash .tab tfoot td {background:#f4f4f4;}
+.trash .tab tfoot td.mailnav,.trash .tab tfoot td.mailnav a {}
+.trash .list tr.head th {background:#f4f4f4;}
+.trash .list tr.head th a {}
+.trash .tab td .alert .alertbg {background:#f4f4f4;}
+.trash .tab td .alert .btn {width:90px; text-align:center; margin-bottom:7px;}
+
+
+.sent .tab {border-top:4px solid #000;background:#e5e5e5;}
+.sent .tab thead td {background:#f4f4f4;}
+.sent .tab thead th {background:#f4f4f4;}
+.sent .tab thead th a {}
+.sent .tab tfoot td {background:#f4f4f4;}
+.sent .tab tfoot td.mailnav,.sent .tab tfoot td.mailnav a {}
+.sent .list tr.head th {background:#f4f4f4;}
+.sent .list tr.head th a {color:#1282c4;}
+.sent .tab td .alert .alertbg {background:#f4f4f4;}
+.sent .tab td .alert .btn {width:90px; text-align:center; margin-bottom:7px;}
+
+.newmessage {background:#e5e5e5;}
+.newmessage .tab {height:auto;}
+.newmessage .tab th {width:40px;padding:6px 5px;text-align:right;color:#000;}
+.newmessage .tab td {padding:6px 5px;}
+.newmessage .tab .red th {border-bottom:4px solid #fff;background:#f4f4f4;}
+.newmessage .tab .red td {border-bottom:4px solid #fff;background:#f4f4f4;}
+.newmessage .tab .blue th {border-bottom:4px solid #fff;background:#f4f4f4;}
+.newmessage .tab .blue td {border-bottom:4px solid #fff;background:#f4f4f4;}
+.newmessage .txt,.newmessage textarea {width:96%;border:1px solid #000;display:block;background:#fff;}
+.newmessage textarea {height:136px;margin:0 0 10px 0;}
+.newmessage .btn {margin:35px 15px 30px 0;}
+.newmessage .nofriends label {padding:0;line-height:14px;font-weight:normal;color:#000;}
+.newmessage .nofriends label a {color:#000;}
+.newmessage .nofriends .txt {width:50%;margin-right:5px;display:inline;}
+
+.messent .alertspace {height:260px;}
+
+.banner_footer {text-align: center;}
+

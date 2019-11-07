@@ -1,0 +1,62 @@
+<div class="filter_result" style="display:none">
+
+<!-- begin_redirect_if_single -->
+<script>
+    var total={total};
+    if(total==1){
+        document.location.href="{url_main}{url_profile}"
+    }
+</script>
+<!-- end_redirect_if_single -->
+
+
+<!-- begin_users_list_item -->
+<div class="item" onclick="goLink('{url_main}{url_profile}', '{url_profile_params}'); return false;">
+	<div title="{name}, {age}, {city}" class="pic">
+		<img onload="$(this).fadeTo(600,1)" style="opacity: 0;" src="{url_files}{photo_m}" >
+		<noscript><img src="{url_files}{photo_m}" alt="{name}"></noscript>
+		<a onclick="return false;" href="{url_main}{url_profile}"></a>
+		<div class="name">{name_one_letter_short}, {age}</div>
+		<!-- begin_profile_verification_icon -->
+        <div class="status_verification"></div>
+        <!-- end_profile_verification_icon -->
+		<!-- begin_status_online -->
+		<div class="status_online"></div>
+		<!-- end_status_online -->
+		<!-- begin_photo_count -->
+		<div class="count_photo"><span>{photo_count}</span></div>
+		<!-- end_photo_count -->
+		<!-- begin_interests -->
+		<ul class="refine_interest">
+			<!-- begin_interest -->
+			<li class="{interest_class}"></li>
+			<!-- end_interest -->
+		</ul>
+		<!-- end_interests -->
+	</div>
+	<div class="infa">
+		<div class="place">{city}</div>
+		<!-- begin_i_am_here_to -->
+		<div data-cl="{i_am_here_to_class}" class="{i_am_here_to_class}"></div>
+		<!-- end_i_am_here_to -->
+	</div>
+</div>
+<!-- end_users_list_item -->
+<!-- begin_users_list_noitems -->
+<div class="bl_no_one">
+	<div class="people">{l_sorry_we_couldn_t_find_anyone_who_fits_your_criteria}</div>
+</div>
+<!-- end_users_list_noitems -->
+<div class="cl"></div>
+</div>
+
+<script>
+//lazyLoadProfilePhotoInit();
+$('img.lazy_scroll', $('.filter_result:hidden').fadeIn(300)).lazyload({appear: function(){
+	var el=$(this).load(function(){el.fadeTo(400,1)});
+	this.src=el.data('src');
+	if (!this.complete) el.fadeTo(0,0)
+}});
+$('.module_filter_result').height(Math.max(200, $('.filter_result:last').height()))
+counterTitle = '{counter_title}';
+</script>

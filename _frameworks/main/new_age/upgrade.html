@@ -1,0 +1,95 @@
+{header}
+<div class="wrapper-wide">
+<div class="userinfo-c-wide">
+	<div class="userinfo smallphoto clearfix">
+<div class="header_big" style="margin-bottom:12px; margin-top:-3px;">{l_upgrade}</div>
+
+<style>
+.upgrade {
+	height: auto!important;
+}
+
+.upgrade tr td.separate:last-child{
+    display:none;
+}
+</style>
+
+    <div id="gallery">
+
+    <div class="gallery_top ltc">
+        <div class="rtc">
+            <div class="buck">
+                <table width=100% height="30" class="tbl">
+                   <tr>
+                        <td width="114" class="central_0"><div class="block_title" style="width:105px; overflow:hidden;">{l_select_system}</div></td>
+                        <td class="central_1">&nbsp;</td>
+                        <td width="95">&nbsp;</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <ul class="upgrade">
+        <li>
+            <table width="700">
+	<!-- begin_payment_system -->
+
+                   <tr>
+
+                    <td width="138" class="row_0" id="row{row}">
+<img src="{url_main}_pay/{system}/logo.png" />
+                    </td>
+
+                    <td width="562" class="central" id="row{row}">
+
+                        <table width="562">
+                            <tr>
+                   		<!-- begin_payment_item -->
+                          		<td>
+                         		 <a href="{url_main}_pay/{system}/before.php?item={item}">{type}</a><br>{item_name}<br><br><span>{amount}</span>
+                           		</td>
+
+								<!-- begin_separator -->
+                                <td class="separate">
+                                 <img src="{url_tmpl_main}images/separate.png" />
+                                </td>
+								<!-- end_separator -->
+
+                   		<!-- end_payment_item -->
+                            </tr>
+                        </table>
+                    </td>
+
+                </tr>
+                <!-- end_payment_system -->
+            </table>
+        </li>
+    </ul>
+
+    <div class="gallery_bottom lbc">
+        <div class="rbc">
+            <div class="buck">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+	</div>
+<div class="userinfo-links-wide"></div>
+</div>
+</div>
+<!-- begin_payment_error -->
+<script language="javascript" type="text/javascript">
+$(function(){alert('{l_seems_there_problem_payment_processor}')});
+</script>
+<!-- end_payment_error -->
+{footer}
+

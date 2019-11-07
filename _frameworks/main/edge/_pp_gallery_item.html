@@ -1,0 +1,139 @@
+<div id="pp_gallery_comment_{comment_id}" data-cid="{comment_id}" class="pp_gallery_comment_item item">
+    <div class="comment_item_wrapper">
+        <div class="photo">
+            <a data-uid="{comment_user_id}" title="{comment_user_name}" href="{comment_user_url}" class="pic profile_photo_r_{comment_user_id} to_hide <!-- begin_data_my_photo --><!-- end_data_my_photo -->" style="background-image:url({url_files}{comment_user_photo});"></a>
+            <script>onLoadImgFromList($('.profile_photo_r_{comment_user_id}.to_hide'), '{url_files}{comment_user_photo}');</script>
+        </div>
+        <div class="comment_container">
+            <div class="comment_text">
+                <div class="comment_text_cont">{comment_text}</div><!-- comment_text_one -->
+                <ul class="list comment_action_list">
+                    <li>
+                        <span class="comment_item" data-cid="{comment_id}" data-like="{comment_like}" data-no-fade-in="true" data-cl-loader="loader_like_comments" onclick="clProfilePhoto.like($(this));">
+                            <span title="{comment_like_title_alt}" class="comment_item_title">{comment_like_title}</span>
+                        </span>
+                    </li>
+                    <li>
+                        <a href="#" data-cid="{comment_id}" onclick="clProfilePhoto.showFrmReply(this); return false;" >{l_reply_comment}</a>
+                    </li>
+                    <li id="comment_likes_bl_{comment_id}" class="comment_likes_bl <!-- begin_comment_likes_hide -->to_hide<!-- end_comment_likes_hide -->">
+                        <span class="comment_item" data-cid="{comment_id}"  onclick="redirectUrl('{comment_url_page_liked}')" title="{comment_count_like_users}" >
+                            <span class="glyphicon glyphicon-thumbs-up"></span><span id="comment_likes_count_{comment_id}" class="comment_likes_count">{comment_count_like}</span>
+                        </span>
+                    </li>
+                    <li class="comment_data hidden-xs hide_mobile">{comment_date}</li>
+                    <li class="comm_to_comm_delete">
+                        <!-- begin_comment_delete -->
+                        <div class="comm_tick">
+                            <span id="pp_gallery_comm_delete_{comment_id}" data-no-fade-in="true" data-cl-loader="loader_delete_comment" class="stick_delete">
+                                <span class="icon_chevron_down" data-toggle="collapse" data-target="#pp_gallery_comm_delete_ul_{comment_id}"></span>
+                            </span>
+                            <ul id="pp_gallery_comm_delete_ul_{comment_id}" class="more_menu_collapse more_menu_right collapse" >
+                                <li>
+                                    <a onclick="clProfilePhoto.confirmDeleteComment($(this),'{comment_id}'); return false;" href="">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                        <span>{l_delete}</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- end_comment_delete -->
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div id="comments_replies_load_{comment_id}" class="comments_reply_load <!-- begin_comments_reply_list_load -->to_show<!-- end_comments_reply_list_load -->">
+                <div class="comm_to_comm_text">
+                    <a data-cid="{comment_id}" href="" data-no-fade-in="true" data-cl-children="no" data-cl-loader="loader_more_comments_replies" class="comments_replies_load_link no_transparent" onclick="clProfilePhoto.commentsRepliesLoadMore($(this)); return false;">
+                        <span data-no-fade-in="true" data-cl-loader="icon_wall_loader" class="glyphicon glyphicon-comment icon"></span>
+                        <span class="comments_replies_load_title">{comments_reply_list_load_title}</span>
+                    </a>
+                    <div class="comm_to_comm_text_number <!-- begin_comments_reply_list_load_number -->to_show<!-- end_comments_reply_list_load_number -->">
+                        {comments_reply_list_load_number}
+                    </div>
+                </div>
+            </div>
+
+            <div id="comments_replies_list_{comment_id}" class="comments_replies_list">
+                <!-- begin_comments_reply_list -->
+                <!-- begin_comments_reply_item -->
+                <div id="comments_replies_item_{comments_reply_item_id}" data-rcid="{comments_reply_item_id}" class="comment_to_comment_container comments_replies_item">
+                    <div class="comment_item_wrapper">
+                        <div class="photo">
+                            <a data-uid="{comments_reply_item_user_id}" title="{comments_reply_item_user_name}" href="{comments_reply_item_user_url}" class="pic to_hide profile_photo_r_{comments_reply_item_user_id}" style="background-image:url({url_files}{comments_reply_item_user_photo});"></a>
+                            <script>onLoadImgFromList($('.profile_photo_r_{comments_reply_item_user_id}.to_hide'), '{url_files}{comments_reply_item_user_photo}');</script>
+                        </div>
+                        <div class="comment_container">
+                            <div class="comment_text">
+                                <div class="comment_text_reply_one">{comments_reply_item_text}</div>
+                                <ul class="list comment_action_list">
+                                    <li>
+                                        <span class="comment_item" data-rcid="{comments_reply_item_id}" data-like="{comments_reply_item_like}" data-no-fade-in1="true" data-cl-loader="loader_like_comments"  onclick="clProfilePhoto.like($(this));">
+                                            <span title="{comments_reply_item_like_title}"  class="comment_item_title">{comments_reply_item_like_title}</span>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span class="comment_item" data-cid="{comments_reply_item_parent_id}" onclick="clProfilePhoto.showFrmReply(this);">
+                                            {l_reply_comment}
+                                        </span>
+                                    </li>
+                                    <li id="comment_reply_likes_bl_{comments_reply_item_id}" class="comment_likes_bl <!-- begin_comments_reply_item_likes_hide -->to_hide<!-- end_comments_reply_item_likes_hide -->"> <!-- hidden-xs -->
+                                        <span class="comment_item" data-rcid="{comments_reply_item_id}" title="{comments_reply_item_count_like_users}" onclick="redirectUrl('{comments_reply_item_url_page_liked}')">
+                                            <span class="glyphicon glyphicon-thumbs-up"></span>
+                                            <span id="comment_likes_count_{comments_reply_item_id}" class="comment_likes_count">{comments_reply_item_count_like}</span>
+                                        </span>
+                                    </li>
+                                    <li class="comment_reply_data hidden-xs hide_mobile">{comments_reply_item_date}</li>
+                                    <!-- begin_comments_reply_item_delete -->
+                                    <li class="comm_to_comm_delete">
+                                        <span id="pp_gallery_comm_delete_{comments_reply_item_id}"  data-no-fade-in="true" data-cl-loader="loader_delete_comment_reply" class="stick_delete">
+                                            <span class="icon_chevron_down" data-toggle="collapse" data-target="#pp_gallery_comm_delete_ul_{comments_reply_item_id}"></span>
+                                        </span>
+                                        <ul id="pp_gallery_comm_delete_ul_{comments_reply_item_id}" class="more_menu_collapse more_menu_right collapse" >
+                                            <li>
+                                                <a onclick="clProfilePhoto.confirmDeleteComment($(this),'{comments_reply_item_parent_id}','{comments_reply_item_id}'); return false;" href="">
+                                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                                    <span>{l_delete}</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <!-- end_comments_reply_item_delete -->
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <!-- begin_comments_reply_item_update_counter -->
+                        <script>
+                            clProfilePhoto.updateRepliesCounter('{comments_reply_item_parent_id}'*1, '{comments_reply_item_count_comments_replies}'*1);
+                        </script>
+                        <!-- end_comments_reply_item_update_counter -->
+                    </div>
+                </div>
+                <!-- end_comments_reply_item -->
+                <!-- end_comments_reply_list -->
+            </div>
+
+            <div id="comment_replies_post_{comment_id}" class="comments_replies_post">
+                <div class="photo">
+                    <a title="{comment_current_user_name}"  href="{comment_current_user_url}" class="pic profile_photo_r_{comment_current_user_id} to_hide" style="background-image:url({url_files}{comment_current_user_photo});"></a>
+                    <script>onLoadImgFromList($('.profile_photo_r_{comment_current_user_id}.to_hide'), '{url_files}{comment_current_user_photo}');</script>
+                </div>
+                <div class="comment_container">
+                    <textarea id="comment_replies_input_{comment_id}" data-cid="{comment_id}" placeholder="{a_write_a_reply}" class="form-control autosize"></textarea>
+                    <script>clProfilePhoto.initFeedCommentReplies('{comment_id}');</script>
+                </div>
+            </div>
+            <!-- begin_comment_update_counter -->
+            <script>
+                clProfilePhoto.updatePageCounter('{comment_count_comments}'*1);
+            </script>
+            <!-- end_comment_update_counter -->
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>

@@ -1,0 +1,95 @@
+<!--<div id="pp_3_{name}" class="popup pp_activate" style="top: 30px; left: 50px; margin: 0;">-->
+    <div class="head">
+        <strong>{field}</strong>
+        <a id="pp_3_close_{name}" class="icon_close" href="#close"></a>
+    </div>
+    <div class="cont basic_fields">
+        <div class="edit {type}_loader">
+            <!-- begin_textarea -->
+            <textarea id="pp_3_editor_{name}" maxlength="{maxlen}">{value}</textarea>
+            <!-- end_textarea -->
+            <!-- begin_text -->
+            <input id="pp_3_editor_{name}" type="text" maxlength="{maxlen}" value="{value}" class="inp" style="width:339px; margin-left: 9px;"/>
+            <!-- end_text -->
+        </div>
+    </div>
+    <div class="foot">
+        <input id="pp_3_save_{name}" type="button" class="btn green fl_right" value="{l_save}" disabled/>
+        <a id="pp_3_cancel_{name}" class="link" href="#reset">{l_cancel}</a>
+    </div>
+<!--</div>-->
+<script>
+    var pp_3_{name} = $('#pp_3_{name}'),//.modalPopup().open(),
+        pp_3_editor_{name} = $('#pp_3_editor_{name}'),
+        pp_3_save_{name} = $('#pp_3_save_{name}'),
+        pp_3_cancel_{name} = $('#pp_3_cancel_{name}'),
+        info_{name} = pp_3_editor_{name}.val(),
+        btnCancel_{name}=$('#pp_3_cancel_{name}'),
+        pp_3_ajax_{name} = 1,
+        pp_3_ajax_{name}_loader = $('#about_edit_{name}_loader');
+
+    $('.about_edit_{name}').click(function(){
+        pp_3_{name}.open();
+        return false;
+    });
+
+    $('#pp_3_cancel_{name}, #pp_3_close_{name}').click(function (){
+        if (this.hash=='#close'||pp_3_editor_{name}.val()==info_{name}) pp_3_{name}.close();
+        pp_3_save_{name}.attr('disabled', '');
+        btnCancel_{name}.text('{j_cancel}');
+        pp_3_editor_{name}.val(info_{name});
+        return false;
+    });
+
+    $('#pp_3_editor_{name}').on('change propertychange input', function(){
+        setDisabledSave_{name}();
+    })
+
+    $('#pp_3_save_{name}').click(function(){
+        if (pp_3_ajax_{name}) {
+            var val = pp_3_editor_{name}.val();
+            if (info_{name} != val) {
+                pp_3_ajax_{name} = 0;
+                //pp_3_{name}.fadeTo(300, .5);
+                pp_3_save_{name}.attr('disabled', '');
+                pp_3_ajax_{name}_loader.show();
+                pp_3_{name}.close();
+                $.post(url_main+'ajax.php', {cmd: 'update_about_field', ajax: 1, name: '{name}', {name}: val}, update_{name});
+            }
+        }
+        return false;
+    })
+
+    function update_{name}(res){
+        //pp_3_{name}.stop().fadeTo(300, 1);
+        pp_3_ajax_{name}_loader.hide();
+        pp_3_ajax_{name} = 1;
+        var data=checkDataAjax(res);
+        if(data !== false){
+            $('#{name}').html(data);
+            //pp_3_{name}.close();
+            info_{name} = pp_3_editor_{name}.val();
+            btnCancel_{name}.text('{j_cancel}');
+        } else {
+            // Error
+        }
+    }
+
+    function setDisabledSave_{name}(){
+        if (info_{name} != pp_3_editor_{name}.val()){
+            pp_3_save_{name}.removeAttr('disabled');
+            btnCancel_{name}.text('{j_reset}');
+        } else {
+            pp_3_save_{name}.attr('disabled', '');
+            btnCancel_{name}.text('{j_cancel}');
+        }
+    }
+
+    $('.pp_body').on('click', function(e){
+        if(e.target==this
+           &&$('#pp_3_{name}:visible')[0]
+           &&info_{name}==pp_3_editor_{name}.val()){
+           pp_3_{name}.close()
+        }
+    })
+</script>

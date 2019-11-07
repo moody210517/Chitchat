@@ -1,0 +1,118 @@
+<!--<div id="pp_contact" class="popup pp_activate" style="top: 30px; left: 50px; margin: 0;">-->
+    <div class="head">
+        <strong>{l_send_a_message_to_the_admin}</strong>
+        <a id="pp_contact_close" class="icon_close" href="#close"></a>
+    </div>
+<div class="cont basic_fields">
+    <div class="edit not_authorized">
+        <div class="name">{l_name}</div>
+        <input id="pp_contact_name"  class="inp mail_info" name="username"/>
+    </div>
+    <div class="edit not_authorized">
+        <div class="name">{l_email}</div>
+        <input id="pp_contact_email" class="inp mail_info" name="email"/>
+    </div>
+    
+    <div class="edit textarea_loader">
+        <div class="name not_authorized">{l_subject}</div>
+        <textarea class="mail_info" id="pp_contact_text" name="comment"></textarea>
+    </div>
+</div>
+<div class="foot">
+    <input id="pp_contact_send" type="button" class="btn green fl_right" value="{l_send}" disabled/>
+    <a id="pp_contact_cancel" class="link" href="#reset">{l_cancel}</a>
+</div>
+<!--</div>-->
+
+<script>
+    if (ajax_login_status) {
+        $('.not_authorized').hide();
+    }else{
+       $('.textarea_loader').css({height: '181px'}); 
+    }
+    
+    
+    var pp_contact=$('#pp_contact'),//.modalPopup().open(),
+        pp_contact_text=$('#pp_contact_text'),
+        pp_contact_send=$('#pp_contact_send'),
+        pp_contact_cancel=$('#pp_contact_cancel'),
+        pp_contact_ajax=1,
+        pp_contact_loader=$('#pp_contact_loader'),
+        pp_contact_cancel=$('#pp_contact_cancel'),
+        pp_contact_name=$('#pp_contact_name'),
+        pp_contact_email=$('#pp_contact_email');
+
+    $('#contact').off('click').click(function(){
+        pp_contact.open();
+        return false;
+    });
+
+
+    $('#pp_contact_cancel, #pp_contact_close').click(function (){
+        if (this.hash=='#close') pp_contact.close();
+        if (this.hash=='#reset'&&!isChanges()){pp_contact.close()}
+        customHideTip(pp_contact_email, pp_contact_send);
+        $('.mail_info').val('');
+        pp_contact_cancel.text('{j_cancel}');
+        pp_contact_send.prop('disabled', true);
+        return false;
+    })
+    
+    function isChanges(){
+        var is=true;
+        $('.mail_info:visible').each(function(){
+            if ($.trim($(this).val())){is=is&&true
+            }else{is=is&&false}
+        })
+        return is;
+    }
+
+    $('.mail_info').on('change propertychange input', function(){
+        if (!isChanges()) {
+            pp_contact_cancel.text('{j_cancel}');
+            pp_contact_send.prop('disabled',true);
+        }else{
+            pp_contact_cancel.text('{j_reset}');
+            pp_contact_send.prop('disabled',false);
+        }
+    })
+    
+    $('#pp_contact_email').on('change propertychange input', function(){
+        customHideTip(pp_contact_email, pp_contact_send)        
+    })
+
+    pp_contact_send.click(function(){
+        if (!ajax_login_status&&!checkEmail(pp_contact_email.val())) {
+            customShowTip(pp_contact_email, pp_contact_send, '{j_incorrect_email}',pp_contact);
+            return false;
+        }
+        if(pp_contact_ajax){
+            var val=$.trim(pp_contact_text.val());
+            pp_contact_ajax=0;
+            pp_contact_send.prop('disabled', true);
+            pp_contact.close();
+            var data={cmd:'send',ajax:1,comment:val};
+            if(!ajax_login_status){
+               data={cmd:'send',ajax:1,comment:val,email:$.trim(pp_contact_email.val()),username:$.trim(pp_contact_name.val())}; 
+            }
+            $.post('{url_main}contact.php',data,function(res){
+                pp_contact_ajax=1;$('.mail_info').val('');
+                pp_contact_cancel.text('{j_cancel}');
+                var data=getDataAjax(res, 'data');
+                if(data!==false){
+                    //console.log($(data.data).is('.error'), data.data);
+                }
+            });
+            alertHtmlArea = '.column_main';
+            setTimeout(function(){alertCustom('{j_message_sent}',true,ALERT_HTML_SUCCESS)},200);
+        }
+        return false;
+    })
+
+    $('.pp_body').on('click', function(e){
+        if(e.target==this&&$('#pp_contact:visible')[0]
+           &&$.trim(pp_contact_text.val())==''){
+           pp_contact.close()
+        }
+    })
+</script>

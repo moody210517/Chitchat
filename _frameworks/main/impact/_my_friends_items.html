@@ -1,0 +1,20 @@
+<!-- begin_item_block_users -->
+<a id="friend_user_{user_id}" href="{url_main}{user_profile_link}" class="item" onclick="redirectToProfile(event,'{url_main}{user_profile_link}'); return false;">
+    <script>myFriends.setRank('{rank}');</script>
+    <span class="pic_info">
+        <span class="pic to_hide" style="width:126px; height:140px;">
+            <img src="{url_files}{user_photo}" alt="" onload="$(this).parent('.pic').removeClass('to_hide')"/>
+        </span>
+        <span class="info">
+            <span class="name">{name_one_letter_short}</span>
+            <span class="list">
+                {age} <span>•</span> {city}<span>•</span> {user_orientation}
+            </span>
+        </span>
+    </span>
+    <div class="block_btn not_redirect">
+        <button id="disallow_btn_{user_id}" onclick="myFriends.confirmDisallowPrivatePhoto('{user_id}');" class="btn turquoise not_redirect"><span> <span class="icon_lock"></span> {l_disallow}</span></button>
+    </div>
+</a>
+<!-- end_item_block_users -->
+<script>myFriends.setParam('{stop}');</script>

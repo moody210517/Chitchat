@@ -1,0 +1,72 @@
+{header}
+{profile_menu}
+
+<tbody>
+	<tr>
+		<td class="content">
+		
+		
+
+
+	<table class="photos" cellspacing="4" cellpadding="0">
+	<!-- begin_photo_item-->
+		<!-- begin_photo_odd-->
+		<tr class="row{row}">
+		<!-- end_photo_odd-->
+			<td class="one">
+			
+			
+					<table cellspacing="0" cellpadding="0">
+					<tr>
+						<th><div style="background-image:url('{url_files}{user_id}_{photo_id}_s.jpg');"></div></th>
+						<td><a href="{url_main}profile_photo_edit.php?id={photo_id}">{l_edit}</a><br/>
+						
+						<!-- begin_default -->{l_photo_default_sign} {l_default}<!-- end_default -->						
+						
+						<!-- begin_set_default --><a href="{url_main}profile_photo_edit.php?id={photo_id}&cmd=main">{default_title}</a><!-- end_set_default -->
+						
+						<!-- begin_set_private --><br/><a href="{url_main}profile_photo_edit.php?id={photo_id}&cmd=private">{private_title}</a><!-- end_set_private -->
+						<!-- begin_set_public --><br/><a style="text-decoration: none;" href="{url_main}profile_photo_edit.php?id={photo_id}&cmd=public">{l_photo_private_sign}</a> <a href="{url_main}profile_photo_edit.php?id={photo_id}&cmd=public">{l_private}</a><!-- end_set_public -->						
+						
+						<br/><strong><a href="{url_main}profile_photo.php?id={photo_id}&cmd=delete" onclick="return confirm('{l_confirm_delete}')">{l_photo_delete}</a></strong></td>
+					</tr>
+					</table>			
+			
+			</td>
+		<!-- begin_photo_even-->
+		</tr>
+		<!-- end_photo_even-->
+	
+	<!-- end_photo_item-->
+
+	
+	
+	<!-- begin_nophoto_item-->
+		<!-- begin_nophoto_odd-->
+		<tr>
+		<!-- end_nophoto_odd-->
+		<td class="one">
+		
+			<table cellspacing="0" cellpadding="0">
+			<tr>
+				<th class="add"><div><a href="{url_main}profile_photo_edit.php">{l_add}<br/>{l_photo}</a></div></th>
+				<td></td>
+			</tr>
+			</table>		
+		
+		</td>
+		<!-- begin_nophoto_even-->
+		</tr>
+		<!-- end_nophoto_even-->
+	<!-- end_nophoto_item-->
+	</table>		
+				
+		</td>
+	</tr>
+</tbody>
+</table>
+
+</td></tr></table>
+
+{user_menu}
+{footer}

@@ -1,0 +1,36 @@
+{header}
+
+{ims}
+
+
+
+<div id="profile" class="box"><div class="bbt"><div class="bbb"><div class="bbl"><div class="bbr"><div class="bbtl"><div class="bbtr"><div class="bbbl"><div class="bbbr">
+
+<input type="button" value="{l_menu_profile_edit}" class="button_small" onclick="location='{url_main}profile.php';" title="{l_menu_profile_edit}">
+<input type="button" value="{l_menu_profile_edit_photos}" class="button_small" onclick="location='{url_main}profile_photo.php';" title="{l_menu_profile_edit_photos}">
+<input type="button" value="{l_menu_profile_edit_music}" class="button_small" onclick="location='{url_main}music_my.php';" title="{l_menu_profile_edit_music}">
+
+<input type="button" value="{l_menu_profile_settings}" class="button_small" onclick="location='{url_main}profile_settings.php';" title="{l_menu_profile_settings}">
+<input type="button" value="{l_menu_profile_view}" class="button_small" onclick="location='{url_main}profile_view.php';" title="{l_menu_profile_view}">
+<input type="button" value="{l_menu_profile_my_audio}" class="button_small" onclick="location='{url_main}profile_audio_view.php';" title="{l_menu_profile_my_audio}">
+<!-- begin_my_blog -->
+<input type="button" value="{l_menu_profile_my_blog}" class="button_small active_btn" onclick="location='{url_main}blogs_blog.php';" title="{l_menu_profile_my_blog}">
+<!-- end_my_blog -->
+                  <br /><br />
+                  <div align="left">
+                     <table width="100%" border="0" valign="top">
+                     <form action="{url_page}" method="POST" enctype="multipart/form-data">
+                        <input type="hidden" name="cmd" value="msg">
+                           <tr><td height="40" valign="top" align="right" width="80">{l_subject}:&nbsp; </td><td valign="top"><input type="text" name="subject" value="" style="width: 396px;"></td></tr>
+                           <tr><td height="220" valign="top" align="right">{l_text}:&nbsp; </td><td valign="top"><textarea name="msg" style="width: 400px; height: 200px;">{new_text}</textarea></td></tr>
+                           <tr><td height="40" valign="top" align="right">{l_image}:&nbsp; </td><td valign="top"><input type="file" name="image" style="width: 400px; height:22px;"></td></tr>
+                           <tr><td height="40"></td><td valign="top"><input type="submit" class="button" style=" padding-left: 5px; padding-right: 5px;cursor: pointer; cursor: hand;" tabindex="13" value="{l_create_post}"></td></tr>
+                        </table>
+
+                     </form>
+
+                  </div>
+              </div></div></div></div></div></div></div></div></div>
+
+{complite}
+{footer}

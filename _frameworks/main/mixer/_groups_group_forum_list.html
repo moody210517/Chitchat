@@ -1,0 +1,153 @@
+<!-- begin_container_header -->
+<script type="text/javascript">
+
+var current_page_n = {page};
+
+function group_forum_list_load_page(page_n)
+{
+    $('#group_forum_list_load_animation').css('visibility', 'visible');
+
+    $('#group_forum_list_container').load(
+            '{url_main}groups_group_forum_list_ajax.php?group_id={group_id}&group_forum_list_page=' + page_n,
+            null,
+            function(responseText, textStatus, XMLHttpRequest) {
+                current_page_n = page_n;
+            });
+}
+
+function group_forum_delete(forum_id)
+{
+    if(confirm('{l_are_you_sure}'))
+    {
+	    $('#group_forum_' + forum_id).fadeOut(400, function() {
+		        $.ajax({
+		            type: 'POST',
+		            url: '{url_main}groups_group_forum_delete_ajax.php',
+		            data: {
+		                forum_id: forum_id
+		                },
+		            success: function (data, textStatus, XMLHttpRequest)
+		                {
+		                    group_forum_list_load_page(current_page_n);
+		                }
+		          });
+	        });
+    }
+
+    return false;
+}
+
+function on_group_forum_post()
+{
+	if($('#group_forum_text').val() == '{l_groups_write_to_wall}')
+		$('#group_forum_text').val('');
+
+    forum_text = $('#group_forum_text').val();
+    if(forum_text === "")
+    {
+        alert('{l_please_enter_text}');
+        return false;
+    }
+
+    $('#group_forum_post_button').attr('disabled', true);
+    $('#group_forum_post_animation').css('visibility', 'visible');
+
+    $.ajax({
+          type: 'POST',
+          url: '{url_main}groups_group_forum_create_ajax.php',
+          data: {
+              group_id: {group_id},
+              forum_text: forum_text
+              },
+          success: function (data, textStatus, XMLHttpRequest)
+              {
+                  $('#group_forum_post_animation').css('visibility', 'hidden');
+                  $('#group_forum_text').val('');
+                  $('#group_forum_post_button').attr('disabled', false);
+                  group_forum_list_load_page(1);
+              }
+        });
+}
+
+</script>
+<div id="group_forum_list_container">
+<!-- end_container_header -->
+
+<table class="groups_tb_sub groups_tb_sub_h">
+    <col width="7px"/>
+    <col width="243px"/>
+    <col width="60px"/>
+    <col width="24px"/>
+    <col width="55px"/>
+    <tr>
+        <th class="th_t_l nb first">&nbsp;</th>
+        <th class="th_t_c">{l_groups_title_and_description}</th>
+        <th class="th_t_c"><span>{l_groups_last_post}</span></th>
+        <th class="th_t_c"><span>{l_groups_go}</span></th>
+        <th class="th_t_c nb"><span>{l_groups_replies}</span></th>
+        <th class="th_t_c nb"><span>{l_groups_views}</span></th>
+        <th class="th_t_r nb first">&nbsp;</th>
+    </tr>
+<!-- begin_forum -->
+    <tr id="group_forum_{forum_id}">
+        <td class="first" colspan="2">
+            <span><a class="yellow"  href="{url_main}groups_group_forum_show.php?forum_id={forum_id}"  title="{forum_title_full}">{forum_title}</a></span>
+
+<!--             <div class="bl_violet_tb">
+                <div class="bl_violet_tb_top"></div>
+                <div class="bl_violet_tb_c">
+                    {forum_description}
+                </div>
+                <div class="bl_violet_tb_bot"></div>
+            </div>
+ -->
+            <div class="bl_violet_round">
+                {forum_description}
+            </div>
+
+
+        </td>
+        <td>
+            <span class="data">
+                <!-- begin_forum_last_message -->
+                {comment_created_at}<br/>
+                <i style="position:relative;top:2px;">{l_groups_by}</i> <a href="{url_main}search_results.php?display=profile&name={user_name_full}" style="position:relative;top:2px;">{user_name}</a>
+                <!-- end_forum_last_message -->
+                <!-- begin_forum_last_message_never -->
+                {l_groups_never}
+                <!-- end_forum_last_message_never -->
+            </span>
+        </td>
+        <td>
+            <span>
+                <a  href="{url_main}groups_group_forum_show.php?forum_id={forum_id}&forum_comment_list_page=last" ><img src="{url_tmpl_main}images/groups/play.png" width="13" height="13" alt=""/></a>
+                <!-- begin_forum_delete --><a href="#" onclick="return group_forum_delete({forum_id});"><img src="{url_tmpl_main}images/groups/ico_delete_yellow.png" width="13" height="14" alt=""/></a><!-- end_forum_delete -->
+            </span>
+        </td>
+        <td><span>{forum_n_comments}</span></td>
+        <td class="nb" colspan="2"><span>{forum_n_views}</span></td>
+    </tr>
+<!-- end_forum -->
+
+    <tr>
+        <th class="th_b_l nb">&nbsp;</th>
+        <th colspan="5" class="th_b_c nb">&nbsp;</th>
+        <th class="th_b_r nb">&nbsp;</th>
+    </tr>
+
+
+</table>
+
+<!-- begin_pager -->
+<div class="fl_right"><ul class="groups_paging">
+    <li><img style="visibility:hidden;" id="group_forum_list_load_animation" src="{url_tmpl_main}images/load_animation.gif"></li>
+    <!-- begin_pager_prev --><li><a href="javascript:group_forum_list_load_page({page_n});">{l_pager_prev}</a></li>
+    <li>|&nbsp;&nbsp;</li><!-- end_pager_prev -->
+    <!-- begin_pager_link --><!-- begin_pager_link_active --><li class="active">{page_n}</li><!-- end_pager_link_active --><!-- begin_pager_link_not_active --><li><a href="javascript:group_forum_list_load_page({page_n});">{page_n}</a></li><!-- end_pager_link_not_active --><!-- end_pager_link -->
+    <!-- begin_pager_next --><li>&nbsp;&nbsp;|</li>
+    <li><a href="javascript:group_forum_list_load_page({page_n});">{l_pager_next}</a></li><!-- end_pager_next -->
+</ul></div><!-- end_pager -->
+
+<!-- begin_container_footer -->
+</div>
+<!-- end_container_footer -->

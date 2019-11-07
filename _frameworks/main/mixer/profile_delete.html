@@ -1,0 +1,46 @@
+{header}
+
+{ims}
+
+
+
+<div id="profile" class="box"><div class="bbt"><div class="bbb"><div class="bbl"><div class="bbr"><div class="bbtl"><div class="bbtr"><div class="bbbl"><div class="bbbr">
+
+{profile_menu}
+
+<form  name="DeleteQuestionaireForm" method="POST" action="{url_main}profile_delete.php" onSubmit="return validateDeleteQuestionaireForm();" style="padding: 0px; margin: 0px;">
+
+			<input type="hidden" name="cmd" value="delete">
+
+<center>
+			<div class=header_big>
+				{l_delete_profile}
+			</div>
+
+
+			<div style="padding-top:15px; padding-bottom:30px;">
+				{l_are_you_sure}
+			</div>
+
+				<table border="0" cellpadding="0" cellspacing="0"><tr>
+					<td style="padding-right: 15px;">
+						<table border="0" cellpadding="0" cellspacing="0"><tr><td>
+						<input type="button" value="{l_changed_my_mind}" onClick="location.href='{url_main}profile_settings.php';" class="button" style=" padding-left: 5px; padding-right: 5px; cursor: pointer; cursor: hand;" title="{l_changed_my_mind}" onMouseOver="window.status='{l_changed_my_mind}'; return true;" onMouseOut="window.status=''; return true;">
+						</td></tr></table>
+					</td>
+					<td>
+						<table border="0" cellpadding="0" cellspacing="0"><tr><td>
+						<input type="submit" value="{l_delete_my_profile}" class="button" style=" padding-left: 5px; padding-right: 5px; cursor: pointer; cursor: hand;" title="{l_delete_my_profile}" onMouseOver="window.status='{l_delete_my_profile}'; return true;" onMouseOut="window.status=''; return true;">
+						</td></tr></table>
+					</td>
+				</tr></table>
+</center>
+
+			<div style="padding-top:30px; padding-bottom:15px;">
+				<b>{l_please_note}</b>: {l_deleting_profile} <b>{l_irreversible}</b> {l__action}
+			</div>
+</form>
+
+</div></div></div></div></div></div></div></div></div>
+{complite}
+{footer}

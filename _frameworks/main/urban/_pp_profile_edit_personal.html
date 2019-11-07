@@ -1,0 +1,338 @@
+<form id="frm_pp_4" name="frm_profile_edit_field_personal" method="POST" action="{url_main}ajax.php">
+    <div class="head">
+        <strong>{l_personal_info}</strong>
+        <a id="pp_4_close" class="icon_close" href="#close"></a>
+    </div>
+    <div class="cont select_var2">
+    <!-- begin_personal_fields -->
+    <input type="hidden" name="cmd" value="update_personal_field" />
+    <input id="pp_4_ajax" type="hidden" name="ajax" value="1" />
+    <!-- begin_field -->
+    <div class="edit_line cont_fields personal_cont_fields">
+    <div class="personal_fields_box">
+    <!-- begin_field_item -->
+    <!-- begin_field_item_group_decor_start -->
+    <div class="edit_line_item"></div>
+    <!-- end_field_item_group_decor_start -->
+        <!-- begin_int -->
+        <div class="edit">
+            <div class="name" style="width: 105px;">{field}</div>
+            <select id="pp_4_{name}" name="{name}" class="styled_field">
+                <option selected value="0">{l_please_choose}</option>
+                {options}
+            </select>
+        </div>
+        <!-- end_int -->
+        <!-- begin_text -->
+        <div class="edit">
+            <div class="name" style="width: 105px;">{field}</div>
+            <input id="pp_4_{name}" maxlength="{maxlen}" type="text" name="{name}" class="inp pp_4_input" value="{value}" />
+        </div>
+        <!-- end_text -->
+        <!-- begin_checkbox -->
+        <!-- begin_checkbox_item -->
+        <div class="edit">
+            <div class="name personal_edit">{field}</div>
+            <select id="pp_4_{name}_{num}" data-checkbox="{name}" name="{name}[]" class="styled_field">
+                <option selected value="0">{l_please_choose}</option>
+                {options}
+            </select>
+        </div>
+        <!-- end_checkbox_item -->
+        <div class="edit">
+            <a id="link_add_{name}" data-type-add="{name}" class="link_add" style="display:{display_add}" href="#">{l_add_value_field}</a>
+        </div>
+        <div class="cl"></div>
+        <!-- end_checkbox -->
+    <!-- begin_field_item_group_decor_end -->
+    <div class="edit_line_item"></div>
+    <!-- end_field_item_group_decor_end -->
+    <!-- end_field_item -->
+    </div>
+    <!-- end_field -->
+    </div>
+    </div>
+    <div class="foot">
+        <!-- begin_btn_save -->
+        <button id="pp_4_save" type="submit" class="btn green fl_right" disabled>{l_save}</button>
+        <!-- end_btn_save -->
+        <a id="pp_4_cancel" class="link" href="#reset">{l_cancel}</a>
+    </div>
+    <!-- end_personal_fields -->
+    </form>
+
+<script>
+    var pp_4 = $('#pp_4'),//.modalPopup().open(),
+        frm_pp_4 = $('#frm_pp_4'),
+        pp_4_save = $('#pp_4_save'),
+        pp_4_info = [],
+        pp_4_chk = {},
+        pp_4_ajax = $('#pp_4_ajax'),
+        pp_4_loader = $('#personal_info_loader'),
+        pp_4_cancel=$('#pp_4_cancel');
+
+    alertHtmlArea = '.column_main';
+
+    $('.cont_fields', pp_4).animate({height:$('.personal_fields_box', pp_4)[0].clientHeight+'px'},600,function(){
+        $(this).css({height:'auto'});
+    });
+
+    $('#personal_info_edit').click(function(){
+        pp_4.open();
+        return false;
+    });
+
+    $('#pp_4_cancel, #pp_4_close').click(function(){
+        if (this.hash=='#close'||!isModifiedPersonalInfo()) pp_4.close();
+        resetPersonalInfo();
+        return false;
+    });
+
+    $('.link_add').click(function(){
+        var type = $(this).data('typeAdd'),
+            parentBox = $(this).parent('.edit'),
+            fieldItem = parentBox.prev('.edit'),
+            countOption = fieldItem.find('li').length,
+            countSelect = $('[data-checkbox='+type+']').length+1,id='pp_4_'+type+'_';
+
+        if (countOption <= countSelect+1){$(this).hide()}
+        if (countOption > countSelect) {
+            for (var num=0; num<countSelect; num++){
+                if($('#'+id+num).length==0){break;}
+            }
+            var id=id+num,
+                newSelect = '<div class="edit">'+
+                                '<div class="name personal_edit"></div>'+
+                                '<select id="'+id+'" data-checkbox="'+type+'" name="'+type+'[]" class="styled_field">'+
+                                '</select>'+
+                            '</div>';
+            //var clone = fieldItem.clone(true);
+            //clone.find('select.styled_field').attr({id : type+'_'+countSelect, name : type+'_'+countSelect}).end()
+            //.find('option').removeAttr('selected').eq(0).attr({selected: 'selected'})
+            //.insertBefore(parentBox).find('li').eq(0).click();
+            $(newSelect).insertBefore(parentBox).find('select').html(fieldItem.find('select.styled_field').html())
+            .find('option').removeAttr('selected');
+            decorSelect('#'+id);
+            $('#'+id+' > option').eq(0).val('0');
+        }
+
+        return false;
+    })
+
+    $('.pp_4_input, .styled_field').on('change propertychange input', setDisabledSavePersonal);
+
+    frm_pp_4.submit(function(){
+        $('#pp_4_save').attr('disabled', '');
+        pp_4_loader.show();
+        if (!isModifiedPersonalInfo()) return false;
+        if (this.ajax.value==1) {
+            //pp_4.fadeTo(300, .5);
+            pp_4.close();
+            $(this).ajaxSubmit({success: pp_4_response});
+            this.ajax.value=0;
+        }
+        return false;
+    })
+
+    function pp_4_response(res)
+    {
+        pp_4_cancel.text('{j_cancel}');
+        pp_4_loader.hide();
+        //pp_4.fadeTo(300, 1);
+        pp_4_ajax.val(1);
+        var data=checkDataAjax(res);
+        if (data !== false) {
+            $($.parseHTML(data)).find('#personal_items').replaceAll($('.personal_info'));
+            setPersonalInfo(true);
+           //pp_4.close();
+        }else{}
+    }
+
+    function showAdd(type,option,select) {
+        var link=$('#link_add_'+type);
+        if (option>select+1){link.show()}else{link.hide()}
+    }
+
+    function setSelect(el,id,val) {
+        var id=id||el.attr('id'),val=val||pp_4_info[id];
+        el.prev().find('li:not(.disabled)').eq(val).click();
+        el.val(val);
+    }
+
+    function removeEmptyCheckbox(el,type,id) {
+        var res=true,type=type||el.data('checkbox'),id=id||el.attr('id'),
+            edit=el.parent('.edit'),option=edit.find('li').length,
+            chk=$('[data-checkbox='+type+']'),count=chk.length,title;
+        if (count>1){
+            title=el.siblings('div.name').html();
+            edit.hide().remove();
+            if(title!=''){chk.eq(1).siblings('div.name').html(title)}
+            delete pp_4_info[id];
+            res=false;
+            count--;
+        }
+        showAdd(type,option,count);
+        return res;
+    }
+
+    function setDisabledSavePersonal(){
+        if(isModifiedPersonalInfo()) {
+            pp_4_cancel.text('{j_reset}');
+            pp_4_save.removeAttr('disabled');
+        } else{
+            pp_4_save.attr('disabled', '');
+            pp_4_cancel.text('{j_cancel}');
+        }
+    }
+
+    function setPersonalInfo(isRemove) {
+        var isRemove=isRemove||false;
+        $('input[id], select.styled_field', frm_pp_4).each(function(){
+            var type=$(this).data('checkbox'),noEl=true;
+            if (isRemove&&typeof type!='undefined'&&this.value==0){
+                noEl=removeEmptyCheckbox($(this),type,this.id);
+            }
+            if (noEl){pp_4_info[this.id]=this.value}
+        })
+    }
+    setPersonalInfo();
+
+
+    function resetPersonalInfo() {
+        $('input[id], select.styled_field', frm_pp_4).each(function(){
+            var type=$(this).data('checkbox'),select=$(this).attr('class'),noEl=true;
+            if (typeof type!='undefined'&&typeof pp_4_info[this.id]=='undefined'){
+                noEl=removeEmptyCheckbox($(this),type,this.id)
+            }
+            if (noEl){
+                if(select=='styled_field'){setSelect($(this),this.id)}
+                else{this.value=pp_4_info[this.id]}
+            }
+        })
+        pp_4_cancel.text('{j_cancel}');
+        $('#pp_4_save').attr('disabled', '');
+    }
+
+    function isModifiedPersonalInfo(){
+        var is=0;
+        $('input[id], select.styled_field', frm_pp_4).each(function(){
+            is|=(this.value!=pp_4_info[this.id]);
+        })
+        return is;
+    }
+
+    $('.pp_body').on('click', function(e){
+        if(e.target==this
+           &&$('#pp_4:visible')[0]
+           &&!isModifiedPersonalInfo()){
+           pp_4.close();
+        }
+    })
+
+    decorSelect('.styled_field');
+
+    // Есть новый плагин нужно переделать!!!!!
+
+    function decorSelect(el) {
+
+	$(el).each(function() {
+        var $this = $(this);
+		var option = $(this).find('option');
+		var optionSelected = $(this).find('option:selected');
+		var dropdown = '';
+		var selectText = $(this).find('option:first').text();
+		if (optionSelected.length) selectText = optionSelected.text();
+
+		for (i = 0; i < option.length; i++) {
+			var selected = '';
+			var disabled = ' class="disabled"';
+			if ( option.eq(i).is(':selected') ) selected = ' class="selected sel"';
+			if ( option.eq(i).is(':disabled') ) selected = disabled;
+			dropdown += '<li' + selected + '>'+ option.eq(i).text() +'</li>';
+		}
+
+		$(this).before(
+			'<span class="selectbox" style="display: inline-block; position: relative">'+
+				'<span class="select" style="float: left; position: relative; z-index: 3"><span class="text">' + selectText + '</span>'+
+					'<b class="trigger"><i class="arrow"></i></b>'+
+				'</span>'+
+				'<ul class="dropdown" style="position: absolute; z-index: 9999; overflow: auto; overflow-x: hidden; list-style: none">' + dropdown + '</ul>'+
+			'</span>'
+		).css({position: 'absolute', left: -9999});
+
+		var ul = $(this).prev().find('ul');
+		var selectHeight = $(this).prev().outerHeight();
+		if ( ul.css('left') == 'auto' ) ul.css({left: 0});
+		if ( ul.css('top') == 'auto' ) ul.css({top: selectHeight});
+		var liHeight = ul.find('li').outerHeight();
+		var position = ul.css('top');
+		ul.hide();
+
+		$(this).prev().find('span.select').click(function() {
+			var topOffset = $(this).parent().offset().top;
+			var bottomOffset = $(window).height() - selectHeight - (topOffset - $(window).scrollTop());
+			if (bottomOffset < 0 || bottomOffset < liHeight * 6)	{
+				ul.height('auto').css({top: 'auto', bottom: position});
+				if (ul.outerHeight() > topOffset - $(window).scrollTop() - 20 ) {
+					ul.height(Math.floor((topOffset - $(window).scrollTop() - 20) / liHeight) * liHeight);
+				}
+			} else if (bottomOffset > liHeight * 6) {
+				ul.height('auto').css({bottom: 'auto', top: position});
+				if (ul.outerHeight() > bottomOffset - 20 ) {
+					ul.height(Math.floor((bottomOffset - 20) / liHeight) * liHeight);
+				}
+			}
+
+			$('span.selectbox').css({zIndex: 1}).removeClass('focused');
+			if ( $(this).next('ul').is(':hidden') ) {
+				$('ul.dropdown:visible').hide();
+				$(this).next('ul').show();
+			} else {
+				$(this).next('ul').hide();
+			}
+			$(this).parent().css({zIndex: 2});
+			return false;
+		});
+
+		$(this).prev().find('li:not(.disabled)').hover(function() {
+			$(this).siblings().removeClass('selected');
+		})
+		.click(function() {
+            //
+            var setSel=false,type=$this.data('checkbox'),el=$(this),
+                 id=$this.attr('id');
+            if (typeof type!='undefined'&&el.index()!='0') {
+                $('[id != "'+id+'"][data-checkbox='+type+']').each(function(){
+                    if ($(this).val()==el.index()) {
+                        setSel = true;
+                        el.siblings().parent().hide();
+                        alertCustom('{j_you_have_already_chosen_this_option}', false);
+                        return false;
+                    }
+                })
+            }
+            if(setSel){return false}else{$('#pp_4_save').removeAttr('disabled')}
+            //
+            $(this).siblings().removeClass('selected sel').end()
+                   .addClass('selected sel').parent().hide()
+                   .prev('span.select').find('span.text').text($(this).text());
+            option.removeAttr('selected').eq($(this).index()).attr({selected: 'selected'});
+
+
+            var selectValue = option.eq($(this).index()).attr('value');
+            $this.val(selectValue);//$(this).index()
+            $(this).parents('span.selectbox').next().change();
+		});
+		$(this).focus(function() {
+			$('span.selectbox').removeClass('focused');
+			$(this).prev().addClass('focused');
+		})
+		.keyup(function() {
+			$(this).prev().find('span.text').text($(this).find('option:selected').text()).end()
+				.find('li').removeClass('selected sel').eq($(this).find('option:selected').index()).addClass('selected sel')
+			;
+		});
+
+	});
+}
+</script>

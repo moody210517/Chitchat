@@ -1,0 +1,80 @@
+<center>
+    <h2 class="cham-heading">{l_login}</h2>
+    <p class="signature">{l_you_can_use_your_username_or_email}</p>
+</center>
+<div class="section field_icon mobile visible-xs visible-sm visible-md">
+    <div class="container">
+        <div class="row">
+            <div class="cham-icon text-center">
+                <i id="frm_login_page_icon" class="fa fa-user"></i>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section fields">
+    <div class="container">
+        <div class="row frm_login">
+            <div class="col-lg-3 hidden-md hidden-sm hidden-xs text-right">
+                <div class="cham-icon">
+                    <i class="fa fa-user"></i>
+                </div>
+            </div>
+            <div class="col-lg-2 field">
+                <input data-toggle="tooltip" data-placement="top" title="" id="frm_login_page_name" type="text" name="user" class="form-control" placeholder="{l_email_name}">
+            </div>
+            <div class="col-lg-2 field">
+                <input id="frm_login_page_pass" type="password" name="password" class="form-control" placeholder="{l_password}">
+            </div>
+
+            <div class="col-lg-2 field mobile text-center hidden-lg">
+                <a onclick="showForgotFrm(); return false;" class="link_forgot_password" href="">{l_forgot_password}</a>
+            </div>
+            <div class="col-lg-2 field mobile text-center hidden-lg">
+                <div class="field_checkbox_remember">
+                    <input id="remember_me_lg" name="remember_lg" value="1" checked="checked" type="checkbox">
+                    <label for="remember_me_lg">{l_remember_me}</label>
+                </div>
+            </div>
+
+            <div class="col-lg-2 field">
+                <button class="btn btn-block btn-info" onclick="loginIn($(this)); return false;">
+                    <span>{l_login}</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section fields">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 hidden-md hidden-sm hidden-xs"></div>
+            <div class="col-lg-2 field mobile bl_social login bl_social_frm"> <!-- text-center -->
+                <!-- begin_log_in_social -->
+                <!-- begin_log_in_social_item -->
+                <a onclick="return pwaSocialLogin(this);" href="{log_in_social_item_url}"><i class="fa fa-{log_in_social_item_type}"></i></a>
+                <!-- end_log_in_social_item -->
+                <!-- end_log_in_social -->
+                <!-- begin_log_in_social_no_class -->
+                <!-- end_log_in_social_no_class -->
+            </div>
+            <div class="col-lg-2 field hidden-md hidden-sm hidden-xs"> <!-- text-center -->
+                <a onclick="showForgotFrm(); return false;" class="link_forgot_password" href="">{l_forgot_password}</a>
+            </div>
+            <div class="col-lg-2 field text-center hidden-md hidden-sm hidden-xs">
+                <div class="field_checkbox_remember">
+                    <input id="remember_me" name="remember" value="1" checked="checked" type="checkbox">
+                    <label for="remember_me">{l_remember_me}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- begin_demo -->
+<script>
+$(function(){
+    $('#frm_login_header_name, #frm_login_page_name').val('{login_user}');
+    $('#frm_login_header_pass, #frm_login_page_pass').val('{login_password}')
+});
+</script>
+<!-- end_demo -->

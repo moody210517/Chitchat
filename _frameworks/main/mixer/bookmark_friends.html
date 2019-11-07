@@ -1,0 +1,94 @@
+{header}
+{ims}
+<div id="wide" class="box"><div class="bbt"><div class="bbb"><div class="bbl"><div class="bbr"><div class="bbtl"><div class="bbtr"><div class="bbbl"><div class="bbbr">
+
+<table width=100% border=0 cellpadding=0 cellspacing=0>
+<tr>
+<td>
+	{friends_menu}
+</td></tr>
+<tr>
+<td align=center>
+<!-- begin_del_bookmark -->
+<div class="header_big">{l_confirm}</div>
+<table width="300px;"  border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td >
+<a href="{url_main}search_results.php?name={user_name}&display=profile"><img src={url_files}{user_photo} class="violet" width=62px height=70px></a>
+</td>
+<td align=left valign=middle style="padding:15px;">
+
+{l_text}<br><br>
+<input type=button class="button" value="{l_ok}" onclick="location='{url_main}bookmark_friends.php?id={user_id}&action=del&confirm=ok'">&nbsp;&nbsp;&nbsp;<input type=button class="button" value="{l_cancel}" onclick="location='javascript:history.back()'">
+
+</td></tr></table><br><br><br><br><br>
+
+<!-- end_del_bookmark -->
+<!-- begin_add_bookmark -->
+<div class="header_big">{l_add} {user_name} {l_text1}</div>
+<table width="100%;"  border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td align="right" width="50%">
+			<a href="{url_main}search_results.php?name={user_name}&display=profile"><img src="{url_files}{user_photo}" class="violet" style="width:62px; height:70px; margin-right:20px;" /></a>
+		</td>
+		<td align="left">
+			<form action=bookmark_friends.php?id={user_id}&action=add&confirm=ok method=post>
+			<input type=checkbox name=visible id="visible" style="vertical-align:middle;"> <label for="visible" class="dash">{l_make} {user_name}</label><br><br>
+			<input type=submit class="button" value="{l_ok}">&nbsp;&nbsp;&nbsp;<input type=button class="button" value="{l_cancel}" onclick="location='javascript:history.back()'">
+			</form>
+		</td>
+	</tr>
+</table>
+<br /><br /><br />
+<!-- end_add_bookmark -->
+<!-- begin_show_my_bookmark -->
+<div class="header_big"><img src="{url_tmpl_main}img/fr.png" class="png_behavior" align="absmiddle" alt="" width=48 height=48>{l_you_have}</div>
+<table width="100%"  cellspacing="6" cellpadding="0" class="tbl_friend">
+<tr>
+<td  class="violet">{l_name}</td>
+<td  class="violet">{l_visibility}</td>
+<td  class="violet">{l_action}</td></tr>
+<!-- begin_item_my_show_bookmark -->
+<tr>
+<td class="grey" style="padding:10px; width:120px;">
+<table width="100%" cellpadding="0" cellspacing="0">
+<tr>
+<td><a href="{url_main}search_results.php?name={user_name}&display=profile"><img src={url_files}{user_photo} class="violet" width=62px height=70px ></a></td></tr>
+<tr>
+<td valign=top><a href="{url_main}search_results.php?name={user_name}&display=profile"><b>{user_name}</b></a></td></tr></table></td>
+<td class="blue">{visibility}</td>
+<td class="blue"><a href={url_main}bookmark_friends.php?id={user_id}&action=del>{l_delete}</a> | <a href={url_main}bookmark_friends.php?id={user_id}&action=add>{l_change}</a></td></tr>
+<!-- end_item_my_show_bookmark -->
+</table>
+<!-- end_show_my_bookmark -->
+<!-- begin_error_my_show_bookmark -->
+{l_you_no}
+<!-- end_error_my_show_bookmark -->
+
+<!-- begin_show_your_bookmark -->
+<div class="header_big">{l_who_have}</div>
+<table width="100%"    cellspacing="6" cellpadding="0" class="tbl_friend">
+<tr>
+<td  class="violet">{l_name}</td>
+<td  class="violet">{l_details}</td>
+</tr>
+<!-- begin_item_your_show_bookmark -->
+<tr>
+<td class="grey" style="padding:10px; width:120px;">
+<table width="100%"  cellspacing="0" cellpadding="0">
+<tr>
+<td><a href="{url_main}search_results.php?name={user_name}&display=profile"><img src={url_files}{user_photo} class="violet" width=62px height=70px></a></td></tr>
+<tr>
+<td valign=top><a href="{url_main}search_results.php?name={user_name}&display=profile"><b>{user_name}</b></a></td></tr></table></td>
+<td class="blue">{age}, {city}, {state}, {country}</td></tr>
+<!-- end_item_your_show_bookmark -->
+</table>
+<!-- end_show_your_bookmark -->
+<!-- begin_error_your_show_bookmark -->
+{l_your_no}
+<!-- end_error_your_show_bookmark -->
+</td>
+</tr>
+</table>
+</div></div></div></div></div></div></div></div></div>
+{footer}

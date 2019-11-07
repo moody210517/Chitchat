@@ -1,0 +1,28 @@
+        <!-- begin_field_interests_list_style -->
+        ul.list_add_interest li a span.{name}{background-image: url('{url_tmpl_mobile}images/{name}.png'); background-position: 8px 50%; } /*3px*/
+        <!-- end_field_interests_list_style -->
+
+        <!-- begin_field_interests_category_style -->
+        ul.list_add_interest li a span.{name}{background-image: url('{url_tmpl_mobile}images/{name}.png'); background-position: 8px 50%; } /*3px*/
+        <!-- end_field_interests_category_style -->
+
+        <!-- begin_field_interests_category_selected_style -->
+        ul.list_add_interest li.selected a span.{name}{background-image: url('{url_tmpl_mobile}images/{name}.png'); background-position: 8px 50%; } /*3px*/
+        <!-- end_field_interests_category_selected_style -->
+
+        <!-- begin_field_interests_normal_style -->
+        ul.list_interest_profile_info li.{name}{background-image: url('{url_tmpl_mobile}images/{name}.png'); background-position: 3px 50%;} /*3px*/
+        ul.list_interest_photo li.{name}{background-image: url('{url_tmpl_mobile}images/{name}.png'); background-position: 3px 50%;} /*3px*/
+        ul.list_interest_edit li div.{name}{background-image: url('{url_tmpl_mobile}images/{name}.png'); background-position: 3px 50%;} /*3px*/
+        <!-- end_field_interests_normal_style --> 
+
+        <!-- begin_field_interests_shared_style -->
+        ul.list_interest_photo li.{name}{background-image: url('{url_tmpl_mobile}images/{name}.png'); color:#000; /*color: #fff; text-shadow: -1px -1px 0 #1c6c6c;*/
+            background-color: rgba(251, 240, 185, 0.7); }
+        ul.list_interest_profile_info li.{name}{background-image: url('{url_tmpl_mobile}images/{name}.png'); /*color:#000;*/
+            background-color: rgba(189, 150, 72, 1);
+            border-bottom: 1px solid #896a1a;
+            border-top: 1px solid #fdc630; color: #fff; text-shadow: -1px -1px 0 #1c6c6c;
+            /*text-shadow: none;*/ background-position: 3px 50%;}
+       <!-- end_field_interests_shared_style -->
+

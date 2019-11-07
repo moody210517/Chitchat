@@ -1,0 +1,23 @@
+<!-- begin_photo_big -->
+<script>
+    Encounters.setCurrentInfo('{user_id}','{photo_id}');
+    Encounters.setMutualAttractionUserEncounter('{is_mutual_attraction_encounters}', '{is_attraction_from}', '{url_files}{photo_r}', '{from_gender}');
+    //<!-- begin_users_list_next_page -->
+    //Encounters.setOffset('{offset}');
+    //<!-- end_users_list_next_page -->
+    <!-- begin_update_counter_mutual -->
+    updateCounterMutualAttractions({counter_mutual});
+    <!-- end_update_counter_mutual -->
+</script>
+<div class="frame" style="width:{photo_width}px; height:{photo_height}px;">
+        <!-- begin_photo_big_item -->
+        <a id="encounters_photo_{photo_item_id}" onclick="goLink('{url_main}{user_profile_link}', '{user_profile_param}'); return false;" <!--begin_photo_big_item_hide-->style="display:none;"<!--end_photo_big_item_hide--> href="">
+            <img class="lazy_encounters" data-original="{url_files}{photo_b}" alt="">
+        </a>
+        <!-- end_photo_big_item -->
+    <div id="encounters_name" style="display:none;" class="name">{name}, {age}, {city}</div>
+</div>
+<!-- end_photo_big -->
+<script>
+counterTitle = '{counter_title}';
+</script>

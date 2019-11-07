@@ -1,0 +1,449 @@
+<div class="frame">
+<div id="pp_chose_location_title" class="head">{l_choose_a_city}</div>
+<div class="cont">
+    <input type="text" id="pp_city_autocomplete" class="inp pp_city_autocomplete"  placeholder="{l_enter_manually}" name="city_autocomplete">
+    <ol id="selectable">
+        <!-- begin_all_cities -->
+        <li id="0"><b>{l_all_cities}</b></li>
+        <!-- end_all_cities -->
+        {list_options}
+    </ol>
+</div>
+<div class="foot">
+    <a id="back_item" data-type="" class="link_back" href="#null"><span class="icon_back"></span> {l_back_to_states}</a>
+    <div class="fl_right">
+		<button id="cancel_pp_choose_city" class="btn small white_frame">{l_cancel}</button>
+        <button id="choose_ok" class="btn small turquoise">{l_ok}</button>
+    </div>
+    <div class="cl"></div>
+</div>
+</div>
+
+<script>
+var param = ['geo_countries', 'geo_states', 'geo_cities'],
+    param_geo = ['{country_id}', '{state_id}', '{city_id}'],
+    param_list = ['', '', '<li id="0"><b>{l_all_cities}</b></li>{list_options_js}'],
+    param_geo_set,
+    param_list_set,
+    title_back = ['<span class="icon_back"></span> {j_back_to_countries}', '<span class="icon_back"></span> {j_back_to_states}'],
+    title = ['{j_choose_a_country}', '{j_choose_a_state}', '{j_choose_a_city}'];
+    pp_choose_city = $('#pp_choose_city'),
+    selectable = $('#selectable'),
+    selectable_li = $('#selectable li'),
+    back_item = $('#back_item'),
+    title_head = $('#pp_chose_location_title'),
+    choose_ok = $('#choose_ok'),
+    city_autocomplete=$('#pp_city_autocomplete'),
+    step = 2,
+    title_city = '',
+    searchFilter=$('#filter_module_location_title'),
+    peopleNearby=$('#filter_people_nearby'),
+    isSearchFilter=searchFilter[0]?1:0,
+    userNoCity = '{user_no_city}',
+    opt=.6,
+    srchTxt='';
+
+    selectableOptions='{selected_options}';
+
+    city_autocomplete.focus();
+
+	if(typeof param_geo_init != 'undefined') {
+		param_geo = param_geo_init;
+	}
+
+    function getItemPeopleNearbyForList(step){
+        if(!isSearchFilter)return '';
+        var list='';
+        if(!step){
+            list='<li id="people_nearby"><b>' + l('filter_people_nearby') + '</b></li>';
+        }
+        return list;
+    }
+
+    function selectedPeopleNearby(){
+        var curPeopleNearby=0;
+        if(isSearchFilter){
+            curPeopleNearby=peopleNearby.val()*1;
+        }
+        if(curPeopleNearby){
+            $('#selectable li').removeClass('selected');
+            $('li#people_nearby').addClass('selected');
+            $('#selectable').scrollTo('#people_nearby');
+        }
+    }
+
+    var update_list_back = function(res)
+    {
+        var data=checkDataAjax(res);
+        if(data){
+            step--;
+            if(typeof allItems != 'undefined'){
+                var selected='';
+                if(param_geo[step]==0){
+                    selected=' class="selected"';
+                }
+                data.list=getItemPeopleNearbyForList(step)+'<li id="0"'+selected+'><b>'+allItems[step]+'</b></li>'+data.list;
+            }
+            param_list[step] = data.list;
+            selectable.html(data.list).fadeTo(0,1).scrollTo('#'+param_geo[step]);
+            back_item.html(title_back[step-1]);
+            title_head.text(title[step]);
+            selectedPeopleNearby();
+        }
+    }
+
+
+    back_item.click(function(){
+
+        var select_id, list;
+        if (step == 1) {
+            back_item.hide();
+        }
+        var select_id=$('#selectable li.selected:visible').attr('id');
+        if(select_id && param_geo[step] != select_id){
+            param_geo[step] = select_id;
+        }
+
+        city_autocomplete.val('');
+        selected = param_geo[step-1];
+        select_id = (step>1) ? param_geo[step-2] : param_geo[0];
+        list = param_list[step-1];
+        choose_ok.hide();
+        if (list != '') {
+            step--;
+            selectable.html(param_list[step]).scrollTo('#'+param_geo[step]);
+            back_item.html(title_back[step-1]);
+            title_head.text(title[step]);
+        } else {
+            selectable.fadeTo(0,opt);
+            $.post('{url_main}ajax.php', {cmd: param[step-1], select_id: select_id, selected: selected, filter:isSearchFilter}, update_list_back);
+        }
+        city_autocomplete.focus();
+        $('#selectable li').show();
+        selectedPeopleNearby();
+        var select_id=$('#selectable li.selected:visible').attr('id');
+        if(select_id){
+            $('#selectable').scrollTo('#'+select_id);
+        } else {
+            $('#selectable').scrollTo(0);
+        }
+        return false;
+    })
+
+
+    param_geo_set = param_geo.concat();
+    param_list_set = param_list.concat();
+
+    var curPeopleNearby=0;
+    if(isSearchFilter){
+        curPeopleNearby=peopleNearby.val()*1;
+    }
+    if (curPeopleNearby) {
+        selectableOptions='people_nearby';
+        step=1;
+        back_item.click();
+        param_geo=['people_nearby',0,0];
+        param_geo_set =['people_nearby',0,0];
+    } else {
+
+        if($('#filter_city').val()==0){
+            param_geo[2]=0;
+        }
+        if($('#filter_state').val()==0){
+            param_geo[1]=0;
+            step=2;
+            if($('#filter_country').val()==0){
+                param_geo[0]=0;
+                step=1;
+            }
+            selectableOptions='0';
+            back_item.click();
+        }
+    }
+
+    if(typeof allItems != 'undefined'){
+        if(step==2&&param_geo[step]==0){
+            $('#0').addClass('selected');
+        }
+        param_list[step]=getItemPeopleNearbyForList(step)+'<li id="0"><b>'+allItems[step]+'</b></li>'+param_list[step];
+    }
+
+    if( selectableOptions!='' ){
+        selectable.scrollTo('#'+selectableOptions);
+    }
+
+    $('.profile_city_choose').click(function(){
+        setCountry();
+        return false;
+    });
+
+    $('#cancel_pp_choose_city').click(function(){
+        city_autocomplete.val('');
+        pp_choose_city.close();
+        $('#selectable li').show();
+        return false;
+    });
+
+    city_autocomplete.keyup(function (e){
+        if(e.keyCode!=13){
+            var term=city_autocomplete.val().toLowerCase();
+            if(term!=srchTxt){
+                if(term.length>0){
+                srchTxt=term;
+                $('#selectable li').each(function(){
+                    var text=$(this).text().toLowerCase();
+                    if(text.indexOf(term)==0){
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+                } else {
+                    $('#selectable li').show();
+                }
+                var select_id=$('#selectable li.selected:visible').attr('id');
+                if(!select_id){
+                    $('#selectable').scrollTo(0);
+                    $('#selectable li').removeClass('selected');
+                    $('#selectable li:visible').each(function(){
+                        var first_id=$(this).attr('id');
+                        $('#'+first_id).addClass('selected');
+                        return false;
+                    });
+                } else {
+                    $('#selectable').scrollTo('#'+select_id);
+                }
+            }
+        } else {
+            var select_id=$('#selectable li.selected:visible').attr('id');
+            if(select_id){
+                city_autocomplete.val('');
+                $('#selectable li').show();
+                $('#selectable').scrollTo('#'+select_id);
+                param_list[step] = selectable.html();
+                back_item.html(title_back[step]).show();
+                title_head.text(title[step+1]);
+                if (step == 2) {
+                    param_geo[step] = select_id;
+                    choose_ok.click();
+                } else {
+                    if (param_geo[step] != select_id) {
+                        param_geo[step] = select_id;
+                        selectable.fadeTo(0,opt);
+                        $.post('{url_main}ajax.php', {cmd: param[step+1], select_id: select_id, filter:isSearchFilter}, update_list);
+                    } else {
+                        step++;
+                        selectable.html(param_list[step]).scrollTo('#'+param_geo[step]);
+                        if(step==2){
+                            choose_ok.show();
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+
+    choose_ok.click(function (){
+
+        if(isSearchFilter){
+            var valPeopleNearby=peopleNearby.val();
+            peopleNearby.val(0);
+        }
+        city_autocomplete.val('');
+        pp_choose_city.close();
+        $('#selectable li').show();
+        param_list[step] = selectable.html();
+
+        var select_id=$('#selectable li.selected:visible').attr('id');
+        if(select_id){
+            $('#selectable').scrollTo('#'+select_id);
+        } else {
+            $('#selectable').scrollTo(0);
+        }
+
+        if (JSON.stringify(param_geo_set)!=JSON.stringify(param_geo)  || (userNoCity*1 && !isSearchFilter)) {
+            userNoCity = 0;
+            param_geo_set = param_geo;
+            param_list_set = param_list;
+            title_city = $('#selectable li.selected').text();
+
+			// search page filter
+			if(searchFilter[0]) {
+                searchFilter.text(title_city);
+
+                $('#filter_country').val(param_geo[0]);
+                $('#filter_state').val(param_geo[1]);
+                $('#filter_city').val(param_geo[2]);
+
+				if((filterCityValue != param_geo[0]+' '+param_geo[1]+' '+param_geo[2]) || valPeopleNearby) {
+					filterCityValue = param_geo[0]+' '+param_geo[1]+' '+param_geo[2];
+					$(moduleFilterClass).change();
+				}
+
+				return false;
+            }
+        }
+        return false;
+    });
+
+    $('.pp_body').on('click', function(e){
+        if(e.target==this
+           &&$('#pp_choose_city:visible')[0]
+           &&param_geo_set[2]==param_geo[2]){
+            city_autocomplete.val('');
+            pp_choose_city.close();
+            $('#selectable li').show();
+        }
+    })
+
+    function setCountry()
+    {
+        step=2;
+        delete param_geo;
+        delete param_list;
+        param_geo = param_geo_set.concat();
+
+        param_list = param_list_set.concat();
+        for(i=0;i<2;i++){
+            if(param_geo[i]==0){
+                step=i;
+                break;
+            }
+        }
+
+        var curPeopleNearby=0;
+        if(isSearchFilter){
+            var curPeopleNearby=peopleNearby.val()*1;
+            if (curPeopleNearby) {
+                param_geo=['people_nearby',0,0];
+                param_geo_set =['people_nearby',0,0];
+                step=0;
+            }
+        }
+
+        if(step==2){
+            title_head.text(title[step]);
+            back_item.html(title_back[1]).show();
+            selectable.html(param_list[step]).scrollTo('#'+param_geo[step]);
+            $('#'+param_geo[step]).addClass('selected').siblings().removeClass('selected');
+            choose_ok.show();
+        } else {
+            selectableOptions='0';
+            if (curPeopleNearby) {
+               selectableOptions='people_nearby';
+            }
+            step++;
+            back_item.click();
+        }
+
+        pp_choose_city.open();
+        city_autocomplete.focus();
+
+    }
+
+    $('body').on('click', '#selectable li', change);
+
+
+    function onAllItemsSelect(e)
+    {
+        var select_id = $(e).attr('id');
+        $(e).addClass('selected').siblings().removeClass('selected');
+        param_geo[step] = select_id;
+        $('#'+param_geo[step]).addClass('selected');
+
+        for(i=0;i<2;i++){
+            if(param_geo[i]==0){
+                param_geo[i+1]=0;
+            }
+        }
+
+        choose_ok.click();
+
+		var params={'country':param_geo[0],'state':param_geo[1],'city':param_geo[2],'cmd':'pp_get_filter_module_location_title'};
+
+        $.post(url_main+'ajax.php',params,function(res){
+            var data=checkDataAjax(res);
+            if(data!==false){
+                searchFilter.html(data);
+            }else{
+                /*Error server*/
+            }
+        });
+
+
+    }
+
+    function change(){
+        var select_id = $(this).attr('id');
+        if (select_id=='people_nearby') {
+            var curPeopleNearby=peopleNearby.val()*1;
+            peopleNearby.val(1);
+            if(!curPeopleNearby){
+                searchFilter.text(l('filter_people_nearby'));
+                $(moduleFilterClass).change();
+            }
+            param_geo=['people_nearby','',''];
+            pp_choose_city.close();
+            return;
+        }
+        if(select_id==0){
+            onAllItemsSelect(this);
+            return;
+        }
+        choose_ok.hide();
+        $(this).addClass('selected').siblings().removeClass('selected');
+        param_list[step] = selectable.html();
+        back_item.html(title_back[step]).show();
+        title_head.text(title[step+1]);
+        if (step == 2) {
+            //city_autocomplete.val($(this).text());
+            param_geo[step] = select_id;
+  //          choose_ok.show();
+            choose_ok.click();
+        } else {
+            city_autocomplete.val('');
+            $('#selectable li').show();
+            $('#selectable').scrollTo('#'+select_id);
+            if (param_geo[step] != select_id) {
+                param_geo[step] = select_id;
+                selectable.fadeTo(0,opt);
+                if(select_id == 'people_nearby'){
+
+                }else{
+                    $.post('{url_main}ajax.php', {cmd: param[step+1], select_id: select_id, filter:isSearchFilter}, update_list);
+                }
+            } else {
+                step++;
+                selectable.html(param_list[step]).scrollTo('#'+param_geo[step]);
+                $('#selectable li').removeClass('selected');
+                $('#'+param_geo[step]).addClass('selected');
+                if(step==2){
+                    choose_ok.click();
+                }
+            }
+        }
+        city_autocomplete.focus();
+    }
+
+    var update_list = function(res)
+    {
+        var data=checkDataAjax(res);
+        if(data){
+            step++;
+            if(typeof allItems != 'undefined'){
+                data.list=getItemPeopleNearbyForList(step)+'<li id="0"><b>'+allItems[step]+'</b></li>'+data.list;
+            }
+            param_list[step] = data.list;
+            selectable.html(data.list).fadeTo(0,1).scrollTo(0);
+            if (step==2) {
+                var item=$('#selectable > li');
+                if(item.length==1){item.click()}
+            }
+        }else{}
+
+        city_autocomplete.val('');
+
+    }
+
+</script>

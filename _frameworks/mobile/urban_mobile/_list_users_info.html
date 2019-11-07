@@ -1,0 +1,64 @@
+<!-- begin_set_param_display -->
+<script>csearch.setDisplayParam('{param_display}');</script>
+<!-- end_set_param_display -->
+<div <!-- begin_class_indent -->class="top_nm"<!-- end_class_indent -->>
+
+<div class="head nm">
+    <div class="fl_left">{found_info}</div>
+    <div class="fl_right">{num_total} {found_title}</div>
+<div class="cl"></div>
+</div>
+
+<div class="bl_list_photo">
+    <!-- begin_users_list_items -->
+    <div>
+    <ul id="search_users_list" class="cbp-rfgrid initial"><!-- begin_users_list_item --><li id="users_list_item_{user_id}" class="users_list_item sliding"  style="position: relative;">
+        <div class="hidden all">
+        <a data-uid="{user_id}" class="people_nearby_to_user" href="{url_main}profile_view.php?user_id={user_id}&from={from_page}{ref_link}">
+            <img src="{url_files}{photo_mm}" alt="" onload="csearch.showImg(this)" />
+			<span class="shadow"></span>
+			<!-- begin_status_online -->
+			<span class="status online"></span>
+			<!-- end_status_online -->
+			<!-- begin_friend_approve -->
+			<span class="friend_pending"></span>
+			<!-- end_friend_approve -->
+			<span class="name">{name}</span>
+        </a>
+        </div>
+    </li><!-- end_users_list_item --></ul>
+
+    <script>
+		csearch.total=+'{num_total}';
+    <!-- begin_users_list_on_page -->
+		csearch.onPage=+'{on_page}';
+        csearch.setOffset('{offset_real}');
+	<!-- end_users_list_on_page -->
+	<!-- begin_users_list_next_page -->
+        //nextPageParams='{params}'.replace(/&amp;/g, '&')+'a';
+	<!-- end_users_list_next_page -->
+	<!-- begin_users_list_next_page_off -->
+        //search.setOnPage(0);
+        //search.setOffset(search.offset + search.onPage);
+        //csearch.nextPageParams='';
+	<!-- end_users_list_next_page_off -->
+    <!-- begin_users_list_scroll -->
+    $(function(){
+        //csearch.scrollToUser();
+    })
+    <!-- end_users_list_scroll -->
+    </script>
+
+    <!-- begin_users_list_loader -->
+    <!-- end_users_list_loader -->
+    </div>
+    <!-- end_users_list_items -->
+    <!-- begin_users_list_noitems -->
+    <div class="no_one_found hide"><span>{found_no_one}</span></div>
+    <script>
+    $(function(){showNoOneFound(); $(window).on('resize',showNoOneFound);})
+    </script>
+    <!-- end_users_list_noitems -->
+</div>
+
+</div>

@@ -1,0 +1,61 @@
+		  <!--[if lte IE 6]>		<script>
+    DD_belatedPNG.fix('.events_new input.inp_black,.events_new input.inp_mblack,.events_new textarea.textarea_mblack,.event_select .ABKSelectRight,.events_new input.inp_lblack,.events_new input.inp_sblack,.event_inp_file .ABKFileLeft,.events_new input.inp_pink_save,.events_new textarea.textarea_dpink,.events_new_popup_top,.events_new_popup_bot,.events_new_popup_c');
+</script>
+
+<script language="javascript" type="text/javascript" src="{url_tmpl_main}js/iepngfix_tilebg.js{cache_version_param}"></script>
+<![endif]-->
+	
+<div class="events_new_head">
+
+<script type="text/javascript">
+    function events_header_search_on_submit()
+    {
+        query = $("#events_header_search input[name='query']").val();
+        
+        if((query != '')&&(query != '{l_events_default_search_query}'))
+        {
+            return true;
+        }
+
+        alert('{l_blogs_please_enter_what_you_search}');
+        
+        return false;
+    }
+</script>
+
+    <table>
+        <tr>
+            <td class="td_l">&nbsp;</td>
+            <td class="td_c">
+                <div class="events_new_head_txt">
+                    <strong><a href="{url_main}events.php" style="text-decoration:none">{l_events_events}</a><!-- begin_event_header_location --> :: </strong> {l_you_are_in} <span title="{location_full}">{location}</span><!-- end_event_header_location -->
+                </div>
+                <div class="fl_right">
+                    <form action="{url_main}events_event_edit.php<!--begin_event_date -->?date={event_date}<!--end_event_date -->" method="post"><span style="display:block;"class="style1">
+                        <input class="no_abk" style="margin:0px;padding:0px;line-height:normal;background-image:none;cursor:pointer;" type="submit" value="{l_events_create_event}"/></span>
+                    </form>
+                </div>
+                <div class="fl_right" 1style="width:193px;">
+                    <form id="events_header_search" autocomplete="off" action="{url_main}events_search.php" method="get" onsubmit="return events_header_search_on_submit();">
+	                    <span class="style2"style="display:block;"><input class="no_abk" style="margin:0px;padding:0px;line-height:normal;background-image:none;" type="text" name="query" value="{l_events_default_search_query}"  onblur="javascript:if(this.value=='')this.value='{l_events_default_search_query}'"   onFocus="this.value=''" /></span>
+	                 <span class="style3" style="display:block;"><input class="no_abk" style="margin:0px;padding:0px;line-height:normal;background-image:none;cursor:pointer;" type="submit" value="{l_events_search}"/></span>
+                    </form>
+                </div>
+
+            </td>
+            <td class="td_r">&nbsp;</td>
+        </tr>
+    </table>
+
+    <div class="events_new_menu_bg">
+        <ul class="events_new_menu fl_left">
+            <!-- begin_categories_item --><!-- begin_categories_item_active --><li{class_last}>{category_title}</li><!-- end_categories_item_active --><!-- begin_categories_item_not_active --><li{class_last}><a href="{url_main}events_settings_change.php?category_id={category_id}">{category_title}</a></li><!-- end_categories_item_not_active --><!-- end_categories_item -->
+        </ul>
+        <ul class="events_new_menu fl_right">
+            <li><a href="{url_main}events_my.php">{l_events_my_events}</a></li>
+            <li><a href="{url_main}events_calendar.php">{l_events_my_calendar}</a></li>
+            <li class="last"><a href="{url_main}events_event_edit.php?event_private=1<!--begin_private_event_date -->&date={event_date}<!--end_private_event_date -->">{l_events_new_entry_to_calendar}</a></li>
+        </ul>
+    <div class="justify"></div>
+    </div>
+</div>

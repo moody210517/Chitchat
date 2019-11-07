@@ -1,0 +1,209 @@
+{header}
+{ims}
+
+				
+
+<div id="wide" class="box"><div class="bbt"><div class="bbb"><div class="bbl"><div class="bbr"><div class="bbtl"><div class="bbtr"><div class="bbbl"><div class="bbbr">
+
+			<table cellpadding="0" cellspacing="0" border="0" style="padding-top:50px;"><tr>
+
+				<td align="left" width="250" style="padding-bottom: 4px;">
+
+				
+
+					
+
+					<!-- begin_subscribed -->
+
+						{l_you_subscribed}
+
+					<!-- end_subscribed -->
+
+					<!-- begin_subscribe -->
+
+						<a href="{url_page}?id={uid}&cmd=subscribe">{l_subscribe_blog}</a>
+
+					<!-- end_subscribe -->
+
+				</td>
+
+				<td align="right" width="450">
+
+					<b>{num_total}</b> {l_within_criteria} &nbsp;&nbsp;&nbsp;<b><a href='./{url_page}?{link_default}' style='padding-top: 2px; padding-bottom: 2px;'>{sort_by_default_text}</a></b>&nbsp;&nbsp;&nbsp;<b><a href='./{url_page}?{link_rating}' style='padding-top: 2px; padding-bottom: 2px;'>{sort_by_rating_text}</a></b>
+
+				</td>
+
+			</tr><tr>
+
+				<td></td>
+
+				<td height="1" class="keyline"></td>
+
+			</tr></table>
+
+		
+
+            
+
+
+
+
+
+		<!-- begin_blogs_list_item -->
+
+					<div class=header_small style="float:left; margin-top:20px; margin-bottom:5px;"><a href="./blogs_full.php?id={id}" class="pri_little_bold">{subject}</a></div>
+
+					<div style="float:right; margin-top:25px; margin-bottom:5px;"><a href="{url_main}search_results.php?name={name}"><b>{name}</b></a> |
+
+                               {dt}</div>
+
+                         
+
+                         <div  align="left">
+
+                            
+
+                            <table width="100%" border="0" class="blog_bg" style="clear:both;"><tr>
+
+                               <td width="1" valign="top">
+
+                                  <div style="padding: 10px;">
+
+                                     <!-- begin_blogs_list_image -->
+
+                                        <img src="{url_files}blog/{image}" border="0"  class="blog_photo">
+
+                                     <!-- end_blogs_list_image -->
+
+                                  </div>
+
+                               </td>
+
+                               <td valign="top">
+
+                                  <div style="padding: 5px; ">{msg}</div>
+
+                               </td>
+
+                            </tr></table>
+
+                         </div>
+
+                         <div  align="right" class="blog_inf">
+
+                            <a href="./blogs_full.php?id={id}" class="pri_little_bold">{l_view_comments} ({count_comment})</a>
+
+                            
+
+                            <!--a href="./profile_blog_edit.php?id={id}" class="pri_little_bold">{l_edit_post}</a-->
+
+                         </div>
+
+                         <br />
+
+                         <br />
+
+		<!-- end_blogs_list_item -->
+
+
+
+		<!-- begin_blogs_list_noitems -->
+
+		<div style="height: 250px;"></div>
+
+		<!-- end_blogs_list_noitems -->
+
+		<div style="height: 20px;"></div>
+
+	    <!-- begin_blogs_list_pages -->
+
+			<div class="body_text" style="padding-bottom: 16px;">
+
+				<!-- begin_blogs_list_prev_page -->
+
+				<a href="./{url_page}?offset={offset}{params}" class="pri_text_bold">{l_prev}</a>&nbsp; | &nbsp;
+
+				<!-- end_blogs_list_prev_page -->
+
+				<!-- begin_blogs_list_prev_page_off -->
+
+				<b>{l_prev}</b>&nbsp; | &nbsp;
+
+				<!-- end_blogs_list_prev_page_off -->
+
+				
+
+				<!-- begin_blogs_list_first_page -->
+
+				<a href="./{url_page}?offset={offset}{params}" class="pri_text_bold">{l_page_1}</a>&nbsp; 
+
+				<!-- end_blogs_list_first_page -->
+
+				
+
+				<!-- begin_blogs_list_prev_pages -->
+
+				<a href="./{url_page}?offset={offset}{params}" class="pri_text_bold">&lt;&lt;</a>&nbsp;
+
+				<!-- end_blogs_list_prev_pages -->
+
+				
+
+				<!-- begin_blogs_list_page -->
+
+					<!-- begin_blogs_list_link_page -->
+
+					<a href="./{url_page}?offset={offset}{params}" class="pri_text_bold">{page}</a>&nbsp;
+
+					<!-- end_blogs_list_link_page -->
+
+					<!-- begin_blogs_list_this_page -->
+
+					<b>{page}</b>
+
+					<!-- end_blogs_list_this_page -->
+
+				<!-- end_blogs_list_page -->
+
+
+
+				<!-- begin_blogs_list_next_pages -->
+
+				<a href="./{url_page}?offset={offset}{params}" class="pri_text_bold">&gt;&gt;</a>&nbsp;
+
+				<!-- end_blogs_list_next_pages -->
+
+				
+
+				<!-- begin_blogs_list_last_page -->
+
+				<b>{l_of}</b> <a href="./{url_page}?offset={offset}{params}" class="pri_text_bold">{num_pages}</a>&nbsp; 
+
+				<!-- end_blogs_list_last_page -->
+
+				
+
+				<!-- begin_blogs_list_next_page -->
+
+				&nbsp; | &nbsp;<a href="./{url_page}?offset={offset}{params}" class="pri_text_bold">{l_next}</a>
+
+				<!-- end_blogs_list_next_page -->
+
+				<!-- begin_blogs_list_next_page_off -->
+
+				&nbsp; | &nbsp;<b>{l_next}</b>
+
+				<!-- end_blogs_list_next_page_off -->
+
+			</div>
+
+	    
+
+            <!-- end_blogs_list_pages -->
+
+</div></div></div></div></div></div></div></div></div>
+
+
+
+{footer}
+

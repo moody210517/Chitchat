@@ -1,0 +1,58 @@
+{header}
+<script type="text/javascript" src="../_server/jquery/jquery.autosize.js{cache_version_param}"></script>
+<script id="script_replace_page">
+    urlPageHistory='{url_page_messages}{url_get_params}';
+</script>
+<script>messages.clearCacheAll();</script>
+<div class="message_chat">
+    <div id="message_cont" class="message_cont message_one_cont">
+        <div id="loader_box_msg" class="css_loader loader_one_chat">
+            <div class="spinner spinnerw center">
+            <div class="spinner-blade"></div>
+            <div class="spinner-blade"></div>
+            <div class="spinner-blade"></div>
+            <div class="spinner-blade"></div>
+            <div class="spinner-blade"></div>
+            <div class="spinner-blade"></div>
+            <div class="spinner-blade"></div>
+            <div class="spinner-blade"></div>
+            <div class="spinner-blade"></div>
+            <div class="spinner-blade"></div>
+            <div class="spinner-blade"></div>
+            <div class="spinner-blade"></div>
+            </div>
+        </div>
+        <div id="one_chat_profile_pic" class="msg_profile_pic go_to_page  <!-- begin_one_chat_profile_pic_hide -->hide<!-- end_one_chat_profile_pic_hide -->" data-cl-loader="loader_one_chat_to_profile" data-type-loader="fade_btn" data-url="{url_main}{url_page_profile_view}?user_id={user_to_id}">
+            <button <!-- begin_messages_users_list_item_plug_private_photos -->class="plug_private_photos"<!-- end_messages_users_list_item_plug_private_photos --> style="background-image: url({url_files}{user_to_photo});" title=""></button>
+        </div>
+        <div id="messages_box" class="messages_box">
+        {users_list}
+        </div>
+    </div>
+    <div id="message_field_chat" class="message_field_chat">
+        <!-- begin_btn_invite_videochat -->
+        <div class="btn_audio_video">
+            <button data-cl-loader="loader_media_chat" class="btn large audio_chat" onclick="audioChat.checkInvite($(this))"></button>
+        </div>
+        <!-- end_btn_invite_videochat -->
+        <!-- begin_btn_invite_audiochat -->
+        <div class="btn_audio_video">
+            <button data-cl-loader="loader_media_chat" class="btn large video_chat" onclick="videoChat.checkInvite($(this))"></button>
+        </div>
+        <!-- end_btn_invite_audiochat -->
+        <div class="field_send">
+            <textarea id="message_text" class="placeholder" placeholder="{a_enter_your_message}"></textarea>
+            <button id="message_btn_send" onclick="messages.send();" class="btn large send"></button>
+        </div>
+    </div>
+</div>
+
+<script>
+    messages.setData({
+        imHistoryMessages : '{im_history_messages}'*1,
+    });
+    messages.setLastId('{last_id}');
+    messages.initOneChat('{user_to}', '{current_user_photo}', '{current_user_name}', '{limit_start}', '{first_msg_id}', '{user_to_photo}', '{user_to_name}', '{url_page_profile_view}');
+    updateMenuCounterAll({set_messages_counter});
+</script>
+{footer}

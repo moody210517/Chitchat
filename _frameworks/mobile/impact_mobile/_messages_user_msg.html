@@ -1,0 +1,81 @@
+<!-- begin_message_list -->
+    <!-- begin_message -->
+	<!-- begin_message_responder -->
+	<div id="msg_{message_id}" class="im_msg_one" data-send="{message_send}" data-id="{message_id}" data-msg-user-id="{message_user_id}" data-to-user-id="{message_to_user_id}" data-sp="{message_user_sp}">
+	<div class="item">
+        <div class="msg">
+            <div class="pic go_to_page" data-cl-loader="loader_one_chat_msg_to_profile" data-type-loader="fade_btn" data-url="{url_main}{url_page_profile_view}?user_id={message_user_id}">
+                <button id="msg_user_pic_chat_{message_id}" class="to_opacity_hide  <!-- begin_message_plug_private_photos -->plug_private_photos<!-- end_message_plug_private_photos -->" style="background-image: url({url_files}{user_from_photo});"></button>
+                <script class="in_content">messages.showPhotoUser('#msg_user_pic_chat_{message_id}','{url_files}{user_from_photo}');</script>
+            </div>
+            <div class="info">
+                <p><strong class="name">{user_from_one_name}</strong><span class="data">{message_date}</span></p>
+                <p class="msg_txt">{message}</p>
+				<!-- begin_message_original_text -->
+				<div class="msg_original_title">{l_the_message_was_autotranslated} <a href="#" onclick="messages.showOriginalMessage($(this));return false;">{l_show_original_message}</a></div>
+				<div class="msg_original_text">
+					{message_original}
+				</div>
+				<!-- end_message_original_text -->
+            </div>
+        </div>
+    </div>
+        <script>
+        messages.messagesCacheAdd('{message_to_user_id}', '{message_id}', '{message_user_sp}');
+        <!-- begin_message_new -->
+        //mobileAppLoaded = true;
+        if(mobileAppLoaded) {
+            //console.log(appTitle, '{message_user_id}', '{message_notification_text}');
+            schedule(appTitle, '{message_user_id}', '{message_notification_text}');
+        }
+        <!-- end_message_new -->
+        </script>
+	</div>
+	<!-- end_message_responder -->
+
+	<!-- begin_message_answer -->
+	<div id="msg_{message_id}" class="im_msg_one" data-send="{message_send}" data-id="{message_id}" data-msg-user-id="{message_user_id}" data-to-user-id="{message_to_user_id}" data-sp="{message_user_sp}">
+	<div class="item answer">
+        <div class="msg">
+            <div class="info">
+                <p class="info_msg">
+                    <strong class="name">{user_from_one_name}</strong><span class="data">{message_date}</span>
+                    <span id="msg_read_{message_id}" class="icon_check msg_read <!-- begin_read_hide -->hide<!-- end_read_hide -->"></span>
+                </p>
+                <p class="msg_txt">
+                {message}
+				<!-- begin_message_block -->
+				{l_you_are_in_block_list}
+				<!-- end_message_block -->
+                </p>
+			</div>
+            <div class="pic go_to_page" data-cl-loader="loader_one_chat_msg_to_profile" data-type-loader="fade_btn" data-url="{url_main}{url_page_profile_view}?user_id={message_user_id}">
+                <button id="msg_user_pic_chat_{message_id}" class="to_opacity_hide" title="" style="background-image: url({url_files}{user_from_photo});"></button>
+                <script class="in_content">messages.showPhotoUser('#msg_user_pic_chat_{message_id}','{url_files}{user_from_photo}');</script>
+            </div>
+        </div>
+    </div>
+        <script>
+        messages.messagesCacheAdd('{message_to_user_id}', '{message_id}', '{message_user_sp}');
+        </script>
+	</div>
+	<!-- end_message_answer -->
+    <!-- end_message -->
+<!-- end_message_list -->
+
+<!-- begin_update_messages -->
+<script>
+<!-- begin_show_read_marks -->
+messages.setReadMsg('{show_read_marks}'*1);
+<!-- end_show_read_marks -->
+</script>
+<!-- end_update_messages -->
+
+<script>
+<!-- begin_update_writing_users -->
+messages.updateWritingUser();
+<!-- end_update_writing_users -->
+<!-- begin_delete_writing_users -->
+messages.deleteWritingUser();
+<!-- end_delete_writing_users -->
+</script>

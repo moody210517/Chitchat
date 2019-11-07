@@ -1,0 +1,65 @@
+{header}
+<style>
+    .header{ min-height: 100vh; }
+    .header .cover{ min-height: 100vh; }
+    .wrap_header_cont{ height: 100vh; }
+    .wrap_header_cont .bl{ padding: 150px 0 0; }
+</style>
+<div class="slogan">{l_log_in_to}</div>
+<div class="bl_form_registration">
+    <!-- begin_social_login -->
+    <div class="part br" >
+        <p>{l_social_btn_info}</p>
+        <ul class="bl_social_buttons bl_social_buttons_register">
+            <!-- begin_social_login_item -->
+            <li class="login_{social_login_item_type}"><a href="{social_login_item_url}">&nbsp;</a></li>
+            <!-- end_social_login_item -->
+        </ul>
+        <div class="line_or">
+            <div class="line_top"></div>
+                <div class="or">{l_or}</div>
+                <div class="line_bottom"></div>
+        </div>
+    </div>
+    <!-- end_social_login -->
+
+    <div class="part">
+        <form id="form_login" class="form_login" method="post" autocomplete="on" action="{url_main}ajax.php">
+            <input id="form_login_cmd" type="hidden" name="cmd" value="login" />
+            <input type="hidden" name="ajax" class="ajax" value="1" />
+            <div class="bl">
+                <label>{l_email_name}</label>
+                <div class="bl_inp_pos">
+                   	<input id="form_login_user" type="text" name="user" class="inp placeholder email" placeholder="{a_your_email_or_username}" />
+                    <div class="error"></div>
+                </div>
+            </div>
+            <div class="bl">
+                <label>{l_password}</label>
+                <div class="bl_inp_pos">
+                    <input id="form_login_pass"  type="password" name="password" class="inp placeholder email" placeholder="{a_password}" />
+                </div>
+            </div>
+            <button id="form_login_submit" type="submit" class="btn pink" >{l_log_in}</button>
+            <span class="sign">
+				<input id="Remember" name="remember" value="1" type="checkbox" checked="checked"/>
+                <label for="Remember">{l_remember_me}</label>
+            </span>
+        </form>
+    </div>
+    <div class="cl"></div>
+</div>
+<!-- begin_demo -->
+<script>
+$(document).ready(function() {
+    $('#form_login_user').val('{login_user}');
+    $('#form_login_pass').val('{login_password}');
+});
+</script>
+<!-- end_demo -->
+<!-- begin_alert_msg -->
+<script>
+alertCustom('{alert_msg}', true, l('alert_html_alert'));
+</script>
+<!-- end_alert_msg -->
+{footer}

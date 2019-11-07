@@ -1,0 +1,85 @@
+{header}
+<div class="wrapper-wide">
+<div class="userinfo-c-wide">
+<div class="userinfo">	
+
+    <div class="groups">
+
+		{groups_header}
+
+        <table class="tb_groups">
+            <tr>
+                <!-- td_main -->
+                <td class="td_main">
+                
+                    {groups_group_show}
+                    
+                    <div class="groups_shadow"><img src="{url_tmpl_main}images/groups/shadow.png" width="446" height="51" alt=""/></div>
+
+                    <div class="groups_p pl_top_m">
+                        <div class="fl_left bl_overflow bl_overflow_w100">
+                            <h1>{l_groups_forums} </h1>
+                        </div>
+
+                        <div class="groups_pl_violet2 fl_right pl_violet_b" <!-- begin_creat_forum_background --> style="background:none;" <!-- end_creat_forum_background -->>
+                            
+                            <div class="groups_pl_violet_l" <!-- begin_creat_forum_background --> style="background:none;" <!-- end_creat_forum_background -->></div>
+                            <!-- begin_btn_creat_forum -->
+                            <div class="groups_pl_violet_c">
+                                <div class="groups_pl_violet_img">
+                                    <img src="{url_tmpl_main}images/groups/ico_browse.png" width="34" height="34" alt=""/>
+                                </div>
+                                <ul class="groups_list">
+                                    <li><a href="{url_main}groups_group_forum_edit.php?group_id={group_id}">{l_groups_new_forum}</a></li>
+                                </ul>
+                            </div>
+                            <div class="groups_pl_violet_r"></div>
+                            <!-- end_btn_creat_forum -->
+                            <a class="fl_right groups_go_forums_list" href="{url_main}groups_group_show.php?group_id={group_id}">{l_groups_go_to_wall}</a>
+                        </div>
+
+                        <div class="cl"></div>
+                        
+                        {groups_group_forum_list}
+
+                    </div>
+
+                    <div class="groups_empty"></div>
+                </td>
+                <!-- /td_main -->
+
+                <td class="td_narrow">
+	
+					{groups_group_member_list}
+					{groups_group_comment_list_sidebar}
+				
+				</td>
+
+            </tr>
+
+        </table>
+
+        <div class="groups_foot">
+
+            <table>
+                <tr>
+                    <td class="td_l">&nbsp;</td>
+                    <td class="td_c">&nbsp;</td>
+                    <td class="td_r">&nbsp;</td>
+                </tr>
+            </table>
+
+        </div>
+
+
+    <div class="decor_top"></div>
+    </div>
+
+
+
+</div>
+<br>
+<div class="userinfo-links-wide"></div>
+</div>
+</div>
+{footer}

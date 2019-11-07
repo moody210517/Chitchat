@@ -1,0 +1,117 @@
+{header}
+<script type="text/javascript" src="{url_tmpl_mobile}js/profile_interests_edit.js{cache_version_param}"></script>
+<script>
+var interests = new CInterests();
+interests.langParts = {'delete_this_interest' : '{j_delete_this_interest}',
+                       'ok' : '{j_ok}',
+                       'cancel' : '{j_cancel}',
+                       'more' : '{j_more_interests}',
+                       'not_found' : '{j_not_found}'};
+
+preloadImages(url_tmpl_mobile_images+'icon_edit_delete.png')
+
+<!-- begin_field_interests_list_style -->
+preloadImages(url_tmpl_mobile_images+'{name}.png')
+<!-- end_field_interests_list_style -->
+
+<!-- begin_field_interests_category_style -->
+preloadImages(url_tmpl_mobile_images+'{name}.png')
+<!-- end_field_interests_category_style -->
+
+<!-- begin_field_interests_category_selected_style -->
+preloadImages(url_tmpl_mobile_images+'{name}.png')
+<!-- end_field_interests_category_selected_style -->
+
+<!-- begin_field_interests_normal_style -->
+preloadImages(url_tmpl_mobile_images+'{name}.png')
+<!-- end_field_interests_normal_style -->
+
+<!-- begin_field_interests_shared_style -->
+preloadImages(url_tmpl_mobile_images+'{name}.png')
+<!-- end_field_interests_shared_style -->
+</script>
+<div class="wrapper">
+<div class="content">
+
+    <div class="head">
+        <div class="fl_left">{l_edit_interests}</div>
+        <div class="cl"></div>
+    </div>
+
+    <div class="bl_edit">
+        <ul id="list_interest_user" class="list_interest_edit">
+            <!-- begin_list_interest_user -->
+            <!-- begin_list_interest_user_item -->
+            <li id="user_iterest_{int_id}">
+                <div class="item {interest_class}">
+                    <a data-id="{int_id}" class="icon_edit_delete interest_delete" href=""></a>
+                    <span class="interest_title">
+                    {interest}
+                    </span>
+                </div>
+            </li>
+            <!-- end_list_interest_user_item -->
+            <!-- end_list_interest_user -->
+        </ul>
+        <div class="cl"></div>
+    </div>
+
+    <div class="head">
+        <div class="fl_left">{l_add_interests}</div>
+        <div class="cl"></div>
+    </div>
+
+    <!-- begin_interests_edit --><!-- end_interests_edit -->
+
+    <div class="bl_add_interests">
+        <div class="bl_interests_search">
+            <input id="new_interest_text" type="text" class="inp placeholder" placeholder="{a_search}" value="" />
+        </div>
+
+        <!-- begin_interests_category -->
+        <div id="list_category" class="pp_interests_search category">
+            <div class="decor"></div>
+            <ul class="list_add_interest">
+                <!-- begin_interests_category_item -->
+                <li>
+                    <a data-cat-id="{id}" class="add_new_interest_to_cat" href="">
+                        <span class="field_interests_{id}"></span>{title}
+                    </a>
+                </li>
+                <!-- end_interests_category_item -->
+            </ul>
+        </div>
+        <!-- end_interests_category -->
+
+        <div id="list_search_box" class="pp_interests_search" style="display:none;">
+            <div class="decor"></div>
+            <ul id="list_search_item" class="list_add_interest">
+            </ul>
+        </div>
+
+        <ul id="list_category_custom" class="list_add_interest">
+            <!-- begin_interests_custom_category_item -->
+            <li id="category_{id}" class="<!-- begin_interests_custom_category_item_selected -->selected<!-- end_interests_custom_category_item_selected -->">
+                <a data-cat-id="{id}" class="change_cat" href=""><span class="{interest_class}_category<!-- begin_interests_custom_category_item_selected_title -->_selected<!-- end_interests_custom_category_item_selected_title -->"></span>{title}</a>
+            </li>
+            <!-- end_interests_custom_category_item -->
+        </ul>
+
+        <!-- begin_interests_custom -->
+        <ul id="category_item_{id}" class="list_link_interest <!-- begin_interests_custom_hide -->hide<!-- end_interests_custom_hide -->">
+            <!-- begin_interests_custom_item -->
+            <li class="add_new_interest"><a class="add_new_interest" data-cat-id="{cat_id}" data-int-id="{int_id}" href="">{interest}</a></li>
+            <!-- end_interests_custom_item -->
+
+            <!-- begin_interests_custom_more -->
+            <li class="more"><a class="link_more" data-id="{id}" id="link_more_{id}" href="">{l_more_interests}</a></li>
+            <!-- end_interests_custom_more -->
+        </ul>
+        <!-- end_interests_custom -->
+    </div>
+
+    <div class="cl"></div>
+    <div id="shadow_block" class="page_shadow_empty"></div>
+</div>
+</div>
+{footer}

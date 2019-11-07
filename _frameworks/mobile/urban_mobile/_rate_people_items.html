@@ -1,0 +1,33 @@
+<!-- begin_users_list_item -->
+<script>
+    photos.setInfoRatePeople('{user_id}', '{guid}', '{photo_bm}', '{photo_item_id}', '{report_user}', '{reports}', '{photo_private}', '{is_blocked_user}');
+</script>
+
+<div id="rate_people_user_info" class="bl_info_photo_top">
+    <div class="name">
+        <!-- begin_status_online -->
+        <div class="status online"></div>
+        <!-- end_status_online -->
+        {name}, {age}
+        <a href="{url_city}index.php?view=mobile&from={user_id}" class="status_3dcity <!-- begin_status_3dcity_profile -->to_show<!-- end_status_3dcity_profile -->"></a>
+    </div>
+</div>
+
+<!-- begin_list_interest_user -->
+<div id="rate_people_user_interests" class="list_interest_photo_cont">
+<ul  class="list_interest_photo">
+    <!-- begin_list_interest_user_item -->
+    <li class="item {interest_class}">{interest}</li>
+    <!-- end_list_interest_user_item -->
+    <!-- begin_list_interest_user_more_part -->
+    <li class="nopic item">{list_interest_user_more_part_value}</li>
+    <!-- end_list_interest_user_more_part -->
+</ul>
+</div>
+<!-- end_list_interest_user -->
+
+<!-- end_users_list_item -->
+
+<!-- begin_users_list_noitems -->
+<script>photos.showNoOneFound();</script>
+<!-- end_users_list_noitems -->

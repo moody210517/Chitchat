@@ -1,0 +1,66 @@
+<!-- begin_profile_completion_on -->
+<dd class="profile-completion">
+    {l_profile_completion}:
+    <ul>
+        <li class="gr">
+            <span>	<table>
+                    <tr>
+                        <td width="{profile_complite_percent}%"><!--  --></td>
+                        <td width="{profile_empty_percent}%" class="graph"><!--  --></td>
+                    </tr>
+                </table></span>
+        </li>
+        <li class="num">{profile_complite_percent}%</li>
+    </ul>
+</dd>
+<!-- end_profile_completion_on -->
+<!-- begin_profile_completion_off -->
+<div class="sidebar">
+	<div class="in">
+<div class="ini">
+
+	<h3>{l_profile_completion}
+	</h3>
+
+		<div class="profile-right">
+			<div>{your_profile_is_level_completed}</div>
+					<ul>
+						<li class="gr">
+							<span>	<table>
+									<tr>
+										<td width="{profile_complite_percent}%"></td>
+										<td width="{profile_empty_percent}%" class="graph"></td>
+									</tr>
+								</table></span>
+						</li>
+					</ul>
+		</div>
+		<!-- begin_yes_settings -->
+		<div align="left" class="userinfo" style="font-weight:bold; padding-left:10px !important; margin-bottom: 6px; margin-top:15px;">
+
+                <a href="{url_main}profile.php">{l_basic_info}</a>&nbsp;&middot;&nbsp;{basic}%<br>
+              <!-- begin_yes_personal -->
+                    <a href="{url_main}profile_personal.php">{l_personal_info}</a>&nbsp;&middot;&nbsp;{personalc}%<br>
+             <!-- end_yes_personal -->
+            <!--begin_yes_partner -->
+                    <a href="{url_main}profile_partner.php">{l_partner_info}</a>&nbsp;&middot;&nbsp;{partnerc}%<br>
+            <!-- end_yes_partner -->
+
+		</div>
+         <!-- end_yes_settings -->
+		<div align="left" style="padding: 10px;float:left; padding-bottom: 5px;">
+
+			{l_great_profile}
+			<br /><br />
+			<a href="{url_main}profile_photo.php#ph" style="position:relative; top:-5px;">{l_update_photo_now}</a>
+
+		</div>
+            <!-- begin_banner_right_column -->
+            <div class="banner_right_column_complite">
+                {banner_right_column}
+            </div>
+            <!-- end_banner_right_column -->
+</div>
+	</div>
+</div>
+<!-- end_profile_completion_off -->

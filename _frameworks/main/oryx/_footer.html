@@ -1,0 +1,69 @@
+                    </div>
+		</div><!-- content end -->
+
+		<!-- begin_adsense -->
+		<div id="ad">
+			<!--<img src="{url_tmpl_main}img/ads.png" width="800" height="85" alt="" />-->
+
+		</div>
+		<!-- end_adsense -->
+		<div id="footer">
+            <!-- begin_banner_footer -->
+            <div class="banner_footer">
+                {banner_footer}
+            </div>
+            <!-- end_banner_footer -->
+			<p>
+                <!-- begin_news_on -->
+				<a href="{url_main}news.php?view=1" title="{l_how_it_works}">{l_how_it_works}</a> |
+				<a href="{url_main}news.php?view=2" title="{l_about_us}">{l_about_us}</a>
+                <!-- end_news_on -->
+                <!-- begin_help_on -->
+                {dash1}
+                    <a href="{url_main}help.php" title="{l_help}">{l_help}</a>
+                <!-- end_help_on -->
+				<!-- begin_link_partner -->
+				{dash2}
+                <a href="{url_main}partner/" target="_blank" title="{l_affiliates}">{l_affiliates}</a>
+				<!-- end_link_partner -->
+                <!-- begin_news_on1 -->
+				|
+                <a href="{url_main}news.php?view=3" title="{l_testimonials}">{l_testimonials}</a> |
+		 		<a href="{url_main}news.php" title="{l_dating_news}">{l_dating_news}</a>
+                <!-- end_news_on1 -->
+                <!-- begin_contact_on -->
+		 		{dash3}
+                <a href="{url_main}contact.php" title="{l_contact_us}">{l_contact_us}</a><br />
+                <!-- end_contact_on -->
+			</p>
+			<p class="copyrights">{l_online_dating} <a href="{url_main}" title="{title_orig}">{title_orig}</a></p>
+		</div>
+	</div>
+	<div id="xajax_im"></div>
+	<script>
+        try { initAjax(); }
+        catch(e) {};
+		{footer_custom_js}
+	</script>
+
+    <script src="{url_main}_server/videojs/video.js{cache_version_param}"></script>
+
+<!-- begin_gdpr_cookie_popup -->
+<script>
+    $(function(){
+        //document.cookie = 'cookiesAccepted=; path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        var options = {
+            title: '{j_cookies_accept_title}',
+            text: '{cookies_accept_text}',
+            acceptButtonText: '{j_cookies_accept_accept_button_text}',
+            theme: 'dark',
+            learnMore: false,
+            position: 'bottom'
+        };
+        $.acceptCookies(options);
+    })
+</script>
+<!-- end_gdpr_cookie_popup -->
+
+</body>
+</html>

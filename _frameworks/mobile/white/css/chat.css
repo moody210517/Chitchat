@@ -1,0 +1,20 @@
+.tab {border-top:4px solid #fff;background:#f4f4f4;}
+.tab thead td {color:#000;background:#a746a3;}
+.tab thead a {color:#1282c4;}
+.tab tfoot td {background:#e5e5e5;}
+
+.tab .content {padding:0 4px;}
+.tab .txt {border:1px solid #000;background:#fff;}
+
+.searchform  table{width:100%;}
+.searchform .t1{width:80%;}
+.searchform .t2{width:20%; padding: 0 15px;}
+.searchform .txt {width:100%;}
+.searchform .btn {width:100%;}
+
+.content {line-height:20px;color:#000;}
+.content a {color:#1282c4; font-weight:bold;}
+.content .user_name {color:#1282c4;}
+.searchform {width:100%;text-align:center;}
+
+.smile img{margin-bottom:-7px;}

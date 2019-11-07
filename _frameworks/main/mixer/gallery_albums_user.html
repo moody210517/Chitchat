@@ -1,0 +1,94 @@
+{header}
+<link rel="stylesheet" type="text/css" media="screen" href="{url_main}_server/mootools/tips_orange.css{cache_version_param}" />
+<script type="text/javascript">
+	window.addEvent('domready', function(){
+		var Tips2 = new Tips($$('.tips'));
+	}); 
+</script>	
+<div id="wide" class="box"><div class="bbt"><div class="bbb"><div class="bbl"><div class="bbr"><div class="bbtl"><div class="bbtr"><div class="bbbl"><div class="bbbr">
+
+	<input style="width: 90px;" type="button" value="{l_gallery_menu_overview}" class="button" onclick="location='{url_main}gallery_admin.php';" title="{l_gallery_menu_overview}">
+	<input style="width: 90px;" type="button" value="{l_gallery_menu_comments}" class="button" onclick="location='{url_main}gallery_admin_comments.php';" title="{l_gallery_menu_comments}">
+	<input style="width: 90px;" type="button" value="{l_gallery_menu_upload}" class="button" onclick="location='{url_main}gallery_admin_upload.php';" title="{l_gallery_menu_upload}">
+	<input style="width: 90px;" type="button" value="{l_gallery_menu_edit}" class="button" onclick="location='{url_main}gallery_admin_edit_album_selection.php';" title="{l_gallery_menu_edit}">
+	<div style="height:10px;"></div>	
+	
+		<center>
+				<div class="gallery_title" style="font-size:24px;margin-bottom:20px;margin-top:20px;font-weight:bold;">{name}</div>
+				<div class="gallery_sort_by" style="margin-bottom:5px;font-weight:bold;">
+					{l_sort_by} &nbsp;&nbsp;
+					<a href="gallery_albums_user.php?sort=views&user_id={user_id}">{l_views}</a>&nbsp;&nbsp;&nbsp;
+					<a href="gallery_albums_user.php?sort=date&user_id={user_id}">{l_date}</a>&nbsp;&nbsp;&nbsp;
+					<a href="gallery_albums_user.php?sort=title&user_id={user_id}">{l_title}</a>
+				</div>
+				
+				<!-- begin_gallery_albums_all_pages -->
+			<div>
+				<!-- begin_gallery_albums_all_prev_page -->
+				<a href="./{url_page}?offset={offset}{params}">{l_prev}</a>&nbsp; | &nbsp;
+				<!-- end_gallery_albums_all_prev_page -->
+
+				<!-- begin_gallery_albums_all_prev_page_off -->
+				<b>{l_prev}</b>&nbsp; | &nbsp;
+				<!-- end_gallery_albums_all_prev_page_off -->
+
+				<!-- begin_gallery_albums_all_first_page -->
+				<a href="./{url_page}?offset={offset}{params}">{l_page_1}</a>&nbsp; 
+				<!-- end_gallery_albums_all_first_page -->
+
+				<!-- begin_gallery_albums_all_prev_pages -->
+				<a href="./{url_page}?offset={offset}{params}">&lt;&lt;</a>&nbsp;
+				<!-- end_gallery_albums_all_prev_pages -->
+
+				<!-- begin_gallery_albums_all_page -->
+					<!-- begin_gallery_albums_all_link_page -->
+					<a href="./{url_page}?offset={offset}{params}">{page}</a>&nbsp;
+					<!-- end_gallery_albums_all_link_page -->
+
+					<!-- begin_gallery_albums_all_this_page -->
+					<b>{page}</b>
+					<!-- end_gallery_albums_all_this_page -->
+				<!-- end_gallery_albums_all_page -->
+
+				<!-- begin_gallery_albums_all_next_pages -->
+				<a href="./{url_page}?offset={offset}{params}">&gt;&gt;</a>&nbsp;
+				<!-- end_gallery_albums_all_next_pages -->
+
+				<!-- begin_gallery_albums_all_last_page -->
+				<b>{l_of}</b> <a href="./{url_page}?offset={offset}{params}">{num_pages}</a>&nbsp; 
+				<!-- end_gallery_albums_all_last_page -->
+
+				<!-- begin_gallery_albums_all_next_page -->
+				&nbsp; | &nbsp;<a href="./{url_page}?offset={offset}{params}">{l_next}</a>
+				<!-- end_gallery_albums_all_next_page -->
+
+				<!-- begin_gallery_albums_all_next_page_off -->
+				&nbsp; | &nbsp;<b>{l_next}</b>
+				<!-- end_gallery_albums_all_next_page_off -->
+			</div>
+		<!-- end_gallery_albums_all_pages -->
+		
+		</center>
+		<center>
+		<div class="gallery_albums" style="width:630px;margin-top:20px; " align="center">
+			<!-- begin_albums -->
+			<div class="gallery_album thumbnail">
+				<center>
+					<div class="gallery_album_thumb" style="width:100px; height:100px;"><a href="gallery_album.php?album_id={album_id}"><img src="{url_files}{gallery_thumb_path}" class="tips" title="{album_name} :: {l_by} {user_name}" /></a></div>
+					<div class="gallery_album_title" style="margin-top:0px;font-size:12px;font-weight:bold;"><a href="gallery_album.php?album_id={album_id}">{album_name}</a></div><span style="font-size:10px;">(<i>{l_by}
+					<span class="gallery_album_user" style="font-weight:bold;overflow:hidden;">
+					<a target="_blank" href="search_results.php?display=profile&name={user_name}">
+					{user_name}</a></span></i>)</span>
+				</center>
+			</div>
+			<!-- end_albums -->	
+		</div>		
+		
+		</center>
+		<div style="clear:both;margin-bottom:30px; margin-top:30px; text-align:center;">
+		<input style="width: 50px;" type="button" value="{l_back}" class="button" onclick="location='javascript:history.back()';" title="{l_back}">
+		</div>
+</div></div></div></div></div></div></div></div></div>
+	
+
+{footer}

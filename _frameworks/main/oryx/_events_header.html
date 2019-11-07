@@ -1,0 +1,56 @@
+<div class="events_new_head">
+<script type="text/javascript">
+    function events_header_search_on_submit()
+    {
+        query = $("#events_header_search input[name='query']").val();
+        
+        if((query != '')&&(query != '{l_events_default_search_query}'))
+        {
+            return true;
+        }
+
+        alert('{l_blogs_please_enter_what_you_search}');
+        
+        return false;
+    }
+</script>
+<!-- 
+    <table>
+        <tr>
+            <td class="td_l">&nbsp;</td>
+            <td class="td_c"> -->
+            <div class="events_head_bl">
+              <div class="events_new_head_txt txt_upper_header_color">
+                 <strong><a href="{url_main}events.php" style="text-decoration:none">{l_events_events}</a></strong><!-- begin_event_header_location --> <span class="dot4">::</span>  {l_you_are_in} <span title="{location_full}">{location}</span><!-- end_event_header_location -->
+		 </div>
+              <form action="{url_main}events_event_edit.php<!--begin_event_date -->?date={event_date}<!--end_event_date -->" method="post">
+<!--                        <div class="events_input2 fl_right"> <input class="no_abk" type="submit" value="{l_events_create_event}"/></div> -->
+
+                    <a href="{url_main}events_event_edit.php<!--begin_event_date -->?date={event_date}<!--end_event_date -->" class="btn round blue fl_right"><img class="btn_arrows_top" src="{url_tmpl_main}images/btn_arrows_top.png" width="9" height="8" alt="" />{l_events_create_event}&nbsp;<img class="btn_arrows_right" src="{url_tmpl_main}images/btn_arrows_right.png" width="10" height="5" alt="" /></a>
+
+               </form>
+             <form id="events_header_search" autocomplete="off" action="{url_main}events_search.php" method="get" onsubmit="return events_header_search_on_submit();">
+<!-- 			<div class="events_input4 fl_right" style="position:relative;left:-17px;"> <input class="no_abk"  type="submit" value="{l_events_search}"/></div> -->
+                        <input style="margin: 0 15px 0 0;" class="btn round blue big fl_right" type="submit" value="{l_events_search}" />
+
+			 <div class="events_input_text1 fl_right"><input class="no_abk" type="text" name="query" /></div>
+				</form>
+            </div>
+<!--              </td>
+            <td class="td_r">&nbsp;</td>
+        </tr>
+    </table> -->
+
+    <div class="events_new_menu_bg">
+        <ul class="events_new_menu fl_left">
+            <!-- begin_categories_item --><!-- begin_categories_item_active --><li{class_last}><span class="txt_upper_header_color">{category_title}</span></li><!-- end_categories_item_active --><!-- begin_categories_item_not_active --><li{class_last}><a href="{url_main}events_settings_change.php?category_id={category_id}">{category_title}</a></li><!-- end_categories_item_not_active --><!-- end_categories_item -->
+        </ul>
+        <ul class="events_new_menu fl_right">
+            <li><a href="{url_main}events_my.php">{l_events_my_events}</a></li>
+            <li><a href="{url_main}events_calendar.php">{l_events_my_calendar}</a></li>
+            <li class="last"><a href="{url_main}events_event_edit.php?event_private=1<!--begin_private_event_date -->&date={event_date}<!--end_private_event_date -->">{l_events_new_entry_to_calendar}</a></li>
+
+        </ul>
+    <div class="justify"></div>
+    </div>
+</div>

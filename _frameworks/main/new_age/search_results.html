@@ -1,0 +1,26 @@
+{header}
+{ims}
+<script type="text/javascript">
+$(document).ready(function() {
+    equalHeight($(".in,.userinfo-c"));
+});
+</script>
+{search}
+<div class="wrapper">
+<div class="userinfo-c" >
+	<div class="userinfo smallphoto clearfix">
+    <!-- begin_menu_search_advanced -->
+	<input type="button" value="{l_menu_search_advanced}" class="button" onclick="location='{url_main}search_advanced.php';" title="{l_menu_search_advanced}">
+    <!-- end_menu_search_advanced -->
+    <!-- begin_menu_search_saved -->
+	<input type="button" value="{l_menu_search_saved}" class="button" onclick="location='{url_main}search_save.php';" title="{l_menu_search_saved}">
+    <!-- end_menu_search_saved -->
+	{users_list}
+
+</div>
+
+</div>
+    <div class="userinfo-links"></div>
+</div>
+
+{footer}

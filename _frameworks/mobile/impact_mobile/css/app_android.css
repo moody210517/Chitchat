@@ -1,0 +1,20 @@
+/*-- figure --*/
+.profile_info_figure_bottom{
+    margin: -2px 0 0;
+}
+.profile_info_figure_bottom .decor{
+    bottom: -1px;
+}
+/*-- /figure --*/
+.bl_list_photo img.user_photo{
+    object-fit: fill;
+}
+
+.frm_btn button.btn.large{ padding: 0 0 3px; }
+
+.bl_profile .cont_wrap .profile_info_content .pp_popup_editor .frm_btn button.btn{
+    padding: 0 0 3px;
+}
+
+.main_menu .menu_squares .square .name{ line-height: 14px; height: 16px; }
+.main_menu .menu_squares .square .name .fix{ padding-top: 0.5px; }

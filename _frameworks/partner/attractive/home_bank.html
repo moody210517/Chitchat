@@ -1,0 +1,100 @@
+{header}
+
+    
+    <div id="main_r">
+
+
+<div class="main_bgrnd_padding">
+<div id="columns" align="left" style="position: relative;">
+
+
+<!-- begin_home_edit -->
+<div class="content_bgrnd" align="left" style="padding: 20px; padding-right: 30px;">
+<span><b>{l_welcome} {name}!</b></span><br><br>
+<a href="{url_main}partner/home.php" class="sec_little_bold">{l_affiliaters_center}</a>
+&nbsp;<b>&middot;</b>&nbsp; <a href="{url_main}partner/home_edit.php" class="sec_little_bold">{l_edit_information}</a>
+&nbsp;<b>&middot;</b>&nbsp; <span class="ter_big">{l_edit_payment_information}</span>
+&nbsp;<b>&middot;</b>&nbsp; <a href="{url_main}partner/home_banners.php" class="sec_little_bold">{l_banners}</a>
+&nbsp;<b>&middot;</b>&nbsp; <a href="{url_main}partner/index.php?cmd=logout" class="sec_little_bold">{l_logout}</a>
+
+<div style="height: 20px;"><span></span></div>
+<div class="sec_med_bold">{l_partner_information}</div>
+<div class="content_bgrnd" style="padding: 20px;" align="justify">
+
+<form  name="JoinForm" method="POST" action="{url_main}partner/home_bank.php?cmd=edit" style="padding: 0px; margin: 0px;">
+<div align="justify" class="ter_text_bold">{l_payment_information}</div>
+<div align="justify" class="body_text"><br>-&nbsp;{l_contact_your_bank}</div>
+<div align="justify" class="body_text">-&nbsp;{l_inputting_your_information} </div>
+<br>
+
+<div align="justify">
+  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td>{l_bank_name}:</td>
+    <td align="left"><input type="text" name="bank_name" value="{bank_name}" style="width: 200px;" maxlength="255"></td>
+  </tr><tr>
+    <td>{l_bank_phone}:</td>
+    <td align="left"><input type="text" name="bank_phone" value="{bank_phone}" style="width: 200px;" maxlength="255"></td>
+  </tr><tr>
+    <td>{l_bank_address1}:</td>
+    <td align="left"><input type="text" name="bank_adress1" value="{bank_adress1}" style="width: 200px;" maxlength="255"></td>
+  </tr><tr>
+    <td>{l_bank_address2}:</td>
+    <td align="left"><input type="text" name="bank_adress2" value="{bank_adress2}" style="width: 200px;" maxlength="255"></td>
+  </tr><tr>
+    <td>{l_bank_city}:</td>
+    <td align="left"><input type="text" name="bank_city" value="{bank_city}" style="width: 200px;" maxlength="255"></td>
+  </tr><tr>
+    <td>{l_bank_state}:</td>
+    <td align="left"><input type="text" name="bank_state" value="{bank_state}" style="width: 200px;" maxlength="255"></td>
+  </tr><tr>
+    <td>{l_bank_zipcode}:</td>
+    <td align="left"><input type="text" name="bank_zip" value="{bank_zip}" style="width: 200px;" maxlength="255"></td>
+  </tr><tr>
+    <td>{l_bank_country}:</td>
+    <td align="left"><input type="text" name="bank_country" value="{bank_country}" style="width: 200px;" maxlength="255"></td>
+  </tr><tr>
+    <td>{l_bank_account}:</td>
+    <td align="left"><input type="text" name="bank_account" value="{bank_account}" style="width: 200px;" maxlength="255"></td>
+  </tr><tr>
+    <td>{l_bank_aba_code}:</td>
+    <td align="left"><input type="text" name="bank_aba" value="{bank_aba}" style="width: 200px;" maxlength="255"></td>
+  </tr><tr>
+    <td>{l_bank_swift_code}:</td>
+    <td align="left"><input type="text" name="bank_swift" value="{bank_swift}" style="width: 200px;" maxlength="255"></td>
+  </tr><tr>
+    <td>{l_bank_account_type}:</td>
+    <td align="left"><input type="text" name="bank_type" value="{bank_type}" style="width: 200px;" maxlength="255"></td>
+  </tr><tr>
+    <td>{l_make_payments}:</td>
+    <td align="left"><input type="text" name="bank_to" value="{bank_to}" style="width: 200px;" maxlength="255"></td>
+  </tr><tr>
+    <td>{l_paypal}:</td>
+    <td align="left"><input type="text" name="paypal" value="{paypal}" style="width: 200px;" maxlength="255"></td>
+  </tr><tr>
+	<td>{l_other_information}:&nbsp;&nbsp;</td>
+	<td align="left"><textarea name="other" style="width: 200px; height: 80px">{other}</textarea></td>
+  </tr><tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr><tr>
+    <td style="padding-right: 10px;" align="left"></td>
+    <td align="left"><table border="0" cellpadding="0" cellspacing="0"><tr><td><div class="button_border_1"><input type="button" value="{l_edit_information}" onClick="submit();" class="button_1" style="width: 157px; padding-left: 5px; padding-right: 5px;cursor: pointer; cursor: hand;" tabindex="a" title="{l_edit_information}" onMouseOver="window.status='{l_edit_information}'; return true;" onMouseOut="window.status=''; return true;"></div></td></tr></table></td>
+  </tr>
+  </table>
+</div>
+</form>
+</div>
+<!-- end_home_edit -->
+
+
+</div>
+</div>
+
+    </div>
+    
+
+
+</div>
+
+{footer}

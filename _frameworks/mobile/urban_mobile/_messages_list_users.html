@@ -1,0 +1,47 @@
+<div class="script" style="display:none;">
+<!-- begin_general_remove_users -->
+<script>messages.removeUsersGeneralChat({general_remove_users_list});</script>
+<!-- end_general_remove_users -->
+<!-- begin_general_order_users -->
+<script>
+    messages.setOrderUsersGeneralChat({general_order_users_list});
+    messages.setStatusNewMessagesFromUsers({general_users_list_new_msg});
+</script>
+<!-- end_general_order_users -->
+<!-- begin_update_users_status -->
+<script>messages.updateOnlineUsers({update_users_status});</script>
+<!-- end_update_users_status -->
+<!-- begin_general_limit_info -->
+<script>messages.setLimitStart('{limit_start}', '{stop_more}', '{limit_load}');</script>
+<!-- end_general_limit_info -->
+<!-- begin_general_show_read_marks -->
+<script>messages.setReadMsgs({general_show_read_marks});</script>
+<!-- end_general_show_read_marks -->
+</div>
+<!-- begin_messages_users_list_item -->
+<div id="im_{user_to_id}" data-check-order="" data-order="{user_to_order}" data-user-id="{user_to_id}" class="item to_one_chat">
+    <div class="bl">
+        <div data-user-id="{user_to_id}" class="pic im_user_photo" style="opacity: 0; cursor:pointer;">
+            <a class="im_open" onclick="if(messages.guid=={user_to_id})return false;" href="{url_main}messages.php?display=one_chat&user_id={user_to_id}">
+                <img src="{url_files}{user_to_photo}" alt=""  onload="$(this).closest('div').fadeTo(200,1);" />
+                <span id="im_user_status_{user_to_id}" class="status online messages" <!-- begin_status_online -->style="opacity:1;"<!-- end_status_online -->></span>
+                <a data-user-id="{user_to_id}" id="new_mail_{user_to_id}" href="#" class="icon_new_mail <!-- begin_new_messages_item -->show<!-- end_new_messages_item -->"></a>
+            </a>
+            <a class="im_delete" href="#">
+                <img class="history_clear" src="{url_tmpl_mobile}images/photo_delete_62x70.png" alt="" />
+            </a>
+            <div class="frame_pic hide"></div>
+            <img class="im_delete_empty" src="{url_tmpl_mobile}images/photo_delete_empty.png" alt="" />
+            <div class="shadow"></div>
+            <div class="name">{user_to_name}</div>
+        </div>
+        <div class="message">
+            <div id="im_box_msg_{user_to_id}" class="msg">
+                {msg_list}
+            </div>
+        </div>
+        <div class="cl"></div>
+    </div>
+    <script>messages.usersCacheAdd('{user_to_id}', '{status_online}');</script>
+</div>
+<!-- end_messages_users_list_item -->
