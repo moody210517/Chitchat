@@ -437,10 +437,8 @@ var CProfile = function(guid, uid) {
         var msg=$this.$ppUserReportMsg.val();
         if(trim(msg)){
             $this.$ppUserReportMsg.val('').change();
-            alert("aaa");
         }else{
             $this.closeReport();
-            alert("bbb");
         }
     }
 
