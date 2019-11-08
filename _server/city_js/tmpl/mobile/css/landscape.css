@@ -1,0 +1,176 @@
+/*Fix Chrom*/
+@media screen and (orientation:landscape) and (-webkit-min-device-pixel-ratio:0){
+    .bl_chat_msg{
+        z-index:1;
+    }
+}
+/*Fix Chrom*/
+@media screen and (orientation:landscape) {
+    html{
+        -webkit-transform: rotate(-90deg);
+           -moz-transform: rotate(-90deg);
+            -ms-transform: rotate(-90deg);
+             -o-transform: rotate(-90deg);
+                transform: rotate(-90deg);
+        -webkit-transform-origin: left top;
+           -moz-transform-origin: left top;
+            -ms-transform-origin: left top;
+             -o-transform-origin: left top;
+                transform-origin: left top;
+        height: 100vw;
+        position: absolute;
+        top: 100%;
+        left: 0;
+    }
+
+    @-moz-document url-prefix() {
+        .bl_msg_key .els .msg .scroll_x.to_arrow, #msg_text.to_arrow{margin-bottom: -9vh; padding-bottom: 8vh;}
+    }
+
+    .bl_msg_key .els .el{height: 9vh;}
+    .bl_msg_key .els .pic{width: 9vh; height: 9vh;}
+    .bl_msg_key .els .msg{ max-width: 82vh; height: 9vh; }
+    .bl_msg_key .els .msg .scroll_x{height: 9vh; font-size: 4vh;}
+    .bl_msg_key.add_hide{margin-bottom: -9vh;}
+    .bl_msg_key .els .arrow{min-width: 3.9vh; max-width: 9vh; height: 9vh;}
+    .bl_msg_key .els .arrow img{max-height: 9vh;}
+
+    #loading_screen, .loading_screen_box, .app_preloader, .app_preloader_box, .mobile_keyboard{width: 100vh;}
+    .mobile_keyboard .mobile_keyboard_iframe{ width: auto; }
+    .loading_progress_wrap_big{ height: .4vw; }
+
+    /*.logo_big {max-width: 50vh;}*/
+    .loading_progress_wrap_big{ max-width: 65vh; }
+
+    /*Nav*/
+    .mobile_keyboard .bl_nav a.icon_nav,
+    .mobile_keyboard .bl_nav a.icon_nav img{ width: 10vh; height: 10vh; }
+    /*Nav*/
+
+    .frame_pp_map{ width: 100vh; height: 100vw; }
+    .frame_pp_map .pp_map .pp_3dcity_frm_cont{ width: 100vh; height: 100vw; }
+    .frame_pp_map .pp_map .pp_3dcity_frm_cont .map_location{ width: 100vh; height: 100vw; }
+    .frame_pp_map .pp_map .pp_3dcity_frm_cont .func a{ height: 4vw; width: 8vw; }
+    .frame_pp_map .pp_map .pp_3dcity_frm_cont .func a.icon_cancel{ background-size: 20% auto; }
+
+    .bl_marker_map .pl{ top: 14vh; width: 10vh; height: 10vh; }
+    .bl_markers .bl_marker_map .pl img{ margin: 2.6vh 0 0; width: 3.6vh; }
+
+    .bl_link_map .pl{ top: 25vh; width: 10vh; height: 10vh; }
+    .bl_markers .bl_link_map .pl img{ margin: 2.8vh 0 0; width: 4vh; }
+
+	.bl_markers .tooltip_link_map{ left: 11.5vh; top: 2vh; font-size: 3.5vh; line-height: 5.6vh; min-height: 6vh; padding: 0 1.5vh 0 1.5vh; }
+    /*.bl_markers .tooltip_link_map.only_link{padding-right: 2vh;}*/
+    .bl_markers .tooltip_link_map .decor{ left: -1.3vh; top: 1.5vh;
+        border-top: 1.5vh solid transparent;
+        border-right: 1.5vh solid #000;
+        border-bottom: 1.5vh solid transparent;
+    }
+    .bl_markers .tooltip_link_map img{ width: 4vh; height: 4vh; margin: 1vh 0 0 0; }
+
+
+
+    /*Rooms*/
+    .mobile_keyboard .bl_layer_btn_choose_rooms .bl_layer_for_btn .bl_layer_btn{width: 60vh; height: 60vw;}
+    .mobile_keyboard .bl_layer_btn_choose_rooms .bl_layer_for_btn .bl_layer_btn .cont{width: 60vh; border-bottom: 0.3vw solid #d5f959; height: 60vw;}
+    .mobile_keyboard .bl_layer_btn_choose_rooms .bl_layer_for_btn .bl_layer_btn .cont .scroll-pane-rooms{width: 60vh; height: 60vw; padding: 4vh 6vh 0 4vh;}
+    .mobile_keyboard .bl_layer_btn_choose_rooms .bl_layer_for_btn .bl_layer_btn .cont .scroll-pane-rooms .jspPane{ min-height: 60vw; }
+    .mobile_keyboard .bl_layer_btn_choose_rooms .bl_layer_for_btn .bl_layer_btn .cont .scroll-pane-rooms ul{padding-bottom: 4vh; width:52vh;}
+    .mobile_keyboard .bl_layer_btn_choose_rooms .bl_layer_for_btn .bl_layer_btn .cont .scroll-pane-rooms ul li{ margin: 0 0 2vw;}
+    .mobile_keyboard .bl_layer_btn_choose_rooms .bl_layer_for_btn .bl_layer_btn .cont .scroll-pane-rooms ul li a.frame.selected{box-shadow: inset 0 0 0 0.3vw rgba(213,249,89,1);}
+    .mobile_keyboard .bl_layer_btn_choose_rooms .bl_layer_for_btn .bl_layer_btn .cont .scroll-pane-rooms span{font-size: 2.5vh; line-height: 2.8vh; margin: 1vw 0 0;}
+    .mobile_keyboard .bl_layer_btn_choose_rooms .bl_layer_for_btn .bl_layer_btn .cont .scroll-pane-rooms span em{padding: 0 1vh 2px;}
+    .mobile_keyboard .bl_layer_btn_choose_rooms .bl_layer_for_btn .bl_layer_btn .cont .scroll-pane-rooms .count_users{font-size: 2.5vh; line-height: 2.8vh; padding: 2vh;}
+    .mobile_keyboard .bl_layer_btn_choose_rooms .bl_layer_for_btn .bl_layer_btn .cont .scroll-pane-rooms .room_game{font-size: 2.5vh; line-height: 2.8vh; padding: 2vh;}
+    /*Rooms*/
+
+    /*Fix Chrom*/
+    /*#loading_screen,*/
+	.loading_screen_box,
+    .app_preloader, .mobile_keyboard_list_people, #bl_chat_msg_box, .bl_layer_btn,
+    .mobile_keyboard .bl_nav, .btn_keyboard, .mobile_keyboard .object_info, #browsers_support,
+	.frame_pp_map, .layer_change_pano{
+        -webkit-animation: fix_chrom 1s infinite;
+    }
+    /*Fix Chrom*/
+
+    .chat_msg_wh{height: 9vh; width: 9vh;}
+
+    .mobile_keyboard .bl_chat_msg .item span.msg {
+        font-size: 4vh;
+        /*line-height: 4vh;*/
+    }
+
+    .use_height_btn{height: 9vh;}
+
+    .scroll_x {/*line-height: 9vh;*/}
+    .mobile_keyboard .bl_chat_msg .item span.msg{font-size: 4vh;}
+    .mobile_keyboard .bl_chat_msg .item .bl_msg .scroll_x{max-width: 82vh; margin: 0 9vh 0 0;}
+    .mobile_keyboard .bl_chat_msg .item.box_send_msg .bl_msg .scroll_x{width: 86vh; max-width:86vh;}
+    .mobile_keyboard .bl_chat_msg .item.box_send_msg span.msg.scroll{padding: 0 5vh 0 0;}
+
+    /* Keyboard */
+    .mobile_keyboard .round-button .frame.space span{
+        line-height: 9vh;
+        height: 10vh;
+    }
+    .mobile_keyboard .round-button .frame{width: 10vh;}
+    .mobile_keyboard .round-button .frame.space,
+    .mobile_keyboard .round-button .frame.space .round-button-oval{
+        line-height: 9vh;
+        height: 9vh;
+    }
+    .mobile_keyboard .round-button .frame.space {font-size: 3vh;}
+    .mobile_keyboard .round-button a.round-button {font-size: 5vh;}
+    /*russian*/
+    .mobile_keyboard .russian .round-button .frame{ width: 9vh; }
+    .mobile_keyboard .russian .round-button .frame.space span{
+        line-height: 8vh;
+        height: 9vh;
+    }
+    /*turkish*/
+    .mobile_keyboard .turkish .round-button a.round-button {font-size: 4.4vh;}
+    .mobile_keyboard .turkish .round-button .frame{ width: 8.33vh; }
+    .mobile_keyboard .turkish .round-button .frame.fr_arrow_up{ width: 8.5vh; }
+    .mobile_keyboard .turkish .round-button .frame.space .round-button-oval,
+    .mobile_keyboard .turkish .round-button .frame.space span{
+        line-height: 7.4vh;
+        height: 7.4vh;
+    }
+    .mobile_keyboard .turkish .width_center:last-child {
+        margin-bottom: -5px;
+    }
+    /* Keyboard */
+
+    .mobile_keyboard .mobile_keyboard_list_people ul li .name{ height: 6vh; font-size: 3vh; line-height: 6vh; margin-top: -3vh; padding-left: 2.8vh; }
+
+    /* Nav */
+    .img_nav_popup{height: 13vh;}
+    .mobile_keyboard .bl_nav .bl_nav_popup{ padding: 2.3vw 1.9vh 2.4vw 2.7vh; border-bottom: 0.3vw solid #d5f959; }
+    .mobile_keyboard .bl_nav .bl_nav_popup .items .bl{padding: 0 2.4vh;}
+    .mobile_keyboard .bl_nav .bl_nav_popup img{margin: 0 0 2vw; }
+    .mobile_keyboard .bl_nav .bl_nav_popup a span{font-size: 2.7vh; line-height: 3vh;}
+    /* Nav */
+
+    .mobile_keyboard .bl_layer_btn_leave{ width: 100vh; }
+    .mobile_keyboard .bl_layer_btn_leave .bl_layer_for_btn .bl_layer_btn{ /*width: 96vh;*/ width: 100vh; height: 26vh; /*margin: 0 2vh;*/ }
+    .mobile_keyboard .bl_layer_btn_leave .bl_layer_for_btn .bl_layer_btn .bl{ padding: 0 21vh 0 6vh; }
+    .mobile_keyboard .bl_layer_btn_leave .bl_layer_btn .bl strong{font-size: 6.8vh;}
+    .mobile_keyboard .bl_layer_btn_leave .bl_layer_btn .bl span.signature{font-size: 3.8vh; padding: 0 0 0.7vh;}
+
+    .mobile_keyboard .bl_layer_btn_leave .bl_layer_for_btn .bl_layer_btn .func a{width: 20vh; }
+    .mobile_keyboard .bl_layer_btn_leave .bl_layer_for_btn .bl_layer_btn .func a.icon_cancel{ height: 11vh;}
+    .mobile_keyboard .bl_layer_btn_leave .bl_layer_for_btn .bl_layer_btn .func a.icon_check{ height: 15vh;}
+    .mobile_keyboard .bl_layer_btn_leave .bl_layer_for_btn .bl_layer_btn .func a.icon_check.btn_alert{height: 26vh;}
+
+    .spinner {font-size: 4vw;}
+}
+
+@keyframes fix_chrom{
+    0% { opacity:1; }
+    100% { opacity:1; }
+}
+@-webkit-keyframes fix_chrom{
+    0% { opacity:1; }
+    100% { opacity:1; }
+}

@@ -1,0 +1,41 @@
+*{margin: 0; padding: 0;}
+img{border: none;  }
+
+div.audio-chat{z-index: 999; width: 351px; height: 230px; overflow: hidden; position: fixed; top: 50%; left: 50%; margin: -120px 0 0 -160px; font: 12px/16px Tahoma, Verdana, sans-serif;}
+div.audio-chat .bg{background: url(./img/audio-chat-bg.png); width: 351px; height: 230px; overflow: hidden;}
+	div.audio-chat h2{font-size: 30px; color: #C3502A; text-transform: uppercase; line-height: 42px; text-align: left; background: url(./img/audio-chat-title-bg.gif); height: 42px; padding-left: 106px !important;}
+		div.audio-chat h2 img{position: absolute; top: -6px; left: 11px;}
+	div.audio-chat .in{position: relative; margin: -198px 23px 0 17px;}
+	div.audio-chat table{font-size: 100%; width: 100%; height: 89px;}
+		div.audio-chat td{height: 89px; vertical-align: middle !important; padding: 0 10px 0 108px; color: #A2340F; background: url(./img/1.gif) no-repeat 9px 50%; text-align: left; }
+		div.audio-chat a{color: #A2340F;}
+	div.audio-chat .buttons{text-align: center;}
+.playn_btn{
+height:34px;
+display: inline-block;
+}
+.playn_btn a{
+height:27px;
+display:block;
+float:left;
+width:70px;
+background:url(./images/playbtn_bg.png) repeat-x;
+padding:7px 10px 0px 5px;
+text-decoration: none;
+font-weight: bold;
+}
+.playn_btn .s_left_no_icon{
+height:34px;
+width:31px;
+display:block;
+float:left;
+background:url(./images/playbtn_left_no_icon.png) no-repeat;
+}
+.playn_btn .s_right{
+height:34px;
+width:10px;
+display:block;
+float:left;
+background:url(./images/playbtn_right.png) no-repeat;
+
+}

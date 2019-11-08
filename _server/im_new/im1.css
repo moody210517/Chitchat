@@ -1,0 +1,57 @@
+*{margin: 0; padding: 0;}
+table{border-collapse: collapse; border: none;}
+table td{font-size: 12px;}
+.chat td {vertical-align:top;}
+table.chat{position: absolute; font: 12px/14px Tahoma, Verdana, sans-serif; text-align:left;}
+.chat td.sh-r{width: 14px; height: 358px;
+background: url(./images1/sh-r.png) no-repeat;}
+.chat td.sh-l{width: 11px;
+background: url(./images1/sh-l.png) no-repeat;}
+.chat td.sh-t{height: 13px; width: 325px;
+background: url(./images1/sh-t.png) no-repeat;}
+.chat td.sh-b{height: 15px;
+background: url(./images1/sh-b.png) no-repeat;}
+.chat td.chatcont{width: 300px; vertical-align: top;}
+#background {background:url(./images1/back.png); height:332px;}
+.background_bottom {background:url(./images1/bottom.png); display:block; height:6px; width:300px;}
+table.chathead{width: 100%; height:20px; background:url(./images1/header.png) no-repeat;}
+.chattitle{padding-left: 8px; cursor: move; height: 20px;}
+.chattitle p {float:left; color:#fff; font-size:11px; font-weight:bold; padding-top:1px;}
+.chaticons {width:34px;}
+.chaticons ul{width: 28px; height: 14px; margin-right:6px; background: url(./images1/close.png);}
+/*.chaticons ul{width: 72px; height: 38px; background: url(./images1/icons.gif);}*/
+.chaticons ul li{width: 28px; height: 14px; float: left; display: block; cursor: pointer; cursor: hand;}
+table.chatmain{width: 100%;}
+.chatmain td{vertical-align: top;}
+.chatmain .chatbody{margin: 6px 8px 0; height: 290px; width:210px; overflow: auto; background:#fff;}
+.chatbody .cumsg{padding: 1px 0; color: #49A4D0; text-align: left;}
+.chatbody .odd{color: #000; text-align: left;}
+.cumsg .cunick{font-weight: bold;}
+
+form.cinput{margin: 14px 0 0 0px; position: relative;}
+.cinput input{background:url(./images1/input.png); padding:5px 5px 0; width:206px; border:none; margin-left:5px; height: 17px !important; height /**/: 23px; color: #000;}
+.cinput .csubmit{position: absolute; width: 70px; height: 29px; background: url(./images1/button.png); cursor: pointer; cursor: hand; right: -72px; top: -2px}
+
+td.chatside{width: 100%;}
+.cdesc{list-style: none; font-size: 9px !important; line-height: 12px; color: #000 !important;}
+.cdesc li{display: block; text-align: left; padding:0 5px 3px 7px;}
+.cdesc span{font-weight: bold;}
+
+.cphoto {width:62px; margin:6px;}
+.border_im {display:block; position:absolute; width:62px; height:70px; background:url(./images1/border.png);}
+
+.chatbody {position: relative;}
+.smile img {
+  position: relative;
+  margin: -3px -2px -8px 0;
+  right: 2px;
+}
+* html .smile img {display: none;}
+* html .smile {
+  display: inline-block;
+  width: 21px;
+  height: 21px;
+  position: relative;
+  margin: -3px -2px -8px 0;
+  right: 2px;
+}

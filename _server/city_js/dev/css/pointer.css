@@ -1,0 +1,126 @@
+.pointer_on_char {
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.pointer_on_obj {
+    cursor: e-resize;
+}
+
+.pointer_on_picture {
+    cursor: pointer !important;
+}
+
+.pointer_on_clickable_obj {
+    cursor: pointer !important;
+}
+
+
+/*#talk_icon{
+    position:absolute;
+    display:none;
+    z-index: 100;
+    margin-left: -50px;
+    
+    width: 100px;
+}
+
+.person_cursor_info{ position: absolute; z-index: 2; text-align: center; font-weight: bold; }
+.person_cursor_info span.frame{ box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.28); display: block; overflow: hidden; border-radius: 47px; border: 2px solid #fff; width: 90px; height: 90px; margin: 0 auto; }
+.person_cursor_info img{ border-radius: 47px; width: 90px; }
+.person_cursor_info span.info{ padding: 0 9px; border-radius: 10px; margin: -15px 0 0; position: relative; background: #fff1c9; box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.28); display: block; height: 16px; line-height: 14px; font-size: 12px; }
+.person_cursor_info span.info em{ font-style: normal; color: #8a7949; }*/
+
+#talk_icon {
+    display: none;
+}
+
+
+/*.person_cursor_info{ position: absolute; z-index: 2; text-align: center; font-weight: bold; }
+.person_cursor_info .pic{ border-radius: 47px; position: relative;
+        transition: all 0.6s cubic-bezier(0.6, 2, 0.6, 1), opacity .5s; margin: 0 auto; }
+.person_cursor_info .pic button{  }
+.person_cursor_info .pic .frame{ box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.28); display: block; border-radius: 47px; border: 2px solid #fff; width: 90px; height: 90px; margin: 0 auto; background-size: 100% auto; outline: none !important; transition:inherit; }
+.person_cursor_info span.info{ padding: 0 9px; border-radius: 10px; margin: -15px 0 0; position: relative; background: #fff1c9; box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.28); display: block; height: 16px; line-height: 14px; font-size: 12px; white-space: nowrap; font-family: tahoma; font-weight: bold; } 
+.person_cursor_info span.info em{ font-style: normal; color: #8a7949; }*/
+
+.person_cursor_info {
+    position: absolute;
+    z-index: 2;
+    text-align: center;
+    font-weight: bold;
+}
+
+.person_cursor_info .pic {
+    border-radius: 47px;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.6s cubic-bezier(0.6, 2, 0.6, 1), opacity .5s;
+    margin: 0 auto;
+}
+
+.person_cursor_info .pic button {}
+
+.person_cursor_info .pic .frame {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.20);
+    display: block;
+    border-radius: 47px;
+    border: 2px solid #fff;
+    width: 90px;
+    height: 90px;
+    margin: 0 auto;
+    background-size: 100% auto;
+    outline: none !important;
+    transition: inherit;
+}
+
+.person_cursor_info span.info {
+    padding: 0 9px;
+    border-radius: 10px;
+    margin: -15px 0 0;
+    position: relative;
+    background: #fff1c9;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.20);
+    display: block;
+    height: 16px;
+    line-height: 14px;
+    font-size: 12px;
+    white-space: nowrap;
+    font-family: tahoma;
+    font-weight: bold;
+}
+
+.person_cursor_info span.info em {
+    font-style: normal;
+    color: #8a7949;
+}
+
+.person_cursor_info .pic button .delete_pic {
+    border-radius: 50%;
+    background-color: rgba(223, 0, 0, 0.6);
+    background-image: url(../images/icon_delete_pic.png);
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    width: 86px;
+    height: 86px;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+}
+
+.pointer_on_game_obj {
+    cursor: pointer !important;
+}
+
+.pointer_on_game_obj_wait {
+    cursor: progress !important;
+}
+
+.pointer_on_game_obj_move {
+    cursor: move !important;
+}

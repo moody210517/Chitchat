@@ -1,0 +1,2 @@
+body { margin: 0; touch-action: none; overflow-y: hidden; background-color: transparent;}
+#world {position: absolute; width: 556px; height: 470px; touch-action: none; background-color: transparent;} 

@@ -1,0 +1,121 @@
+body {
+  margin: 0;
+  touch-action: none;
+  overflow: hidden;
+
+}
+]
+html{
+  overflow: hidden;
+}
+
+#fpsText{
+  font-size: 20px !important;
+}
+
+#world, canvas {position: absolute; width: 0; height: 0; touch-action: none; }
+#stat{position: absolute;}
+
+#debug{
+  position: absolute;
+  z-index: 49;
+  right: 300px;
+}
+
+
+div, span{
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    -o-user-select: none !important;
+    -khtml-user-select: none !important;
+    -webkit-user-select: none !important;
+    user-select: none !important;
+}
+
+
+
+#char_controls{
+  position: absolute;
+  z-index: 49;
+  right: 0;
+  bottom: 110px;
+  font-size: 36px;
+}
+
+#cam_controls{
+  position: absolute;
+  z-index: 49;
+  right: 0;
+  bottom: 200px;
+  font-size: 36px
+}
+
+
+
+#sync{
+  position: absolute;
+  z-index: 49;
+  right: 0;
+  top: 100px;
+  font-size: 36px;
+}
+
+#set_loc{
+  position: absolute;
+  bottom: 100px;
+  color: #fff;
+  left: 5%;
+  display: none;
+  z-index: 100;
+  font-size: 36px;
+}
+
+.dev{
+  display: none;
+}
+
+
+
+.dev_pointer{
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  width: 600px;
+  margin-left: -300px;
+  text-align: left;
+  display: none;
+  font-family:tahoma;
+  font-weight:bold
+}
+
+.dev_fps{
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 100;
+  display: none;
+}
+
+
+#cam_wrapper{
+  position: absolute; width: 0; height: 0; touch-action: none;
+  background-color: #000;
+}
+
+#camvideo_error_in_ios{
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+
+}
+
+#camvideo{
+  width: 100%;
+}
+
+#reset_custom_data{
+  position: absolute;
+  right: 0;
+  top: 0;
+}

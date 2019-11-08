@@ -1,0 +1,86 @@
+*{margin: 0; padding: 0;}
+table{border-collapse: collapse; border: none;}
+table td{font-size: 11px ;}
+
+* html td.sh-r, * html td.sh-l, * html td.sh-t, * html td.sh-b, * html .cname{behavior: url("_server/design/iepngfix.htc");}
+
+table.chat{position: fixed; visibility:hidden; height: 422px; width: 374px; font: 12px/14px Tahoma, Verdana, sans-serif;/* z-index: 300 !important;*/ }
+.chat td.sh-r{width: 17px; height: 390px;
+background: url(./images/sh-r.png);
+}
+.chat td.sh-l{width: 12px;
+background: url(./images/sh-l.png);
+}
+.chat td.sh-t{height: 10px; width: 373px;
+background: url(./images/sh-t.png);
+}
+.chat td.sh-b{height: 22px;
+background: url(./images/sh-b.png);
+}
+.chat td.chatcont{width: 345px; background: url(./images/cont-bg.jpg); vertical-align: top;}
+
+table.chathead{width: 100%;}
+.chattitle{padding-left: 8px; width: 100%; height: 45px;}
+.chaticons ul{width: 36px; height: 38px; margin-top:3px; background: url(./images/icon_close.gif);}
+/*.chaticons ul{width: 72px; height: 38px; background: url(./images/icons.gif);}*/
+.chaticons ul li{width: 30px; height: 30px; float: left; display: block; margin: 3px 2px 0; cursor: pointer; cursor: hand;}
+
+table.chatmain{width: 100%;}
+.chatmain td{vertical-align: top;}
+.chatmain .chatbody{margin: -50px 8px 9px; width: 212px; height: 277px; overflow: auto; background-attachment: fixed; background: #7DACBC/* url(./images/chatbody-bg.jpg) repeat-x 0 0*/; border: 1px solid #23647A; transition: height .3s}
+.chatbody .cumsg{padding: 1px 5px; color: #FFF; text-align: left;}
+.chatbody .odd{color: #f4ecc7; text-align: left;}
+.cumsg .cunick{font-weight: bold;}
+
+form.cinput{margin: 7px 0 0 0px; position: relative;}
+.cinput textarea{ visibility:visible; background: #D3EAEE url(./images/cinput-bg.jpg) repeat-x 0 0;font-size:12px; width: 206px; border: 1px solid #23647A; padding: 3px; height: 20px; color: #195A70; transition: height .3s; overflow: auto !important; max-height: 200px;}
+.cinput .csubmit{position: absolute; width: 95px; height: 66px; border:none; background: url(./images/btn-send.gif); cursor: pointer; cursor: hand; right: -107px; bottom: -10px; top: auto !important;}
+
+td.chatmain-in{height: 325px; vertical-align:bottom}
+td.chatside{width: 100%;}
+.cname{width: 92px; height: 73px; margin-left: 18px; text-align: center; position: relative; z-index: 6;
+background: url(./images/bubble.png);
+overflow:hidden;
+}
+.cname h3{line-height: 50px; font-size: 17px; color: #2E6F85;}
+.cphoto{margin: -21px 0 0 7px; background: url(./images/photo-frame.gif) no-repeat; width: 106px; height: 116px; position: relative; z-index: 5;}
+*html .cphoto  {margin-left: 6px !important;}
+*+html .cphoto {margin-left: 6px !important;}
+
+.cphoto img{position: relative; top: 7px; left: -1px;}
+.cdesc{margin: 0 10px 0 15px; list-style: none; font-size: 9px !important; line-height: 12px; color: #FFF !important;}
+.cdesc li{padding: 1px 4px; display: block; text-align: left;}
+.cdesc li.odd{background: #8AA5AF; border-right: 2px solid #6398AA; text-align: left;}
+.cdesc span{font-weight: bold;}
+
+
+.chatbody {position: relative;}
+table.chat .smile img {
+  position: relative;
+  margin: -3px -2px -8px 0;
+  right: 2px;
+}
+* html table.chat .smile img {display: none;}
+* html table.chat .smile {
+  display: inline-block;
+  width: 21px;
+  height: 21px;
+  position: relative;
+  margin: -3px -2px -8px 0;
+  right: 2px;
+}
+
+
+
+.im_block_user {display:block; width: 23px !important; height: 14px !important; top: 92px; left: 73px; z-index:7; position:absolute; background: url(./images/im_block_user.png); text-decoration:none; _background:none; _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/_server/im_new/images/im_block_user.png', sizingMethod='crop'); cursor:pointer;}
+
+table.chat .sound_link {position:absolute; width:51px; height:17px;display:block; margin:5px 0px 0px 88px; z-index:7;
+/*margin:4px auto 0px;*/
+}
+table.chat .sound_link {/*margin-left:-20px;*/}
+table.chat .status_0 {background:url("./images/im_sound_on.png") 0 0;_background:none; _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/_server/im_new/images/im_sound_on.png', sizingMethod='crop'); cursor:pointer;}
+table.chat .status_1 {background:url("./images/im_sound_off.png") 0 0;_background:none; _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/_server/im_new/images/im_sound_off.png', sizingMethod='crop'); cursor:pointer;}
+.loader{width:190px; padding:28px 0; background:url("./images/loader.gif") 50% 22px no-repeat transparent;}
+
+.chatbody .original_message{display:none;}
+.chatbody .show_original_message{background: url(../img/icons.png) 0px -1642px no-repeat; width:20px; height:20px;z-index:5;}

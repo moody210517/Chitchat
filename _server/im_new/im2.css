@@ -1,0 +1,73 @@
+*{margin: 0; padding: 0;}
+table{border-collapse: collapse; border: none;}
+table td{font-size: 12px;}
+
+* html td.sh-r, * html td.sh-l, * html td.sh-t, * html td.sh-b, * html .cname{behavior: url("_server/design/iepngfix.htc");}
+
+table.chat{position: absolute; height: 422px; font: 12px/14px Tahoma, Verdana, sans-serif;}
+.chat td.sh-r{width: 17px; height: 390px;
+background: url(./images2/sh-r.png);
+}
+.chat td.sh-l{width: 12px;
+background: url(./images2/sh-l.png);
+
+}
+.chat td.sh-t{height: 10px; width: 373px;
+background: url(./images2/sh-t.png);
+
+}
+.chat td.sh-b{height: 22px;
+background: url(./images2/sh-b.png);
+
+}
+.chat td.chatcont{width: 345px; background: url(./images2/cont-bg.jpg); vertical-align: top;}
+
+table.chathead{width: 100%;}
+.chattitle{padding-left: 8px; width: 100%; cursor: move; height: 45px;}
+.chaticons ul{width: 36px; height: 38px; background: url(./images2/icon_close.gif);}
+/*.chaticons ul{width: 72px; height: 38px; background: url(./images2/icons.gif);}*/
+.chaticons ul li{width: 30px; height: 30px; float: left; display: block; margin: 3px 2px 0; cursor: pointer; cursor: hand;}
+
+table.chatmain{width: 100%;}
+.chatmain td{vertical-align: top;}
+.chatmain .chatbody{margin: 9px 8px; width: 212px; height: 286px; overflow: auto; background:#fff; border: 1px solid #f7f7f7;}
+.chatbody .cumsg{padding: 1px 5px; color: #49A4D0; text-align: left;}
+.chatbody .odd{color: #000; text-align: left;}
+.cumsg .cunick{font-weight: bold;}
+
+form.cinput{margin: 10px 0 0 0px; position: relative;}
+.cinput input{background: #fff; width: 212px; padding-top:7px; border: 1px solid #8f8f8f; height: 19px !important; height /**/: 27px; color: #195A70;}
+.cinput .csubmit{position: absolute; width: 95px; height: 66px; background: url(./images2/btn-send.gif); cursor: pointer; cursor: hand; right: -107px; top: -30px}
+
+td.chatside{width: 100%;}
+.cname{width: 92px; height: 73px; margin-left: 18px; text-align: center; position: relative; z-index: 6;
+background: url(./images2/bubble.png);
+
+}
+.cname h3{line-height: 50px; font-size: 17px; color: #d59135; overflow:hidden;height:50px;}
+.cphoto{margin: -21px 0 0 7px; background: url(./images2/photo-frame.gif) no-repeat; width: 106px; height: 116px; position: relative; z-index: 5;}
+* html .cphoto{margin-left: 7px !important; margin-left /**/: 9px;}
+.cphoto img{position: relative; top: 8px; left: 0px;}
+.cdesc{margin: 0 10px 0 15px; list-style: none; font-size: 9px !important; line-height: 12px; color: #FFF !important;}
+.cdesc li{padding: 1px 4px; display: block; text-align: left; color:#777674;}
+.cdesc li.odd{background: #ffffff; text-align: left; color:#1188c1;}
+.cdesc span{font-weight: bold;}
+
+
+.chatbody {position: relative;}
+.smile img {
+  position: relative;
+  margin: -3px -2px -8px 0;
+  right: 2px;
+}
+* html .smile img {display: none;}
+* html .smile {
+  display: inline-block;
+  width: 21px;
+  height: 21px;
+  position: relative;
+  margin: -3px -2px -8px 0;
+  right: 2px;
+}
+
+.im_block_user {display:block; width: 23px !important; height: 14px !important; top: 92px; left: 73px; z-index:7; position:absolute; background: url(./images/im_block_user.png); text-decoration:none; _background:none; _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/_server/im_new/images/im_block_user.png', sizingMethod='crop'); cursor:pointer;}

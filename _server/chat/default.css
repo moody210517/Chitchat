@@ -1,0 +1,176 @@
+body {
+    background-color: #fff;
+    color: #000;
+    font-family: tahoma, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.bg { position: absolute; z-index:0; top: 0; left:0; opacity:0; min-width:100%; min-height:100%; /*background:url('no.gif')*/}
+#menu a, .nick a, .nick {
+    color: #fde905; text-decoration: underline; text-shadow: 1px 1px 1px #8a200a;
+    filter: shadow(Strength=4, Direction=135, Color=#8a200a); zoom:1
+}
+#menu a:hover, .nick a:hover {
+    color: #fde905; text-decoration: none;
+}
+#menu {
+    position: absolute; z-index:100; left:642px; top: 4px; width:98px;
+    text-align: right; white-space:nowrap;
+    font-size: 11px; font-weight: bold; color: #fde905;  line-height: 1.4em;
+}
+#menu * {float:right; cursor:pointer; margin: 5px -2px -1px 6px;}
+#new, #close, #menu a {clear:both}
+#menu a {margin:0}
+
+.wrap {
+    width: 746px;
+    height: 426px;
+    position: absolute;
+    top: 0px; left: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    background: url(image/load_animation.gif) center no-repeat;
+}
+
+.avatar, .nick {
+    display: none;
+    position: absolute;
+    left: 200px;
+    top: 304px;
+    width: 60px;
+    height: 56px;
+}
+
+.nick {
+    top: 361px;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    overflow: hidden;
+    height: 28px;
+    width: 60px;
+	text-decoration: none;
+    color: #eaddd4;
+}
+
+#avatar1, #nick1 { left: 0px; }
+#avatar2, #nick2 { left: 62px; }
+#avatar3, #nick3 { left: 124px; }
+#avatar4, #nick4 { left: 186px; }
+#avatar5, #nick5 { left: 248px; }
+#avatar6, #nick6 { left: 310px; }
+#avatar7, #nick7 { left: 372px; }
+#avatar8, #nick8 { left: 434px; }
+#avatar9, #nick9 { left: 496px; }
+#avatar10, #nick10 { left: 558px; }
+#avatar11, #nick11 { left: 620px; }
+#avatar12, #nick12 { left: 682px; }
+
+#nick2,
+#nick4,
+#nick6,
+#nick8,
+#nick10,
+#nick12
+{
+    top: 361px;
+}
+
+.chatform {
+    position: absolute;
+    left: 0px; right: 0px;
+    top: 405px;
+    display: none;
+}
+
+.chatinput, .chatsend {
+    font-size: 11px;
+}
+.bubbles {position:absolute; left:0; bottom:120px}
+.bubble {
+    position: relative;
+    font-size: 10px;
+	color:#8c5a3b;
+	font-weight: bold;
+    width: 170px !important;
+    line-height: 31px;
+    overflow: hidden;
+    padding: 3px 6px 20px;
+    text-align: center;
+    background: url(./image/bubble.gif) no-repeat;
+    -moz-background-size: 100% 100%; background-size: 100% 100%;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='image/bubble.gif', sizingMethod='scale');
+    top: 0; left: 5px;
+    display: none;
+}
+.bubble span {
+    line-height: 0.9em;
+    display:inline-block; vertical-align:middle
+}
+
+#bubble1 { top: 50px; color:#dcaa8b;}
+#bubble2 { top: 98px; color:#c89677;}
+#bubble3 { top: 146px; color:#b48263;}
+#bubble4 { top: 194px; color:#a06e4f;}
+#bubble5 { top: 242px; color:#8c5a3b;}
+
+#loginscreen
+{
+    width: 280px;
+    height: 220px;
+    padding-top: 13px;
+    text-align: center;
+    background-image: url(./image/loginback.gif);
+    background-repeat: no-repeat;
+    position: absolute;
+    left: 220px;
+    top: 80px;
+    font-weight: bold;
+    font-size: 90%;
+}
+
+#avatarchoice {
+    border: 1px solid black;
+    width: 60px;
+    height: 56px;
+    background-color: #eee;
+}
+
+#debug {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    font-size: 90%;
+    width: 800px;
+}
+
+#exit {
+    display: block;
+    width: 748px;
+    font-size: 90%;
+    text-align: right;
+	visibility: hidden
+}
+
+#home {
+    position: absolute;
+    left: 780px;
+    top: 14px;
+    width: 200px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.disclaimer {
+    color: #888;
+    font-size: 75%;
+    font-weight: normal;
+}
+
+#ad {
+    text-align: center;
+    position: relative;
+    top: -70px;
+}

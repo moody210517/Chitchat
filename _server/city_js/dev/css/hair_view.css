@@ -1,0 +1,59 @@
+body { margin: 0; touch-action: none; overflow-y: hidden; background-color: transparent;}
+#world {position: absolute; width: 556px; height: 470px; touch-action: none; background-color: transparent;} 
+#char_config{
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+}
+
+#parts{
+	position: absolute;
+	border: 1px solid;
+	top: 0;
+	left: 0;
+	width: 250px;
+	height: 100%;
+	overflow: auto;
+}
+
+#output{
+	position: absolute;
+	right: 0;
+	top: 0;
+	height: 500px;
+	width: 250px;
+}
+
+#set_parts{
+	position: absolute;
+	left: 270px;
+	top: 10px;
+}
+
+.cap_part_row input{
+	width: 40px;
+}
+
+.cap_part{
+	border: 1px solid;
+	margin: 5px;
+	padding: 5px;
+}
+
+.cap_part_row select{
+	width: 150px;
+}
+
+.doubleSide{
+	width: 100px !important;
+}
+
+.del_but{
+	float: right;
+}
+
+#set_from_json{
+	position: absolute;
+	right: 10px;
+	top: 520px;
+}

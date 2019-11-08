@@ -1,0 +1,94 @@
+.diamondswrap {z-index: 0; width:100%; min-height: 520px; display: table;}
+.diamonds {
+    //text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    display: table-cell;
+    margin: 0 auto;
+}
+
+.diamond-row-wrap {
+    text-align: center;
+    position: relative;
+    float: left;
+    clear: both;
+}
+.diamond-row-upper, .diamond-row-lower {
+    overflow: visible;
+    clear: both;
+    width: 100%;
+}
+.diamond-row-lower {
+    position: absolute;
+    bottom: 0;
+}
+.diamond-row-lower .diamond-box {
+    margin-left: 64%; /* 1 - 1 / sqrt(2) / 2 */
+    margin-top: 64%;
+}
+
+.diamond-box-wrap {
+    float: left;
+    width: 250px; /* Size of diamonds */
+    height: 250px;
+}
+
+.diamond-box {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+
+    overflow: hidden;
+
+    position: relative;
+    z-index: 1;
+
+    width: 70%; /* x = sqrt(x^2 / 2) = 1 / sqrt(2) = 0.70710678118 */
+    height: 70%;
+    margin: 14%;
+
+    border: 1px solid transparent;
+}
+
+.diamond-box-inner {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+
+    -webkit-transform-origin: center center;
+    -moz-transform-origin: center center;
+    -ms-transform-origin: center center;
+    transform-origin: center center;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+
+    width: 141%; /* sqrt(2) */
+    height: 141%;
+    margin: -20% 0 0 -20%; /* (1 - sqrt(2)) / 2 */
+}
+
+.diamond-box-inner .item {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 40% 0;
+    background-color: #ffffff;
+    color: white;
+    background-position: center center;
+    background-size: contain;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
